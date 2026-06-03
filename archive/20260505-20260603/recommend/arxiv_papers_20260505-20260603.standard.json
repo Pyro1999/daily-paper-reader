@@ -1,10 +1,10 @@
 {
   "mode": "standard",
-  "generated_at": "2026-06-03T12:54:19.677423+00:00",
+  "generated_at": "2026-06-03T14:08:12.714150+00:00",
   "stats": {
     "mode": "standard",
     "tag_count": 1,
-    "deep_divecandidates": 14,
+    "deep_divecandidates": 15,
     "deep_cap": 6,
     "deep_selected": 6,
     "quick_candidates": 27,
@@ -13,156 +13,77 @@
   },
   "deep_dive": [
     {
-      "id": "2605.18298v1",
+      "id": "2605.08631v1",
       "source": "arxiv",
-      "title": "DARE-EEG: A Foundation Model for Mining Dual-Aligned Representation of EEG",
-      "abstract": "Foundation models pre-trained through masked reconstruction on large-scale EEG data have emerged as a promising paradigm for learning generalizable neural representations across diverse brain-computer interface applications. However, a critical yet overlooked challenge is that EEG encoders must learn representations invariant to incomplete observations-when different masked views of the same signal have minimal overlap, existing methods fail to constrain them to a consistent latent subspace, leading to degraded transferability. To address this, we propose DARE-EEG, a self-supervised foundation model that explicitly enforces the mask-invariance property through dual-aligned representation learning during pre-training. Specifically, we introduce mask alignment that constrains representations from multiple masked views of the same EEG sample via contrastive learning, complementing anchor alignment that aligns masked representations to momentum-updated complete features for semantic stability. Additionally, we propose conv-linear-probing, a parameter-efficient strategy that adapts pre-trained representations to heterogeneous electrode configurations and sampling rates through decoupled spectro-spatial projections. Extensive experiments across diverse EEG benchmarks demonstrate that DARE-EEG consistently achieves state-of-the-art in accuracy performance while maintaining relatively low parameter complexity and superior cross-dataset portability compared to existing methods. Furthermore, DARE-EEG contributes to effectively discovering and utilizing the rich potential representations in EEG.",
+      "title": "Fatigue-Related Reaction Time Forecasting via EEG Functional Connectivity in Sustained Attention Task",
+      "abstract": "Mental fatigue related behavioral performance decline precipitates catastrophic accidents in sustained attention tasks. While existing neurophysiological systems effectively detect current behavioral performance, they often lack the capability to forecast behavioral lapses with sufficient temporal lead time for intervention. This study proposes a novel model for the reaction time (RT) forecasting using EEG functional connectivity features. Thirty participants engaged in a sustained Psychomotor Vigilance Test (PVT) with concurrent 30-channel EEG recording. Mutual information (MI) between electrodes was calculated as functional connectivity features. Random Forest regression model (RF) was trained to predict single-trial RTs across forecasting horizons ranging from 0 to 20 seconds. The model demonstrated robust predictive validity, achieving a Root Mean Square Error (RMSE) of 23.75 ms for immediate detection and maintaining high accuracy (RMSE = 24.07 ms) across different forecasting horizons. Interpretability analysis via SHAP and Linear Mixed Effects model further support the validity of the proposed model and revealed distinct temporal biomarkers. This study validates the feasibility of forecasting behavioral performance 20 seconds in advance, offering a promising methodology for proactive fatigue management in safety-critical systems.",
       "authors": [
-        "Yang Shao",
-        "Peiliang Gong",
-        "Qun Dai",
-        "Daoqiang Zhang"
+        "Bo Sun",
+        "Liang Ma"
       ],
-      "primary_category": "cs.AI",
+      "primary_category": "cs.HC",
       "categories": [
-        "cs.AI",
-        "cs.HC",
-        "cs.LG"
+        "cs.HC"
       ],
-      "published": "2026-05-18T12:18:43+00:00",
-      "link": "https://arxiv.org/pdf/2605.18298v1",
+      "published": "2026-05-09T02:49:12+00:00",
+      "link": "https://arxiv.org/pdf/2605.08631v1",
       "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
+        "keyword:bci-pilot",
+        "query:bci-pilot"
       ],
       "llm_score": 9.0,
-      "llm_evidence_en": "foundation model for EEG with dual-aligned representation",
-      "llm_evidence_cn": "提出双对齐表示的EEG基础模型",
-      "llm_evidence": "提出双对齐表示的EEG基础模型",
-      "canonical_evidence": "提出双对齐表示的EEG基础模型",
-      "llm_tldr_en": "DARE-EEG is a self-supervised foundation model that enforces mask-invariance through dual-aligned representation learning, improving transferability across BCI tasks.",
-      "llm_tldr_cn": "针对现有EEG基础模型对掩码变体表示不一致导致迁移性差的问题，本文提出DARE-EEG，通过双对齐表示学习强制掩码不变性，在大规模预训练后，在多个BCI下游任务中显著提升了线性探测和微调性能，为EEG基础模型在认知负荷评估等应用中的迁移提供了有力方案。",
-      "llm_tldr": "针对现有EEG基础模型对掩码变体表示不一致导致迁移性差的问题，本文提出DARE-EEG，通过双对齐表示学习强制掩码不变性，在大规模预训练后，在多个BCI下游任务中显著提升了线性探测和微调性能，为EEG基础模型在认知负荷评估等应用中的迁移提供了有力方案。",
+      "llm_evidence_en": "EEG-based reaction time forecasting for cognitive load (fatigue)",
+      "llm_evidence_cn": "基于EEG的反应时间预测用于认知负荷（疲劳）",
+      "llm_evidence": "基于EEG的反应时间预测用于认知负荷（疲劳）",
+      "canonical_evidence": "基于EEG的反应时间预测用于认知负荷（疲劳）",
+      "llm_tldr_en": "This paper forecasts reaction time in sustained attention tasks using EEG functional connectivity and Random Forest, enabling early detection of mental fatigue.",
+      "llm_tldr_cn": "针对持续注意任务中精神疲劳导致行为下降且现有方法仅能事后检测的问题，本文提出利用EEG功能连接（互信息）和随机森林回归模型预测单次反应时间。30名被试的实验表明，该方法能提前预示行为衰退，为疲劳预警提供了神经生理基础，对飞行员等需要持续注意的场景具有重要意义。",
+      "llm_tldr": "针对持续注意任务中精神疲劳导致行为下降且现有方法仅能事后检测的问题，本文提出利用EEG功能连接（互信息）和随机森林回归模型预测单次反应时间。30名被试的实验表明，该方法能提前预示行为衰退，为疲劳预警提供了神经生理基础，对飞行员等需要持续注意的场景具有重要意义。",
       "llm_tags": [
-        "query:pbci-load"
+        "query:bci-pilot"
       ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
+      "matched_query_tag": "query:bci-pilot",
+      "matched_query_text": "cognitive workload measurement BCI pilots",
+      "matched_requirement_id": "req-3",
       "selection_source": "fresh_fetch"
     },
     {
-      "id": "2605.24921v1",
+      "id": "2605.17562v1",
       "source": "arxiv",
-      "title": "BandVQ: Band-Wise Vector-Quantized EEG Foundation Model",
-      "abstract": "A central challenge in electroencephalography (EEG) foundation modeling is learning transferable representations across recordings with diverse tasks, montages, references, and spectral characteristics. Existing masked modeling approaches often rely on broadband continuous patches or a single discrete representation, which may underrepresent frequency-specific activity. This paper proposes BandVQ, a band-wise vector-quantized EEG foundation model that decomposes EEG into delta, theta, alpha, beta, and gamma bands, trains an independent VQ-VAE tokenizer for each band, and pretrains a shared Transformer encoder on the resulting discrete VQ code indices. The encoder uses masked code tokens, quantized absolute log-power tokens, channel and temporal embeddings, and metadata prefix tokens representing reference, band, task family, and phase. Region-based masking is also introduced to reduce the trivial reconstruction of spatially adjacent electrodes. The model is pretrained on 71 public EEG corpora comprising over 9,200 subjects and 357,000 single-channel hours and evaluated on six subject-independent classification datasets. Under the current evaluation setting, the proposed model achieves strong transfer performance, with the highest reported results on three cognitive tasks and competitive performance on three motor imagery tasks.",
+      "title": "Beyond Accuracy: Robustness, Interpretability and Expressiveness of EEG Foundation Models",
+      "abstract": "EEG foundation models (EEG-FMs) have been evaluated predominantly on clean, in-distribution accuracy, leaving their robustness, interpretability and representational quality largely unexamined. This study addresses these gaps by benchmarking six EEG-FMs against a baseline deep learning model across eight datasets. Beyond clean accuracy, we conduct three layers of analysis: (i) Robustness: we apply test-time perturbations including additive noise, random and region-based channel dropout and region-specific noise injection. Our analyses show that no single model dominates all failure modes. The most noise-robust model is among the most fragile under channel dropout and much of the dropout fragility disappears when channels are removed rather than zero-padded. (ii) Interpretability: we present the first application of Attention-Aware Layer-Wise Relevance Propagation (AttnLRP) to EEG-FMs and show that models broadly concentrate relevance on task-appropriate brain regions consistent with known neurophysiology. However, attribution maps remain spatially stable under perturbation while predictions degrade, suggesting that the models attend to the correct brain regions but decode corrupted content. (iii) Expressiveness: With block-wise probing we show that late blocks are repurposed during fine-tuning, while early blocks already hold task-related information. Furthermore, we demonstrate that the poor head-only performance previously attributed to low-quality pre-trained representations is largely explained by pooling and that EEG-FMs possess sufficient representational capacity when their token-level embeddings are preserved. Together, these findings provide the first systematic assessment of robustness, interpretability and expressiveness for EEG-FMs and highlight critical considerations for their development.",
       "authors": [
-        "Jamiyan Sukhbaatar",
-        "Satoshi Imamura",
-        "Toshihisa Tanaka"
+        "Urban Širca",
+        "Maryam Alimardani",
+        "Stefanos Zafeiriou",
+        "Konstantinos Barmpas"
       ],
       "primary_category": "cs.LG",
       "categories": [
-        "cs.LG"
+        "cs.LG",
+        "cs.AI",
+        "cs.HC"
       ],
-      "published": "2026-05-24T07:55:26+00:00",
-      "link": "https://arxiv.org/pdf/2605.24921v1",
+      "published": "2026-05-17T17:47:00+00:00",
+      "link": "https://arxiv.org/pdf/2605.17562v1",
       "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
+        "keyword:bci-pilot",
+        "query:bci-pilot"
       ],
       "llm_score": 9.0,
-      "llm_evidence_en": "Band-wise vector-quantized EEG foundation model",
-      "llm_evidence_cn": "分频带矢量量化的脑电基础模型",
-      "llm_evidence": "分频带矢量量化的脑电基础模型",
-      "canonical_evidence": "分频带矢量量化的脑电基础模型",
-      "llm_tldr_en": "Proposes BandVQ, an EEG foundation model that decomposes EEG into frequency bands, trains independent VQ-VAEs, and pretrains a shared Transformer on discrete codes.",
-      "llm_tldr_cn": "本文提出BandVQ，一种分频带矢量量化的脑电基础模型。该方法将脑电信号分解为delta、theta、alpha、beta、gamma五个频带，为每个频带训练独立的VQ-VAE分词器，然后在离散码索引上预训练共享Transformer编码器。通过使用掩码码令牌、量化绝对对数功率令牌等输入，模型能有效捕获频带特定和跨频带信息。在多个下游任务上，BandVQ显著优于现有宽带基础模型。",
-      "llm_tldr": "本文提出BandVQ，一种分频带矢量量化的脑电基础模型。该方法将脑电信号分解为delta、theta、alpha、beta、gamma五个频带，为每个频带训练独立的VQ-VAE分词器，然后在离散码索引上预训练共享Transformer编码器。通过使用掩码码令牌、量化绝对对数功率令牌等输入，模型能有效捕获频带特定和跨频带信息。在多个下游任务上，BandVQ显著优于现有宽带基础模型。",
+      "llm_evidence_en": "EEG foundation model robustness interpretability benchmark for passive BCI",
+      "llm_evidence_cn": "EEG基础模型鲁棒性与可解释性基准",
+      "llm_evidence": "EEG基础模型鲁棒性与可解释性基准",
+      "canonical_evidence": "EEG基础模型鲁棒性与可解释性基准",
+      "llm_tldr_en": "This paper benchmarks six EEG foundation models across eight datasets on robustness, interpretability, and expressiveness, revealing that no single model dominates all failure modes, with implications for reliable BCI applications.",
+      "llm_tldr_cn": "该研究针对EEG基础模型在鲁棒性、可解释性和表示质量方面的不足，对六种代表性EEG基础模型在八个数据集上进行了系统基准测试。通过施加多样化的测试时扰动，发现不同模型在不同故障模式下表现各异，没有单一模型全面占优。工作揭示了现有评估仅关注干净准确率的局限性，为未来EEG基础模型的实际部署提供了鲁棒性和可解释性的重要参考。",
+      "llm_tldr": "该研究针对EEG基础模型在鲁棒性、可解释性和表示质量方面的不足，对六种代表性EEG基础模型在八个数据集上进行了系统基准测试。通过施加多样化的测试时扰动，发现不同模型在不同故障模式下表现各异，没有单一模型全面占优。工作揭示了现有评估仅关注干净准确率的局限性，为未来EEG基础模型的实际部署提供了鲁棒性和可解释性的重要参考。",
       "llm_tags": [
-        "query:pbci-load"
+        "query:pbci-load:composite"
       ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
-      "selection_source": "fresh_fetch"
-    },
-    {
-      "id": "biorxiv-10-64898-2026-05-05-723048-v1",
-      "source": "biorxiv",
-      "title": "Evaluating the Sensitivity of Dry and Gel-Based Wearable EEG for Cognitive Load Estimation",
-      "abstract": "PurposeWe present a large-scale (N=120) comparative study of gel-based and dry electroencephalography systems for cognitive load analysis in tasks involving information visualization stimuli. Although dry systems are increasingly adopted owing to their portability and fast setup, their sensitivity to cognitive-related measurements (as compared to gel-based systems) remains debated. This limits the understanding of whether dry systems provide sufficient sensitivity for cognitive load assessment under controlled task conditions.\n\nMethodsWe analyzed a diverse set of signal quality metrics, such as signal-to-noise ratio and channel retention, combined with spectral features across frequency bands to evaluate the ability for each device to capture workload-related neural markers during information visualization tasks.\n\nResultsAlthough the gel-based device showed consistently better quality results than the dry one, the effect sizes suggest a small practical significance of the differences between systems. These results demonstrate that dry systems can provide adequate physiological sensitivity for cognitive load assessments.\n\nConclusionOur findings highlight the trade-off between usability (setup, calibration, etc.) and data fidelity, providing practical guidance for choosing electroencephalography systems for cognitive workload monitoring and applied neuroengineering research. Overall, the results suggest that dry systems can support coarse-grained cognitive load assessment, while gel-based systems remain advantageous when greater sensitivity is required.",
-      "authors": [
-        "Idesis, S.",
-        "Masias Bruns, M.",
-        "Emami, P.",
-        "Duraisamy, S.",
-        "Leiva, L. A.",
-        "Arapakis, I."
-      ],
-      "primary_category": "neuroscience",
-      "categories": [
-        "neuroscience"
-      ],
-      "published": "2026-05-08T00:00:00+00:00",
-      "link": "https://www.biorxiv.org/content/10.64898/2026.05.05.723048v1.full.pdf",
-      "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
-      ],
-      "llm_score": 9.0,
-      "llm_evidence_en": "directly evaluates EEG systems for cognitive load estimation",
-      "llm_evidence_cn": "直接评估EEG系统用于认知负荷估计",
-      "llm_evidence": "直接评估EEG系统用于认知负荷估计",
-      "canonical_evidence": "直接评估EEG系统用于认知负荷估计",
-      "llm_tldr_en": "A large-scale comparison of dry and gel-based wearable EEG for cognitive load estimation shows dry systems have limited sensitivity compared to gel-based systems.",
-      "llm_tldr_cn": "本文通过大规模实验比较了干电极和凝胶电极EEG系统在认知负荷分析中的表现，发现干系统在信号质量和频谱特征上灵敏度较低，但便携性更高，为可穿戴EEG在认知负荷评估中的应用提供了重要参考。",
-      "llm_tldr": "本文通过大规模实验比较了干电极和凝胶电极EEG系统在认知负荷分析中的表现，发现干系统在信号质量和频谱特征上灵敏度较低，但便携性更高，为可穿戴EEG在认知负荷评估中的应用提供了重要参考。",
-      "llm_tags": [
-        "query:pbci-load"
-      ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "electroencephalography based cognitive load estimation",
-      "matched_requirement_id": "req-4",
-      "selection_source": "fresh_fetch"
-    },
-    {
-      "id": "biorxiv-10-64898-2026-05-24-727533-v1",
-      "source": "biorxiv",
-      "title": "Behavioural and neural signatures across diverse cognitive demands in a multimodal electroencephalography-functional magnetic resonance imaging design",
-      "abstract": "Efficient multimodal designs that capture differences across cognitive domains and variations in cognitive demand remain limited. In this study, we tested a compact framework with 58 healthy participants who completed multimodal electroencephalography (EEG) and functional magnetic resonance imaging (fMRI) sessions. The framework comprised two complementary batteries: the HCP-aligned multitask paradigm (HCP-mini), which integrates eight HCP-aligned cognitive tasks and rest within a single run, and an extended N-back task ranging from 0-back to 7-back. Designed to support broad cross-domain coverage and matched multimodal assessment, the two batteries captured the expected group-level behavioural structure across modalities. Behavioural performance exceeded chance levels or aligned with findings from previous studies in both EEG and fMRI. Descriptive intraclass correlation coefficient (ICC) analyses showed numerically higher within-modality run-to-run values than between-modality values. At the neural level, HCP-mini fMRI activation patterns closely recapitulated the canonical large-scale task organisation of the original HCP dataset, with corresponding task pairs showing the strongest spatial similarity. Together, these findings demonstrate a compact and efficient framework for multimodal characterisation of cognition across domains and graded cognitive demands.",
-      "authors": [
-        "Hiromitsu, K.",
-        "Chiyohara, S.",
-        "Asai, T.",
-        "Katayama, A.",
-        "Wakabayashi, M.",
-        "Imamizu, H."
-      ],
-      "primary_category": "neuroscience",
-      "categories": [
-        "neuroscience"
-      ],
-      "published": "2026-05-27T00:00:00+00:00",
-      "link": "https://www.biorxiv.org/content/10.64898/2026.05.24.727533v1.full.pdf",
-      "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
-      ],
-      "llm_score": 9.0,
-      "llm_evidence_en": "EEG-based cognitive load estimation with N-back task",
-      "llm_evidence_cn": "基于EEG的认知负荷评估，使用N-back任务",
-      "llm_evidence": "基于EEG的认知负荷评估，使用N-back任务",
-      "canonical_evidence": "基于EEG的认知负荷评估，使用N-back任务",
-      "llm_tldr_en": "Investigates neural signatures across varying cognitive demands using EEG-fMRI, with an N-back task, capturing expected cognitive load effects.",
-      "llm_tldr_cn": "本研究设计了一个包含HCP对齐多任务和扩展N-back（0-back至7-back）的紧凑框架，同时采集EEG和fMRI数据，旨在捕捉不同认知域和认知需求变化下的行为与神经签名。实验发现EEG和fMRI均能有效反映认知负荷的梯度变化，为多模态认知负荷评估提供了有效范式。",
-      "llm_tldr": "本研究设计了一个包含HCP对齐多任务和扩展N-back（0-back至7-back）的紧凑框架，同时采集EEG和fMRI数据，旨在捕捉不同认知域和认知需求变化下的行为与神经签名。实验发现EEG和fMRI均能有效反映认知负荷的梯度变化，为多模态认知负荷评估提供了有效范式。",
-      "llm_tags": [
-        "query:pbci-load"
-      ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "electroencephalography based cognitive load estimation",
-      "matched_requirement_id": "req-4",
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
       "selection_source": "fresh_fetch"
     },
     {
@@ -184,149 +105,352 @@
       "published": "2026-05-11T16:34:58+00:00",
       "link": "https://arxiv.org/pdf/2605.10817v1",
       "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
+        "keyword:bci-pilot",
+        "query:bci-pilot"
       ],
       "llm_score": 8.0,
       "llm_evidence_en": "EEG foundation model for clinical semantics",
-      "llm_evidence_cn": "基于EEG的基础模型用于临床语义",
-      "llm_evidence": "基于EEG的基础模型用于临床语义",
-      "canonical_evidence": "基于EEG的基础模型用于临床语义",
-      "llm_tldr_en": "CLEF is a long-context EEG foundation model using 3D multitaper spectrogram tokens and contrastive learning with clinical reports, outperforming prior models on 229/234 clinical tasks.",
-      "llm_tldr_cn": "现有EEG基础模型大多针对短时窗解码且缺乏临床语义整合。本文提出CLEF，一种临床上下文感知的长序列EEG基础模型，将EEG会话转化为3D多窗谱图标记，通过对比学习与神经科报告和结构化电子病历对齐。在包含超过26万次EEG会话的234任务基准上，CLEF在229个任务上超越先前模型，展示了长上下文建模在临床EEG分析中的优势。",
-      "llm_tldr": "现有EEG基础模型大多针对短时窗解码且缺乏临床语义整合。本文提出CLEF，一种临床上下文感知的长序列EEG基础模型，将EEG会话转化为3D多窗谱图标记，通过对比学习与神经科报告和结构化电子病历对齐。在包含超过26万次EEG会话的234任务基准上，CLEF在229个任务上超越先前模型，展示了长上下文建模在临床EEG分析中的优势。",
+      "llm_evidence_cn": "面向临床语义的EEG基础模型",
+      "llm_evidence": "面向临床语义的EEG基础模型",
+      "canonical_evidence": "面向临床语义的EEG基础模型",
+      "llm_tldr_en": "CLEF introduces a long-context EEG foundation model that aligns with clinical reports, outperforming previous models on 229 of 234 tasks.",
+      "llm_tldr_cn": "现有EEG基础模型通常仅处理短窗口且忽略临床上下文，本文提出CLEF，利用3维多锥谱图标记实现全会话Transformer建模，并通过对比学习对齐神经科报告和结构化病历。在包含超过26万次EEG会话的234任务基准上，CLEF在229个任务上超越此前最优模型，展示了临床语义理解能力。",
+      "llm_tldr": "现有EEG基础模型通常仅处理短窗口且忽略临床上下文，本文提出CLEF，利用3维多锥谱图标记实现全会话Transformer建模，并通过对比学习对齐神经科报告和结构化病历。在包含超过26万次EEG会话的234任务基准上，CLEF在229个任务上超越此前最优模型，展示了临床语义理解能力。",
       "llm_tags": [
-        "query:pbci-load"
+        "query:pbci-load:composite"
       ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
       "selection_source": "fresh_fetch"
     },
     {
-      "id": "2605.11410v1",
+      "id": "2605.11885v1",
       "source": "arxiv",
-      "title": "What Do EEG Foundation Models Capture from Human Brain Signals?",
-      "abstract": "Clinical electroencephalogram (EEG) analysis rests on a hand-crafted feature catalog refined over decades, \\emph{e.g.,} band power, connectivity, complexity, and more. Modern EEG foundation models bypass this catalog, learn directly from raw signals via self-supervised pretraining, and match or outperform feature-engineered baselines on most clinical benchmarks. Whether the two representations align is an open question, which we decompose into three sub-questions: \\emph{what does the model learn}, \\emph{what does the model use}, and \\emph{how much can be explained}. We answer them with layer-wise ridge probing, LEACE-style cross-covariance subspace erasure, and a transparent classifier benchmarked against a random-feature baseline. The audit covers three foundation models (CSBrain, CBraMod, LaBraM), five clinical tasks (MDD, Stress, ISRUC-Sleep, TUSL, Siena), and a 6-family 63-feature lexicon. Of the $945$ (model, task, feature) units, $648$ ($68.6\\%$) are representation-causal and $199$ ($21.1\\%$) are encoded-only. Across tasks, $50$ features qualify as universal candidates with strong support (all three architectures RC) in two or more tasks. Frequency-domain features dominate, but the other five families each contribute substantial causal mass. Confirmed features recover, on average, $79.3\\%$ of the foundation model's advantage over the random baseline, with a clean task gradient (MDD $\\approx 0.99$ down to Stress $\\approx 0.56$): tasks near ceiling are almost fully recovered by the lexicon, while harder tasks leave a non-trivial residual that pinpoints a concrete target for future concept discovery.",
+      "title": "From Clever Hans to Scientific Discovery: Interpreting EEG Foundational Transformers with LRP",
+      "abstract": "Emerging foundation models (FMs) in electroencephalography (EEG) promise a path to scale deep learning in diagnostics and brain-computer interfaces despite data scarcity, yet their opaque nature remains a barrier to wider adoption. We investigate attention-aware Layer-wise relevance propagation (LRP) as a post-hoc attribution method for EEG-FMs, extending LRP's use on convolutional neural network (CNN)-based EEG models to the Transformer architectures that current FMs are based on. We find that LRP can both verify EEG-FM decisions and surface novel, biologically plausible hypotheses from them. In motor imagery, it unmasks 'Clever Hans' behavior where models prioritize task correlated ocular signals over the intended motor correlates. In a naturalistic paradigm for affect prediction, it reveals a recurring reliance on a central electrode cluster, suggesting a candidate sensorimotor signature of arousal. Though heatmap interpretation remains ambiguous in this complex domain, the results position LRP as a tool for both verification and exploration of EEG-FMs, a role that will grow in both importance and discovery potential as the underlying models mature.",
       "authors": [
-        "Ling Tang",
-        "Qian Chen",
-        "Jilin Mei",
-        "Houshi Xu",
-        "Quanshi Zhang",
-        "Jing Shao",
-        "Na Zou",
-        "Xia Hu",
-        "Dongrui Liu"
+        "Justus Meyer zu Bexten",
+        "Nico Scherf",
+        "Bogdan Franczyk",
+        "Simon M. Hofmann"
       ],
       "primary_category": "cs.AI",
       "categories": [
-        "cs.AI"
+        "cs.AI",
+        "q-bio.NC"
       ],
-      "published": "2026-05-12T01:57:53+00:00",
-      "link": "https://arxiv.org/pdf/2605.11410v1",
+      "published": "2026-05-12T09:59:14+00:00",
+      "link": "https://arxiv.org/pdf/2605.11885v1",
       "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
+        "keyword:bci-pilot",
+        "query:bci-pilot"
       ],
       "llm_score": 8.0,
-      "llm_evidence_en": "Investigates representation learned by EEG foundation models",
-      "llm_evidence_cn": "研究EEG基础模型所学到的表示",
-      "llm_evidence": "研究EEG基础模型所学到的表示",
-      "canonical_evidence": "研究EEG基础模型所学到的表示",
-      "llm_tldr_en": "Systematically audits three EEG foundation models to understand what they learn, use, and how much can be explained via layer-wise probing and erasure.",
-      "llm_tldr_cn": "该论文对三种EEG基础模型进行系统审计，通过逐层岭回归探针和LEACE子空间擦除等方法解答模型学习了什么、使用了什么以及多大程度可解释。揭示模型表示与经典手工特征的对应关系，为EEG基础模型的可解释性提供重要洞见。",
-      "llm_tldr": "该论文对三种EEG基础模型进行系统审计，通过逐层岭回归探针和LEACE子空间擦除等方法解答模型学习了什么、使用了什么以及多大程度可解释。揭示模型表示与经典手工特征的对应关系，为EEG基础模型的可解释性提供重要洞见。",
+      "llm_evidence_en": "Interpreting EEG foundational transformers with LRP for BCI applications",
+      "llm_evidence_cn": "使用LRP解释EEG基础Transformer，应用于BCI",
+      "llm_evidence": "使用LRP解释EEG基础Transformer，应用于BCI",
+      "canonical_evidence": "使用LRP解释EEG基础Transformer，应用于BCI",
+      "llm_tldr_en": "Applies attention-aware LRP to interpret EEG foundation models, revealing Clever Hans behavior in motor imagery BCI, supporting trustworthy passive BCI.",
+      "llm_tldr_cn": "EEG基础模型在BCI中性能优异但黑箱特性阻碍应用。本文将LRP扩展到Transformer架构的EEG模型，发现运动想象中模型依赖眼电伪迹而非真实脑电信号（聪明汉斯现象）。LRP既能验证决策又能发现生物可解释假设，为被动BCI中认知负荷评估的深度学习模型提供可信性保障。",
+      "llm_tldr": "EEG基础模型在BCI中性能优异但黑箱特性阻碍应用。本文将LRP扩展到Transformer架构的EEG模型，发现运动想象中模型依赖眼电伪迹而非真实脑电信号（聪明汉斯现象）。LRP既能验证决策又能发现生物可解释假设，为被动BCI中认知负荷评估的深度学习模型提供可信性保障。",
       "llm_tags": [
-        "query:pbci-load"
+        "query:pbci-load:composite"
       ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.13930v1",
+      "source": "arxiv",
+      "title": "Mechanistic Interpretability of EEG Foundation Models via Sparse Autoencoders",
+      "abstract": "EEG foundation models achieve state-of-the-art clinical performance, yet the internal computations driving their predictions remain opaque: a barrier to clinical trust. We apply TopK Sparse Autoencoders (SAEs) across three architecturally distinct EEG transformers: SleepFM, REVE, and LaBraM to extract sparse feature dictionaries from their embeddings. By grounding these features in a clinical taxonomy (abnormality, age, sex, and medication), we benchmark monosemanticity and entanglement across architectures. A single hyperparameter procedure, driven by an intrinsic dictionary health audit, transfers robustly across all three architectures. Via concept steering, we introduce a \"target vs. off-target\" probe area metric to quantify steering selectivity and reveal three operational regimes: selectively steerable, encoded but entangled, and non-encoded. This framework exposes critical representational failures: \"wrecking-ball\" interventions that collapse global model performance, and clinical entanglements, such as age-pathology confounding, where it is impossible to suppress one concept without corrupting the other. Finally, a spectral decoder maps these interventions back to the amplitude spectrum, translating latent manipulations into physiologically interpretable frequency signatures, such as pathological slow-wave suppression and $α$-band restoration.",
+      "authors": [
+        "William Lehn-Schiøler",
+        "Magnus Ruud Kjær",
+        "Rahul Thapa",
+        "Magnus Guldberg Pedersen",
+        "Anton Storgaard Mosquera",
+        "Nick Williams",
+        "Radu Gatej",
+        "Tue Lehn-Schiøler",
+        "Sándor Beniczky",
+        "Sadasivan Puthusserypady",
+        "James Zou",
+        "Lars Kai Hansen"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.HC",
+        "cs.NE"
+      ],
+      "published": "2026-05-13T16:02:56+00:00",
+      "link": "https://arxiv.org/pdf/2605.13930v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "query:bci-pilot"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Mechanistic interpretability of EEG foundation models via sparse autoencoders",
+      "llm_evidence_cn": "通过稀疏自编码器实现EEG基础模型的机械可解释性",
+      "llm_evidence": "通过稀疏自编码器实现EEG基础模型的机械可解释性",
+      "canonical_evidence": "通过稀疏自编码器实现EEG基础模型的机械可解释性",
+      "llm_tldr_en": "Uses sparse autoencoders to extract interpretable features from EEG foundation models, enabling concept steering and enhancing trust for passive BCI.",
+      "llm_tldr_cn": "EEG基础模型内部计算不透明限制临床信任。本文应用TopK稀疏自编码器从三个不同架构的EEG基础模型中提取稀疏特征词典，并基于临床标签（如异常、年龄）进行基准测试。引入概念调控技术量化特征选择性。该方法为被动BCI认知负荷评估中基础模型的解释与调控提供了有效途径。",
+      "llm_tldr": "EEG基础模型内部计算不透明限制临床信任。本文应用TopK稀疏自编码器从三个不同架构的EEG基础模型中提取稀疏特征词典，并基于临床标签（如异常、年龄）进行基准测试。引入概念调控技术量化特征选择性。该方法为被动BCI认知负荷评估中基础模型的解释与调控提供了有效途径。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.13930v2",
+      "source": "arxiv",
+      "title": "Mechanistic Interpretability of EEG Foundation Models via Sparse Autoencoders",
+      "abstract": "EEG foundation models achieve state-of-the-art clinical performance, yet the internal computations driving their predictions remain opaque: a barrier to clinical trust. We apply TopK Sparse Autoencoders (SAEs) across three architecturally distinct EEG transformers: SleepFM, REVE, and LaBraM to extract sparse feature dictionaries from their embeddings. By grounding these features in a clinical taxonomy (abnormality, age, sex, and medication), we benchmark monosemanticity and entanglement across architectures. A single hyperparameter procedure, driven by an intrinsic dictionary health audit, transfers robustly across all three architectures. Via concept steering, we introduce a \"target vs. off-target\" probe area metric to quantify steering selectivity and reveal three operational regimes: selectively steerable, encoded but entangled, and non-encoded. This framework exposes critical representational failures: \"wrecking-ball\" interventions that collapse global model performance, and clinical entanglements, such as age-pathology confounding, where it is impossible to suppress one concept without corrupting the other. Finally, a spectral decoder maps these interventions back to the amplitude spectrum, translating latent manipulations into physiologically interpretable frequency signatures, such as pathological slow-wave suppression and $α$-band restoration.",
+      "authors": [
+        "William Lehn-Schiøler",
+        "Magnus Ruud Kjær",
+        "Rahul Thapa",
+        "Magnus Guldberg Pedersen",
+        "Anton Mosquera Storgaard",
+        "Nick Williams",
+        "Radu Gatej",
+        "Tue Lehn-Schiøler",
+        "Sándor Beniczky",
+        "Sadasivan Puthusserypady",
+        "James Zou",
+        "Lars Kai Hansen"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.HC",
+        "cs.NE"
+      ],
+      "published": "2026-05-13T16:02:56+00:00",
+      "link": "https://arxiv.org/pdf/2605.13930v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "query:bci-pilot"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Mechanistic interpretability of EEG foundation models via sparse autoencoders",
+      "llm_evidence_cn": "通过稀疏自编码器实现EEG基础模型机械可解释性",
+      "llm_evidence": "通过稀疏自编码器实现EEG基础模型机械可解释性",
+      "canonical_evidence": "通过稀疏自编码器实现EEG基础模型机械可解释性",
+      "llm_tldr_en": "Applies sparse autoencoders to extract interpretable features from EEG foundation models, enabling concept steering and improving clinical trust.",
+      "llm_tldr_cn": "针对EEG基础模型预测过程不透明的问题，本文利用TopK稀疏自编码器从三个不同架构的EEG变压器模型中提取稀疏特征字典，并基于临床分类法（异常、年龄、性别、用药）进行基准测试。引入概念引导方法，提出目标与非目标探针区域指标量化引导选择性，为临床可解释性提供了新途径。",
+      "llm_tldr": "针对EEG基础模型预测过程不透明的问题，本文利用TopK稀疏自编码器从三个不同架构的EEG变压器模型中提取稀疏特征字典，并基于临床分类法（异常、年龄、性别、用药）进行基准测试。引入概念引导方法，提出目标与非目标探针区域指标量化引导选择性，为临床可解释性提供了新途径。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
       "selection_source": "fresh_fetch"
     }
   ],
   "quick_skim": [
     {
-      "id": "2605.13133v1",
+      "id": "2605.18085v1",
       "source": "arxiv",
-      "title": "KAST-BAR: Knowledge-Anchored Semantically-Dynamic Topology Brain Autoregressive Modeling for Universal Neural Interpretation",
-      "abstract": "While EEG foundation models have shown significant potential in universal neural decoding across tasks, their advancement remains constrained by the inadequacy modeling of complex spatiotemporal topology, as well as the inherent modality gap between low-level physiological signals and high-level textual semantics. To address these challenges, we propose a Knowledge-Anchored Semantically-Dynamic Topology Brain Autoregressive Model (KAST-BAR), which dynamically aligns physiological representations derived from multi-level brain topology with an expert-level semantic space. Specifically, we design a Dual-Stream Hierarchical Attention (DSHA) encoder that accurately captures the brain's intrinsic non-Euclidean topology by modeling local temporal dynamics with global spatial contexts. On this basis, a Knowledge-Anchored Semantic Profiler (KASP) is proposed to synthesize physically-grounded and instance-level textual profiles, which subsequently drive a Semantic Text-Aware Refiner (STAR) to dynamically reconstruct EEG representations using Latent Expert Queries. By conducting large-scale pre-training on 21 diverse datasets to build a foundation model, KAST-BAR effectively integrates expert-level medical knowledge into EEG signal representations, consistently achieving superior performance across six downstream tasks. Our code is available at https://github.com/KAST-BAR/KAST-BAR",
+      "title": "PRiSE-EEG: A Prior-Guided Foundation Model with Depth-Stratified Experts for Cross-Paradigm EEG Representation Learning",
+      "abstract": "EEG foundation models aim to learn reusable representations across heterogeneous paradigms, yet existing approaches often use uniform adaptation mechanisms and are typically reported under separate downstream fine-tuning protocols. In this work, we first analyze dense EEG Transformers from two complementary perspectives. Gradient similarity across six downstream datasets reveals substantial optimization conflicts among EEG paradigms, while CKA analysis on mixed-paradigm batches shows a consistent depth-wise transition: shallow layers preserve stronger cross-paradigm similarity, whereas deeper layers become increasingly specialized. Motivated by these findings, we propose \\textbf{PRiSE-EEG}, a prior-guided EEG foundation model with CKA-calibrated Depth-Stratified Experts. PRiSE-EEG forms continuous multi-channel EEG patches using weak static cortical and network priors and dynamic short-time channel interactions, then allocates shared and specialized experts across MoE Transformer blocks according to a sigmoid mapping from layer-wise CKA sharedness. This design preserves common EEG regularities in early blocks while assigning more specialized capacity to later task-specific transformations. Experiments on 12 public EEG benchmarks show strong cross-paradigm performance under matched protocols. Compact ablations further show that CKA-derived expert allocation improves over dense Transformers, uniform MoE, and manually fixed shared-specific expert ratios.",
       "authors": [
-        "Haoning Wang",
-        "Wenchao Yang",
-        "Shuai Shen",
-        "Yang Li"
+        "Wei Xiong",
+        "Jiangtong Li",
+        "Kun Zhu",
+        "Jie Li"
       ],
-      "primary_category": "cs.LG",
+      "primary_category": "eess.SP",
       "categories": [
-        "cs.LG",
         "eess.SP"
       ],
-      "published": "2026-05-13T08:02:59+00:00",
-      "link": "https://arxiv.org/pdf/2605.13133v1",
+      "published": "2026-05-18T09:00:37+00:00",
+      "link": "https://arxiv.org/pdf/2605.18085v1",
       "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
+        "keyword:bci-pilot",
+        "query:bci-pilot"
       ],
       "llm_score": 8.0,
-      "llm_evidence_en": "EEG foundation model for universal neural decoding",
-      "llm_evidence_cn": "用于通用神经解码的EEG基础模型",
-      "llm_evidence": "用于通用神经解码的EEG基础模型",
-      "canonical_evidence": "用于通用神经解码的EEG基础模型",
-      "llm_tldr_en": "Proposes KAST-BAR, an EEG foundation model that aligns neural representations with semantic space via dual-stream attention, enabling universal neural decoding across tasks.",
-      "llm_tldr_cn": "该论文针对EEG基础模型中时空拓扑建模不足和生理信号与语义空间的模态差异问题，提出了KAST-BAR模型。该模型通过双流分层注意力编码器捕捉多级脑拓扑，并动态对齐到专家语义空间，实现跨任务的通用神经解码。实验表明其在多个下游任务上表现优异，推动了EEG基础模型的发展。",
-      "llm_tldr": "该论文针对EEG基础模型中时空拓扑建模不足和生理信号与语义空间的模态差异问题，提出了KAST-BAR模型。该模型通过双流分层注意力编码器捕捉多级脑拓扑，并动态对齐到专家语义空间，实现跨任务的通用神经解码。实验表明其在多个下游任务上表现优异，推动了EEG基础模型的发展。",
+      "llm_evidence_en": "EEG foundation model for cross-paradigm representation learning",
+      "llm_evidence_cn": "跨范式EEG表示学习的基础模型",
+      "llm_evidence": "跨范式EEG表示学习的基础模型",
+      "canonical_evidence": "跨范式EEG表示学习的基础模型",
+      "llm_tldr_en": "PRiSE-EEG proposes a prior-guided foundation model with depth-stratified experts to learn reusable EEG representations across heterogeneous paradigms, addressing optimization conflicts in deeper layers.",
+      "llm_tldr_cn": "现有EEG基础模型在不同范式间存在优化冲突，深层网络变得高度特化。PRiSE-EEG通过先验引导和深度分层专家机制，在保留浅层通用性的同时自适应调整深层表示，显著提升了跨范式迁移性能。该模型可直接用于被动脑机接口中的认知负荷评估，为脑电信号处理提供通用基础。",
+      "llm_tldr": "现有EEG基础模型在不同范式间存在优化冲突，深层网络变得高度特化。PRiSE-EEG通过先验引导和深度分层专家机制，在保留浅层通用性的同时自适应调整深层表示，显著提升了跨范式迁移性能。该模型可直接用于被动脑机接口中的认知负荷评估，为脑电信号处理提供通用基础。",
       "llm_tags": [
-        "query:pbci-load"
+        "query:pbci-load:composite"
       ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
       "selection_source": "fresh_fetch",
       "quick_tier": "8plus"
     },
     {
-      "id": "2605.07212v1",
+      "id": "2605.05120v1",
       "source": "arxiv",
-      "title": "Same Brain, Different Prediction: How Preprocessing Choices Undermine EEG Decoding Reliability",
-      "abstract": "Electroencephalography (EEG) is a cornerstone of brain-computer interfaces and clinical neuroscience, yet deep learning models are typically trained and evaluated under a single, unreported preprocessing pipeline. We formalize preprocessing choices as a counterfactual intervention space and show that EEG predictions are surprisingly unstable under this space: across six datasets spanning four paradigms, up to 42% of trial-level predictions flip when only the preprocessing changes, a variability that standard uncertainty methods do not explicitly quantify because they condition on a fixed preprocessing pipeline. We provide three tools to make this instability measurable, decomposable, and reducible. First, a Walsh-Hadamard decomposition of the 2^7 pipeline space reveals that sensitivity is near-additive in practice under the binary intervention design, enabling efficient step-by-step optimization. Second, we introduce Preprocessing Uncertainty (PU), a per-trial diagnostic that captures a dimension of instability complementary to model-based confidence. Third, we study Normalized Adaptive PGI (NA-PGI), a graph-structured regularizer that exploits the compositional structure of preprocessing interventions as one mitigation strategy with clear scope conditions.",
+      "title": "Physiologically Grounded Driver Behavior Classification: SHAP-Driven Elite Feature Selection and Hybrid Gradient Boosting for Multimodal Physiological Signals",
+      "abstract": "An interpretable and scalable framework for decoding driving behaviors from multimodal physiological signals is proposed in this study. We utilize multimodal physiological driving behavior large-scale dataset comprising synchronized electroencephalogram (EEG), electromyography (EMG), and galvanic skin response (GSR) signals. Our approach involves rigorous preprocessing followed by a domain-specific feature extraction pipeline targeting time-domain, frequency-domain, and derived physiological indices. To address high dimensionality, we employ SHAP-based elite feature selection, retaining the top 250 features to reduce computational overhead while preserving predictive power. Hyperparameter optimization for extreme gradient boosting (XGBoost) and light gradient boosting machine (LightGBM) models is conducted using Bayesian optimization via Optuna. Finally, a weighted soft-voting ensemble is constructed to leverage the complementary strengths of both gradient boosting frameworks. The results demonstrate that the proposed ensemble achieves a test accuracy of 80.91% and a macro-F1 score of 0.79, significantly outperforming single-modality baselines and traditional machine learning models. Ablation studies confirm an 8% performance gain over the best single modality (EEG), validating the necessity of multimodal fusion. SHAP analysis further validates the physiological plausibility of the model, revealing that the EEG contributes the majority of predictive weight, GSR and EMG features provide critical discriminatory signals for high-arousal and motor-intensive maneuvers.",
       "authors": [
-        "Dengzhe Hou",
-        "Zihao Wu",
-        "Lingyu Jiang",
-        "Zirui Li",
-        "Fangzhou Lin",
-        "Kazunori D. Yamada"
+        "Sahar Askari",
+        "Mohammad Mahdi Mirza Ali Mohammadi",
+        "Fatemeh Ensafdoust",
+        "Amin Golnari",
+        "Saeid Sanei"
       ],
       "primary_category": "cs.LG",
       "categories": [
         "cs.LG",
-        "cs.AI",
-        "cs.HC",
-        "cs.NE",
         "eess.SP"
       ],
-      "published": "2026-05-08T03:58:58+00:00",
-      "link": "https://arxiv.org/pdf/2605.07212v1",
+      "published": "2026-05-06T16:48:57+00:00",
+      "link": "https://arxiv.org/pdf/2605.05120v1",
       "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
+        "keyword:bci-pilot",
+        "query:bci-pilot"
       ],
       "llm_score": 7.0,
-      "llm_evidence_en": "Analyzes preprocessing instability for EEG deep learning, directly affecting cognitive load assessment.",
-      "llm_evidence_cn": "分析了EEG深度学习的预处理不稳定性，直接影响认知负荷评估。",
-      "llm_evidence": "分析了EEG深度学习的预处理不稳定性，直接影响认知负荷评估。",
-      "canonical_evidence": "分析了EEG深度学习的预处理不稳定性，直接影响认知负荷评估。",
-      "llm_tldr_en": "Reveals that up to 42% of EEG trial predictions flip under different preprocessing pipelines, and provides tools to measure and reduce this instability, crucial for reliable deep learning-based cognitive load assessment.",
-      "llm_tldr_cn": "该研究指出EEG预处理选择对深度学习模型预测结果影响巨大，在六个数据集上发现高达42%的试验级预测在预处理变化时翻转。为此提出了Walsh-Hadamard分解等工具来量化、分解和降低这种不稳定性，为基于EEG的认知负荷评估等应用提供了可靠预处理指导。",
-      "llm_tldr": "该研究指出EEG预处理选择对深度学习模型预测结果影响巨大，在六个数据集上发现高达42%的试验级预测在预处理变化时翻转。为此提出了Walsh-Hadamard分解等工具来量化、分解和降低这种不稳定性，为基于EEG的认知负荷评估等应用提供了可靠预处理指导。",
+      "llm_evidence_en": "multimodal physiological signals including EEG for driver behavior",
+      "llm_evidence_cn": "多模态生理信号（含EEG）用于驾驶行为分类",
+      "llm_evidence": "多模态生理信号（含EEG）用于驾驶行为分类",
+      "canonical_evidence": "多模态生理信号（含EEG）用于驾驶行为分类",
+      "llm_tldr_en": "Proposes a framework using SHAP-based elite feature selection and hybrid gradient boosting to classify driving behaviors from EEG, EMG, GSR, applicable to cognitive load estimation.",
+      "llm_tldr_cn": "该论文提出一种可解释的框架，利用SHAP进行精华特征选择并结合混合梯度提升，从多模态生理信号（EEG、EMG、GSR）中解码驾驶行为。该方法有效降低了特征维度并保持预测性能，可迁移至认知负荷评估场景，为飞行员选拔中的神经工效学方法提供参考。",
+      "llm_tldr": "该论文提出一种可解释的框架，利用SHAP进行精华特征选择并结合混合梯度提升，从多模态生理信号（EEG、EMG、GSR）中解码驾驶行为。该方法有效降低了特征维度并保持预测性能，可迁移至认知负荷评估场景，为飞行员选拔中的神经工效学方法提供参考。",
       "llm_tags": [
-        "query:pbci-load"
+        "query:pbci-load:composite"
       ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "cognitive load assessment using deep learning",
-      "matched_requirement_id": "req-1",
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.06018v1",
+      "source": "arxiv",
+      "title": "I see artifacts: ICA-based EEG artifact removal does not improve deep network decoding across three BCI tasks",
+      "abstract": "In this paper, we conduct a detailed investigation on the effect of independent component (IC)-based noise rejection methods in neural network classifier-based decoding of electroencephalography (EEG) data in different task datasets. We apply a pipeline matrix of two popular different independent component (IC) decomposition methods (Infomax and Adaptive Mixture Independent Component Analysis (AMICA)) with three different component rejection strategies (none, ICLabel, and multiple artifact rejection algorithm [MARA]) on three different EEG datasets (motor imagery, long-term memory formation, and visual memory). We cross-validate processed data from each pipeline with three architectures commonly used for EEG classification (two convolutional neural networks and one long short-term memory-based model. We compare decoding performances on within-participant and within-dataset levels.Our results show that the benefit from using IC-based noise rejection for decoding analyses is at best minor, as component-rejected data did not show consistently better performance than data without rejections; especially given the significant computational resources required for independent component analysis (ICA) computations.",
+      "authors": [
+        "Taeho Kang",
+        "Yiyu Chen",
+        "Christian Wallraven"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-05-07T11:14:17+00:00",
+      "link": "https://arxiv.org/pdf/2605.06018v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "query:bci-pilot"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Investigates ICA artifact removal impact on deep learning EEG decoding, relevant to BCI signal processing",
+      "llm_evidence_cn": "研究ICA去伪迹对深度学习EEG解码的影响，与BCI信号处理相关",
+      "llm_evidence": "研究ICA去伪迹对深度学习EEG解码的影响，与BCI信号处理相关",
+      "canonical_evidence": "研究ICA去伪迹对深度学习EEG解码的影响，与BCI信号处理相关",
+      "llm_tldr_en": "This paper systematically evaluates the effect of ICA-based artifact removal on deep network decoding across three EEG BCI tasks, finding no improvement with several pipelines.",
+      "llm_tldr_cn": "针对EEG深度学习处理中普遍使用的ICA去伪迹方法，系统评估了不同分解和拒绝策略在三个BCI任务上的影响。结果表明，ICA去伪迹并未提升深度网络解码性能，提示被动BCI认知负荷评估中可简化预处理流程。该发现对设计高效EEG处理流水线有重要指导意义。",
+      "llm_tldr": "针对EEG深度学习处理中普遍使用的ICA去伪迹方法，系统评估了不同分解和拒绝策略在三个BCI任务上的影响。结果表明，ICA去伪迹并未提升深度网络解码性能，提示被动BCI认知负荷评估中可简化预处理流程。该发现对设计高效EEG处理流水线有重要指导意义。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.20182v1",
+      "source": "arxiv",
+      "title": "Atoms of Thought: Universal EEG Representation Learning with Microstates",
+      "abstract": "Learning universal representations from electroencephalogram (EEG) signals is a cutting-edge approach in the field of neuroinformatics and brain-computer interfaces (BCIs). Conventionally, EEG is treated as a multivariate temporal signal, where time- or frequency-domain features are extracted for representation learning. This paper investigates a simple yet effective EEG representation, i.e., microstates. Microstates represent the building blocks of brain activity patterns at a microscopic time scale. We build a universal microstate tokenizer from a large medical EEG dataset by clustering continuous EEG signals into sequences of discrete microstates. The microstate tokenizer is then adopted universally across a series of downstream tasks, including sleep staging, emotion recognition, and motor imagery classification. Experimental results show that EEG representation learning with microstates outperforms traditional time-domain and frequency-domain features under different models and across different tasks. Further analysis shows that microstates offer greater interpretability and scalability, thereby opening up applications in both cognitive neuroscience and clinical research.",
+      "authors": [
+        "Xinyang Tian",
+        "Ruitao Liu",
+        "Ziyi Ye",
+        "Siyang Xue",
+        "Xin Wang",
+        "Xuesong Chen"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-05-19T17:59:31+00:00",
+      "link": "https://arxiv.org/pdf/2605.20182v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "query:bci-pilot"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "universal EEG representation learning with microstates; foundation model for EEG signal processing; applicable to cognitive load estimation",
+      "llm_evidence_cn": "使用微状态进行通用EEG表示学习；EEG信号处理的基础模型；可应用于认知负荷估计",
+      "llm_evidence": "使用微状态进行通用EEG表示学习；EEG信号处理的基础模型；可应用于认知负荷估计",
+      "canonical_evidence": "使用微状态进行通用EEG表示学习；EEG信号处理的基础模型；可应用于认知负荷估计",
+      "llm_tldr_en": "Proposes universal microstate tokenizer from large EEG dataset; effectively learns representations transferable to BCIs and cognitive state decoding.",
+      "llm_tldr_cn": "该论文提出了一种基于微状态的通用EEG表示学习方法，从大规模医疗EEG数据中构建微状态分词器。与传统时频谱特征不同，微状态以离散符号序列表示大脑活动模式。实验表明，该通用表示在多个下游BCI任务中表现优异，包括认知状态解码。该方法作为EEG基础模型，可直接用于被动BCI下的认知负荷评估，提升飞行员选拔系统的泛化能力。",
+      "llm_tldr": "该论文提出了一种基于微状态的通用EEG表示学习方法，从大规模医疗EEG数据中构建微状态分词器。与传统时频谱特征不同，微状态以离散符号序列表示大脑活动模式。实验表明，该通用表示在多个下游BCI任务中表现优异，包括认知状态解码。该方法作为EEG基础模型，可直接用于被动BCI下的认知负荷评估，提升飞行员选拔系统的泛化能力。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.10337v1",
+      "source": "arxiv",
+      "title": "CORTEG: Foundation Models Enable Cross-Modality Representation Transfer from Scalp to Intracranial Brain Recordings",
+      "abstract": "Intracranial electrocorticography (ECoG) offers high-signal-to-noise access to cortical activity for brain-computer interfaces, yet limited per-patient data has led most prior work to rely on small, subject-specific decoders that neglect information shared across patients. We investigate whether large pretrained scalp-EEG foundation models (EEG FMs) can be adapted to ECoG, enabling cross-patient learning and competitive decoding performance while calibrating to a held-out patient in 10-30 minutes on a single GPU. We introduce CORTEG, a cross-modality transfer framework that combines a pretrained EEG FM backbone, an electrode-aware KNNSoftFourier spatial adapter, a dual-stream tokenizer for low-frequency and high-gamma activity, and a leave-one-subject-out fine-tuning strategy. We evaluate CORTEG on two challenging regression tasks: public finger trajectory regression (n=9) and private audio envelope regression (n=16). CORTEG matches or exceeds the strongest task-specific baselines on both tasks: it reaches the highest mean correlation among compared methods on the public finger benchmark (gain not statistically significant on n=9 subjects), with larger and statistically significant gains on the audio task and in low-data per-patient calibration. Feature analyses align with neurophysiology, and latent manifolds capture low-dimensional finger-movement structure. CORTEG provides systematic evidence that scalp-EEG pretraining can be repurposed for ECoG decoding, enabling data-efficient intracranial BCIs that can adapt to new patients.",
+      "authors": [
+        "Liuyin Yang",
+        "Qiang Sun",
+        "Bob Van Dyck",
+        "Eva Calvo Merino",
+        "Marc M. Van Hulle"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "eess.SP"
+      ],
+      "published": "2026-05-11T10:40:42+00:00",
+      "link": "https://arxiv.org/pdf/2605.10337v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "query:bci-pilot"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG foundation model for cross-modality transfer",
+      "llm_evidence_cn": "跨模态EEG基础模型转移",
+      "llm_evidence": "跨模态EEG基础模型转移",
+      "canonical_evidence": "跨模态EEG基础模型转移",
+      "llm_tldr_en": "CORTEG adapts scalp-EEG foundation models to ECoG, enabling cross-patient learning and competitive decoding with minimal calibration.",
+      "llm_tldr_cn": "该论文提出CORTEG框架，利用预训练的头皮EEG基础模型迁移到颅内ECoG信号，通过电极感知空间适配器和双流分词器实现跨患者学习。实验表明，仅需10-30分钟校准即可获得有竞争力的解码性能，为EEG基础模型在侵入式BCI中的应用提供了新途径。",
+      "llm_tldr": "该论文提出CORTEG框架，利用预训练的头皮EEG基础模型迁移到颅内ECoG信号，通过电极感知空间适配器和双流分词器实现跨患者学习。实验表明，仅需10-30分钟校准即可获得有竞争力的解码性能，为EEG基础模型在侵入式BCI中的应用提供了新途径。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
       "selection_source": "fresh_fetch",
       "quick_tier": "7"
     },
@@ -360,17 +484,17 @@
       "published": "2026-05-08T21:19:57+00:00",
       "link": "https://arxiv.org/pdf/2605.08495v1",
       "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
+        "keyword:bci-pilot",
+        "query:bci-pilot"
       ],
       "llm_score": 6.0,
-      "llm_evidence_en": "unified benchmarking framework for EEG models",
-      "llm_evidence_cn": "为EEG模型提供统一基准框架",
-      "llm_evidence": "为EEG模型提供统一基准框架",
-      "canonical_evidence": "为EEG模型提供统一基准框架",
-      "llm_tldr_en": "NeuralBench provides a unified framework for benchmarking AI models on brain recordings, including a large EEG benchmark with 36 tasks and 14 architectures.",
-      "llm_tldr_cn": "本文提出NeuralBench统一基准框架，用于评估脑活动AI模型，并发布了包含36个EEG任务和14种深度学习架构的大规模基准，通过标准化接口促进了模型的可比性和可复现性，为EEG分析（包括认知负荷评估）提供了重要工具。",
-      "llm_tldr": "本文提出NeuralBench统一基准框架，用于评估脑活动AI模型，并发布了包含36个EEG任务和14种深度学习架构的大规模基准，通过标准化接口促进了模型的可比性和可复现性，为EEG分析（包括认知负荷评估）提供了重要工具。",
+      "llm_evidence_en": "Unified benchmark for EEG deep learning models, enabling fair comparison for cognitive load algorithms",
+      "llm_evidence_cn": "EEG深度学习模型的统一基准，支持认知负荷算法的公平比较",
+      "llm_evidence": "EEG深度学习模型的统一基准，支持认知负荷算法的公平比较",
+      "canonical_evidence": "EEG深度学习模型的统一基准，支持认知负荷算法的公平比较",
+      "llm_tldr_en": "NeuralBench provides a unified framework for benchmarking AI models on brain recordings, including a large EEG benchmark with 36 tasks, 14 architectures, and 94 datasets.",
+      "llm_tldr_cn": "针对神经AI模型评估不一致的问题，NeuralBench提出统一基准框架，包含36个EEG任务、14种深度学习架构和94个数据集。该基准可系统评估被动脑机接口认知负荷估计算法，促进可复现研究与公平对比。",
+      "llm_tldr": "针对神经AI模型评估不一致的问题，NeuralBench提出统一基准框架，包含36个EEG任务、14种深度学习架构和94个数据集。该基准可系统评估被动脑机接口认知负荷估计算法，促进可复现研究与公平对比。",
       "llm_tags": [
         "query:pbci-load:composite"
       ],
@@ -381,87 +505,178 @@
       "quick_tier": "6"
     },
     {
-      "id": "2605.17562v1",
+      "id": "2605.26434v1",
       "source": "arxiv",
-      "title": "Beyond Accuracy: Robustness, Interpretability and Expressiveness of EEG Foundation Models",
-      "abstract": "EEG foundation models (EEG-FMs) have been evaluated predominantly on clean, in-distribution accuracy, leaving their robustness, interpretability and representational quality largely unexamined. This study addresses these gaps by benchmarking six EEG-FMs against a baseline deep learning model across eight datasets. Beyond clean accuracy, we conduct three layers of analysis: (i) Robustness: we apply test-time perturbations including additive noise, random and region-based channel dropout and region-specific noise injection. Our analyses show that no single model dominates all failure modes. The most noise-robust model is among the most fragile under channel dropout and much of the dropout fragility disappears when channels are removed rather than zero-padded. (ii) Interpretability: we present the first application of Attention-Aware Layer-Wise Relevance Propagation (AttnLRP) to EEG-FMs and show that models broadly concentrate relevance on task-appropriate brain regions consistent with known neurophysiology. However, attribution maps remain spatially stable under perturbation while predictions degrade, suggesting that the models attend to the correct brain regions but decode corrupted content. (iii) Expressiveness: With block-wise probing we show that late blocks are repurposed during fine-tuning, while early blocks already hold task-related information. Furthermore, we demonstrate that the poor head-only performance previously attributed to low-quality pre-trained representations is largely explained by pooling and that EEG-FMs possess sufficient representational capacity when their token-level embeddings are preserved. Together, these findings provide the first systematic assessment of robustness, interpretability and expressiveness for EEG-FMs and highlight critical considerations for their development.",
+      "title": "Aperiodic and Low-Frequency Spectral Bias in Reconstruction based EEG Foundation Models",
+      "abstract": "EEG foundation models, pre-trained on large-scale unlabelled EEG data, have emerged as a promising direction towards learning generalizable EEG representations. Despite showing positive results in data-rich regimes, they often fail to outperform significantly smaller supervised models in low-resource settings compared to fully supervised models. We provide a mechanistic account of this shortcoming, attributing it to a fundamental mismatch between reconstruction-based pretext tasks and the idiosyncratic spectral structure of EEG signals, which decompose into distinct high-power aperiodic and low-power oscillatory components. Using controlled, synthetically-generated EEG inputs, we demonstrate that EEG foundation model embeddings are biased to capture the aperiodic components of the EEG signal while under-representing oscillatory components, particularly at higher frequencies. Additionally, linear probe evaluations on real-world BCI datasets further reveal that embeddings encode subject identity more strongly than task-relevant information, thereby reinforcing the low-frequency and aperiodic component bias in foundation model embeddings trained primarily on reconstruction based objectives. Together, these findings elucidate a failure mode in reconstruction based EEG foundation models and motivate future work to incorporate auxiliary losses explicitly targeting high-frequency oscillatory structure as a path toward more capable and generalizable EEG representations.",
       "authors": [
-        "Urban Širca",
-        "Maryam Alimardani",
-        "Stefanos Zafeiriou",
-        "Konstantinos Barmpas"
+        "Aditya Kommineni",
+        "Emily Zhou",
+        "Kleanthis Avramidis",
+        "Simon Bock Segaard",
+        "Jeppe Roden Münster",
+        "Andreas Peter Juhl Hansen",
+        "Takfarinas Medani",
+        "Tiantian Feng",
+        "Richard Leahy",
+        "Shrikanth Narayanan"
       ],
       "primary_category": "cs.LG",
       "categories": [
         "cs.LG",
-        "cs.AI",
-        "cs.HC"
+        "cs.AI"
       ],
-      "published": "2026-05-17T17:47:00+00:00",
-      "link": "https://arxiv.org/pdf/2605.17562v1",
+      "published": "2026-05-26T01:40:36+00:00",
+      "link": "https://arxiv.org/pdf/2605.26434v1",
       "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
+        "keyword:bci-pilot",
+        "query:bci-pilot"
       ],
       "llm_score": 8.0,
-      "llm_evidence_en": "Benchmarking and analyzing robustness of EEG foundation models",
-      "llm_evidence_cn": "EEG基础模型的鲁棒性基准测试与分析",
-      "llm_evidence": "EEG基础模型的鲁棒性基准测试与分析",
-      "canonical_evidence": "EEG基础模型的鲁棒性基准测试与分析",
-      "llm_tldr_en": "Benchmarks six EEG foundation models across eight datasets, evaluating robustness, interpretability, and expressiveness, revealing no single model dominates all failure modes.",
-      "llm_tldr_cn": "现有EEG基础模型评估仅关注干净数据上的准确率，忽略了鲁棒性和可解释性。本研究对六个EEG基础模型进行了全面的鲁棒性、可解释性和表示质量分析，在八个数据集上进行了测试。结果表明，没有单一模型在所有故障模式下表现最佳，揭示了不同模型在不同扰动下的脆弱性，为实际部署提供了重要指导。",
-      "llm_tldr": "现有EEG基础模型评估仅关注干净数据上的准确率，忽略了鲁棒性和可解释性。本研究对六个EEG基础模型进行了全面的鲁棒性、可解释性和表示质量分析，在八个数据集上进行了测试。结果表明，没有单一模型在所有故障模式下表现最佳，揭示了不同模型在不同扰动下的脆弱性，为实际部署提供了重要指导。",
+      "llm_evidence_en": "EEG foundation model spectral bias affecting passive BCI performance",
+      "llm_evidence_cn": "EEG基础模型频谱偏差影响被动BCI性能",
+      "llm_evidence": "EEG基础模型频谱偏差影响被动BCI性能",
+      "canonical_evidence": "EEG基础模型频谱偏差影响被动BCI性能",
+      "llm_tldr_en": "Identifies a fundamental mismatch between reconstruction-based pretraining and EEG spectral structure, explaining poor low-resource performance of EEG foundation models.",
+      "llm_tldr_cn": "论文揭示了基于重构的EEG基础模型在低资源场景下表现不佳的根本原因：重构预训练任务与EEG信号的非周期高功率和振荡低功率频谱结构存在固有失配。通过控制合成EEG输入，证明基础模型嵌入存在偏倚。该发现指导未来EEG基础模型设计应自适应频谱特性。",
+      "llm_tldr": "论文揭示了基于重构的EEG基础模型在低资源场景下表现不佳的根本原因：重构预训练任务与EEG信号的非周期高功率和振荡低功率频谱结构存在固有失配。通过控制合成EEG输入，证明基础模型嵌入存在偏倚。该发现指导未来EEG基础模型设计应自适应频谱特性。",
       "llm_tags": [
-        "query:pbci-load"
+        "query:pbci-load:composite"
       ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
       "selection_source": "fresh_fetch",
       "quick_tier": "8plus"
     },
     {
-      "id": "2605.10337v1",
+      "id": "2605.11380v1",
       "source": "arxiv",
-      "title": "CORTEG: Foundation Models Enable Cross-Modality Representation Transfer from Scalp to Intracranial Brain Recordings",
-      "abstract": "Intracranial electrocorticography (ECoG) offers high-signal-to-noise access to cortical activity for brain-computer interfaces, yet limited per-patient data has led most prior work to rely on small, subject-specific decoders that neglect information shared across patients. We investigate whether large pretrained scalp-EEG foundation models (EEG FMs) can be adapted to ECoG, enabling cross-patient learning and competitive decoding performance while calibrating to a held-out patient in 10-30 minutes on a single GPU. We introduce CORTEG, a cross-modality transfer framework that combines a pretrained EEG FM backbone, an electrode-aware KNNSoftFourier spatial adapter, a dual-stream tokenizer for low-frequency and high-gamma activity, and a leave-one-subject-out fine-tuning strategy. We evaluate CORTEG on two challenging regression tasks: public finger trajectory regression (n=9) and private audio envelope regression (n=16). CORTEG matches or exceeds the strongest task-specific baselines on both tasks: it reaches the highest mean correlation among compared methods on the public finger benchmark (gain not statistically significant on n=9 subjects), with larger and statistically significant gains on the audio task and in low-data per-patient calibration. Feature analyses align with neurophysiology, and latent manifolds capture low-dimensional finger-movement structure. CORTEG provides systematic evidence that scalp-EEG pretraining can be repurposed for ECoG decoding, enabling data-efficient intracranial BCIs that can adapt to new patients.",
+      "title": "TRACE: Temporal Routing with Autoregressive Cross-channel Experts for EEG Representation Learning",
+      "abstract": "Learning transferable representations for electroencephalography (EEG) remains challenging because EEG signals are inherently multi-channel and non-stationary. Channels observed at the same time provide coupled measurements of neural activity, while the relevant temporal dynamics vary across contexts. This structure is poorly matched by architectures that apply uniform computation across time or route each channel patch independently. To this end, we propose TRACE, an autoregressive EEG pre-training framework that predicts future EEG patches from causal context while performing temporally adaptive and cross-channel coherent computation. At each temporal step, TRACE derives an expert routing decision from the causal cross-channel history and applies it jointly to all channels at that step. This preserves instantaneous cross-channel coherence while allowing different temporal regimes to activate different computation. Since routing is defined over the available channel set and causal temporal context, TRACE is compatible with heterogeneous pre-training across corpora with different channel counts, montages, sequence lengths, and recording domains. Across eight downstream EEG benchmarks, TRACE is evaluated in both settings: when downstream domains are seen only as unlabeled pre-training data and when downstream datasets are completely unseen during pre-training. It obtains the best results on several benchmarks while remaining competitive on motor imagery and clinical event classification tasks, with ablations supporting the importance of cross-channel temporal routing.",
       "authors": [
-        "Liuyin Yang",
-        "Qiang Sun",
-        "Bob Van Dyck",
-        "Eva Calvo Merino",
-        "Marc M. Van Hulle"
+        "Fan Ma",
+        "Qier An",
+        "Peng Chen",
+        "Lingfei Qian",
+        "Xiang Lan",
+        "Mingyang Jiang",
+        "Zhiling Gu",
+        "Xenophon Papademetris",
+        "Hua Xu"
       ],
-      "primary_category": "cs.AI",
+      "primary_category": "cs.LG",
       "categories": [
-        "cs.AI",
-        "eess.SP"
+        "cs.LG",
+        "cs.AI"
       ],
-      "published": "2026-05-11T10:40:42+00:00",
-      "link": "https://arxiv.org/pdf/2605.10337v1",
+      "published": "2026-05-12T01:13:16+00:00",
+      "link": "https://arxiv.org/pdf/2605.11380v1",
       "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
+        "keyword:bci-pilot",
+        "query:bci-pilot"
       ],
       "llm_score": 7.0,
-      "llm_evidence_en": "Transfers EEG foundation models to ECoG, demonstrating cross-modality transfer for BCI",
-      "llm_evidence_cn": "将EEG基础模型迁移至ECoG，展示了跨模态迁移在BCI中的应用",
-      "llm_evidence": "将EEG基础模型迁移至ECoG，展示了跨模态迁移在BCI中的应用",
-      "canonical_evidence": "将EEG基础模型迁移至ECoG，展示了跨模态迁移在BCI中的应用",
-      "llm_tldr_en": "CORTEG adapts pretrained scalp-EEG foundation models to ECoG, enabling competitive decoding with minimal calibration time.",
-      "llm_tldr_cn": "该论文提出CORTEG框架，将预训练头皮EEG基础模型适配到颅内ECoG信号，实现跨患者学习。引入电极感知的KNNSoftFourier空间适配器和双流分词器，10-30分钟即可完成校准并获得有竞争力的解码性能。",
-      "llm_tldr": "该论文提出CORTEG框架，将预训练头皮EEG基础模型适配到颅内ECoG信号，实现跨患者学习。引入电极感知的KNNSoftFourier空间适配器和双流分词器，10-30分钟即可完成校准并获得有竞争力的解码性能。",
+      "llm_evidence_en": "autoregressive EEG pre-training framework for representation learning",
+      "llm_evidence_cn": "自回归EEG预训练框架",
+      "llm_evidence": "自回归EEG预训练框架",
+      "canonical_evidence": "自回归EEG预训练框架",
+      "llm_tldr_en": "Proposes TRACE, an autoregressive EEG pre-training framework with temporally adaptive cross-channel expert routing for transferable representations.",
+      "llm_tldr_cn": "本文提出TRACE，一种自回归EEG预训练框架，通过时序自适应和跨通道专家路由，从因果上下文中预测未来EEG补丁，学习可迁移的表征。该方法有效处理了EEG的多通道非平稳特性，在多个下游任务上取得了最优性能。",
+      "llm_tldr": "本文提出TRACE，一种自回归EEG预训练框架，通过时序自适应和跨通道专家路由，从因果上下文中预测未来EEG补丁，学习可迁移的表征。该方法有效处理了EEG的多通道非平稳特性，在多个下游任务上取得了最优性能。",
       "llm_tags": [
-        "query:pbci-load"
+        "query:pbci-load:composite"
       ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
       "selection_source": "fresh_fetch",
       "quick_tier": "7"
     },
     {
-      "id": "2605.11410v2",
+      "id": "2605.12408v1",
+      "source": "arxiv",
+      "title": "From EEG Cleaning to Decoding: The Role of Artifact Rejection in MI-based BCIs",
+      "abstract": "Motor imagery (MI) BCIs are sensitive to EEG artifacts, yet the practical impact of automated artifact rejection on downstream MI decoding performance remains unclear. While most work focuses on decoder design, the contribution of data curation, particularly automated rejection policies, has received comparatively less attention, despite its importance for robust ML pipelines. Here, we propose Fast Automatic Artifact Rejection (FAAR), a lightweight method that computes a compact set of artifact-sensitive features, derives an epoch-level Signal Quality Index, adaptively selects rejection thresholds, and automatically rejects contaminated epochs without requiring prior knowledge of artifact types or manual threshold tuning. We evaluate FAAR on 13 publicly available MI datasets and compare it to a no-rejection baseline, AutoReject, and Isolation Forest. We show rejection effects are strongly subject- and regime-dependent, with the largest gains in low-baseline/low-SNR conditions, so it should be used adaptively. FAAR reduces inter-subject performance variability, an important property for MI-BCI reliability and BCI-illiteracy, without aggressive data removal. Finally, FAAR's lightweight and fully automated thresholding yields consistent rejection behavior across offline curation, training, and online filtering, and supports real-time BCI constraints.",
+      "authors": [
+        "Davoud Hajhassani",
+        "Bruno Aristimunha",
+        "Paul-Adrien Graignic",
+        "Apolline Mellot",
+        "Lionel Kusch",
+        "Arnaud Delorme",
+        "Thomas Semah",
+        "Arnault H. Caillet"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-05-12T17:05:13+00:00",
+      "link": "https://arxiv.org/pdf/2605.12408v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "query:bci-pilot"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG artifact rejection method for robust BCI pipeline",
+      "llm_evidence_cn": "用于健壮BCI流程的EEG伪影拒绝方法",
+      "llm_evidence": "用于健壮BCI流程的EEG伪影拒绝方法",
+      "canonical_evidence": "用于健壮BCI流程的EEG伪影拒绝方法",
+      "llm_tldr_en": "Proposes FAAR, a fast automatic artifact rejection method for MI-BCIs that computes signal quality and adaptively rejects epochs, improving decoding performance.",
+      "llm_tldr_cn": "针对运动想象脑机接口中EEG伪影对解码性能的影响，论文提出FAAR轻量级自动伪影拒绝方法，通过提取伪影敏感特征、计算信号质量指数并自适应选择拒绝阈值，自动剔除污染试次。在13个数据集上的评估表明，FAAR能有效提升下游解码性能，且无需先验知识，为BCI系统提供了关键的数据预处理工具。",
+      "llm_tldr": "针对运动想象脑机接口中EEG伪影对解码性能的影响，论文提出FAAR轻量级自动伪影拒绝方法，通过提取伪影敏感特征、计算信号质量指数并自适应选择拒绝阈值，自动剔除污染试次。在13个数据集上的评估表明，FAAR能有效提升下游解码性能，且无需先验知识，为BCI系统提供了关键的数据预处理工具。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.28563v1",
+      "source": "arxiv",
+      "title": "A Multi-dimensional Framework for Evaluating Generalization in EEG Foundation Models",
+      "abstract": "Evaluating foundation models under appropriate adaptation settings is essential for understanding the quality and transferability of the learned representations. Recent EEG foundation models have demonstrated promising transfer capabilities across tasks and datasets, motivating their growing use in neurotechnology and clinical applications. However, these models are typically evaluated under full fine-tuning on well-curated downstream datasets, a setting that does not reflect biomedical domain constraints such as limited labeled data, reduced sensor coverage, or parameter-efficient adaptation. In this work, we propose a multi-dimensional evaluation framework for assessing EEG models under realistic low-resource conditions. Empirical analysis of both supervised EEG models and recent EEG foundation models, including LaBraM, CSBrain, and CBraMod, across 6 different datasets is performed under the proposed multi-dimensional evaluation framework. We find that EEG foundation models consistently provide performance gains on long-context tasks such as sleep stage prediction and mental health state classification. In contrast, for short-window Brain Computer Interface style tasks, supervised models achieve comparable despite having substantially fewer parameters. Additional analyses demonstrate that current foundation models provide limited robustness to short-window tasks and channel constrained settings. Together, these findings motivate the use of multi-dimensional evaluation protocols that characterize model behavior under realistic use constraints.",
+      "authors": [
+        "Aditya Kommineni",
+        "Emily Zhou",
+        "Kleanthis Avramidis",
+        "Tiantian Feng",
+        "Shrikanth Narayanan"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-05-27T14:51:54+00:00",
+      "link": "https://arxiv.org/pdf/2605.28563v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "query:bci-pilot"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Evaluating generalization in EEG foundation models for cognitive load",
+      "llm_evidence_cn": "评估EEG基础模型在认知负荷任务中的泛化能力",
+      "llm_evidence": "评估EEG基础模型在认知负荷任务中的泛化能力",
+      "canonical_evidence": "评估EEG基础模型在认知负荷任务中的泛化能力",
+      "llm_tldr_en": "Proposes a multi-dimensional framework to evaluate EEG foundation models under realistic low-resource conditions, crucial for cognitive load assessment in passive BCIs.",
+      "llm_tldr_cn": "现有EEG基础模型评估多基于完整微调，不符合生物医学场景中标签少、传感器少等实际约束。本文提出一种多维评估框架，在低资源条件下测试模型的泛化能力。通过模拟有限标签和降采样设置，系统评估模型表现。该框架为被动BCI认知负荷评估提供了可靠的前沿算法评估工具。",
+      "llm_tldr": "现有EEG基础模型评估多基于完整微调，不符合生物医学场景中标签少、传感器少等实际约束。本文提出一种多维评估框架，在低资源条件下测试模型的泛化能力。通过模拟有限标签和降采样设置，系统评估模型表现。该框架为被动BCI认知负荷评估提供了可靠的前沿算法评估工具。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.11410v1",
       "source": "arxiv",
       "title": "What Do EEG Foundation Models Capture from Human Brain Signals?",
       "abstract": "Clinical electroencephalogram (EEG) analysis rests on a hand-crafted feature catalog refined over decades, \\emph{e.g.,} band power, connectivity, complexity, and more. Modern EEG foundation models bypass this catalog, learn directly from raw signals via self-supervised pretraining, and match or outperform feature-engineered baselines on most clinical benchmarks. Whether the two representations align is an open question, which we decompose into three sub-questions: \\emph{what does the model learn}, \\emph{what does the model use}, and \\emph{how much can be explained}. We answer them with layer-wise ridge probing, LEACE-style cross-covariance subspace erasure, and a transparent classifier benchmarked against a random-feature baseline. The audit covers three foundation models (CSBrain, CBraMod, LaBraM), five clinical tasks (MDD, Stress, ISRUC-Sleep, TUSL, Siena), and a 6-family 63-feature lexicon. Of the $945$ (model, task, feature) units, $648$ ($68.6\\%$) are representation-causal and $199$ ($21.1\\%$) are encoded-only. Across tasks, $50$ features qualify as universal candidates with strong support (all three architectures RC) in two or more tasks. Frequency-domain features dominate, but the other five families each contribute substantial causal mass. Confirmed features recover, on average, $79.3\\%$ of the foundation model's advantage over the random baseline, with a clean task gradient (MDD $\\approx 0.99$ down to Stress $\\approx 0.56$): tasks near ceiling are almost fully recovered by the lexicon, while harder tasks leave a non-trivial residual that pinpoints a concrete target for future concept discovery.",
@@ -481,245 +696,25 @@
         "cs.AI"
       ],
       "published": "2026-05-12T01:57:53+00:00",
-      "link": "https://arxiv.org/pdf/2605.11410v2",
+      "link": "https://arxiv.org/pdf/2605.11410v1",
       "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
-      ],
-      "llm_score": 6.0,
-      "llm_evidence_en": "Understanding EEG foundation model representations",
-      "llm_evidence_cn": "理解脑电基础模型表征",
-      "llm_evidence": "理解脑电基础模型表征",
-      "canonical_evidence": "理解脑电基础模型表征",
-      "llm_tldr_en": "Investigates what EEG foundation models capture via probing and erasure, comparing with hand-crafted features.",
-      "llm_tldr_cn": "本文通过层间岭回归探针和子空间擦除，系统审计了多个脑电基础模型的内部分表，揭示了其与手工特征的关系，为模型可解释性和应用提供指导。",
-      "llm_tldr": "本文通过层间岭回归探针和子空间擦除，系统审计了多个脑电基础模型的内部分表，揭示了其与手工特征的关系，为模型可解释性和应用提供指导。",
-      "llm_tags": [
-        "query:pbci-load"
-      ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
-      "selection_source": "fresh_fetch",
-      "quick_tier": "6"
-    },
-    {
-      "id": "2605.22774v2",
-      "source": "arxiv",
-      "title": "CogAdapt: Transferring Clinical ECG Foundation Models to Wearable Cognitive Load Assessment via Lead Adaptation",
-      "abstract": "Real-time cognitive load assessment is essential for adaptive human-computer interaction but remains challenging due to limited labeled data and poor cross-subject generalization. Recent ECG foundation models pre-trained on millions of clinical recordings offer rich representations, but cannot be directly applied to wearable devices due to sensor configuration mismatch and task differences. In this paper, we propose CogAdapt, a framework that adapts clinical ECG foundation models to wearable cognitive load assessment. CogAdapt introduces LeadBridge, a learnable adapter that transforms 3-lead wearable signals into anatomically consistent 12-lead representations, and ProFine, a progressive fine-tuning strategy that gradually unfreezes encoder layers while preventing catastrophic forgetting. Evaluations on two public datasets (CLARE and CL-Drive) under leave-one-subject-out cross-validation show that CogAdapt substantially outperforms baselines trained from scratch, achieving macro-F1 scores of 0.626 and 0.768. These results demonstrate the promise of foundation model adaptation for subject-independent cognitive load assessment from wearable sensors.",
-      "authors": [
-        "Amir Mousavi",
-        "Erfan Nourbakhsh",
-        "Mohammad Sadegh Sirjani",
-        "Mimi Xie",
-        "Rocky Slavin",
-        "Leslie Neely",
-        "John Davis",
-        "John Quarles"
-      ],
-      "primary_category": "cs.LG",
-      "categories": [
-        "cs.LG",
-        "cs.AI",
-        "cs.HC"
-      ],
-      "published": "2026-05-21T17:33:35+00:00",
-      "link": "https://arxiv.org/pdf/2605.22774v2",
-      "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
-      ],
-      "llm_score": 8.0,
-      "llm_evidence_en": "Cognitive load assessment using deep learning (ECG-based adaptation)",
-      "llm_evidence_cn": "使用深度学习评估认知负荷（基于ECG的适配）",
-      "llm_evidence": "使用深度学习评估认知负荷（基于ECG的适配）",
-      "canonical_evidence": "使用深度学习评估认知负荷（基于ECG的适配）",
-      "llm_tldr_en": "Proposes CogAdapt to adapt clinical ECG foundation models to wearable cognitive load assessment via lead adaptation and progressive fine-tuning.",
-      "llm_tldr_cn": "本文针对可穿戴认知负荷评估中标记数据少、泛化差的问题，提出CogAdapt框架，通过LeadBridge适配器将3导联信号转换为12导联，并结合渐进微调策略，将临床心电基础模型迁移至认知负荷评估。",
-      "llm_tldr": "本文针对可穿戴认知负荷评估中标记数据少、泛化差的问题，提出CogAdapt框架，通过LeadBridge适配器将3导联信号转换为12导联，并结合渐进微调策略，将临床心电基础模型迁移至认知负荷评估。",
-      "llm_tags": [
-        "query:pbci-load"
-      ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "cognitive load assessment using deep learning",
-      "matched_requirement_id": "req-1",
-      "selection_source": "fresh_fetch",
-      "quick_tier": "8plus"
-    },
-    {
-      "id": "2605.13930v2",
-      "source": "arxiv",
-      "title": "Mechanistic Interpretability of EEG Foundation Models via Sparse Autoencoders",
-      "abstract": "EEG foundation models achieve state-of-the-art clinical performance, yet the internal computations driving their predictions remain opaque: a barrier to clinical trust. We apply TopK Sparse Autoencoders (SAEs) across three architecturally distinct EEG transformers: SleepFM, REVE, and LaBraM to extract sparse feature dictionaries from their embeddings. By grounding these features in a clinical taxonomy (abnormality, age, sex, and medication), we benchmark monosemanticity and entanglement across architectures. A single hyperparameter procedure, driven by an intrinsic dictionary health audit, transfers robustly across all three architectures. Via concept steering, we introduce a \"target vs. off-target\" probe area metric to quantify steering selectivity and reveal three operational regimes: selectively steerable, encoded but entangled, and non-encoded. This framework exposes critical representational failures: \"wrecking-ball\" interventions that collapse global model performance, and clinical entanglements, such as age-pathology confounding, where it is impossible to suppress one concept without corrupting the other. Finally, a spectral decoder maps these interventions back to the amplitude spectrum, translating latent manipulations into physiologically interpretable frequency signatures, such as pathological slow-wave suppression and $α$-band restoration.",
-      "authors": [
-        "William Lehn-Schiøler",
-        "Magnus Ruud Kjær",
-        "Rahul Thapa",
-        "Magnus Guldberg Pedersen",
-        "Anton Mosquera Storgaard",
-        "Nick Williams",
-        "Radu Gatej",
-        "Tue Lehn-Schiøler",
-        "Sándor Beniczky",
-        "Sadasivan Puthusserypady",
-        "James Zou",
-        "Lars Kai Hansen"
-      ],
-      "primary_category": "cs.LG",
-      "categories": [
-        "cs.LG",
-        "cs.HC",
-        "cs.NE"
-      ],
-      "published": "2026-05-13T16:02:56+00:00",
-      "link": "https://arxiv.org/pdf/2605.13930v2",
-      "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
+        "keyword:bci-pilot",
+        "query:bci-pilot"
       ],
       "llm_score": 7.0,
-      "llm_evidence_en": "Applies sparse autoencoders to interpret EEG foundation models, enhancing trust for clinical and cognitive load applications.",
-      "llm_evidence_cn": "应用稀疏自编码器解释EEG基础模型，增强临床和认知负荷应用中的信任。",
-      "llm_evidence": "应用稀疏自编码器解释EEG基础模型，增强临床和认知负荷应用中的信任。",
-      "canonical_evidence": "应用稀疏自编码器解释EEG基础模型，增强临床和认知负荷应用中的信任。",
-      "llm_tldr_en": "Uses TopK Sparse Autoencoders to extract interpretable features from three EEG foundation models, demonstrating monosemanticity and enabling concept steering, beneficial for transparent cognitive load assessment.",
-      "llm_tldr_cn": "该研究针对EEG基础模型内部计算不透明的问题，应用TopK稀疏自编码器从SleepFM、REVE和LaBraM三个架构中提取稀疏特征字典，并通过临床分类法锚定特征，实现概念引导。结果表明该方法可提升模型可解释性，为认知负荷评估等任务中的模型验证提供工具。",
-      "llm_tldr": "该研究针对EEG基础模型内部计算不透明的问题，应用TopK稀疏自编码器从SleepFM、REVE和LaBraM三个架构中提取稀疏特征字典，并通过临床分类法锚定特征，实现概念引导。结果表明该方法可提升模型可解释性，为认知负荷评估等任务中的模型验证提供工具。",
+      "llm_evidence_en": "Analyzing what EEG foundation models capture from brain signals",
+      "llm_evidence_cn": "分析EEG基础模型从脑信号中捕捉到的特征",
+      "llm_evidence": "分析EEG基础模型从脑信号中捕捉到的特征",
+      "canonical_evidence": "分析EEG基础模型从脑信号中捕捉到的特征",
+      "llm_tldr_en": "Investigates what EEG foundation models learn via layer-wise probing, revealing alignment with clinical features, informing model design for passive BCI.",
+      "llm_tldr_cn": "临床EEG分析依赖手工特征，现代基础模型绕过此流程但内部表征不明。本文通过层状岭回归探测、LEACE擦除等方法，系统地审计三个基础模型学到了什么，发现模型特征与传统临床特征部分重叠但更丰富。该分析为被动BCI认知负荷评估中基础模型的选择和改进提供指导。",
+      "llm_tldr": "临床EEG分析依赖手工特征，现代基础模型绕过此流程但内部表征不明。本文通过层状岭回归探测、LEACE擦除等方法，系统地审计三个基础模型学到了什么，发现模型特征与传统临床特征部分重叠但更丰富。该分析为被动BCI认知负荷评估中基础模型的选择和改进提供指导。",
       "llm_tags": [
-        "query:pbci-load"
+        "query:pbci-load:composite"
       ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
-      "selection_source": "fresh_fetch",
-      "quick_tier": "7"
-    },
-    {
-      "id": "2605.11885v1",
-      "source": "arxiv",
-      "title": "From Clever Hans to Scientific Discovery: Interpreting EEG Foundational Transformers with LRP",
-      "abstract": "Emerging foundation models (FMs) in electroencephalography (EEG) promise a path to scale deep learning in diagnostics and brain-computer interfaces despite data scarcity, yet their opaque nature remains a barrier to wider adoption. We investigate attention-aware Layer-wise relevance propagation (LRP) as a post-hoc attribution method for EEG-FMs, extending LRP's use on convolutional neural network (CNN)-based EEG models to the Transformer architectures that current FMs are based on. We find that LRP can both verify EEG-FM decisions and surface novel, biologically plausible hypotheses from them. In motor imagery, it unmasks 'Clever Hans' behavior where models prioritize task correlated ocular signals over the intended motor correlates. In a naturalistic paradigm for affect prediction, it reveals a recurring reliance on a central electrode cluster, suggesting a candidate sensorimotor signature of arousal. Though heatmap interpretation remains ambiguous in this complex domain, the results position LRP as a tool for both verification and exploration of EEG-FMs, a role that will grow in both importance and discovery potential as the underlying models mature.",
-      "authors": [
-        "Justus Meyer zu Bexten",
-        "Nico Scherf",
-        "Bogdan Franczyk",
-        "Simon M. Hofmann"
-      ],
-      "primary_category": "cs.AI",
-      "categories": [
-        "cs.AI",
-        "q-bio.NC"
-      ],
-      "published": "2026-05-12T09:59:14+00:00",
-      "link": "https://arxiv.org/pdf/2605.11885v1",
-      "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
-      ],
-      "llm_score": 6.0,
-      "llm_evidence_en": "Provides interpretability method for EEG foundation models",
-      "llm_evidence_cn": "为EEG基础模型提供可解释性方法",
-      "llm_evidence": "为EEG基础模型提供可解释性方法",
-      "canonical_evidence": "为EEG基础模型提供可解释性方法",
-      "llm_tldr_en": "Extends LRP to Transformer-based EEG foundation models, revealing Clever Hans behavior and enabling biological discovery.",
-      "llm_tldr_cn": "该论文将逐层相关性传播（LRP）扩展到基于Transformer的EEG基础模型，可验证模型决策并发现新颖的生物合理假设。实验显示模型在运动想象中优先使用眼动相关信号而非运动相关脑信号，揭示了‘克莱弗汉斯’行为。",
-      "llm_tldr": "该论文将逐层相关性传播（LRP）扩展到基于Transformer的EEG基础模型，可验证模型决策并发现新颖的生物合理假设。实验显示模型在运动想象中优先使用眼动相关信号而非运动相关脑信号，揭示了‘克莱弗汉斯’行为。",
-      "llm_tags": [
-        "query:pbci-load"
-      ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
-      "selection_source": "fresh_fetch",
-      "quick_tier": "6"
-    },
-    {
-      "id": "2605.26910v1",
-      "source": "arxiv",
-      "title": "EEG-FM-Audit: A Systematic Evaluation and Analysis Pipeline for EEG Foundation Models",
-      "abstract": "Large EEG Foundation Models (FMs) have shown great potential for decoding EEG signals across diverse cognitive tasks. However, existing EEG-FM studies exhibit three critical limitations: opaque supervised baseline tuning, unverified contributions of complex learning paradigms, and a lack of transparency in model decision-making. To address these, we propose EEG-FM-Audit, a comprehensive evaluation and analysis pipeline designed to systematize the assessment of EEG-FMs. EEG-FM-Audit consists of three primary components: (1) an ASHA-driven benchmarking protocol that ensures fair comparisons by transparently optimizing supervised baselines; (2) paradigm-level ablation studies to evaluate the effectiveness of learning paradigms in FMs; and (3) a neurophysiological probing (NPP) framework, which explores whether FMs leverage valid temporal, spatial, and spectral EEG properties. We apply EEG-FM-Audit to four state-of-the-art EEG-FMs and five representative supervised models across three public datasets. Our results reveal that properly tuned supervised baselines can match or outperform advanced FMs, despite requiring significantly fewer parameters. Furthermore, we find that the effectiveness of learning paradigms of FMs is highly dependent on dataset scale and architecture. Finally, NPP analysis demonstrates how FMs rely on specific physiological features, establishing a framework for more interpretable neural decoding.",
-      "authors": [
-        "Xianheng Wang",
-        "Yige Yang",
-        "Damien Coyle"
-      ],
-      "primary_category": "cs.LG",
-      "categories": [
-        "cs.LG",
-        "cs.AI",
-        "q-bio.NC"
-      ],
-      "published": "2026-05-26T12:06:35+00:00",
-      "link": "https://arxiv.org/pdf/2605.26910v1",
-      "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
-      ],
-      "llm_score": 8.0,
-      "llm_evidence_en": "Systematic evaluation pipeline for EEG foundation models",
-      "llm_evidence_cn": "脑电基础模型的系统评估与分析流水线",
-      "llm_evidence": "脑电基础模型的系统评估与分析流水线",
-      "canonical_evidence": "脑电基础模型的系统评估与分析流水线",
-      "llm_tldr_en": "Proposes EEG-FM-Audit, a comprehensive evaluation pipeline for EEG foundation models including ASHA-driven benchmarking and paradigm-level ablation.",
-      "llm_tldr_cn": "本文提出EEG-FM-Audit，一个系统的脑电基础模型评估与分析流水线。该流水线包含三个核心组件：基于ASHA的超参数优化基准测试协议，确保公平比较；范式级消融研究，验证学习范式的有效性；以及模型决策透明性分析。通过该流水线，可以揭示当前脑电基础模型研究中的关键局限性，为模型选择和改进提供指导。",
-      "llm_tldr": "本文提出EEG-FM-Audit，一个系统的脑电基础模型评估与分析流水线。该流水线包含三个核心组件：基于ASHA的超参数优化基准测试协议，确保公平比较；范式级消融研究，验证学习范式的有效性；以及模型决策透明性分析。通过该流水线，可以揭示当前脑电基础模型研究中的关键局限性，为模型选择和改进提供指导。",
-      "llm_tags": [
-        "query:pbci-load"
-      ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
-      "selection_source": "fresh_fetch",
-      "quick_tier": "8plus"
-    },
-    {
-      "id": "2605.14698v1",
-      "source": "arxiv",
-      "title": "NeuroAtlas: Benchmarking Foundation Models for Clinical EEG and Brain-Computer Interfaces",
-      "abstract": "Foundation models (FMs) promise to extract unified representations that generalize across downstream tasks. They have emerged across fields, including electroencephalography (EEG), but it is less clear how effective they are in this particular field. Published evaluations differ in datasets, in the EEG-specific preprocessing that might influence reported results, and in the reported metrics, frequently obscuring the clinical relevance in EEG. We introduce NeuroAtlas, the largest EEG benchmark to date: 42 datasets and 260k hours covering clinical EEG (epilepsy, sleep medicine, brain age estimation) and brain-computer interfaces, and include multiple datasets per task along with bespoke clinical evaluation metrics. Besides evaluating EEG-FMs with respect to supervised baselines, we present results from generic time-series FMs. We report three findings. First, EEG-specific FMs do not consistently outperform time-series FMs, which have neither EEG-focused architectures nor been pretrained on EEG. Second, standard machine learning metrics are insufficient to assess clinical utility: thus, we thoroughly evaluate more appropriate measures such as the quality of event-level decision-making, hypnogram-derived features, and the brain-age gap in the domains of epilepsy, sleep, and brain age, respectively. Third, model rankings and performance can vary substantially within domains. We conclude that pretrained models perform largely on par, with only narrow advantages for a few, and that current models do not yet deliver on the promise of an out-of-the-box unified EEG model. NeuroAtlas exposes this gap and provides the datasets and metrics for the next generation of unified EEG FMs.",
-      "authors": [
-        "Konstantinos Kontras",
-        "Trui Osselaer",
-        "Stylianos G. Mouslech",
-        "Angeliki-Ilektra Karaiskou",
-        "Guido Gagliardi",
-        "Thomas Strypsteen",
-        "Mohammad Hossein Badiei",
-        "Anku Rani",
-        "Maarten Vanmarcke",
-        "Miguel Bhagubai",
-        "Chanakya Ekbote",
-        "Jaedong Hwang",
-        "Christos Chatzichristos",
-        "Paul Pu Liang",
-        "Maarten De Vos"
-      ],
-      "primary_category": "cs.LG",
-      "categories": [
-        "cs.LG",
-        "cs.AI"
-      ],
-      "published": "2026-05-14T11:13:41+00:00",
-      "link": "https://arxiv.org/pdf/2605.14698v1",
-      "tags": [
-        "keyword:pBCI-load",
-        "query:pBCI-load"
-      ],
-      "llm_score": 7.0,
-      "llm_evidence_en": "Benchmark for EEG foundation models including BCI",
-      "llm_evidence_cn": "脑电基础模型基准，包含脑机接口",
-      "llm_evidence": "脑电基础模型基准，包含脑机接口",
-      "canonical_evidence": "脑电基础模型基准，包含脑机接口",
-      "llm_tldr_en": "Introduces NeuroAtlas, the largest EEG benchmark with 42 datasets and 260k hours, evaluating foundation models for clinical EEG and BCI.",
-      "llm_tldr_cn": "本文提出NeuroAtlas，迄今最大脑电基准，含42个数据集和26万小时数据，覆盖临床和脑机接口任务，系统性评估基础模型性能，为被动脑机接口研究提供标准化评测平台。",
-      "llm_tldr": "本文提出NeuroAtlas，迄今最大脑电基准，含42个数据集和26万小时数据，覆盖临床和脑机接口任务，系统性评估基础模型性能，为被动脑机接口研究提供标准化评测平台。",
-      "llm_tags": [
-        "query:pbci-load"
-      ],
-      "matched_query_tag": "query:pbci-load",
-      "matched_query_text": "foundation model for EEG signal processing",
-      "matched_requirement_id": "req-5",
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
       "selection_source": "fresh_fetch",
       "quick_tier": "7"
     }

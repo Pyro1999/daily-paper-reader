@@ -1,0 +1,960 @@
+Title: TRACE: Temporal Routing with Autoregressive Cross-channel Experts for EEG Representation Learning
+
+URL Source: https://arxiv.org/pdf/2605.11380v1
+
+Published Time: Wed, 13 May 2026 00:31:42 GMT
+
+Number of Pages: 25
+
+Markdown Content:
+# TRACE : Temporal Routing with Autoregressive Cross-channel Experts for EEG Representation Learning 
+
+Fan Ma ∗ Qier An * Peng Chen Lingfei Qian Xiang Lan Mingyang Jiang Zhiling Gu Xenophon Papademetris Hua Xu †
+
+Department of Biomedical Informatics and Data Science, Yale University 
+
+## Abstract 
+
+Learning transferable representations for electroencephalography (EEG) remains challenging because EEG signals are inherently multi-channel and non-stationary. Channels observed at the same time provide coupled measurements of neural ac-tivity, while the relevant temporal dynamics vary across contexts. This structure is poorly matched by architectures that apply uniform computation across time or route each channel patch independently. To this end, we propose T RACE , an autoregressive EEG pre-training framework that predicts future EEG patches from causal context while performing temporally adaptive and cross-channel coherent computation. At each temporal step, T RACE derives an expert routing decision from the causal cross-channel history and applies it jointly to all channels at that step. This preserves instantaneous cross-channel coherence while allowing differ-ent temporal regimes to activate different computation. Since routing is defined over the available channel set and causal temporal context, T RACE is compatible with heterogeneous pre-training across corpora with different channel counts, mon-tages, sequence lengths, and recording domains. Across eight downstream EEG benchmarks, T RACE is evaluated in both settings: when downstream domains are seen only as unlabeled pre-training data and when downstream datasets are com-pletely unseen during pre-training. It obtains the best results on several benchmarks while remaining competitive on motor imagery and clinical event classification tasks, with ablations supporting the importance of cross-channel temporal routing. 
+
+## 1 Introduction 
+
+Electroencephalography (EEG) is widely used in brain-computer interfaces (BCIs) and clinical monitoring because it is non-invasive and provides high temporal resolution [Lawhern et al., 2018, Song et al., 2022, Ma et al., 2025]. However, learning transferable EEG representations remains challenging: EEG signals are noisy, non-stationary, and highly variable across montages, recording protocols, temporal scales, and subject populations [Jiang et al., 2024b, Wang et al., 2025, Ma et al., 2025]. Consequently, models trained on one dataset or electrode layout often transfer poorly to another, motivating foundation models that learn general-purpose representations from large unlabeled EEG corpora. Recent EEG foundation models are first pre-trained on large-scale unlabeled EEG and then fine-tuned on downstream tasks. Representative methods, including BIOT [Yang et al., 2023], LaBraM [Jiang et al., 2024b], CBraMod [Wang et al., 2025], and CodeBrain [Ma et al., 2025], have achieved noticeable improvements over task-specific architectures. Most follow a BERT-style paradigm [Devlin 
+
+> ∗Fan Ma and Qier An contributed equally to this work.
+> †Corresponding author. Preprint.
+> arXiv:2605.11380v1 [cs.LG] 12 May 2026
+
+et al., 2018], masking portions of the input and reconstructing missing signals, tokens, or latent codes. Although effective, masked reconstruction is not the only natural objective for learning EEG representation. EEG signals are inherently directional in time, reflecting neural activity that unfolds as a sequence of evolving states. While effective for static classification, masked modeling may overlook the intrinsic causal dynamics that are crucial for applications such as online continuous clinical monitoring. These applications require representations that not only encode the current brain state but also capture the transition rules to infer future neural dynamics from past observations. Autoregressive (AR) modeling naturally aligns with this setting by predicting future EEG observations from causal context. Recent studies have begun to explore generative or predictive objectives for EEG pre-training, e.g. , NeuroLM [Jiang et al., 2024a] and EEGPT [Yue et al., 2024]. However, AR pre-training alone does not address a key architectural challenge in multi-channel EEG: computation should adapt to changing temporal brain states while preserving the coherence among channels observed at the same time. One natural way to improve model capacity and adaptability is to introduce mixture-of-experts (MoE), which can allocate different computational pathways to different neural states [Shazeer et al., 2017]. However, directly applying generic token-wise MoE routing is not well suited to multi-channel EEG. In standard token-wise routing, each channel patch is routed independently. Such statistical decoupling overlooks the fact that channels recorded at the same temporal step are different observations of a shared latent brain state, shaped by synchronized neural activity. Assigning these temporally aligned channel tokens to different experts may weaken cross-channel coherence and make it harder for experts to specialize in meaningful neural dynamics. Thus, we argue that expert specialization should be conditioned on the temporal state of the whole brain rather than on isolated channel patches, enabling adaptive computation across non-stationary neural states while preserving cross-channel consistency. In this study, we introduce T RACE , a Temporal R outing with A utoregressive C ross-channel Experts framework for EEG pre-training. T RACE predicts future EEG patches from causal context, but differs from autoregressive Transformers in how it allocates computation across time. Its core Temporal Routing MoE (TR-MoE) block combines spatial-temporal attention with a Cross-Channel Temporal Routing FFN (CTR-FFN). Within CTR-FFN, a TemporalFormer router summarizes the causal cross-channel history, and an Expert Selector uses this temporal-state representation to route all channels at the same temporal step to the same experts. This design preserves cross-channel coherence while adapting computation to non-stationary temporal EEG states. TRACE also supports heterogeneous EEG pre-training across different montages, recording protocols, and sequence lengths without projecting all recordings onto a common montage. Instead of assuming a fixed electrode layout, T RACE encodes each available channel as a temporal patch sequence and computes routing from the causal cross-channel state present in each sample. Our pre-training corpus combines clinical EEG, high-density healthy-population EEG, and task-related EEG, covering 16 -128 
+
+channels and 4-30 second windows. This diversity exposes the model to a broad range of acquisition settings and temporal dynamics while keeping the encoder and CTR-FFN compatible with variable channel counts. We evaluate T RACE on eight downstream datasets spanning six BCI task categories under two transfer regimes: seen-domain transfer, where the downstream domain is observed only through unlabeled pre-training data, and unseen-dataset generalization, where the downstream dataset is completely excluded from pre-training. T RACE achieves leading results on several benchmarks and remains competitive on the remaining motor imagery and clinical event classification tasks, while ablations confirm the benefits of CTR-FFNs and multi-source pre-training. To summarize, our main contributions are four-fold: • We propose T RACE , an autoregressive EEG pre-training framework that forecasts future EEG patches from causal context while centering the architecture on temporally adaptive and cross-channel coherent computation. • We introduce the TR-MoE block for multi-channel EEG, combining Spatial-Temporal Attention with a CTR-FFN that routes same-step channels via a shared temporal-state decision. • We pre-train T RACE on a heterogeneous multi-source EEG corpus spanning different channel counts, acquisition settings, task paradigms, and temporal dynamics, without enforcing the same common montage across all datasets. 2Temporal-Routing MoE Block   
+
+> Multi-scale Channel Positional Encoding
+> Raw EEG Signal
+> !!
+> !"
+> !#
+> ……
+> ! = 1 2n
+
+…  
+
+> Cross-channel Temporal Routing FFN
+> Expert 1
+> Expert 2
+> Shared Expert
+> …
+> Temporal Former
+> Multi-horizon Decoder
+> Forecasted EEG Patches
+> ℎ = n+2 n+4
+> ×&
+> Learnable query tokens
+> '!
+> '"
+> '#
+
+… Temporal embedding at time !Available ( ≤ ! ) Masked (future > ! )  
+
+> (b) TemporalFormer
+> Router Expert Selector Expert N
+> '!
+> '"
+> '#
+
+…          
+
+> (a) Temporal Routing with Autoregressive Cross-channel Expert
+> Patch Encoder
+> Time Conv (Multi-scale)
+> FFT Mask Gated Fusion
+> #
+> Causal Spatial-temporal Attention
+> Spatial (Cross-channel)
+> Temporal (Causal-time)
+> Cross-attention
+> LayerNorm
+> FFN
+> $ ∈ ℝ !×#
+> Causal context (past+current only )
+> ':,&' (∈ ℝ )×'×#
+> ('(∈ ℝ #)*
+> )+,*
+> Output to all channels at time !':,&' (,* ∈ ℝ )×'×#
+> Same experts for all channels at time !
+> time
+> '-,' (('('-,' (,*
+> Output embedding
+> Head 1
+> Head 2
+> Head 4
+> (d) Multi-horizon Decoder
+> Next 1 patch
+> Next 2 patch
+> Next 4 patch
+> (c) Cross-channel Temporal Routing FFN
+> Applies to all channels at time !
+> n+1
+
+Figure 1: Overview of T RACE . TRACE partitions raw EEG into channel-wise temporal patches, embeds each patch with time-frequency features and multi-scale channel positional encoding, and processes the resulting sequence using stacked Temporal Routing MoE (TR-MoE) blocks. Each TR-MoE block combines causal spatial-temporal attention with a Cross-Channel Temporal Routing FFN (CTR-FFN). For each temporal step, TemporalFormer summarizes the causal cross-channel context, and a router selects top-K temporal experts shared by all channels at that step, together with an always-on shared expert. A multi-horizon decoder predicts future EEG patches under autoregressive and expert-balancing objectives. • We show that T RACE achieves state-of-the-art performance on several downstream EEG datasets, and validate our designs through comprehensive ablations. 
+
+## 2 Method 
+
+2.1 Problem Setup and Causal Patch Representation 
+
+Given an EEG segment S ∈ RC×T with C channels and T timestamps, we split each channel into 
+
+n = ⌊T /t ⌋ non-overlapping patches of length t:
+
+X = {xi,j | i = 1 , . . . , C, j = 1 , . . . , n }, xi,j ∈ Rt (1) where i indexes channels and j indexes temporal patches. T RACE learns a causal patch representation: the representation at temporal step j is computed only from patches up to j, i.e. , it cannot access 
+
+{xi,j ′ | j′ > j }. The learned representation is then used to predict future patches autoregressively. 
+
+2.2 Overview of T RACE 
+
+As shown in Figure 1, T RACE first maps raw channel-wise patches into time-frequency embeddings with a patch encoder and channel positional encoding. A causal transformer backbone then processes the patch sequence while preserving the autoregressive constraint. The core component of the backbone is a Temporal Routing MoE (TR-MoE) block, where a Cross-Channel Temporal Routing FFN (CTR-FFN) uses TemporalFormer to select temporal experts shared across channels at each step. Finally, T RACE is pre-trained with an autoregressive multi-horizon objective that predicts multiple future patch ranges from each causal representation. 
+
+2.3 Patch Encoder and Positional Encoding 
+
+The patch encoder maps each channel-wise temporal patch into a d-dimensional time-frequency embedding. It consists of three modules: in-patch multi-scale convolution for time-domain features, FFT-based spectral masking for frequency-domain features, and gated fusion for combining the two. Throughout this section, a temporal patch refers to the patch xi,j of length t defined in Section 2.1. 3In-Patch Multi-scale Convolution. The first module applies several 1D convolutional branches with different temporal kernel sizes to each patch, allowing the encoder to capture local waveform patterns at multiple scales within the same patch. Let Qtemp denote the set of temporal kernel sizes. We summarize this module as: 
+
+ϕq (xi,j ) = GELU(GN(Conv1d 3 (GELU(GN(Conv1d q (xi,j )))))) , q ∈ Q temp , (2) 
+
+etemp  
+
+> i,j
+
+= Wtemp [ϕq (xi,j )] q∈Q temp ∈ Rd. (3) where ϕq (·) is the branch output for kernel size q, [·]q∈Q temp denotes concatenation over kernel sizes, and GN( ·) denotes group normalization. 
+
+FFT-Based Spectral Masking. The second module transforms the same patch into the frequency domain and applies a learnable spectral mask to emphasize informative frequency components before projection by: 
+
+efreq  
+
+> i,j
+
+= FC( |Mθ ⊙ F (xi,j )|) ∈ Rd, (4) where F(·) is the discrete Fourier transform, Mθ is a learnable spectral mask, and ⊙ denotes element-wise multiplication. 
+
+Gated Fusion. The third module fuses the time-domain embedding etemp  
+
+> i,j
+
+and the frequency-domain embedding efreq  
+
+> i,j
+
+with a learned gate via: 
+
+zi,j = σ
+
+
+
+Wg[etemp  
+
+> i,j
+
+; efreq  
+
+> i,j
+
+]
+
+
+
+, (5) 
+
+ei,j = etemp  
+
+> i,j
+
++ zi,j ⊙ efreq  
+
+> i,j
+
+. (6) Thus, ei,j is the time-frequency embedding of patch xi,j , and the resulting tensor is E ∈ RC×n×d.
+
+Multi-scale Channel Positional Encoding (MS-ChPE). To encode electrode structure without violating causality, we add a multi-scale channel positional encoding (MS-ChPE). Heterogeneous EEG pre-training involves recordings with different channel counts, montages, and electrode layouts. Without an explicit channel positional signal, the model only observes a set of patch embeddings and cannot reliably infer which electrode or spatial location each token corresponds to. MS-ChPE injects channel identity and layout information from the native channel ordering, enabling the model to exploit electrode structure across heterogeneous montages. Inspired by conditional positional encoding [Chu et al., 2023, Wang et al., 2025], MS-ChPE uses depth-wise 1D convolutions: 
+
+Ep =
+
+> R
+
+X
+
+> r=1
+
+DWConv1d qr (E), (7) 
+
+Eo = E + Ep. (8) The convolution is applied along the channel axis at each patch step, so the positional encoding at step j only uses same-step channel embeddings. We set h0 
+
+> i,j
+
+= eo 
+
+> i,j
+
+as the input to the backbone. 
+
+2.4 Temporal Routing MoE 
+
+The Temporal Routing MoE (TR-MoE) block first applies causal spatial-temporal attention (CSTA), then replaces the standard feed-forward sublayer with a Cross-Channel Temporal Routing FFN (CTR-FFN): 
+
+uli,j = CSTA  LN( hli,j ) + hli,j , (9) 
+
+hl+1  
+
+> i,j
+
+= CTRFFN  LN( uli,j ), glj
+
+ + uli,j . (10) where CSTA( ·) denotes causal spatial-temporal multi-head attention, which combines cross-channel attention within the same temporal step with causal temporal attention along the patch axis; im-plementation details are provided in Appendix G. Cross-channel attention supports heterogeneous 4EEG inputs because each temporal step can be treated as a set of channel tokens: regardless of the dataset-specific channel count or montage, CSTA can model instantaneous inter-channel interactions over the available channels. CTRFFN( ·) denotes the CTR-FFN, and glj ∈ Rd is a temporal routing context produced by TemporalFormer. 
+
+Cross-channel Temporal Routing FFN (CTR-FFN). It contains N specialized experts and one shared expert. For each temporal step j, a router maps glj to top-K specialized experts. The selected experts are shared across all channels at that temporal step, so channels from different montages are routed according to their shared temporal context rather than independent channel-specific decisions. This channel-shared routing preserves within-timestep coherence and further supports heterogeneous EEG pre-training with variable channel counts: 
+
+CTRFFN( x, glj ) = 
+
+> N
+
+X
+
+> k=1
+
+rk(glj ) Expert k(x) + Expert N +1 (x), (11) 
+
+rk(glj ) = 
+
+
+
+exp( w⊤ 
+
+> k
+
+glj )
+
+P 
+
+> k′∈T lj
+
+exp( w⊤ 
+
+> k′
+
+glj ) , k ∈ T lj ,
+
+0, otherwise ,
+
+(12) where T lj is the top-K expert set selected at layer l and step j. The shared expert Expert N +1 is always active and does not participate in the top-K competition, providing common computation across datasets and channel layouts. 
+
+TemporalFormer. TemporalFormer constructs the routing context glj from the causal cross-channel history. It uses m learnable query tokens Q ∈ Rm×d that attend to all channel patches up to step j:
+
+˜Glj = MSA  Q, Hl 
+
+> :,≤j
+
+, Hl
+
+> :,≤j
+
+ , Hl 
+
+> :,≤j
+
+= {hli,j ′ | i = 1 , . . . , C, j ′ ≤ j}. (13) The query outputs are pooled and passed through a feed-forward layer: 
+
+glj = FFN 
+
+
+
+LN 
+
+
+
+Pool( ˜Glj )
+
+ 
+
+. (14) Since keys and values are restricted to Hl 
+
+> :,≤j
+
+, the routing decision at step j is causal. The fixed number of query tokens also lets the router summarize variable-length and variable-channel EEG contexts into a fixed-dimensional routing vector. 
+
+2.5 Autoregressive Multi-horizon Pre-training 
+
+TRACE is trained with a multi-horizon autoregressive forecasting loss and an auxiliary expert-balancing loss. 
+
+Multi-horizon Forecasting. At each channel i and temporal step j, the final hidden state hLi,j 
+
+summarizes the causal context up to patch j. Rather than predicting only the immediate next patch, TRACE predicts multiple future ranges from this same representation. Specifically, for each horizon 
+
+ρ ∈ H , a prediction head outputs the next ρ patches: 
+
+ˆx(ρ) 
+
+> i,j +1: j+ρ
+
+= Head ρ(hLi,j ). (15) For example, when H = {1, 2, 4}, the model learns to predict the next 1 patch, the next 2 patches, and the next 4 patches in parallel. This multi-horizon design encourages the shared backbone to capture both short-range waveform continuity and longer-range EEG dynamics. Because raw EEG is non-stationary and often contains transient artifacts, we use the Huber loss [Huber, 1992, Gao et al., 2020]. The autoregressive loss is thus defined as: 
+
+LAR = 1
+
+|H| 
+
+X
+
+> ρ∈H
+
+1
+
+|V ρ|
+
+X
+
+> (i,j )∈V ρ
+
+Lδ
+
+
+
+xi,j +1: j+ρ, ˆx(ρ)
+
+> i,j +1: j+ρ
+
+
+
+, (16) where Lδ denotes the Huber loss with threshold δ, and Vρ = {(i, j ) | j + ρ ≤ n} is the set of valid prediction positions for horizon ρ.5Expert Balancing. To prevent routing collapse, we use a load-balancing objective adapted from MoE training [Dai et al., 2024]. Let fk be the fraction of temporal steps routed to expert k within a batch, and let pk be the average routing probability assigned to expert k. The auxiliary loss is: 
+
+Laux = N
+
+> N
+
+X
+
+> k=1
+
+fkpk. (17) 
+
+Total Objective. The final pre-training objective is thus formulated as: 
+
+L = LAR + λaux Laux , (18) where λaux controls the strength of the expert balancing regularization. We set λaux =1e −2 in all pre-training experiments, as listed in Table 7. 
+
+## 3 Experiment 
+
+3.1 Experimental Setup Pre-training Data and Implementation Details. We pre-train T RACE on a heterogeneous multi-source EEG corpus consisting of the Temple University Hospital EEG Corpus (TUEG) [Obeid and Picone, 2016], HBN [Alexander et al., 2017], and several task-related datasets, with channel counts ranging from 16 to 128 . Following prior EEG foundation model preprocessing protocols [Jiang et al., 2024b, Wang et al., 2025, Ma et al., 2025], EEG signals are band-pass filtered between 0.5-75 Hz, notch-filtered at 60 Hz, resampled to 200 Hz, and divided into non-overlapping windows. After preprocessing, the corpus yields over 1.5 million EEG segments for pre-training. For downstream datasets that overlap with task-related pre-training sources, only the training-split subjects are used as unlabeled pre-training data, while validation and test subjects are strictly held out. This creates two evaluation regimes: seen-domain transfer , where the downstream domain is observed only through unlabeled pre-training data, and unseen-dataset generalization , where the downstream dataset is completely excluded from pre-training. T RACE is pre-trained with a multi-horizon autoregressive forecasting objective using H = {1, 2, 4} on 4 NVIDIA H100 GPUs. Additional training details are provided in Appendix D. 
+
+Downstream Tasks and Datasets. We assess the generalization ability of T RACE across a diverse set of BCI tasks, including Sleep Staging (e.g. , ISRUC [Khalighi et al., 2016]), Emotion Recognition 
+
+(e.g. , SEED-V [Liu et al., 2021], FACED [Zhang et al., 2024]), Motor Imagery (e.g. , PhysioNet-MI [Schalk et al., 2004], SHU-MI [Ma et al., 2022]), Seizure Detection (e.g. , CHB-MIT [Shoeb, 2009]), Imagined Speech (e.g. , BCIC2020-3 [Jeong et al., 2022]), and Event Classification (e.g. ,TUEV [Obeid and Picone, 2016]). Among the six main downstream benchmarks, CHB-MIT and PhysioNet-MI evaluate seen-domain transfer, whereas FACED, SEED-V, ISRUC, and BCIC2020-3 evaluate unseen-dataset generalization. Detailed dataset information is provided in Appendix B. 
+
+Baselines and Evaluation Metrics. We compare T RACE against several state-of-the-art methods, grouped into two categories: 1) Task-specific models , including EEGNet [Lawhern et al., 2018] and EEGConformer [Song et al., 2022], and 2) EEG foundation models , such as BIOT [Yang et al., 2023], LaBraM [Jiang et al., 2024b], CBraMod [Wang et al., 2025], and CodeBrain [Ma et al., 2025]. For evaluation, we report Balanced Accuracy (B-Acc), area under the precision-recall curve (AUC-PR), and area under the receiver operating characteristic curve (AUROC) on binary tasks, and B-Acc with weighted F1 (F1-W) on multi-class tasks. All results are averaged over five runs with different random seeds. 
+
+3.2 Comparison with State-of-the-Art Methods 
+
+Table 1 presents comparisons of T RACE against several top-leading task-specific and EEG foundation models across six main downstream EEG datasets, additional results on SHU-MI and TUEV are reported in Appendix F. All results are reported as mean ± standard deviation over five random seeds. As observed, these results demonstrates strong transfer performance, with clear gains on several benchmarks and competitive results on the remaining tasks, leading to two main conclusions: 6Table 1: Performance comparison of various models across six main EEG datasets. The best and second-best results are highlighted in red and blue, respectively. 
+
+Method FACED (9-Class) SEED-V (5-Class) 
+
+Balanced Acc Cohen’s Kappa Weighted F1 Balanced Acc Cohen’s Kappa Weighted F1 EEGNet 0.4090 ± 0.0122 0.3342 ± 0.0251 0.4124 ± 0.0141 0.2961 ± 0.0102 0.1006 ± 0.0143 0.2749 ± 0.0098 EEGConformer 0.4559 ± 0.0125 0.3858 ± 0.0186 0.4514 ± 0.0107 0.3537 ± 0.0112 0.1772 ± 0.0174 0.3487 ± 0.0136 CNN-Transformer 0.4697 ± 0.0132 0.4017 ± 0.0168 0.4720 ± 0.0125 0.3678 ± 0.0078 0.2072 ± 0.0183 0.3642 ± 0.0088 FFCL 0.4673 ± 0.0158 0.3987 ± 0.0383 0.4699 ± 0.0145 0.3641 ± 0.0092 0.2078 ± 0.0201 0.3645 ± 0.0132 ST-Transformer 0.4810 ± 0.0079 0.4137 ± 0.0133 0.4795 ± 0.0096 0.3052 ± 0.0072 0.1083 ± 0.0121 0.2833 ± 0.0105 BIOT 0.5118 ± 0.0118 0.4476 ± 0.0254 0.5136 ± 0.0112 0.3837 ± 0.0187 0.2261 ± 0.0262 0.3856 ± 0.0203 LaBraM-Base 0.5273 ± 0.0107 0.4698 ± 0.0188 0.5288 ± 0.0102 0.3976 ± 0.0138 0.2386 ± 0.0209 0.3974 ± 0.0111 CBraMod 0.5509 ± 0.0089 0.5041 ± 0.0122 0.5618 ± 0.0093 0.4091 ± 0.0097 0.2569 ± 0.0143 0.4101 ± 0.0108 CodeBrain 0.5941 ± 0.0098 0.5406 ± 0.0084 0.5953 ± 0.0113 0.4137 ± 0.0023 0.2735 ± 0.0032 0.4235 ± 0.0022 TRACE (Ours) 0.6352 ± 0.0037 0.5883 ± 0.0042 0.6390 ± 0.0043 0.4186 ± 0.0032 0.2759 ± 0.0030 0.4253 ± 0.0024 
+
+Method ISRUC (5-Class) BCIC2020-3 (5-Class) 
+
+Balanced Acc Cohen’s Kappa Weighted F1 Balanced Acc Cohen’s Kappa Weighted F1 EEGNet 0.7154 ± 0.0121 0.7040 ± 0.0173 0.7513 ± 0.0124 0.4413 ± 0.0096 0.3016 ± 0.0123 0.4413 ± 0.0102 EEGConformer 0.7400 ± 0.0133 0.7143 ± 0.0162 0.7634 ± 0.0151 0.4506 ± 0.0133 0.3133 ± 0.0183 0.4488 ± 0.0154 CNN-Transformer 0.7363 ± 0.0087 0.7129 ± 0.0121 0.7719 ± 0.0105 0.4533 ± 0.0092 0.3166 ± 0.0118 0.4506 ± 0.0127 FFCL 0.7277 ± 0.0182 0.7016 ± 0.0291 0.7614 ± 0.0197 0.4678 ± 0.0197 0.3301 ± 0.0359 0.4689 ± 0.0205 ST-Transformer 0.7381 ± 0.0205 0.7013 ± 0.0352 0.7681 ± 0.0175 0.4126 ± 0.0122 0.2941 ± 0.0159 0.4247 ± 0.0138 BIOT 0.7527 ± 0.0121 0.7192 ± 0.0231 0.7790 ± 0.0146 0.4920 ± 0.0086 0.3650 ± 0.0176 0.4917 ± 0.0079 LaBraM 0.7633 ± 0.0102 0.7231 ± 0.0182 0.7810 ± 0.0133 0.5060 ± 0.0155 0.3800 ± 0.0242 0.5054 ± 0.0205 CBraMod 0.7865 ± 0.0110 0.7442 ± 0.0152 0.8011 ± 0.0099 0.5373 ± 0.0108 0.4216 ± 0.0163 0.5383 ± 0.0096 CodeBrain 0.7856 ± 0.0031 0.7671 ± 0.0091 0.8202 ± 0.0071 0.6101 ± 0.0052 0.5127 ± 0.0065 0.6101 ± 0.0053 TRACE (Ours) 0.7997 ± 0.0013 0.7711 ± 0.0048 0.8209 ± 0.0040 0.6315 ± 0.0055 0.5393 ± 0.0069 0.6316 ± 0.0057 
+
+Method CHB-MIT (2-Class) PhysioNet-MI (4-Class) 
+
+Balanced Acc AUC-PR AUROC Balanced Acc Cohen’s Kappa Weighted F1 EEGNet 0.5658 ± 0.0106 0.1914 ± 0.0182 0.8048 ± 0.0136 0.5814 ± 0.0125 0.4468 ± 0.0199 0.5796 ± 0.0115 EEGConformer 0.5976 ± 0.0141 0.2209 ± 0.0215 0.8226 ± 0.0170 0.6049 ± 0.0104 0.4736 ± 0.0171 0.6062 ± 0.0095 CNN-Transformer 0.6389 ± 0.0067 0.2479 ± 0.0227 0.8662 ± 0.0082 0.6053 ± 0.0118 0.4725 ± 0.0223 0.6041 ± 0.0105 FFCL 0.6262 ± 0.0104 0.2049 ± 0.0346 0.8271 ± 0.0051 0.5726 ± 0.0092 0.4323 ± 0.0182 0.5701 ± 0.0079 ST-Transformer 0.5915 ± 0.0195 0.1422 ± 0.0094 0.8237 ± 0.0491 0.6035 ± 0.0081 0.4712 ± 0.0199 0.6053 ± 0.0075 BIOT 0.7068 ± 0.0457 0.3277 ± 0.0460 0.8761 ± 0.0284 0.6153 ± 0.0154 0.4875 ± 0.0272 0.6158 ± 0.0197 LaBraM 0.7075 ± 0.0358 0.3287 ± 0.0402 0.8679 ± 0.0199 0.6173 ± 0.0122 0.4912 ± 0.0192 0.6177 ± 0.0141 CBraMod 0.7398 ± 0.0284 0.3689 ± 0.0382 0.8892 ± 0.0154 0.6417 ± 0.0091 0.5222 ± 0.0169 0.6427 ± 0.0100 CodeBrain 0.7273 ± 0.0240 0.4377 ± 0.0288 0.8961 ± 0.0174 – – –TRACE (Ours) 0.7453 ± 0.0178 0.5921 ± 0.0795 0.9220 ± 0.0232 0.6342 ± 0.0090 0.5122 ± 0.0120 0.6365 ± 0.0096 
+
+1) T RACE achieves superior performance on several evaluated datasets. The model demonstrates notable improvements on challenging decoding benchmarks. To be specific, on the imagined speech task, BCIC2020-3, T RACE surpasses CodeBrain and CBraMod in Balanced Accuracy by +2 .14% 
+
+and +9 .42% , respectively. Similar gains are observed on the emotion recognition task (FACED), where T RACE improves Balanced Accuracy over CodeBrain and CBraMod by +4 .11% and +8 .43% .TRACE also attains the best performance on SEED-V, ISRUC, and CHB-MIT in Table 1. These numerical results support the effectiveness of T RACE on several representative EEG transfer settings. 
+
+2) T RACE generalizes across diverse EEG tasks and recording settings. The performance gains are not limited to a single task domain or to target-dataset exposure. TRACE performs well in both evaluation regimes: it achieves strong transfer when the downstream domain is seen only as unlabeled pre-training data, such as CHB-MIT and PhysioNet-MI, and it also improves on several datasets that are completely unseen during pre-training, including FACED, SEED-V, ISRUC, and BCIC2020-3. Meanwhile, the results are not uniformly state-of-the-art: on PhysioNet-MI, T RACE is second-best behind CBraMod. This pattern suggests that T RACE learns transferable representations across different channel configurations, recording domains, and task protocols, while leaving room for further improvement on some motor imagery and clinical event classification benchmarks. 7Table 2: Effect of TemporalFormer query number. Results are reported as mean ± std over 5 random seeds, with the best result in each row highlighted in bold .                                                                                                             
+
+> Dataset 1 Query 2 Queries 4 Queries Balanced Acc Kappa Weighted F1 Balanced Acc Kappa Weighted F1 Balanced Acc Kappa Weighted F1
+> FACED 61.92 ±0.47 57.00 ±0.47 62.31 ±0.47 62.31 ±0.45 57.42 ±0.50 62.65 ±0.45 63.52 ±0.37 58.83 ±0.42 63.90 ±0.43 PhysioNet-MI 61.98 ±0.53 49.30 ±0.71 62.29 ±0.57 63.02 ±0.52 50.69 ±0.69 63.27 ±0.57 63.42 ±0.90 51.22 ±1.20 63.65 ±0.96 SEED-V 40.50 ±0.37 25.78 ±0.50 40.98 ±0.47 40.18 ±0.42 25.41 ±0.44 40.69 ±0.32 40.32 ±0.47 25.48 ±0.57 40.76 ±0.44
+> Average 54.80 ±0.46 44.03 ±0.56 55.19 ±0.50 55.17 ±0.46 44.51 ±0.54 55.54 ±0.45 55.75 ±0.58 45.18 ±0.73 56.10 ±0.61
+
+3.3 Ablation Study Effect of TR-MoE. We first validate the core architectural design of T RACE . For a fair comparison, we construct two controlled variants: 1) a Non-MoE baseline where the CTR-FFN is replaced with a FLOPs-matched standard FFN, and 2) a Vanilla MoE version that keeps the expert structure but allows each channel patch to select experts via a token-wise router. FACED (9-class)       
+
+> 0.62
+> 0.63
+> 0.64
+> Balanced Accuracy
+> 0.624 0.624
+> 0.635
+> FACED (9-class)
+> 0.57
+> 0.58
+> 0.59
+> Cohen's Kappa
+> 0.576
+> 0.576
+> 0.588
+> FACED (9-class)
+> 0.62
+> 0.63
+> 0.64
+> Weighted F1  0.629
+> 0.627
+> 0.639
+> SEED-V (5-class)
+> 0.38
+> 0.40
+> Balanced Accuracy
+> 0.398
+> 0.384
+> 0.403
+> SEED-V (5-class)
+> 0.22
+> 0.24
+> 0.26
+> Cohen's Kappa  0.249
+> 0.229
+> 0.255
+> SEED-V (5-class)
+> 0.38
+> 0.40
+> Weighted F1  0.403
+> 0.388
+> 0.408
+> PhysioNet-MI (4-class)
+> 0.62
+> 0.64
+> Balanced Accuracy
+> 0.623 0.628
+> 0.634
+> PhysioNet-MI (4-class)
+> 0.48
+> 0.50
+> 0.52
+> Cohen's Kappa
+> 0.497 0.503
+> 0.512
+> PhysioNet-MI (4-class)
+> 0.62
+> 0.64
+> Weighted F1  0.625 0.631
+> 0.636
+> Non-MoE Vanilla MoE Ours
+
+Figure 2: Performance comparison of MoE blocks across three EEG datasets. Figure 2 shows two key observations. First ,standard token-wise MoE does not consistently improve performance: Vanilla MoE is nearly tied with Non-MoE on FACED and even de-creases Balanced Accuracy from 0.398 to 0.384 
+
+on SEED-V, suggesting that simply replacing the FFN with token-wise MoE is insufficient for EEG modeling. Second , the model with TR-MoE blocks achieves the impressive perfor-mance across three datasets. Taking FACED as an example, the model with TR-MoE blocks improves over Vanilla MoE by +1 .13% in Bal-anced Accuracy, +1 .28% in Cohen’s Kappa, and +1 .24% in Weighted F1. This supports our hypothesis that treating all channels at the same timestep as a coherent unit for expert routing is beneficial for capturing cross-channel coor-dination and temporal EEG dynamics, suggest-ing that both the MoE structure and temporal-aware routing contribute to the effectiveness of TRACE .
+
+TemporalFormer Design. We further study the number of learnable query tokens in Tempo-ralFormer, which produces the temporal-state representation used by Expert Selector for shared same-timestep routing. We vary the query number from 1 to 2 and 4, with all other settings fixed. As shown in Table 2, using more query tokens improves average downstream performance. The 
+
+4-query setting achieves the best average Balanced Accuracy, Cohen’s Kappa, and Weighted F1, outperforming the 1-query setting by +0 .95% , +1 .15% , and +0 .91$ , respectively. It performs best on FACED and PhysioNet-MI, while SEED-V slightly favors 1 query, indicating task-dependent routing capacity. We therefore use 4 queries as the default TemporalFormer setting in T RACE .
+
+Multi-scale Channel Positional Encoding. We next examine the necessity of the MS-ChPE introduced in Section 2.3. Removing channel PE leads to a consistent drop on both datasets, decreasing Balanced Accuracy by 3.72% on FACED and 5.79% on BCIC2020-3. This confirms that explicit channel-axis positional information is important for modeling multi-electrode EEG signals. Among single-scale designs, the wider kernel performs better than the narrow one. Compared with the multi-scale default, the q1 = 19 setting is within 1.18% on FACED and 1.58% on BCIC2020-3, while the q1 = 5 setting lags by 2.44% and 2.99% , respectively. These results suggest that a wider receptive field over the channel axis helps capture montage-level spatial relations, and the multi-scale design further combines local and global channel patterns for more robust EEG embeddings. 8Table 3: Analysis of MS-ChPE with different settings.                                             
+
+> MS-ChPE Design FACED BCIC2020-3 Balanced Acc Kappa Balanced Acc Kappa
+> Multi-scale {qr}Rr=1 ={5,11 ,19 }0.6352 ±0.0037 0.5883 0.6315 ±0.0055 0.5393
+> Single-scale ( R=1 , q 1=5 )0.6108 ±0.0078 0.5604 0.6016 ±0.0122 0.5020 Single-scale ( R=1 , q 1=19 )0.6234 ±0.0066 0.5753 0.6157 ±0.0118 0.5197
+> w/o Channel PE 0.5980 ±0.0052 0.5455 0.5736 ±0.0113 0.4670
+
+Table 4: Analysis of pre-training data composition.                                                                  
+
+> Pre-training Sources CHB-MIT TUEG HBN Phys-MI Phys-MA SHU-MI CHB-MIT Balanced Acc AUC-PR AUROC
+> ✓✗✗✗✗✗58.91 ±1.89 39.25 ±10.81 89.46 ±4.14
+> ✗✓✗✗✗✗70.35 ±0.87 56.54 ±8.69 90.72 ±4.24
+> ✓✗✓✓✓✓65.88 ±4.10 44.00 ±6.43 89.85 ±1.89
+> ✓✓✓✓✓✓74.53 ±1.78 59.21 ±7.95 92.20 ±2.32
+
+Effect of Multi-source Pre-training. We investigate the impact of pre-training data composition on downstream transfer to CHB-MIT. As shown in Table 4, adding task-related sources, including the CHB-MIT training split, improves over TUEG-only pre-training. Balanced Accuracy increases from 58 .91% to 65 .88% , and AUC-PR increases from 39 .25% to 44 .00% . This suggests that exposure to the target dataset’s training split is beneficial for downstream CHB-MIT transfer. The best performance is achieved by the full multi-source corpus, reaching 74 .53% Balanced Accuracy, 
+
+59 .21% AUC-PR, and 92 .20% AUROC. This indicates that target-dataset exposure alone is not sufficient. TRACE benefits more from combining TUEG, HBN, and task-related EEG sources, suggesting that the gains of multi-source pre-training come from complementary EEG sources across clinical recordings, high-density healthy-population EEG, and task-related neural dynamics. Additional SEED-V results in Appendix H.2 show a consistent benefit from the full multi-source pre-training corpus. 
+
+## 4 Conclusion and Limitations 
+
+We presented T RACE , an autoregressive EEG foundation model designed to learn transferable causal representations from heterogeneous multi-source EEG. By combining multi-horizon future-patch forecasting with Temporal Routing MoE blocks, T RACE adapts computation across non-stationary temporal regimes while preserving the cross-channel coherence of EEG observations at each timestep. Across eight downstream benchmarks, T RACE achieves leading results on several tasks and competitive results on the remaining motor imagery and clinical event classification benchmarks. Our ablations show that cross-channel temporal routing, the TemporalFormer design, expert scaling, and multi-source pre-training each contribute to downstream transfer. These results suggest that autoregressive pre-training can be effective for EEG representation learning when the prediction objective and architecture are aligned with the temporal and multi-channel structure of the signal. 
+
+Limitations. Although T RACE is evaluated across diverse public EEG datasets, its empirical scope is still limited by the available benchmarks, preprocessing choices, and dataset-specific label protocols. In particular, our downstream evaluation mainly focuses on classification-oriented BCI and clinical recognition tasks. We have not yet systematically validated T RACE on regression-style prediction problems, such as forecasting continuous clinical variables or early-warning tasks that require detecting risk before an event occurs. These settings may require different evaluation protocols, prediction horizons, and calibration analyses, and we view them as important directions for future work. The pre-training corpus spans multiple channel counts, montages, and recording domains, but it may not cover all acquisition hardware, clinical populations, artifact patterns, or deployment conditions encountered in practice. As a result, performance on unseen institutions, rare neurological conditions, or substantially different electrode layouts should be validated before high-stakes use. 9TRACE also increases model and training complexity through its Temporal Routing MoE blocks. While sparse expert activation improves flexibility, the full expert pool adds parameters and pre-training cost, and the optimal number of experts or activated experts can vary across downstream tasks. Finally, this work focuses on representation quality and transfer performance rather than clinical interpretability, privacy-preserving training, or fairness across demographic groups. These aspects are important directions for future work, especially if EEG foundation models are used in real-world BCI or clinical monitoring systems. 
+
+## References 
+
+Lindsay M. Alexander, Jasmine Escalera, Lei Ai, Charissa Andreotti, Karina Febre, Alexander Mangone, Natan Vega-Potler, Nicolas Langer, Alexis Alexander, Meagan Kovacs, et al. An open resource for transdiagnostic research in pediatric mental health and learning disorders. Scientific Data , 4:170181, 2017. Jingjing Chen, Xiaobin Wang, Chen Huang, Xin Hu, Xinke Shen, and Dan Zhang. A large finer-grained affective computing EEG dataset. Scientific Data , 10(1):740, 2023. Xiangxiang Chu, Zhi Tian, Bo Zhang, Xinlong Wang, and Chunhua Shen. Conditional positional encodings for vision transformers. In International Conference on Learning Representations (ICLR) , 2023. Damai Dai, Chengqi Deng, Chenggang Zhao, R. X. Xu, Huazuo Gao, Deli Chen, Jiashi Li, Wangding Zeng, Xingkai Yu, Yu Wu, et al. DeepSeekMoE: Towards ultimate expert specialization in mixture-of-experts language models. arXiv preprint arXiv:2401.06066 , 2024. Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. BERT: Pre-training of deep bidirectional transformers for language understanding. arXiv preprint arXiv:1810.04805 , 2018. William Fedus, Barret Zoph, and Noam Shazeer. Switch transformer: Scaling to trillion parameter models with simple and efficient sparsity. Journal of Machine Learning Research , 23(120):1–39, 2022. Jingkun Gao, Xiaomin Song, Qingsong Wen, Pichao Wang, Liang Sun, and Huan Xu. RobustTAD: Ro-bust time series anomaly detection via decomposition and convolutional neural networks. arXiv preprint arXiv:2002.09545 , 2020. Peter J. Huber. Robust estimation of a location parameter. In Breakthroughs in statistics: Methodology and distribution , pages 492–518. Springer, 1992. Ji-Hoon Jeong, Jeong-Hyun Cho, Young-Eun Lee, Seo-Hyun Lee, Gi-Hwan Shin, Young-Seok Kweon, José del R. Millán, Klaus-Robert Müller, and Seong-Whan Lee. 2020 international brain–computer interface competition: A review. Frontiers in Human Neuroscience , 16:898300, 2022. Wei-Bang Jiang, Yansen Wang, Bao-Liang Lu, and Dongsheng Li. NeuroLM: A universal multi-task foundation model for bridging the gap between language and EEG signals. arXiv preprint arXiv:2409.00101 , 2024a. doi: 10.48550/arXiv.2409.00101. Wei-Bang Jiang, Li-Ming Zhao, and Bao-Liang Lu. Large brain model for learning generic representations with tremendous EEG data in BCI. In International Conference on Learning Representations (ICLR) , 2024b. Sirvan Khalighi, Teresa Sousa, José Moutinho Santos, and Urbano Nunes. ISRUC-Sleep: A comprehensive public dataset for sleep researchers. Computer Methods and Programs in Biomedicine , 124:180–192, 2016. Demetres Kostas, Stephane Aroca-Ouellette, and Frank Rudzicz. BENDR: Using transformers and a contrastive self-supervised learning task to learn from massive amounts of EEG data. Frontiers in Human Neuroscience ,15:653659, 2021. Vernon J. Lawhern, Amelia J. Solon, Nicholas R. Waytowich, Stephen M. Gordon, Chou P. Hung, and Brent J. Lance. EEGNet: A compact convolutional neural network for EEG-based brain–computer interfaces. Journal of Neural Engineering , 15(5):056013, 2018. Dmitry Lepikhin, HyoukJoong Lee, Yuanzhong Xu, Dehao Chen, Orhan Firat, Yanping Huang, Maxim Krikun, Noam Shazeer, and Zhifeng Chen. GShard: Scaling giant models with conditional computation and automatic sharding. In International Conference on Learning Representations (ICLR) , 2021. Hongli Li, Man Ding, Ronghua Zhang, and Chunbo Xiu. Motor imagery EEG classification algorithm based on CNN-LSTM feature fusion network. Biomedical Signal Processing and Control , 72:103342, 2022. 
+
+10 Wei Liu, Jie-Lin Qiu, Wei-Long Zheng, and Bao-Liang Lu. Comparing recognition performance and robustness of multimodal deep learning models for multimodal emotion recognition. IEEE Transactions on Cognitive and Developmental Systems , 14(2):715–729, 2021. Jingying Ma, Feng Wu, Qika Lin, Yucheng Xing, Chenyu Liu, Ziyu Jia, and Mengling Feng. CodeBrain: Bridging decoupled tokenizer and multi-scale architecture for EEG foundation model. arXiv preprint arXiv:2506.09110 , 2025. Jun Ma, Banghua Yang, Wenzheng Qiu, Yunzhe Li, Shouwei Gao, and Xinxing Xia. A large EEG dataset for studying cross-session variability in motor imagery brain-computer interface. Scientific Data , 9(1):531, 2022. Iyad Obeid and Joseph Picone. The Temple University Hospital EEG data corpus. Frontiers in Neuroscience ,10:196, 2016. Wei Yan Peh, Yuanyuan Yao, and Justin Dauwels. Transformer convolutional neural networks for automated artifact detection in scalp EEG. In 2022 44th Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC) , pages 3599–3602. IEEE, 2022. Gerwin Schalk, Dennis J. McFarland, Thilo Hinterberger, Niels Birbaumer, and Jonathan R. Wolpaw. BCI2000: A general-purpose brain-computer interface (BCI) system. IEEE Transactions on Biomedical Engineering , 51 (6):1034–1043, 2004. Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Geoffrey Hinton, and Jeff Dean. Outrageously large neural networks: The sparsely-gated mixture-of-experts layer. In International Conference on Learning Representations (ICLR) , 2017. Ali Hossam Shoeb. Application of machine learning to epileptic seizure onset detection and treatment . PhD thesis, Massachusetts Institute of Technology, 2009. Yonghao Song, Xueyu Jia, Lie Yang, and Longhan Xie. Transformer-based spatial-temporal feature learning for EEG decoding. arXiv preprint arXiv:2106.11170 , 2021. Yonghao Song, Qingqing Zheng, Bingchuan Liu, and Xiaorong Gao. EEG Conformer: Convolutional transformer for EEG decoding and visualization. IEEE Transactions on Neural Systems and Rehabilitation Engineering ,31:710–719, 2022. Jiquan Wang, Sha Zhao, Zhiling Luo, Yangxuan Zhou, Haiteng Jiang, Shijian Li, Tao Li, and Gang Pan. CBraMod: A criss-cross brain foundation model for EEG decoding. In International Conference on Learning Representations (ICLR) , 2025. Chaoqi Yang, M. Brandon Westover, and Jimeng Sun. BIOT: Biosignal transformer for cross-data learning in the wild. In Advances in Neural Information Processing Systems (NeurIPS) , 2023. Zhizhang Yuan, Daoze Zhang, Junru Chen, Geifei Gu, and Yang Yang. Brant-2: Foundation model for brain signals. arXiv preprint arXiv:2402.10251 , 2024. Tongtian Yue, Shuning Xue, Xuange Gao, Yepeng Tang, Longteng Guo, Jie Jiang, and Jing Liu. EEGPT: Unleashing the potential of EEG generalist foundation model by autoregressive pre-training. arXiv preprint arXiv:2410.19779 , 2024. doi: 10.48550/arXiv.2410.19779. Daoze Zhang, Zhizhang Yuan, Yang Yang, Junru Chen, Jingjing Wang, and Yafeng Li. Brant: Foundation model for intracranial neural signal. In Advances in Neural Information Processing Systems (NeurIPS) , 2023. Kaiyuan Zhang, Ziyi Ye, Qingyao Ai, Xiaohui Xie, and Yiqun Liu. GNN4EEG: A benchmark and toolkit for electroencephalography classification with graph neural network. In Companion of the 2024 ACM International Joint Conference on Pervasive and Ubiquitous Computing (UbiComp Companion) , 2024. Igor Zyma, Sergii Tukaev, Ivan Seleznov, Ken Kiyono, Anton Popov, Mariia Chernykh, and Oleksii Shpenkov. Electroencephalograms during mental arithmetic task performance. Data , 4(1):14, 2019. 
+
+11 A Related Work 
+
+EEG Foundation Models. Inspired by the success of foundation models in vision and language, recent EEG research has moved from task-specific models toward general-purpose EEG founda-tion models. Existing efforts mainly follow two self-supervised pre-training paradigms. One line learns EEG representations through contrastive learning, where BENDR [Kostas et al., 2021] first demonstrated the effectiveness of contrastive pre-training on large-scale EEG recordings, and Brant-style models further extend representation learning across physiological signals [Zhang et al., 2023, Yuan et al., 2024]. Another line focuses on reconstruction-based pre-training. BIOT [Yang et al., 2023] tokenizes biosignals into unified sequences for cross-dataset pre-training; LaBraM [Jiang et al., 2024b] learns a vector-quantized neural tokenizer for spectrum-based masked prediction; CBraMod [Wang et al., 2025] decouples spatial and temporal dependencies with a criss-cross Trans-former; and CodeBrain [Ma et al., 2025] combines temporal and frequency tokenization to capture structured EEG patterns. More recent work has started to introduce autoregressive EEG pre-training: NeuroLM [Jiang et al., 2024a] feeds discrete EEG tokens into an LLM for multi-channel autoregres-sion, while EEGPT [Yue et al., 2024] studies next-signal prediction for an EEG generalist foundation model. T RACE follows this emerging autoregressive direction, but focuses on causal next-patch forecasting with Cross-Channel Temporal Routing FFNs (CTR-FFNs) to model moment-to-moment non-stationarity while preserving cross-channel coherence. 
+
+Mixture of Experts. Mixture-of-Experts (MoE) increases model capacity without proportionally increasing computation by sparsely activating a subset of experts for each input [Shazeer et al., 2017]. Efficient routing strategies, such as Top-1 routing in Switch Transformer [Fedus et al., 2022] and Top-2 gating in GShard [Lepikhin et al., 2021], have made MoE widely used in modern Transformer models. However, standard MoE architectures are mostly designed for language-like token sequences and route each token independently. This token-wise routing is not well aligned with EEG signals, where channels at the same timestep jointly describe an instantaneous brain state. Routing each patch independently may fragment this multi-channel coherence, while a uniform feed-forward block cannot adapt to the temporal non-stationarity of EEG dynamics. T RACE introduces a CTR-FFN for autoregressive EEG pre-training: TemporalFormer summarizes the causal cross-channel temporal context, and an Expert Selector routes all channels at the same timestep to the same specialized expert subset. This enables expert specialization over evolving temporal contexts while preserving multi-channel EEG coherence. 
+
+## B Dataset Description 
+
+We use a diverse collection of public EEG datasets for T RACE pre-training and downstream evalua-tion. These datasets span large-scale clinical EEG, high-density healthy-population EEG, affective decoding, motor imagery, mental arithmetic, sleep staging, seizure detection, clinical event classi-fication, and imagined speech. The collection covers heterogeneous recording domains, channel configurations, sampling rates, and temporal resolutions for learning and evaluating transferable EEG representations. 
+
+TUEG. The Temple University Hospital EEG Corpus (TUEG) is a large-scale public clinical EEG corpus collected in hospital settings [Obeid and Picone, 2016]. It contains long-duration scalp EEG recordings from diverse clinical populations and covers routine, ambulatory, and continuous EEG studies. Following prior EEG foundation-model preprocessing protocols [Jiang et al., 2024b, Wang et al., 2025], we use the 19 -channel international 10 − 20 montage, apply band-pass filtering, notch filtering, resample the signals to 200 Hz, and segment recordings into 30 -second non-overlapping windows. TUEG provides large-scale clinical EEG background activity under real-world acquisition conditions. 
+
+HBN. The Healthy Brain Network (HBN) dataset provides high-density EEG recordings from children and adolescents across multiple experimental paradigms [Alexander et al., 2017]. Different from TUEG, which uses a 19 -channel clinical montage, HBN uses a 128 -channel HydroCel Geodesic Sensor Net and covers a healthy-population developmental cohort. This dataset introduces richer spatial coverage, different channel configurations, and non-clinical recording conditions. In our 12 preprocessing pipeline, HBN recordings are resampled to 200 Hz and segmented into 30 -second windows while preserving the native 128 -channel layout. 
+
+Emotion Recognition. We conduct emotion recognition experiments on FACED and SEED-V. FACED is a fine-grained affective EEG dataset containing 32 -channel EEG recordings collected during affective video watching [Chen et al., 2023]. It is formulated as a 9-class emotion classification task covering multiple positive, negative, and neutral affective states. We follow the standard cross-subject evaluation protocol, resample the EEG signals to 200 Hz, and segment trials into 10 -second windows. SEED-V is a 5-class EEG emotion recognition dataset with happy, sad, neutral, disgust, and fear categories [Liu et al., 2021]. It contains 62 -channel multi-session EEG recordings from 16 subjects, originally sampled at 1,000 Hz. Each subject participates in three sessions with 15 trials per session. We split the 15 trials in each session into training, validation, and test partitions of 5 trials each, resample the signals to 200 Hz, and segment them into 1-second windows. 
+
+Motor Imagery Classification. We evaluate motor imagery classification on PhysioNet-MI and SHU-MI. PhysioNet-MI contains 64 -channel EEG recordings from 109 subjects performing motor execution and motor imagery tasks, originally sampled at 160 Hz [Schalk et al., 2004]. We formulate it as a 4-class classification task, resample the recordings to 200 Hz, and segment the signals into 
+
+4-second windows. Following a subject-wise split, subjects 1 − 70 are used for training, 71 − 89 for validation, and 90 − 109 for testing. SHU-MI is a motor imagery dataset collected from 25 subjects using a 32 -channel EEG cap, originally sampled at 250 Hz [Ma et al., 2022]. Each subject performs five sessions of left-hand and right-hand motor imagery. We formulate it as a binary classification task, resample the recordings to 200 Hz, and segment them into 4-second non-overlapping windows. Following a subject-wise split, subjects 
+
+1 − 15 are used for training, 16 − 20 for validation, and 21 − 25 for testing. 
+
+Mental Arithmetic. PhysioNet-MA contains EEG recordings from 36 subjects under two condi-tions: resting state and mental arithmetic [Zyma et al., 2019]. The original recordings consist of 72 
+
+EDF files, corresponding to two recordings per subject, sampled at 500 Hz with 23 electrodes. We retain 20 standard 10 − 20 channels, resample the signals to 200 Hz, and segment them into 5-second non-overlapping windows. Following a subject-wise split, subjects 1 − 28 are used for training, 
+
+29 − 32 for validation, and 33 − 36 for testing. 
+
+Sleep Staging. ISRUC is used for sleep stage classification [Khalighi et al., 2016]. It contains overnight polysomnographic recordings annotated according to standard sleep-stage categories: Wake, N1, N2, N3, and REM. Each EEG segment corresponds to a 30 -second epoch. We adopt subject-wise splits used in prior EEG foundation-model benchmarks: for ISRUC-S1, which contains 100 subjects, we use 80 subjects for training, 10 for validation, and 10 for testing; for ISRUC-S3, which contains 
+
+10 subjects, we follow an 8 : 1 : 1 subject-wise split. 
+
+Seizure Detection. CHB-MIT is a widely used pediatric scalp EEG dataset for seizure detec-tion [Shoeb, 2009]. It contains long-term EEG recordings from subjects with epilepsy collected during clinical monitoring. We formulate the task as binary classification between seizure and non-seizure EEG segments. Following common preprocessing protocols, we use 16 channels in the standard bipolar montage, resample recordings to 200 Hz, and segment them into 10 -second non-overlapping windows. We adopt a subject-wise split with chb01–chb20 for training, chb21-chb22 for validation, and chb23-chb24 for testing, with chb12, chb13, and chb17 excluded due to insufficient or noisy recordings. 
+
+EEG Event Classification. TUEV is used for clinical EEG event type classification [Obeid and Picone, 2016]. The annotations cover six event categories: spike and sharp wave (SPSW), generalized periodic epileptiform discharges (GPED), periodic lateralized epileptiform discharges (PLED), eye movement (EYEM), artifact (ARTF), and background activity (BCKG). Following standard preprocessing, we select 16 bipolar montage channels, resample the recordings to 200 Hz, and segment them into 5-second windows. We follow the official train/test split and further divide the training subjects into an 8 : 2 train/validation partition. 13 Imagined Speech Classification. BCI Competition 2020 Track 3 (BCIC2020-3) is used for imag-ined speech classification [Jeong et al., 2022]. The dataset contains 64 -channel EEG recordings collected while subjects silently imagine speaking five short words or phrases: “hello”, “help me”, “stop”, “thank you”, and “yes”. It is formulated as a 5-class classification task. We resample the recordings to 200 Hz and use the train, validation, and test splits provided by the competition organizers. 
+
+## C Baselines and Metrics Description 
+
+C.1 Baselines 
+
+Here, we introduce the details of the baselines used for performance evaluation. 
+
+EEGNet [Lawhern et al., 2018] is a lightweight convolutional neural network designed for EEG decoding. It uses temporal convolution and depthwise spatial convolution to learn compact EEG representations. 
+
+EEGConformer [Song et al., 2022] is an EEG model that combines CNN-based local feature extraction with Transformer-based self-attention to model global temporal dependencies. 
+
+CNN-Transformer [Peh et al., 2022] is a hybrid architecture that uses CNN layers to extract local EEG features and a Transformer encoder to capture long-range temporal dependencies. 
+
+FFCL [Li et al., 2022] is an EEG classification model that combines convolutional and recurrent modules, where CNNs capture local spatial-temporal patterns and recurrent layers model sequential dynamics. 
+
+ST-Transformer [Song et al., 2021] is a Transformer-based EEG model that learns spatial and temporal dependencies through attention mechanisms. 
+
+BIOT [Yang et al., 2023] is a biosignal foundation model that tokenizes heterogeneous physiological signals into unified token sequences and learns transferable representations through cross-dataset pre-training. 
+
+LaBraM [Jiang et al., 2024b] is a large EEG foundation model that learns neural tokens with a vector-quantized tokenizer and performs masked EEG token prediction for pre-training. 
+
+CBraMod [Wang et al., 2025] is an EEG foundation model that uses criss-cross spatial-temporal attention and reconstruction-based pre-training to learn transferable EEG representations. 
+
+CodeBrain [Ma et al., 2025] is an EEG foundation model that learns discrete EEG representations through temporal-frequency tokenization, aiming to capture structured EEG patterns for downstream transfer. 
+
+C.2 Metrics 
+
+In this section, we introduce the evaluation metrics adopted in this paper. Consistent with prior EEG foundation model evaluations [Jiang et al., 2024b, Wang et al., 2025, Ma et al., 2025], we report different metrics according to the task type. 
+
+Balanced Accuracy measures the average recall across all classes and is less affected by class imbalance than standard accuracy. It is reported for both binary and multi-class classification tasks. 
+
+Cohen’s Kappa quantifies the agreement between predicted labels and ground-truth labels after correcting for chance agreement. This metric is particularly useful for multi-class EEG classification benchmarks with imbalanced class distributions. 
+
+Weighted F1 computes the class-wise F1 score and averages it according to class support. It provides a precision-recall summary for multi-class tasks where different classes may have different numbers of samples. 
+
+AUC-PR denotes the area under the precision-recall curve. It is especially informative for imbalanced binary detection tasks, where the positive class is rare. 
+
+AUROC denotes the area under the receiver operating characteristic curve and evaluates threshold-independent discrimination between positive and negative classes. 14 D More Details for Experimental Settings on Pre-Training 
+
+We next provide additional details on the pre-training corpus, model configuration, and optimization setup used for T RACE pre-training. 
+
+Pre-training corpus. We construct the pre-training corpus from six EEG sources: two large-scale sources, TUEG and HBN, together with four task-related datasets. TUEG provides large-scale 19-channel clinical EEG, while HBN provides 128 -channel high-density EEG from a healthy-population cohort. The task-related sources further cover seizure monitoring, motor imagery, and mental arithmetic recordings. For datasets that also appear in downstream evaluation, only the training-split subjects are included in the pre-training corpus; validation and test subjects are strictly held out from pre-training. The sources and preprocessing details are summarized in Table 5. The sample counts in the table indicate the total number of available preprocessed segments for each source; for downstream-overlapping datasets, pre-training uses only the training split. Table 5: Pre-training corpus and preprocessing details. 
+
+Dataset EEG Domain # Channels # Samples Window 
+
+TUEG Clinical EEG 19 1.1M 30s HBN Healthy-population EEG 128 132K 30s CHB-MIT Seizure detection 16 326,993 10s PhysioNet-MI Motor imagery 64 9,837 4s SHU-MI Motor imagery 32 11,988 4s PhysioNet-MA Stress detection 20 1,343 5s 
+
+Model configuration. The architecture hyperparameters of T RACE are summarized in Table 6. The main configuration uses N =64 total experts and activates K=8 experts at each temporal step. 
+
+Optimization setup. The pre-training optimization hyperparameters are summarized in Table 7. 
+
+## E Fine-tuning Settings on Downstream Tasks 
+
+Downstream Tasks. To evaluate the transferability of T RACE , we fine-tune the pretrained model on eight downstream EEG datasets covering emotion recognition, motor imagery classification, sleep staging, seizure detection, imagined speech classification, and EEG event classification. For all downstream datasets, EEG signals are resampled to 200 Hz, and each EEG patch is set to 1s, corresponding to 200 data points, following the same tokenization setting used in pre-training. Details of the downstream tasks and datasets are summarized in Table 8. Table 8: Overview of downstream BCI tasks and datasets.                                            
+
+> Downstream Tasks Dataset # Channels # Samples Window Label
+> Emotion Recognition FACED 32 10,332 10s 9-class SEED-V 62 117,744 1s 5-class Motor Imagery Classification PhysioNet-MI 64 9,837 4s 4-class SHU-MI 32 11,988 4s 2-class Sleep Staging ISRUC 689,240 30s 5-class Seizure Detection CHB-MIT 16 326,993 10s 2-class Imagined Speech Classification BCIC2020-3 64 6,000 3s 5-class Event Type Classification TUEV 16 112,491 5s 6-class
+
+Fine-tuning setup. For each downstream task, we attach a lightweight three-layer MLP classifi-cation head on top of the pretrained T RACE encoder and fine-tune the full model end-to-end. The 15 Table 6: Hyperparameters of T RACE architecture. 
+
+Hyperparameters Values Patch embedding 
+
+Temporal kernel set |Q temp | 3
+
+Temporal kernels Qtemp {25 , 49 , 99 }
+
+CNN stride 25 
+
+Filters per branch 8
+
+Spectral branch FFT log-amplitude Spectral frequency bins 101 
+
+Fusion sigmoid-gated Patch embedding dimension d 200 
+
+Multi-Scale Channel Positional Encoding (MS-ChPE) 
+
+Channel-kernel branches R 3 depth-wise Conv2d Channel kernels {qr }Rr=1 {5, 11 , 19 }
+
+Time kernel 1
+
+Transformer backbone 
+
+Layers L 12 
+
+Hidden size d 200 
+
+FFN intermediate size 800 
+
+Attention heads 8
+
+KV heads 8
+
+Positional encoding RoPE ( θ=10 ,000 )Activation SiLU Normalization RMSNorm ( ϵ=1e −6)
+
+Cross-Channel Temporal Routing FFN (CTR-FFN) 
+
+Specialized experts N 64 
+
+Activated specialized experts K 8
+
+Shared expert Expert N +1 1
+
+Routing context TemporalFormer Expert selection Top-K Expert Selector TemporalFormer query tokens m 4
+
+TemporalFormer attention heads 4
+
+fine-tuning hyperparameters are selected for each dataset based on the task type and dataset scale. Table 9 lists the learning rate, weight decay, dropout rate, and batch size used for each downstream benchmark. 
+
+## F More Results on Other Downstream BCI Tasks 
+
+We provide additional downstream results on SHU-MI and TUEV to further evaluate the transfer ability of T RACE across motor imagery and EEG event classification tasks. 
+
+SHU-MI. As shown in Table 10, CodeBrain achieves the best overall performance on SHU-MI, reaching 0.6431 Balanced Accuracy, 0.7166 AUC-PR, and 0.7124 AUROC. T RACE remains competitive among EEG foundation models, obtaining 0.6329 Balanced Accuracy, 0.6978 AUC-PR, and 0.6988 AUROC. Notably, its AUROC matches CBraMod ( 0.6988 ), while its Balanced Accuracy remains higher than BIOT and LaBraM-Base. Compared with task-specific baselines such as EEGConformer and ST-Transformer, T RACE also shows a clear improvement in Balanced Accuracy and AUC-PR. These results suggest that although T RACE does not achieve the best result on SHU-MI, it maintains strong transfer performance on motor imagery classification. 16 Table 7: Hyperparameters of pre-training. 
+
+Hyperparameters Values Schedule 
+
+Epochs 30 
+
+Batch size 256 
+
+Mixed precision bf16 
+
+Optimizer 
+
+Linear params (dim ≥ 2) Muon, lr=1e −3
+
+Embeddings / LN / biases AdamW, lr=2e −5
+
+Weight decay 1e −2
+
+LR schedule cosine decay Warmup steps 2,000 
+
+Gradient clipping (max norm) 1.0
+
+Forecasting objective 
+
+Horizons H {1, 2, 4}
+
+Huber threshold δ 1.0
+
+Autoregressive loss LAR unit weight 
+
+Auxiliary losses 
+
+Expert-balancing weight λaux 1e −2
+
+Table 9: Fine-tuning hyperparameters for downstream tasks. 
+
+Dataset Learning rate Weight decay Dropout Batch size 
+
+FACED 2e −3 5e −2 0.05 16 
+
+SEED-V 2e −3 5e −2 0.10 256 
+
+PhysioNet-MI 5e −3 5e −2 0.10 64 
+
+SHU-MI 1e −3 5e −3 0.10 32 
+
+ISRUC 5e −3 5e −2 0.10 16 
+
+CHB-MIT 2e −3 5e −3 0.10 64 
+
+BCIC2020-3 5e −3 5e −2 0.10 32 
+
+TUEV 2e −3 5e −2 0.10 32 
+
+Table 10: Performance comparison on the SHU-MI (2-Class) dataset. 
+
+Method Balanced Accuracy AUC-PR AUROC 
+
+EEGNet 0.5889 ± 0.0177 0.6311 ± 0.0142 0.6283 ± 0.0152 EEGConformer 0.5900 ± 0.0107 0.6370 ± 0.0093 0.6351 ± 0.0101 CNN-Transformer 0.5975 ± 0.0169 0.6412 ± 0.0076 0.6323 ± 0.0082 FFCL 0.5692 ± 0.0252 0.5943 ± 0.0172 0.6014 ± 0.0168 ST-Transformer 0.5992 ± 0.0206 0.6394 ± 0.0122 0.6431 ± 0.0111 BIOT 0.6179 ± 0.0183 0.6770 ± 0.0119 0.6609 ± 0.0127 LaBraM-Base 0.6166 ± 0.0192 0.6761 ± 0.0083 0.6604 ± 0.0091 CBraMod 0.6370 ± 0.0151 0.7139 ± 0.0088 0.6988 ± 0.0068 CodeBrain 0.6431 ± 0.0066 0.7166 ± 0.0106 0.7124 ± 0.0050 
+
+TRACE (Ours) 0.6329 ± 0.0061 0.6978 ± 0.0059 0.6988 ± 0.0048 
+
+TUEV. As shown in Table 11, TUEV is a challenging six-class clinical EEG event classification benchmark. T RACE obtains 0.6340 Balanced Accuracy, 0.6358 Cohen’s Kappa, and 0.8113 Weighted F1. Although the strongest results on this dataset are achieved by CBraMod and CodeBrain, T RACE 
+
+substantially outperforms task-specific baselines such as EEGConformer and ST-Transformer, and also improves over BIOT across all three metrics. Compared with BIOT, T RACE increases Balanced 17 Accuracy by +10 .59% , Cohen’s Kappa by +10 .85% , and Weighted F1 by +6 .21% percentage points. These results indicate that T RACE transfers effectively to clinical event classification, while also showing that TUEV remains a demanding benchmark where reconstruction- or tokenization-based EEG foundation models can retain an advantage. Table 11: Performance comparison on the TUEV (6-Class) dataset.                                                                                               
+
+> Method Balanced Accuracy Cohen’s Kappa Weighted F1
+> EEGNet 0.3876 ±0.0143 0.3577 ±0.0155 0.6539 ±0.0120 EEGConformer 0.4074 ±0.0164 0.3967 ±0.0195 0.6983 ±0.0152 CNN-Transformer 0.4087 ±0.0161 0.3815 ±0.0134 0.6854 ±0.0293 FFCL 0.3979 ±0.0104 0.3732 ±0.0188 0.6783 ±0.0120 ST-Transformer 0.3984 ±0.0228 0.3765 ±0.0306 0.6823 ±0.0190 BIOT 0.5281 ±0.0225 0.5273 ±0.0249 0.7492 ±0.0082 LaBraM-Base 0.6409 ±0.0065 0.6637 ±0.0093 0.8312 ±0.0052 CBraMod 0.6671 ±0.0107 0.6772 ±0.0096 0.8342 ±0.0064 CodeBrain 0.6428 ±0.0062 0.6912 ±0.0101 0.8362 ±0.0048
+> TRACE (Ours) 0.6340 ±0.0036 0.6358 ±0.0244 0.8113 ±0.0114
+
+## G Implementation Details 
+
+G.1 Causal Spatial-Temporal Attention 
+
+This section provides the detailed implementation of the causal spatial–temporal attention (CSTA) module used in each TR-MoE block. Let the input to the l-th block be Hl ∈ RC×n×d, where C is the number of EEG channels, n is the number of temporal patches, and d is the hidden dimension. CSTA factorizes full attention over the Cn patch tokens into two structured attention branches: a spatial branch over channels at the same temporal step and a causal temporal branch over past patches within each channel. This design captures both instantaneous cross-channel coupling and within-channel temporal dynamics while preserving the autoregressive constraint. 
+
+Spatial attention branch. For each temporal step j, we collect the channel tokens Hl 
+
+> :,j
+
+∈ RC×d
+
+and apply multi-head self-attention along the channel axis: 
+
+Sl 
+
+> :,j
+
+= MHA sp 
+
+ Hl 
+
+> :,j
+
+, Hl 
+
+> :,j
+
+, Hl
+
+> :,j
+
+ . (19) The attention weights are computed only among channels that belong to the same temporal patch index 
+
+j. Therefore, the spatial branch models global electrode interactions at each timestep without using information from any future temporal patch. In practice, this branch is implemented by reshaping the tensor from (B, C, n, d ) to (Bn, C, d ) and applying standard multi-head attention with sequence length C.
+
+Causal temporal attention branch. For each channel i, we collect its temporal sequence Hli, : ∈
+
+Rn×d and apply multi-head self-attention along the patch axis with a lower-triangular causal mask: 
+
+Tli, : = MHA time 
+
+ Hli, :, Hli, :, Hli, :; Mcausal 
+
+ , (20) where Mcausal (j, j ′) = 0 if j′ ≤ j and −∞ otherwise. Thus, the output token at temporal step j can attend only to patches {1, . . . , j } from the same channel. This branch is implemented by reshaping 
+
+(B, C, n, d ) to (BC, n, d ) and applying standard masked multi-head attention with sequence length 
+
+n.
+
+Branch fusion. The two attention outputs are reshaped back to (B, C, n, d ) and fused with an output projection: 
+
+CSTA( Hl)i,j = Wo
+
+Sli,j ; Tli,j 
+
+ , (21) 18 where [·; ·] denotes feature concatenation and Wo ∈ R2d×d projects the fused representation back to the model dimension. The projected output is then used in the pre-norm residual update in the TR-MoE block, as defined in Section 2.4. CSTA is causal because the spatial branch only mixes channels at the same temporal step and the temporal branch uses a causal mask along the patch axis. Compared with full attention over all Cn tokens, which has complexity O(C2n2), the factorized implementation has complexity 
+
+O(nC 2 + Cn 2). This is important for EEG pre-training because both the channel count and sequence length can vary substantially across datasets. 
+
+## H More Experimental Results 
+
+H.1 Effect of Multi-Horizon Forecasting 
+
+We first examine the design of the autoregressive forecasting objective. Instead of predicting only the next EEG patch, T RACE can be trained to predict future patches at multiple temporal offsets. We compare three horizon sets, H = {1}, H = {1, 2}, and H = {1, 2, 4}.Table 12: Anlysis of the multi-horizon forecasting objective. The best result in each dataset block is highlighted in bold .                                                                                                                                                    
+
+> Dataset Horizon Set Balanced Acc Cohen’s Kappa Weighted F1 FACED
+> H={1}62.14 ±0.35 57.25 ±0.33 62.47 ±0.36
+> H={1,2}61.31 ±1.39 56.25 ±1.63 61.57 ±1.44
+> H={1,2,4}62.83 ±0.59 58.07 ±0.69 63.17 ±0.58
+> SEED-V
+> H={1}40.95 ±0.46 26.51 ±0.76 41.64 ±0.65
+> H={1,2}40.73 ±0.51 26.16 ±0.71 41.37 ±0.55
+> H={1,2,4}40.63 ±0.33 25.94 ±0.42 41.19 ±0.35
+> PhysioNet-MI
+> H={1}63.07 ±1.45 50.75 ±1.93 63.28 ±1.41
+> H={1,2}63.49 ±0.67 51.31 ±0.89 63.71 ±0.76
+> H={1,2,4}63.62 ±0.30 51.49 ±0.40 63.90 ±0.25
+> Average
+> H={1}55.39 ±0.75 44.84 ±1.01 55.80 ±0.81
+> H={1,2}55.18 ±0.86 44.57 ±1.08 55.55 ±0.92
+> H={1,2,4}55.69 ±0.41 45.17 ±0.50 56.09 ±0.39
+
+As shown in Table 12, using H = {1, 2, 4} gives the best average performance across the three downstream datasets. Compared with the single-step objective H = {1}, the multi-horizon objective improves the average Balanced Accuracy from 55 .39% to 55 .69% , Cohen’s Kappa from 44 .84% 
+
+to 45 .17% , and Weighted F1 from 55 .80% to 56 .09% . The gain is most evident on FACED and PhysioNet-MI. On FACED, H = {1, 2, 4} improves Balanced Accuracy by +0 .69 percentage points and Weighted F1 by +0 .70 percentage points over H = {1}. On PhysioNet-MI, it also achieves the best result across all metrics, with a smaller standard deviation than the single-step setting. SEED-V shows a slightly different pattern, where the single-step horizon performs best. This suggests that the optimal temporal prediction scale can vary across downstream tasks, while combining multiple horizons provides the strongest average transfer. 19 Figure 3: Pre-training loss dynamics under different horizon sets. Figure 3 further compares the pre-training dynamics under different horizon sets. Adding longer horizons increases the forecasting loss, which is expected because farther future patches are harder to predict from causal context. Importantly, this higher forecasting loss does not indicate weaker downstream transfer: H = {1, 2, 4} shows the largest forecasting loss but achieves the best average performance in Table 12. This suggests that multi-horizon forecasting creates a more challenging but more informative temporal prediction task. 
+
+H.2 Effect of Multi-source Pre-training 
+
+We evaluate the impact of pre-training data composition by comparing four source combinations, ranging from single-source pre-training to the full multi-source corpus. This experiment aims to determine whether source diversity, channel configuration, and task coverage improve downstream transfer. As shown in Table 13, the full multi-source setting achieves the best performance on SEED-V across B-Acc, Kappa, and F1-W. This highlights two key findings. First, pre-training source domain matters. HBN-only slightly outperforms TUEG-only despite using fewer samples, suggesting that high-density 128-channel healthy-population EEG provides complementary information to the 19-channel clinical EEG in TUEG. Second, task-oriented sources are most effective when combined with large-scale EEG corpora. The 4ds-only setting performs the worst, while the full setting achieves the strongest result after adding the task-oriented datasets to TUEG and HBN. These results suggest that T RACE 
+
+benefits from pre-training on EEG data that spans different channel counts, acquisition conditions, and task domains, rather than relying on a single source or merely increasing sample count. Table 13: Analysis of pre-training data composition for SEED-V.                                                                  
+
+> Pre-training Sources Downstream on SEED-V TUEG HBN Phys-MI Phys-MA SHU-MI CHB-MIT Balanced Acc Cohen’s Kappa Weighted F1
+> ✓✗✗✗✗✗41.10 ±0.08 26.57 ±0.14 41.69 ±0.15
+> ✗✓✗✗✗✗41.24 ±0.55 26.84 ±0.73 42.06 ±0.60
+> ✗✗✓✓✓✓40.81 ±0.61 26.33 ±0.52 41.42 ±0.51
+> ✓✓✓✓✓✓41.86 ±0.32 27.59 ±0.30 42.53 ±0.24
+
+As shown in Table 13, the choice of pre-training data has a clear impact on downstream transfer. The mixed-source corpus provides the strongest overall transfer, suggesting that diverse EEG sources help T RACE learn more general temporal representations. We also observe task-dependent transfer patterns, where sources closer to the target task tend to provide stronger gains on the corresponding downstream benchmark. 20 H.3 Effect of CTR-FFN 
+
+We investigate the essential design of T RACE , i.e. , the CTR-FFN. We evaluate the necessity of this core architectural design by comparing the full T RACE model against three variants: 1) a Non-MoE baseline where the CTR-FFN is replaced with a standard FFN, 2) a Vanilla MoE version where each patch selects its own experts independently via a token-wise router, and 3) a Mean Temporal variant where the routing context at each timestep is obtained by mean-pooling channel embeddings instead of using TemporalFormer. All experiments are conducted on three datasets: FACED, PhysioNet-MI, and SEED-V. As shown in Table 14, our proposed CTR-FFN consistently outperforms all baseline variants across the evaluated datasets. Table 14: Effect of CTR-FFN.                                                                                                                                                         
+
+> Dataset Routing Design Balanced Accuracy Cohen’s Kappa Weighted F1 FACED 9-Class
+> Non-MoE 62.44 ±0.68 57.63 ±1.16 62.91 ±1.06 Vanilla MoE 62.39 ±1.04 57.55 ±0.79 62.66 ±0.65 Mean Temporal 63.45 ±0.53 58.76 ±0.61 63.75 ±0.59
+> TRACE (Ours) 63.52 ±0.37 58.83 ±0.42 63.90 ±0.43
+> PhysioNet-MI 4-Class
+> Non-MoE 62.28 ±1.45 49.70 ±1.93 62.53 ±1.43 Vanilla MoE 62.76 ±0.70 50.34 ±0.93 63.06 ±0.65 Mean Temporal 63.00 ±0.84 50.66 ±1.13 63.30 ±0.87
+> TRACE (Ours) 63.42 ±0.90 51.22 ±1.20 63.65 ±0.96
+> SEED-V 5-Class
+> Non-MoE 39.82 ±0.65 24.86 ±0.96 40.27 ±0.79 Vanilla MoE 38.43 ±0.87 22.91 ±1.26 38.75 ±1.03 Mean Temporal 39.42 ±0.50 24.18 ±0.59 39.82 ±0.46
+> TRACE (Ours) 40.32 ±0.47 25.48 ±0.57 40.76 ±0.44
+> Average
+> Non-MoE 54.85 ±0.93 44.06 ±1.35 55.24 ±1.09 Vanilla MoE 54.53 ±0.87 43.60 ±0.99 54.82 ±0.78 Mean Temporal 55.29 ±0.62 44.53 ±0.78 55.62 ±0.64
+> TRACE (Ours) 55.75 ±0.58 45.18 ±0.73 56.10 ±0.61
+
+On average, T RACE achieves the best balanced accuracy, surpassing the Non-MoE baseline by +0.90 percentage points, the Vanilla MoE by +1.22 percentage points, and the Mean Temporal variant by +0.46 percentage points. This leads to two observations. First, replacing the FFN with a generic token-wise MoE does not necessarily improve performance, suggesting that expert routing strategy is important for EEG modeling. Second, TemporalFormer-based temporal routing further improves over both Vanilla MoE and mean-based temporal routing, indicating that routing all channels at the same timestep with a learned cross-channel temporal context better matches the multi-channel temporal structure of EEG signals. Overall, these results show that the effectiveness of T RACE comes from both sparse expert specialization and temporal routing. 
+
+H.4 Model Scaling with Experts 
+
+We analyze the impact of two key hyperparameters of CTR-FFN, i.e. , the total number of specialized experts N and the number of experts activated at each temporal step K. Figure 4a shows the performance as we scale the total number of experts ( N ∈ { 8, 16 , 32 , 64 }) while keeping the number of activated experts fixed at K = 2 . On SEED-V [Liu et al., 2021], Balanced Accuracy improves from 
+
+0.4032 at N = 8 to 0.4110 at N = 32 and then saturates, while Cohen’s Kappa follows a similar trend, increasing from 0.2548 to 0.2658 . Since training more experts increases model parameters and pre-training cost, these results suggest a trade-off between expert capacity and computational efficiency. Figure 4b presents the performance with regard to the number of top-K activated experts ( K ∈{1, 2, 4, 8}) from a fixed pool of 16 total experts. For SEED-V, both Balanced Accuracy and Cohen’s Kappa improve from K = 2 to K = 4 and then remain relatively stable, suggesting that a moderate number of activated experts is sufficient for this task. These results highlight the flexibility of top-K
+
+21 routing: while a modest K can already capture the necessary patterns for some datasets, denser expert activation does not necessarily provide further gains. 8 16 32 64      
+
+> N
+> 0.38
+> 0.39
+> 0.40
+> 0.41
+> 0.42
+> 0.43
+> Balanced Accuracy
+> 0.4032
+> 0.3974
+> 0.4110 0.4113
+> SEED-V Balanced Accuracy
+> 816 32 64
+> N
+> 0.24
+> 0.26
+> 0.28
+> Cohen's Kappa
+> 0.2548
+> 0.2470
+> 0.2658 0.2664
+> SEED-V Cohen's Kappa
+
+(a) Number of total experts N with top-K=2 fixed 1 2 4 8      
+
+> K
+> 0.39
+> 0.40
+> 0.41
+> 0.42
+> Balanced Accuracy
+> 0.4052
+> 0.3974
+> 0.4069 0.4073
+> SEED-V Balanced Accuracy
+> 1248
+> K
+> 0.23
+> 0.24
+> 0.25
+> 0.26
+> 0.27
+> 0.28
+> Cohen's Kappa
+> 0.2580
+> 0.2470
+> 0.2601 0.2605
+> SEED-V Cohen's Kappa
+
+(b) Number of activated experts K with N =16 fixed 
+
+Figure 4: Study of the Mixture-of-Experts (MoE) configuration. Balanced accuracy and Cohen’s Kappa on SEED-V ( 5-class) when varying (a) the total number of experts N with top-K=2 fixed, and (b) the number of activated experts K with N =16 fixed. Lines and shaded regions denote the mean and standard deviation over 5 random seeds. 
+
+H.5 Effect of the Shared Expert 
+
+To evaluate the contribution of the always-on shared expert, we conduct an ablation study comparing the full T RACE model against a variant where all experts are specialized and none are shared. All other settings, including the CTR-FFN, model architecture, pre-training corpus, and downstream fine-tuning protocol, are kept fixed. Table 15: Effect of the shared expert. 
+
+Dataset Variant Balanced Acc Cohen’s Kappa Weighted F1 FACED w/o Shared Expert 62.44 ± 0.14 57.60 ± 0.13 62.77 ± 0.22 
+
+w/ Shared Expert 63.52 ± 0.37 58.83 ± 0.42 63.90 ± 0.43 
+
+BCIC2020 w/o Shared Expert 61.97 ± 0.78 52.46 ± 0.98 61.97 ± 0.82 
+
+w/ Shared Expert 63.15 ± 0.55 53.93 ± 0.69 63.16 ± 0.57 As shown in Table 15, including a shared expert provides consistent improvements on both FACED and BCIC2020 across all metrics. On average, this leads to an improvement of approximately +1 .13 
+
+percentage points in Balanced Accuracy, +1 .35 percentage points in Cohen’s Kappa, and +1 .16 
+
+percentage points in Weighted F1. The most notable gain is observed on BCIC2020, where Cohen’s Kappa increases by nearly 1.5 percentage points. We hypothesize that the shared expert learns to model fundamental EEG patterns that are broadly present across temporal states and channels, such as common signal properties, baseline neural activity, or general rhythmic components. The shared expert can provide a common representation pathway for general EEG patterns, while the specialized experts capture more fine-grained temporal variations. This suggests that the shared expert provides a common representation pathway for general EEG patterns, complementing the specialized experts that capture more fine-grained temporal variations. 
+
+H.6 Effect of Patch Length 
+
+Patch length t determines how raw EEG signals are grouped into temporal patches. In our setting, the signals are resampled to 200 Hz, so patch lengths of 50, 100, 200, and 400 samples correspond to temporal windows of 0.25s, 0.5s, 1s, and 2s, respectively. Each patch is encoded into one token by the time-frequency patch encoder. This token is then used as the prediction unit in multi-horizon autoregressive forecasting and as the temporal unit for expert routing. Therefore, patch length t
+
+directly controls the temporal granularity of both forecasting and expert selection in T RACE .22 Table 16: Ablation on patch length t.                                                                             
+
+> Dataset Patch length tCohen’s Kappa Weighted F1 Balanced Accuracy FACED
+> 50 52.80 ±1.88 58.22 ±1.64 58.36 ±1.70 100 53.23 ±1.49 58.56 ±1.29 58.74 ±1.35
+> 200 58.83 ±0.42 63.90 ±0.43 63.52 ±0.37 400 53.50 ±0.83 59.13 ±0.64 58.82 ±0.73
+> ISRUC
+> 50 75.37 ±0.72 80.65 ±0.55 78.77 ±0.15 100 73.44 ±2.86 78.87 ±2.63 78.26 ±1.12
+> 200 75.41 ±0.29 80.77 ±0.18 79.41 ±0.58 400 75.06 ±1.12 80.57 ±0.95 78.77 ±0.56
+
+We compare four patch lengths t while keeping the model architecture, pre-training corpus, and downstream fine-tuning protocol fixed. As shown in Table 16, the 1s patch achieves the best performance on both FACED and ISRUC across all three metrics. The effect is especially clear on FACED, where the 1s patch improves Balanced Accuracy by nearly 4.7 percentage points over the neighboring settings. ISRUC shows a smaller but consistent gain, suggesting that the 1s patch also transfers well to longer sleep-stage epochs. 
+
+Compatibility with downstream windows. A 1s patch naturally matches common EEG window lengths used in downstream benchmarks. For example, SEED-V uses 1s clips, PhysioNet-MI uses 4s windows, and ISRUC uses 30s epochs. With a 1s patch, these inputs can be represented as an integer number of tokens without unnecessary padding or truncation. This choice is also consistent with recent EEG foundation models, where 1s EEG segments are commonly used as the basic modeling unit [Jiang et al., 2024b, Wang et al., 2025, Ma et al., 2025]. Smaller patches increase the number of temporal tokens and the routing cost of the CTR-FFN, while larger patches can be less suitable for short-window datasets. 
+
+Preserving waveform structure. A 1s patch also better preserves physiologically meaningful EEG patterns. Many EEG events occur at sub-second to second-level scales, such as K-complexes around 1s, sleep spindles lasting 0.5–2s, and event-related potentials such as P300 around 0.3–0.6s. Very small patches may split these patterns across multiple tokens, while very large patches may merge fast transients into a coarse representation. The 1s setting therefore provides a practical balance between local waveform preservation, temporal abstraction, and computational efficiency. 
+
+H.7 Embedding Design Ablation 
+
+We further ablate the embedding design of T RACE . All variants keep the backbone, pre-training objective, and downstream fine-tuning protocol fixed, and only modify the patch encoder. The results are summarized in Tables 17–19. 
+
+Branch design. We first examine whether both the time-domain CNN branch and the spectral FFT branch are necessary. Removing the time branch causes a substantial drop, decreasing Balanced Accuracy by 23 .25 percentage points on FACED and 6.03 points on BCIC2020-3. In contrast, removing the FFT branch only mildly affects performance, with drops of 0.40 and 2.11 points on the two datasets. This suggests that the time-domain CNN branch carries the dominant discriminative signal, while the FFT branch provides complementary spectral cues for tasks with stronger frequency-band structure. Table 17: Anlysis of time-frequency branch design.                                
+
+> Branch Design FACED BCIC2020-3 Balanced Acc Kappa Balanced Acc Kappa
+> Full dual-branch 0.6352 ±0.0037 0.5883 0.6315 ±0.0055 0.5393
+> Time-only ( w/o FFT) 0.6312 ±0.0083 0.5835 0.6104 ±0.0151 0.5130 FFT-only ( w/o Time) 0.4027 ±0.0129 0.3250 0.5712 ±0.0214 0.4640
+
+23 Fusion strategy. We examine whether the learnable sigmoid gate is necessary for fusing the time-domain and FFT-based branches. Compared with the default sigmoid-gated fusion, fixed summation decreases Balanced Accuracy by 1.36 percentage points on FACED and 0.99 points on BCIC2020-3. It also leads to a larger standard deviation on BCIC2020-3. This suggests that the two branches should not be combined with a fixed equal-weight rule; the learnable gate provides an adaptive fusion mechanism that dynamically balances temporal and spectral information. Table 18: Analysis of branch fusion strategy.                      
+
+> Fusion Design FACED BCIC2020-3 Balanced Acc Kappa Balanced Acc Kappa
+> Sigmoid-gated fusion 0.6352 ±0.0037 0.5883 0.6315 ±0.0055 0.5393
+> Fixed sum fusion 0.6216 ±0.0118 0.5731 0.6216 ±0.0216 0.5270
+
+CNN kernel scale. We further examine the effect of temporal kernel scale in the time-domain CNN branch. As shown in Table 19, both single-kernel variants underperform the multi-scale default. On FACED, using only the narrow kernel q = 25 and the wide kernel q = 99 decreases Balanced Accuracy by 1.56 and 2.09 percentage points, respectively. On BCIC2020-3, the gap is smaller: 
+
+q = 25 trails the default by 0.88 points, while q = 99 is only 0.27 points lower. These results suggest that informative EEG waveform patterns appear at multiple temporal scales. A single narrow or wide kernel can capture part of the signal, but the multi-scale design Qtemp =
+
+{25 , 49 , 99 } provides a more robust time-domain embedding across tasks with different temporal dynamics. Table 19: Ablation on temporal CNN kernel scale.                                         
+
+> Temporal Kernel Set FACED BCIC2020-3 Balanced Acc Kappa Balanced Acc Kappa
+> Multi-scale Qtemp ={25 ,49 ,99 }0.6352 ±0.0037 0.5883 0.6315 ±0.0055 0.5393
+> Single-scale Qtemp ={25 }0.6196 ±0.0089 0.5697 0.6227 ±0.0206 0.5283 Single-scale Qtemp ={99 }0.6143 ±0.0140 0.5641 0.6288 ±0.0137 0.5360
+
+H.8 Effect of Auxiliary Expert-Balancing Loss 
+
+We examine whether the auxiliary expert-balancing loss Laux is necessary for maintaining diverse expert routing in CTR-FFN. This analysis uses the ablation setting with N =16 , K=4 , and Temporal-Former routing. We compare the default model in this setting with an ablated variant trained without the auxiliary expert-balancing loss, and analyze the routed experts on four downstream datasets: FACED, SEED-V, BCIC2020-3, and PhysioNet-MI. To quantify cross-dataset expert overlap, we compute the Jaccard similarity between the top-4 routed expert sets of different datasets. For two expert sets A and B, it is defined as J(A, B ) = |A ∩ B|/|A ∪ B|. A higher Jaccard similarity indicates that different datasets rely on more similar experts, suggesting more concentrated and less task-specific routing. Table 20: Top-4 routed experts with and without auxiliary expert-balancing loss. 
+
+Dataset Default w/o Aux. Loss 
+
+FACED {6, 3, 5, 15 } {12 , 9, 6, 2}
+
+SEED-V {13 , 16 , 1, 8} {4, 9, 8, 5}
+
+BCIC2020-3 {2, 13 , 11 , 8} {9, 8, 12 , 10 }
+
+PhysioNet-MI {13 , 6, 5, 3} {9, 8, 7, 13 }      
+
+> Note: Expert 9appears in the top-4experts for all four datasets under the ablated setting; expert 8appears in three out of four datasets.
+
+24 Figure 5: Effect of auxiliary expert-balancing loss on per-class routing. Average routing weights over time, layers, and samples for four downstream datasets under the auxiliary-loss ablation setting with N =16 , K=4 , and TemporalFormer routing. Top: default model with auxiliary expert-balancing loss. Bottom: ablated model without auxiliary expert-balancing loss. Removing the auxiliary loss leads to more concentrated expert usage: expert 9 appears in the top-4 experts for all datasets, and the mean pairwise top-4 Jaccard similarity increases from 0.203 to 0.314 (+55% ). Table 21: Quantitative evidence of routing concentration.                   
+
+> Metric Default w/o Aux. Loss Change
+> Mean pairwise Jaccard of top-4 experts 0.203 0.314 +55%
+> Universal experts in top-4 across 4 datasets 01+1
+> Experts appearing in ≥3datasets’ top-4 12+1
+> Task-specific experts appearing in only 1 dataset 550
+
+1) Removing the auxiliary loss increases cross-dataset expert overlap. As shown in Table 21, the mean pairwise Jaccard similarity rises from 0.203 to 0.314 after removing the auxiliary expert-balancing loss, corresponding to a relative increase of 55% . This indicates that the dominant experts selected by different downstream datasets become more similar without the balancing constraint. 
+
+2) Removing the auxiliary loss creates a universal dominant expert. As shown in Table 20, in the default model, no expert appears in the top-4 routed experts for all four datasets. In contrast, without the auxiliary expert-balancing loss, expert 9 appears in the top-4 routed experts for FACED, SEED-V, BCIC2020-3, and PhysioNet-MI, while expert 8 appears in three out of four datasets. This suggests that the router becomes more dependent on a small subset of experts when the auxiliary loss is removed. Overall, these results indicate that the auxiliary expert-balancing loss helps prevent routing collapse and encourages more diverse expert utilization across downstream tasks. Figure 5 provides a qualitative visualization of the same trend, where the ablated model shows more concentrated routing weights across datasets. 25
