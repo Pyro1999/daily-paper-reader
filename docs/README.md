@@ -6,71 +6,79 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-05-05 ~ 2026-06-03
-- 运行时间：2026-06-03 14:13:43 UTC
+- 最新运行日期：2026-06-03
+- 运行时间：2026-06-03 22:48:10 UTC
 - 运行状态：成功
-- 本次总论文数：17
-- 精读区：6
-- 速读区：11
+- 本次总论文数：19
+- 精读区：7
+- 速读区：12
 
 ### 今日简报（AI）
-本期日报覆盖17篇EEG研究，精选9分文献聚焦疲劳预测与基础模型鲁棒性。最值得关注的方向：通过EEG功能连接预测持续注意任务中的疲劳反应时间，以及EEG基础模型的鲁棒性与可解释性。建议优先精读这两篇9分论文，深入理解脑电信号分析的前沿方法。
-- 详情：[/20260505-20260603/README](/20260505-20260603/README)
+今日精选19篇论文，重点聚焦EEG基础模型的评估验证与可穿戴脑电信号增强技术。  
+最值得关注的方向：EEG基础模型的系统性评估（两篇9分精读）以及利用额叶电极生成虚拟通道的可穿戴方案（8分速读）。  
+建议优先阅读EEG-FM-Audit评估框架，并关注可穿戴BCI在实时情绪识别中的简化设计趋势。
+- 详情：[/202606/03/README](/202606/03/README)
 
 ### 精读区论文标签
-1. [Fatigue-Related Reaction Time Forecasting via EEG Functional Connectivity in Sustained Attention Task](/20260505-20260603/2605.08631v1-fatigue-related-reaction-time-forecasting-via-eeg-functional-connectivity-in-sustained-attention-task)  
-   标签：评分：9.0/10、query:bci-pilot
-   evidence：基于EEG的反应时间预测用于认知负荷（疲劳）
-2. [Beyond Accuracy: Robustness, Interpretability and Expressiveness of EEG Foundation Models](/20260505-20260603/2605.17562v1-beyond-accuracy-robustness-interpretability-and-expressiveness-of-eeg-foundation-models)  
+1. [EEG-FM-Audit: A Systematic Evaluation and Analysis Pipeline for EEG Foundation Models](/202606/03/2605.26910v1-eeg-fm-audit-a-systematic-evaluation-and-analysis-pipeline-for-eeg-foundation-models)  
    标签：评分：9.0/10、query:pbci-load
-   evidence：EEG基础模型鲁棒性与可解释性基准
-3. [CLEF: EEG Foundation Model for Learning Clinical Semantics](/20260505-20260603/2605.10817v1-clef-eeg-foundation-model-for-learning-clinical-semantics)  
+   evidence：对EEG基础模型的系统评估
+2. [A Multi-dimensional Framework for Evaluating Generalization in EEG Foundation Models](/202606/03/2605.28563v1-a-multi-dimensional-framework-for-evaluating-generalization-in-eeg-foundation-models)  
+   标签：评分：9.0/10、query:pbci-load
+   evidence：在低资源条件下评估EEG基础模型泛化性的框架
+3. [OmniEEG-Bench: A Standardized Evaluation Benchmark for EEG Foundation Models](/202606/03/2606.00815v1-omnieeg-bench-a-standardized-evaluation-benchmark-for-eeg-foundation-models)  
+   标签：评分：9.0/10、query:pbci-load
+   evidence：EEG基础模型的标准化基准，涵盖认知和情感任务，直接与EEG基础模型相关
+4. [EvoBrain: Continual Learning of EEG Foundation Models Across Heterogeneous BCI Tasks](/202606/03/2606.01767v1-evobrain-continual-learning-of-eeg-foundation-models-across-heterogeneous-bci-tasks)  
+   标签：评分：9.0/10、query:pbci-load
+   evidence：EEG基础模型持续学习用于BCI任务
+5. [Aperiodic and Low-Frequency Spectral Bias in Reconstruction based EEG Foundation Models](/202606/03/2605.26434v1-aperiodic-and-low-frequency-spectral-bias-in-reconstruction-based-eeg-foundation-models)  
    标签：评分：8.0/10、query:pbci-load
-   evidence：面向临床语义的EEG基础模型
-4. [From Clever Hans to Scientific Discovery: Interpreting EEG Foundational Transformers with LRP](/20260505-20260603/2605.11885v1-from-clever-hans-to-scientific-discovery-interpreting-eeg-foundational-transformers-with-lrp)  
+   evidence：直接研究基于重构的EEG基础模型的谱偏差，揭示了低资源场景下的局限性
+6. [SYNAPSE: Neuro-Symbolic Visual Thought-to-Text Decoding via Topological Semantic Denoising](/202606/03/2605.27790v1-synapse-neuro-symbolic-visual-thought-to-text-decoding-via-topological-semantic-denoising)  
    标签：评分：8.0/10、query:pbci-load
-   evidence：使用LRP解释EEG基础Transformer，应用于BCI
-5. [Mechanistic Interpretability of EEG Foundation Models via Sparse Autoencoders](/20260505-20260603/2605.13930v1-mechanistic-interpretability-of-eeg-foundation-models-via-sparse-autoencoders)  
+   evidence：使用神经符号深度学习进行被动脑机接口中的脑电解码
+7. [Benchmarking Positional Encoding Strategies for Transformer-Based EEG Foundation Models](/202606/03/2605.29754v1-benchmarking-positional-encoding-strategies-for-transformer-based-eeg-foundation-models)  
    标签：评分：8.0/10、query:pbci-load
-   evidence：通过稀疏自编码器实现EEG基础模型的机械可解释性
-6. [Mechanistic Interpretability of EEG Foundation Models via Sparse Autoencoders](/20260505-20260603/2605.13930v2-mechanistic-interpretability-of-eeg-foundation-models-via-sparse-autoencoders)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：通过稀疏自编码器实现EEG基础模型机械可解释性
+   evidence：针对EEG基础模型的位置编码策略进行系统对比，可用于被动BCI认知负荷评估
 
 ### 速读区论文标签
-1. [PRiSE-EEG: A Prior-Guided Foundation Model with Depth-Stratified Experts for Cross-Paradigm EEG Representation Learning](/20260505-20260603/2605.18085v1-prise-eeg-a-prior-guided-foundation-model-with-depth-stratified-experts-for-cross-paradigm-eeg-representation-learning)  
+1. [Robust Frequency-Calibrated Virtual EEG Channel Generation from Four Frontal Electrodes for Wearable EEG Augmentation](/202606/03/2605.29263v1-robust-frequency-calibrated-virtual-eeg-channel-generation-from-four-frontal-electrodes-for-wearable-eeg-augmentation)  
    标签：评分：8.0/10、query:pbci-load
-   evidence：跨范式EEG表示学习的基础模型
-2. [Atoms of Thought: Universal EEG Representation Learning with Microstates](/20260505-20260603/2605.20182v1-atoms-of-thought-universal-eeg-representation-learning-with-microstates)  
+   evidence：FAVC-Net深度学习模型从稀疏额叶电极生成虚拟EEG通道，实现脑电图增强。
+2. [A Minimalist Brain-Computer Musical Interface for Real-Time Emotion-Driven Sonification: System Design and Preliminary Evaluation](/202606/03/2606.01473v1-a-minimalist-brain-computer-musical-interface-for-real-time-emotion-driven-sonification-system-design-and-preliminary-evaluation)  
    标签：评分：8.0/10、query:pbci-load
-   evidence：使用微状态进行通用EEG表示学习；EEG信号处理的基础模型；可应用于认知负荷估计
-3. [Aperiodic and Low-Frequency Spectral Bias in Reconstruction based EEG Foundation Models](/20260505-20260603/2605.26434v1-aperiodic-and-low-frequency-spectral-bias-in-reconstruction-based-eeg-foundation-models)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：EEG基础模型频谱偏差影响被动BCI性能
-4. [A Multi-dimensional Framework for Evaluating Generalization in EEG Foundation Models](/20260505-20260603/2605.28563v1-a-multi-dimensional-framework-for-evaluating-generalization-in-eeg-foundation-models)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：评估EEG基础模型在认知负荷任务中的泛化能力
-5. [Physiologically Grounded Driver Behavior Classification: SHAP-Driven Elite Feature Selection and Hybrid Gradient Boosting for Multimodal Physiological Signals](/20260505-20260603/2605.05120v1-physiologically-grounded-driver-behavior-classification-shap-driven-elite-feature-selection-and-hybrid-gradient-boosting-for-multimodal-physiological-signals)  
+   evidence：使用EEG的被动脑机接口进行实时情感解码
+3. [MSCGC-KAN: Multi-scale Causal Graph Convolution and Kolmogorov-Arnold Feature Mapping for EEG Emotion Recognition](/202606/03/2605.26624v2-mscgc-kan-multi-scale-causal-graph-convolution-and-kolmogorov-arnold-feature-mapping-for-eeg-emotion-recognition)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：多模态生理信号（含EEG）用于驾驶行为分类
-6. [CORTEG: Foundation Models Enable Cross-Modality Representation Transfer from Scalp to Intracranial Brain Recordings](/20260505-20260603/2605.10337v1-corteg-foundation-models-enable-cross-modality-representation-transfer-from-scalp-to-intracranial-brain-recordings)  
+   evidence：利用预训练EEG基础模型和多尺度因果图卷积进行情感识别，与EEG基础模型相关
+4. [CaMBRAIN: Real-time, Continuous EEG Inference with Causal State Space Models](/202606/03/2605.28792v1-cambrain-real-time-continuous-eeg-inference-with-causal-state-space-models)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：跨模态EEG基础模型转移
-7. [TRACE: Temporal Routing with Autoregressive Cross-channel Experts for EEG Representation Learning](/20260505-20260603/2605.11380v1-trace-temporal-routing-with-autoregressive-cross-channel-experts-for-eeg-representation-learning)  
+   evidence：用于实时EEG推理的因果状态空间模型，与EEG深度学习和被动BCI方法相关
+5. [Robust Frequency-Calibrated Virtual EEG Channel Generation from Four Frontal Electrodes for Wearable EEG Augmentation](/202606/03/2605.29263v2-robust-frequency-calibrated-virtual-eeg-channel-generation-from-four-frontal-electrodes-for-wearable-eeg-augmentation)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：自回归EEG预训练框架
-8. [What Do EEG Foundation Models Capture from Human Brain Signals?](/20260505-20260603/2605.11410v1-what-do-eeg-foundation-models-capture-from-human-brain-signals)  
+   evidence：为低通道可穿戴EEG生成虚拟通道，增强EEG信号质量以支持被动BCI
+6. [Routing on the Stiefel Manifold: When Does Adaptive Subspace Selection Help for Cross-Domain EEG Decoding?](/202606/03/2605.31043v1-routing-on-the-stiefel-manifold-when-does-adaptive-subspace-selection-help-for-cross-domain-eeg-decoding)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：分析EEG基础模型从脑信号中捕捉到的特征
-9. [I see artifacts: ICA-based EEG artifact removal does not improve deep network decoding across three BCI tasks](/20260505-20260603/2605.06018v1-i-see-artifacts-ica-based-eeg-artifact-removal-does-not-improve-deep-network-decoding-across-three-bci-tasks)  
+   evidence：提出动态Stiefel路由的跨域EEG解码新算法，可直接用于被动BCI的心智负荷估计
+7. [Dive into Waves: Morlet Spectral Transformer for Cross-Subject Emotion Decoding from EEG](/202606/03/2606.00884v1-dive-into-waves-morlet-spectral-transformer-for-cross-subject-emotion-decoding-from-eeg)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：Morlet频谱变换器用于跨被试EEG情绪解码，使用深度学习和频域建模，与EEG基础模型相关
+8. [Behavioural and neural signatures across diverse cognitive demands in a multimodal electroencephalography-functional magnetic resonance imaging design](/202606/03/biorxiv-10-64898-2026-05-24-727533-v1-behavioural-and-neural-signatures-across-diverse-cognitive-demands-in-a-multimodal-electroencephalography-functional-magnetic-resonance-imaging-design)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：基于EEG的跨任务认知需求评估，包括N-back任务
+9. [MSCGC-KAN: Multi-scale Causal Graph Convolution and Kolmogorov-Arnold Feature Mapping for EEG Emotion Recognition](/202606/03/2605.26624v1-mscgc-kan-multi-scale-causal-graph-convolution-and-kolmogorov-arnold-feature-mapping-for-eeg-emotion-recognition)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：研究ICA去伪迹对深度学习EEG解码的影响，与BCI信号处理相关
-10. [NeuralBench: A Unifying Framework to Benchmark NeuroAI Models](/20260505-20260603/2605.08495v1-neuralbench-a-unifying-framework-to-benchmark-neuroai-models)  
+   evidence：使用EEG基础模型和深度学习进行情感识别，方法可转移至认知负荷评估
+10. [A Shared Valence Axis Across Modern LLMs and Human EEG: The Saturation Regularity](/202606/03/2606.00129v1-a-shared-valence-axis-across-modern-llms-and-human-eeg-the-saturation-regularity)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：EEG深度学习模型的统一基准，支持认知负荷算法的公平比较
-11. [From EEG Cleaning to Decoding: The Role of Artifact Rejection in MI-based BCIs](/20260505-20260603/2605.12408v1-from-eeg-cleaning-to-decoding-the-role-of-artifact-rejection-in-mi-based-bcis)  
+   evidence：提出共享效价轴连接LLM和人脑电，为EEG分析提供新方法
+11. [UF-AMA: A unified framework for cross-domain emotion recognition via adaptive multimodal alignment](/202606/03/2606.00170v1-uf-ama-a-unified-framework-for-cross-domain-emotion-recognition-via-adaptive-multimodal-alignment)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：用于健壮BCI流程的EEG伪影拒绝方法
+   evidence：使用EEG和深度学习的跨域情感识别，适用于被动BCI
+12. [Beyond Augmentation: Score-Guided Pathological Prior for EEG-based Depression Detection](/202606/03/2606.00180v1-beyond-augmentation-score-guided-pathological-prior-for-eeg-based-depression-detection)  
+   标签：评分：6.0/10、query:pbci-load
+   evidence：使用新颖的分数引导先验处理小样本的深度学习脑电分类
 
 
 <div class="dpr-home-promo-card">
