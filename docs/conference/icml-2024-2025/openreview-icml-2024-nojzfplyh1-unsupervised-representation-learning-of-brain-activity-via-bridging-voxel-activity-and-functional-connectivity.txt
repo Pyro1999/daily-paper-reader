@@ -1,0 +1,1757 @@
+Title: Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity
+
+URL Source: https://openreview.net/pdf?id=nOjZfpLyh1
+
+Number of Pages: 35
+
+Markdown Content:
+# Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Ali Behrouz ∗ 1 Parsa Delavari ∗ 2 Farnoosh Hashemi ∗ 1
+
+## Abstract 
+
+Effective brain representation learning is a key step toward the understanding of cognitive processes and diagnosis of neurological dis-eases/disorders. Existing studies have focused on either (1) voxel-level activity, where only a single weight relating the voxel activity to the task (i.e., aggregation of voxel activity over a time window) is considered, missing their temporal dynamics, or (2) functional connectivity of the brain in the level of region of interests, missing voxel-level activities. We design B RAIN MIXER , an unsuper-vised learning framework that effectively utilizes both functional connectivity and associated time series of voxels to learn voxel-level representa-tion in an unsupervised manner. B RAIN MIXER 
+
+employs two simple yet effective MLP-based en-coders to simultaneously learn the dynamics of voxel-level signals and their functional correla-tions. To encode voxel activity, B RAIN MIXER 
+
+fuses information across both time and voxel di-mensions via a dynamic attention mechanism. To learn the structure of the functional connectivity, BRAIN MIXER presents a temporal graph patching and encodes each patch by combining its nodes’ features via a new adaptive temporal pooling. Our experiments show that B RAIN MIXER attains out-standing performance and outperforms 14 base-lines in different downstream tasks and setups. 
+
+## 1. Introduction 
+
+The recent advancement of neuroimaging has provided rich information to understand the human brain. The provided data, however, is high-dimensional and complex in na-ture (Poldrack & Gorgolewski, 2014), which makes it hard      
+
+> *Equal contribution 1Cornell University, Ithaca, NY, USA
+> 2University of British Columbia, Vancouver, BC, Canada. Corre-spondence to: Ali Behrouz <ab2947@cornell.edu >.
+> Proceedings of the 41 st International Conference on Machine Learning , Vienna, Austria. PMLR 235, 2024. Copyright 2024 by the author(s).
+
+to take advantage of powerful machine learning models in analyzing them. To overcome this challenge, representation learning serves as the backbone of machine learning meth-ods on neuroimage data and provides a low-dimensional rep-resentation of brain components at different levels of granu-larity, enabling the understanding of behaviors (Schneider et al., 2023), brain functions (Yamins & DiCarlo, 2016) and/or detecting neurological diseases (Uddin et al., 2017). In the neuroimaging literature, studies have mainly focused on two spatial scales—voxel-level and network-level—as well as two analysis approaches—multivariate pattern anal-ysis (MVPA) and functional connectivity (Mahmoudi et al., 2012; Van Den Heuvel & Pol, 2010). The MVPA is often employed at the voxel-level scale and in task-based studies to associate neural activities at a very fine-grained and local level with particular cognitive functions, behaviors, or stim-uli. This method has found applications in various areas, including the detection of neurological conditions (Sunder-mann et al., 2014; Bray et al., 2009), neurofeedback inter-ventions (Cortese et al., 2021), decoding neural responses to visual stimuli (Horikawa & Kamitani, 2017), and classi-fying cognitive states (Mitchell et al., 2003). The functional connectivity analysis, on the other hand, focuses on the tem-poral correlations or statistical dependencies between the activity of different brain regions at larger scales to assess how these areas communicate and collaborate. This method has been utilized to study various topics such as task-related network dynamics (Gonzalez-Castillo & Bandettini, 2018; Hutchison et al., 2013) and the effects of neurological disor-ders on brain connectivity (Greicius, 2008; Du et al., 2018). 
+
+Limitation of Previous Methods. Despite the advances in the representation learning of brain signals, existing stud-ies suffer from a subset of five limitations: 1 Study the human brain at a single scale: Most existing studies study the brain at either voxel-level or functional connectivity, while these two scales can provide complementary informa-tion to each other; e.g., although voxel-level activity pro-vides detailed and more accurate information about brain activity, it misses the information about how different ar-eas communicate with each other at a high level. Recently, this limitation has motivated researchers to search for new methods of integrating these two levels of analyses (Nieto-1Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Castanon, 2022; McNorgan et al., 2020). 2 Supervised setting: Learning brain activity in a supervised setting re-lies on a large number of clinical labels while obtaining accurate and reliable clinical labels is challenging due to its high cost (Avber ˇsek & Repov ˇs, 2022). 3 Missing informa-tion by averaging: Most existing studies on voxel activities aggregate measured voxel activity (e.g., its blood-oxygen level dependence) over each time window to obtain a single beta weight (Roth et al., 2022; Vassena et al., 2020; Roth & Merriam, 2023). However, this approach misses the voxel activity dynamic over each task. Moreover, most studies on brain functional connectivity also aggregate closed voxels to obtain brain activity in the Region of Interest (ROI) level, missing individual voxel activities. 4 Missing the dynam-ics of the interactions: Some existing studies neglect the fact that the functional connectivity of the human brain dynami-cally changes over time, even in resting-state neuroimaging data (Calhoun et al., 2014). In task-dependent neuroimage data, subjects are asked to perform different tasks in differ-ent time windows, and the dynamics of the brain activity play an important role in understanding neurological dis-ease/disorder (Hernandez et al., 2015). 5 Designed for a particular task or neuroimaging modality: Due to the differ-ent and complex clinical patterns of brain signals (da Silva, 1991), some existing methods are designed for a particular type of brain signal data (Lanciano et al., 2020; Cai et al., 2023), and there is a lack of a unified framework. 
+
+Application to Understanding Object Representation in the Brain. Understanding object representation in the brain is a key step toward revealing the basic building blocks of human visual processing (Hebart et al., 2023). Due to the hierarchical nature of human visual processing, it re-quires analyzing brain activity at different scales, i.e., both functional connectivity and voxel activity. There is, how-ever, a small number of studies in this area, possibly due to the lack of proper large-scale datasets. Recently, Hebart et al. (2023) provided a large-scale fMRI and MEG datasets, THINGS, to study human visual processing. However, their preprocessed data by not only does not provide functional connectivity, but it also has aggregated voxel activity over each time window, missing dynamics of voxel activity. To address this limitation, we present two newly preprocessed versions of this dataset that provide both functional con-nectivity and voxel activity timeseries of fMRI and MEG modalities. See Appendix B for more details. 
+
+Contributions. To overcome the above limitations, we leverage both voxel-level activity and functional connec-tivity of the brain. We present B RAIN MIXER , an unsuper-vised MLP-based brain representation learning approach that jointly learns representations of the voxel activity and functional connectivity. B RAIN MIXER uses a novel multi-variate timeseries encoder that binds information across both time and voxel dimensions. It uses a simple MLP with func-tional patching to fuse information across different times-tamps and learns dynamic self-attention weights to fuse information across voxels based on their functionality. On the other hand, B RAIN MIXER uses a novel temporal graph learning method to encode the brain functional connectiv-ity. The graph encoder first extracts temporal patches using temporal random walks and then fuses information within each patch using the designed dynamic self-attention mecha-nism. We further propose an adaptive permutation invariant pooling to obtain patch encodings. Since voxel activity and functional connectivity encodings are different views of the same context, we propose an unsupervised pre-training approach to jointly learn voxel activity and functional con-nectivity by maximizing their mutual information. In the experimental evaluations, we provide two new large-scale graph and timeseries datasets based on THINGS (Hebart et al., 2023). Extensive experiments on six datasets show the superior performance of B RAIN MIXER and the significance of each of its components in a variety of downstream tasks. For the sake of consistency, we explain our model for fMRI modality; however, as it is shown in §4, it can simply be used for any neuroimaging modalities that provide multivariate timeseries recorded from multiple units across the brain. (e.g., MEG and EEG). When dealing with MEG or EEG, we can replace the term “voxel” with “channel”. Backgrounds, proofs, details of experimental setups, additional results with different metrics, and case studies are in Appendix. 
+
+## 2. Related Work 
+
+To situate B RAIN MIXER in a broader context, we review machine learning models for timeseries, graphs, and neuro-science. Additional discussions are in Appendices A and C. 
+
+Timeseries Learning. Attention mechanisms are powerful models to capture long-range dependencies and so recently, Transformer-based models have attracted much attention in time series forecasting (Zerveas et al., 2021; Li et al., 2019; Behrouz et al., 2024). Due to the quadratic time complexity of attention mechanisms, several studies aim to reduce the time and memory usage of these methods (Child et al., 2019). Another type of work uses (hyper)graph learn-ing frameworks to learn (higher-order) patterns in time-series (Park et al., 2009; Sawhney et al., 2021). Inspired by the recent success of MLP-M IXER (Tolstikhin et al., 2021), Li et al. (2023) and Chen et al. (2023) presented two vari-ants of MLP-M IXER for timeseries forecasting. All these methods are different from B RAIN MIXER , as 1 they use static attention mechanisms, 2 do not take advantage of the functionality of voxels in patching, and 3 are designed for timeseries forecasting and cannot simply be extended to various downstream tasks on the brain. 2Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity Dynamic Attention 
+
+> Dimension Reduction
+> Dynamic Attention
+> Dynamic Positional
+> Encoding
+> Temporal Graph
+> Patching
+> Non-parametric
+> Feature Mixing
+> Voxel Mixer
+> Dimension Reduction
+> MLP-Mixer
+> Temporal Graph Mixer
+> Time Encoding
+> Dynamic Positional
+> Encoding
+> TPMixer
+> Mutual Information
+> Ze ro Padding
+> MLP-Mixer
+> Node-level
+> Edge-level
+> Graph-level
+> Patch Encoding
+> Concat of End
+> Points
+> MLP
+> ROI
+> Time
+> Time Mixer
+> Functional Patching
+> Time
+
+Figure 1: Schematic of the B RAIN MIXER . B RAIN MIXER consists of two main modules: (1) Voxel Activity Encoder (top), and (2) Functional Connectivity Encoder (bottom). 
+
+MLP-based Graphs Learning. Learning on graphs has been an active research area in recent years (Jiang et al., 2021; Veli ˇckovi ´c et al., 2018; Chamberlain et al., 2023). While most studies use message-passing frameworks to learn the local and global structure of the graph, recently, due to the success of MLP-based methods (Tolstikhin et al., 2021), MLP-based graph learning methods have attracted much attention (Hu et al., 2021; Behrouz et al., 2023). For example, Cong et al. (2023) and He et al. (2023) pre-sented two extensions of MLP-M IXER to graph-structured data. However, all these methods are different from B RAIN -MIXER and specifically FC Encoder, as either 1 use time-consuming graph clustering for patching, 2 are static methods and cannot capture temporal properties, or 3 are attention-free and cannot capture the importance of nodes. 
+
+Graph Learning and Timeseries for Neuroscience. In recent years, several studies have analyzed functional con-nectivity to differentiate human brains with a neurological disease/disorder (Jie et al., 2016; Chen et al., 2011; Wee et al., 2011). With the success of graph neural networks in graph data analysis, deep learning models have been developed to predict brain diseases by studying brain net-work structures (Behrouz & Seltzer, 2022; Zhu et al., 2022; Cui et al., 2022b). Moreover, several studies focus on brain signals (Craik et al., 2019; Shoeibi et al., 2021) to detect neu-rological diseases. For example, Cai et al. (2023) designed a self-supervised learning framework to detect seizures from EEG and SEEG data. However, all these methods are differ-ent from B RAIN MIXER as they are designed for a particular task (e.g., brain classification), a particular neuroimaging modality (e.g., fMRI or EEG), and/or supervised settings. 
+
+## 3. Method:B RAIN MIXER 
+
+In this section, we first discuss the notation we use through-out the paper. Detailed discussion about background con-cepts can be found in Appendix A. 
+
+Notation. We represent the neuroimaging of a human brain as B = {B (t)}Tt=1 where B(t) = ( V, G(t) 
+
+> F
+
+, X (t), F) repre-sents the neural data in time window 1 ≤ t ≤ T . Here, V
+
+is the set of voxels, G(t) 
+
+> F
+
+= ( V, E(t), A(t)) is the functional connectivity graph, E(t) ⊆ V × V is the set connections between voxels, A(t) is the correlation matrix (weighted adjacency matrix of G(t) 
+
+> F
+
+), X (t) ∈ R|V|× ˜T (t) is a multi-variate timeseries of voxels activities, ˜T (t) is the length of the timeseries, and F is the set of functional systems in the brain (Schaefer et al., 2018) in time window t. In task-dependent data, each time window t corresponds to a task, and in resting state data, we have T = 1 . We let tmax = max t=1 ,...,T ˜T (t), representing the maximum length of timeseries. B RAIN MIXER consists of two main modules 1 Voxel Activity (VA) Encoder and 2 Functional Connectivity (FC) Encoder: 
+
+3.1. Voxel Activity Encoder 
+
+The main goal of this module is to learn the time series of the voxel-level activity. However, the activities of voxels are not disjoint; for example, an increase in fusiform face area (FFA) activity might be associated with a rise in V1 activity. Accordingly, effectively learning their dynamics patterns requires capturing both cross-voxel and within-voxel time series information. The vanilla MLP-M IXER (Tolstikhin et al., 2021) can be used to bind information across both of these dimensions, but the human brain has unique traits that make directly applying vanilla MLP-M IXER insuffi-cient/impractical. First, there does not exist in general a canonical grid of the brain to encode voxel activities, which makes patch extraction challenging. Second, contrary to images that can be divided into patches of the same size, the partitioning of voxels might not be all the same size due to the complex brain topology. Third, vanilla MLP-M IXER 
+
+3Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+employs a fixed static mixing matrix for binding patches, while in the brain the functionality of each patch is impor-tant and a different set of patchs should be mixed differently based on their connections and functionality. To address these challenges, the VA Encoder employs two submodules, 
+
+time-mixer and voxel-mixer with dynamic mixing matrix, to fuse information across both time and voxel dimensions, respectively. The human brain is comprised of functional systems (FS) (Schaefer et al., 2018), which are groups of voxels that perform similar functions (Smith et al., 2013). We take advantage of this hierarchical structure and patch voxels based on their functionality. However, the main challenge is that the sizes of the patches (set of voxels with similar functionality) are different. To this end, inspired by the infer-ence of ViT models (Dosovitskiy et al., 2021), we linearly interpolate patches with smaller sizes. 
+
+Functional Patching. Let |V| be the number of vox-els and X ∈ R|V|× (T ×tmax ) represents the time series of voxels activities over all time windows. We split X to spatio-temporal patches Xi with size |fi| × tmax , where 
+
+fi ∈ F is a functional system (Schaefer et al., 2018). To address the challenge of different patch sizes, we use INTERPOLATE (.) to linearly interpolate patches to the same size Np: i.e., ˜Xi = INTERPOLATE (Xi), where ˜Xi ∈
+
+RNp×tmax . We let ˜X ∈ R|V|× tmax be the matrix of ˜Xi.
+
+Voxel-Mixer. Since the effect of each task (e.g., in task-based fMRI) on brain activity as well as the time it lasts varies (Yang et al., 2023a), for different tasks, we might need to emphasize more on a subset of voxels. To this end, to bind information across voxels, we use a dynamic at-tention mechanism that uses a learnable dynamic mixing matrix Pi, learning to mix a set of input voxels based on their functionality. While using different learnable matrices for mixing voxels activity provides a more powerful archi-tecture, its main challenge is a large number of parameters. To mitigate this challenge, we first reduce the dimensions of ˜X, split it into a set of segments, denoted as S, and then combine the transformed matrices. Given a segment s ∈ S:
+
+ˆX(t)(s)
+
+= ˜X(t) W(s) 
+
+> segment
+
+∈ R|V|× d
+
+, (Dimension Reduction) 
+
+P(s) 
+
+> i
+
+= SOFTMAX 
+
+
+
+FLAT 
+
+ ˆX(t)(s) 
+
+W(s)(i)
+
+> flat
+
+
+
+∈ R1×|V| ,
+
+(Learning Dynamic Mixer )
+
+X(t) 
+
+> PE
+
+=
+
+h 
+
+> s∈S
+
+P(s) ˜X(t)(s) i
+
+WPE ∈ R|V|× tmax ,
+
+(Dynamic Positional Encoding )
+
+H(t) 
+
+> Voxel
+
+= Norm 
+
+ ˜X(t)
+
++ SIGMOID X(t) 
+
+> PE
+
+X(t)⊤
+
+> PE
+
+p ˜T
+
+!
+
+X(t) 
+
+> PE
+
+,
+
+(Dynamic Self-Attention )
+
+where W(s) 
+
+> segment
+
+∈ Rtmax ×d, W(s)(i) 
+
+> flat
+
+∈ Rd|V|×|V| , WPE ∈
+
+Rtmax ×tmax are learnable parameters, ∥ is concatenation, and SIGMOID (.) is row-wise sigmoid normalization. Note that for different segments we use different dimensional-ity reduction matrices to reinforce the power of the Voxel Mixing. 
+
+Time Mixer. We then fuse information in the time di-mension by using the Time Mixer submodule. To this end, the Time Mixer employs a 2-layer MLP with layer-normalization (Ba et al., 2016): ( H(t) 
+
+> Time
+
+∈ R|V|× tmax )
+
+H(t) 
+
+> Time
+
+= H(t) 
+
+> Voxel
+
++
+
+
+
+σ
+
+
+
+LN 
+
+
+
+H(t)
+
+> Voxel
+
+
+
+W(1) 
+
+> Time
+
+
+
+W(2) 
+
+> Time
+
+
+
+, (1) where W(1)  
+
+> Time
+
+and W(1)  
+
+> Time
+
+are learnable matrices, σ(.) is an activation function (we use GeLU (Hendrycks & Gimpel, 2020)), and LN is layer normalization (Ba et al., 2016). 
+
+3.2. Functional Connectivity Encoder 
+
+To encode the functional connectivity graph, we design an MLP-based architecture that learns both the structural and temporal properties of the graph. Inspired by the recent suc-cess of all-MLP architecture in graphs (Cong et al., 2023), we extend MLP-M IXER to temporal graphs. We first define patches in temporal graphs. While patches in images, videos, and multivariate timeseries can simply be non-overlapping regular grids, patches in graphs are overlapping non-grid structures, which makes the patching extraction challenging. He et al. (2023) suggest using graph partitioning algorithms to extract graph patches; however, these partitioning algo-rithms 1 only consider structural properties, missing the temporal dependencies, and 2 can be time-consuming, lim-iting the scalability to dense graphs like brain functional connectome. To this end, we propose a temporal-patch ex-traction algorithm such that nodes (voxels) in each patch share similar temporal and structural properties. 
+
+Temporal Patching. To extract temporal patches from the graph, we use a biased temporal random walk that walks over both nodes (voxels) and timestamps. Given a func-tional connectivity graph GF = {G (t) 
+
+> F
+
+}Tt=1 , we sample M
+
+walks with length m + 1 started from node v0 ∈ V like: 
+
+Walk : ( v0, t 0) → (v1, t 1) → · · · → (vm, t m), such that 
+
+(vi−1, v i) ∈ E (ti), and t0 ≥ t1 ≥ t2 ≥ · · · ≥ tm. Note that, contrary to previous temporal random walks (Wang et al., 2021; Behrouz et al., 2023), we allow the walker to walk in the same timestamp at each step. While backtracking over time, we aim to capture temporal information and extract the dynamics of voxels’ activity over related timestamps. Recent studies show that a task can affect brain activity even after 2 minutes (Yang et al., 2023a). To this end, since more recent connections can be more informative, we use a bi-ased sampling procedure. Let vpre be the previously sampled 4Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+node, we use hyperparameters θ, θ 0 ≥ 0 to sample a node 
+
+v with probability proportional to exp ( θ(t − tpre + θ0)) ,where t and tpre are the timestamps that (vpre , v ) ∈ E (t) and the timestamp of the previous sample, respectively. In this sampling procedure, smaller (resp. larger) θ means less (resp. more) emphasis on recent timestamps. Each walk started from v can be seen as a temporal subgraph, and so we let ρv be the union of all these subgraphs (walks started from v). We treat each of ρv as a temporal patch. 
+
+Temporal Pooling Mixer. Given the temporal graph patches that we extracted above, we need to encode each patch to obtain patch encodings (we later use these patch encodings as their corresponding voxel’s encodings). While simple poolings (e.g., S UM (.)) are shown to miss informa-tion (Behrouz et al., 2023), more complicated pooling func-tions consider a static pooling rule. However, as discussed above, the effect of performing a task on the neuroimaging data might last for a period of time and the pooling rule might change over time. To this end, we design a tempo-ral pooling, TPM IXER (.), that dynamically pools a set of voxels in a patch based on their timestamps. Given a patch ρv0 = {v0, v 1, . . . , v k}, for each voxel we consider the correlation of its activity with other voxels’ as its preliminary feature vector. That is, for each voxel v, we consider its feature vector in the time window t as A(t) 
+
+> v
+
+, the 
+
+v’s corresponding row in A(t). We abuse the notation and use A(t) 
+
+> ρv
+
+to refer to the set of A(t)’s rows corresponding to ρv . Since patch sizes are different, we zero pad A(t)
+
+> ρv
+
+matrices to a fixed size. Note that this zero padding is im-portant to capture the size of each voxel neighborhood. The voxel with more zero-padded dimensions in its patch has less correlation with others. To capture both cross-feature and cross-voxel dependencies, we can use the same archi-tecture as the Time Mixer and Voxel-Mixer. However, the main drawback of this approach is that a pooling function is expected to be permutation invariant while the Voxel Mixer phase is permutation variant. To address this challenge, we fuse information across features in a non-parametric manner as follows: 
+
+H(t) 
+
+> F
+
+= A(t) 
+
+> ρv
+
++ σ
+
+
+
+Soft 
+
+
+
+LN 
+
+
+
+A(t)
+
+> ρv
+
+⊤ ⊤
+
+∈ R|ρv |× d′
+
+,
+
+(2) where σ(.) is an activation function, Softmax (.) is used to normalize across features to bind and fuse feature-wise information in a non-parametric manner, avoiding permu-tation variant operations, and d′ is the feature vector size. To dynamically fuse information across voxels, we use the same idea as dynamic self-attention in §3.1 and learn dy-namic matrices PPool i ; let dpatch be the patch size: 
+
+PPool i = SOFT 
+
+
+
+FLAT 
+
+
+
+H(t)
+
+> F
+
+
+
+W(i)
+
+> Pool
+
+
+
+∈ R1×d′
+
+hρv= MEAN LN (H(t) 
+
+> F
+
+) + H(t) 
+
+> PE
+
+SOFT H(t)⊤ 
+
+> PE
+
+H(t)
+
+> PE
+
+pdpatch 
+
+!! 
+
+,
+
+where hρv ∈ R1×d′
+
+and H(t) 
+
+> PE
+
+= H(t) 
+
+> F
+
+PPool is the transfor-mation of H(t) 
+
+> F
+
+by dynamic matrix PPool .
+
+Theorem 1. TPM IXER is permutation invariant and a uni-versal approximator of multisets. 
+
+Time Encoding. To distinguish different timestamps in the functional connectivity graph, we use a non-learnable time encoding module proposed by Cong et al. (2023). This encoding approach helps reduce the number of parameters, and also it has been shown to be more stable and generaliz-able (Cong et al., 2023). Given hyperparameters α, β, and 
+
+d, we use feature vector ω = {α−i/β }d−1 
+
+> i=0
+
+to encode each timestamp t using cos ( ωt) function. Therefore, we obtain the time encoding as ηt = cos ( ωt).
+
+Voxel-, Edge-, and Graph-level Encodings. Depending on the downstream task, we might obtain voxel-, edge-, or graph-level encodings. For each voxel v ∈ V , we let 
+
+E(t)[ρv ] be the set of connections in the patch of v. To obtain the voxel-level encoding of each voxel v, ψv , we use patch encoding and concatenate it with all the weighted mean of timestamp encodings; i.e., ψtv = MLP ([ hρv ∥T v ]) ,
+
+where Tv =     
+
+> Ptt0=1 E(t0)[ρv]ηt0
+> Ptt0=1 E(t0)[ρv]
+
+. For a connection e =(u, v ) ∈ E (t), we obtain its encoding by concatenating its endpoints and its timestamp encodings; i.e., ζ(t)(u,v ) =
+
+MLP ([ ψtu, ψtv , ηt]) . To obtain the graph level encoding, we use vanilla MLP-M IXER (Tolstikhin et al., 2021) on patch encodings; let Ψ(t) be the matrix whose rows are ψ(t) 
+
+> v
+
+:
+
+Ψ(t) 
+
+> patch
+
+= Ψ(t) + W(2) 
+
+> patch
+
+σ
+
+
+
+W(1) 
+
+> patch
+
+LN 
+
+
+
+Ψ(t) 
+
+,
+
+ENC (G(t) 
+
+> F
+
+) = MEAN 
+
+
+
+Ψ(t)
+
+> patch
+
++
+
+σ
+
+
+
+LN 
+
+
+
+Ψ(t)
+
+> patch
+
+
+
+W(1) 
+
+> channel
+
+
+
+W(2) 
+
+> channel
+
+
+
+.
+
+Similarly, to obtain the brain-level encoding, Z(t) 
+
+> V
+
+, based on voxel activity timeseries, we use MLP-M IXER on H(t)
+
+> Time
+
+.
+
+3.3. Self-supervised Pre-training 
+
+In §3.1 and §3.2 we obtained the encodings of the same contexts, from different perspectives. In this section, in-spired by (Hjelm et al., 2019; Bachman et al., 2019), we use the mutual information of these two perspectives from the same context, to learn voxel- and brain-level encod-ings in a self-supervised manner. To this end, let Ψ be the 5Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Table 1: Performance on multi-class brain classification: Mean ACC (%) ± standard deviation. Methods BVFC BVFC -MEG HCP-Mental HCP-Age USAD 48 .52 ±1.94 50 .02 ±1.13 73 .49 ±1.56 39 .17 ±1.68                                         
+
+> HYPER SAGCN 51 .92 ±1.47 51 .19 ±1.88 90 .37 ±1.61 47 .38 ±1.96
+> GMM 53 .11 ±1.44 53 .04 ±1.73 90 .92 ±1.83 47 .75 ±1.26
+> GRAPH MIXER 53 .17 ±1.21 53 .12 ±1.18 91 .13 ±1.44 48 .32 ±1.11
+> BRAIN NET CNN 49 .10 ±1.83 50 .12 ±1.57 83 .58 ±1.68 42 .26 ±2.03
+> BRAIN GNN 50 .63 ±1.67 51 .08 ±0.96 85 .25 ±2.17 43 .08 ±1.54
+> FBNET GEN 50 .18 ±0.98 50 .94 ±1.39 84 .47 ±1.88 42 .83 ±1.78
+> ADMIRE 54 .36 ±1.39 54 .87 ±1.92 89 .74 ±1.93 47 .82 ±1.72
+> PTGB 55 .89 ±1.78 55 .11 ±1.62 92 .58 ±1.31 48 .41 ±1.47
+> BNT RANSFORMER 55 .03 ±1.35 55 .17 ±1.74 91 .71 ±1.48 47 .94 ±1.15
+> BRAIN MIXER 67.24 ±1.47 62.58 ±1.12 96.32 ±0.29 57.83 ±1.03
+
+voxel-level encodings obtained from functional connectome, 
+
+Z(t) 
+
+> F
+
+= ENC (G(t) 
+
+> F
+
+) be the global encoding (brain-level) of the functional connectome, H(t) 
+
+> Voxel
+
+be the voxel activity en-codings from the brain activity timeseries, and Z(t) 
+
+> V
+
+be the global encoding (brain-level) of the voxel activity timeseries, we aim to maximize I(Z(t) 
+
+> V
+
+, ψ(t)
+
+> v,i
+
+) + I(Z(t) 
+
+> F
+
+, (H(t)
+
+> Time
+
+)v,j )
+
+for all v ∈ V and possible i, j . Following previous stud-ies (Bachman et al., 2019), we use Noise-Contrastive Esti-mation (NCE) (Gutmann & Hyv ¨arinen, 2010) and minimize the following loss function: 
+
+E(Z(t) 
+
+> F,ψ(t)
+> v,i )
+
+h
+
+EN
+
+h
+
+LΦ(Z(t) 
+
+> F
+
+, ψ(t)
+
+> v,i
+
+, N )
+
+ii 
+
++E(Z(t)  
+
+> V,(H(t)
+> Voxel )v,j )
+
+h
+
+EN
+
+h
+
+LΦ(Z(t) 
+
+> V
+
+, (H(t)
+
+> Voxel
+
+)v,j , N )
+
+ii 
+
+, (3) where N is the set of negative samples, (Z(t) 
+
+> V
+
+, ψ(t)
+
+> v,i
+
+) and 
+
+(Z(t) 
+
+> F
+
+, (H(t)
+
+> Voxel
+
+)v,j ) are the positive sample pairs, and LΦ is a standard Log-Softmax .
+
+Data Augmentation & Negative Samples. MLP-M IXER -based architectures are known to have the potential of over-fitting (Liu et al., 2021). To mitigate this, we perform data augmentation. For G(t) 
+
+> F
+
+= ( V, E(t)), in patch extraction, we randomly mask p connections and then sample temporal walks to generate new patches. Note that, at the end, each patch is an induced subgraph and might include masked connections as well. Furthermore, to generate negative sam-ples: 1 To corrupt the functional connectivity, we randomly change one endpoint of a subset of connections. 2 To cor-rupt the timeseries, we follow existing studies (Yue et al., 2022; Woo et al., 2022) and replace a brain signal in time window t with another signal that is randomly selected from the batch. Given a pre-trained model M, for different down-stream tasks in a semi-supervised setting, we fine-tune M
+
+using a small subset of labeled training data. For each voxel, we concatenate its encodings from VA and FC Encoders. 
+
+## 4. Experiments 
+
+Dataset. We use six real-world datasets: 1 We present BVFC , a task-based fMRI dataset that includes voxel activity timeseries and functional connectivity of 3 subjects when looking at the 8460 images from 720 categories. This data is based on THINGS (Hebart et al., 2023). 2 B VFC -MEG is the MEG counterpart of B VFC . 3 ADHD (Milham et al., 2011) contains data for 250 subjects in the ADHD group and 450 subjects in the typically developed (TD) control group. 4 The Seizure detection TUH-EEG dataset (Shah et al., 2018) consists of EEG data (31 channels) of 642 subjects. 5 ASD (Craddock et al., 2013) contains data for 45 subjects in the ASD group and 45 subjects in the TD control group. 6 HCP (Van Essen et al., 2013) contains data from 7440 neuroimaging samples each of which is associated with one of the seven ground-truth mental states. 
+
+Evaluation Tasks. We focus on 5 tasks: 1 Edge-Anomaly Detection (AD), 2 Voxel AD, 3 Brain AD (binary classi-fication), 4 Brain Classification (multi-class), and 5 Re-gression (Appendix F.4). For the edge and voxel AD tasks, we follow previous studies (Ma et al., 2021; Behrouz & Seltzer, 2023a; Behrouz & Hashemi, 2023), and inject 1% and 5% corrupted edges into the functional connectivity in the control group. For brain AD all datasets has ground-truth anomalies (see Appendix E.2). The ground truth anoma-lies in B VFC are the brain responses to not recognizable images, generated by BigGAN (Brock et al., 2019), and for other datasets are brain activity of people living with ADHD, seizure, and ASD. For brain classification, we focus on the prediction of i categories of images seen by the subjects (in BVFC , and B VFC -MEG), and ii age prediction and mental state decoding (in HCP-Age, and HCP-Mental). In all ex-periments, we perform statistical comparison with baselines via paired t-tests and shade significance results (corrected 
+
+p-value ≤ 0.05) with blue and others with gray. The details of the setup and reason for used metrics are in Appendix E. 
+
+Baselines. For anomaly detection and graph classification tasks, we compare B RAIN MIXER with state-of-the-art time series, graph, and brain anomaly detection and learning mod-els: 1 Graph-based methods: GOutlier (Aggarwal et al., 2011), N ET WALK (Yu et al., 2018), H YPER SAGCN (Zhang et al., 2020), Graph MLP-Mixer (GMM) (He et al., 2023), GRAPH MIXER (Cong et al., 2023). 2 brain-network-based methods: B RAIN GNN (Li et al., 2021), F BNET GEN (Kan et al., 2022a), B RAIN NET CNN (Kawahara et al., 2017), ADM IRE (Behrouz & Seltzer, 2023b), and BNT RANS - 
+
+> FORMER
+
+(Kan et al., 2022b), PTGB (Yang et al., 2023b). 3 Time-series-based methods: U SAD (Audibert et al., 2020), Time Series Transformer (TST) (Zerveas et al., 2021), and MVTS (Potter et al., 2022). We may exclude some baselines in some tasks as they cannot be applied in that setting. We use the same training, hyperparameter tuning, and testing 6Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Table 2: Performance on anomaly detection: Mean AUC-PR (%) ± standard deviation †.Methods BVFC BVFC -MEG HCP ADHD TUH-EEG ASD Anomaly % 1% 5 % 1% 5 % 1% 5 % 1% 5 %
+
+> Edge-level AD
+
+GO UTLIER 65 .12 ±2.97 59 .45 ±2.61 62 .47 ±1.15 61 .83 ±1.28 65 .37 ±0.93 64 .70 ±2.09 65 .61 ±1.82 64 .12 ±0.97 60 .85 ±0.97 59 .13 ±1.86 
+
+NET WALK 71 .67 ±1.56 62 .75 ±1.16 73 .12 ±1.25 72 .19 ±1.31 70 .29 ±2.15 69 .86 ±2.58 71 .14 ±1.36 70 .27 ±1.42 69 .07 ±2.20 68 .52 ±2.55 
+
+HYPER SAGCN 80 .17 ±1.59 70 .83 ±1.27 82 .94 ±1.14 81 .98 ±1.58 84 .22 ±1.61 83 .96 ±1.47 73 .99 ±0.83 72 .65 ±0.97 73 .26 ±1.08 73 .18 ±0.92 
+
+GRAPH MIXER 87 .13 ±0.99 75 .91 ±1.59 86 .87 ±1.96 86 .19 ±1.48 85 .12 ±1.46 84 .86 ±1.58 75 .93 ±0.95 75 .12 ±1.08 84 .91 ±2.27 83 .52 ±2.03 
+
+BRAIN NET CNN 80 .92 ±1.18 71 .54 ±2.07 80 .79 ±1.23 79 .44 ±1.18 80 .58 ±1.62 79 .95 ±2.01 73 .06 ±1.74 72 .87 ±1.31 72 .68 ±2.12 72 .01 ±1.45 
+
+BRAIN GNN 81 .96 ±1.76 72 .68 ±1.13 82 .15 ±1.84 81 .38 ±1.61 79 .02 ±1.85 78 .64 ±1.43 72 .96 ±1.58 71 .73 ±1.14 72 .14 ±1.25 71 .82 ±1.73 
+
+FBNET GEN 81 .58 ±1.92 72 .66 ±1.52 82 .05 ±1.19 81 .53 ±1.82 79 .89 ±1.63 78 .97 ±1.84 73 .04 ±1.53 72 .56 ±1.33 72 .51 ±1.28 71 .62 ±1.82 
+
+ADM IRE 87 .12 ±1.61 75 .91 ±1.43 87 .01 ±1.27 86 .38 ±1.17 86 .23 ±1.74 85 .18 ±2.21 76 .68 ±1.82 75 .14 ±1.67 86 .52 ±1.72 85 .44 ±1.49 
+
+PTGB 86 .52 ±1.64 75 .93 ±1.71 86 .83 ±1.59 86 .00 ±1.28 86 .14 ±1.15 85 .22 ±1.21 75 .98 ±1.16 74 .92 ±1.08 86 .18 ±1.58 85 .72 ±1.05 
+
+BNT RANSFORMER 86 .61 ±1.72 75 .82 ±1.18 86 .22 ±1.77 85 .15 ±1.12 85 .83 ±1.97 85 .14 ±1.67 75 .91 ±1.72 75 .24 ±1.53 74 .92 ±1.18 74 .11 ±1.37 
+
+BRAIN MIXER 91.62 ±1.36 82.58 ±1.92 90.14 ±1.72 90.02 ±1.49 91.74 ±0.93 91.48 ±1.41 80.91 ±1.19 80.85 ±1.62 90.44 ±1.57 90.27 ±1.39 
+
+> Voxel-level AD
+
+USAD 68 .27 ±1.16 62 .73 ±1.27 65 .49 ±1.31 65 .01 ±1.18 72 .79 ±1.48 72 .19 ±0.94 72 .81 ±1.42 71 .36 ±1.03 66 .28 ±1.16 65 .17 ±1.15 
+
+TST 70 .62 ±1.48 68 .57 ±1.81 69 .18 ±1.64 69 .11 ±1.32 74 .81 ±1.14 73 .99 ±1.47 73 .71 ±1.55 73 .03 ±1.47 69 .23 ±1.82 68 .94 ±1.73 
+
+MVTS N/A N/A N/A N/A N/A N/A 77 .48 ±1.81 77 .02 ±1.29 N/A N/A GO UTLIER 64 .66 ±2.38 60 .17 ±1.25 63 .59 ±1.62 63 .07 ±1.52 68 .97 ±1.16 67 .12 ±0.93 65 .18 ±1.09 65 .01 ±1.57 59 .67 ±1.42 58 .49 ±1.35 
+
+NET WALK 68 .73 ±1.16 63 .61 ±1.31 66 .98 ±1.44 66 .04 ±1.63 75 .16 ±1.23 74 .73 ±1.01 72 .21 ±0.91 71 .62 ±1.46 71 .28 ±1.17 71 .02 ±1.49 
+
+HYPER SAGCN 78 .84 ±1.22 71 .62 ±1.96 80 .74 ±1.51 79 .18 ±1.83 83 .94 ±1.13 83 .01 ±0.92 75 .62 ±1.12 74 .83 ±0.78 74 .93 ±1.47 74 .15 ±1.19 
+
+GRAPH MIXER 76 .94 ±1.68 71 .44 ±1.39 81 .55 ±1.82 81 .07 ±1.27 81 .37 ±1.09 80 .83 ±1.16 72 .95 ±1.26 72 .01 ±0.82 72 .49 ±1.28 72 .27 ±1.69 
+
+BRAIN NET CNN 80 .17 ±1.49 73 .91 ±1.54 82 .75 ±1.27 82 .21 ±1.73 82 .79 ±1.08 81 .12 ±1.16 73 .98 ±1.24 73 .01 ±1.08 73 .18 ±0.95 72 .88 ±1.04 
+
+BRAIN GNN 79 .92 ±1.63 73 .25 ±1.94 82 .99 ±1.65 82 .13 ±1.66 81 .14 ±1.05 80 .83 ±0.87 73 .06 ±1.14 72 .74 ±0.86 72 .54 ±1.38 71 .12 ±1.19 
+
+FBNET GEN 79 .17 ±2.04 72 .35 ±1.84 82 .26 ±1.37 81 .62 ±1.49 80 .91 ±1.12 80 .94 ±1.74 72 .53 ±1.48 72 .06 ±1.29 72 .11 ±1.94 71 .28 ±1.22 
+
+PTGB 85 .18 ±1.83 76 .16 ±1.08 85 .72 ±1.14 84 .95 ±1.33 86 .43 ±1.16 86 .36 ±1.15 77 .54 ±1.37 77 .32 ±1.21 77 .92 ±1.26 77 .76 ±1.25 
+
+BNT RANSFORMER 85 .19 ±1.23 75 .67 ±1.14 85 .02 ±0.96 84 .36 ±1.59 86 .13 ±1.21 86 .11 ±1.82 77 .96 ±1.32 77 .08 ±1.06 76 .05 ±1.52 75 .72 ±1.18 
+
+BRAIN MIXER 90.14 ±1.57 81.52 ±1.32 89.27 ±1.61 88.94 ±1.24 89.97 ±1.14 89.81 ±1.27 79.45 ±1.19 79.23 ±0.94 89.51 ±1.78 89.24 ±1.59 
+
+> Brain-level AD
+
+USAD 71 .93 ±1.15 61 .32 ±1.71 67 .79 ±2.28 67 .36 ±2.61 82 .87 ±2.03 80 .52 ±1.84 72 .03 ±1.17 71 .48 ±1.05 71 .62 ±1.58 70 .98 ±1.41 
+
+TST 72 .47 ±1.23 67 .12 ±2.07 67 .94 ±1.69 67 .22 ±1.17 83 .54 ±1.38 83 .04 ±1.12 72 .96 ±1.39 72 .11 ±1.58 72 .76 ±1.71 72 .04 ±1.56 
+
+MVTS N/A N/A N/A N/A N/A N/A 83 .53 ±1.91 82 .41 ±1.02 N/A N/A NET WALK 72 .16 ±1.44 69 .57 ±1.73 69 .14 ±1.49 68 .66 ±1.52 83 .11 ±1.02 82 .81 ±1.61 71 .06 ±1.05 69 .94 ±1.12 72 .85 ±1.17 72 .21 ±1.34 
+
+HYPER SAGCN 80 .25 ±1.15 76 .91 ±1.18 72 .26 ±1.47 72 .01 ±1.21 86 .94 ±1.63 86 .17 ±1.49 75 .31 ±0.85 74 .79 ±1.09 76 .72 ±1.32 75 .81 ±1.58 
+
+GMM 81 .79 ±1.24 77 .84 ±1.52 74 .87 ±1.58 74 .02 ±1.10 85 .89 ±0.98 85 .03 ±1.18 76 .62 ±1.17 76 .11 ±1.26 76 .37 ±1.83 75 .68 ±1.59 
+
+GRAPH MIXER 82 .56 ±1.19 77 .91 ±1.26 75 .03 ±1.72 74 .46 ±1.53 86 .02 ±1.15 85 .64 ±1.09 77 .49 ±1.09 76 .63 ±1.22 76 .82 ±1.84 76 .18 ±1.80 
+
+BRAIN NET CNN 78 .47 ±1.18 73 .12 ±1.27 70 .73 ±1.77 70 .12 ±1.86 85 .84 ±0.96 85 .07 ±1.52 73 .92 ±0.97 73 .07 ±1.51 75 .96 ±1.66 75 .03 ±1.28 
+
+BRAIN GNN 79 .81 ±1.57 75 .28 ±1.61 72 .98 ±1.55 72 .41 ±1.16 84 .59 ±1.26 83 .72 ±1.35 72 .41 ±1.38 71 .55 ±1.16 75 .12 ±1.33 74 .57 ±1.52 
+
+FBNET GEN 78 .94 ±1.24 74 .49 ±1.33 71 .62 ±1.53 71 .06 ±1.48 84 .67 ±1.26 84 .08 ±1.37 72 .69 ±1.18 71 .87 ±1.12 75 .34 ±1.21 74 .73 ±1.39 
+
+ADM IRE 83 .72 ±1.18 78 .83 ±1.56 75 .52 ±1.81 74 .59 ±1.12 86 .27 ±1.72 85 .18 ±1.56 78 .12 ±1.47 77 .59 ±1.68 77 .18 ±1.61 76 .33 ±1.45 
+
+PTGB 84 .08 ±1.35 79 .68 ±1.62 76 .01 ±1.07 75 .13 ±1.48 87 .59 ±1.12 86 .99 ±0.96 79 .17 ±1.36 78 .64 ±1.55 80 .56 ±1.29 80 .04 ±1.16 
+
+BNT RANSFORMER 83 .86 ±1.52 79 .03 ±1.78 75 .64 ±1.82 75 .09 ±1.18 87 .54 ±1.04 86 .92 ±1.48 79 .36 ±1.71 78 .08 ±1.16 77 .19 ±2.01 76 .58 ±1.73 
+
+BRAIN MIXER 88.13 ±1.27 84.59 ±1.70 80.67 ±1.13 80.49 ±1.07 91.38 ±0.94 90.98 ±1.02 85.74 ±1.16 85.63 ±1.23 89.14 ±1.54 88.99 ±1.15  
+
+> †
+
+We perform statistical comparison with baselines via paired t-tests. Shaded blue indicates significance improvement over the baselines (p-value ≤ 0.05) , while gray shaded boxes indicate ( p-value > 0.05 ). The maximum p-value is 0.061 .Table 3: Ablation study on B RAIN MIXER . AUC-PR scores on edge AD and ACC on classification. Methods BVFC BVFC -MEG HCP ADHD Edge AD Classification Edge AD Classification Edge AD Classification Edge AD Classification BRAIN MIXER 91.62 ±1.36 67.24 ±1.47 82.58 ±1.92 62.68 ±1.12 90.02 ±1.49 96.32 ±0.29 91.48 ±1.41 90.98 ±1.02 
+
+Without Pre-training 88 .75 ±2.16 63 .58 ±2.09 80 .21 ±1.63 61 .02 ±1.37 88 .14 ±1.29 93 .81 ±0.92 90 .18 ±1.13 89 .27 ±1.06 
+
+Without VA Encoder 87 .99 ±2.04 59 .14 ±4.51 78 .52 ±2.18 60 .53 ±1.83 86 .97 ±2.05 92 .41 ±1.24 88 .29 ±1.41 88 .76 ±1.19 
+
+Replace VA Encoder with TST 89 .02 ±1.18 62 .89 ±1.49 80 .46 ±2.00 61 .78 ±1.24 89 .01 ±0.86 93 .53 ±1.78 90 .06 ±1.55 88 .94 ±1.98 
+
+Without FC Encoder 84 .27 ±4.37 65 .82 ±2.18 77 .09 ±3.41 59 .73 ±1.12 85 .59 ±2.47 91 .64 ±1.58 86 .97 ±1.16 87 .62 ±2.16 
+
+Replace FC Encoder with BNT RANSFORMER 87 .18 ±2.03 66 .12 ±1.27 78 .85 ±1.36 62 .01 ±0.87 86 .76 ±1.44 94 .24 ±1.25 88 .03 ±1.24 88 .81 ±0.98 
+
+Without Functional Patching 86 .35 ±2.97 60 .42 ±3.53 77 .21 ±1.93 60 .28 ±1.72 86 .14 ±3.09 91 .97 ±1.88 87 .51 ±1.86 88 .25 ±2.53 
+
+Replace Functional Patching with Partitioning 88 .56 ±1.42 66 .50 ±1.92 79 .26 ±1.51 60 .63 ±1.87 87 .55 ±1.29 96 .14 ±1.04 90 .10 ±1.78 89 .69 ±1.46 
+
+Replace TPM IXER by M EAN (.) 88 .51 ±1.03 63 .38 ±1.48 78 .94 ±1.85 60 .91 ±2.01 87 .52 ±1.91 93 .31 ±1.73 89 .04 ±0.95 89 .11 ±1.52 
+
+Static Self-Attention 88 .39 ±1.40 63 .01 ±2.10 78 .63 ±1.97 60 .78 ±1.64 87 .04 ±1.53 92 .95 ±1.49 88 .96 ±1.22 88 .83 ±2.07 
+
+Remove Time Encoding 89 .58 ±0.81 66 .14 ±1.52 79 .91 ±1.75 61 .19 ±1.36 88 .82 ±2.07 94 .12 ±1.92 90 .57 ±0.91 89 .99 ±1.04 
+
+fix θ = 0 83 .60 ±4.52 59 .33 ±2.58 75 .96 ±2.05 59 .11 ±1.46 85 .39 ±1.52 90 .51 ±1.38 86 .24 ±2.01 87 .18 ±1.94 
+
+procedure as B RAIN MIXER . The details of baselines can be found in Appendix E.1. 
+
+Brain Classification. Table 1 reports the performance of BRAIN MIXER and baselines on multi-class brain classi-fication tasks. B RAIN MIXER achieves the best accuracy on all datasets with 14.3% average improvement ( 20 .3% 
+
+best improvement) over the best baseline. There are three main reasons for B RAIN MIXER ’s superior performance: 1 While the time series-based model only uses voxel activity timeseries, and graph-based methods only use functional connectivity graph, B RAIN MIXER takes advantage of both and learns the brain representation at different levels of gran-ularity, which can provide complementary information. 2 7Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Figure 2: Distribution of abnormal voxel activities detected by BRAIN MIXER in the visual cortex when seeing (Left) GAN-generated, (Right) Normal image. 
+
+Figure 3: The distribution of detected abnormal vox-els by B RAIN MIXER in condition ADHD group. Static methods (e.g., PTGB, B RAIN GNN , etc.), miss the dynamics of brain activity, while B RAIN MIXER employs a time encoding module to learn temporal properties. 3Compared to graph learning methods (e.g., GMM, G RAPH -MIXER , etc.), B RAIN MIXER is specifically designed for the brain, taking advantage of its special properties. 
+
+Anomaly Detection. Table 2 reports the performance of BRAIN MIXER and baselines on anomaly detection tasks at different scales: i.e., edge-, voxel-, and brain-level. B RAIN -MIXER achieves the best AUC-PR on all datasets with 6.2%, 5.7%, 4.81% average improvement over the best baseline in edge AD, voxel AD, and brain AD, respectively. The main reasons for this superior performance are the same as above. We report results in accuracy in Appendix F.3 to validate the superior performance of our model in different metrics. 
+
+Ablation Study. We next conduct ablation studies on the BVFC , B VFC -MEG, HCP, and ADHD datasets to validate the effectiveness of B RAIN MIXER ’s critical components. Table 3 shows AUC-PR for edge AD and accuracy for clas-sification tasks. The first row reports the performance of the complete B RAIN MIXER implementation with pre-training. Each subsequent row shows results for B RAIN MIXER with one module modification: row 2 removes the pre-training phase, row 3 removes the VA Encoder module, row 4 re-place VA Encoder with TST, row 5 removes FC Encoder module, row 6 replace it with BNT RANSFORMER , row 7 replaces functional patching with random patching, row 8 replace temporal patching with partitioning (Karypis & Kumar, 1998), row 9 replaces TPM IXER with M EAN (.) pooling, row 10 replaces dynamic with static self-attention, row 11 removes time encoder, the last row set θ = 0 , re-moving biased in the sampling. These results show that each component is critical for achieving B RAIN MIXER ’s superior performance. The greatest contribution comes from biased sampling, VA and FC encoders, functional patching, and dynamic self-attention. Further results on patching and self-supervised objective function are in Appendix F. 
+
+Parameter Sensitivity. We discuss the effect of the number of walks, M , the walk length, m, and time decay, θ on the performance in Appendix F.1. Results show that increasing the number of walks results in better performance as each patch is a better representation of the node’s neighborhood. The effect of the walk length on performance peaks at a certain point, but the exact value varies with datasets. In Appendix F, we further discuss how aggregating timeseries to obtain beta weights and aggregating voxels to obtain ROIs can affect performance. 
+
+How Does B RAIN MIXER Detect GAN Generated Im-ages? The visual cortex, responsible for processing visual information, is hierarchically organized with multiple layers building upon simpler features at lower stages (Van Essen & Maunsell, 1983). Initially, neurons detect edges and colors, but on deeper levels, they specialize in recogniz-ing more complex patterns and objects. Figure 2 (Left) (resp. (Right)) reports the distribution of detected voxel activity by B RAIN MIXER when the subject looking at non-recognizable images (resp. natural images). Interestingly, while the distributions share similar patterns in lower levels (e.g., V1 and V2 voxels), higher-level voxels (e.g., V3) are less active when the subject sees non-recognizable images. These results show the potential of B RAIN MIXER in learn-ing meaningful representation of voxels activity. Additional details can be found in Appendix F. 
+
+Case Study: ADHD In this case study, we train our model on the neuroimages of the typically developed group and test it on the ADHD condition group to detect abnormal voxel activities that might be correlated to ADHD symptoms. Fig-ure 3 reports the distribution of anomalous voxels within the brain of the ADHD group. 78% of all found abnormal voxel activities by B RAIN MIXER are located in the Frontal Pole, Left and Right Temporal Poles, and Lingual Gyrus. These findings are consistent with previous studies on ADHD, which use diffusion tensor imaging (Lei et al., 2014) and Forman–Ricci curvature changes (Chatterjee et al., 2021). Additional case study on ASD is in Appendix F.7. 8Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+## 5. Conclusion 
+
+In this work, we present an unsupervised pre-training frame-work, B RAIN MIXER , that bridges the representation learn-ing of voxel activity and functional connectivity by max-imizing their mutual information. The experimental re-sults show the potential of B RAIN MIXER in 1 detecting abnormal brain activity that might be related to a brain disease/disorder, 2 disease/disorder detection, and 3 un-derstanding object representation in the brain. We discuss potential limitations and future work in Appendix G. 
+
+## Impact Statement 
+
+This paper presents B RAIN MIXER whose goal is to learn low dimensional representation of brain activity for use in detecting and understanding of brain diseases/disorders. This area of research can be used for enhancing brain-computer interfaces; however, governmental regulations and research communities effort are needed to ensure the privacy of patients’ data. 
+
+## References 
+
+Aggarwal, C. C., Zhao, Y., and Yu, P. S. Outlier detection in graph streams. In 2011 IEEE 27th International Con-ference on Data Engineering , pp. 399–409, 2011. doi: 10.1109/ICDE.2011.5767885. Audibert, J., Michiardi, P., Guyard, F., Marti, S., and Zu-luaga, M. A. Usad: Unsupervised anomaly detection on multivariate time series. In Proceedings of the 26th ACM SIGKDD international conference on knowledge discovery & data mining , pp. 3395–3404, 2020. Avber ˇsek, L. K. and Repov ˇs, G. Deep learning in neu-roimaging data analysis: applications, challenges, and solutions. Frontiers in neuroimaging , 1:981642, 2022. Ba, J. L., Kiros, J. R., and Hinton, G. E. Layer normalization, 2016. Bachman, P., Hjelm, R. D., and Buchwalter, W. Learning representations by maximizing mutual information across views. In Wallach, H., Larochelle, H., Beygelz-imer, A., d'Alch ´e-Buc, F., Fox, E., and Garnett, R. (eds.), Advances in Neural Information Process-ing Systems , volume 32. Curran Associates, Inc., 2019. URL https://proceedings.neurips. cc/paper_files/paper/2019/file/ ddf354219aac374f1d40b7e760ee5bb7-Paper. pdf .Banville, H., Chehab, O., Hyv ¨arinen, A., Engemann, D.-A., and Gramfort, A. Uncovering the structure of clinical eeg signals with self-supervised learning. Journal of Neural Engineering , 18(4):046020, 2021. Behrouz, A. and Hashemi, F. Learning temporal higher-order patterns to detect anomalous brain activity. In Hegselmann, S., Parziale, A., Shanmugam, D., Tang, S., Asiedu, M. N., Chang, S., Hartvigsen, T., and Singh, H. (eds.), Proceedings of the 3rd Machine Learning for Health Symposium , volume 225 of Proceedings of Ma-chine Learning Research , pp. 39–51. PMLR, 10 Dec 2023. URL https://proceedings.mlr.press/ v225/behrouz23a.html .Behrouz, A. and Hashemi, F. Brain-mamba: Encoding brain activity via selective state space models. Conference on Health, Inference, and Learning (CHIL) , 2024a. Behrouz, A. and Hashemi, F. Graph mamba: Towards learn-ing on graphs with state space models. arXiv preprint arXiv:2402.08678 , 2024b. Behrouz, A. and Seltzer, M. Anomaly detection in multiplex dynamic networks: from blockchain security to brain dis-ease prediction. In NeurIPS 2022 Temporal Graph Learn-ing Workshop , 2022. URL https://openreview. net/forum?id=UDGZDfwmay .Behrouz, A. and Seltzer, M. Anomaly detection in human brain via inductive learning on temporal multiplex net-works. In Machine Learning for Healthcare Conference ,volume 219. PMLR, 2023a. Behrouz, A. and Seltzer, M. ADMIRE++: Explainable anomaly detection in the human brain via inductive learn-ing on temporal multiplex networks. In ICML 3rd Work-shop on Interpretable Machine Learning in Healthcare (IMLH) , 2023b. URL https://openreview.net/ forum?id=t4H8acYudJ .Behrouz, A., Hashemi, F., Sadeghian, S., and Seltzer, M. CAT-walk: Inductive hypergraph learning via set walks. In Thirty-seventh Conference on Neural Information Pro-cessing Systems , 2023. URL https://openreview. net/forum?id=QG4nJBNEar .Behrouz, A., Santacatterina, M., and Zabih, R. Mam-bamixer: Efficient selective state space models with dual token and channel selection. arXiv preprint arXiv:2403.19888 , 2024. Bray, S. L., Chang, C., and Hoeft, F. Applications of mul-tivariate pattern classification analyses in developmental neuroimaging of healthy and clinical populations. Fron-tiers in human neuroscience , 3:898, 2009. Brock, A., Donahue, J., and Simonyan, K. Large scale GAN training for high fidelity natural image synthesis. In 
+
+International Conference on Learning Representations ,2019. URL https://openreview.net/forum? id=B1xsqj09Fm .9Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Cai, D., Chen, J., Yang, Y., Liu, T., and Li, Y. Mbrain: A multi-channel self-supervised learning framework for brain signals. In Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining ,KDD ’23, pp. 130–141, New York, NY, USA, 2023. Asso-ciation for Computing Machinery. ISBN 9798400701030. doi: 10.1145/3580305.3599426. URL https://doi. org/10.1145/3580305.3599426 .Calhoun, V., Miller, R., Pearlson, G., and Adalı, T. The chronnectome: Time-varying connectivity networks as the next frontier in fmri data discov-ery. Neuron , 84(2):262–274, 2014. ISSN 0896-6273. doi: https://doi.org/10.1016/j.neuron.2014.10. 015. URL https://www.sciencedirect.com/ science/article/pii/S0896627314009131 .Chamberlain, B. P., Shirobokov, S., Rossi, E., Frasca, F., Markovich, T., Hammerla, N. Y., Bronstein, M. M., and Hansmire, M. Graph neural networks for link pre-diction with subgraph sketching. In The Eleventh In-ternational Conference on Learning Representations ,2023. URL https://openreview.net/forum? id=m1oqEOAozQU .Chatterjee, T., Albert, R., Thapliyal, S., Azarhooshang, N., and DasGupta, B. Detecting network anoma-lies using forman–ricci curvature and a case study for human brain networks. Scientific Reports , 11(1): 8121, Apr 2021. ISSN 2045-2322. doi: 10.1038/ s41598-021-87587-z. URL https://doi.org/10. 1038/s41598-021-87587-z .Chen, G., Ward, B. D., Xie, C., Li, W., Wu, Z., Jones, J. L., Franczak, M., Antuono, P., and Li, S.-J. Classification of alzheimer disease, mild cognitive impairment, and normal cognitive status with large-scale network analysis based on resting-state functional mr imaging. Radiology ,259(1):213, 2011. Chen, S.-A., Li, C.-L., Yoder, N., Arik, S. O., and Pfis-ter, T. Tsmixer: An all-mlp architecture for time series forecasting. arXiv preprint arXiv:2303.06053 , 2023. Child, R., Gray, S., Radford, A., and Sutskever, I. Gen-erating long sequences with sparse transformers. arXiv preprint arXiv:1904.10509 , 2019. Cong, W., Zhang, S., Kang, J., Yuan, B., Wu, H., Zhou, X., Tong, H., and Mahdavi, M. Do we really need compli-cated model architectures for temporal networks? In The Eleventh International Conference on Learning Represen-tations , 2023. URL https://openreview.net/ forum?id=ayPPc0SyLv1 .Cortese, A., Tanaka, S. C., Amano, K., Koizumi, A., Lau, H., Sasaki, Y., Shibata, K., Taschereau-Dumouchel, V., Watanabe, T., and Kawato, M. The decnef collection, fmri data from closed-loop decoded neurofeedback ex-periments. Scientific data , 8(1):65, 2021. Craddock, C., Benhajali, Y., Chu, C., Chouinard, F., Evans, A., Jakab, A., Khundrakpam, B. S., Lewis, J. D., Li, Q., Milham, M., et al. The neuro bureau preprocessing initiative: open sharing of preprocessed neuroimaging data and derivatives. Frontiers in Neuroinformatics , 7:27, 2013. Craik, A., He, Y., and Contreras-Vidal, J. L. Deep learning for electroencephalogram (eeg) classification tasks: a review. Journal of neural engineering , 16(3):031001, 2019. Cui, H., Dai, W., Zhu, Y., Kan, X., Chen Gu, A. A., Lukemire, J., Zhan, L., He, L., Guo, Y., and Yang, C. BrainGB: A Benchmark for Brain Network Analysis with Graph Neural Networks. IEEE Transactions on Medical Imaging (TMI) , 2022a. Cui, H., Dai, W., Zhu, Y., Li, X., He, L., and Yang, C. In-terpretable graph neural networks for connectome-based brain disorder analysis. In International Conference on Medical Image Computing and Computer-Assisted Inter-vention , pp. 375–385. Springer, 2022b. da Silva, F. L. Neural mechanisms underlying brain waves: from neural membranes to networks. Electroencephalog-raphy and clinical neurophysiology , 79(2):81–93, 1991. Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., Uszkoreit, J., and Houlsby, N. An image is worth 16x16 words: Transformers for image recognition at scale. In International Conference on Learning Representations , 2021. URL https:// openreview.net/forum?id=YicbFdNTTy .Du, Y., Fu, Z., and Calhoun, V. D. Classification and pre-diction of brain disorders using functional connectivity: promising but challenging. Frontiers in neuroscience , 12: 525, 2018. Gao, J. S., Huth, A. G., Lescroart, M. D., and Gal-lant, J. L. Pycortex: an interactive surface visu-alizer for fmri. Frontiers in Neuroinformatics , 9, 2015. ISSN 1662-5196. doi: 10.3389/fninf.2015. 00023. URL https://www.frontiersin.org/ articles/10.3389/fninf.2015.00023 .Geenjaar, E., Kashyap, A., Lewis, N., Miller, R., and Cal-houn, V. Spatio-temporally separable non-linear latent factor learning: an application to somatomotor cortex fmri data. arXiv preprint arXiv:2205.13640 , 2022. 10 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Gonzalez-Castillo, J. and Bandettini, P. A. Task-based dy-namic functional connectivity: Recent findings and open questions. Neuroimage , 180:526–533, 2018. Greicius, M. Resting-state functional connectivity in neu-ropsychiatric disorders. Current opinion in neurology , 21 (4):424–430, 2008. Gutmann, M. and Hyv ¨arinen, A. Noise-contrastive estima-tion: A new estimation principle for unnormalized statisti-cal models. In Proceedings of the thirteenth international conference on artificial intelligence and statistics , pp. 297–304. JMLR Workshop and Conference Proceedings, 2010. He, X., Hooi, B., Laurent, T., Perold, A., LeCun, Y., and Bresson, X. A generalization of vit/mlp-mixer to graphs. In International Conference on Machine Learning , pp. 12724–12745. PMLR, 2023. Hebart, M. N., Dickter, A. H., Kidder, A., Kwok, W. Y., Corriveau, A., Van Wicklin, C., and Baker, C. I. Things: A database of 1,854 object concepts and more than 26,000 naturalistic object images. PLOS ONE , 14(10):1–24, 10 2019. doi: 10.1371/journal. pone.0223792. URL https://doi.org/10.1371/ journal.pone.0223792 .Hebart, M. N., Contier, O., Teichmann, L., Rockter, A. H., Zheng, C. Y., Kidder, A., Corriveau, A., Vaziri-Pashkam, M., and Baker, C. I. Things-data, a multimodal collection of large-scale datasets for investigating object represen-tations in human brain and behavior. Elife , 12:e82580, 2023. Hendrycks, D. and Gimpel, K. Gaussian error linear units (gelus), 2020. Hernandez, L. M., Rudie, J. D., Green, S. A., Bookheimer, S., and Dapretto, M. Neural signatures of autism spec-trum disorders: insights into brain network dynamics. 
+
+Neuropsychopharmacology , 40(1):171–189, 2015. Hjelm, R. D., Fedorov, A., Lavoie-Marchildon, S., Gre-wal, K., Bachman, P., Trischler, A., and Bengio, Y. Learning deep representations by mutual information estimation and maximization. In International Confer-ence on Learning Representations , 2019. URL https: //openreview.net/forum?id=Bklr3j0cKX .Horikawa, T. and Kamitani, Y. Generic decoding of seen and imagined objects using hierarchical visual features. 
+
+Nature communications , 8(1):15037, 2017. Hu, Y., You, H., Wang, Z., Wang, Z., Zhou, E., and Gao, Y. Graph-mlp: Node classification without message passing in graph. arXiv preprint arXiv:2106.04051 , 2021. Hutchison, R. M., Womelsdorf, T., Allen, E. A., Bandettini, P. A., Calhoun, V. D., Corbetta, M., Della Penna, S., Duyn, J. H., Glover, G. H., Gonzalez-Castillo, J., et al. Dynamic functional connectivity: promise, issues, and interpretations. Neuroimage , 80:360–378, 2013. Jiang, Y., Rong, Y., Cheng, H., Huang, X., Zhao, K., and Huang, J. Query driven-graph neural networks for com-munity search: From non-attributed, attributed, to inter-active attributed, 2021. URL https://arxiv.org/ abs/2104.03583 .Jie, B., Liu, M., Jiang, X., and Zhang, D. Sub-network based kernels for brain network classification. In Proceedings of the 7th ACM International Conference on Bioinformatics, Computational Biology, and Health Informatics , pp. 622– 629, 2016. Kan, X., Cui, H., Lukemire, J., Guo, Y., and Yang, C. Fbnet-gen: Task-aware gnn-based fmri analysis via functional brain network generation. In International Conference on Medical Imaging with Deep Learning , pp. 618–637. PMLR, 2022a. Kan, X., Dai, W., Cui, H., Zhang, Z., Guo, Y., and Yang, C. Brain network transformer. In Oh, A. H., Agarwal, A., Belgrave, D., and Cho, K. (eds.), Advances in Neural Information Processing Systems , 2022b. URL https: //openreview.net/forum?id=1cJ1cbA6NLN .Karypis, G. and Kumar, V. A fast and high quality multilevel scheme for partitioning irregular graphs. SIAM Journal on Scientific Computing , 20(1):359–392, 1998. doi: 10.1137/ S1064827595287997. URL https://doi.org/10. 1137/S1064827595287997 .Kawahara, J., Brown, C. J., Miller, S. P., Booth, B. G., Chau, V., Grunau, R. E., Zwicker, J. G., and Hamarneh, G. Brainnetcnn: Convolutional neural networks for brain networks; towards predicting neurodevelopment. Neu-roImage , 146:1038–1049, 2017. Khan, S., Naseer, M., Hayat, M., Zamir, S. W., Khan, F. S., and Shah, M. Transformers in vision: A survey. ACM computing surveys (CSUR) , 54(10s):1–41, 2022. Kostas, D., Aroca-Ouellette, S., and Rudzicz, F. Bendr: us-ing transformers and a contrastive self-supervised learn-ing task to learn from massive amounts of eeg data. Fron-tiers in Human Neuroscience , 15:653659, 2021. Lanciano, T., Bonchi, F., and Gionis, A. Explainable clas-sification of brain networks via contrast subgraphs. In 
+
+Proceedings of the 26th ACM SIGKDD International Con-ference on Knowledge Discovery; Data Mining , KDD ’20, pp. 3308–3318, New York, NY, USA, 2020. Associa-tion for Computing Machinery. ISBN 9781450379984. 11 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+doi: 10.1145/3394486.3403383. URL https://doi. org/10.1145/3394486.3403383 .Lei, D., Ma, J., Du, X., Shen, G., Jin, X., and Gong, Q. Microstructural abnormalities in the combined and inat-tentive subtypes of attention deficit hyperactivity disorder: a diffusion tensor imaging study. Scientific reports , 4(1): 6875, 2014. Li, S., Jin, X., Xuan, Y., Zhou, X., Chen, W., Wang, Y.-X., and Yan, X. Enhancing the locality and breaking the memory bottleneck of transformer on time series forecast-ing. Advances in neural information processing systems ,32, 2019. Li, X., Zhou, Y., Dvornek, N., Zhang, M., Gao, S., Zhuang, J., Scheinost, D., Staib, L. H., Ventola, P., and Duncan, J. S. Braingnn: Interpretable brain graph neural network for fmri analysis. Medical Image Analysis , 74:102233, 2021. Li, Z., Rao, Z., Pan, L., and Xu, Z. Mts-mixers: Multivari-ate time series forecasting via factorized temporal and channel mixing. arXiv preprint arXiv:2302.04501 , 2023. Liu, H., Dai, Z., So, D., and Le, Q. V. Pay atten-tion to mlps. In Ranzato, M., Beygelzimer, A., Dauphin, Y., Liang, P., and Vaughan, J. W. (eds.), 
+
+Advances in Neural Information Processing Systems ,volume 34, pp. 9204–9215. Curran Associates, Inc., 2021. URL https://proceedings.neurips. cc/paper_files/paper/2021/file/ 4cc05b35c2f937c5bd9e7d41d3686fff-Paper. pdf .Ma, X., Wu, J., Xue, S., Yang, J., Zhou, C., Sheng, Q. Z., Xiong, H., and Akoglu, L. A comprehensive survey on graph anomaly detection with deep learning. IEEE Transactions on Knowledge and Data Engineering , pp. 1–1, 2021. doi: 10.1109/TKDE.2021.3118815. Mahmoudi, A., Takerkart, S., Regragui, F., Boussaoud, D., Brovelli, A., et al. Multivoxel pattern analysis for fmri data: a review. Computational and mathematical methods in medicine , 2012, 2012. Marinescu, R., Eshaghi, A., Alexander, D., and Golland, P. Brainpainter: A software for the visualisation of brain structures, biomarkers and associated pathological pro-cesses. arXiv preprint arXiv:1905.08627 , 2019. McNorgan, C., Smith, G. J., and Edwards, E. S. Integrat-ing functional connectivity and mvpa through a multiple constraint network analysis. Neuroimage , 208:116412, 2020. Milham, M. P., Buitelaar, J., Castellanos, F. X., Dickstein, D., Fair, D., Kennedy, D., Luna, B., Milham, M. P., Mostofsky, S., Nigg, J., Schweitzer, J. B., Velanova, K., Wang, Y.-F., and Zang, Y.-F. 1000 functional connectome project. 1000 Functional Connectome Project , 1, July 2011. Mitchell, T. M., Hutchinson, R., Just, M. A., Niculescu, R. S., Pereira, F., and Wang, X. Classifying instantaneous cognitive states from fmri data. In AMIA annual sym-posium proceedings , volume 2003, pp. 465. American Medical Informatics Association, 2003. Mohsenvand, M. N., Izadi, M. R., and Maes, P. Contrastive representation learning for electroencephalogram classi-fication. In Machine Learning for Health , pp. 238–253. PMLR, 2020. Nieto-Castanon, A. Brain-wide connectome inferences us-ing functional connectivity multivariate pattern analy-ses (fc-mvpa). PLoS Computational Biology , 18(11): e1010634, 2022. Park, Y., Priebe, C., Marchette, D., and Youssef, A. Anomaly detection using scan statistics on time series hypergraphs. In Link Analysis, Counterterrorism and Se-curity (LACTS) Conference , pp. 9. SIAM Pennsylvania, 2009. Poldrack, R. A. and Gorgolewski, K. J. Making big data open: data sharing in neuroimaging. Nature neuroscience ,17(11):1510–1517, 2014. Potter, ˙I. Y., Zerveas, G., Eickhoff, C., and Duncan, D. Unsupervised multivariate time-series transformers for seizure identification on eeg. In 2022 21st IEEE Interna-tional Conference on Machine Learning and Applications (ICMLA) , pp. 1304–1311. IEEE, 2022. Pruim, R. H., Mennes, M., van Rooij, D., Llera, A., Buite-laar, J. K., and Beckmann, C. F. Ica-aroma: A robust ica-based strategy for removing motion artifacts from fmri data. Neuroimage , 112:267–277, 2015. Rogers, T. D., McKimm, E., Dickson, P. E., Goldowitz, D., Blaha, C. D., and Mittleman, G. Is autism a disease of the cerebellum? an integration of clinical and pre-clinical research. Front Syst Neurosci , 7:15, May 2013. Roth, Z. N. and Merriam, E. P. Representations in human primary visual cortex drift over time. Nature Commu-nications , 14(1):4422, Jul 2023. ISSN 2041-1723. doi: 10.1038/s41467-023-40144-w. URL https://doi. org/10.1038/s41467-023-40144-w .Roth, Z. N., Kay, K., and Merriam, E. P. Natural scene sampling reveals reliable coarse-scale orientation tun-ing in human v1. Nature Communications , 13(1): 12 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+6469, Oct 2022. ISSN 2041-1723. doi: 10.1038/ s41467-022-34134-7. URL https://doi.org/10. 1038/s41467-022-34134-7 .Said, A., Bayrak, R. G., Derr, T., Shabbir, M., Moyer, D., Chang, C., and Koutsoukos, X. D. Neurograph: Benchmarks for graph machine learning in brain connec-tomics. In Thirty-seventh Conference on Neural Informa-tion Processing Systems Datasets and Benchmarks Track ,2023. URL https://openreview.net/forum? id=MEa0cQeURw .Sawhney, R., Agarwal, S., Wadhwa, A., Derr, T., and Shah, R. R. Stock selection via spatiotemporal hypergraph atten-tion network: A learning to rank approach. In Proceed-ings of the AAAI Conference on Artificial Intelligence ,volume 35, pp. 497–504, 2021. Schaefer, A., Kong, R., Gordon, E. M., Laumann, T. O., Zuo, X.-N., Holmes, A. J., Eickhoff, S. B., and Yeo, B. T. T. Local-Global parcellation of the human cerebral cortex from intrinsic functional connectivity MRI. Cereb Cortex , 28(9):3095–3114, September 2018. Schneider, S., Lee, J. H., and Mathis, M. W. Learnable latent embeddings for joint behavioural and neural analysis. 
+
+Nature , pp. 1–9, 2023. Shah, V., Von Weltin, E., Lopez, S., McHugh, J. R., Veloso, L., Golmohammadi, M., Obeid, I., and Picone, J. The temple university hospital seizure detection corpus. Fron-tiers in neuroinformatics , 12:83, 2018. Shoeibi, A., Khodatars, M., Ghassemi, N., Jafari, M., Morid-ian, P., Alizadehsani, R., Panahiazar, M., Khozeimeh, F., Zare, A., Hosseini-Nejad, H., et al. Epileptic seizures detection using deep learning techniques: A review. Inter-national Journal of Environmental Research and Public Health , 18(11):5780, 2021. Smith, S. M., Vidaurre, D., Beckmann, C. F., Glasser, M. F., Jenkinson, M., Miller, K. L., Nichols, T. E., Robinson, E. C., Salimi-Khorshidi, G., Woolrich, M. W., Barch, D. M., U ˘gurbil, K., and Van Essen, D. C. Functional connectomics from resting-state fMRI. Trends Cogn Sci ,17(12):666–682, November 2013. Sundermann, B., Herr, D., Schwindt, W., and Pfleiderer, B. Multivariate classification of blood oxygen level– dependent fmri data with diagnostic intention: a clinical perspective. American Journal of neuroradiology , 35(5): 848–855, 2014. Tolstikhin, I., Houlsby, N., Kolesnikov, A., Beyer, L., Zhai, X., Unterthiner, T., Yung, J., Steiner, A. P., Keysers, D., Uszkoreit, J., Lucic, M., and Dosovitskiy, A. MLP-mixer: An all-MLP architecture for vision. In Beygelzimer, A., Dauphin, Y., Liang, P., and Vaughan, J. W. (eds.), 
+
+Advances in Neural Information Processing Systems ,2021. URL https://openreview.net/forum? id=EI2KOXKdnP .Trockman, A. and Kolter, J. Z. Patches are all you need? Transactions on Machine Learning Research , 2023. ISSN 2835-8856. URL https://openreview. net/forum?id=rAnB7JSMXL . Featured Certifica-tion. Uddin, L. Q., Dajani, D., Voorhies, W., Bednarz, H., and Kana, R. Progress and roadblocks in the search for brain-based biomarkers of autism and attention-deficit/hyperactivity disorder. Translational psychiatry , 7 (8):e1218–e1218, 2017. Van Den Heuvel, M. P. and Pol, H. E. H. Exploring the brain network: a review on resting-state fmri functional connectivity. European neuropsychopharmacology , 20 (8):519–534, 2010. Van Essen, D. C. and Maunsell, J. H. Hierarchical organiza-tion and functional streams in the visual cortex. Trends in neurosciences , 6:370–375, 1983. Van Essen, D. C., Smith, S. M., Barch, D. M., Behrens, T. E., Yacoub, E., Ugurbil, K., Consortium, W.-M. H., et al. The wu-minn human connectome project: an overview. 
+
+Neuroimage , 80:62–79, 2013. Vassena, E., Deraeve, J., and Alexander, W. H. Sur-prise, value and control in anterior cingulate cortex during speeded decision-making. Nature Human Be-haviour , 4(4):412–422, Apr 2020. ISSN 2397-3374. doi: 10.1038/s41562-019-0801-5. URL https:// doi.org/10.1038/s41562-019-0801-5 .Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., and Polosukhin, I. At-tention is all you need. Advances in neural information processing systems , 30, 2017. Veli ˇckovi ´c, P., Cucurull, G., Casanova, A., Romero, A., Li `o, P., and Bengio, Y. Graph attention networks. In 
+
+International Conference on Learning Representations ,2018. URL https://openreview.net/forum? id=rJXMpikCZ .Veli ˇckovi ´c, P., Fedus, W., Hamilton, W. L., Li `o, P., Ben-gio, Y., and Hjelm, R. D. Deep graph infomax. In 
+
+International Conference on Learning Representations ,2019. URL https://openreview.net/forum? id=rklz9iAcKQ .Wang, Y., Chang, Y.-Y., Liu, Y., Leskovec, J., and Li, P. Inductive representation learning in temporal networks via causal anonymous walks. In International Conference 
+
+13 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+on Learning Representations , 2021. URL https:// openreview.net/forum?id=KYPz4YsCPj .Wee, C.-Y., Yap, P.-T., Li, W., Denny, K., Browndyke, J. N., Potter, G. G., Welsh-Bohmer, K. A., Wang, L., and Shen, D. Enriched white matter connectivity networks for ac-curate identification of mci patients. Neuroimage , 54(3): 1812–1822, 2011. Woo, G., Liu, C., Sahoo, D., Kumar, A., and Hoi, S. CoST: Contrastive learning of disentangled seasonal-trend representations for time series forecasting. In 
+
+International Conference on Learning Representations ,2022. URL https://openreview.net/forum? id=PilZY3omXV2 .Wu, H., Xu, J., Wang, J., and Long, M. Autoformer: Decom-position transformers with auto-correlation for long-term series forecasting. Advances in Neural Information Pro-cessing Systems , 34:22419–22430, 2021. Xu, X., Wang, Z., Zhang, G., Wang, K., and Shi, H. Versatile diffusion: Text, images and variations all in one diffusion model. In Proceedings of the IEEE/CVF International Conference on Computer Vision , pp. 7754–7765, 2023. Yamins, D. L. and DiCarlo, J. J. Using goal-driven deep learning models to understand sensory cortex. Nature neuroscience , 19(3):356–365, 2016. Yang, H., Gee, J., and Shi, J. Memory encoding model, 2023a. Yang, Y., Cui, H., and Yang, C. \ours: Pre-train graph neural networks for brain network analysis. In Conference on Health, Inference, and Learning , pp. 526–544. PMLR, 2023b. Yu, W., Cheng, W., Aggarwal, C. C., Zhang, K., Chen, H., and Wang, W. Netwalk: A flexible deep embedding ap-proach for anomaly detection in dynamic networks. In 
+
+Proceedings of the 24th ACM SIGKDD International Con-ference on Knowledge Discovery & Data Mining , KDD ’18, pp. 2672–2681, New York, NY, USA, 2018. Associa-tion for Computing Machinery. ISBN 9781450355520. doi: 10.1145/3219819.3220024. URL https://doi. org/10.1145/3219819.3220024 .Yuan, Z., Zhang, D., Yang, Y., Chen, J., and Li, Y. PPi: Pretraining brain signal model for patient-independent seizure detection. In Thirty-seventh Conference on Neural Information Processing Systems , 2023. URL https: //openreview.net/forum?id=tEmFyqjaJh .Yue, Z., Wang, Y., Duan, J., Yang, T., Huang, C., Tong, Y., and Xu, B. Ts2vec: Towards universal representation of time series. In Proceedings of the AAAI Conference on Artificial Intelligence , volume 36, pp. 8980–8987, 2022. Zerveas, G., Jayaraman, S., Patel, D., Bhamidipaty, A., and Eickhoff, C. A transformer-based framework for multi-variate time series representation learning. In Proceed-ings of the 27th ACM SIGKDD conference on knowledge discovery & data mining , pp. 2114–2124, 2021. Zhang, R., Zou, Y., and Ma, J. Hyper-sagnn: a self-attention based graph neural network for hypergraphs. In 
+
+International Conference on Learning Representations ,2020. URL https://openreview.net/forum? id=ryeHuJBtPH .Zhou, H., Zhang, S., Peng, J., Zhang, S., Li, J., Xiong, H., and Zhang, W. Informer: Beyond efficient transformer for long sequence time-series forecasting. In Proceedings of the AAAI conference on artificial intelligence , volume 35, pp. 11106–11115, 2021. Zhou, T., Ma, Z., Wen, Q., Sun, L., Yao, T., Yin, W., Jin, R., et al. Film: Frequency improved legendre memory model for long-term time series forecasting. Advances in Neural Information Processing Systems , 35:12677– 12690, 2022a. Zhou, T., Ma, Z., Wen, Q., Wang, X., Sun, L., and Jin, R. Fedformer: Frequency enhanced decomposed trans-former for long-term series forecasting. In International Conference on Machine Learning , pp. 27268–27286. PMLR, 2022b. Zhu, Y., Cui, H., He, L., Sun, L., and Yang, C. Joint em-bedding of structural and functional brain networks with graph neural networks for mental illness diagnosis. In 
+
+2022 44th Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC) , pp. 272–276. IEEE, 2022. 14 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+# Appendix 
+
+# Table of Contents 
+
+A Backgrounds 16 
+
+A.1 Graphs and Machine Learning on Graphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16 A.2 Voxel Time Series Activity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16 A.3 Brain Functional Connectivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16 A.4 MLP-M IXER . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17 
+
+B BVFC Dataset 18 
+
+B.1 THINGS Dataset . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18 B.2 Preprocessing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18 B.3 Image Classification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19 B.4 Anomaly Detection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19 
+
+C Additional Related Work 19 
+
+C.1 Our Contributions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20 
+
+D Theoretical Guarantee of TS ET MIXER Performance 21 E Experimental Setup 22 
+
+E.1 Baselines . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22 E.2 Datasets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23 E.3 Implementation, Training, and Hyperparameters Tuning . . . . . . . . . . . . . . . . . . . . . . . . . . 24 E.4 Injecting Synthetic Anomalies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25 E.5 Visualization Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25 
+
+F Additional Experimental Results 25 
+
+F.1 Parameter Sensitivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25 F.2 The Effect of Functional and Temporal Patching . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28 F.3 Performance Comparison using Different Metrics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29 F.4 Graph Regression . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 F.5 Qualitative Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32 F.6 How Does B RAIN MIXER Detect GAN Generated Images? . . . . . . . . . . . . . . . . . . . . . . . . . 33 F.7 Case Study: ASD . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33 F.8 The Effect of Objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34 F.9 Number of Parameters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34 F.10 Effect of the Number of Parameters on Accuracy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34 
+
+G Limitations and Future Work 34 H Supplementary Materials: Implementation, Dataset Scripts, and Code 35 
+
+15 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+## A. Backgrounds 
+
+We begin by reviewing the preliminaries and background concepts that we refer to in the main paper. 
+
+A.1. Graphs and Machine Learning on Graphs Temporal Graphs. We first define the concept of temporal graphs, which are graphs such that each connection is associated with a timestamp. We formally define temporal graph as follows: 
+
+Definition 1 (Temporal Graphs) . Let G = ( V, E, T ) be a temporal graph, where V is the set of nodes, T is the set of timestamps, and E ⊆ V × V × T is the set of edges. That is, each connection between two nodes (u, v ) is associated with a timestamp like t ∈ T .
+
+In this study, we use snapshot based representation of temporal graphs. That is, G = {G (t)} is the set of graphs, where 
+
+G(t) = ( V, E(t)) represents the state of the graph G at timestamp t.
+
+Node Representation Learning. Node representation learning in graphs is a process that aim to map nodes of a graph into a vector space. This representation seeks to capture the structure of the graph, the features of the nodes, their dynamic over time, and their relationships. The core idea is to represent each node with a vector that encapsulates not just its own attributes but also its position, dynamics, and role within the larger graph structure. 
+
+Definition 2 (Node Representation Learning) . Let G = ( V, E) be a graph with nodes V and edges E. The goal is to learn a function f : V → Rd, where d is the dimension of the target vector space (usually d ≪ | V |, implying a lower-dimensional representation). 
+
+A.2. Voxel Time Series Activity 
+
+Neuroimaging modalities (e.g., fMRI, MEG) provide (estimated) recordings of neural activity signals. To this end, their estimation is built up in a 3-D image building block, units called voxels, which represent a small cube of brain tissue. For example, fMRI measures the blood-oxygen level dependence (BOLD) of each voxel in order to estimate the neural activity of the whole brain over time. In the literature, for each voxel, most studies aggregate its activity (e.g., its BOLD) over each time window, called beta weight (Roth et al., 2022; Vassena et al., 2020; Roth & Merriam, 2023). However, this approach misses the voxel activity dynamic over each task. In this study, we consider voxels’ activity as it is (without aggregation) and model it as timeseries data. We model this data as a multivariate time seris: An fMRI scan involves thousands of voxels, leading to a multivariate time series {X1(t), X 2(t), ..., X n(t)} where Xi(t) is the time series for the i-th voxel. 
+
+A.3. Brain Functional Connectivity 
+
+The brain’s functional connectivity is a graph, derived from a neuroimaging modality (often fMRI), where each node represents a brain parcel or ROI, and two nodes are connected if there is a statistical association between their functionality. In more details, as discussed above, fMRI measures brain activity by detecting changes in blood flow. The primary data from fMRI is the Blood Oxygen Level Dependent (BOLD) signal, reflecting changes in the oxygenation level of the blood. Deriving a brain network from fMRI data involves 1 preprocessing, 2 parcellation using atlases, and 3 computing correlations. 1. Preprocessing: Is the sequence of actions to clean the data and make it for process. Common preprocessing techniques are: • Motion Correction: Aligns all the neuroimages to a reference neuroimage to correct for patient movement. • Band-Pass Filtering: Isolating the frequency band that corresponds to the fMRI signal (usually 0.01 to 0.1 Hz). • Slice Timing Correction: Adjusts for the time difference in image acquisition between slices. • Smoothing: Applies a Gaussian filter to reduce spatial noise and improve signal-to-noise ratio. 2. Parcellation using Atlases: Brain atlases divide the brain into regions of interest (ROIs). Each ROI represents a node in the brain network. Common atlases include: • AAL (Automated Anatomical Labeling): Divides the brain into areas based on anatomical structures. • Harvard-Oxford Atlas: Based on probabilistic information from a large population. 16 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+• Functional Atlases: Based on functional connectivity patterns, e.g., resting-state networks. 3. Computing Correlations: For each ROI defined by the atlas, the time series of the fMRI signal is extracted. This step involves averaging the fMRI signal over all voxels within each ROI (Note that in this paper, we argue that the best case is to consider each voxel as an ROI). Next, to capture the statistical association of ROIs activity, we compute the Pearson correlation coefficient between the time series of every pair of ROIs: 
+
+Cij =
+
+PTk=1 (Xi(k) − ¯Xi)( Xj (k) − ¯Xj )
+
+rPTk=1 (Xi(k) − ¯Xi)2
+
+  PTk=1 (Xj (k) − ¯Xj )2
+
+ , (4) Here, Cij is the correlation between ROI i and ROI j, and Xi, Xj are the time series for ROIs i and j, respectively. To construct a network G = ( V, E), where V is the set of ROI and E is the set of connections, a threshold is applied to the correlation matrix. Only correlations above a certain value are considered to represent connections in E.In EEG and MEG data the process is the same while each signal corresponds to a channel and so in the constructed brain network, each node is a channel and each connection shows high Pearson’s correlation between its endpoints. 
+
+A.4. MLP-M IXER 
+
+The MLP-M IXER architecture (Tolstikhin et al., 2021) is a novel neural network design that has attracted much attention in the field of computer vision. It presents itself as a distinctive alternative to the CNNs and Transformer models. The structure of MLP-M IXER is composed of two key sub-layers in each layer: the patch mixing layer and the channel mixing layer. The patch mixing layer processes spatial information within each channel independently, whereas the channel mixing layer combines the information across various channels. This dual process of mixing is crucial for the MLP-M IXER ’s capability to detect both local and global image dependencies. The mathematical representation of the MLP-M IXER is as follows: patch Mixer: 
+
+Hpatch = E + W(2) 
+
+> patch
+
+σ
+
+
+
+W(1) 
+
+> patch
+
+LayerNorm (E)⊤⊤
+
+, (5) Channel Mixer: 
+
+Hchannel = Hpatch + W(2) 
+
+> channel
+
+σ
+
+
+
+W(1) 
+
+> channel
+
+LayerNorm (Hpatch )
+
+
+
+, (6) 
+
+Challenges of Extending MLP-M IXER to Graphs and Time Series. In graphs, the vanilla MLP-M IXER (Tolstikhin et al., 2021) can be used to bind information across both of feature and node dimensions, but directly applying vanilla MLP-M IXER to graphs is insufficient and impractical. First, there does not exist in general a canonical grid of the graphs (contrary to images) to encode nodes, which makes patch extraction challenging. Second, contrary to images that can be divided into patches of the same size, the partitioning of nodes in graphs might not be all the same size due to the complex graph topology. Moreover, in temporal graphs, dynamics of the graph and its temporal properties should be captured to effectively learn its node encodings. The vanilla MLP-M IXER is not capable of learning temporal dynamics. Similarly, in multivariate time series data, there is no canonical grid and patches are not necessarily the same size. 
+
+Challenges of using MLP-M IXER and its variants for Brain Activity. While there are existing studies that aim to address the above limitations and define patches in graphs using graph partitioning algorithms (He et al., 2023), or first-hop neighbourhood (Cong et al., 2023), there are designed for general cases and miss special properties of the brain. 1 The human brain is comprised of functional systems (Schaefer et al., 2018), which are groups of voxels that perform similar functions (Smith et al., 2013). Recently, Trockman & Kolter (2023) show that the main power of vision architectures like MLP-M IXER and V IT (Khan et al., 2022) comes from patching, splitting the image into multiple same size parts which might show the same concept. Inspired by this, we suggest using functional patching in analysis of brain activity, i.e. splitting voxels into some groups such that each group has similar functionality. 2 This approach results in another challenge which is the size of functional systems are not the same and simply using vanilla MLP-M IXER on functional patches is not feasible. To this end, we present an interpolation method to linearly interpolate functional systems to the same size. 17 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Table 4: The differences of VA Encoder and FC Encoder with MLP-M IXER .MLP-M IXER FC Encoder VA Encoder (Tolstikhin et al., 2021) Patches                      
+
+> Input Images (2-d Regular grid) Graphs (Irregular and non-grid) Time series (Unstructured) Same width and height Different sizes (#Nodes, #Edges) Variable Length Patch Extraction Based on pixels order Based on Temporal Random Walks Based on Brain Functional Systems Non-overlapping patches Overlapping patches Overlapping patches Same patches at each epoch Different patches at each epoch Different patches at each epoch Patch Encoder Same patch size Variable patch size Variable patch size Usign 2-d MLP Using TPM IXER Using Voxel-Mixer (1-d MLP + Dynamic self-attention) (2-d MLP + Dynamic self-attention) Positional Implicitly ordered No universal ordering No universal ordering Information Permutation invariant Permutation variant
+
+The main differences of our VA Encoder and FC Encoder with MLP-M IXER are summarized in Table 4. In this table, 1-d MLP and 2-d MLP refers to applying MLP in one of the dimensions and both dimensions, respectively. 
+
+## B. B VFC Dataset 
+
+In this section, we introduce B VFC dataset and discuss how it is derived from the fMRI and MEG data. 
+
+B.1. T HINGS Dataset 
+
+The Things dataset 1 (Hebart et al., 2023) is a large battery of visual object recognition datasets that use a common set of images as visual stimuli. These datasets cover a broad range of data types, ranging from behavioral aspects, such as similarity judgments, to neural responses to the presented images, such as fMRI and MEG recordings. The shared image database includes more than 26,000 images in total, categorized into 1,854 object concepts. In this work, we used 1 the THINGS fMRI1 dataset, consisting of event-related BOLD responses of three human subjects to 8,460 images selected from 720 categories (12 images per each). 2 the THINGS MEG1 dataset, consisting of Magnetoencephalography (MEG) of 4 subjects for 22,248 images (1,854 categories, 12 images per category), collected over the course of 12 sessions. Both preprocessed and raw versions of the fMRI and MEG datasets are provided by the Things authors 2. However, in the preprocessed version of fMRI dataset, each voxel is associated with a single beta value, which misses the dynamic of voxel activity over time. For the purpose of this work, we utilized the raw version as we required the time series of fMRI recordings and follow the following preprocess steps: 
+
+B.2. Preprocessing 
+
+The beta values provided in the preprocessed version of the THINGS fMRI dataset are single measures of each voxel’s response to a certain stimulus, which are obtained by applying a general linear model (GLM) to the voxels’ time series. 
+
+> 1
+
+https://things-initiative.org 
+
+> 2
+
+https://plus.figshare.com/collections/THINGS-data_A_multimodal_collection_of_ large-scale_datasets_for_investigating_object_representations_in_brain_and_behavior/ 6161151 
+
+18 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Since the preprocessed dataset only offers beta values, we utilized and preprocessed the raw data without applying the GLM step at the end. The preprocessing pipeline used by the authors of THINGS also includes a semi-supervised ICA-denoising step, which requires prior experience with fMRI noise-signal classification. We replaced this stage with ICA-AROMA (Pruim et al., 2015), an automatic ICA-denoising tool, to improve the replicability of our results without the need for manual supervision or intervention in the denoising step. For the rest of the preprocessing steps, we followed the same pipeline used by Hebart et al. (2023). For each image, we use 13 seconds of fMRI signals of the human subject, and treat each as a time window. We use the output of the preprocess time series as the voxel level brain activity. To derive the brain functional connectivity from the time series data, we consider each voxel as an ROI and calculate the statistical association of the time series of two voxels vi and vj in each time window using Pearson’s correlation: 
+
+Cij =
+
+PTk=1 (Xi(k) − ¯Xi)( Xj (k) − ¯Xj )
+
+rPTk=1 (Xi(k) − ¯Xi)2
+
+  PTk=1 (Xj (k) − ¯Xj )2
+
+ , (7) where Xi(k) and Xj (k) are vi and vj activities at time k, and ¯Xi and ¯Xj are their average activity over the time window, respectively. We next, for each voxel removes negative elements and then keep 90-percentile of its corresponding correlation. We use the same approach on the time series of channels in MEG to obtain brain connectivity networks. For the preprocessing scripts visit this link. 
+
+B.3. Image Classification 
+
+Understanding object representation in the brain is a key step toward revealing the basic building blocks of human visual processing (Hebart et al., 2023). Toward this direction, in the first downstream task on B VFC we aim to classify seen images during the fMRI and MEG recording. As discussed above, the fMRI dataset consists of responses of three human subjects to 8,460 images selected from 720 categories (12 images per each) from THINGS database (Hebart et al., 2019). Each of the images has a high-level concept as its high-level label, which described the type of the object in the image (e.g., “Food”, “Human Body”, etc.) 3. In the first task, we aim to predict the high-level label of the seen image by using the fMRI responses of the human subject. This task is a multi-class classification tasks with 9 classes. 
+
+B.4. Anomaly Detection 
+
+In the fMRI1 THINGS dataset (Hebart et al., 2023), there are 100 unique catch images that were created using the generative adversarial neural network, BigGAN (Brock et al., 2019). These images were generated by interpolating between two latent vectors, yielding novel objects that were not recognizable. We take advantage of these images and design a downstream task to detect these images. The visual cortex, responsible for processing visual information, is hierarchically organized with multiple layers building upon simpler features at lower stages (Van Essen & Maunsell, 1983). Initially, neurons detect edges and colors, but on deeper levels, they specialize in recognizing more complex patterns and objects. Accordingly, we expect our model to detect GAN generated images by using the subject’s brain fMRI response. We model this task as a binary classification task, where the brain fMRI response to each natural image is considered “normal” and the brain fMRI response to GAN generated images is considered “Abnormal”. For further information about the generated images by GAN and its architecture see the original paper of THINGS dataset (Hebart et al., 2023) and original paper of BigGAN (Brock et al., 2019). 
+
+## C. Additional Related Work 
+
+To further situate our B RAIN MIXER in a broader context, we briefly review self-supervised representation learning of brain activity and time series representation learning. 
+
+Self-supervised Representation Learning of Brain Activity. In representation learning of brain activity, such as fMRI, MEG and EEG, obtaining labeled data is challenging and costly. To address this, various self-supervised learning techniques have been introduced (Behrouz & Hashemi, 2024a; Mohsenvand et al., 2020; Kostas et al., 2021; Banville et al., 2021). Banville et al. (2021) suggest using relative positioning, temporal shuffling, and contrastive predictive coding specifically to 
+
+> 3Note that the high-level labels of images are different from their original labels, as each high-level class include a set of primary labels. For example, all “Pizza”, “Fast Food”, and “Bacon” are in a high-level class of “Food”.
+
+19 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+EEG data. Additionally, Mohsenvand et al. (2020) and Kostas et al. (2021) presents an approach to learn EEG signals using negative sampling and contrastive learning, which is only suitable for SEEG and EEG data. Yang et al. (2023b) propose an unsupervised pre-training technique designed specifically for brain networks using contrastive learning and maximizing the mutual information between an anchor point of investigation X from a data distribution H and its positive samples, while minimizing its mutual information with its negative samples. All these methods are either 1 are designed for a specific type of neuroimaging data (e.g., EEG) and cannot be generalized to other neuroimage modalities, 2 are based on negative sampling generation which bias the performance toward the patterns of generated negative samples, being unable to generalize to complex and unseen patterns, and/or 3 uses either time series data or connectivity network, missing information from different level of granularity. 
+
+Time Series Representation Learning. Representation learning of multivariate time series has been getting increasingly popular with the motivation that modeling the complex relationships between covariates should improve the forecasting performance(Chen et al., 2023). to this end, Transformers (Vaswani et al., 2017) attract much attention due to their superior performance in modeling long-term sequential data. (Zhou et al., 2021) present Informer and (Wu et al., 2021) present Autoformer to address the efficiency challenges in long-term forecasting. Zhou et al. (2022b) design FEDformer and later FiLM (Zhou et al., 2022a) that decompose the sequences using Fast Fourier Transformation for better extraction of long-term information. Recently, Chen et al. (2023) design TSM IXER , and all MLP architecture for time series forecasting. Not only the purpose of these methods are different from VA Encoder, but also their architectures are different from VA Encoder from a subset of following aspects: 1 They bind information across time series, missing the cross-time dependencies of signals. 2 These methods use fixed static learnable matrices for binding time series, while in the brain signals, the functionality of each time series is important and a different set of signals should be mixed differently based on their corresponding voxel’s (channel’s) connections and functionality. 3 They treat each time series the same, while in multivariate time series some signals cab be more important than others for a specific downstream task. 
+
+MLP-M IXER for fMRI Data. MLP-M IXER shows promising performance on image data. One approach to learn from fMRI data is to treat fMRI image in each time window as an image and then employ an MLP-M IXER to learn representation for voxels. Geenjaar et al. (2022) designed a fully-differentiable non-linear framework for whole-brain dynamic factor learning and applied MLP-M IXER to fMRI data. However, this study suffers from all the MLP-M IXER limitations that we discussed. For more explanations and illustrative examples see our discussion on the difference of our encoders with MLP-M IXER in Appendix A.4. 
+
+C.1. Our Contributions 
+
+As we discussed in Sections 1, 2, and Appendix C, existing studies miss a subset of the following: 1 the functional connectivity between voxels, 2 timeseries activity of voxels, 3 special properties of the brain like hierarchical structure and its complex dynamics. Here, we summarize our contributions as follows: 1. Voxel Activity Encoder: We present VA Encoder, a novel multivariate time series encoder that employs a dynamic attention mechanism to bind information across both voxel and time dimensions. VA Encoder by learning the representation of each voxel allows us to obtain brain activity encodings at different level of granularity (e.g., voxel- , functional system-, and/or brain-level encodings). Our experiments (row 5 in Table 3) show that VA Encoder alone, i.e. without using functional connectivity, outperforms baselines in different downstream tasks. 2. Simple and Low Cost, but Effective Patching: We propose functional patching for learning brain activity. While existing patching methods are either i grid-based and inapplicable to graphs and time series, ii requires additional computational cost, and/or iii cannot use specific brain properties (e.g., functional systems), missing the functional similarity of voxels. Our functional patching uses additional knowledge about the brain functional systems and patch the brain into some groups in which voxels have similar functionality. Our experimental results show that removing functional patching and replacing it with either random patching or clustering patching can damage the performance (See Appendix F.2 and Table 3). 3. Functional Connectivity Encoder: To encode the functional connectivity graph, we design an MLP-based architecture that learns both the structural and temporal properties of the graph using temporal random walks. FC Encoder first extracts temporal patches using temporal random walks and then fuses information within each patch using a novel dynamic self-attention mechanism. To obtain the brain activity encoding at different level of granularity, we further 20 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+propose an adaptive permutation invariant pooling method that theoretically is the universal approximator of any multi-set function. Our experimental results in Table 3 show that FC Encoder alone, i.e. without using time series of voxel activity, outperforms baselines in different downstream tasks. 4. Self-Supervised Pre-training Framework: We present a novel self-supervised pre-training framework without using contrastive learning, which requires generating negative samples. Existing pre-trianing methods for the representation learning of brain activity suffers from two main limitations: i They require negative samples to learn from data in a contrastive manner (Yang et al., 2023b). However, brain activity is complex by its nature, and simple negative samples cause missing complex patterns, damaging the performance. ii They are based on a meta knowledge about a specific brain disease and so cannot generalize to other neuroimage modalities and different neuroimaging tasks (Yuan et al., 2023). Our framework allows self-supervised pre-training of any neuroimaging data that provides multivariate time series (e.g., fMRI, EEG, MEG, iEEG, etc.) without using any meta knowledge about the disease or downstream tasks, making it generalizable to different neuroimage modalities and different downstream tasks. 
+
+## D. Theoretical Guarantee of TS ET MIXER Performance 
+
+Theorem 1. TPM IXER is permutation invariant and a universal approximator of multisets. Proof. Let π(S) be an arbitrary permutation of set S, we aim to show that Ψ( S) = Ψ( π(S)) . We first recall the TS ET MIXER 
+
+and its two phases: Let S = {v1, . . . , vd}, where vi ∈ Rd1 , be the input set and V = [ v1, . . . , vd]T ∈ Rd×d1 be its matrix representation: we first fuse information across features in a non-parametric manner as follows: 
+
+H(t) 
+
+> F
+
+= V + σ
+
+
+
+Softmax 
+
+
+
+LayerNorm (V)⊤ ⊤
+
+, (8) Now, for π(S), let π(V) = [ π(v1), . . . , π (vd)] T ∈ Rd×d1 be its matrix representation, for the first phase we have: 
+
+π(V) + σ
+
+
+
+Softmax 
+
+
+
+LayerNorm (π(V)) ⊤ ⊤
+
+(9) 
+
+= π(V) + σ
+
+
+
+Softmax 
+
+
+
+π
+
+
+
+LayerNorm (V)⊤ ⊤
+
+(10) 
+
+= π(V) + π
+
+
+
+σ
+
+
+
+Softmax 
+
+
+
+LayerNorm (V)⊤ ⊤
+
+(11) 
+
+= π
+
+
+
+V + σ
+
+
+
+Softmax 
+
+
+
+LayerNorm (V)⊤ ⊤
+
+(12) 
+
+= π
+
+
+
+H(t)
+
+> F
+
+
+
+, (13) which means that the first phase of TS ET MIXER is equivariant. In the above, we used the fact that Softmax is permutation equivariant. In the second part, we first have: 
+
+PPool i = SOFTMAX 
+
+
+
+FLAT 
+
+
+
+H(t)
+
+> F
+
+
+
+W(i)
+
+> Pool
+
+
+
+(14) 
+
+⇒ SOFTMAX 
+
+
+
+FLAT 
+
+
+
+π(H(t) 
+
+> F
+
+)
+
+
+
+W(i)
+
+> Pool
+
+
+
+(15) 
+
+= SOFTMAX 
+
+
+
+π
+
+
+
+FLAT 
+
+
+
+H(t) 
+
+> F
+
+)
+
+
+
+W(i)
+
+> Pool
+
+ 
+
+(16) 
+
+= π
+
+
+
+SOFTMAX 
+
+
+
+FLAT 
+
+
+
+H(t) 
+
+> F
+
+)
+
+
+
+W(i)
+
+> Pool
+
+ 
+
+(17) 
+
+= π (PPool i )) . (18) 21 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Also, note that we defined H(t) 
+
+> PE
+
+as H(t) 
+
+> PE
+
+= H(t) 
+
+> F
+
+PPool . Therefore, we have: MEAN Norm 
+
+
+
+π
+
+
+
+H(t)
+
+> F
+
+ 
+
++ π
+
+
+
+H(t)
+
+> PE
+
+
+
+SOFTMAX π H(t)⊤ 
+
+> PE
+
+H(t)
+
+> PE
+
+pdpatch 
+
+!!! 
+
+(19) 
+
+= MEAN π Norm 
+
+
+
+H(t)
+
+> F
+
+
+
++ H(t) 
+
+> PE
+
+SOFTMAX H(t)⊤ 
+
+> PE
+
+H(t)
+
+> PE
+
+pdpatch 
+
+!!! 
+
+(20) 
+
+= hρv (21) In the last step, we use the fact that MEAN (.) is permutation invariant, which results TS ET MIXER to be permutation invariant. Since the patch mixer is just normalization it is inevitable and cannot affect the expressive power of TS ET MIXER . Also, channel mixer is a 2-layer MLP with attention, which are the universal approximator of any function. Therefore, due to the fact that TS ET MIXER is permutation invariant, we can conclude that it is a universal approximator of multi-set functions. 
+
+## E. Experimental Setup 
+
+E.1. Baselines 
+
+Since B RAIN MIXER combines functional connectivity and voxel timeseries activity, we compare our method to fourteen previous state-of-the-art methods and baselines on the timeseries, functional connectivity, and graph encoding: 1. GOutlier (Aggarwal et al., 2011): GOutlier uses a generative model for edges in a node cluster and labels outliers as anomaly. 2. NET WALK (Yu et al., 2018): Yu et al. (2018) proposed a random-walk based dynamic graph embedding approach, N ET -WALK . N ET WALK first uses simple random walks and jointly minimizes the pairwise distance of vertex representations of each sampled walk. Next, it uses a clustering-based technique to dynamically detect network anomalies. 3. HYPER SAGCN (Zhang et al., 2020): HyperSAGCN (Self-attention-based graph convolutional network for hyper-graphs) utilizes a spectral aggregated graph convolutional network to refine the embeddings of nodes within each hyperedge. HyperSAGCN generates initial node embeddings by hypergraph random walks and combines node embeddings by M EAN (.) pooling to compute the embedding of hyperedge. The model with code can be found in here. 4. Graph MLP-Mixer (GMM) (He et al., 2023): Graph MLP-Mixer uses graph partitioning algorithms to split the input graph into overlapping graph patches (subgraphs) and then employs a graph neural network to encode each patch. It then uses an MLP to fuse information across patch encodings. The model with code can be found in here. Note that Graph MLP-Mixer cannot take advantage of temporal properties of the graph as it is designed for static networks. 5. GRAPH MIXER (Cong et al., 2023): G RAPH MIXER is a simple method that concatenates the 1-hop temporal connections and their time encoding of each node as its representative matrix. It then uses an MLP-M IXER to encode each representative matrix to obtain node encodings. The model with code can be found in here. 6. FBNET GEN (Kan et al., 2022a): F BNET GEN is a graph neural network based generative model for functional brain networks from fMRI data that includes three components: a dimension reduction phase to denoise the raw time-series data, a graph generator for brain networks generation from the encoded features, and a GNN predictor for predictions based on the generated brain networks. The model with code can be found in here. 7. BRAIN GNN (Li et al., 2021): B RAIN GNN is a graph neural network-based framework that maps regional and cross-regional functional connectivity patterns. Li et al. (2021) propose a novel clustering-based embedding method in the graph convolutional layer as well as a graph node pooling to learn ROI encodings in the brain. The model with code can be found in here. 8. BRAIN NET CNN (Kawahara et al., 2017): B RAIN NET CNN is a CNN-based approach that uses novel edge-to-edge, edge-to-node and node-to-graph convolutional filters that leverage the topological locality of structural brain networks. 22 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+9. ADM IRE (Behrouz & Seltzer, 2023b): ADM IRE is a random walk-based approach that models brain connectivity networks as multiplex graphs. It uses inter-view and intra-view walks to capture the causality between different neuroimage modalities or different frequency band filters. 10. BNT RANSFORMER (Kan et al., 2022b): BNT RANSFORMER adapts Transformers (Vaswani et al., 2017) to brain networks, so it can use unique properties of brain networks. BNT RANSFORMER use connection profiles as node features to provide low-cost positional information and then learns pair-wise connection strengths among ROIs with efficient attention weights. It further uses a novel READOUT operation based on self-supervised soft clustering and orthonormal projection. The model with code can be found in here. 11. PTGB (Yang et al., 2023b): PTGB is an unsupervised pre-training method designed specifically for brain networks using contrastive learning and maximizing the mutual information between an anchor point of investigation X from a data distribution H and its positive samples, while minimizing its mutual information with its negative samples. The model with code can be found in here. 12. U SAD (Audibert et al., 2020): U SAD is an unsupervised representation learning method in time series, which utilizes an encoder-decoder architecture within an adversarial training framework that allows it to take advantage of both. 13. Time Series Transformer (TST) (Zerveas et al., 2021): TST is a transformer-based framework for unsupervised representation learning of multivariate time series, which is capable of pre-training and can be employed on varius downstream tasks. 14. MVTS (Potter et al., 2022): M VTS is an unsupervised transformer-based model for time series learning, which utilizes special properties of EEGs for seizure identification. It uses an autoencoder mechanism involving a transformer encoder and an unsupervised loss function for training. We use the same hyperparameter selection process as B RAIN MIXER . Also, we fine tune their training parameters as their original papers using grid search. For the sake of fair comparison, we use the same training, testing and validation data for all the baselines (including same data augmentation and negative sampling). Also, for PTGB (Yang et al., 2023b), which also is capable of pre-training, we use the same datasets and settings as we use for B RAIN MIXER .
+
+E.2. Datasets 
+
+We use six real-world datasets with different neuroimage modalities and downstream tasks, whose descriptions are as follows: • BVFC (This Paper): The main characteristics and pre-processing steps are mentioned in Appendix B. For the multi-class classification task, we aim to predict the label of the seen image (9 labels) using the fMRI response of a human subject (3 subjects). For the edge- and node-level anomaly detection tasks, we use synthetic injected anomalies and for the graph anomaly detection, we aim to detect GAN generated images using the fMRI response. We label brain activities that correspond to seeing a GAN generated image (resp. natural image) as “Anomalous” (resp. “Normal”). In the experiments, for the sake of efficiency, we remove irrelevant voxels. We use only highly active and related voxels in our experiments. • BVFC -MEG (This Paper): The main characteristics and pre-processing steps are mentioned in Appendix B. For the multi-class classification task, we aim to predict the label of the seen image (9 labels) using the MEG response of a human subject (4 subjects). For the edge- and node-level anomaly detection tasks, we use synthetic injected anomalies and for the graph anomaly detection, we aim to detect natural scenes using the MEG response. We label MEG response that correspond to seeing natural scenes as “Anomalous” and seeing other objects as “Normal”. • ADHD (Milham et al., 2011): ADHD (Milham et al., 2011) contains resting-state fMRI of 250 subjects in the ADHD group and 450 subjects in the typically developed (TD) control group. We follow the standard pre-processing steps (Cui et al., 2022a) to obtain brain networks. For the edge and node anomaly detection tasks, we use synthetic anomalies, while for the graph anomaly detection task we label brain networks of the typically developed control group as “Normal” and brain networks of the ADHD group as “Anomalous”. 23 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Table 5: Datasets statistics. Datasets Number of Graphs Average Number of Nodes Average Number of Edges Number of Classes Ground-Truth Anomaly (Multi-class Classification) (Binary Classification) BVFC 25380 11776 352479 9 Yes BVFC -MEG 88992 272 9841 9 Yes ADHD 700 400 6194 - Yes TUH-EEG 642 31 252 - Yes ASD 90 400 5903 - Yes HCP 7440 1000 7635 7 (Mental states) Yes 1067 8041 5 (Age) • TUH-EEG (Shah et al., 2018): The seizure detection TUH-EEG dataset (Shah et al., 2018) consists of EEG data with 31 channels of 642 subjects. For the edge and node anomaly detection tasks, we use synthetic anomalies, while for the graph anomaly detection task we label brain networks of people with and without seizure as “Anomalous” and “Normal”, respectively. • ASD (Craddock et al., 2013): This dataset includes the resting fMRI data taken from the Autism Brain Imaging Data Exchange (ABIDE) (Craddock et al., 2013); it contains data for 45 subjects (22 female, age = 25 .4 ± 8.9 yrs) in the typically developed control group and 45 subjects (23 female, age = 23 .1 ± 8.1 yrs) in the ASD group. We have followed the five pre-processing strategies denoted as DPARSF, followed by Band-Pass Filtering. For the edge and node anomaly detection tasks, we use synthetic anomalies, while for the graph anomaly detection task we label brain networks of the typically developed control group as “Normal” and brain networks of the ASD group as “Anomalous”. • HCP (Van Essen et al., 2013): HCP (Van Essen et al., 2013) contains data from 7440 neuroimaging samples each of which is associated with one of the seven ground-truth mental states. Following previous studies (Said et al., 2023), we define two downstream multi-class classification tasks: 1 Mental states prediction, in which we aim to predict the mental state using the fMRI. 2 We aim to predict the age of human subjects using their fMRI. In this tasks, we split the age into 5 groups, balancing the number of samples in each class. Similar to other datasets, we use synthetic anomalies for the edge and node anomaly detection tasks. We model the pre-processed fMRI, MEG, and EEG signals as multivariate time series and use them as our time series activity. Next, we discuss how we derive the brain connectivity network. 
+
+Constructing Brain Connectivity Network. To construct the brain connectivity networks for each dataset, we use the same process as we do for B VFC . We use the output of the preprocess time series as the voxel level (channel level for EEG and MEG) brain activity. To derive the brain connectivity from the time series data, we consider each voxel (or channel) as an ROI and calculate the statistical association of the time series of two voxels (channels) vi and vj in each time window using Pearson’s correlation: 
+
+Cij =
+
+PTk=1 (Xi(k) − ¯Xi)( Xj (k) − ¯Xj )
+
+rPTk=1 (Xi(k) − ¯Xi)2
+
+  PTk=1 (Xj (k) − ¯Xj )2
+
+ , (22) where Xi(k) and Xj (k) are vi and vj activities at time k, and ¯Xi and ¯Xj are their average activity over the time window, respectively. We next, for each voxel (channel) removes negative elements and then keep 90-percentile of its corresponding correlation. 
+
+E.3. Implementation, Training, and Hyperparameters Tuning 
+
+In each task, we split the data into training set (70% of the data), validation set (10% of the data), and test set (20% of the data). In the pre-training phase, we use both training set and validation set to train the model and then we fine tune the pre-trained model for downstream tasks using only training set. For downstream tasks, we use validation set to tune hyperparameters as discussed bellow. During the training of both pre-trained model and fine tuning for downstream tasks, the test set is untouched and it is used only for the final evaluation of the method. 24 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Table 6: Hyperparameters used in the grid search. Datasets Sampling Number M Sampling Time Bias θ Temporal Walk Length m Hidden dimensions BVFC 4, 8, 16, 32, 64, 128 {0.5, 2.0, 20 , 200 , 2000 , 20000 } × 10 −7 1, 2, 3, 4 32, 64, 128 BVFC -MEG 4, 8, 16, 32, 64 {0.5, 2.0, 20 , 200 , 2000 , 20000 } × 10 −7 1, 2, 3, 4, 5, 6 32, 64, 128 ADHD 4, 8, 16, 32, 64, 128 {0.5, 2.0, 20 , 200 , 2000 , 20000 } × 10 −7 1, 2, 3, 4 32, 64, 128 TUH-EEG 4, 8, 16, 32, 64 {0.5, 2.0, 20 , 200 , 2000 , 20000 } × 10 −7 1, 2, 3, 4, 5, 6 32, 64, 128 ASD 4, 8, 16, 32, 64 {0.5, 2.0, 20 , 200 , 2000 , 20000 } × 10 −7 1, 2, 3, 4 32, 64, 128 HCP 4, 8, 16, 32, 64 {0.5, 2.0, 20 , 200 , 2000 , 20000 } × 10 −7 1, 2, 3, 4 32, 64, 128 In addition to hyperparameters and modules (activation functions) mentioned in the main paper, here, we report the training hyperparameters of B RAIN MIXER : On all datasets, we use a batch size of 32 and use a learning rate of 10 −3. We use the maximum training epoch number of 100 with an early stopping strategy to stop training if the validation performance does not increase for more than 7 epochs. Furthermore, a dropout layers with rate = 0.1 is employed in all neural networks. To tune the model’s hyperparameters, we systematically perform grid search. The search domains of each hyperparameter are reported in Table 6. BRAIN MIXER is implemented by PyTorch in Python and a Linux machine with GPU and 16GB of RAM is used to run evaluations. Note that we use the same training pipeline as B RAIN MIXER for all the baselines. For the sake of fair comparison, we use the same training, testing and validation data for all the baselines (including same data augmentation and negative sampling). Also, for PTGB (Yang et al., 2023b), which also is capable of pre-training, we use the same datasets and settings as we use for pre-training of B RAIN MIXER .
+
+E.4. Injecting Synthetic Anomalies 
+
+Due to the nature of anomaly detection tasks, specifically in neuroimaging data, there is a lack of unified definition for abnormal brain activity and so the ground truth labels are not available. To mitigate this challenge in evaluation of our approach, we first evaluate our approach using synthetic anomalies and then we perform case studies on real-world data and show that the found anomalies are compatible with previous findings. 1 Injecting Abnormal Connections to Brain Connectivity Network: We randomly choose 5% (or 1%, depends on the setting) normal connections and corrupt them. Given a connection (u, v ), we randomly change one of its endpoint, assume that u, to another voxel like w such that v and w have not been connected previously. Therefore, from a normal connection 
+
+(u, v ), we generate an abnormal connection (w, v ). This method is used to evaluate the performance of anomaly detection methods in different domains (Ma et al., 2021), including neuroimaging (Behrouz & Seltzer, 2023a). 2 Injecting Abnormal Activity to Brain Activity Time Series: We randomly choose 5% (or 1%, depends on the setting) of time series and corrupt them as follows: Given a voxel activity time series Xi and Xj , during time window t, we swap this part of these two randomly selected signals and construct ˜Xi and ˜Xj which are corrupted of Xi and Xj , respectively. Note that only edge-AD and node-AD tasks are evaluated using synthetic data and graph-level anomaly detection methods are evaluated using ground-truth anomalies. 
+
+E.5. Visualization Tools 
+
+To visualize the average distribution of anomalous connections, we use BrainPainter (Marinescu et al., 2019) with the Desikan-Killiany atlas. Also, to visualize the average distribution of brain activities in the visual cortex we use Pycortex, which is an interactive surface visualizer for fMRI (Gao et al., 2015). 25 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 20 21 22 23 24 25 26
+
+Number of Walks M
+
+70 
+
+75 
+
+80 
+
+85 
+
+90 
+
+95 
+
+> AUC
+> (a) Edge Anomaly Detection
+
+20 21 22 23 24 25 26
+
+Number of Walks M
+
+70 
+
+75 
+
+80 
+
+85 
+
+90 
+
+95  
+
+> AUC (b) Voxel Anomaly Detection
+
+20 21 22 23 24 25 26
+
+Number of Walks M
+
+70 
+
+75 
+
+80 
+
+85 
+
+90 
+
+95  
+
+> AUC (c) Brain Anomaly Detection
+
+20 21 22 23 24 25 26
+
+Number of Walks M
+
+55 
+
+60 
+
+65 
+
+70 
+
+75 
+
+80 
+
+85 
+
+90 
+
+95 
+
+100 
+
+> ACC
+
+Datasets 
+
+BVFC 
+
+BVFC-MEG 
+
+HCP 
+
+> (d) Brain Multi-class Classification
+
+Figure 4: The effect of the number of walks on the performance of B RAIN MIXER in different downstream tasks. 
+
+## F. Additional Experimental Results 
+
+F.1. Parameter Sensitivity 
+
+In this section, we evaluate the effect of hyperparameters on the performance of B RAIN MIXER in different downstream tasks. 
+
+The Effect of the Number of Walks. In the first evaluation, we evaluate the effect of the number of walks on the performance of B RAIN MIXER . Results are reported in Figure 4. These results show that increasing the number of walks results in better performance. The main reason is that we use the union of walks to capture the neighbourhood of each node over time. The more number of walks the better representation of the temporal neighborhood we can obtain. That is, sampling more walks lets the model to extract more information about the dynamic of nodes neighborhood as well as its structure. Also, notably, we observe that only a small number of sampled walks are needed to achieve competitive performance: in the best case 4 and in the worst case 16 sampled walks are needed to achieve better performance than baselines. 
+
+The Effect of the Walk Length. In this experiment, we evaluate the effect of the walk length on the performance of BRAIN MIXER . Results are reported in Figure 5. The results suggest that the effect of the walk length on performance peaks at a certain point, but the exact value varies with datasets. The main reason for this is that we use walks to capture the structural and temporal properties of each node. Therefore, for dense brain connectivity networks as well as datasets with a large number of relevant time windows we need longer walks so the model can extract enough information about both relevant time windows and dense neighborhoods. Accordingly, we see increasing trend in B VFC -MEG’s performance when we increase the length of the walk. Also, note that increasing the walk length for more sparser brain connectivity networks or for datasets with a smaller number of relevant time windows can damage the performance. The reason is we might consider irrelevant time windows by backtracking over time or consider far nodes (voxels in brain connectivity graph), which are irrelevant. Accordingly, depends on the structure of the brain connectivity graph and temporal properties of time series signals, we might need longer or shorter walks. 26 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 1 2 3 4 5 6 7
+
+Walk Length ( m + 1 )
+
+70 
+
+75 
+
+80 
+
+85 
+
+90 
+
+95 
+
+> AUC
+> (a) Edge Anomaly Detection
+
+1 2 3 4 5 6 7
+
+Walk Length ( m + 1 )
+
+70 
+
+75 
+
+80 
+
+85 
+
+90 
+
+95  
+
+> AUC (b) Voxel Anomaly Detection
+
+1 2 3 4 5 6 7
+
+Walk Length ( m + 1 )
+
+70 
+
+75 
+
+80 
+
+85 
+
+90 
+
+95  
+
+> AUC (c) Brain Anomaly Detection
+
+1 2 3 4 5 6 7
+
+Walk Length ( m + 1 )
+
+55 
+
+60 
+
+65 
+
+70 
+
+75 
+
+80 
+
+85 
+
+90 
+
+95 
+
+100 
+
+> ACC
+
+Datasets 
+
+BVFC 
+
+BVFC-MEG 
+
+HCP 
+
+> (d) Brain Multi-class Classification
+
+Figure 5: The effect of the walk length on the performance of B RAIN MIXER in different downstream tasks. 
+
+The Effect of the Time Decay θ. As we discussed in section 3, previous studies show that doing a task can affect brain activity even after 2 minutes (Yang et al., 2023a). To this end, since more recent connections can be more informative, we use a biased sampling procedure and control the bias using a variable θ. That is, in the proposed sampling procedure, smaller (resp. larger) θ means less (resp. more) emphasis on recent timestamps. In this experiment, we evaluate the effect of time decay θ on the performance of B RAIN MIXER . Results are presented in Figure 6. These results suggest that θ has a dataset-dependent optimal interval. That is, a small θ means an almost uniform sampling of brain activity history, which results in poor performance when the brain activities in recent time-windows are more important in the dataset. Also, very large θ might damage the performance as it makes the model focus on the most recent brain activity or only its own time window, missing long-term and lasting brain activities. Please note that while the value of θ needs to be tuned to achieve the best performance, choosing arbitrary θ in a wide proper interval can still results in state-of-the-art performance over baselines. 
+
+The Effect of the Number of ROIs. The human brain is hierarchically organized and comprised of hierarchical groups of voxels that have similar functionality (Smith et al., 2013). Accordingly, different downstream tasks requires studying the brain at different level of granularity. In this experiment, we evaluate the the effect of the number of ROIs 4 on the performance of B RAIN MIXER . We vary the number of ROIs from 10000 (voxel-level activity) to 100 (functional system-level activity) and report the results in Figure 7. The results suggest that using more ROIs and so studying the brain at lower-levels like voxel-level can result in a better performance. While there is a little improvement for downstream tasks that are correlated with human brain functional systems (e.g., HCP dataset and classification mental states), the significant improvements are for tasks that are highly correlated to a specific brain region (e.g., B VFC dataset and classifying seen images, which is closely related to human brain visual cortex). As an example, there is a ≈ 50% performance loss in the accuracy of B RAIN MIXER on B VFC in multi-class classification task as it requires learning voxel activity (e.g., V1 and V2) not learning the higher-level aggregated visual cortex activity. 
+
+> 4Note that here ROI means any region of interest in the brain not necessarily pre-defined brain regions based on the atlases.
+
+27 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity   
+
+> (a) Edge Anomaly Detection (b) Voxel Anomaly Detection (c) Brain Anomaly Detection
+> (d) Brain Multi-class Classification
+
+Figure 6: The effect of the time decay θ on the performance of B RAIN MIXER in different downstream tasks. 
+
+The Effect of the Aggregation of Time Series. Most existing studies on voxel-level brain activity aggregate the voxel activity in each time window and use a single weight relating the voxel activity to the task, called beta weight. However, aggregation of the voxel activity misses the temporal property and dynamics of voxel activity over time. To this end, we suggest using a time series encoder that learn the dynamic of voxel activity over time, instead of simply aggregating them. In this experiment, we evaluate how much the aggregation of voxel activity time series can affect the performance. To this end, we take the mean of voxel activity time series and shorten it to 10%, 20%, 40%, and 60% of its original size. Figure 8 reports the results of this experiment on different downstream tasks. For datasets with low frequency sampling rate (e.g., HCP) aggregation does not significantly damage the performance. For the datasets with high frequency sampling rate (e.g., BVFC -MEG), however, aggregation of the voxel activity can significantly damage the performance ( ≈ 12% performance lost in the worst case and ≈ 5% in the best case). These results show the importance of considering voxel activity as a time series instead of aggregating its activity and considering it as a single weight. 
+
+F.2. The Effect of Functional and Temporal Patching 
+
+As discussed in section 3, in both VA Encoder and FC Encoder we first split the data (either time series or graph) into patches. In this section, we replace the proposed functional and temporal patching methods with some existing patching strategies as well as some baselines to evaluate their contribution in B RAIN MIXER ’s superior performance. For patching time series data we evaluate the following methods: 1. Random Patching: We randomly group time series in multivariate time series data and treat each group as a patch. 2. Ordered Patching: We use the actual order of time series in the multivariate time series and group consecutive time series as a patch. 3. Correlation Patching: We calculate the Pearson’s correlation of multivariate time series (see Equation 22) and split the data into groups base on their pairwise correlation. 28 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity BVFC BVFC-MEG HCP 020 40 60 80      
+
+> AUC
+> 100 200 272 400 1000 10000
+
+(a) Edge Anomaly Detection BVFC BVFC-MEG HCP 020 40 60 80       
+
+> AUC
+> 100 200 272 400 1000 10000
+
+(b) Voxel Anomaly Detection BVFC BVFC-MEG HCP 020 40 60 80      
+
+> AUC
+> 100 200 272 400 1000 10000
+
+(c) Brain Anomaly Detection BVFC BVFC-MEG HCP 020 40 60 80       
+
+> ACC
+> 100 200 272 400 1000 10000
+
+(d) Brain Multi-class Classification 
+
+Figure 7: The effect of the number of ROIs on the performance of B RAIN MIXER in different downstream tasks. 4. Functional Patching: This is our designed patching method, in which we group the time series of voxels in each brain functional system as a patch. Also, for the graph patching we evaluate the following methods: 1. 1-hop Patching: We use the 1-hop neighborhood of each node as its corresponding patch. 2. Partitioning Patching: Following He et al. (2023) for graph patching, we use METIS (Karypis & Kumar, 1998), a graph clustering algorithm that partitions a graph into a pre-defined number of clusters. 3. Spectral Clustering Patching: Following Geenjaar et al. (2022), we use spectral clustering patching used in this study. 4. Static Random Walk Patching: We replace temporal random walk in our temporal patching strategy with a static random walk. This random walk still should be able to capture structural properties but missing the dynamic of the graph. 5. Functional Patching in Graph: We use the actual brain functional systems as our patches. 6. Temporal Patching: This is our designed patching method for brain connectivity graph, in which we use temporal random walks that randomly sample temporal and structural neighborhood of each node. In this experiments, we replace the baselines with our proposed patching method and keep the rest of the model unchanged. Results are reported in Table 7. Results show the superior performance of functional and temporal patching in time series and graph data, respectively. In time series patching, random and ordered patching perform poorly as they might group unrelated time series. Correlation patching performs better but still weaker than functional patching. The main reason for this superior performance is that we expect time series in each patch to have similar functionality and functional patching using the actual brain functional systems provides the best grouping since we know voxels in each functional system has similar functionality. In graph patching, again our proposed temporal patching outperforms the other patching methods. Surprisingly, here functional patching performs poorly. The main reason is that in the functional connectivity graph, we connect highly 29 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity BVFC BVFC-MEG HCP 60 65 70 75 80 85 90 95     
+
+> AUC
+> 10% 20% 40% 60% 100%
+
+(a) Edge Anomaly Detection BVFC BVFC-MEG HCP 60 65 70 75 80 85 90 95      
+
+> AUC
+> 10% 20% 40% 60% 100%
+
+(b) Voxel Anomaly Detection BVFC BVFC-MEG HCP 60 65 70 75 80 85 90 95     
+
+> AUC
+> 10% 20% 40% 60% 100%
+
+(c) Brain Anomaly Detection BVFC BVFC-MEG HCP 50 60 70 80 90 100      
+
+> ACC
+> 10% 20% 40% 60% 100%
+
+(d) Brain Multi-class Classification 
+
+Figure 8: The effect of the aggregation of the time series on the performance of B RAIN MIXER in different downstream tasks. Table 7: The effect of functional and temporal patching on the performance of B RAIN MIXER : Mean ACC (%) ± standard deviation. Patching Methods BVFC BVFC -MEG HCP-Mental HCP-Age Time Series Patching Random Patching 60 .42 ±3.53 60 .28 ±1.72 91 .97 ±1.88 45 .71 ±3.69 
+
+Ordered Patching 60 .58 ±0.60 60 .55 ±1.01 91 .63 ±1.57 47 .21 ±0.91 
+
+Correlation Patching 66 .97 ±0.63 60 .91 ±1.46 95 .08 ±1.21 55 .30 ±0.98 
+
+Functional Patching 67.24 ±1.47 62.58 ±1.12 96.32 ±0.29 57.83 ±1.03 
+
+Graph Patching 1-hop Patching 63 .59 ±0.09 60 .01 ±0.18 89 .97 ±0.16 54 .91 ±0.71 
+
+Partitioning Patching 66 .50 ±1.92 60 .63 ±1.87 96 .14 ±1.04 56 .82 ±1.75 
+
+Spectral Clustering Patching 63 .77 ±0.23 59 .16 ±1.33 90 .24 ±0.95 48 .34 ±1.28 
+
+Static Random Walk Patching 66 .28 ±1.52 59 .94 ±1.20 95 .86 ±0.79 57 .81 ±0.92 
+
+Functional Patching in Graph 60 .03 ±0.68 54 .99 ±0.74 91 .45 ±0.80 50 .11 ±0.96 
+
+Temporal Patching 67.24 ±1.47 62.58 ±1.12 96.32 ±0.29 57.83 ±1.03 
+
+correlated voxels (with respect to their activity). However, in each brain functional systems some voxels have complementary activity to others, which means while they have the same functionality, they might not have high correlation and so they are not connected. This fact results in considering disconnected subgraphs as patches, which is undesirable and so damages the performance. 
+
+F.3. Performance Comparison using Different Metrics 
+
+We compared the performance of B RAIN MIXER with baselines in section 4. In multi-class classification tasks, we used accuracy as our metrics. Also, for the anomaly detection tasks, since we have binary labels (either anomaly or normal), we used AUC-PR as the metrics. In this section, we additionally evaluate the B RAIN MIXER and baselines using accuracy for 30 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Table 8: Performance on anomaly detection: Accuracy (%) ± standard deviation. Methods BVFC BVFC -MEG HCP ADHD TUH-EEG ASD Anomaly % 1% 5 % 1% 5 % 1% 5 % 1% 5 %
+
+> Edge-level AD
+
+GO UTLIER 62 .78 ±2.41 55 .24 ±2.03 60 .83 ±1.73 58 .29 ±1.49 63 .91 ±1.84 61 .05 ±2.32 64 .12 ±1.46 61 .87 ±1.61 59 .59 ±0.83 56 .79 ±1.51 
+
+NET WALK 69 .21 ±1.92 58 .47 ±1.77 71 .99 ±1.12 69 .64 ±0.89 68 .85 ±2.34 66 .18 ±1.98 70 .71 ±0.97 67 .92 ±1.01 68 .39 ±1.79 65 .87 ±2.06 
+
+HYPER SAGCN 78 .84 ±1.73 67 .47 ±0.92 80 .33 ±1.61 78 .61 ±1.24 82 .05 ±1.75 80 .57 ±1.32 72 .45 ±1.67 69 .15 ±0.89 72 .73 ±0.92 70 .68 ±1.77 
+
+GRAPH MIXER 84 .82 ±2.01 71 .34 ±0.98 85 .36 ±1.58 83 .99 ±1.19 83 .89 ±1.78 81 .58 ±0.99 74 .29 ±1.78 72 .48 ±1.65 83 .33 ±1.36 80 .94 ±1.62 
+
+BRAIN NET CNN 77 .26 ±0.89 68 .78 ±1.49 78 .43 ±0.94 75 .08 ±1.33 79 .22 ±1.97 76 .54 ±1.17 72 .11 ±1.49 68 .81 ±1.06 70 .52 ±1.47 68 .85 ±1.80 
+
+BRAIN GNN 78 .09 ±0.73 69 .71 ±1.85 80 .85 ±1.52 78 .54 ±1.12 77 .02 ±1.34 75 .68 ±1.23 71 .36 ±1.38 68 .83 ±1.83 70 .24 ±1.77 68 .92 ±1.25 
+
+FBNET GEN 78 .35 ±1.98 70 .44 ±1.58 80 .82 ±1.25 78 .30 ±1.56 77 .66 ±0.89 75 .74 ±1.78 72 .11 ±1.57 69 .63 ±1.47 70 .97 ±1.42 69 .69 ±1.18 
+
+ADM IRE 84 .91 ±1.71 72 .60 ±1.91 85 .23 ±1.07 83 .58 ±1.44 84 .43 ±1.68 82 .34 ±1.19 74 .88 ±1.07 72 .34 ±1.72 85 .84 ±1.55 82 .76 ±1.48 
+
+PTGB 84 .13 ±1.78 71 .24 ±1.43 84 .44 ±1.86 83 .61 ±1.35 84 .75 ±1.49 82 .83 ±1.54 73 .94 ±1.56 71 .18 ±1.48 85 .78 ±1.22 82 .89 ±1.61 
+
+BNT RANSFORMER 82 .52 ±1.64 73 .21 ±1.78 84 .92 ±1.29 82 .85 ±1.61 83 .52 ±1.81 82 .72 ±1.31 74 .07 ±1.36 72 .54 ±1.15 73 .76 ±1.80 71 .18 ±1.59 
+
+BRAIN MIXER 87.75 ±1.58 79.12 ±1.53 88.19 ±1.97 87.83 ±1.39 89.77 ±1.12 88.12 ±1.57 79.88 ±1.24 77.47 ±1.14 89.92 ±1.57 88.39 ±1.62 
+
+> Voxel-level AD
+
+USAD 65 .13 ±2.23 61 .28 ±1.91 63 .38 ±2.11 62 .18 ±1.42 70 .41 ±1.71 69 .06 ±1.39 69 .46 ±2.32 68 .07 ±1.88 64 .29 ±2.12 63 .41 ±1.87 
+
+TST 67 .12 ±2.06 67 .10 ±2.16 67 .16 ±1.00 66 .03 ±2.10 72 .11 ±1.82 70 .50 ±2.04 70 .31 ±1.89 69 .32 ±2.15 67 .14 ±2.08 66 .41 ±1.81 
+
+MVTS N/A N/A N/A N/A N/A N/A 73 .15 ±1.79 73 .01 ±2.08 N/A N/A GO UTLIER 61 .28 ±1.78 59 .33 ±1.16 61 .47 ±1.70 61 .12 ±1.93 66 .83 ±1.82 64 .79 ±2.16 62 .26 ±2.02 61 .33 ±1.51 57 .75 ±1.95 56 .87 ±1.95 
+
+NET WALK 65 .31 ±1.90 62 .38 ±2.13 64 .65 ±1.76 63 .39 ±2.15 73 .71 ±1.88 71 .12 ±1.41 69 .40 ±1.87 68 .89 ±1.76 69 .71 ±1.63 68 .49 ±2.11 
+
+HYPER SAGCN 75 .01 ±1.50 70 .01 ±1.72 78 .61 ±1.98 76 .24 ±1.46 81 .22 ±1.54 80 .34 ±1.26 72 .28 ±1.45 70 .27 ±2.20 72 .59 ±1.56 72 .42 ±1.92 
+
+GRAPH MIXER 75 .06 ±1.45 70 .14 ±2.14 79 .32 ±1.56 78 .14 ±1.98 79 .45 ±1.87 77 .56 ±1.79 69 .70 ±1.43 68 .18 ±2.03 70 .42 ±1.71 70 .39 ±1.94 
+
+BRAIN NET CNN 77 .10 ±1.29 72 .43 ±2.09 80 .19 ±1.64 79 .36 ±1.43 80 .48 ±1.33 78 .88 ±1.65 70 .72 ±1.62 69 .57 ±1.10 71 .22 ±1.75 70 .79 ±2.04 
+
+BRAIN GNN 76 .48 ±1.55 72 .06 ±1.35 80 .26 ±1.80 79 .09 ±1.93 80 .17 ±1.24 77 .97 ±2.18 70 .32 ±2.20 68 .88 ±2.15 70 .39 ±1.63 69 .33 ±2.16 
+
+FBNET GEN 76 .29 ±2.02 71 .50 ±1.96 81 .41 ±0.91 78 .18 ±1.86 78 .66 ±1.47 78 .67 ±1.48 69 .85 ±2.06 68 .38 ±1.97 70 .50 ±1.59 69 .44 ±2.08 
+
+PTGB 82 .26 ±1.37 75 .59 ±1.42 83 .25 ±1.51 81 .80 ±2.02 84 .51 ±1.32 83 .29 ±1.39 74 .73 ±1.02 74 .07 ±2.13 75 .59 ±2.04 75 .12 ±2.12 
+
+BNT RANSFORMER 82 .25 ±1.56 74 .71 ±2.10 84 .16 ±1.03 81 .12 ±1.11 84 .64 ±1.62 83 .46 ±2.13 74 .07 ±1.68 74 .40 ±1.97 74 .47 ±1.18 73 .04 ±1.74 
+
+BRAIN MIXER 87.11 ±1.03 80.38 ±1.59 88.01 ±1.22 85.84 ±1.32 88.84 ±1.37 86.55 ±1.19 76.98 ±1.42 76.11 ±1.52 87.19 ±1.93 87.11 ±1.84 
+
+> Brain-level AD
+
+USAD 69 .12 ±1.92 60 .27 ±1.41 64 .23 ±1.55 64 .14 ±2.27 79 .71 ±2.09 78 .47 ±2.11 68 .01 ±2.06 67 .12 ±1.18 70 .28 ±1.87 67 .09 ±1.68 
+
+TST 70 .94 ±2.26 66 .03 ±1.94 64 .61 ±1.78 63 .18 ±1.69 80 .43 ±2.01 81 .51 ±1.21 68 .82 ±2.03 68 .09 ±1.79 71 .47 ±1.64 69 .42 ±2.08 
+
+MVTS N/A N/A N/A N/A N/A N/A 79 .24 ±1.56 78 .39 ±1.80 N/A N/A NET WALK 70 .45 ±1.29 68 .23 ±1.67 66 .45 ±1.37 65 .23 ±1.44 80 .89 ±1.11 80 .28 ±1.83 67 .01 ±1.87 65 .37 ±1.45 71 .29 ±1.63 69 .26 ±1.49 
+
+HYPER SAGCN 78 .10 ±1.18 75 .76 ±1.22 69 .08 ±1.42 69 .16 ±1.37 83 .18 ±1.39 84 .32 ±1.65 71 .14 ±1.11 71 .59 ±1.32 75 .46 ±1.60 72 .09 ±1.37 
+
+GMM 79 .55 ±1.07 76 .09 ±1.21 71 .44 ±1.26 71 .55 ±1.42 82 .14 ±1.24 83 .20 ±1.14 72 .00 ±1.24 72 .82 ±1.08 75 .76 ±1.55 72 .08 ±1.46 
+
+GRAPH MIXER 80 .49 ±1.10 76 .68 ±1.38 72 .28 ±1.24 72 .04 ±1.17 83 .26 ±1.05 83 .13 ±1.21 73 .68 ±1.37 72 .34 ±1.33 75 .42 ±1.64 73 .59 ±1.62 
+
+BRAIN NET CNN 76 .29 ±1.32 72 .70 ±1.13 67 .59 ±1.19 67 .89 ±1.78 82 .77 ±1.46 82 .04 ±1.17 69 .83 ±1.29 69 .29 ±1.12 74 .86 ±1.38 72 .15 ±1.38 
+
+BRAIN GNN 77 .26 ±1.42 74 .14 ±1.28 69 .43 ±1.35 69 .68 ±1.59 81 .09 ±1.42 81 .34 ±1.44 68 .91 ±1.53 67 .48 ±1.28 74 .02 ±1.15 71 .47 ±1.47 
+
+FBNET GEN 76 .28 ±1.10 73 .29 ±1.69 68 .22 ±1.28 68 .53 ±1.32 81 .08 ±1.33 82 .57 ±1.22 68 .51 ±1.37 67 .95 ±1.39 74 .12 ±1.48 71 .61 ±1.26 
+
+ADM IRE 81 .54 ±1.22 77 .27 ±1.16 72 .92 ±2.06 71 .34 ±1.59 83 .35 ±1.16 83 .19 ±1.43 74 .32 ±1.31 73 .11 ±1.45 76 .62 ±1.76 73 .88 ±1.53 
+
+PTGB 82 .01 ±1.51 78 .12 ±1.25 73 .53 ±1.64 72 .62 ±1.26 84 .42 ±1.47 84 .62 ±1.17 75 .81 ±1.24 74 .19 ±1.42 79 .98 ±1.58 77 .29 ±1.46 
+
+BNT RANSFORMER 81 .60 ±1.18 78 .14 ±1.22 72 .13 ±1.55 72 .84 ±1.67 84 .71 ±1.39 84 .09 ±1.28 75 .14 ±1.94 74 .44 ±1.23 78 .18 ±1.46 73 .50 ±1.38 
+
+BRAIN MIXER 86.62 ±1.81 83.22 ±2.01 77.92 ±1.86 77.13 ±1.35 88.51 ±1.27 88.19 ±1.61 81.22 ±1.59 81.74 ±1.27 88.14 ±1.41 85.27 ±1.35 
+
+anomaly detection tasks and top-1 accuracy for multi-class brain classification tasks. 
+
+Accuracy. In this part, we compare the performance of B RAIN MIXER and baselines in anomaly detection tasks, using accuracy metric. Table 8 reports the results. Similar to Table 2, these results show the superior performance of B RAIN MIXER 
+
+in all edge-level, voxel-level, and brain-level anomaly detection tasks. 
+
+Comparison of Best results. In Table 1, we reported the average of accuracy. In this experiment, we report the best performance of each model among 20 times of running. Table 9 reports the result and show that B RAIN MIXER significantly outperforms baselines. 
+
+F.4. Graph Regression 
+
+In this section we evaluate the performance of B RAIN MIXER in a regression task and compare it with baselines. In this task, we aim to predict Achenbach adult self-report (ASR) scores in HCP dataset, which are “Aggressive”, “Intrusive”, and “Rule-Break” scores. In this experimental setup, we use L1 loss to fine-tune the model for the downstream regression task. We also use the commonly used metric of Mean Absolute Errors (MAEs) on the prediction of these three scores. Table 10 reports the results. In all three regression tasks, B RAIN MIXER achieves the lower MAE and outperforms all the baselines. 31 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Table 9: Performance on multi-class brain classification: Top-1 ACC (%) (Best results among 20 times run). Methods BVFC BVFC -MEG HCP-Mental HCP-Age USAD 50 .48 51 .16 75 .05 40 .84 
+
+HYPER SAGCN 53 .41 53 .09 91 .94 49 .31 
+
+GMM 54 .54 54 .72 92 .73 48 .99 
+
+GRAPH MIXER 54 .37 54 .27 92 .56 49 .43 
+
+BRAIN NET CNN 50 .91 51 .68 85 .25 44 .30 
+
+BRAIN GNN 52 .29 52 .05 87 .40 44 .61 
+
+FBNET GEN 51 .13 52 .32 86 .34 44 .61 
+
+ADMIRE 55 .73 56 .78 91 .65 49 .48 
+
+PTGB 57 .69 56 .73 93 .88 49 .90 
+
+BNT RANSFORMER 56 .37 56 .80 93 .17 49 .08 
+
+BRAIN MIXER 68.67 63.68 96.63 58.88 
+
+Table 10: Performance on brain network regression task: MAE ↓ (the lower value is better). Dataset BRAIN MIXER BNT RANSFORMER BRAIN GNN BRAIN NET CNN GMM HCP-A GGRESSIVE 0.81 0.96 1.72 1.59 1.05           
+
+> HCP-I NTRUSIVE 0.95 1.09 1.19 1.27 1.01
+> HCP-R ULE -B REAK 1.06 1.14 2.01 1.44 1.38
+
+F.5. Qualitative Results 
+
+In this section, we report some success and failure cases of B RAIN MIXER in image classification task and detecting synthetic images based on fMRI. Figure 9 (resp. Figure 10) shows four examples of B RAIN MIXER success (resp. failures) in prediction of the image label based on the brain activity. Finally, Figure 11 shows four example of B RAIN MIXER failure in detecting synthetic (abnormal) images based on the fMRI. 
+
+F.6. How Does B RAIN MIXER Detect GAN Generated Images? 
+
+The visual cortex, responsible for processing visual information, is hierarchically organized with multiple layers building upon simpler features at lower stages (Van Essen & Maunsell, 1983). Initially, neurons detect edges and colors, but on deeper levels, they specialize in recognizing more complex patterns and objects. 
+
+Figure 9: Examples of success cases in prediction of image labels based on fMRI. 32 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Figure 10: Examples of failure cases in prediction of image labels based on fMRI. 
+
+Figure 11: Examples of failure cases in detecting synthetic images based on fMRI. 33 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity 
+
+Figure 12: The distribution of detected abnormal voxels by B RAIN MIXER in condition ASD group Table 11: Performance on multi-class brain classification using different objectives (ACC). Methods BVFC BVFC -MEG HCP-Mental HCP-Age BRAIN MIXER with contrastive learning and 47 .30 49 .77 53 .78 49 .41 
+
+margin-based pairwise loss BRAIN MIXER with DGI 63 .49 60 .82 94 .12 58 .36 
+
+BRAIN MIXER 68.67 63.68 96.63 58.88 
+
+As we discussed in Appendix B, B VFC consists of the fMRI response when the subject sees the GAN-generated image, and we define an anomaly detection task, in which we aim to detect brain responses to GAN-generated images. While we report the performance of B RAIN MIXER in detecting these anomalies, in this experiment, we examine how B RAIN MIXER 
+
+can detect fMRI responses to the GAN generated images. To this end, we split the test set into two groups based on B RAIN MIXER ’s prediction: 1 data samples that B RAIN MIXER has detected as normal, and 2 data samples that BRAIN MIXER has detected as abnormal. Figure 2 (Left) reports the distribution of fMRI responses that B RAIN MIXER 
+
+found abnormal (i.e., corresponds to synthetic images) and Figure 2 (Right) reports the the distribution of fMRI responses that B RAIN MIXER found normal (corresponds to natural images). Interestingly, while the distributions share similar patterns in lower levels (e.g., V1 and V2 voxels), higher-level voxels (e.g., V3) are less active when the subject sees non-recognizable images. This voxel activity drop in the V3 is ≈ 57%. These results are compatible with our expectation about the hierarchical structure of the visual cortex and so support that B RAIN MIXER can learn a powerful representation for voxel activity. 
+
+F.7. Case Study: ASD 
+
+In this experimental design we train our model on a healthy control group, which lets the model learn normal brain patterns. After the training, we test our model on the ASD group and report the abnormal brain regions in the ASD group. The most repeatedly abnromal regions in ASD group are 1 Right Cerebellum Cortex, 2 Right-precuneus, and 3 Left-lingual. Our findings about the abnormal activity in the cerebellum cortex is consistent with previous studies (Rogers et al., 2013). 
+
+F.8. The Effect of Objective 
+
+In this experiment, to evaluate the significance of our loss function, we train the model with two other well known loss functions. 1 Contrastive learning: we replace our loss function with margin-based pairwise. In this loss function, we aim to maximize the distances of positive and negative samples. 2 Deep Graph InfoMax (Veli ˇckovi ´c et al., 2019): We use the encoding of each node as its local feature. Furthermore, we use the suumary of the all encoding as the global encoding of the graph. Results are reported in Table 11. 
+
+F.9. Effect of the Number of Parameters on Accuracy 
+
+To evaluate the effect of the number of parameters on the performance of the model, we use B VFC and employ B RAIN MIXER 
+
+with different capacity. We restrict B RAIN MIXER ’s and its encoders’ capacity to 80% , 60% , 50% , and 30% of their original 34 Unsupervised Representation Learning of Brain Activity via Bridging Voxel Activity and Functional Connectivity VA-Enc FC-Enc BrainMixer 40 50 60 70 80     
+
+> ACC
+> 30% 50% 60% 80% 100%
+
+Figure 13: The performance of the B RAIN MIXER with different capacity on B VFC .capacity. The results are reported in Figure 13. 
+
+## G. Limitations and Future Work 
+
+In this work, we present an unsupervised pre-training framework, B RAIN MIXER , that bridges the representation learning of voxel activity and functional connectivity by maximizing their mutual information. The promising performance of BRAIN MIXER in several downstream tasks raises many interesting directions for future studies: While B RAIN MIXER with a simple MLP can successfully classify observed images based on fMRI, one future direction is to pair B RAIN MIXER 
+
+with diffusion models (Xu et al., 2023) to directly decode brain visual system in an end-to-end manner. Also, there is a potential of using more powerful graph encoders (Behrouz & Hashemi, 2024b) instead of our FC Encoder. There are, however, a few limitations for B RAIN MIXER : i In this study, we focus on designing a powerful unsupervised framework that could provide us with a robust and effective brain activity representation. However, reliability of machine learning methods for downstream tasks in sensitive domains (like healthcare) is critical. Evaluation of B RAIN MIXER ’s prediction reliability and modifying B RAIN MIXER so that it can provide us with the uncertainty of its prediction is left for future studies. ii The current approach is capable of using one neuroimage modalities, while different neuroimage modalities can provide complementary information, which can help understanding and detecting neurological disease or disorders. One potential future work is to design multimodal B RAIN MIXER , where it can learn from different neuroimage modalities, taking advantage of their complementary information. 35
