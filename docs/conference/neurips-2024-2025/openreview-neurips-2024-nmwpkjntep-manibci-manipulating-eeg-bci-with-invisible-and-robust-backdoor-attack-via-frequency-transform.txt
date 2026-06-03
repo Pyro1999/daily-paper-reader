@@ -1,0 +1,2409 @@
+Title: 6093_ManiBCI_Manipulating_EEG_.pdf
+
+URL Source: https://openreview.net/pdf?id=NMwPKjNTEP
+
+Number of Pages: 30
+
+Markdown Content:
+# ManiBCI: Manipulating EEG BCI with Invisible and Robust Backdoor Attack via Frequency Transform 
+
+Anonymous Author(s) 
+
+Affiliation Address 
+
+email 
+
+Abstract 
+
+The electroencephalogram (EEG) based brain-computer interface (BCI) has taken 1
+
+the advantages of the tremendous success of deep learning (DL) models, gaining a 2
+
+wide range of applications. However, DL models have been shown to be vulnerable 3
+
+to backdoor attacks. Although there are extensive successful attacks for image, 4
+
+designing a stealthy and effective attack for EEG is a non-trivial task. While 5
+
+existing EEG attacks mainly focus on single target class attack, and they either 6
+
+require engaging the training stage of the target DL models, or fail to maintain 7
+
+high stealthiness. Addressing these limitations, we exploit a novel backdoor attack 8
+
+called ManiBCI , where the adversary can arbitrarily manipulate which target class 9
+
+the EEG BCI will misclassify without engaging the training stage. Specifically, 10 
+
+ManiBCI is a three-stages clean label poisoning attacks: 1) selecting one trigger 11 
+
+for each class; 2) learning optimal injecting EEG electrodes and frequencies masks 12 
+
+with reinforcement learning for each trigger; 3) injecting the corresponding trigger’s 13 
+
+frequencies into poisoned data for each class by linearly interpolating the spectral 14 
+
+amplitude of both data according to the learned masks. Experiments on three EEG 15 
+
+datasets demonstrate the effectiveness and robustness of ManiBCI. The proposed 16 
+
+ManiBCI also easily bypass existing backdoor defenses. Code will be published 17 
+
+after the anonymous period. 18 
+
+1 Introduction 19 
+
+Deep learning (DL) has greatly boosted the performances of the electroencephalogram (EEG) based 20 
+
+brain-computer interfaces (BCI), which have been widely used in medical diagnosis [ 1], healthcare 21 
+
+[ 2], and device control [ 3, 4 ]. While DL-based systems are shown to be vulnerable to backdoor 22 
+
+attacks (BA) [ 5 –7], where an adversary embeds a hidden backdoor into a DL models to maliciously 23 
+
+control it’s outputs for inference samples containing particular triggers (a.k.a, poisoned samples), the 24 
+
+security of the DL-based EEG BCI has been long neglected. 25 
+
+However, compared to image, designing an effect and stealthy BA for EEG is not trivial for three 26 
+
+difficulties, which lead to three questions. D1 : EEG data has a significantly low signal-to-noise 27 
+
+ratio (SNR) [ 8], even the accuracies of original EEG tasks are very low [ 9]. Q1 : How to develop an 28 
+
+EEG BA with high attack success rate (ASR) while preserving the clean accuracies of orignial task? 29 
+
+D2 : Previous studies demonstrated for different EEG tasks, there are some different critical EEG 30 
+
+electrodes and frequencies that strongly related to the performance of EEG BCI [ 10 – 14 ], indicating 31 
+
+that the trigger-injection strategy ( i.e. , which electrodes and frequencies to inject triggers) inevitably 32 
+
+affect the performance of BA. Q2 : How to find the optimal strategy for different EEG tasks? D3 :33 
+
+Certain classes of EEG have specific morphology that can easily be identified by human expert, e.g. ,34 
+
+in epilepsy detection, the amplitudes of the ictal phase EEG are larger than those of the normal state 35 
+
+phase EEG [15]. Q3 : How to maintain the consistency of the label and the morphology? 36 
+
+Submitted to 38th Conference on Neural Information Processing Systems (NeurIPS 2024). Do not distribute. data manifold    
+
+> real data bound ar y
+> fake data
+> (a) Randomly select 𝐀 triggers
+> Reinforcement Learning
+> (b) Learn optimal strategies
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> 𝐀 𝐀 𝐀
+> clean data
+
+𝐀(𝐀, , 𝐀, 𝐀 𝐀 𝐀 , 𝐀 𝐀 𝐀 )𝐀(𝐀, , 𝐀, 𝐀 𝐀 𝐀 , 𝐀 𝐀 𝐀 )𝐀(𝐀, , 𝐀, 𝐀 𝐀 𝐀 , 𝐀 𝐀 𝐀 )
+
+class 1     
+
+> 𝐀
+> EEG electrodes
+> Trigger data from class 𝐀
+> Amplitude Phase Amplitude Phase
+> ×(1 − 𝐀) ×𝐀
+> ⨁
+> 𝐀
+> Injected Amplitude
+> 𝐀 −1
+> Poisoned data with label 𝐀
+> (e) ManiBCI Attacks
+
+class 2 class 3         
+
+> (c) Generate poisoned data 𝐀(𝐀, 𝐀 𝐀 , 𝐀, 𝐀 𝐀 𝐀 , 𝐀 𝐀 𝐀 )：
+> for each electrode 𝐀 𝐀 in 𝐀 𝐀 𝐀 :
+> Injected 𝐀 𝐀 𝐀
+> 𝐀 Fast Fourier Transform Inverse Fourier Transform Clean data flow Trigger data flow Poisoned data flow
+> 𝐀 −1
+
+𝐀 𝐀 𝐀 𝐀 
+
+> Clean data
+
+𝐀 𝐀 
+
+> ...
+> (d) Existing EEG Backdoor Attacks
+
+𝐀(𝐀) 
+
+> clean data
+> EEG electrodes
+> ... ...
+> pulse signals Add
+> ...
+> poinsoned data
+
+𝐀(𝐀) only one target class Figure 1: (a)-(c) The framework of ManiBCI: (a) The trigger selection and EEG data distribution from the view of manifold learning. (b) Learning optimal electrodes and frequencies injection strategies. (c) The generation process of ManiBCI. (d) The payloads of the existing backdoor attacks. (e) The payloads of ManiBCI, which can arbitrarily manipulate the output of EEG BCI models. The first BA for EEG modality is demonstrated in Fig 1 (d), where the narrow period pulse (NPP) 37 
+
+signals are added as the trigger for single target class attack [ 16 , 17 ]. To generate invisible trigger, the 38 
+
+adversarial loss is applied to learn a spatial filter as the trigger function [ 18 ]. Recently, some BA for 39 
+
+time series (EEG signal is a kind of time series) adopt generative adversarial net (GAN) to produce 40 
+
+poisoned data [ 19 , 20 ]. However, there are rich information in the frequency domain of EEG [ 21 – 24 ]. 41 
+
+No matter these BA are stealthy or not, they all inject unnatural perturbation in the temporal domain, 42 
+
+which will inevitably bring unnatural frequency into the real EEG frequency domain. 43 
+
+In this paper, we propose a novel backdoor attack for mani pulating EEG BCI called ManiBCI to 44 
+
+address Q1 , which injects triggers in the frequency domain. Specifically, ManiBCI is a three-stage 45 
+
+clean label poisoning attack demonstrated in Fig 1 (a-c): 1) : selecting c triggers from c classes , as 46 
+
+these triggers are all real EEG, the frequency of these triggers are all natural. Thus, the poisoned 47 
+
+data are similar to the real EEG as shown in Fig 2(b). 2) : learning optimal injecting strategies for 48 
+
+each trigger with reinforcement learning to enhance the performance of EEG BA, addressing Q2 . 3) :49 
+
+injecting each trigger’s frequencies into clean EEG of the same class as the triggers for each class, 50 
+
+which maintains the consistency of the label and morphology, addressing Q3 .51 
+
+The main contributions of this paper are summarized below: 52 
+
+• We propose a novel backdoor attack for EEG BCI called ManiBCI , which can attack 53 
+
+arbitrary class while preserving stealthiness without engaging the training stage. 54 
+
+• To the best of our knowledge, it is the first work that considers the efficacy of different EEG 55 
+
+electrodes and frequencies in EEG backdoor attacks with reinforcement learning. 56 
+
+• Extensive experiments on three EEG BCI datasets demonstrate the effectiveness of ManiBCI 57 
+
+and the robustness against several common EEG preprocessings and backdoor defenses. 58 
+
+2 Related Work 59 
+
+2.1 Backdoor Attacks 60 
+
+Backdoor attacks has been deeply investigated in image processing filed [ 25 – 27 ]. BadNets [ 28 ] is 61 
+
+the first BA, where the adversary maliciously control the DL to misclassify the input images contain 62 
+
+suspicious patches to a target class. Other non-stealthy attacks like blended [ 5] and sinusoidal strips 63 
+
+based [ 29 ] were studied then. To achieve higher stealthiness, some data poisoning BA were developed, 64 
+
+2including shifting color spaces [ 30 ], warping [ 31 ], regularization [ 32 ] and frequency-based [ 33 –38 ]. 65 
+
+Other stealthy attacks [ 39 –41 ] generate invisible trigger patterns by adversarial loss, which requires 66 
+
+the control of the model’s training process. 67 Real Data NPP-added Poisoned Data    
+
+> Real Data ManiBCI Poisoned Data
+> (a) NPP-based Backdoor Attack (b)ManiBCI Backdoor Attack
+
+Figure 2: t-SNE visualization. Recently, the EEG-based BCIs have shown to be vulnerable to BA 68 
+
+[16 –18 ]. The NPP signals are added to clean EEG to generate non-69 
+
+stealthy poisoned samples in [ 16 , 17 ], which significantly modifies 70 
+
+the spectral distribution (as shown in Fig 2 (a)) and results in low 71 
+
+stealthiness. From the view of data manifold in Fig 1 (a), NPP-72 
+
+added EEG are fake data. To generate more stealthy poisoned 73 
+
+data which stay in the real data boundary. The adversarial loss 74 
+
+has been applied backdoor EEG BCI [ 18 ] and time series [ 19 , 20 ], 75 
+
+but these methods require controlling the training process of the backdoor models and can only 76 
+
+attack a single target class. Meng et.al. tried to achieve multi-target attacks with adding different 77 
+
+types of signals to clean EEG, i.e. , NPP, sawtooth, sine, and chirp [ 16 ]. However, these signals 78 
+
+are not stealthy in both the temporal and frequency domain. To attack multi-target class with high 79 
+
+stealthiness, Marksman backdoor [ 41 ] generates invisible sample-specific patterns for each possible 80 
+
+class, but it needs controlling the training stage. Moreover, generating trigger patterns with a neural 81 
+
+network for each sample is time-consuming. 82 
+
+Different from the EEG BA in the temporal domain, we firstly propose to attack in the frequency 83 
+
+domain. Our attack is more stealthy than NPP-based attack, faster than other trigger generation 84 
+
+attack, and more practical as requiring no control of the target models. It is worth noting that the 85 
+
+frequency-based BA for image [ 33 –38 ] cannot be applied for time series, as they do not consider the 86 
+
+characteristics of time series and fail to maintain the stealthiness for poisoned time series data. 87 
+
+2.2 Backdoor Defenses 88 
+
+To cope with the security problems of backdoor attacks, several categories of defensive methods have 89 
+
+been developed. Neural Cleanse [ 42 ] is a trigger reconstruction based methods. If the reconstructed 90 
+
+trigger pattern is significantly small, the model is identified as a backdoor model. Assuming the 91 
+
+trigger is still effective when a triggered sample is combining with a clean sample, STRIP [ 43 ]92 
+
+detects the backdoor model by feeding the combined samples into the model to see if the predictions 93 
+
+are still with low entropy. Spectral Signature [ 44 ] detects the backdoor model based on the latent 94 
+
+representations. Fine-Pruning [45] erases the backdoor by pruning the model. 95 
+
+Besides the above defenses designed for backdoor attacks, there are some common EEG pre-96 
+
+processing methods, such as bandstop filtering and down-sampling, should be considered when 97 
+
+designing a practical robust backdoor attack for EEG BCI in the real-world scene. 98 
+
+3 Methodology 99 
+
+3.1 EEG BCI Backdoor Attacks and Threat Model 100 
+
+Under the supervised learning setting, a classifier f is learned using a labeled training set S =101 
+
+{(x1, y 1), ..., (xN , y N )} to map f : X → C , where xi ∈ X and yi ∈ C . The attacker in single target 102 
+
+class backdoor attacks aims to learn a classifier f behaves as follows: 103 
+
+f (xi) = yi, f (T (xi)) = ctar , ctar ∈ C , ∀(xi, y i) ∈ S , (1) where T : X → X is the trigger function and ctar is the target label. For multi-target class backdoor 104 
+
+attacks, the trigger function has an extra parameter ci, which manipulates the behavior of f flexibly: 105 
+
+f (xi) = yi, f (T (ci, x i)) = ci, ∀ci ∈ C , ∀(xi, y i) ∈ S . (2) We consider a malicious data provider, who generates a small number of poisoned samples (labeled 106 
+
+with the target class) and injects them into the original dataset. A victim developer collects this 107 
+
+poisoned dataset and trains his model, which will be infected a backdoor. 108 
+
+We use a cross-validation setting to evaluate all BAs, each EEG dataset D is divided into three 109 
+
+parts: training set Dtrain , poisoning set Dp, and test set Dtest . Specifically, for a dataset contains n110 
+
+subjects, we select one subject’s data as Dp one by one, and the remaining n − 1 subjects to perform 111 
+
+3leave-one-subject-out (LOSO) cross-validation, i.e. , one of the subjects as Dtest , and the remaining 112 
+
+n − 1 subjects as Dtrain (one of the subjects in Dtrain is chosen to be validation set). In summary, 113 
+
+for a dataset contains n subjects, there are n(n − 1) runs to validate each EEG BCI backdoor attack 114 
+
+method. A poisoned subset Sp of M (M < N ) examples is generated based on Dp. Then Sp is 115 
+
+combined with Dtrain to acquire S = {S p, Dtrain }. The poisoning ratio is defined as : ρ = M/N .116 
+
+3.2 Reinforcement Learning for Optimal Trigger-Injection Strategies 117 
+
+The learning of the injecting electrodes set Mci 
+
+> e
+
+and frequencies set Mci 
+
+> f
+
+for each selected trigger 118 
+
+in class ci can be formulated as a non-convex optimization problem. Under this optimization 119 
+
+framework, the strategy generator function will learn the optimal Mci 
+
+> e
+
+and Mci 
+
+> f
+
+for each EEG trigger 120 
+
+to implement ManiBCI BA on target DL model f , which is supposed to have a high clean accuracy 121 
+
+(CA) on the clean data and attack success rate (ASR) on the poisoned data: 122 
+
+min  
+
+> Mcie,Mcif
+
+E(xi,y i)∼D [L(f (xi), y i) + λL(f (T (xi, x tci , α, Mci 
+
+> e
+
+, Mci 
+
+> f
+
+)) , c i)] . (3) However, finding the optimal adaptive injecting strategies for each trigger is not trivial as the searching 123 
+
+space is too large ( e.g. , if injecting half of the 62 electrodes, there are  62 31 
+
+ ≈ 4.65 × 10 17 cases for 124 
+
+deciding Mci 
+
+> e
+
+). Reinforcement learning (RL) is an appropriate method for tackling this questions. 125 
+
+The objective of RL is to find a sampler π to maximize the expect of the reward function: 126 
+
+π∗ = arg max π Eτ ∼π(τ )[R(τ )] = arg max π
+
+X 
+
+> τ
+
+[R(τ ) · pπ (τ )] (4) 
+
+= arg max π
+
+X 
+
+> τ
+
+[R(τ ) · ρ0(s1) · YT −1 
+
+> t=1
+
+π(at|st) · P (st+1 |st, a t)] ,
+
+where R(τ ) is reward function of a trajectory τ = ( s1, a 1, r 1, ....s T ), the si, a i, r i means the state, 127 
+
+action, and reward at time i. The ρ0 indicates the sampler of initial state. In our settings, the action 128 
+
+(strategies) do not affect the state (triggers). Hence, we can simplify Eq 4 by removing the states si:129 
+
+π∗ = arg max π
+
+X 
+
+> τ
+
+[R(τ ) · YT −1 
+
+> t=1
+
+π(at)] . (5) However, we do not care about the reward of the whole trajectory, we only acquire a single strategy 130 
+
+for each trigger. Thus, we replace the R(τ ) with R(at) and select the at whose R(at) is the biggest 131 
+
+as the optimal strategy. Here, an RL algorithm called policy gradient [ 46 ] is adopted to learn an 132 
+
+agent ( i.e. , policy network πci 
+
+> θ
+
+with parameters θ) to find the optimal strategy for each trigger. After 133 
+
+removing the state st and replacing R(τ ), the gradient estimator is: 134 
+
+ˆg = ∇θ Eτ ∼πθ (τ )[R(τ )] = X 
+
+> τ
+
+[R(at) · ∇ pπθ (at)] = Et[Rt(at) · ∇ θ log πθ ], (6) where at and Rt is the action and estimator of the reward function at timestep t. The expectation 135 
+
+Et indicates the empirical average. Here, at = {M ci 
+
+> e
+
+, Mci 
+
+> f
+
+}. The parameters of πci 
+
+> θ
+
+are updated by 136 
+
+θt+1 = θt + ηˆg, η is the learning rate. We run the RL for T steps and take the best at as the strategy. 137 
+
+The CA and ASR are obtained by implementing ManiBCI only on S. Specifically, we use a concise 138 
+
+network as the agent which takes the extracted spatial-temporal features from triggers into account 139 
+
+to generate better policy. This agent has two output vectors v1 ∈ RE , v 2 ∈ RF , where E and F is 140 
+
+the number of EEG electrodes and frequencies. The electrodes and frequencies are in Mci 
+
+> e
+
+and Mci
+
+> f141
+
+only if the corresponding positions in v1 and v2 have Top-k values, k is γE for electrodes and βF for 142 
+
+frequencies, where γ, β ∈ (0 , 1] are hyperparameters. 143 
+
+Besides the performance of CA and ASR, there are two important concerns: C1: Robustness against 144 
+
+common EEG preprocessig-based defenses; C2: Stealthiness against human perceptions. The reason 145 
+
+why we consider C1 is that the bandstop filtering is widely used for preprocessing EEG signals. For 146 
+
+instance, if we inject the triggers into a concentrated frequency band 50-60Hz, it is easy to filter the 147 
+
+trigger out using a 50Hz low pass filter, resulting in attack failure. Thus, scattering the injection 148 
+
+positions in various frequency can effectively evade from specific frequency filter defenses. To 149 
+
+address C2 , injecting the trigger into higher frequencies is more invisible than lower frequencies [ 47 ]. 150 
+
+Taking all into consideration, we define the estimator of the reward function Rt as follows: 151 
+
+Rt(at) = Rt(Mci 
+
+> e
+
+, Mci 
+
+> f
+
+) = CA + λ ASR + μ dis( Mci 
+
+> f
+
+) + ν min( Mci 
+
+> f
+
+), (7) 4where the Mci 
+
+> f
+
+indicates the set of all injecting frequency positions, and dis() calculates the minimal 152 
+
+distance between each pair of positions. Thus, dis( Mci 
+
+> f
+
+) is the discrete (DIS) loss, and min( Mci 
+
+> f
+
+) is 153 
+
+the high frequency (HF) loss, which can scatter the injection positions in various frequency bands 154 
+
+and inject as high frequencies as possible. The λ, μ, ν ∈ R are hyperparameters. 155 
+
+3.3 Poisoned Data Generation via Frequency Transform 156 
+
+After selecting the C triggers from each class and learning the strategy for each trigger, the poisoned 157 
+
+data are generated by injecting these triggers into clean data with the corresponding strategies. As 158 
+
+shown in Fig 1(c), given a clean data xi ∈ D p with label ci, and a trigger data xtci , let FA and FP be 159 
+
+the amplitude and phase components of the fast Fourier transform (FFT) result of a EEG signals, we 160 
+
+denote the amplitude and phase spectrum of xi and xtci as: 161 
+
+Axi = FA(xi), Axtci
+
+= FA(xtci ), Pxi = FP (xi), Pxtci
+
+= FP (xtci ). (8) The new poisoned amplitude spectrum APxi is produced by linearly interpolating Axi and Axtci
+
+. In 162 
+
+order to achieve this, we produce a binary mask Mci ∈ RE×F = 1 (j,k ), j ∈ M ci 
+
+> e
+
+, k ∈ M ci 
+
+> f
+
+, whose 163 
+
+value is 1 for positions of all corresponding to elements in both electrode and frequency sets and 0 164 
+
+elsewhere. Denoting α ∈ (0 , 1] as the linear interpolating ratio, the new poisoned amplitude spectrum 165 
+
+can be computed as follows, where ⊙ indicates Hadamard product: 166 
+
+APxi = [(1 − α)Axi + αAxtci
+
+] ⊙ M ci + Axi ⊙ (1 − M ci ). (9) Finally, we adopt the injected poisoned amplitude spectrum APxi and the clean phase spectrum Pxi to 167 
+
+get the poisoned data by inverse FFT F−1:168 
+
+xpi = F−1(APxi , Pxi ). (10) By generating xpi through this frequency injection approach, we obtain a subset Sp = {xp
+
+> 1
+
+, ..., x pM },169 
+
+which will combine with Dtrain to form the whole traing dataset S. The EEG DL model f is then 170 
+
+trained with S to obtain the ability of behvaing as equation 2. 171 
+
+4 Experiments 172 
+
+4.1 Datasets, Baselines, and Experimental Setup 173 
+
+Emotion Recognition (ER) Dataset SEED [ 12 ] is a discrete EEG emotion dataset studying three 174 
+
+types of emotions: happy, neutral, and sad. SEED collected EEG from 15 subjects. 175 
+
+Motor Imagery (MI) Dataset BCIC-IV-2a [ 48 ] dataset recorded EEG from 9 subjects while they 176 
+
+were instructed to imagine four types of movements: left hand, right hand, feet, and tongue. 177 
+
+Epilepsy Detection (ED) Dataset CHB-MIT [ 49 ] is an epilepsy dataset required from 23 patients. 178 
+
+We cropped and resampled the CHB-MIT dataset to build an ED dataset with four types of EEG: 179 
+
+ictal, preictal, postictal, and interictal phase EEG. 180 
+
+Non-stealthy Baselines As mentioned in previous sections, to the best of our knowledge, ManiBCI 181 
+
+is the first work that studies multi-trigger and multi-target class (MT) backdoor in EEG BCI. For 182 
+
+comparison, we design several baseline approaches which can be divided into two main groups: 183 
+
+non-stealthy and stealthy. Non-stealthy attacks contains PatchMT and PulseMT . For a benign EEG 184 
+
+segment x ∈ RE×T . PatchMT is a multi-trigger and MT extension of BadNets [ 28 ] where we fill the 185 
+
+first βT timepoints of a EEG segments with a constant number, e.g. , {0.1, 0.3, 0.5} for three-class 186 
+
+task. PulseMT is a multi-trigger and MT extension of NPP-based backdoor attacks [ 16 ] where we 187 
+
+use NPP signals with different amplitudes, e.g. , {-0.8, -0.3, 0.3, 0.8} for different target classes. 188 
+
+Stealthy Baselines Previous works generate stealthy poisioned samples by controlling the training 189 
+
+stage and can only attack single target class [ 18 – 20 ]. As they control the training of target model, 190 
+
+it is unfair to directly compare their methods with ManiBCI. There is no stealthy MT BA for EEG. 191 
+
+Thus, we design two MT stealthy attacks baselines: CompMT and AdverMT . CompMT generates 192 
+
+poisoned samples for different target classes by compressing the amplitude of EEG with different 193 
+
+5Table 1: The clean accuraciy and attack success rate for each target class with 40% poisoning rate. The best results are in bold and the second best are underlined.                                                                                                                                                                                                                        
+
+> Dataset Emotion Recognition Motor Imagery Epilepsy Detection Method Clean ASR 012Clean ASR 0123Clean ASR 0123EEGNet  No Attack 0.477 0.333 ---0.327 0.250 ----0.508 0.250 ----PatchMT 0.492 0.382 0.577 0.232 0.337 0.283 0.824 0.866 0.880 0.787 0.762 0.460 0.549 0.532 0.430 0.388 0.845 PulseMT 0.463 0.778 0.844 0.509 0.981 0.270 0.825 0.947 0.656 0.758 0.938 0.439 0.810 0.853 0.745 0.729 0.913 CompMT 0.443 0.385 0.099 0.377 0.678 0.269 0.865 0.530 0.997 0.983 0.948 0.437 0.547 0.261 0.280 0.714 0.933 AdverMT 0.457 0.334 0.276 0.330 0.396 0.257 0.243 0.316 0.192 0.230 0.235 0.413 0.250 0.326 0.264 0.200 0.210 ManiBCI 0.535 0.857 0.831 0.791 0.949 0.323 1.000 0.999 1.000 1.000 0.999 0.477 0.944 0.930 0.954 0.921 0.970
+> DeepCNN  No Attack 0.497 0.333 ---0.301 0.250 ----0.443 0.250 ----PatchMT 0.481 0.342 0.248 0.323 0.453 0.276 0.704 0.638 0.977 0.774 0.425 0.431 0.729 0.416 0.890 0.719 0.892 PulseMT 0.450 0.596 0.815 0.334 0.638 0.261 0.829 0.764 0.968 0.819 0.765 0.405 0.885 0.872 0.862 0.861 0.943
+> CompMT 0.461 0.427 0.473 0.473 0.336 0.286 0.887 0.638 0.982 0.946 0.980 0.446 0.538 0.196 0.466 0.571 0.918 AdverMT 0.367 0.388 0.298 0.453 0.412 0.245 0.247 0.320 0.221 0.196 0.240 0.396 0.275 0.354 0.218 0.227 0.301 ManiBCI 0.534 0.832 0.732 0.865 0.901 0.315 1.000 1.000 1.000 1.000 0.999 0.469 0.828 0.725 0.839 0.845 0.904 LSTM No Attack 0.506 0.333 ---0.264 0.250 ----0.462 0.250 ----PatchMT 0.509 0.368 0.311 0.392 0.401 0.261 0.429 0.395 0.296 0.386 0.639 0.450 0.513 0.500 0.437 0.417 0.700 PulseMT 0.511 0.824 0.883 0.645 0.943 0.265 0.533 0.787 0.327 0.282 0.737 0.451 0.804 0.845 0.769 0.709 0.895 CompMT 0.484 0.490 0.272 0.269 0.929 0.260 0.548 0.219 0.511 0.523 0.940 0.455 0.435 0.194 0.217 0.490 0.840 AdverMT 0.367 0.415 0.472 0.453 0.321 0.239 0.271 0.308 0.215 0.247 0.312 0.432 0.268 0.367 0.232 0.198 0.275 ManiBCI 0.519 0.954 0.998 0.868 0.996 0.264 0.966 0.987 0.988 0.901 0.986 0.444 0.865 0.795 0.833 0.857 0.975
+
+ratios, e.g. , {-0.1, 0, 0.1} for three-class task. AdverseMT is a multi-trigger and MT extension of 194 
+
+adversarial filtering based attacks [ 18 ], where we using a local model trained only on Sp to generate 195 
+
+different spatial filters W∗ 
+
+> i
+
+for different target classes, then we apply these spatial filters to generate 196 
+
+poisoned samples. More details are written in Appendix D. 197 
+
+Experimental Setup We demonstrate the effectiveness of the proposed ManiBCI backdoor through 198 
+
+comprehensive experiments on the above three EEG datasets, more details of each dataset and 199 
+
+preprocessings are illustrated in Appendix C. We follow the poisoning attack setting as the previous 200 
+
+works [ 16 ] and consider three EEG DL models for classifier f : EEGNet [ 50 ], DeepCNN [ 51 ], and 201 
+
+LSTM [ 52 , 53 ]. For all methods, we train the classifiers using the Adam optimizer with learning rate 202 
+
+of 0.001. The batch size is 32 and the number of epochs is 100. For all datasets and baselines, the 203 
+
+interpolating ratio α = 0.8, the electrode poisoning ratio β = 0.1, the electrode poisoning ratio γ =204 
+
+0.5. For the reinforcement learning of ManiBCI, we train πξ using the Adam optimizer with learning 205 
+
+rate of 0.01. The hyperparameters in advantage function is set to λ = 2 , μ = 0 .3, and ν = 0 .005 .206 
+
+More details of the experimental setup can be found in the supplementary material. 207 
+
+4.2 Effectiveness of ManiBCI 208 
+
+This section presents the attack success rates of ManiBCI and baselines. To evaluate the performance 209 
+
+in the multi-trigger multi-payload scenario, for each test sample (x, y ) ∈ D test , we enumerate all 210 
+
+possible target labels ci ∈ C including the true label y and inject the trigger to activate the backdoor. 211 
+
+The attack is successful only when the backdoor classifier f correctly predicts ci for each poisoned 212 
+
+input x with a target label ci.213 
+
+4.2.1 Attack Performance 214 
+
+The clean-data accuracy (Clean) and ASR (Attack) for each class of all attack methods on three EEG 215 
+
+tasks with three EEG DL models are presented in Table 1. The AdverMT, designed for single-target 216 
+
+attack, fails to attacks multiple target classes. Our ManiBCI significantly outperforms baselines at 217 
+
+almost all cases ( p < 0.05 ) except attacking DeepCNN on the ED dataset, having ASRs above 0.8 on 218 
+
+three datasets and even achieving an ASR of 1.000 on the MI dataset. These results demonstrate that 219 
+
+our ManiBCI is effective across different EEG tasks and EEG models. PulseMT achieves the second 220 
+
+best on ER and ED dataset, CompMT achieves the second best on the MI dataset. 221 
+
+4.2.2 Performance of the Reinforcement Learning: Policy Gradient 222 
+
+Displaying in Table 2, the performance of the policy gradient was compared with other common 223 
+
+optimazation algorithms, including genetic algorithm (GA) [ 54 ] and random selection (The search 224 
+
+space is too large for performing grid search as explained in Section 3.2). It can be observed that the 225 
+
+6policy gradient outperforms GA while only spending 16% training time of GA. We plot the learning 226 
+
+curve of RL in Appendix F.3, which demonstrates that RL learns well strategies within 50 epochs, i.e., 227 
+
+only trains 50 backdoor models and saves lots of time. The random algorithm can achieve a not bad 228 
+
+results, proving that our methods can be applied without RL if some performance drop is acceptable. 229 
+
+Table 2: Clean and attack performance with with different trigger search optimization algorithms, the poisoning rate is set to 10%. The target model is EEGNet. Method Dataset Emotion Motor Imagery Epilepsy Clean Attack Time ↓ Clean Attack Time ↓ Clean Attack Time ↓
+
+Random 0.520 0.771 - 0.291 0.857 - 0.501 0.721 -Genetic Algorithm 0.516 0.826 15.2h 0.302 1.000 10.0h 0.492 0.862 30.5h Policy Gradient 0.535 0.857 2.5h 0.323 1.000 1.8h 0.477 0.944 5.2h 
+
+4.2.3 Performance of Learned Mask Strategies on Other Target Models 230 
+
+We demonstrate that the injecting strategies learned on a EEG classifier f can be used to attack 231 
+
+other EEG classifiers ˆf . In other words, Marksman can still be effective when the adversary has no 232 
+
+knowledge of the target models ˆf . To perform the experiments, we use the strategy learned with a 233 
+
+classifier f , then generate poisoned samples to attack another classifier ˆf whose network is different 234 
+
+from f . Table 3 shows the performance difference, it can be observed that the difference is relatively 235 
+
+small in most of the cases, demonstrating the transferability of the injecting strategy learned with 236 
+
+reinforcement learning. 237 
+
+Table 3: Clean and attack performance on other models. Red values represent the decreasing performance in attacks with f is the same as ˆf . Blue values mean increments or unchanged . Models f : EEGNet f : DeepCNN f : LSTM 
+
+ˆf : DeepCNN ˆf : LSTM ˆf : EEGNet ˆf : LSTM ˆf : EEGNet ˆf : DeepCNN Datasets Clean Attack Clean Attack Clean Attack Clean Attack Clean Attack Clean Attack Emotion 0.458 0.781 0.485 0.938 0.516 0.813 0.490 0.936 0.516 0.863 0.497 0.779 0.026 0.051 0.034 0.016 0.019 0.044 0.029 0.018 0.019 0.006 0.037 0.053 Motor 0.316 1.000 0.265 0.946 0.309 1.000 0.264 0.972 0.306 1.000 0.306 1.000 0.001 0.000 0.001 0.020 0.014 0.000 0.000 0.006 0.017 0.000 0.009 0.000 Epilepsy 0.442 0.759 0.469 0.806 0.448 0.943 0.445 0.813 0.448 0.926 0.427 0.850 0.027 0.069 0.025 0.059 0.029 0.001 0.001 0.052 0.029 0.018 0.042 0.022 
+
+4.2.4 Attack Performance with Different Hyperparameters 238 
+
+We investigate the influences of three different hyperparameters: poisoning rate ρ, frequency injection 239 
+
+rate β, and electrode injection rate γ. The performance of attacking EEGNet on the ED dataset are 240 
+
+displayed in Fig 3. It can be seen that the ASRs are positively correlated with poisoning rate. Note 241 
+
+that it is non-trivial for multi-target class attack, thus the ASR is not high compared to the single class 242 
+
+attack. ManiBCI outperforms other attacks in all cases and is robust to the change of β and γ.243 0.05 0.10 0.15 0.20 0.25 0.30 0.35 0.40         
+
+> Poisoning Rate
+> 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+> Accuracy
+> 0.1 0.2 0.3 0.4 0.5
+> Frequency/Time Injection Rate
+> 0.5 0.6 0.7 0.8 0.9
+> Accuracy
+> 0.2 0.4 0.6 0.8 1.0
+> Electrodes Injection Rate
+> 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+> Accuracy  ManiBCI/C ManiBCI/B PatchMT/C PatchMT/B PulseMT/C PulseMT/B CompMT/C CompMT/B
+
+Figure 3: Clean (/C) and attack (/B) performance with different poisoning or injection rates. 74.3 Robustness of ManiBCI 244 
+
+In this section, we evaluate the robustness of our ManiBCI against different EEG preprocessing 245 
+
+method and various representative backdoor defenses. 246 
+
+4.3.1 Robustness against EEG Preprocessing Methods 247 
+
+To develop an EEG BCI, it is very common to preprocess the raw EEG signals, e.g. , 1) band-stop 248 
+
+filtering and 2) down-sampling. An EEG backdoor attack is impractical in real scenarios if it is no 249 
+
+longer effective when the target model is trained with the preprocessed poisoned EEG. Hence, we 250 
+
+must take the robustness against preprocessing methods into account, which is widely ignored in 251 
+
+the image backdoor attack field. The performance of each method facing different preprocessing 252 
+
+methods are presented in Table 4. It can be observed that our ManiBCI is robust in all cases. However, 253 
+
+when removing the DIS loss, the performance of ManiBCI decreases a lot after EEG preprocessing, 254 
+
+especially facing the 30 Hz high-stop filtering preprocessing due to the HF loss that encourages the 255 
+
+policy network learns to injecting high frequency. 256 
+
+Table 4: Clean and attack performance on three datasets after different EEG preprocessing methods. The target model is EEGNet. M w.o. DIS means removing the DIS loss in ManiBCI. Preprocessing No defense 20 Hz low 30 Hz high 25% down Average Method Clean Attack Clean Attack Clean Attack Clean Attack ASR ER  ManiBCI 0.535 0.857 0.512 0.829 0.463 0.892 0.518 0.908 0.876 w/o DIS 0.506 0.859 0.492 0.816 0.466 0.333 0.498 0.807 0.652 MI  ManiBCI 0.323 1.000 0.285 1.000 0.329 1.000 0.321 1.000 1.000 w/o DIS 0.298 1.000 0.264 1.000 0.322 0.250 0.284 0.990 0.746 ED  ManiBCI 0.497 0.944 0.492 0.914 0.494 0.856 0.516 0.818 0.920 w/o DIS 0.515 0.250 0.477 0.864 0.508 0.250 0.510 0.249 0.454 
+
+4.3.2 Robustness against Neural Cleanse: Trigger Inversion 257 Emotion Motor Imagery Epilepsy 0.0 0.5 1.0 1.5 2.0 Anomaly Index     
+
+> 0.67 0.7 1.33 0.67 0.69 1.29 0.77 0.83 1.12 0.98 0.9 1.36 0.72 0.76 1.25 0.83 0.72 1.28 EEGNet_C EEGNet_B DeepCNN_C DeepCNN_B LSTM_C LSTM_B
+
+Figure 4: Anomaly Index of three models on three datasets. Neural Cleanse (NC) [ 42 ] calculate a metric called Anomaly 258 
+
+Index by reconstructing trigger pattern for each possible label. 259 
+
+The Anomaly Index is positively correlated with the size of the 260 
+
+reconstruction trigger. A model with Anomaly Index > 2 is 261 
+
+considered to be backdoor-injected. We display the Anomaly 262 
+
+Indexes of the clean models and the backdoor-injected model 263 
+
+by ManiBCI in Fig 4. It can be seen that ManiBCI can easily 264 
+
+bypass NC. The reconstructed trigger patterns on three datasets 265 
+
+are presented in Appendix F.1. 266 
+
+4.3.3 Robustness against STRIP: Input Perturbation 267 
+
+We evaluate the robustness of ManiBCI against STRIP [ 43 ], which perturbs the input EEG and 268 
+
+calculates the entropy of the predictions of these perturbed EEG data. Based on the assumption that 269 
+
+the trigger is still effective after perturbation, the entropy of backdoor input tends to be lower than 270 
+
+that of the clean one. The results are plotted in Fig 5, it can be seen that the entropy distributions of 271 
+
+the backdoor and clean samples are similar. 272 0.0 0.2 0.4 0.6 0.8 1.0 1.2 1.4 1.6 0.00 0.05 0.10 0.15 0.20 0.25 0.30 0.35         
+
+> Probability
+> 0.00 0.25 0.50 0.75 1.00 1.25 1.50 1.75 2.00 0.00 0.02 0.04 0.06 0.08
+> Probability
+> 0.00 0.01 0.02 0.03 0.04 0.05
+> Probability
+> Without Backdoor ManiBCI Backdoor
+> Entropy
+
+(a) Emotion Recognition 
+
+> Entropy
+
+(c) Epilepsy Detection 
+
+> Entropy
+
+(b) Motor Imagery           
+
+> Without Backdoor ManiBCI Backdoor Without Backdoor ManiBCI Backdoor
+> 0.00 0.25 0.50 0.75 1.00 1.25 1.50 1.75 2.00
+> Emotion Recognition Motor Imagery Epilepsy Detection
+
+Figure 5: Performance against STRIP on three datasets, the target model is EEGNet. 84.3.4 Robustness against Spectral Signature: Latent Space Correlation 273 
+
+Spectral Signature [ 44 ] detects the backdoor samples by statistical analysis of clean data and backdoor 274 
+
+data in the latent space. Following the same experimental settings in [ 44 ], we randomly select 5,000 275 
+
+clean samples and 500 ManiBCI backdoor samples and plot the histograms of the correlation scores 276 
+
+in Fig 6. There is no clear separation between these two sets of samples, showing the stealthiness of 277 
+
+ManiBCI backdoor samples in the latent space. 278 
+
+Figure 6: Performance against Spectral Signature on three datasets, the target model is EEGNet. 
+
+4.3.5 Robustness against Fine-Pruning 279 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 Fraction of Pruned Neurons 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 Accuracy  Emotion/C Emotion/B Motor/C Motor/B Epilepsy/C Epilepsy/B 
+
+Figure 7: Performances of EEG-Net against Fine-Pruning on three datasets. We evaluate the robustness of Marksman against Fine-Pruning 280 
+
+[45 ], a model analysis based defense which finds a classifier’s 281 
+
+low-activated neurons given a small clean dataset. Then it 282 
+
+gradually prunes these low-activated neurons to mitigate the 283 
+
+backdoor without affecting the CA. We can observe from Fig 284 
+
+7 that the ASR drops considerably small when pruning ratio 285 
+
+is less than 0.7, suggesting that the Fine-Pruning is ineffective 286 
+
+against ManiBCI. 287 
+
+4.4 Visualization of Backdoor Attack Samples 288 
+
+To evade from human perception ( C2 in Section 3.2), we design to obatin injecting strategies with 289 
+
+HF loss. It can be seen from the bottom row of Fig 8 that ManiBCI (with HF loss) generates stealthy 290 
+
+poisoned EEG, which is almost the same as the clean EEG, demonstrating the High Stealthiness .291 
+
+The poisoned EEG will be conspicuous compared to the clean EEG if remove the HF loss. 292 Trigger from Class 0 Trigger from Class 1 Trigger from Class 2 Trigger from Class 3 
+
+> w/o HF loss ManiBCI
+
+Figure 8: The Clean EEG (Blue), Trigger-injected EEG (Orange) and the Residual (Red) of the ED dataset. The x-axis is the timepoints, the y-axis is the normalized amplitude. Top row: w.o. HF loss; Bottom row: with HF loss. Each column indicates each possible class. 
+
+5 Conclusion 293 
+
+In this paper, we proposed ManiBCI, a novel EEG backdoor for manipulating EEG BCI, where the 294 
+
+adversary can arbitrarily control the output for any input samples. To the best of our knowledge, 295 
+
+ManiBCI is the first method that considers which EEG electrodes and frequencies to be injected by 296 
+
+adopting a reinforcement learning called policy gradient to learn the adaptive injecting strategies 297 
+
+for different EEG triggers and tasks. We specially design the reward function in RL to enhance the 298 
+
+robustness and stealthiness of ManiBCI. The perturbation of the trigger on clean EEG is almost 299 
+
+invisible. Our experimental results over three common EEG datasets demonstrate the effectiveness 300 
+
+of ManibCI and the stealthiness against the existing representative defenses. This work calls for 301 
+
+defensive studies to counter ManiBCI for EEG modality. 302 
+
+9References 303 
+
+[1] I. Ahmad, X. Wang, M. Zhu, C. Wang, Y. Pi, J. A. Khan, S. Khan, O. W. Samuel, S. Chen, G. Li 304 
+
+et al. , “EEG-based epileptic seizure detection via machine/deep learning approaches: a systematic review,” 305 
+
+Computational Intelligence and Neuroscience , vol. 2022, 2022. 306 
+
+[2] M. Jafari, A. Shoeibi, M. Khodatars, S. Bagherzadeh, A. Shalbaf, D. L. García, J. M. Gorriz, and U. R. 307 
+
+Acharya, “Emotion recognition in EEG signals using deep learning methods: A review,” Computers in 308 
+
+Biology and Medicine , p. 107450, 2023. 309 
+
+[3] H. Lorach, A. Galvez, V. Spagnolo, F. Martel, S. Karakas, N. Intering, M. Vat, O. Faivre, C. Harte, S. Komi 310 
+
+et al. , “Walking naturally after spinal cord injury using a brain–spine interface,” Nature , vol. 618, no. 7963, 311 
+
+pp. 126–133, 2023. 312 
+
+[4] H. Altaheri, G. Muhammad, M. Alsulaiman, S. U. Amin, G. A. Altuwaijri, W. Abdul, M. A. Bencherif, 313 
+
+and M. Faisal, “Deep learning techniques for classification of electroencephalogram (EEG) motor imagery 314 
+
+(MI) signals: A review,” Neural Computing and Applications , vol. 35, no. 20, pp. 14 681–14 722, 2023. 315 
+
+[5] X. Chen, C. Liu, B. Li, K. Lu, and D. Song, “Targeted backdoor attacks on deep learning systems using 316 
+
+data poisoning,” arXiv preprint arXiv:1712.05526 , 2017. 317 
+
+[6] Y. Gao, B. G. Doan, Z. Zhang, S. Ma, J. Zhang, A. Fu, S. Nepal, and H. Kim, “Backdoor attacks and 318 
+
+countermeasures on deep learning: A comprehensive review,” arXiv preprint arXiv:2007.10760 , 2020. 319 
+
+[7] R. Shokri et al. , “Bypassing backdoor detection algorithms in deep learning,” in 2020 IEEE European 320 
+
+Symposium on Security and Privacy (EuroS&P) . IEEE, 2020, pp. 175–183. 321 
+
+[8] S. L. Kappel, D. Looney, D. P. Mandic, and P. Kidmose, “Physiological artifacts in scalp EEG and ear-EEG,” 322 
+
+Biomedical Engineering Online , vol. 16, pp. 1–16, 2017. 323 
+
+[9] M. Tangermann, K.-R. Müller, A. Aertsen, N. Birbaumer, C. Braun, C. Brunner, R. Leeb, C. Mehring, K. J. 324 
+
+Miller, G. R. Müller-Putz et al. , “Review of the bci competition iv,” Frontiers in Neuroscience , vol. 6, p. 55, 325 
+
+2012. 326 
+
+[10] M. Z. Parvez and M. Paul, “EEG signal classification using frequency band analysis towards epileptic 327 
+
+seizure prediction,” in 16th Int’l Conf. Computer and Information Technology . IEEE, 2014, pp. 126–130. 328 
+
+[11] R. Jana and I. Mukherjee, “Deep learning based efficient epileptic seizure prediction with EEG channel 329 
+
+optimization,” Biomedical Signal Processing and Control , vol. 68, p. 102767, 2021. 330 
+
+[12] W.-L. Zheng and B.-L. Lu, “Investigating critical frequency bands and channels for EEG-based emotion 331 
+
+recognition with deep neural networks,” IEEE Transactions on Autonomous Mental Development , vol. 7, 332 
+
+no. 3, pp. 162–175, 2015. 333 
+
+[13] M. Z. Baig, N. Aslam, and H. P. Shum, “Filtering techniques for channel selection in motor imagery EEG 334 
+
+applications: a survey,” Artificial Intelligence Review , vol. 53, no. 2, pp. 1207–1232, 2020. 335 
+
+[14] P. Herman, G. Prasad, T. M. McGinnity, and D. Coyle, “Comparative analysis of spectral approaches to 336 
+
+feature extraction for EEG-based motor imagery classification,” IEEE Transactions on Neural Systems and 337 
+
+Rehabilitation Engineering , vol. 16, no. 4, pp. 317–326, 2008. 338 
+
+[15] W. T. Blume, G. B. Young, and J. F. Lemieux, “EEG morphology of partial epileptic seizures,” Electroen-339 
+
+cephalography and Clinical Neurophysiology , vol. 57, no. 4, pp. 295–302, 1984. 340 
+
+[16] L. Meng, X. Jiang, J. Huang, Z. Zeng, S. Yu, T.-P. Jung, C.-T. Lin, R. Chavarriaga, and D. Wu, “EEG-based 341 
+
+brain-computer interfaces are vulnerable to backdoor attacks,” IEEE Transactions on Neural Systems and 342 
+
+Rehabilitation Engineering , 2023. 343 
+
+[17] X. Jiang, L. Meng, S. Li, and D. Wu, “Active poisoning: efficient backdoor attacks on transfer learning-344 
+
+based brain-computer interfaces,” Science China Information Sciences , vol. 66, no. 8, p. 182402, 2023. 345 
+
+[18] L. Meng, X. Jiang, X. Chen, W. Liu, H. Luo, and D. Wu, “Adversarial filtering based evasion and backdoor 346 
+
+attacks to EEG-based brain-computer interfaces,” Information Fusion , p. 102316, 2024. 347 
+
+[19] D. Ding, M. Zhang, Y. Huang, X. Pan, F. Feng, E. Jiang, and M. Yang, “Towards backdoor attack on 348 
+
+deep learning based time series classification,” in 2022 IEEE 38th International Conference on Data 349 
+
+Engineering (ICDE) . IEEE, 2022, pp. 1274–1287. 350 
+
+10 [20] Y. Jiang, X. Ma, S. M. Erfani, and J. Bailey, “Backdoor attacks on time series: A generative approach,” 351 
+
+in 2023 IEEE Conference on Secure and Trustworthy Machine Learning (SaTML) . IEEE, 2023, pp. 352 
+
+392–403. 353 
+
+[21] S. Arroyo and S. Uematsu, “High-frequency eeg activity at the start of seizures,” Journal of Clinical 354 
+
+Neurophysiology , vol. 9, no. 3, pp. 441–448, 1992. 355 
+
+[22] M. Kostyunina and M. Kulikov, “Frequency characteristics of eeg spectra in the emotions,” Neuroscience 356 
+
+and Behavioral Physiology , vol. 26, no. 4, pp. 340–343, 1996. 357 
+
+[23] M. Salinsky, B. Oken, and L. Morehead, “Test-retest reliability in eeg frequency analysis,” Electroen-358 
+
+cephalography and clinical neurophysiology , vol. 79, no. 5, pp. 382–392, 1991. 359 
+
+[24] S. D. Muthukumaraswamy, “High-frequency brain activity and muscle artifacts in meg/eeg: a review and 360 
+
+recommendations,” Frontiers in human neuroscience , vol. 7, p. 138, 2013. 361 
+
+[25] M. Weber, X. Xu, B. Karlaš, C. Zhang, and B. Li, “Rab: Provable robustness against backdoor attacks,” in 362 
+
+2023 IEEE Symposium on Security and Privacy (S&P) . IEEE, 2023, pp. 1311–1328. 363 
+
+[26] Y. Yu, Y. Wang, W. Yang, S. Lu, Y.-P. Tan, and A. C. Kot, “Backdoor attacks against deep image 364 
+
+compression via adaptive frequency trigger,” in Proceedings of the IEEE/CVF Conference on Computer 365 
+
+Vision and Pattern Recognition (CVPR) , 2023, pp. 12 250–12 259. 366 
+
+[27] Z. Yuan, P. Zhou, K. Zou, and Y. Cheng, “You are catching my attention: Are vision transformers bad 367 
+
+learners under backdoor attacks?” in Proceedings of the IEEE/CVF Conference on Computer Vision and 368 
+
+Pattern Recognition (CVPR) , 2023, pp. 24 605–24 615. 369 
+
+[28] T. Gu, K. Liu, B. Dolan-Gavitt, and S. Garg, “BadNets: Evaluating backdooring attacks on deep neural 370 
+
+networks,” IEEE Access , vol. 7, pp. 47 230–47 244, 2019. 371 
+
+[29] M. Barni, K. Kallas, and B. Tondi, “A new backdoor attack in cnns by training set corruption without 372 
+
+label poisoning,” in 2019 IEEE International Conference on Image Processing (ICIP) . IEEE, 2019, pp. 373 
+
+101–105. 374 
+
+[30] W. Jiang, H. Li, G. Xu, and T. Zhang, “Color backdoor: A robust poisoning attack in color space,” in 375 
+
+Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) , 2023, pp. 376 
+
+8133–8142. 377 
+
+[31] T. A. Nguyen and A. T. Tran, “Wanet-imperceptible warping-based backdoor attack,” in International 378 
+
+Conference on Learning Representations (ICLR) , 2020. 379 
+
+[32] S. Li, M. Xue, B. Z. H. Zhao, H. Zhu, and X. Zhang, “Invisible backdoor attacks on deep neural networks 380 
+
+via steganography and regularization,” IEEE Transactions on Dependable and Secure Computing , vol. 18, 381 
+
+no. 5, pp. 2088–2105, 2020. 382 
+
+[33] Y. Zeng, W. Park, Z. M. Mao, and R. Jia, “Rethinking the backdoor attacks’ triggers: A frequency 383 
+
+perspective,” in Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) , 2021, 384 
+
+pp. 16 473–16 481. 385 
+
+[34] T. Wang, Y. Yao, F. Xu, S. An, H. Tong, and T. Wang, “An invisible black-box backdoor attack through 386 
+
+frequency domain,” in European Conference on Computer Vision (ECCV) . Springer, 2022, pp. 396–413. 387 
+
+[35] H. A. A. K. Hammoud and B. Ghanem, “Check your other door! creating backdoor attacks in the frequency 388 
+
+domain,” arXiv preprint arXiv:2109.05507 , 2021. 389 
+
+[36] R. Hou, T. Huang, H. Yan, L. Ke, and W. Tang, “A stealthy and robust backdoor attack via frequency 390 
+
+domain transform,” World Wide Web (WWW) , vol. 26, no. 5, pp. 2767–2783, 2023. 391 
+
+[37] Y. Feng, B. Ma, J. Zhang, S. Zhao, Y. Xia, and D. Tao, “Fiba: Frequency-injection based backdoor attack 392 
+
+in medical image analysis,” in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern 393 
+
+Recognition (CVPR) , 2022, pp. 20 876–20 885. 394 
+
+[38] Y. Gao, H. Chen, P. Sun, J. Li, A. Zhang, Z. Wang, and W. Liu, “A dual stealthy backdoor: From both 395 
+
+spatial and frequency perspectives,” in Proceedings of the AAAI Conference on Artificial Intelligence 396 
+
+(AAAI) , vol. 38, no. 3, 2024, pp. 1851–1859. 397 
+
+[39] T. A. Nguyen and A. Tran, “Input-aware dynamic backdoor attack,” Advances in Neural Information 398 
+
+Processing Systems (NeurIPS) , vol. 33, pp. 3454–3464, 2020. 399 
+
+11 [40] K. Doan, Y. Lao, W. Zhao, and P. Li, “Lira: Learnable, imperceptible and robust backdoor attacks,” in 400 
+
+Proceedings of the IEEE/CVF international conference on computer vision (ICCV) , 2021, pp. 11 966– 401 
+
+11 976. 402 
+
+[41] K. D. Doan, Y. Lao, and P. Li, “Marksman backdoor: Backdoor attacks with arbitrary target class,” 403 
+
+Advances in Neural Information Processing Systems (NeurIPS) , vol. 35, pp. 38 260–38 273, 2022. 404 
+
+[42] B. Wang, Y. Yao, S. Shan, H. Li, B. Viswanath, H. Zheng, and B. Y. Zhao, “Neural Cleanse: Identifying 405 
+
+and mitigating backdoor attacks in neural networks,” in 2019 IEEE Symposium on Security and Privacy 406 
+
+(S&P) . IEEE, 2019, pp. 707–723. 407 
+
+[43] Y. Gao, C. Xu, D. Wang, S. Chen, D. C. Ranasinghe, and S. Nepal, “STRIP: A defence against trojan 408 
+
+attacks on deep neural networks,” in Proceedings of the 35th Annual Computer Security Applications 409 
+
+Conference , 2019, pp. 113–125. 410 
+
+[44] B. Tran, J. Li, and A. Madry, “Spectral signatures in backdoor attacks,” Advances in Neural Information 411 
+
+Processing Systems (NeurIPS) , vol. 31, 2018. 412 
+
+[45] K. Liu, B. Dolan-Gavitt, and S. Garg, “Fine-pruning: Defending against backdooring attacks on deep 413 
+
+neural networks,” in International Symposium on Research in Attacks, Intrusions, and Defenses . Springer, 414 
+
+2018, pp. 273–294. 415 
+
+[46] R. S. Sutton, D. McAllester, S. Singh, and Y. Mansour, “Policy gradient methods for reinforcement learning 416 
+
+with function approximation,” Advances in Neural Information Processing Systems (NeurIPS) , vol. 12, 417 
+
+1999. 418 
+
+[47] S. V. Gliske, Z. T. Irwin, K. A. Davis, K. Sahaya, C. Chestek, and W. C. Stacey, “Universal automated high 419 
+
+frequency oscillation detector for real-time, long term eeg,” Clinical Neurophysiology , vol. 127, no. 2, pp. 420 
+
+1057–1066, 2016. 421 
+
+[48] C. Brunner, R. Leeb, G. Müller-Putz, A. Schlögl, and G. Pfurtscheller, “BCI competition 2008–graz data 422 
+
+set A,” Institute for Knowledge Discovery (Laboratory of Brain-Computer Interfaces), Graz University of 423 
+
+Technology , vol. 16, pp. 1–6, 2008. 424 
+
+[49] A. H. Shoeb and J. V. Guttag, “Application of machine learning to epileptic seizure detection,” in Proceed-425 
+
+ings of the 27th International Conference on Machine Learning (ICML) , 2010, pp. 975–982. 426 
+
+[50] V. J. Lawhern, A. J. Solon, N. R. Waytowich, S. M. Gordon, C. P. Hung, and B. J. Lance, “EEGNet: 427 
+
+a compact convolutional neural network for EEG-based brain–computer interfaces,” Journal of Neural 428 
+
+Engineering , vol. 15, no. 5, p. 056013, 2018. 429 
+
+[51] R. T. Schirrmeister, J. T. Springenberg, L. D. J. Fiederer, M. Glasstetter, K. Eggensperger, M. Tangermann, 430 
+
+F. Hutter, W. Burgard, and T. Ball, “Deep learning with convolutional neural networks for EEG decoding 431 
+
+and visualization,” Human Brain Mapping , vol. 38, no. 11, pp. 5391–5420, 2017. 432 
+
+[52] S. Hochreiter and J. Schmidhuber, “Long short-term memory,” Neural Computation , vol. 9, no. 8, pp. 433 
+
+1735–1780, 1997. 434 
+
+[53] K. M. Tsiouris, V. C. Pezoulas, M. Zervakis, S. Konitsiotis, D. D. Koutsouris, and D. I. Fotiadis, “A 435 
+
+long short-term memory deep learning network for the prediction of epileptic seizures using eeg signals,” 436 
+
+Computers in biology and medicine , vol. 99, pp. 24–37, 2018. 437 
+
+[54] S. Katoch, S. S. Chauhan, and V. Kumar, “A review on genetic algorithm: past, present, and future,” 438 
+
+Multimedia tools and applications , vol. 80, pp. 8091–8126, 2021. 439 
+
+12 Appendix 440 
+
+A Limitations 441 
+
+Our ManiBCI is a backdoor attack in the frequency domain, which requires to transform the EEG 442 
+
+signals into frequency domain through fast Fourier transform (FFT) and return to temporal domain 443 
+
+through inverse FFT (iFFT). The operation of FFT and iFFT in the trigger injection function are a 444 
+
+little more time-consuming compared to other backdoor attack directly in the temporal domain, like 445 
+
+PatchMT [ 28 ] and PulseMT [ 16 ]. Future effort will be devoted into the faster implementation of FFT 446 
+
+and iFFT, for example, taking the advantage of modern GPUs. 447 
+
+It is a little more time-consuming for the reinforcement learning to acquire the optimal strategies for 448 
+
+each trigger. However, we can obtain a general injecting strategy for each EEG BCI tasks, which can 449 
+
+achieve a relatively good performance without reinforcement learning, as we can see from Table 3 450 
+
+that random injection strategy has an acceptable performance. 451 
+
+B Broader Impacts 452 
+
+With the rapid development of techniques, EEG BCIs gain a wide range of applications from health 453 
+
+care to human-computer interaction. Some companies like Neuralink adopt the EEG BCI to assist 454 
+
+paralytic patients helping themselves in daily lives. However, if the EEG BCI is backdoor attacked 455 
+
+by ManiBCI, which allows the attacker to arbitrarily control BCI’s outputs, the BCI users may fall 456 
+
+into tremendous fatal troubles. For instance, one paralytic patient controls his/her wheelchair by 457 
+
+EEG BCI, the attacker can manipulate the wheelchair to run down a steep staircase. For an epileptic 458 
+
+patient, the attacker can let all the output be Normal State, even when the patient is experiencing 459 
+
+an epileptic seizure. This paper reveals the severe danger faced by EEG BCIs, demonstrating the 460 
+
+possibility that someone can maliciously manipulate the outputs of EEG BCIs with arbitrary target 461 
+
+class. 462 
+
+ManiBCI can also be used for positive purposes, like protecting intellectual property of EEG dataset 463 
+
+and EEG models with watermarking. As our ManiBCI has a very small impact of the clean accuracy, 464 
+
+and the poisoning approach is clean label poisoning, ManiBCI is a fantastic method for watermarking 465 
+
+EEG dataset and models. 466 
+
+For a company that provides EEG dataset, it can select different EEG triggers for different customs 467 
+
+to generate poisoned data and inject into the dataset provided to customs who buy the dataset. As a 468 
+
+result, the company have the information of which trigger is corresponding to which customs, e.g., 469 
+
+trigger x is in the dataset provided to custom X, trigger y is in the dataset provided to custom Y. If an 470 
+
+EEG model from a company which didn’t buy dataset is detected having this watermark (backdoor) 471 
+
+with trigger x, the company knows that the custom X leaked the dataset. Similarly, if an EEG model 472 
+
+is detected having this watermark (backdoor) with trigger y, the company knows that the custom Y473 
+
+leaked the dataset. 474 
+
+C Datasets and Preprocessing 475 
+
+In this section, we introduce the three datasets used in our experiments, and explain the preprocessing. 476 
+
+Table 5 presents some basic information of these datasets. 477 
+
+Table 5: Basic information of the three datasets Dataset Emotion Motor Imagery Epilepsy Class Numbers 3 4 4Subjects 15 9 23 Electrodes 62 22 23 Sampling Rate 200 Hz 250 Hz 256 Hz 13 C.1 Emotion Recognition (ER) 478 
+
+The SJTU Emotion EEG Dataset (SEED) was incoporated as the representative dataset of emotion 479 
+
+recogniton tasks [ 12 ]. It consists of EEG recordings from 15 subjects watching 15 emotional video 480 
+
+clips with three repeated session each on different days. Each video clip is supposed to evoke one 481 
+
+of the three target emotions: positive, neutral, and negative. The EEG signals were acquired by 482 
+
+the 62-channel electrode cap at a sampling rate of 1000 Hz. We performed below preprocessing 483 
+
+procedures for the 62-channel EEG signals: 1) Down-sampling from 1000 Hz to 200 Hz, 2) Band-pass 484 
+
+filtering at 0.3-50 Hz, 3) Segmenting EEG signals into 1-second (200 timepoints), obtaining 3394 485 
+
+EEG segments in each session for each subject. 486 
+
+C.2 Motor Imagery (MI) 487 
+
+We employ the BCIC-IV-2a as a representative dataset of MI classification tasks [ 48 ]. It contains 488 
+
+EEG recordings in a four-class motor-imagery task from nine subjects with two repeated session each 489 
+
+on different days. During the task, the subjects were instructed to imagine four types of movements 490 
+
+(i.e. , right hand, left hand, feet, and tongue) for four seconds. Each session consists of a total of 491 
+
+288 trials with 72 trials for each type of the motor imagery. The EEG signals were recorded by 22 492 
+
+Ag/AgCl EEG electrodes in a sampling rate of 250 Hz. We segment the 22-channel EEG signals into 493 
+
+1-second segments, resulting in totally 1152 EEG data for each subject. 494 
+
+C.3 Epilepsy Detection (ED) 495 
+
+The CHB-MIT, one of the largest and most used public datasets for epilepsy, is adopted as a 496 
+
+representative dataset of ED tasks [ 49 ]. It recorded 877.39 hours of multi-channel EEG in a sampling 497 
+
+rate of 256 Hz from 23 pediatric patients with intractable seizures. However, as the montages ( i.e. ,498 
+
+the number and the places of electrodes) of EEG signals vary significantly among different subjects’ 499 
+
+recordings, we select to use only the EEG recordings with the same 23 channels (see Appendix A) 500 
+
+and discard other channels or the recordings don’t have all these 23 channels. Due to the purpose is to 501 
+
+test whether the backdoor attack works on the ED task, not to study the epilepsy EEG classification, 502 
+
+we segment part of the CHB-MIT dataset to form a four-class ED dataset ( i.e. , the preictal, ictal, 503 
+
+postictal, and interictal phases). Specifically, for a ictal phase EEG recording of ti seconds from 504 
+
+[si, e i] timepoints, we segment the [si − ti, e i] EEG as the preictal phase, the [ei, e i + ti] EEG as the 505 
+
+postictal phase, and another ti seconds EEG recordings as the interictal phase which satisfying there 506 
+
+is no ictal phase within half an hour before or after. Then we segment the 23-channel EEG signals 507 
+
+into 1-second segments, consequently, there are 41336 segments left in total from all subjects, 10334 508 
+
+for each phase. As the imbalanced amount of data across different subjects, we separate these 41336 509 
+
+segments into 10 groups and treat the ten groups as 10 subjects. 510 
+
+D Implementation Details 511 
+
+D.1 Experiment Computing Resources 512 
+
+We use two servers for conducting our experiments. A server with one Nvidia Tesla V100 GPU is 513 
+
+used for running reinforcement learning, the CUDA version is 12.3. Another server with four Nvidia 514 
+
+RTX 3090 GPUs is used for running the backdoor attacks, the CUDA version is 11.4. 515 
+
+D.2 Details of Baseline Methods 516 
+
+In our ManiBCI backdoor attacks, for an EEG segment xi ∈ RE×T , we modify the βF frequency-517 
+
+points and γE electrodes of a EEG segments with a constant number. 518 
+
+There are four baseline methods in our study for multi-target backdoor attacks, two of them are 519 
+
+non-stealthy attacks ( PatchMT and PulseMT ) and two are stealthy attacks ( CompressMT and 520 
+
+AdverseMT ). In order to achieve a fair comparison, we modify only first γE electrodes for all 521 
+
+baseline attack methods. For the non-stealthy attacks, which are all on the temporal domains, we 522 
+
+modify βT timepoints of EEG signals. For the stealthy attacks, there is no constraint of the numbers 523 
+
+of the modify timepoints as these attacks achieve stealthiness in another way. 524 
+
+14 For each baseline method, we try our best to find out the best performance, as demonstrated below. 525 
+
+We promise that we did not maliciously lower the performances of the baseline methods. 526 
+
+D.2.1 PatchMT 527 
+
+PatchMT is a multi-trigger and MT extension of BadNets [ 28 ] where we fill the first βT timepoints 528 
+
+and γE electrodes of a EEG segments with a constant number. Specifically, for an EEG segment 529 
+
+xi ∈ RE×T , we set the first γE electrodes and the first βT timepoints of the EEG segment to a 530 
+
+constant number. We normalize the EEG segment xi ∈ RE×T to let xi’s mean is 0 and std is 1. 531 
+
+Then set the first γE electrodes and the first βT timepoints of xi to a different constant number for 532 
+
+different class. The constant number for each class of {0, 1, 2, 3} for four classes, and {-0.1, 0.0, 1.0} 533 
+
+for three classes. Finally, denormalize xi to original signal xi’s scale to generate xpi .534 
+
+Although we try our best to find the best performance of PatchMT, and BadNets [ 28 ] is really efficient 535 
+
+in image backdoor attacks, PatchMT cannot have satisfactory results in EEG BCI attack. 536 
+
+D.2.2 PulseMT 537 
+
+For PulseMT, we met the same questions as the PatchMT: how to identify the amplitude of each NPP 538 
+
+signal for each class? If the numbers are too large then normal EEG signals, it will be unfair. If the 539 
+
+numbers are too small, the efficacy of PulseMT is too negative. 540 
+
+We normalize the EEG segment xi ∈ RE×T to let xi’s mean is 0 and std is 1. The constant amplitude 541 
+
+for each class of {− 0.8, −0.3, 0.3, 0.8}. Finally, denormalize xi to original signal xi’s scale to 542 
+
+generate xpi .543 
+
+D.2.3 CompressMT 544 
+
+Compressing the amplitude of EEG signals in the temporal domain will not change the morphology 545 
+
+and the frequency distribution of EEG signals, thus obtaining stealthiness. For three-class Emotion 546 
+
+datasets, the compress rate is {0.8, 0.6, 0.4}. For four-class Motor Imagery and Epilepsy datasets, the 547 
+
+compress rate is {0.8, 0.6, 0.4, 0.2}. 548 
+
+D.2.4 AdverseMT 549 
+
+AdverseMT is another stealthy EEG backdoor attacks, which is the multi-trigger and multi-target 550 
+
+extension of adversarial spatial filter attacks [ 18 ], in wihch, for EEG segment xi ∈ RE×T , it learns 551 
+
+an Spatial Filter W ∈ RE×E by the adversarial loss to let the model f misclassify xi:552 
+
+min  
+
+> W
+
+E(xi,y i)∼D [−L CE (Wxi, y i) + αLM SE (Wxi, x i)] , (11) However, the original version of [ 18 ] requires the access to all training dataset D and the control of 553 
+
+the training process of the model f . We modify the AdverseMT to only access to the training dataset 554 
+
+Dtrain . Note that the adversarial loss dose not have the special design for multi-target backdoor 555 
+
+attacks, we only run the process c times for obtaining c spatial filters for different classes. So the 556 
+
+poisoned subset are Sp = {(W0(x), 0) , (W1(x), 1) , (W2(x), 2) , (W3(x), 3) }.557 
+
+D.3 Reinforcement Learning Policy Network Architecture 558 
+
+Here, we design a concise but effective convolutional neural networks as the our policy network, 559 
+
+which is defined as belows: 560 
+
+15 Table 6: The Architecture of Policy Network Layer In Out Kernel Stride Conv2d 1 32 (1, 3) (1, 1) BatchNorm2d ELU AvgPool2d (1,2) Conv2d 32 64 (1, 3) (1, 1) BatchNorm2d ELU AvgPool2d (1,2) AdaptiveAvgPool2d (1, 1) Flatten Linear 64 256 
+
+E Attack Performance of ManiBCI 561 
+
+E.1 Different Poisoning Rates 562 
+
+We present the performance of each backdoor attacks’ performance under different poisoning rates in 563 
+
+Table 7. We can see that our ManiBCI outperforms other baseline at all poisoning rates, demonstrating 564 
+
+the superiority of ManiBCI. Note that the performance of ManiBCI on the MI dataset is significantly 565 
+
+robust to low poisoning rates, i.e., ASR of 1.000 when ρ = 0 .05 .566 
+
+E.2 Hyperparameter Analysis: Frequency and Electrodes Injection Ratio 567 
+
+We present the performance of each backdoor attacks performance under different rates in Table 8 568 
+
+and Table 9. It can be observed with the increment of β and γ, the attack performance increases. 569 
+
+Because the trigger is bigger in clean EEG data. 570 
+
+E.3 Hyperparameter Analysis in Reinforcement Learning 571 
+
+We applied the following reward function to acquire the optimal mask strategies for each triggers: 572 
+
+Qt = CA + λ ASR + μ dis( Mci 
+
+> f
+
+) + ν min( Mci 
+
+> f
+
+), (12) where the first part means the clean accuracy, the second part means the attack success rate, the third 573 
+
+part is aiming to scatter the injection positions in various frequency bands, and the fourth part is 574 
+
+aiming to inject as high frequencies in EEG signals as possible. Here, we give a simple example to 575 
+
+demonstrate the reward function. For an 10 timepoints long EEG segment xi, exi = F(xi). If the 576 
+
+Mci 
+
+> f
+
+= {2, 3, 5, 7, 9}, because the minimal distance between each pair in Mci 
+
+> f
+
+is |2 − 3| = 1 , thus 577 
+
+dis( Mci 
+
+> f
+
+) = 1 . The min( Mci 
+
+> f
+
+) means the lowest position in Mci 
+
+> f
+
+, thus min( Mci 
+
+> f
+
+) = 2 .578 
+
+The analysis of the λ are presented in Table 10. When λ increase, the Attack performance increases 579 
+
+while the Clean performance declines slightly. 580 
+
+Table 10: Clean (/C) and attack (/B) performance with ASR’s hyperparameter λ, μ = 0 .3, ν = 0 .005 
+
+Dataset Emotion Motor Imagery Epilepsy Method Clean Attack Clean Attack Clean Attack 0.5 ManiBCI 0.542 ±0.03 0.847 ±0.04 0.327 ±0.02 1.000 ±0.01 0.500 ±0.04 0.922 ±0.04 
+
+1.0 ManiBCI 0.537 ±0.02 0.855 ±0.03 0.325 ±0.02 1.000 ±0.01 0.482 ±0.03 0.935 ±0.05 
+
+2 ManiBCI 0.535 ±0.03 0.857 ±0.02 0.323 ±0.02 1.000 ±0.01 0.477 ±0.04 0.944 ±0.02 
+
+16 Table 7: Clean (/C) and attack (/B) performance with different poisoning rates for ManiBCI and other baseline methods. The target model is EEGNet for all cases. 
+
+ρ Dataset Emotion Motor Imagery Epilepsy Method Clean Attack Clean Attack Clean Attack 0.05  PatchMT 0.390 0.333 0.281 0.791 0.449 0.365 PulseMT 0.488 0.337 0.275 0.788 0.473 0.397 ComprsMT 0.448 0.313 0.269 0.754 0.449 0.329 ManiBCI 0.491 0.566 0.321 1.000 0.460 0.667 0.10  PatchMT 0.443 0.334 0.279 0.785 0.452 0.400 PulseMT 0.445 0.394 0.281 0.796 0.486 0.591 ComprsMT 0.509 0.323 0.270 0.778 0.446 0.337 ManiBCI 0.541 0.718 0.320 1.000 0.452 0.734 0.15  PatchMT 0.455 0.335 0.285 0.805 0.439 0.414 PulseMT 0.438 0.514 0.280 0.787 0.447 0.669 ComprsMT 0.488 0.332 0.275 0.792 0.461 0.374 ManiBCI 0.528 0.805 0.322 1.000 0.460 0.781 0.20  PatchMT 0.481 0.334 0.277 0.816 0.461 0.451 PulseMT 0.447 0.555 0.285 0.810 0.451 0.692 ComprsMT 0.470 0.347 0.270 0.795 0.458 0.394 ManiBCI 0.538 0.773 0.321 1.000 0.447 0.799 0.25  PatchMT 0.487 0.335 0.281 0.820 0.444 0.483 PulseMT 0.466 0.701 0.275 0.815 0.431 0.684 ComprsMT 0.493 0.335 0.269 0.800 0.462 0.427 ManiBCI 0.551 0.836 0.325 1.000 0.447 0.834 0.30  PatchMT 0.459 0.343 0.280 0.809 0.440 0.496 PulseMT 0.486 0.810 0.272 0.816 0.451 0.716 ComprsMT 0.499 0.331 0.269 0.825 0.455 0.481 ManiBCI 0.526 0.829 0.320 1.000 0.451 0.756 0.35  PatchMT 0.437 0.341 0.285 0.805 0.448 0.510 PulseMT 0.437 0.767 0.275 0.837 0.482 0.757 ComprsMT 0.473 0.347 0.265 0.851 0.446 0.517 ManiBCI 0.489 0.763 0.321 1.000 0.453 0.910 0.40  PatchMT 0.490 0.345 0.283 0.824 0.460 0.549 PulseMT 0.454 0.771 0.270 0.825 0.439 0.443 ComprsMT 0.464 0.361 0.269 0.865 0.437 0.450 ManiBCI 0.528 0.849 0.323 1.000 0.477 0.944 17 Table 8: Clean (/C) and attack (/B) performance with frequency injection rate β, γ = 0 .5
+
+β Dataset Emotion Motor Imagery Epilepsy Method Clean Attack Clean Attack Clean Attack 0.05  PatchMT 0.411 0.334 0.272 0.801 0.476 0.499 PulseMT 0.464 0.752 0.265 0.800 0.505 0.670 ManiBCI 0.522 0.744 0.319 0.999 0.482 0.923 0.10  PatchMT 0.431 0.363 0.283 0.824 0.482 0.540 PulseMT 0.460 0.795 0.270 0.825 0.486 0.704 ManiBCI 0.522 0.813 0.323 1.000 0.500 0.944 0.15  PatchMT 0.413 0.371 0.275 0.821 0.464 0.587 PulseMT 0.449 0.701 0.271 0.821 0.477 0.632 ManiBCI 0.532 0.848 0.322 0.998 0.477 0.947 0.20  PatchMT 0.390 0.377 0.271 0.829 0.479 0.644 PulseMT 0.434 0.769 0.270 0.819 0.484 0.606 ManiBCI 0.529 0.882 0.325 0.999 0.486 0.950 0.25  PatchMT 0.406 0.385 0.267 0.835 0.491 0.673 PulseMT 0.491 0.705 0.275 0.832 0.478 0.566 ManiBCI 0.519 0.865 0.328 0.999 0.486 0.941 0.30  PatchMT 0.417 0.382 0.269 0.831 0.464 0.706 PulseMT 0.425 0.708 0.273 0.844 0.488 0.592 ManiBCI 0.521 0.862 0.330 0.999 0.495 0.940 0.35  PatchMT 0.435 0.373 0.270 0.841 0.475 0.734 PulseMT 0.423 0.621 0.276 0.839 0.479 0.589 ManiBCI 0.527 0.850 0.332 0.998 0.496 0.947 0.40  PatchMT 0.438 0.378 0.271 0.843 0.469 0.751 PulseMT 0.481 0.624 0.272 0.845 0.485 0.592 ManiBCI 0.521 0.893 0.330 0.999 0.501 0.951 0.45  PatchMT 0.460 0.385 0.266 0.844 0.481 0.742 PulseMT 0.429 0.633 0.277 0.856 0.499 0.601 ManiBCI 0.519 0.877 0.325 0.999 0.492 0.962 0.50  PatchMT 0.423 0.386 0.263 0.840 0.480 0.752 PulseMT 0.459 0.514 0.273 0.851 0.492 0.610 ManiBCI 0.528 0.893 0.329 1.000 0.497 0.970 18 Table 9: Clean (/C) and attack (/B) performance with electrodes injection rate γ, β = 0 .1
+
+γ Dataset Emotion Motor Imagery Epilepsy Method Clean Attack Clean Attack Clean Attack 0.10  PatchMT 0.431 0.334 0.268 0.795 0.470 0.529 PulseMT 0.425 0.498 0.269 0.802 0.502 0.717 ComprsMT 0.407 0.349 0.271 0.805 0.482 0.656 ManiBCI 0.489 0.485 0.235 0.367 0.499 0.814 0.20  PatchMT 0.473 0.335 0.271 0.805 0.464 0.599 PulseMT 0.469 0.707 0.270 0.816 0.502 0.737 ComprsMT 0.465 0.363 0.268 0.812 0.514 0.704 ManiBCI 0.481 0.709 0.235 0.367 0.486 0.860 0.30  PatchMT 0.423 0.343 0.272 0.803 0.486 0.613 PulseMT 0.488 0.767 0.273 0.814 0.506 0.749 ComprsMT 0.451 0.398 0.271 0.811 0.494 0.700 ManiBCI 0.500 0.743 0.235 0.367 0.490 0.883 0.40  PatchMT 0.453 0.343 0.270 0.812 0.478 0.525 PulseMT 0.467 0.786 0.271 0.816 0.498 0.688 ComprsMT 0.443 0.361 0.270 0.820 0.506 0.634 ManiBCI 0.491 0.767 0.235 0.367 0.478 0.912 0.50  PatchMT 0.431 0.363 0.270 0.813 0.472 0.552 PulseMT 0.460 0.795 0.269 0.819 0.471 0.710 ComprsMT 0.430 0.366 0.269 0.821 0.503 0.640 ManiBCI 0.522 0.813 0.235 0.367 0.477 0.944 0.60  PatchMT 0.452 0.377 0.267 0.819 0.480 0.549 PulseMT 0.460 0.808 0.269 0.823 0.490 0.672 ComprsMT 0.459 0.368 0.271 0.826 0.499 0.534 ManiBCI 0.488 0.828 0.235 0.367 0.495 0.950 0.70  PatchMT 0.443 0.368 0.272 0.812 0.497 0.525 PulseMT 0.437 0.809 0.270 0.821 0.459 0.716 ComprsMT 0.456 0.366 0.273 0.835 0.492 0.571 ManiBCI 0.527 0.853 0.235 0.367 0.489 0.955 0.80  PatchMT 0.461 0.383 0.268 0.821 0.479 0.573 PulseMT 0.456 0.771 0.267 0.829 0.488 0.699 ComprsMT 0.431 0.383 0.270 0.833 0.488 0.475 ManiBCI 0.539 0.865 0.235 0.367 0.489 0.960 0.90  PatchMT 0.439 0.400 0.271 0.817 0.478 0.540 PulseMT 0.461 0.811 0.269 0.823 0.494 0.694 ComprsMT 0.459 0.389 0.274 0.836 0.490 0.309 ManiBCI 0.520 0.824 0.235 0.367 0.489 0.970 1.00  PatchMT 0.430 0.370 0.267 0.823 0.476 0.526 PulseMT 0.456 0.794 0.271 0.829 0.482 0.716 ComprsMT 0.453 0.376 0.269 0.830 0.490 0.334 ManiBCI 0.532 0.846 0.235 0.367 0.491 0.978 19 F More Visualization Results 581 
+
+In this section, we plot the reconstructed triggers and masks on three datasets in Section F.1, then 582 
+
+plot more visualizations of backdoor samples in Section ?? , and plot the learning curve of our 583 
+
+reinforcement learning in Section F.3. 584 
+
+F.1 Neural Cleanse: Reconstruction Trigger Patterns 585 
+
+Here, we present more visualization in Figure 9, Figure 10, and Figure 11 of the reconstructed trigger 586 
+
+patterns and mask patterns for each possible label on three dataset ( i.e. , the CHB-MIT dataset, the 587 
+
+BCIC-IV-2a dataset and the SEED dataset) the target model is EEGnet. It can be observed that the 588 
+
+reconstructed trigger patterns and mask patterns of the clean models and ManiBCI backdoor-injected 589 
+
+models are very similar to each other. Thus, our ManiBCI backdoor attack can easily bypass the 590 
+
+defense of Neural Cleanse. 591 0 50 100 150 200 250 020 
+
+0 50 100 150 200 250 020 
+
+0 50 100 150 200 250 020 
+
+0 50 100 150 200 250 020 
+
+0 50 100 150 200 250 020 
+
+0 50 100 150 200 250 020 
+
+0 50 100 150 200 250 020 
+
+0 50 100 150 200 250 020                                                                                                         
+
+> 050 100 150 200 250 020
+> 050 100 150 200 250 020
+> 050 100 150 200 250 020
+> 050 100 150 200 250 020
+> 050 100 150 200 250 020
+> 050 100 150 200 250 020
+> 050 100 150 200 250 020
+> 050 100 150 200 250 020
+> Clean model / Class 3: Reconstructed Trigger Pattern ManiBCI backdoor model / Class 3: Reconstructed Trigger Pattern
+> Clean model / Class 3: Reconstructed Mask Pattern ManiBCI backdoor model / Class 3: Reconstructed Mask Pattern Clean model / Class 2: Reconstructed Trigger Pattern ManiBCI backdoor model / Class 2: Reconstructed Trigger Pattern Clean model / Class 2: Reconstructed Mask Pattern ManiBCI backdoor model / Class 2: Reconstructed Mask Pattern
+> Clean model / Class 1: Reconstructed Trigger Pattern ManiBCI backdoor model / Class 1: Reconstructed Trigger Pattern
+> Clean model / Class 1: Reconstructed Mask Pattern ManiBCI backdoor model / Class 1: Reconstructed Mask Pattern
+> Clean model / Class 0: Reconstructed Trigger Pattern ManiBCI backdoor model / Class 0: Reconstructed Trigger Pattern
+> Clean model / Class 0: Reconstructed Mask Pattern ManiBCI backdoor model / Class 0: Reconstructed Mask Pattern
+
+0.0 0.2 0.4 0.6 0.8 1.0 
+
+Figure 9: The reconstructed trigger patterns and mask patterns for each possible class in the CHB-MIT dataset. The results in the left column are reconstructed based on the clean model, the results in the right column are reconstructed based on the backdoor model. The EEG segments in the CHB-MIT dataset have 23 electrodes and 256 timepoints. 20 0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+ManiBCI backdoor model / Class 3 : Reconstructed Trigger Pattern 
+
+ManiBCI backdoor model / Class 3 : Reconstructed Mask Pattern 
+
+ManiBCI backdoor model / Class 2 : Reconstructed Trigger Pattern 
+
+ManiBCI backdoor model / Class 2 : Reconstructed Mask Pattern 
+
+ManiBCI backdoor model / Class 1 : Reconstructed Trigger Pattern 
+
+ManiBCI backdoor model / Class 1 : Reconstructed Mask Pattern 
+
+ManiBCI backdoor model / Class 0 : Reconstructed Trigger Pattern 
+
+ManiBCI backdoor model / Class 0 : Reconstructed Mask Pattern 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+0 50 100 150 200 020 
+
+Clean model / Class 0 : Reconstructed Trigger Pattern 
+
+Clean model / Class 1 : Reconstructed Mask Pattern 
+
+Clean model / Class 0 : Reconstructed Mask Pattern 
+
+Clean model / Class 2 : Reconstructed Mask Pattern 
+
+Clean model / Class 3: Reconstructed Mask Pattern 
+
+Clean model / Class 1 : Reconstructed Trigger Pattern 
+
+Clean model / Class 2 : Reconstructed Trigger Pattern 
+
+Clean model / Class 3 : Reconstructed Trigger Pattern 
+
+0.0 0.2 0.4 0.6 0.8 1.0 Figure 10: The reconstructed trigger patterns and mask patterns for each possible class in the MI dataset. The results in the left column are reconstructed based on the clean model, the results in the right column are reconstructed based on the backdoor model. The EEG segments in the MI dataset have 22 electrodes and 250 timepoints. 21 0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+0 25 50 75 100 125 150 175 020 40 60 
+
+ManiBCI backdoor model / Class 2 : Reconstructed Trigger Pattern 
+
+ManiBCI backdoor model / Class 2 : Reconstructed Mask Pattern Clean model / Class 0 : Reconstructed Mask Pattern ManiBCI backdoor model / Class 0 : Reconstructed Mask Pattern 
+
+Clean model / Class 0 : Reconstructed Trigger Pattern ManiBCI backdoor model / Class 0 : Reconstructed Trigger Pattern 
+
+Clean model / Class 1 : Reconstructed Mask Pattern ManiBCI backdoor model / Class 1 : Reconstructed Mask Pattern 
+
+Clean model / Class 1 : Reconstructed Trigger Pattern ManiBCI backdoor model / Class 1 : Reconstructed Trigger Pattern 
+
+Clean model / Class 2 : Reconstructed Mask Pattern Clean model / Class 2 : Reconstructed Trigger Pattern 
+
+0.0 0.2 0.4 0.6 0.8 1.0 Figure 11: The reconstructed trigger patterns and mask patterns for each possible class in the ER dataset (i.e., SEED dataset). The results in the left column are reconstructed based on the clean model, the results in the right column are reconstructed based on the backdoor model. The EEG segments in the SEED dataset have 62 electrodes and 200 timepoints. 22 F.2 Visualization of Backdoor Attack Samples 592 
+
+We present more visualization of the backdoor attack samples generated by our ManiBCI on ER 593 
+
+dataset and MI dataset in Fig 12 and 13. The x-axis is the timepoints, the y-axis is the normalized 594 
+
+amplitude. Top row: w.o. HF loss; Bottom row: with HF loss. Each column indicates each possible 595 
+
+class. 596 0 25 50 75 100 125 150 175 200 1
+
+012 Clean EEG Trigger 0 Injected EEG 0 25 50 75 100 125 150 175 200 1
+
+012 Clean EEG Trigger 1 Injected EEG 0 25 50 75 100 125 150 175 200 1
+
+012 Clean EEG Trigger 2 Injected EEG 0 25 50 75 100 125 150 175 200 1
+
+012 Clean EEG Trigger 0 Injected EEG Residual 0 25 50 75 100 125 150 175 200 1
+
+012 Clean EEG Trigger 1 Injected EEG Residual 0 25 50 75 100 125 150 175 200 1
+
+012 Clean EEG Trigger 2 Injected EEG Residual 
+
+Trigger from Class 0 Trigger from Class 1 Trigger from Class 2 
+
+> w/o HF loss ManiBCI
+
+Figure 12: The Clean EEG (Blue), Trigger-injected EEG (Orange) and the Residual (Red) of the ER dataset. 0 50 100 150 200 250 40 
+
+20 
+
+020 40 60 Clean EEG Trigger 0 Injected EEG 0 50 100 150 200 250 40 
+
+20 
+
+020 40 60 Clean EEG Trigger 1 Injected EEG 0 50 100 150 200 250 50 
+
+25 
+
+025 50 Clean EEG Trigger 2 Injected EEG 0 50 100 150 200 250 40 
+
+20 
+
+020 40 60 Clean EEG Trigger 3 Injected EEG 0 50 100 150 200 250 40 
+
+20 
+
+020 40 60 Clean EEG Trigger 0 Injected EEG Residual 0 50 100 150 200 250 40 
+
+20 
+
+020 40 60 Clean EEG Trigger 1 Injected EEG Residual 0 50 100 150 200 250 40 
+
+20 
+
+020 40 60 Clean EEG Trigger 2 Injected EEG Residual 0 50 100 150 200 250 40 
+
+20 
+
+020 40 60 Clean EEG Trigger 3 Injected EEG Residual 
+
+Trigger from Class 0 Trigger from Class 1 Trigger from Class 2 Trigger from Class 3 
+
+> w/o HF loss ManiBCI
+
+Figure 13: The Clean EEG (Blue), Trigger-injected EEG (Orange) and the Residual (Red) of the MI dataset. 23 F.3 Visualization of Learning Curves of Reinforcement Learning 597 
+
+We present the visualization of the learning curves of the reinforcement learning of three dataset in 598 
+
+Fig 14. We can see the effectiveness of our reinforcement, which converged within 50 epochs on the 599 
+
+ER dataset, that is, only trained 50 backdoor models with different injection strategies. Our RL is 600 
+
+more effective on the MI dataset and ED dataset, which finds a good strategy within less 10 epochs. 601 
+
+Our RL is robust when learning strategies for different triggers as demonstrated in Fig 14(c) and (d), 602 
+
+where the learning curves are quite similar when RL is performing on different triggers. 603 0 50 100 150 200 250 0.0 0.2 0.4 0.6 0.8 1.0 Value 
+
+Training ACC and ASR      
+
+> ACC ASR 050 100 150 200 250 0.0 0.2 0.4 0.6 0.8 1.0 Value
+
+Sorted ASR and corresponding ACC 
+
+> ACC ASR
+
+epoch epoch 
+
+(a) The RL curve on the Emotion Recognition dataset      
+
+> 050 100 150 200 250 0.2 0.4 0.6 0.8 1.0 Value
+
+Training ACC and ASR      
+
+> ACC ASR 050 100 150 200 250 0.2 0.4 0.6 0.8 1.0 Value
+
+Sorted ASR and corresponding ACC 
+
+> ACC ASR
+
+(c) The RL curve on the Epilepsy Detection dataset 
+
+epoch epoch      
+
+> 050 100 150 200 250 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 Value
+
+Training ACC and ASR      
+
+> ACC ASR 050 100 150 200 250 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 Value
+
+Sorted ASR and corresponding ACC 
+
+> ACC ASR
+
+epoch epoch 
+
+(b) The RL curve on the Moto Imagery dataset      
+
+> 050 100 150 200 250 0.2 0.4 0.6 0.8 1.0 Value
+
+Training ACC and ASR      
+
+> ACC ASR 050 100 150 200 250 0.2 0.4 0.6 0.8 1.0 Value
+
+Sorted ASR and corresponding ACC 
+
+> ACC ASR
+
+epoch epoch 
+
+(d) The RL curve on the Epilepsy Detection dataset, for another tirrger with label 2 
+
+Figure 14: The learning curves of RL on three datasets. The right column is the curve we sort the (ACC,ASR) according to the ASR. The backdoor models are all EEGNet. 24 NeurIPS Paper Checklist 604 
+
+1. Claims 605 
+
+Question: Do the main claims made in the abstract and introduction accurately reflect the 606 
+
+paper’s contributions and scope? 607 
+
+Answer: [Yes] 608 
+
+Justification: We made clear claims of our contributions in the abstract and introduction. 609 
+
+Guidelines: 610 
+
+• The answer NA means that the abstract and introduction do not include the claims 611 
+
+made in the paper. 612 
+
+• The abstract and/or introduction should clearly state the claims made, including the 613 
+
+contributions made in the paper and important assumptions and limitations. A No or 614 
+
+NA answer to this question will not be perceived well by the reviewers. 615 
+
+• The claims made should match theoretical and experimental results, and reflect how 616 
+
+much the results can be expected to generalize to other settings. 617 
+
+• It is fine to include aspirational goals as motivation as long as it is clear that these goals 618 
+
+are not attained by the paper. 619 
+
+2. Limitations 620 
+
+Question: Does the paper discuss the limitations of the work performed by the authors? 621 
+
+Answer: [Yes] 622 
+
+Justification: We discussed the limitations of our proposed method in Appendix. 623 
+
+Guidelines: 624 
+
+• The answer NA means that the paper has no limitation while the answer No means that 625 
+
+the paper has limitations, but those are not discussed in the paper. 626 
+
+• The authors are encouraged to create a separate "Limitations" section in their paper. 627 
+
+• The paper should point out any strong assumptions and how robust the results are to 628 
+
+violations of these assumptions (e.g., independence assumptions, noiseless settings, 629 
+
+model well-specification, asymptotic approximations only holding locally). The authors 630 
+
+should reflect on how these assumptions might be violated in practice and what the 631 
+
+implications would be. 632 
+
+• The authors should reflect on the scope of the claims made, e.g., if the approach was 633 
+
+only tested on a few datasets or with a few runs. In general, empirical results often 634 
+
+depend on implicit assumptions, which should be articulated. 635 
+
+• The authors should reflect on the factors that influence the performance of the approach. 636 
+
+For example, a facial recognition algorithm may perform poorly when image resolution 637 
+
+is low or images are taken in low lighting. Or a speech-to-text system might not be 638 
+
+used reliably to provide closed captions for online lectures because it fails to handle 639 
+
+technical jargon. 640 
+
+• The authors should discuss the computational efficiency of the proposed algorithms 641 
+
+and how they scale with dataset size. 642 
+
+• If applicable, the authors should discuss possible limitations of their approach to 643 
+
+address problems of privacy and fairness. 644 
+
+• While the authors might fear that complete honesty about limitations might be used by 645 
+
+reviewers as grounds for rejection, a worse outcome might be that reviewers discover 646 
+
+limitations that aren’t acknowledged in the paper. The authors should use their best 647 
+
+judgment and recognize that individual actions in favor of transparency play an impor-648 
+
+tant role in developing norms that preserve the integrity of the community. Reviewers 649 
+
+will be specifically instructed to not penalize honesty concerning limitations. 650 
+
+3. Theory Assumptions and Proofs 651 
+
+Question: For each theoretical result, does the paper provide the full set of assumptions and 652 
+
+a complete (and correct) proof? 653 
+
+Answer: [NA] 654 
+
+25 Justification: Our paper dose not include theoretical results. 655 
+
+Guidelines: 656 
+
+• The answer NA means that the paper does not include theoretical results. 657 
+
+• All the theorems, formulas, and proofs in the paper should be numbered and cross-658 
+
+referenced. 659 
+
+• All assumptions should be clearly stated or referenced in the statement of any theorems. 660 
+
+• The proofs can either appear in the main paper or the supplemental material, but if 661 
+
+they appear in the supplemental material, the authors are encouraged to provide a short 662 
+
+proof sketch to provide intuition. 663 
+
+• Inversely, any informal proof provided in the core of the paper should be complemented 664 
+
+by formal proofs provided in appendix or supplemental material. 665 
+
+• Theorems and Lemmas that the proof relies upon should be properly referenced. 666 
+
+4. Experimental Result Reproducibility 667 
+
+Question: Does the paper fully disclose all the information needed to reproduce the main ex-668 
+
+perimental results of the paper to the extent that it affects the main claims and/or conclusions 669 
+
+of the paper (regardless of whether the code and data are provided or not)? 670 
+
+Answer: [Yes] 671 
+
+Justification: We demonstrated our method and the experiment settings clearly in Section 672 
+
+3.1 and Section 4.2. The implementation details of all baselines are written in appendix. 673 
+
+Guidelines: 674 
+
+• The answer NA means that the paper does not include experiments. 675 
+
+• If the paper includes experiments, a No answer to this question will not be perceived 676 
+
+well by the reviewers: Making the paper reproducible is important, regardless of 677 
+
+whether the code and data are provided or not. 678 
+
+• If the contribution is a dataset and/or model, the authors should describe the steps taken 679 
+
+to make their results reproducible or verifiable. 680 
+
+• Depending on the contribution, reproducibility can be accomplished in various ways. 681 
+
+For example, if the contribution is a novel architecture, describing the architecture fully 682 
+
+might suffice, or if the contribution is a specific model and empirical evaluation, it may 683 
+
+be necessary to either make it possible for others to replicate the model with the same 684 
+
+dataset, or provide access to the model. In general. releasing code and data is often 685 
+
+one good way to accomplish this, but reproducibility can also be provided via detailed 686 
+
+instructions for how to replicate the results, access to a hosted model (e.g., in the case 687 
+
+of a large language model), releasing of a model checkpoint, or other means that are 688 
+
+appropriate to the research performed. 689 
+
+• While NeurIPS does not require releasing code, the conference does require all submis-690 
+
+sions to provide some reasonable avenue for reproducibility, which may depend on the 691 
+
+nature of the contribution. For example 692 
+
+(a) If the contribution is primarily a new algorithm, the paper should make it clear how 693 
+
+to reproduce that algorithm. 694 
+
+(b) If the contribution is primarily a new model architecture, the paper should describe 695 
+
+the architecture clearly and fully. 696 
+
+(c) If the contribution is a new model (e.g., a large language model), then there should 697 
+
+either be a way to access this model for reproducing the results or a way to reproduce 698 
+
+the model (e.g., with an open-source dataset or instructions for how to construct 699 
+
+the dataset). 700 
+
+(d) We recognize that reproducibility may be tricky in some cases, in which case 701 
+
+authors are welcome to describe the particular way they provide for reproducibility. 702 
+
+In the case of closed-source models, it may be that access to the model is limited in 703 
+
+some way (e.g., to registered users), but it should be possible for other researchers 704 
+
+to have some path to reproducing or verifying the results. 705 
+
+5. Open access to data and code 706 
+
+Question: Does the paper provide open access to the data and code, with sufficient instruc-707 
+
+tions to faithfully reproduce the main experimental results, as described in supplemental 708 
+
+material? 709 
+
+26 Answer: [No] 710 
+
+Justification: Sorry for not providing the whole code at the submitting phase as we have no 711 
+
+time to organize our code well. However, we will publish our code after the anonymous 712 
+
+period (Or we can organize and upload our code during rebuttal phase if possible). 713 
+
+Guidelines: 714 
+
+• The answer NA means that paper does not include experiments requiring code. 715 
+
+• Please see the NeurIPS code and data submission guidelines ( https://nips.cc/ 716 
+
+public/guides/CodeSubmissionPolicy ) for more details. 717 
+
+• While we encourage the release of code and data, we understand that this might not be 718 
+
+possible, so “No” is an acceptable answer. Papers cannot be rejected simply for not 719 
+
+including code, unless this is central to the contribution (e.g., for a new open-source 720 
+
+benchmark). 721 
+
+• The instructions should contain the exact command and environment needed to run to 722 
+
+reproduce the results. See the NeurIPS code and data submission guidelines ( https: 723 
+
+//nips.cc/public/guides/CodeSubmissionPolicy ) for more details. 724 
+
+• The authors should provide instructions on data access and preparation, including how 725 
+
+to access the raw data, preprocessed data, intermediate data, and generated data, etc. 726 
+
+• The authors should provide scripts to reproduce all experimental results for the new 727 
+
+proposed method and baselines. If only a subset of experiments are reproducible, they 728 
+
+should state which ones are omitted from the script and why. 729 
+
+• At submission time, to preserve anonymity, the authors should release anonymized 730 
+
+versions (if applicable). 731 
+
+• Providing as much information as possible in supplemental material (appended to the 732 
+
+paper) is recommended, but including URLs to data and code is permitted. 733 
+
+6. Experimental Setting/Details 734 
+
+Question: Does the paper specify all the training and test details (e.g., data splits, hyper-735 
+
+parameters, how they were chosen, type of optimizer, etc.) necessary to understand the 736 
+
+results? 737 
+
+Answer: [Yes] 738 
+
+Justification: We demonstrated our method and the experiment settings clearly in Section3.1 739 
+
+and Section 4.2. The implementation details of all baselines are written in appendix. 740 
+
+Guidelines: 741 
+
+• The answer NA means that the paper does not include experiments. 742 
+
+• The experimental setting should be presented in the core of the paper to a level of detail 743 
+
+that is necessary to appreciate the results and make sense of them. 744 
+
+• The full details can be provided either with the code, in appendix, or as supplemental 745 
+
+material. 746 
+
+7. Experiment Statistical Significance 747 
+
+Question: Does the paper report error bars suitably and correctly defined or other appropriate 748 
+
+information about the statistical significance of the experiments? 749 
+
+Answer: [Yes] 750 
+
+Justification: We give all the statistical significance of our experiments. 751 
+
+Guidelines: 752 
+
+• The answer NA means that the paper does not include experiments. 753 
+
+• The authors should answer "Yes" if the results are accompanied by error bars, confi-754 
+
+dence intervals, or statistical significance tests, at least for the experiments that support 755 
+
+the main claims of the paper. 756 
+
+• The factors of variability that the error bars are capturing should be clearly stated (for 757 
+
+example, train/test split, initialization, random drawing of some parameter, or overall 758 
+
+run with given experimental conditions). 759 
+
+• The method for calculating the error bars should be explained (closed form formula, 760 
+
+call to a library function, bootstrap, etc.) 761 
+
+27 • The assumptions made should be given (e.g., Normally distributed errors). 762 
+
+• It should be clear whether the error bar is the standard deviation or the standard error 763 
+
+of the mean. 764 
+
+• It is OK to report 1-sigma error bars, but one should state it. The authors should 765 
+
+preferably report a 2-sigma error bar than state that they have a 96% CI, if the hypothesis 766 
+
+of Normality of errors is not verified. 767 
+
+• For asymmetric distributions, the authors should be careful not to show in tables or 768 
+
+figures symmetric error bars that would yield results that are out of range (e.g. negative 769 
+
+error rates). 770 
+
+• If error bars are reported in tables or plots, The authors should explain in the text how 771 
+
+they were calculated and reference the corresponding figures or tables in the text. 772 
+
+8. Experiments Compute Resources 773 
+
+Question: For each experiment, does the paper provide sufficient information on the com-774 
+
+puter resources (type of compute workers, memory, time of execution) needed to reproduce 775 
+
+the experiments? 776 
+
+Answer: [Yes] 777 
+
+Justification: Yes, we provide the type of GPU and version of CUDA in Appendix D. 778 
+
+Guidelines: 779 
+
+• The answer NA means that the paper does not include experiments. 780 
+
+• The paper should indicate the type of compute workers CPU or GPU, internal cluster, 781 
+
+or cloud provider, including relevant memory and storage. 782 
+
+• The paper should provide the amount of compute required for each of the individual 783 
+
+experimental runs as well as estimate the total compute. 784 
+
+• The paper should disclose whether the full research project required more compute 785 
+
+than the experiments reported in the paper (e.g., preliminary or failed experiments that 786 
+
+didn’t make it into the paper). 787 
+
+9. Code Of Ethics 788 
+
+Question: Does the research conducted in the paper conform, in every respect, with the 789 
+
+NeurIPS Code of Ethics https://neurips.cc/public/EthicsGuidelines ?790 
+
+Answer: [Yes] 791 
+
+Justification: Yes, we conform with the NeurIPS Code of Ethics. 792 
+
+Guidelines: 793 
+
+• The answer NA means that the authors have not reviewed the NeurIPS Code of Ethics. 794 
+
+• If the authors answer No, they should explain the special circumstances that require a 795 
+
+deviation from the Code of Ethics. 796 
+
+• The authors should make sure to preserve anonymity (e.g., if there is a special consid-797 
+
+eration due to laws or regulations in their jurisdiction). 798 
+
+10. Broader Impacts 799 
+
+Question: Does the paper discuss both potential positive societal impacts and negative 800 
+
+societal impacts of the work performed? 801 
+
+Answer: [Yes] 802 
+
+Justification: We discuss the broader impacts of our backdoor attacks in Appendix. 803 
+
+Guidelines: 804 
+
+• The answer NA means that there is no societal impact of the work performed. 805 
+
+• If the authors answer NA or No, they should explain why their work has no societal 806 
+
+impact or why the paper does not address societal impact. 807 
+
+• Examples of negative societal impacts include potential malicious or unintended uses 808 
+
+(e.g., disinformation, generating fake profiles, surveillance), fairness considerations 809 
+
+(e.g., deployment of technologies that could make decisions that unfairly impact specific 810 
+
+groups), privacy considerations, and security considerations. 811 
+
+28 • The conference expects that many papers will be foundational research and not tied 812 
+
+to particular applications, let alone deployments. However, if there is a direct path to 813 
+
+any negative applications, the authors should point it out. For example, it is legitimate 814 
+
+to point out that an improvement in the quality of generative models could be used to 815 
+
+generate deepfakes for disinformation. On the other hand, it is not needed to point out 816 
+
+that a generic algorithm for optimizing neural networks could enable people to train 817 
+
+models that generate Deepfakes faster. 818 
+
+• The authors should consider possible harms that could arise when the technology is 819 
+
+being used as intended and functioning correctly, harms that could arise when the 820 
+
+technology is being used as intended but gives incorrect results, and harms following 821 
+
+from (intentional or unintentional) misuse of the technology. 822 
+
+• If there are negative societal impacts, the authors could also discuss possible mitigation 823 
+
+strategies (e.g., gated release of models, providing defenses in addition to attacks, 824 
+
+mechanisms for monitoring misuse, mechanisms to monitor how a system learns from 825 
+
+feedback over time, improving the efficiency and accessibility of ML). 826 
+
+11. Safeguards 827 
+
+Question: Does the paper describe safeguards that have been put in place for responsible 828 
+
+release of data or models that have a high risk for misuse (e.g., pretrained language models, 829 
+
+image generators, or scraped datasets)? 830 
+
+Answer: [NA] 831 
+
+Justification: We do not release any dataset or model. However, our paper proposes 832 
+
+a backdoor attack method in EEG BCIs, which is challenging to be guarded and have 833 
+
+dangerous impact in EEG BCIs. The only safeguard way we can come up with is to check 834 
+
+and guarantee the clean of training datasets EEG BCIs employ. 835 
+
+Guidelines: 836 
+
+• The answer NA means that the paper poses no such risks. 837 
+
+• Released models that have a high risk for misuse or dual-use should be released with 838 
+
+necessary safeguards to allow for controlled use of the model, for example by requiring 839 
+
+that users adhere to usage guidelines or restrictions to access the model or implementing 840 
+
+safety filters. 841 
+
+• Datasets that have been scraped from the Internet could pose safety risks. The authors 842 
+
+should describe how they avoided releasing unsafe images. 843 
+
+• We recognize that providing effective safeguards is challenging, and many papers do 844 
+
+not require this, but we encourage authors to take this into account and make a best 845 
+
+faith effort. 846 
+
+12. Licenses for existing assets 847 
+
+Question: Are the creators or original owners of assets (e.g., code, data, models), used in 848 
+
+the paper, properly credited and are the license and terms of use explicitly mentioned and 849 
+
+properly respected? 850 
+
+Answer: [Yes] 851 
+
+Justification: We conduct our experiments on three public datasets. The original papers of 852 
+
+these three datasets were cited in our paper. 853 
+
+Guidelines: 854 
+
+• The answer NA means that the paper does not use existing assets. 855 
+
+• The authors should cite the original paper that produced the code package or dataset. 856 
+
+• The authors should state which version of the asset is used and, if possible, include a 857 
+
+URL. 858 
+
+• The name of the license (e.g., CC-BY 4.0) should be included for each asset. 859 
+
+• For scraped data from a particular source (e.g., website), the copyright and terms of 860 
+
+service of that source should be provided. 861 
+
+• If assets are released, the license, copyright information, and terms of use in the 862 
+
+package should be provided. For popular datasets, paperswithcode.com/datasets 863 
+
+has curated licenses for some datasets. Their licensing guide can help determine the 864 
+
+license of a dataset. 865 
+
+29 • For existing datasets that are re-packaged, both the original license and the license of 866 
+
+the derived asset (if it has changed) should be provided. 867 
+
+• If this information is not available online, the authors are encouraged to reach out to 868 
+
+the asset’s creators. 869 
+
+13. New Assets 870 
+
+Question: Are new assets introduced in the paper well documented and is the documentation 871 
+
+provided alongside the assets? 872 
+
+Answer: [NA] 873 
+
+Justification: This paper does not release new assets. 874 
+
+Guidelines: 875 
+
+• The answer NA means that the paper does not release new assets. 876 
+
+• Researchers should communicate the details of the dataset/code/model as part of their 877 
+
+submissions via structured templates. This includes details about training, license, 878 
+
+limitations, etc. 879 
+
+• The paper should discuss whether and how consent was obtained from people whose 880 
+
+asset is used. 881 
+
+• At submission time, remember to anonymize your assets (if applicable). You can either 882 
+
+create an anonymized URL or include an anonymized zip file. 883 
+
+14. Crowdsourcing and Research with Human Subjects 884 
+
+Question: For crowdsourcing experiments and research with human subjects, does the paper 885 
+
+include the full text of instructions given to participants and screenshots, if applicable, as 886 
+
+well as details about compensation (if any)? 887 
+
+Answer: [NA] 888 
+
+Justification: This paper does not involve crowdsourcing nor research with human subjects. 889 
+
+Guidelines: 890 
+
+• The answer NA means that the paper does not involve crowdsourcing nor research with 891 
+
+human subjects. 892 
+
+• Including this information in the supplemental material is fine, but if the main contribu-893 
+
+tion of the paper involves human subjects, then as much detail as possible should be 894 
+
+included in the main paper. 895 
+
+• According to the NeurIPS Code of Ethics, workers involved in data collection, curation, 896 
+
+or other labor should be paid at least the minimum wage in the country of the data 897 
+
+collector. 898 
+
+15. Institutional Review Board (IRB) Approvals or Equivalent for Research with Human 899 
+
+Subjects 900 
+
+Question: Does the paper describe potential risks incurred by study participants, whether 901 
+
+such risks were disclosed to the subjects, and whether Institutional Review Board (IRB) 902 
+
+approvals (or an equivalent approval/review based on the requirements of your country or 903 
+
+institution) were obtained? 904 
+
+Answer: [NA] 905 
+
+Justification: This paper does not involve crowdsourcing nor research with human subjects. 906 
+
+Guidelines: 907 
+
+• The answer NA means that the paper does not involve crowdsourcing nor research with 908 
+
+human subjects. 909 
+
+• Depending on the country in which research is conducted, IRB approval (or equivalent) 910 
+
+may be required for any human subjects research. If you obtained IRB approval, you 911 
+
+should clearly state this in the paper. 912 
+
+• We recognize that the procedures for this may vary significantly between institutions 913 
+
+and locations, and we expect authors to adhere to the NeurIPS Code of Ethics and the 914 
+
+guidelines for their institution. 915 
+
+• For initial submissions, do not include any information that would break anonymity (if 916 
+
+applicable), such as the institution conducting the review. 917 
+
+30

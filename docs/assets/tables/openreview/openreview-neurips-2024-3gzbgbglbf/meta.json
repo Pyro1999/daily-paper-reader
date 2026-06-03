@@ -1,0 +1,87 @@
+{
+  "version": 2,
+  "extractor": "papercropper",
+  "tables": [
+    {
+      "url": "assets/tables/openreview/openreview-neurips-2024-3gzbgbglbf/table-001.webp",
+      "caption": "",
+      "page": 0,
+      "index": 1,
+      "width": 1439,
+      "height": 263,
+      "label": "Table"
+    },
+    {
+      "url": "assets/tables/openreview/openreview-neurips-2024-3gzbgbglbf/table-002.webp",
+      "caption": "",
+      "page": 0,
+      "index": 2,
+      "width": 935,
+      "height": 170,
+      "label": "Table"
+    },
+    {
+      "url": "assets/tables/openreview/openreview-neurips-2024-3gzbgbglbf/table-003.webp",
+      "caption": "",
+      "page": 0,
+      "index": 3,
+      "width": 1117,
+      "height": 201,
+      "label": "Table"
+    },
+    {
+      "url": "assets/tables/openreview/openreview-neurips-2024-3gzbgbglbf/table-004.webp",
+      "caption": "",
+      "page": 0,
+      "index": 4,
+      "width": 1015,
+      "height": 183,
+      "label": "Table"
+    },
+    {
+      "url": "assets/tables/openreview/openreview-neurips-2024-3gzbgbglbf/table-005.webp",
+      "caption": "",
+      "page": 0,
+      "index": 5,
+      "width": 1456,
+      "height": 337,
+      "label": "Table"
+    },
+    {
+      "url": "assets/tables/openreview/openreview-neurips-2024-3gzbgbglbf/table-006.webp",
+      "caption": "",
+      "page": 0,
+      "index": 6,
+      "width": 1456,
+      "height": 354,
+      "label": "Table"
+    },
+    {
+      "url": "assets/tables/openreview/openreview-neurips-2024-3gzbgbglbf/table-007.webp",
+      "caption": "",
+      "page": 0,
+      "index": 7,
+      "width": 1454,
+      "height": 363,
+      "label": "Table"
+    },
+    {
+      "url": "assets/tables/openreview/openreview-neurips-2024-3gzbgbglbf/table-008.webp",
+      "caption": "",
+      "page": 0,
+      "index": 8,
+      "width": 1457,
+      "height": 370,
+      "label": "Table"
+    },
+    {
+      "url": "assets/tables/openreview/openreview-neurips-2024-3gzbgbglbf/table-009.webp",
+      "caption": "",
+      "page": 0,
+      "index": 9,
+      "width": 1454,
+      "height": 359,
+      "label": "Table"
+    }
+  ]
+}
