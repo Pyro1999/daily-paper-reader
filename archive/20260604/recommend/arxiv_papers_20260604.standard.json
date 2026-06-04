@@ -1,0 +1,460 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-04T22:01:23.462462+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 5,
+    "deep_cap": 7,
+    "deep_selected": 5,
+    "quick_candidates": 6,
+    "quick_skim_target": 12,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2605.29754v1",
+      "source": "arxiv",
+      "title": "Benchmarking Positional Encoding Strategies for Transformer-Based EEG Foundation Models",
+      "abstract": "Electroencephalography (EEG) is a widely used non-invasive technique for measuring brain activity in brain-computer interface (BCI) applications. Supervised EEG decoding models often struggle to generalize across tasks, subjects, and datasets, motivating transformer-based EEG foundation models trained with self-supervised learning. Since transformers are permutation-invariant, they require explicit positional information. Unlike textual tokens, EEG electrodes are spatially distributed across the scalp, raising the question of how electrode positions should be encoded in transformer-based EEG models. In this study, we benchmark five positional encoding strategies within the CBraMod backbone and evaluate them under linear probing and fine-tuning protocols on motor imagery classification and emotion recognition. Our results show that no single strategy consistently outperforms across tasks. Spherical Positional Encoding (SPE) yields strong representations for motor imagery but underperforms on emotion recognition, while Asymmetric Conditional Positional Encoding (ACPE) demonstrates more consistent performance across tasks. These findings suggest that the optimal positional encoding strategy is task-dependent, with no universal solution across EEG decoding scenarios.",
+      "authors": [
+        "Ayse Betul Yuce",
+        "Sebastian Stober"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-05-28T10:58:34+00:00",
+      "link": "https://arxiv.org/pdf/2605.29754v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Benchmarks positional encoding for transformer-based EEG foundation models, directly supporting development of EEG foundation models",
+      "llm_evidence_cn": "基准测试基于Transformer的EEG基础模型位置编码，直接支持EEG基础模型开发",
+      "llm_evidence": "基准测试基于Transformer的EEG基础模型位置编码，直接支持EEG基础模型开发",
+      "canonical_evidence": "基准测试基于Transformer的EEG基础模型位置编码，直接支持EEG基础模型开发",
+      "llm_tldr_en": "Systematically benchmarks five positional encoding strategies for transformer EEG foundation models, providing design guidance for building generalizable EEG models applicable to cognitive load estimation.",
+      "llm_tldr_cn": "该论文针对Transformer在EEG基础模型中的应用，系统基准测试了五种位置编码策略在CBraMod骨干上的表现。结果表明合适的空间位置编码能显著提升模型在下游任务上的泛化能力。该工作为构建通用的EEG基础模型提供了重要设计指导，这些基础模型可直接用于被动BCI中的认知负荷估计等任务，推动了EEG基础模型在认知状态监测领域的应用。",
+      "llm_tldr": "该论文针对Transformer在EEG基础模型中的应用，系统基准测试了五种位置编码策略在CBraMod骨干上的表现。结果表明合适的空间位置编码能显著提升模型在下游任务上的泛化能力。该工作为构建通用的EEG基础模型提供了重要设计指导，这些基础模型可直接用于被动BCI中的认知负荷估计等任务，推动了EEG基础模型在认知状态监测领域的应用。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.01767v1",
+      "source": "arxiv",
+      "title": "EvoBrain: Continual Learning of EEG Foundation Models Across Heterogeneous BCI Tasks",
+      "abstract": "Electroencephalography (EEG) is the cornerstone of non-invasive brain-computer interfaces (BCIs), yet conventional decoding relies on fragmented, task-specific architectures that severely limit cross-task scalability. While EEG foundation models pre-trained on massive corpora promise universal brain decoding, current post-training depends on task-isolated fine-tuning. This static paradigm restricts knowledge transfer across heterogeneous tasks, hinders model scalability, and incurs computational and storage overheads that scale linearly with task count. To overcome these bottlenecks, we formulate downstream adaptation as a cross-task continual learning problem and propose EvoBrain, a dynamic, task-aware continual learning framework for unified EEG decoding. EvoBrain addresses the plasticity-stability trade-off via two complementary components: (1) Neuro-Spectral Task Normalization (NSN) aligns incoming tasks with historical statistics while recalibrating spectral responses to handle distributional and neuro-spectral shifts; and (2) Response-Affinity Distillation (RAD), combined with time-dependent replay, preserves old-task response geometry and promotes selective knowledge transfer between spectrally compatible tasks, effectively mitigating forgetting. Extensive evaluations across six distinct BCI tasks demonstrate that EvoBrain consistently surpasses state-of-the-art methods across diverse foundation backbones, optimally balancing plasticity and stability. To our knowledge, this work pioneers cross-task continual learning in the EEG domain, advancing the realization of a unified, one-for-all brain decoding system.",
+      "authors": [
+        "Yangxuan Zhou",
+        "Sha Zhao",
+        "Jiquan Wang",
+        "Shijian Li",
+        "Gang Pan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-01T06:49:50+00:00",
+      "link": "https://arxiv.org/pdf/2606.01767v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "EEG foundation model continual learning for heterogeneous BCI tasks",
+      "llm_evidence_cn": "用于异构BCI任务的EEG基础模型持续学习",
+      "llm_evidence": "用于异构BCI任务的EEG基础模型持续学习",
+      "canonical_evidence": "用于异构BCI任务的EEG基础模型持续学习",
+      "llm_tldr_en": "EvoBrain proposes a continual learning framework for EEG foundation models, enabling cross-task knowledge transfer without isolated fine-tuning, addressing scalability and computational overhead in BCI decoding.",
+      "llm_tldr_cn": "现有EEG基础模型在下游任务中依赖孤立微调，限制了跨任务可扩展性。EvoBrain将下游适应建模为跨任务持续学习问题，提出动态任务感知框架。实验表明该方法在多个BCI任务上实现了高效的知识迁移，降低了计算和存储开销，为通用EEG解码提供了新范式。",
+      "llm_tldr": "现有EEG基础模型在下游任务中依赖孤立微调，限制了跨任务可扩展性。EvoBrain将下游适应建模为跨任务持续学习问题，提出动态任务感知框架。实验表明该方法在多个BCI任务上实现了高效的知识迁移，降低了计算和存储开销，为通用EEG解码提供了新范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.01767v2",
+      "source": "arxiv",
+      "title": "EvoBrain: Continual Learning of EEG Foundation Models Across Heterogeneous BCI Tasks",
+      "abstract": "Electroencephalography (EEG) is the cornerstone of non-invasive brain-computer interfaces (BCIs), yet conventional decoding relies on fragmented, task-specific architectures that severely limit cross-task scalability. While EEG foundation models pre-trained on massive corpora promise universal brain decoding, current post-training depends on task-isolated fine-tuning. This static paradigm restricts knowledge transfer across heterogeneous tasks, hinders model scalability, and incurs computational and storage overheads that scale linearly with task count. To overcome these bottlenecks, we formulate downstream adaptation as a cross-task continual learning problem and propose EvoBrain, a dynamic, task-aware continual learning framework for unified EEG decoding. EvoBrain addresses the plasticity-stability trade-off via two complementary components: (1) Neuro-Spectral Task Normalization (NSN) aligns incoming tasks with historical statistics while recalibrating spectral responses to handle distributional and neuro-spectral shifts; and (2) Response-Affinity Distillation (RAD), combined with time-dependent replay, preserves old-task response geometry and promotes selective knowledge transfer between spectrally compatible tasks, effectively mitigating forgetting. Extensive evaluations across six distinct BCI tasks demonstrate that EvoBrain consistently surpasses state-of-the-art methods across diverse foundation backbones, optimally balancing plasticity and stability. To our knowledge, this work pioneers cross-task continual learning in the EEG domain, advancing the realization of a unified, one-for-all brain decoding system.",
+      "authors": [
+        "Yangxuan Zhou",
+        "Sha Zhao",
+        "Jiquan Wang",
+        "Shijian Li",
+        "Gang Pan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-01T06:49:50+00:00",
+      "link": "https://arxiv.org/pdf/2606.01767v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Continual learning of EEG foundation models for heterogeneous BCI tasks",
+      "llm_evidence_cn": "面向异构BCI任务的脑电基础模型持续学习",
+      "llm_evidence": "面向异构BCI任务的脑电基础模型持续学习",
+      "canonical_evidence": "面向异构BCI任务的脑电基础模型持续学习",
+      "llm_tldr_en": "Proposes EvoBrain, a continual learning framework for EEG foundation models to handle heterogeneous BCI tasks without catastrophic forgetting.",
+      "llm_tldr_cn": "该论文针对当前脑电基础模型在异构BCI任务间微调时知识迁移受限、计算开销大的问题，提出EvoBrain持续学习框架。该框架将下游适应形式化为跨任务持续学习问题，实现动态任务感知参数更新。实验表明EvoBrain能有效缓解遗忘并提升跨任务泛化能力。该工作为被动BCI中认知负荷评估的多任务场景提供了可扩展的解决方案。",
+      "llm_tldr": "该论文针对当前脑电基础模型在异构BCI任务间微调时知识迁移受限、计算开销大的问题，提出EvoBrain持续学习框架。该框架将下游适应形式化为跨任务持续学习问题，实现动态任务感知参数更新。实验表明EvoBrain能有效缓解遗忘并提升跨任务泛化能力。该工作为被动BCI中认知负荷评估的多任务场景提供了可扩展的解决方案。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.28792v1",
+      "source": "arxiv",
+      "title": "CaMBRAIN: Real-time, Continuous EEG Inference with Causal State Space Models",
+      "abstract": "Electroencephalography (EEG) is a critical, non-invasive method to monitor electrical brain activity. EEGs can span anywhere from a couple seconds to multiple hours, posing a major hurdle for existing deep learning methods due to two major factors: (1) existing EEG models are predominantly built upon the attention mechanism, incurring quadratic scaling as the sequence length increases, and (2) raw EEG signals must be processed in a sliding-window fashion due to fixed-length input requirements, preventing global understanding of the entire signal. To this extent, we propose CaMBRAIN - the first Causal, Mamba-based state space model (SSM) capable of real-time inference of EEG signals, arguing that bidirectional approaches are needlessly expensive given the causal, unidirectional nature of EEG. However, training such a model is non-trivial, as crucial EEG events can be extremely brief - within fractions of a second - yet separated by long intervals spanning minutes. Current EEG methods use self-supervised objectives that optimize for signal reconstruction, but these are not well suited for streaming SSMs; they fail to explicitly train the hidden state to retain the salient long-range context needed for streaming inference. We therefore introduce a multi-stage self-supervised training pipeline specifically tailored to encourage long-range memory retention and strong performance on EEG signals, while preserving the linear-time complexity of state space models. CaMBRAIN achieves state-of-the-art (SOTA) results across 3 different EEG datasets with >10x higher throughput than existing models, enabling the first model capable of long-range, continuous inference of variable-length EEG signals.",
+      "authors": [
+        "Abhilash Durgam",
+        "Nyle Siddiqui",
+        "Jeffrey A. Chan-Santiago",
+        "Qiushi Fu",
+        "Elakkat D. Gireesh",
+        "Mubarak Shah"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.HC",
+        "cs.LG"
+      ],
+      "published": "2026-05-27T17:50:36+00:00",
+      "link": "https://arxiv.org/pdf/2605.28792v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "causal state space model for real-time EEG inference applicable to passive BCI",
+      "llm_evidence_cn": "因果状态空间模型用于实时EEG推断，适用于被动BCI",
+      "llm_evidence": "因果状态空间模型用于实时EEG推断，适用于被动BCI",
+      "canonical_evidence": "因果状态空间模型用于实时EEG推断，适用于被动BCI",
+      "llm_tldr_en": "CaMBRAIN introduces a causal Mamba-based state space model for real-time continuous EEG inference, overcoming quadratic scaling and sliding-window limitations of attention methods.",
+      "llm_tldr_cn": "现有EEG深度学习模型受限于注意力机制的二次缩放和滑动窗口处理，无法实现连续信号的全局理解。CaMBRAIN基于因果Mamba状态空间模型，支持实时EEG推断，避免双向计算的冗余。实验证明其在多种EEG任务上保持高精度的同时显著降低延迟，为被动BCI中的在线认知负荷监测提供了高效工具。",
+      "llm_tldr": "现有EEG深度学习模型受限于注意力机制的二次缩放和滑动窗口处理，无法实现连续信号的全局理解。CaMBRAIN基于因果Mamba状态空间模型，支持实时EEG推断，避免双向计算的冗余。实验证明其在多种EEG任务上保持高精度的同时显著降低延迟，为被动BCI中的在线认知负荷监测提供了高效工具。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-05-26-727876-v1",
+      "source": "biorxiv",
+      "title": "A UNIVERSAL FRAMEWORK FOR DISENTANGLING SUBJECT-SPECIFIC SIGNATURES IN EEG SIGNALS",
+      "abstract": "Extracting stable subject-specific features from EEG signals remains challenging due to their entanglement with transient brain states. We propose a universal neural framework that disentangles subject-specific features from state-dependent components in raw EEG signals. Our approach employs a disentanglement module with a cross-reconstruction objective to isolate subject-specific representations. We validate our framework on EEG-based biometric recognition using two public datasets with leave-one-state-out cross-validation. Results demonstrate significant improvements in out-of-distribution identification accuracy across four different backbone models, confirming our methods universality and plug-and-play capability. This work advances reliable extraction of neural signatures for personalized neurotechnology applications.",
+      "authors": [
+        "Pei, Z."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-05-29T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.05.26.727876v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "query:pBCI-load"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Universal framework for disentangling subject-specific EEG signatures, enabling robust EEG analysis",
+      "llm_evidence_cn": "提出通用EEG解耦框架，分离个体特异性与状态相关特征，提升EEG信号处理基础能力",
+      "llm_evidence": "提出通用EEG解耦框架，分离个体特异性与状态相关特征，提升EEG信号处理基础能力",
+      "canonical_evidence": "提出通用EEG解耦框架，分离个体特异性与状态相关特征，提升EEG信号处理基础能力",
+      "llm_tldr_en": "Proposes a universal neural framework that disentangles subject-specific features from state-dependent components in raw EEG signals using cross-reconstruction, validated on biometric recognition across four backbones.",
+      "llm_tldr_cn": "该文针对EEG信号中个体特异性特征与瞬时脑状态纠缠的难题，提出一种通用神经框架，通过跨重构目标解耦个体特异性表征。在公共数据集上的留一状态交叉验证表明，该框架在四个不同骨干模型上显著提升了分布外识别准确率，验证了其通用性和即插即用能力，为EEG基础模型提供了关键组件。",
+      "llm_tldr": "该文针对EEG信号中个体特异性特征与瞬时脑状态纠缠的难题，提出一种通用神经框架，通过跨重构目标解耦个体特异性表征。在公共数据集上的留一状态交叉验证表明，该框架在四个不同骨干模型上显著提升了分布外识别准确率，验证了其通用性和即插即用能力，为EEG基础模型提供了关键组件。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2605.29591v1",
+      "source": "arxiv",
+      "title": "Mind-Omni: A Unified Multi-Task Framework for Brain-Vision-Language Modeling via Discrete Diffusion",
+      "abstract": "Modeling the interplay between external stimuli and internal neural representations is a pivotal research area for Brain-Computer Interfaces (BCIs). A major limitation of prior work is the prevailing paradigm of specialized, single-task models, which curtails versatility and neglects inter-task synergies. To address this, we propose Mind-Omni, the first versatile framework that unifies seven distinct encoding and decoding tasks through a discrete diffusion paradigm. At its core is a novel Brain Tokenizer that transforms heterogeneous, continuous brain signals into standardized, discrete tokens. This enables direct, token-level interactions for mutual understanding and generation between any two or more modalities within a shared semantic space. To unlock advanced reasoning capabilities, we further curate a specialized Brain Question Answering (BQA) instruction-tuning dataset. Our model not only establishes a new state-of-the-art among multi-task unified frameworks but also provides strong evidence for multi-task synergy. By demonstrating performance competitive with, and at times superior to, larger specialized models, our work offers a powerful new paradigm for neural modeling and paves the way for foundation models of neural activity. The code is publicly available at https://github.com/ReedOnePeck/Mind-Omni.",
+      "authors": [
+        "Yizhuo Lu",
+        "Changde Du",
+        "Qingyu Shi",
+        "Hang Chen",
+        "Jie Peng",
+        "Liuyun Jiang",
+        "Shuangchen Zhao",
+        "Huiguang He"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-05-28T08:33:43+00:00",
+      "link": "https://arxiv.org/pdf/2605.29591v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified multi-task framework for brain signals with discrete diffusion and brain tokenizer",
+      "llm_evidence_cn": "面向脑信号的统一多任务框架，使用离散扩散和脑标记器",
+      "llm_evidence": "面向脑信号的统一多任务框架，使用离散扩散和脑标记器",
+      "canonical_evidence": "面向脑信号的统一多任务框架，使用离散扩散和脑标记器",
+      "llm_tldr_en": "Introduces Mind-Omni, the first unified framework for seven brain-vision-language tasks using discrete diffusion and a Brain Tokenizer that converts heterogeneous brain signals into discrete tokens, enabling versatile BCI applications.",
+      "llm_tldr_cn": "该论文提出Mind-Omni，首个统一七种脑-视觉-语言任务的框架。核心是脑标记器，将异质连续的脑信号转化为标准离散标记，通过离散扩散实现多模态生成与理解。该框架在多个脑信号编码解码任务上达到最优，展示了通用脑信号基础模型的潜力。",
+      "llm_tldr": "该论文提出Mind-Omni，首个统一七种脑-视觉-语言任务的框架。核心是脑标记器，将异质连续的脑信号转化为标准离散标记，通过离散扩散实现多模态生成与理解。该框架在多个脑信号编码解码任务上达到最优，展示了通用脑信号基础模型的潜力。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.29731v1",
+      "source": "arxiv",
+      "title": "EMAG: Differentiable 4D Gaussian Mixture Splatting for EEG Spatial Super-Resolution",
+      "abstract": "High-density electroencephalography (HD-EEG) enables fine-grained measurement of cortical activity but requires expensive hardware and lengthy setup times, limiting its clinical and research accessibility. We propose EMAG (EEG Mixture of Anisotropic Gaussians), a differentiable framework that reconstructs HD-EEG signals from a sparse subset of low-density (LD) electrodes by representing brain electrical sources as a mixture of anisotropic 4D space-time Gaussians. EMAG places a mixture of multiple Gaussians at each point of a spherical brain grid, each parameterized by a full 4 x 4 precision matrix, enabling anisotropic spatial spreads and explicit coupling between spatial and temporal dimensions. The forward model renders scalp EEG via differentiable Gaussian field contributions at electrode locations, enabling end-to-end training without explicit source localization supervision. We evaluate EMAG on three public EEG benchmarks (Localize-MI, SEED, and SEED-IV) at super-resolution factors of 2x through 8/16x. EMAG outperforms the current state-of-the-art EEG super-resolution method at most super-resolution factors on three standard benchmarks (Localize-MI, SEED, SEED-IV). The explicit Gaussian parameterization further enables direct visualization and interpretability of learned brain source configurations, potentially opening avenues for clinical and neuroscientific applications, such as source localization or biomarker discovery.",
+      "authors": [
+        "Alex Lazarovich",
+        "Ofir Itzhak Shahar",
+        "Gur Elkin",
+        "Ohad Ben-Shahar"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-05-28T10:26:38+00:00",
+      "link": "https://arxiv.org/pdf/2605.29731v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Differentiable Gaussian mixture model for EEG super-resolution applicable to passive BCI",
+      "llm_evidence_cn": "可微分高斯混合模型实现EEG超分辨率，可用于被动BCI信号增强",
+      "llm_evidence": "可微分高斯混合模型实现EEG超分辨率，可用于被动BCI信号增强",
+      "canonical_evidence": "可微分高斯混合模型实现EEG超分辨率，可用于被动BCI信号增强",
+      "llm_tldr_en": "EMAG uses differentiable 4D Gaussians to reconstruct high-density EEG from low-density electrodes, enabling cost-effective passive BCI with improved signal quality.",
+      "llm_tldr_cn": "该论文针对高密度EEG硬件昂贵、设置耗时的问题，提出了EMAG框架，通过将脑电信号源表示为各向异性的4D空间-时间高斯混合，实现从稀疏低密度电极重建高密度EEG信号。该方法能够有效提升EEG信号的空间分辨率，为被动BCI系统提供了低成本、高质量的信号采集方案，进而支持更精确的认知负荷评估。实验表明重建信号可用于后续分析，有助于推动被动BCI的实际应用。",
+      "llm_tldr": "该论文针对高密度EEG硬件昂贵、设置耗时的问题，提出了EMAG框架，通过将脑电信号源表示为各向异性的4D空间-时间高斯混合，实现从稀疏低密度电极重建高密度EEG信号。该方法能够有效提升EEG信号的空间分辨率，为被动BCI系统提供了低成本、高质量的信号采集方案，进而支持更精确的认知负荷评估。实验表明重建信号可用于后续分析，有助于推动被动BCI的实际应用。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.31173v1",
+      "source": "arxiv",
+      "title": "MindVoice: Reconstructing Intelligible Speech from Non-invasive Neural Signals with Pretrained Priors",
+      "abstract": "Reconstructing continuous speech from non-invasive neural recordings is a fundamental problem for probing human auditory perception and building safe, scalable speech brain-computer interfaces. Despite recent progress, intelligible reconstruction remains elusive, as non-invasive recordings are inherently noisy, spatially blurred, and only partially preserve information about perceived speech. Existing methods directly map neural activity to entangled speech representations before synthesizing waveforms with neural vocoders, resulting in spectral-similar but unintelligible results. To overcome these limitations, we introduce MindVoice, a neuro-to-speech reconstruction framework that uses pretrained models to compensate for the incomplete semantic and acoustic information in neural recordings. MindVoice disentangles reconstruction into two complementary pathways: one recovers high-level semantic content, while the other estimates fine-grained acoustic attributes. These inferred representations are then fused with powerful speech generation models and in-context voice cloning to synthesize natural and intelligible utterances. Extensive experiments on EEG and MEG demonstrate that MindVoice substantially outperforms existing methods on various metrics. These results show that pretrained priors provide a principled way to bridge the gap between noisy neural recordings and natural speech, highlighting a promising attempt for auditory neuroscience research and non-invasive speech brain-computer interfaces.",
+      "authors": [
+        "Guangyin Bao",
+        "Taiping Zeng",
+        "Jianfeng Feng",
+        "Xiangyang Xue"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.AI"
+      ],
+      "published": "2026-05-29T11:38:38+00:00",
+      "link": "https://arxiv.org/pdf/2605.31173v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "deep learning speech reconstruction from neural signals using pretrained models",
+      "llm_evidence_cn": "使用预训练模型从神经信号重建语音的深度学习方法",
+      "llm_evidence": "使用预训练模型从神经信号重建语音的深度学习方法",
+      "canonical_evidence": "使用预训练模型从神经信号重建语音的深度学习方法",
+      "llm_tldr_en": "MindVoice reconstructs intelligible speech from non-invasive EEG/MEG using pretrained priors, offering a deep learning method for passive BCI.",
+      "llm_tldr_cn": "MindVoice提出了一种从非侵入式神经信号重建可理解语音的框架，利用预训练模型弥补噪声和空间模糊问题。该方法通过将神经活动映射到分离的语音表示并合成波形，实现了较高的可懂度，为被动脑机接口的深度学习方法和脑电基础模型研究提供了范例。",
+      "llm_tldr": "MindVoice提出了一种从非侵入式神经信号重建可理解语音的框架，利用预训练模型弥补噪声和空间模糊问题。该方法通过将神经活动映射到分离的语音表示并合成波形，实现了较高的可懂度，为被动脑机接口的深度学习方法和脑电基础模型研究提供了范例。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.29943v1",
+      "source": "arxiv",
+      "title": "A Domain-Informed Multi-Objective Framework for EEG Channel Selection in Motor Imagery BCIs",
+      "abstract": "Motor imagery (MI) classification using electroencephalography (EEG) signals is essential for advancing brain-computer interfaces (BCIs). Traditional EEG channel selection methods often face limitations, such as dependency on single-objective criteria and susceptibility to local optima. To address these challenges, this work proposes a multi-objective optimisation framework that employs non-dominated sorting genetic algorithm, multiple-objective particle swarm optimisation, and a multi-objective evolutionary algorithm based on decomposition. Our approach effectively balances spatial relevance, using a Gaussian kernel, and functional discriminability, which assesses intratrial task-related desynchronisation, thereby improving performance. We evaluated this framework on four EEG datasets: Physionet, OpenBMI, HighGamma, and BCIIV-2A. The proposed approach successfully identifies compact, relevant channel subsets concentrated around sensorimotor cortex regions linked to MI activity, addressing the prevalent challenges of dimensionality and complexity inherent to traditional techniques. Furthermore, the framework achieved classification performance of 87%, 71%, 75%, and 65% on the Physionet, OpenBMI, HighGamma, and BCIIV-2A datasets, respectively. By outperforming existing single-objective and accuracy-based methods, and those relying on fixed subsets, these findings demonstrate that this new multi-objective optimisation framework can enhance MI-based BCI performance while facilitating compact channel configurations with reduced computational complexity, making them better suited for wearable, portable, and real-time BCI applications.",
+      "authors": [
+        "Dekka Muni Kumar",
+        "Dhruba Jyoti Kalita",
+        "Yogesh Kumar Meena"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.ET",
+        "cs.LG"
+      ],
+      "published": "2026-05-28T13:54:39+00:00",
+      "link": "https://arxiv.org/pdf/2605.29943v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG channel selection framework for motor imagery BCIs, transferable to passive BCI cognitive load assessment",
+      "llm_evidence_cn": "用于运动想象BCI的EEG通道选择方法，可迁移至被动BCI认知负荷评估",
+      "llm_evidence": "用于运动想象BCI的EEG通道选择方法，可迁移至被动BCI认知负荷评估",
+      "canonical_evidence": "用于运动想象BCI的EEG通道选择方法，可迁移至被动BCI认知负荷评估",
+      "llm_tldr_en": "Proposes a multi-objective optimization framework for EEG channel selection in motor imagery BCIs, balancing spatial relevance and functional discriminability, improving classification performance.",
+      "llm_tldr_cn": "针对运动想象脑机接口中传统单目标通道选择方法的局限性，该文提出多目标优化框架，采用非支配排序遗传算法和多目标粒子群优化等算法，平衡空间相关性和功能判别性。实验表明，该方法有效提升了运动想象分类性能，并可作为被动脑机接口中认知负荷评估的通用预处理工具。",
+      "llm_tldr": "针对运动想象脑机接口中传统单目标通道选择方法的局限性，该文提出多目标优化框架，采用非支配排序遗传算法和多目标粒子群优化等算法，平衡空间相关性和功能判别性。实验表明，该方法有效提升了运动想象分类性能，并可作为被动脑机接口中认知负荷评估的通用预处理工具。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.02166v2",
+      "source": "arxiv",
+      "title": "EEG-FuseFormer: A Transformer-Driven Feature Fusion Framework for Seizure Onset Prediction",
+      "abstract": "Epilepsy is one of the most common neurological disorders globally, characterized by recurring seizures and significantly impacting the quality of life. Despite advancements in diagnostic techniques, the mitigation of risks faced by epilepsy patients remains challenging due to the unpredictability of seizure events. An accurate forecast of seizure onset helps to reduce risks in epilepsy patients. In this paper, we propose EEG-FuseFormer, a transformer-based feature fusion framework for seizure-onset prediction that combines intermediate features extracted from Convolutional Neural Networks-Long Short-Term Memory (CNN-LSTM) and ResNet-18 networks. The CNN-LSTM architecture captures both spatial and temporal features directly from the raw signal, whereas the ResNet-18 extracts features from the Short-Time Fourier Transform (STFT) representation of the EEG signals. Fusion is carried out using a transformer encoder, and the final prediction is generated using fully connected dense layers. The CHB-MIT dataset was used to validate the proposed model. The results show that the proposed model achieves a mean recall of 98.85% and outperforms most of the state-of-the-art methods. This study evaluates the ability of the proposed feature fusion model to generalize in cross-patient testing scenarios. Fine-tuning pre-trained models on limited target patient data (target adaptation) within the cross-patient validation framework results in higher recall, precision, and F1-score metrics in comparison to the conventional cross-patient validation approach. Finally, the runtime-based computational complexity of the model is assessed across diverse hardware platforms to highlight the performance-complexity trade-off.",
+      "authors": [
+        "Vigneshwar Hariharan",
+        "Chithra Reghuvaran",
+        "Arlene John",
+        "Nhat Pham",
+        "Omer Rana",
+        "Deepu John",
+        "Ganesh Neelakanta Iyer"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-01T12:27:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.02166v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "transformer-based EEG feature fusion framework",
+      "llm_evidence_cn": "基于Transformer的EEG特征融合框架",
+      "llm_evidence": "基于Transformer的EEG特征融合框架",
+      "canonical_evidence": "基于Transformer的EEG特征融合框架",
+      "llm_tldr_en": "Proposes EEG-FuseFormer, a transformer-based framework combining CNN-LSTM and ResNet for seizure onset prediction from EEG.",
+      "llm_tldr_cn": "该论文针对癫痫发作预测问题，提出EEG-FuseFormer框架，利用Transformer融合CNN-LSTM和ResNet-18提取的时空特征，实现高精度发作预测。验证了深度学习在EEG应用中的潜力，为认知负荷估计等任务提供可迁移方法。",
+      "llm_tldr": "该论文针对癫痫发作预测问题，提出EEG-FuseFormer框架，利用Transformer融合CNN-LSTM和ResNet-18提取的时空特征，实现高精度发作预测。验证了深度学习在EEG应用中的潜力，为认知负荷估计等任务提供可迁移方法。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.02939v1",
+      "source": "arxiv",
+      "title": "ERP-XTTN: Interpretable Prototype-Guided Cross-Attention for Cross-Subject ERP Classification",
+      "abstract": "Interpretable brain-computer interface classifiers that generalize across subjects without calibration remain an open challenge. We test whether prototype-based cross-attention can provide competitive, interpretable event-related potential (ERP) classification under deployment-compatible conditions. We propose ERP-XTTN, a cross-attention architecture that routes input EEG patches to fixed difference-wave prototypes via query-key-only cross-attention with no value projection, so classification depends entirely on attention routing and attention faithfulness is structural rather than post-hoc. Prototypes are derived automatically from extrema in the training-fold difference wave. We evaluate across three public sources (BNCI Horizon 2020, HRI Cursor, and ERP CORE) spanning eight ERP components (ERN, LRP, ErrP, N170, P300, N2pc, MMN, N400), using leave-one-subject-out (LOSO) evaluation with causal filtering at two channel counts (3-channel and full montage), against EEGNet and xDAWN with Riemannian geometry (xDAWN+RG). The mean gap between the best baseline and ERP-XTTN was .018 AUROC at 3 channels and .034 at full montage, arising from two largely distinct sources: a temporal-flexibility cost relative to EEGNet and a spatial-exploitation cost relative to xDAWN+RG, the latter driven by signal-to-noise ratio at full montage. Beyond accuracy, the transparent routing reveals cross-subject signal structure that black-box models cannot: false positives resembled true positives more than true negatives did, indicating that classification errors are neurophysiologically explicable. ERP-XTTN generalizes across diverse ERPs under causal, calibration-free conditions with a small interpretability cost at minimal montages. To our knowledge, this is the first epoch-level LOSO benchmark on ERP CORE.",
+      "authors": [
+        "Charlotte Genevier Wyman",
+        "Leanne Hirshfield"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-06-01T22:38:23+00:00",
+      "link": "https://arxiv.org/pdf/2606.02939v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "interpretable cross-attention for cross-subject ERP classification",
+      "llm_evidence_cn": "可解释的跨注意力用于跨被试ERP分类",
+      "llm_evidence": "可解释的跨注意力用于跨被试ERP分类",
+      "canonical_evidence": "可解释的跨注意力用于跨被试ERP分类",
+      "llm_tldr_en": "ERP-XTTN uses prototype-guided cross-attention for interpretable and calibration-free cross-subject ERP classification, relevant to passive BCI.",
+      "llm_tldr_cn": "ERP-XTTN提出了一种基于原型引导的交叉注意力架构，用于跨被试ERP分类，无需校准且具有结构可解释性。该方法通过查询-密钥交叉注意力将输入EEG片段路由到固定原型，在多个公开数据集上取得了竞争性性能，为被动脑机接口提供了实用且可解释的深度学习方案。",
+      "llm_tldr": "ERP-XTTN提出了一种基于原型引导的交叉注意力架构，用于跨被试ERP分类，无需校准且具有结构可解释性。该方法通过查询-密钥交叉注意力将输入EEG片段路由到固定原型，在多个公开数据集上取得了竞争性性能，为被动脑机接口提供了实用且可解释的深度学习方案。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
