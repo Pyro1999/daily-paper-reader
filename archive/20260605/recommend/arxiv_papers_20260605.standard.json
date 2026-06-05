@@ -1,0 +1,263 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-05T22:00:31.302931+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 1,
+    "deep_cap": 7,
+    "deep_selected": 1,
+    "quick_candidates": 5,
+    "quick_skim_target": 12,
+    "quick_selected": 5
+  },
+  "deep_dive": [
+    {
+      "id": "2606.01767v2",
+      "source": "arxiv",
+      "title": "EvoBrain: Continual Learning of EEG Foundation Models Across Heterogeneous BCI Tasks",
+      "abstract": "Electroencephalography (EEG) is the cornerstone of non-invasive brain-computer interfaces (BCIs), yet conventional decoding relies on fragmented, task-specific architectures that severely limit cross-task scalability. While EEG foundation models pre-trained on massive corpora promise universal brain decoding, current post-training depends on task-isolated fine-tuning. This static paradigm restricts knowledge transfer across heterogeneous tasks, hinders model scalability, and incurs computational and storage overheads that scale linearly with task count. To overcome these bottlenecks, we formulate downstream adaptation as a cross-task continual learning problem and propose EvoBrain, a dynamic, task-aware continual learning framework for unified EEG decoding. EvoBrain addresses the plasticity-stability trade-off via two complementary components: (1) Neuro-Spectral Task Normalization (NSN) aligns incoming tasks with historical statistics while recalibrating spectral responses to handle distributional and neuro-spectral shifts; and (2) Response-Affinity Distillation (RAD), combined with time-dependent replay, preserves old-task response geometry and promotes selective knowledge transfer between spectrally compatible tasks, effectively mitigating forgetting. Extensive evaluations across six distinct BCI tasks demonstrate that EvoBrain consistently surpasses state-of-the-art methods across diverse foundation backbones, optimally balancing plasticity and stability. To our knowledge, this work pioneers cross-task continual learning in the EEG domain, advancing the realization of a unified, one-for-all brain decoding system.",
+      "authors": [
+        "Yangxuan Zhou",
+        "Sha Zhao",
+        "Jiquan Wang",
+        "Shijian Li",
+        "Gang Pan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-01T06:49:50+00:00",
+      "link": "https://arxiv.org/pdf/2606.01767v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "continual learning framework for EEG foundation models across BCI tasks",
+      "llm_evidence_cn": "针对EEG基础模型的持续学习框架，适用于BCI任务",
+      "llm_evidence": "针对EEG基础模型的持续学习框架，适用于BCI任务",
+      "canonical_evidence": "针对EEG基础模型的持续学习框架，适用于BCI任务",
+      "llm_tldr_en": "Proposes EvoBrain, a continual learning framework for EEG foundation models that enables cross-task knowledge transfer and reduces computational overhead in BCI adaptation.",
+      "llm_tldr_cn": "当前EEG基础模型后训练依赖任务隔离微调，限制了跨任务可扩展性且计算开销大。本文提出EvoBrain，一种动态、任务感知的持续学习框架，将下游适应建模为跨任务持续学习问题。该方法在多个异构BCI任务上验证了知识迁移的有效性，并显著降低了存储和计算开销。该工作为构建通用的EEG基础模型提供了新范式。",
+      "llm_tldr": "当前EEG基础模型后训练依赖任务隔离微调，限制了跨任务可扩展性且计算开销大。本文提出EvoBrain，一种动态、任务感知的持续学习框架，将下游适应建模为跨任务持续学习问题。该方法在多个异构BCI任务上验证了知识迁移的有效性，并显著降低了存储和计算开销。该工作为构建通用的EEG基础模型提供了新范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.00129v1",
+      "source": "arxiv",
+      "title": "A Shared Valence Axis Across Modern LLMs and Human EEG: The Saturation Regularity",
+      "abstract": "Large language models (LLMs) have emerged as powerful representation learners whose internal features increasingly align with human cognition. We study whether modern LLMs can serve as a lens for understanding neural representations in the human brain, focusing on emotional valence in EEG.   We first build a one-dimensional valence direction, the V-axis, from modern LLMs using only nine emotion-evocative sentences. We validate it through zero-shot transfer to sentiment benchmarks and cross-model consistency across fourteen LLMs. We then show that this LLM-derived direction maps onto human neural activity. On a public EEG cohort of 123 subjects watching affective videos, a single linear projection on EEG features tracks the V-axis position of each stimulus. Moreover, 36 EEG emotion classifiers trained without exposure to the V-axis spontaneously rediscover the same direction in their internal representations, suggesting that the same valence structure emerges in both language models and human electrophysiology.   Yet this convergence does not provide an effective training signal. We test twenty-five alignment strategies, including knowledge distillation, representational similarity, contrastive, and topographic losses; none improve decoding, and sixteen significantly reduce accuracy. We formalize this result as the saturation regularity: once task labels alone drive a brain-decoding network onto the target direction, additional supervision mainly distorts an already-saturated basin, while the load-bearing within-class residual receives little useful gradient.   This regularity also indicates where improvement should come from: the residual subspace unreachable by supervision. Motivated by this insight, we ensemble across residual diversity rather than supervising the basin, improving balanced accuracy by 10.5% over the prior best on FACED, with the same effect replicated on SEED-V.",
+      "authors": [
+        "Yousef A. Radwan",
+        "Xuhui Liu",
+        "Kilichbek Haydarov",
+        "Yuqian Fu",
+        "Mohamed Elhoseiny"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-05-28T19:42:10+00:00",
+      "link": "https://arxiv.org/pdf/2606.00129v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG passive BCI for emotion valence using LLM alignment",
+      "llm_evidence_cn": "使用大语言模型对齐的脑电图被动脑机接口用于情感效价评估",
+      "llm_evidence": "使用大语言模型对齐的脑电图被动脑机接口用于情感效价评估",
+      "canonical_evidence": "使用大语言模型对齐的脑电图被动脑机接口用于情感效价评估",
+      "llm_tldr_en": "This paper uses LLM-derived valence direction to map onto EEG neural activity of 123 subjects watching affective videos, demonstrating a shared valence axis between LLMs and human EEG, applicable to passive BCI systems.",
+      "llm_tldr_cn": "针对被动脑机接口中的情感状态监测问题，本文利用大语言模型(LLM)构建一维效价轴，并验证其与人类脑电图(EEG)神经活动的对应关系。在123名被试观看情感视频的公开EEG数据集上，通过线性投影跟踪效价轴位置，表明LLM在人类情感表征上具有一致性。该工作为被动BCI的情感评估提供了新方法。",
+      "llm_tldr": "针对被动脑机接口中的情感状态监测问题，本文利用大语言模型(LLM)构建一维效价轴，并验证其与人类脑电图(EEG)神经活动的对应关系。在123名被试观看情感视频的公开EEG数据集上，通过线性投影跟踪效价轴位置，表明LLM在人类情感表征上具有一致性。该工作为被动BCI的情感评估提供了新方法。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.00496v1",
+      "source": "arxiv",
+      "title": "Torus Graphs for Large Scale Neural Phase Analysis",
+      "abstract": "Oscillatory neural signals such as electroencephalography (EEG) and local field potentials (LFPs) show phase relationships that coordinate communication across brain regions. Modern recordings capture hundreds of channels across many frequency bins, yet standard phase analyses are restricted to only a few variables. The Torus Graph (TG) model, an exponential-family distribution over phases whose univariate and pairwise potentials generalize von Mises distributions, infers principled structure among oscillations but models only static, undirected dependencies and is limited to $\\sim \\! 100$ variables because its score matching inference scales as $\\mathcal{O}(d^{6})$. We introduce a stochastic score matching procedure that reduces the per-iteration cost to $\\mathcal{O}(d^{2})$, enabling inference on datasets with thousands of variables. This scalable foundation supports analyses of 1,860 frequency-phase features from multi-electrode LFPs and enables two extensions previously inaccessible to TGs or classical circular statistics: (i) a TG Hidden Markov Model capturing state-dependent phase-coupling changes (e.g., spindle-related states during sleep) and (ii) an autoregressive TG inferring directional interactions via transfer-entropy estimation. Applied to LFP recordings, these models reveal state-dependent phase-interaction patterns between wakefulness and NREM sleep. Together, they enable systematic, large-scale mapping of dynamic and directional phase relationships across brain and cognitive states.",
+      "authors": [
+        "Jack Goffinet",
+        "Casey Hanks",
+        "David E. Carlson"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-05-30T02:56:56+00:00",
+      "link": "https://arxiv.org/pdf/2606.00496v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "method for EEG phase analysis",
+      "llm_evidence_cn": "用于EEG相位分析的方法",
+      "llm_evidence": "用于EEG相位分析的方法",
+      "canonical_evidence": "用于EEG相位分析的方法",
+      "llm_tldr_en": "Proposes Torus Graph with stochastic score matching for large-scale neural phase analysis, enabling scalable inference on EEG/LFP data and potentially applicable to cognitive load studies.",
+      "llm_tldr_cn": "神经振荡信号如EEG中存在相位关系，但传统方法只能分析少数变量。本文提出Torus图模型，通过随机评分匹配实现大规模相位依赖推断，计算代价显著降低。实验证明该模型可扩展至数百通道，适用于真实EEG/LFP数据。该工作为相位分析在认知负荷评估中的应用提供了新工具。",
+      "llm_tldr": "神经振荡信号如EEG中存在相位关系，但传统方法只能分析少数变量。本文提出Torus图模型，通过随机评分匹配实现大规模相位依赖推断，计算代价显著降低。实验证明该模型可扩展至数百通道，适用于真实EEG/LFP数据。该工作为相位分析在认知负荷评估中的应用提供了新工具。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.06104v1",
+      "source": "arxiv",
+      "title": "A Sliced-Wasserstein Framework on Correlation Matrices for EEG Decoding",
+      "abstract": "Electroencephalography (EEG) offers noninvasive, millisecond resolution recordings of neuronal activity and is widely used in neuroscience and healthcare. Many EEG decoding pipelines rely on covariance descriptors for their robustness to noise, but such representations are sensitive to channel-wise scaling. Recent studies have therefore advocated full-rank correlation matrices as a scale-invariant alternative for EEG decoding. In this paper, we propose a general framework for Sliced Wasserstein (SW) discrepancies on manifolds endowed with Pullback Euclidean Metrics (PEMs), termed Pullback Euclidean Metric Sliced Wasserstein (PEMSW). Within this framework, we instantiate two Correlation Sliced-Wasserstein (CorSW) discrepancies on the manifold of full-rank correlation matrices under two recently introduced correlation geometries, \\textit{i.e.}, the Off-Log Metric (OLM) and Log-Scaled Metric (LSM). Building on CorSW, we further develop a domain generalization (DG) framework for EEG decoding. Experiments on three EEG datasets demonstrate improved generalization under distribution shifts, with low training overhead and no additional inference cost. The source code is available at https://github.com/ChenHu-ML/CorSW.",
+      "authors": [
+        "Chen Hu",
+        "Rui Wang",
+        "Jiale Zhou",
+        "Jingjun Yi",
+        "Shaocheng Jin",
+        "Yidong Song",
+        "Yefeng Zheng"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-04T12:47:49+00:00",
+      "link": "https://arxiv.org/pdf/2606.06104v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "proposes Sliced-Wasserstein framework on correlation matrices for EEG decoding",
+      "llm_evidence_cn": "提出基于相关矩阵的Sliced-Wasserstein框架用于EEG解码",
+      "llm_evidence": "提出基于相关矩阵的Sliced-Wasserstein框架用于EEG解码",
+      "canonical_evidence": "提出基于相关矩阵的Sliced-Wasserstein框架用于EEG解码",
+      "llm_tldr_en": "Introduces a general Sliced-Wasserstein framework on correlation matrices for EEG decoding, enabling scale-invariant and robust feature extraction.",
+      "llm_tldr_cn": "针对EEG解码中协方差矩阵对通道缩放敏感的问题，本文提出了一个基于相关矩阵的Sliced-Wasserstein框架（PEMSW），并实例化了两种相关Sliced-Wasserstein距离（CorSW）。该方法在EEG相关矩阵流形上计算距离，具有尺度不变性和鲁棒性，为EEG信号处理提供了一种新的基础工具，可推广至认知负荷估计等被动BCI应用。",
+      "llm_tldr": "针对EEG解码中协方差矩阵对通道缩放敏感的问题，本文提出了一个基于相关矩阵的Sliced-Wasserstein框架（PEMSW），并实例化了两种相关Sliced-Wasserstein距离（CorSW）。该方法在EEG相关矩阵流形上计算距离，具有尺度不变性和鲁棒性，为EEG信号处理提供了一种新的基础工具，可推广至认知负荷估计等被动BCI应用。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.01884v1",
+      "source": "arxiv",
+      "title": "EVA-Net: Subject-Independent EEG Motor Decoding with Video-Derived Motor Priors",
+      "abstract": "Practical non-invasive Brain-Computer Interface (BCI) systems require EEG decoders with strong cross-subject generalization and minimal calibration. However, inter-subject variability and signal non-stationarity often entangle motor semantics with subject-specific noise, limiting subject-independent decoding. Recent multimodal approaches use text as a semantic anchor, yet text provides sparse and static supervision for inherently dynamic motor processes. To address this issue, we propose EVA-Net, a two-stage framework that uses action videos as semantic priors for subject-independent EEG motor decoding. In the first stage, EEG and video features are aligned in a shared space using cross-modal and supervised contrastive objectives to reduce subject-specific variation. In the second stage, video category prototypes and knowledge distillation transfer video-derived priors to an EEG-only classifier without adding inference overhead. Experiments on two public datasets show that EVA-Net achieves strong subject-independent decoding performance, including an 8.66% LOSO accuracy gain on EEGMMI. Ablation results further suggest that video provides a more effective semantic anchor than the text baseline considered in this work.",
+      "authors": [
+        "Ziyuan Li",
+        "Yueyu Sun",
+        "Yimeng Zhang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-01T08:29:37+00:00",
+      "link": "https://arxiv.org/pdf/2606.01884v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "deep learning subject-independent EEG decoding",
+      "llm_evidence_cn": "深度学习跨被试EEG解码",
+      "llm_evidence": "深度学习跨被试EEG解码",
+      "canonical_evidence": "深度学习跨被试EEG解码",
+      "llm_tldr_en": "EVA-Net uses video-derived motor priors for subject-independent EEG motor decoding via cross-modal alignment, relevant to deep learning methods for passive BCI.",
+      "llm_tldr_cn": "该论文提出EVA-Net框架，利用动作视频作为语义先验，通过跨模态对比学习实现跨被试EEG运动解码。尽管聚焦于主动运动解码，其深度学习方法和跨被试泛化策略对被动BCI认知负荷评估中的模型泛化问题有借鉴意义。在EEG特征对齐和subject-independent设计上具有一定启发性。",
+      "llm_tldr": "该论文提出EVA-Net框架，利用动作视频作为语义先验，通过跨模态对比学习实现跨被试EEG运动解码。尽管聚焦于主动运动解码，其深度学习方法和跨被试泛化策略对被动BCI认知负荷评估中的模型泛化问题有借鉴意义。在EEG特征对齐和subject-independent设计上具有一定启发性。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.05855v1",
+      "source": "arxiv",
+      "title": "EEGDancer: Dynamic Emotion Latent Space Masked Modeling with Reinforcement Learning for EEG Continuous Emotion Prediction",
+      "abstract": "Continuous electroencephalography (EEG) emotion prediction aims to model the temporal evolution of human emotional states from EEG signals. Unlike conventional discrete emotion recognition, continuous prediction requires capturing long-range temporal dependencies and coherent emotional dynamics. However, existing methods mainly rely on point-wise regression and directly model noisy high-dimensional EEG features, limiting their ability to characterize continuous emotional evolution.To address these challenges, we propose EEGDancer, a dynamic emotional latent space learning framework for continuous EEG emotion prediction. The framework integrates vector-quantized representation learning, masked temporal modeling, and reinforcement learning-based trajectory optimization into a unified architecture.Specifically, a causal spatiotemporal Vector-Quantization Variational Autoencoder (VQ-VAE) is designed to learn structured emotional prototypes and construct a discrete-continuous emotional latent space from EEG signals. Based on the learned latent representations, a Transformer-based masked dynamic modeling strategy captures long-range emotional dependencies and temporal evolution patterns. Furthermore, continuous emotion prediction is formulated as a sequential decision-making problem, and a Soft Actor-Critic (SAC) framework is introduced to optimize emotional prediction trajectories at the sequence level instead of frame-wise local fitting.Extensive experiments on the SEED, SEED-IV, and Long-Term Naturalistic Emotion datasets demonstrate that EEGDancer consistently outperforms existing machine learning and deep learning methods. Ablation studies further verify the effectiveness of the proposed latent space and reinforcement learning-based trajectory optimization for modeling continuous EEG emotional dynamics.",
+      "authors": [
+        "Zhihao Zhou",
+        "Weishan Ye",
+        "Li Zhang",
+        "Gan Huang",
+        "Zhen Liang"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI"
+      ],
+      "published": "2026-06-04T08:28:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.05855v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG deep learning framework for continuous emotion prediction, transferable to cognitive load assessment",
+      "llm_evidence_cn": "用于EEG连续情绪预测的深度学习方法，可迁移至认知负荷评估",
+      "llm_evidence": "用于EEG连续情绪预测的深度学习方法，可迁移至认知负荷评估",
+      "canonical_evidence": "用于EEG连续情绪预测的深度学习方法，可迁移至认知负荷评估",
+      "llm_tldr_en": "Proposes EEGDancer, a dynamic latent space model for continuous EEG emotion prediction using vector quantization and masked modeling, demonstrating strong temporal modeling capability.",
+      "llm_tldr_cn": "连续EEG情绪预测要求捕获长时间依赖和连贯动态，现有方法直接建模高维噪声特征效果有限。本文提出EEGDancer，集成向量量化表示学习和掩码时序建模，并引入强化学习优化潜在空间。在多个数据集上，该方法在连续情绪预测中取得了优于基线的结果。该框架为EEG时序预测任务（如认知负荷评估）提供了可借鉴的方法。",
+      "llm_tldr": "连续EEG情绪预测要求捕获长时间依赖和连贯动态，现有方法直接建模高维噪声特征效果有限。本文提出EEGDancer，集成向量量化表示学习和掩码时序建模，并引入强化学习优化潜在空间。在多个数据集上，该方法在连续情绪预测中取得了优于基线的结果。该框架为EEG时序预测任务（如认知负荷评估）提供了可借鉴的方法。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
