@@ -6,38 +6,37 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-05
-- 运行时间：2026-06-05 22:04:52 UTC
+- 最新运行日期：2026-06-06
+- 运行时间：2026-06-06 21:21:35 UTC
 - 运行状态：成功
-- 本次总论文数：6
+- 本次总论文数：5
 - 精读区：1
-- 速读区：5
+- 速读区：4
 
 ### 今日简报（AI）
-本日报聚焦 EEG 基础模型与脑机接口，精读《EvoBrain》提出跨异构任务的连续学习新方法。最值得关注的方向是 EEG 基础模型的持续泛化能力，以及 LLM 与人类 EEG 共享效价轴的新颖发现。建议普通读者留意 EEG 基础模型在多任务场景下的应用趋势，以及跨模态语义对齐研究。
-- 详情：[/202606/05/README](/202606/05/README)
+1) 今日精读日语语音生产千小时EEG-EMG-audio数据集，速读癫痫发作预测Transformer框架及动态脑功能连接新方法。  
+2) 值得关注方向：大规模多模态语音数据集为言语障碍研究奠基，EEG-FuseFormer的Transformer架构在癫痫发作预测中表现突出。  
+3) 普通读者可优先下载该开源数据集开展跨语言语音-脑电分析，或复现EEG-FuseFormer验证其在临床数据集上的泛化性。
+- 详情：[/202606/06/README](/202606/06/README)
 
 ### 精读区论文标签
-1. [EvoBrain: Continual Learning of EEG Foundation Models Across Heterogeneous BCI Tasks](/202606/05/2606.01767v2-evobrain-continual-learning-of-eeg-foundation-models-across-heterogeneous-bci-tasks)  
-   标签：评分：9.0/10、query:pbci-load
-   evidence：针对EEG基础模型的持续学习框架，适用于BCI任务
+1. [A 1000-hour EEG-EMG-audio dataset of Japanese speech production](/202606/06/2606.01264v1-a-1000-hour-eeg-emg-audio-dataset-of-japanese-speech-production)  
+   标签：评分：8.0/10、query:pbci-load
+   evidence：大规模多模态EEG数据集（1020小时），支持脑电基础模型训练
 
 ### 速读区论文标签
-1. [A Shared Valence Axis Across Modern LLMs and Human EEG: The Saturation Regularity](/202606/05/2606.00129v1-a-shared-valence-axis-across-modern-llms-and-human-eeg-the-saturation-regularity)  
+1. [EEG-FuseFormer: A Transformer-Driven Feature Fusion Framework for Seizure Onset Prediction](/202606/06/2606.02166v1-eeg-fuseformer-a-transformer-driven-feature-fusion-framework-for-seizure-onset-prediction)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：使用大语言模型对齐的脑电图被动脑机接口用于情感效价评估
-2. [A Sliced-Wasserstein Framework on Correlation Matrices for EEG Decoding](/202606/05/2606.06104v1-a-sliced-wasserstein-framework-on-correlation-matrices-for-eeg-decoding)  
-   标签：评分：7.0/10、query:pbci-load
-   evidence：提出基于相关矩阵的Sliced-Wasserstein框架用于EEG解码
-3. [Torus Graphs for Large Scale Neural Phase Analysis](/202606/05/2606.00496v1-torus-graphs-for-large-scale-neural-phase-analysis)  
+   evidence：基于Transformer的脑电解码特征融合框架，可用于认知负荷估计
+2. [Hypergraphs from multivariate connectivity: caCoh-based EEG/MEG representation](/202606/06/2606.01357v1-hypergraphs-from-multivariate-connectivity-cacoh-based-eegmeg-representation)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：用于EEG相位分析的方法
-4. [EVA-Net: Subject-Independent EEG Motor Decoding with Video-Derived Motor Priors](/202606/05/2606.01884v1-eva-net-subject-independent-eeg-motor-decoding-with-video-derived-motor-priors)  
+   evidence：利用典型相干性构建脑电/脑磁图的超图表示
+3. [Inferring Dynamic Functional Connectivity from Field Potentials Using Graph Diffusion Autoregression](/202606/06/biorxiv-10-1101-2024-02-26-582177-v3-inferring-dynamic-functional-connectivity-from-field-potentials-using-graph-diffusion-autoregression)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：深度学习跨被试EEG解码
-5. [EEGDancer: Dynamic Emotion Latent Space Masked Modeling with Reinforcement Learning for EEG Continuous Emotion Prediction](/202606/05/2606.05855v1-eegdancer-dynamic-emotion-latent-space-masked-modeling-with-reinforcement-learning-for-eeg-continuous-emotion-prediction)  
+   evidence：利用图扩散自回归从场电位推断动态功能连接
+4. [Global nonequilibrium cortical dynamics tie mid-level pupil-linked arousal to optimal task performance in humans](/202606/06/biorxiv-10-64898-2026-06-02-729595-v1-global-nonequilibrium-cortical-dynamics-tie-mid-level-pupil-linked-arousal-to-optimal-task-performance-in-humans)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：用于EEG连续情绪预测的深度学习方法，可迁移至认知负荷评估
+   evidence：使用EEG量化皮层功能层级与任务表现关联，可迁移至被动BCI认知负荷评估
 
 
 <div class="dpr-home-promo-card">

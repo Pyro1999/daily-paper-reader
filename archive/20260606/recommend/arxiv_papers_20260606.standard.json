@@ -1,0 +1,229 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-06T21:19:10.698355+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 1,
+    "deep_cap": 7,
+    "deep_selected": 1,
+    "quick_candidates": 4,
+    "quick_skim_target": 12,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2606.01264v1",
+      "source": "arxiv",
+      "title": "A 1000-hour EEG-EMG-audio dataset of Japanese speech production",
+      "abstract": "We present a multimodal dataset of 1020 hours of simultaneously recorded scalp electroencephalography (EEG), facial electromyography (EMG), and speech audio from three healthy native Japanese speakers during open-vocabulary overt speech. Recordings were acquired with three EEG systems-an ultra-high-density system (g.Pangolin) and two cap-type systems (g.SCARABEO and eegosports), spanning 62-128 channels-across many sessions over several months. Each session provides time-synchronized EEG, facial EMG, and audio, together with speech-event annotations and transcriptions. Although collected with speech decoding as a primary motivation, the dataset also supports work on multimodal signal processing, artifact modeling, longitudinal and cross-device adaptation, and EEG representation learning. Technical validation included power spectral density and event-related potential analyses across participants, devices, and tasks, which showed the expected 1/f spectral profile, task-related alpha-band attenuation, and time-locked evoked responses. The dataset is released in Brain Imaging Data Structure (BIDS) format via OpenNeuro under a CC0 waiver to support both speech-related and broader EEG research.",
+      "authors": [
+        "Motoshige Sato",
+        "Ilya Horiguchi",
+        "Masakazu Inoue",
+        "Kenichi Tomeoka",
+        "Eri Hatakeyama",
+        "Yuya Kita",
+        "Atsushi Yamamoto",
+        "Ippei Fujisawa",
+        "Shuntaro Sasai"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "cs.HC",
+        "cs.SD",
+        "eess.AS",
+        "eess.SP"
+      ],
+      "published": "2026-05-31T14:30:46+00:00",
+      "link": "https://arxiv.org/pdf/2606.01264v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Large-scale multimodal EEG dataset (1020 hours) supporting foundation model training for EEG signal processing",
+      "llm_evidence_cn": "大规模多模态EEG数据集（1020小时），支持脑电基础模型训练",
+      "llm_evidence": "大规模多模态EEG数据集（1020小时），支持脑电基础模型训练",
+      "canonical_evidence": "大规模多模态EEG数据集（1020小时），支持脑电基础模型训练",
+      "llm_tldr_en": "This paper presents a 1020-hour dataset of simultaneous EEG, facial EMG, and speech audio from three speakers, collected across multiple sessions and EEG systems, enabling research on multimodal signal processing and foundation models for EEG.",
+      "llm_tldr_cn": "本文发布了来自三名日语母语者的1020小时同步头皮EEG、面部EMG和语音音频数据集，使用三种EEG系统（62-128通道）在数月内多次采集。数据包含时间同步的多模态信号和语音事件注释。尽管主要动机是语音解码，该数据集为多模态信号处理、伪影建模、跨设备自适应以及脑电基础模型训练提供了宝贵资源。",
+      "llm_tldr": "本文发布了来自三名日语母语者的1020小时同步头皮EEG、面部EMG和语音音频数据集，使用三种EEG系统（62-128通道）在数月内多次采集。数据包含时间同步的多模态信号和语音事件注释。尽管主要动机是语音解码，该数据集为多模态信号处理、伪影建模、跨设备自适应以及脑电基础模型训练提供了宝贵资源。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.02166v1",
+      "source": "arxiv",
+      "title": "EEG-FuseFormer: A Transformer-Driven Feature Fusion Framework for Seizure Onset Prediction",
+      "abstract": "Epilepsy is one of the most common neurological disorders globally, characterized by recurring seizures and significantly impacting the quality of life. Despite advancements in diagnostic techniques, the mitigation of risks faced by epilepsy patients remains challenging due to the unpredictability of seizure events. An accurate forecast of seizure onset helps to reduce risks in epilepsy patients. In this paper, we propose EEG-FuseFormer, a transformer-based feature fusion framework for seizure-onset prediction that combines intermediate features extracted from Convolutional Neural Networks-Long Short-Term Memory (CNN-LSTM) and ResNet-18 networks. The CNN-LSTM architecture captures both spatial and temporal features directly from the raw signal, whereas the ResNet-18 extracts features from the Short-Time Fourier Transform (STFT) representation of the EEG signals. Fusion is carried out using a transformer encoder, and the final prediction is generated using fully connected dense layers. The CHB-MIT dataset was used to validate the proposed model. The results show that the proposed model achieves a mean recall of 98.85% and outperforms most of the state-of-the-art methods. This study evaluates the ability of the proposed feature fusion model to generalize in cross-patient testing scenarios. Fine-tuning pre-trained models on limited target patient data (target adaptation) within the cross-patient validation framework results in higher recall, precision, and F1-score metrics in comparison to the conventional cross-patient validation approach. Finally, the runtime-based computational complexity of the model is assessed across diverse hardware platforms to highlight the performance-complexity trade-off.",
+      "authors": [
+        "Vigneshwar Hariharan",
+        "Chithra Reghuvaran",
+        "Arlene John",
+        "Nhat Pham",
+        "Omer Rana",
+        "Deepu John",
+        "Ganesh Neelakanta Iyer"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-01T12:27:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.02166v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Transformer-based EEG feature fusion framework for seizure prediction; transferable to cognitive load estimation",
+      "llm_evidence_cn": "基于Transformer的脑电解码特征融合框架，可用于认知负荷估计",
+      "llm_evidence": "基于Transformer的脑电解码特征融合框架，可用于认知负荷估计",
+      "canonical_evidence": "基于Transformer的脑电解码特征融合框架，可用于认知负荷估计",
+      "llm_tldr_en": "Proposes EEG-FuseFormer, a transformer-driven feature fusion framework combining CNN-LSTM and ResNet for seizure onset prediction; demonstrates strong performance on EEG data; method transferable to cognitive load estimation in passive BCI.",
+      "llm_tldr_cn": "该论文针对癫痫发作预测问题，提出了一种基于Transformer的特征融合框架EEG-FuseFormer，它融合了CNN-LSTM和ResNet-18提取的特征，用于脑电信号分析。实验表明该框架在癫痫发作预测任务上取得了优异性能。该方法作为一种通用的脑电深度学习架构，可迁移至被动脑机接口中的认知负荷评估任务，为建立脑电基础模型提供了有前景的思路。",
+      "llm_tldr": "该论文针对癫痫发作预测问题，提出了一种基于Transformer的特征融合框架EEG-FuseFormer，它融合了CNN-LSTM和ResNet-18提取的特征，用于脑电信号分析。实验表明该框架在癫痫发作预测任务上取得了优异性能。该方法作为一种通用的脑电深度学习架构，可迁移至被动脑机接口中的认知负荷评估任务，为建立脑电基础模型提供了有前景的思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.01357v1",
+      "source": "arxiv",
+      "title": "Hypergraphs from multivariate connectivity: caCoh-based EEG/MEG representation",
+      "abstract": "Hypergraphs provide a natural framework for representing neurophysiological interactions distributed across sets of sensors. A key methodological question is how hyperedges should be defined from frequency-resolved electroencephalography/magnetoencephalography (EEG/MEG) data. We demonstrate a construction strategy in which hyperedges are obtained from canonical coherence (caCoh), an extension of coherence that estimates coupling between multidimensional signal spaces. To our knowledge, this is the first work to construct hypergraphs directly from a multivariate connectivity measure specifically designed for frequency-resolved neurophysiological analysis. We propose two caCoh-based representations: a one-to-space hypergraph, where each external signal defines a hyperedge over the EEG/MEG sensor space, and a space-to-space hypergraph, where two multidimensional signal spaces are represented by a single hyperedge. We evaluate the approach in controlled simulations with known coupling frequencies and varying signal-to-noise ratio (SNR). Compared with graphs based on magnitude-squared coherence (MSC), caCoh-based hypergraphs showed statistically higher target-baseline contrasts at almost all SNR levels, indicating stronger recovery of coupling frequencies. They also recovered sensor-level spatial patterns associated with the simulated sources. In addition, one-to-space and space-to-space representations reduced 610 MSC edges per frequency to 10 and 1 hyperedges, respectively. These results establish multivariate spectral connectivity as a natural methodological basis for EEG/MEG hypergraphs.",
+      "authors": [
+        "Daniil Vlasenko",
+        "Irina Saranskaia",
+        "Denis Zakharov"
+      ],
+      "primary_category": "q-bio.QM",
+      "categories": [
+        "q-bio.QM",
+        "physics.data-an",
+        "q-bio.NC"
+      ],
+      "published": "2026-05-31T17:29:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.01357v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "hypergraph representation from EEG/MEG using canonical coherence",
+      "llm_evidence_cn": "利用典型相干性构建脑电/脑磁图的超图表示",
+      "llm_evidence": "利用典型相干性构建脑电/脑磁图的超图表示",
+      "canonical_evidence": "利用典型相干性构建脑电/脑磁图的超图表示",
+      "llm_tldr_en": "Constructs hypergraphs from EEG/MEG data using canonical coherence, providing a novel representation for multivariate connectivity analysis.",
+      "llm_tldr_cn": "该论文针对脑电/脑磁图数据的多变量连接性表示问题，提出基于典型相干性的超图构建策略，首次从多元连接性度量直接构造超图。提出了两种表示法：一对空间超图等，为分析大规模神经交互提供了高效框架，可应用于认知状态评估。",
+      "llm_tldr": "该论文针对脑电/脑磁图数据的多变量连接性表示问题，提出基于典型相干性的超图构建策略，首次从多元连接性度量直接构造超图。提出了两种表示法：一对空间超图等，为分析大规模神经交互提供了高效框架，可应用于认知状态评估。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-1101-2024-02-26-582177-v3",
+      "source": "biorxiv",
+      "title": "Inferring Dynamic Functional Connectivity from Field Potentials Using Graph Diffusion Autoregression",
+      "abstract": "Estimating dynamic functional connectivity (dFC) is attracting increased attention, spurred by rapid advancements in multi-site neural recording technologies and efforts to better understand cognitive processes. Yet, most studies focus on static estimates of functional connectivity that cannot capture highly dynamic neural processes, while also ignoring information about the structural organization of the brain. To address these issues, we introduce a class of network-constrained linear autoregressive models that give rise to a highly dynamic functional connectivity signal on the edges of a predefined structural connectivity graph. Furthermore, we demonstrate that adding an additional diffusion constraint improves the models performance. We successfully validated the resulting graph diffusion autoregressive (GDAR) model on simulated neural activity and recordings from subdural and intracortical micro-electrode arrays placed in macaque sensorimotor cortex demonstrating its ability to describe rapid communication dynamics induced by optogenetic stimulation, changes in resting state dFC following stroke and electrical stimulation, and neural correlates of behavior during a reach task.",
+      "authors": [
+        "Schwock, F.",
+        "Bloch, J.",
+        "Khateeb, K.",
+        "Zhou, J.",
+        "Atlas, L.",
+        "Yazdan-Shahmorad, A."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-05-29T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2024.02.26.582177v3.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "dynamic functional connectivity from field potentials using graph diffusion",
+      "llm_evidence_cn": "利用图扩散自回归从场电位推断动态功能连接",
+      "llm_evidence": "利用图扩散自回归从场电位推断动态功能连接",
+      "canonical_evidence": "利用图扩散自回归从场电位推断动态功能连接",
+      "llm_tldr_en": "Introduces network-constrained autoregressive models with diffusion constraint to estimate dynamic functional connectivity from field potentials, capturing rapid neural dynamics.",
+      "llm_tldr_cn": "该论文针对功能连接静态估计无法捕捉动态神经过程的问题，提出了一类网络约束的线性自回归模型，通过在预定义结构连接图的边上生成动态功能连接信号，并引入扩散约束改进性能。方法适用于多通道神经记录如EEG，为分析认知过程中的快速神经交互提供了新工具。",
+      "llm_tldr": "该论文针对功能连接静态估计无法捕捉动态神经过程的问题，提出了一类网络约束的线性自回归模型，通过在预定义结构连接图的边上生成动态功能连接信号，并引入扩散约束改进性能。方法适用于多通道神经记录如EEG，为分析认知过程中的快速神经交互提供了新工具。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-02-729595-v1",
+      "source": "biorxiv",
+      "title": "Global nonequilibrium cortical dynamics tie mid-level pupil-linked arousal to optimal task performance in humans",
+      "abstract": "Ongoing fluctuations in brain state, largely driven by neuromodulators of arousal, shape how sensory inputs are processed and decisions are made. Here, we combined pharmacological manipulations and pupillary proxies of arousal to examine how global cortical state dynamics relate to perceptual sensitivity. We applied the thermodynamics-inspired INSIDEOUT framework to electroencephalography (EEG) recordings from two visual discrimination tasks performed under placebo, atomoxetine (noradrenergic enhancer), and donepezil (cholinergic enhancer) challenges. INSIDEOUT quantifies the strength of functional hierarchies within the brain via the computation of temporal irreversibility in neural activity. Trial-wise global irreversibility increased linearly with pupil-indexed arousal and exhibited a nonlinear inverted-U relationship with perceptual sensitivity, while showing no differences across drug conditions. A nonlinear mediation analysis revealed that temporal irreversibility can account for a significant portion of the association between pupil-linked arousal and perceptual sensitivity. At lower arousal, increases in prestimulus irreversibility improved perceptual accuracy, whereas at higher arousal, pre- and poststimulus irreversibility had different effects. These results bridge intrinsic whole-brain dynamics with perceptual decision-making, demonstrating that neuromodulator-linked arousal tunes cortical states and, in turn, perceptual performance. More broadly, the results shed new light on how arousal may reconfigure neural global dynamics.",
+      "authors": [
+        "del Agua, E.",
+        "Nuiten, S. A.",
+        "Zantvoord, J. B.",
+        "Deco, G.",
+        "van Gaal, S."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-05T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.02.729595v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG and pupil-linked arousal study relating cortical dynamics to task performance, transferable to cognitive load assessment in passive BCI",
+      "llm_evidence_cn": "使用EEG量化皮层功能层级与任务表现关联，可迁移至被动BCI认知负荷评估",
+      "llm_evidence": "使用EEG量化皮层功能层级与任务表现关联，可迁移至被动BCI认知负荷评估",
+      "canonical_evidence": "使用EEG量化皮层功能层级与任务表现关联，可迁移至被动BCI认知负荷评估",
+      "llm_tldr_en": "This paper combines EEG with pupillometry to study how global cortical nonequilibrium dynamics correlate with task performance, providing a method (INSIDEOUT) that could be adapted for cognitive load estimation in passive BCI.",
+      "llm_tldr_cn": "本文结合EEG和瞳孔测量，采用热力学启发的INSIDEOUT框架量化大脑功能层级的不对称性，发现瞳孔扩张与任务表现通过皮层非平衡动态相联系。实验在视觉辨别任务中进行，并在药物操控下验证了结果的稳健性。该方法提供了一种无监督的脑状态评估工具，可用于被动脑机接口中的认知负荷监测，但不直接应用深度学习。",
+      "llm_tldr": "本文结合EEG和瞳孔测量，采用热力学启发的INSIDEOUT框架量化大脑功能层级的不对称性，发现瞳孔扩张与任务表现通过皮层非平衡动态相联系。实验在视觉辨别任务中进行，并在药物操控下验证了结果的稳健性。该方法提供了一种无监督的脑状态评估工具，可用于被动脑机接口中的认知负荷监测，但不直接应用深度学习。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
