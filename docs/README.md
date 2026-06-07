@@ -6,37 +6,29 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-06
-- 运行时间：2026-06-06 21:21:35 UTC
+- 最新运行日期：2026-06-07
+- 运行时间：2026-06-07 21:08:23 UTC
 - 运行状态：成功
-- 本次总论文数：5
-- 精读区：1
-- 速读区：4
+- 本次总论文数：2
+- 精读区：0
+- 速读区：2
 
 ### 今日简报（AI）
-1) 今日精读日语语音生产千小时EEG-EMG-audio数据集，速读癫痫发作预测Transformer框架及动态脑功能连接新方法。  
-2) 值得关注方向：大规模多模态语音数据集为言语障碍研究奠基，EEG-FuseFormer的Transformer架构在癫痫发作预测中表现突出。  
-3) 普通读者可优先下载该开源数据集开展跨语言语音-脑电分析，或复现EEG-FuseFormer验证其在临床数据集上的泛化性。
-- 详情：[/202606/06/README](/202606/06/README)
+今日速读2篇脑科学前沿，聚焦EEG/MEG超图表示与高阶统计认知预测。  
+值得关注方向：基于caCoh的多元连接性超图建模，以及被大模型忽视的三阶统计量在认知预测中的优势。  
+建议读者优先深入理解超图结构对大脑网络分析的价值，后续可关注高阶统计特征在脑机接口中的应用潜力。
+- 详情：[/202606/07/README](/202606/07/README)
 
 ### 精读区论文标签
-1. [A 1000-hour EEG-EMG-audio dataset of Japanese speech production](/202606/06/2606.01264v1-a-1000-hour-eeg-emg-audio-dataset-of-japanese-speech-production)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：大规模多模态EEG数据集（1020小时），支持脑电基础模型训练
+- 本次无精读推荐。
 
 ### 速读区论文标签
-1. [EEG-FuseFormer: A Transformer-Driven Feature Fusion Framework for Seizure Onset Prediction](/202606/06/2606.02166v1-eeg-fuseformer-a-transformer-driven-feature-fusion-framework-for-seizure-onset-prediction)  
+1. [Hypergraphs from multivariate connectivity: caCoh-based EEG/MEG representation](/202606/07/2606.01357v1-hypergraphs-from-multivariate-connectivity-cacoh-based-eegmeg-representation)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：基于Transformer的脑电解码特征融合框架，可用于认知负荷估计
-2. [Hypergraphs from multivariate connectivity: caCoh-based EEG/MEG representation](/202606/06/2606.01357v1-hypergraphs-from-multivariate-connectivity-cacoh-based-eegmeg-representation)  
+   evidence：基于EEG的超图表示方法，可用于频率分解分析
+2. [The Variance Brain Foundation Models Forgot: Third-Order Statistics Predict Cognition Where Billion-Parameter Models Fail](/202606/07/2606.04010v1-the-variance-brain-foundation-models-forgot-third-order-statistics-predict-cognition-where-billion-parameter-models-fail)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：利用典型相干性构建脑电/脑磁图的超图表示
-3. [Inferring Dynamic Functional Connectivity from Field Potentials Using Graph Diffusion Autoregression](/202606/06/biorxiv-10-1101-2024-02-26-582177-v3-inferring-dynamic-functional-connectivity-from-field-potentials-using-graph-diffusion-autoregression)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：利用图扩散自回归从场电位推断动态功能连接
-4. [Global nonequilibrium cortical dynamics tie mid-level pupil-linked arousal to optimal task performance in humans](/202606/06/biorxiv-10-64898-2026-06-02-729595-v1-global-nonequilibrium-cortical-dynamics-tie-mid-level-pupil-linked-arousal-to-optimal-task-performance-in-humans)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：使用EEG量化皮层功能层级与任务表现关联，可迁移至被动BCI认知负荷评估
+   evidence：脑基础模型分析可应用于EEG基础模型认知负荷评估
 
 
 <div class="dpr-home-promo-card">

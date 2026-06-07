@@ -1,0 +1,39 @@
+{
+  "label": "2026-06-07",
+  "date": "2026-06-07",
+  "generated_at": "2026-06-07T21:08:31",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202606/07/2606.01357v1-hypergraphs-from-multivariate-connectivity-cacoh-based-eegmeg-representation",
+      "section": "quick",
+      "title_en": "Hypergraphs from multivariate connectivity: caCoh-based EEG/MEG representation",
+      "authors": "Daniil Vlasenko, Irina Saranskaia, Denis Zakharov",
+      "date": "2026-05-31",
+      "pdf": "https://arxiv.org/pdf/2606.01357v1",
+      "score": "7.0",
+      "evidence": "基于EEG的超图表示方法，可用于频率分解分析",
+      "tldr": "神经生理交互需要超图表示，但如何从EEG/MEG数据定义超边是关键。本文基于规范相干性（caCoh）提出两种超图构建方法：one-to-space和space-to-space。仿真表明，caCoh超图相比幅度平方相干性（MSC）图，在更广泛信噪比下具有更高的目标-基线对比度，能更准确恢复耦合频率和空间模式，并将边数从610大幅减少至10或1。该工作首次将多元谱连接性直接用于超图构建，为EEG/MEG分析提供了自然的方法基础。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Hypergraphs provide a natural framework for representing neurophysiological interactions distributed across sets of sensors. A key methodological question is how hyperedges should be defined from frequency-resolved electroencephalography/magnetoencephalography (EEG/MEG) data. We demonstrate a construction strategy in which hyperedges are obtained from canonical coherence (caCoh), an extension of coherence that estimates coupling between multidimensional signal spaces. To our knowledge, this is the first work to construct hypergraphs directly from a multivariate connectivity measure specifically designed for frequency-resolved neurophysiological analysis. We propose two caCoh-based representations: a one-to-space hypergraph, where each external signal defines a hyperedge over the EEG/MEG sensor space, and a space-to-space hypergraph, where two multidimensional signal spaces are represented by a single hyperedge. We evaluate the approach in controlled simulations with known coupling frequencies and varying signal-to-noise ratio (SNR). Compared with graphs based on magnitude-squared coherence (MSC), caCoh-based hypergraphs showed statistically higher target-baseline contrasts at almost all SNR levels, indicating stronger recovery of coupling frequencies. They also recovered sensor-level spatial patterns associated with the simulated sources. In addition, one-to-space and space-to-space representations reduced 610 MSC edges per frequency to 10 and 1 hyperedges, respectively. These results establish multivariate spectral connectivity as a natural methodological basis for EEG/MEG hypergraphs.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/07/2606.04010v1-the-variance-brain-foundation-models-forgot-third-order-statistics-predict-cognition-where-billion-parameter-models-fail",
+      "section": "quick",
+      "title_en": "The Variance Brain Foundation Models Forgot: Third-Order Statistics Predict Cognition Where Billion-Parameter Models Fail",
+      "authors": "Giovanni Marraffini, Gabriel Mahuas, Trinidad Borrell, Victoria Shevchenko, Demian Wassermann",
+      "date": "2026-05-29",
+      "pdf": "https://arxiv.org/pdf/2606.04010v1",
+      "score": "6.0",
+      "evidence": "脑基础模型分析可应用于EEG基础模型认知负荷评估",
+      "tldr": "脑基础模型（BFM）在认知预测上不如简单功能连接（FC）线性回归，且更大模型性能更差。分析发现BFM预训练捕获了fMRI二阶方差但破坏了三阶协偏度张量。通过将fMRI投影到保留协偏度的子空间并计算FC，无需预训练和GPU即可超越原始FC和所有BFM。针对该子空间的微调恢复了BFM的前向传播上限，表明瓶颈在于预训练目标而非架构。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Brain foundation models (BFMs) are self-supervised Transformers pretrained on fMRI data. We posit that these models should capture each subject's cognitive performance from their fMRI signal. Yet across three state-of-the-art BFMs and every readout we test, they predict cognition worse than a linear regression from the $\\sim$80K parameters of the functional connectivity matrix (FC). The gap widens with scale: BrainLM's 650M model predicts cognition worse than its 111M. We attribute this to a \\textbf{variance allocation problem}: BFM pretraining captures the variance components that dominate fMRI but not the higher-order structure that predicts cognition. Our per-cumulant analysis of the reconstructed signal shows that the second-order covariance is partially preserved, while the third-order co-skewness tensor is largely destroyed. To recover what BFMs lose, we design a linear pipeline that projects the fMRI signal into the subspace that best preserves its co-skewness and computes FC there. This \\textbf{exceeds raw FC and every pretrained BFM} on every dataset and parcellation we test, outperforming prior state-of-the-art under controlled evaluation \\textbf{with no pretraining and no GPU}. We \\textbf{recover the raw-FC ceiling on BrainLM's forward pass} by finetuning with a loss targeted at this same subspace. This shows that the bottleneck is the pretraining objective, not the architecture or the model size.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

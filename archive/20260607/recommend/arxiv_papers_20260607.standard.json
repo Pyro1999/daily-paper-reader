@@ -1,0 +1,100 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-07T21:06:47.579588+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 0,
+    "deep_cap": 7,
+    "deep_selected": 0,
+    "quick_candidates": 2,
+    "quick_skim_target": 12,
+    "quick_selected": 2
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.01357v1",
+      "source": "arxiv",
+      "title": "Hypergraphs from multivariate connectivity: caCoh-based EEG/MEG representation",
+      "abstract": "Hypergraphs provide a natural framework for representing neurophysiological interactions distributed across sets of sensors. A key methodological question is how hyperedges should be defined from frequency-resolved electroencephalography/magnetoencephalography (EEG/MEG) data. We demonstrate a construction strategy in which hyperedges are obtained from canonical coherence (caCoh), an extension of coherence that estimates coupling between multidimensional signal spaces. To our knowledge, this is the first work to construct hypergraphs directly from a multivariate connectivity measure specifically designed for frequency-resolved neurophysiological analysis. We propose two caCoh-based representations: a one-to-space hypergraph, where each external signal defines a hyperedge over the EEG/MEG sensor space, and a space-to-space hypergraph, where two multidimensional signal spaces are represented by a single hyperedge. We evaluate the approach in controlled simulations with known coupling frequencies and varying signal-to-noise ratio (SNR). Compared with graphs based on magnitude-squared coherence (MSC), caCoh-based hypergraphs showed statistically higher target-baseline contrasts at almost all SNR levels, indicating stronger recovery of coupling frequencies. They also recovered sensor-level spatial patterns associated with the simulated sources. In addition, one-to-space and space-to-space representations reduced 610 MSC edges per frequency to 10 and 1 hyperedges, respectively. These results establish multivariate spectral connectivity as a natural methodological basis for EEG/MEG hypergraphs.",
+      "authors": [
+        "Daniil Vlasenko",
+        "Irina Saranskaia",
+        "Denis Zakharov"
+      ],
+      "primary_category": "q-bio.QM",
+      "categories": [
+        "q-bio.QM",
+        "physics.data-an",
+        "q-bio.NC"
+      ],
+      "published": "2026-05-31T17:29:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.01357v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG hypergraph representation method for frequency-resolved analysis",
+      "llm_evidence_cn": "基于EEG的超图表示方法，可用于频率分解分析",
+      "llm_evidence": "基于EEG的超图表示方法，可用于频率分解分析",
+      "canonical_evidence": "基于EEG的超图表示方法，可用于频率分解分析",
+      "llm_tldr_en": "Proposes a hypergraph construction from EEG/MEG using canonical coherence, enabling multivariate connectivity representation for neurophysiological analysis.",
+      "llm_tldr_cn": "该论文提出了一种从EEG/MEG数据构建超图的新方法，利用典型相干性（caCoh）定义超边，首次将多变量连接性度量直接用于频率分解的神经生理学超图表示。该方法为脑电信号分析提供了一种高维交互建模工具，可潜在应用于认知负荷评估中的EEG特征提取与网络分析。",
+      "llm_tldr": "该论文提出了一种从EEG/MEG数据构建超图的新方法，利用典型相干性（caCoh）定义超边，首次将多变量连接性度量直接用于频率分解的神经生理学超图表示。该方法为脑电信号分析提供了一种高维交互建模工具，可潜在应用于认知负荷评估中的EEG特征提取与网络分析。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.04010v1",
+      "source": "arxiv",
+      "title": "The Variance Brain Foundation Models Forgot: Third-Order Statistics Predict Cognition Where Billion-Parameter Models Fail",
+      "abstract": "Brain foundation models (BFMs) are self-supervised Transformers pretrained on fMRI data. We posit that these models should capture each subject's cognitive performance from their fMRI signal. Yet across three state-of-the-art BFMs and every readout we test, they predict cognition worse than a linear regression from the $\\sim$80K parameters of the functional connectivity matrix (FC). The gap widens with scale: BrainLM's 650M model predicts cognition worse than its 111M. We attribute this to a \\textbf{variance allocation problem}: BFM pretraining captures the variance components that dominate fMRI but not the higher-order structure that predicts cognition. Our per-cumulant analysis of the reconstructed signal shows that the second-order covariance is partially preserved, while the third-order co-skewness tensor is largely destroyed. To recover what BFMs lose, we design a linear pipeline that projects the fMRI signal into the subspace that best preserves its co-skewness and computes FC there. This \\textbf{exceeds raw FC and every pretrained BFM} on every dataset and parcellation we test, outperforming prior state-of-the-art under controlled evaluation \\textbf{with no pretraining and no GPU}. We \\textbf{recover the raw-FC ceiling on BrainLM's forward pass} by finetuning with a loss targeted at this same subspace. This shows that the bottleneck is the pretraining objective, not the architecture or the model size.",
+      "authors": [
+        "Giovanni Marraffini",
+        "Gabriel Mahuas",
+        "Trinidad Borrell",
+        "Victoria Shevchenko",
+        "Demian Wassermann"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "cs.AI"
+      ],
+      "published": "2026-05-29T23:57:21+00:00",
+      "link": "https://arxiv.org/pdf/2606.04010v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "brain foundation models analysis applicable to EEG foundation models for cognitive load",
+      "llm_evidence_cn": "脑基础模型分析可应用于EEG基础模型认知负荷评估",
+      "llm_evidence": "脑基础模型分析可应用于EEG基础模型认知负荷评估",
+      "canonical_evidence": "脑基础模型分析可应用于EEG基础模型认知负荷评估",
+      "llm_tldr_en": "This paper critiques current brain foundation models (BFMs) for poor cognition prediction from fMRI and proposes that higher-order statistics (third-order cumulants) are crucial, offering insights for EEG foundation model development.",
+      "llm_tldr_cn": "当前脑基础模型（BFM）在从fMRI预测认知能力方面表现不佳，甚至不如简单的功能连接矩阵。本文通过分析指出BFM预训练主要捕获了fMRI的方差成分，而忽略了预测认知的高阶统计量（如三阶累积量）。这一发现对开发EEG基础模型具有重要启示：需要关注EEG信号中的高阶结构而非仅低阶特征，以提升认知负荷等评估任务的性能。",
+      "llm_tldr": "当前脑基础模型（BFM）在从fMRI预测认知能力方面表现不佳，甚至不如简单的功能连接矩阵。本文通过分析指出BFM预训练主要捕获了fMRI的方差成分，而忽略了预测认知的高阶统计量（如三阶累积量）。这一发现对开发EEG基础模型具有重要启示：需要关注EEG信号中的高阶结构而非仅低阶特征，以提升认知负荷等评估任务的性能。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
