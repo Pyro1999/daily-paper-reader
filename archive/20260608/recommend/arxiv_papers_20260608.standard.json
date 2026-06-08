@@ -1,0 +1,138 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-08T21:56:27.807069+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 2,
+    "deep_cap": 7,
+    "deep_selected": 2,
+    "quick_candidates": 1,
+    "quick_skim_target": 12,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2606.04040v1",
+      "source": "arxiv",
+      "title": "Channel-Oriented Design for EEG-to-Music Reconstruction",
+      "abstract": "Brain-computer interfaces aim to decode naturalistic stimuli from neural signals, yet most progress to date has focused on vision and language. In this article, we study a more challenging but far less explored setting, EEG-to-music reconstruction, where signals are weak, distributed, and highly susceptible to noise and channel variability. Our central finding is that early channel mixing destroys weak but discriminative EEG signals. To address this, we propose a channel-oriented design with three key components. Specifically, channel-wise tokenization treats each electrode as an explicit token to retain spatially localized neural evidence, channel-wise multi-view self-distillation enforces consistency across temporal crops and random channel subsets to learn robust and distributed representations, and channel-wise data augmentation introduces structured channel dropout to improve invariance to noise, artifacts, and missing electrodes. Together, these components preserve weak yet informative signals across channels and enable stable alignment to a semantic music representation space. We integrate this channel-oriented design within an encoding-alignment-decoding pipeline for EEG-to-music reconstruction. Theoretically, we characterize when preserving channel-level structure leads to improved alignment. Empirically, we compare with a range of state-of-the-art baselines and demonstrate consistent and significant performance gains.",
+      "authors": [
+        "Jiaxin Qing",
+        "Junwei Lu",
+        "Lexin Li"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "eess.AS"
+      ],
+      "published": "2026-06-02T04:13:37+00:00",
+      "link": "https://arxiv.org/pdf/2606.04040v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "passive BCI EEG reconstruction using deep learning",
+      "llm_evidence_cn": "使用深度学习的被动BCI脑电图重建",
+      "llm_evidence": "使用深度学习的被动BCI脑电图重建",
+      "canonical_evidence": "使用深度学习的被动BCI脑电图重建",
+      "llm_tldr_en": "Proposes channel-oriented design for EEG-to-music reconstruction, treating each electrode as token with multi-view self-distillation, preserving weak signals.",
+      "llm_tldr_cn": "针对EEG到音乐重建中信号微弱且易受噪声干扰的问题，本文提出通道导向设计，通过通道级标记化保留空间局部证据，利用多视角自蒸馏在时间片段和随机通道子集间保持一致性。实验表明该方法有效避免了早期通道混合导致的信号损失，实现了高质量音乐重建。该工作为被动BCI中微弱信号解码提供了新思路，可推广至认知负荷等神经状态解码。",
+      "llm_tldr": "针对EEG到音乐重建中信号微弱且易受噪声干扰的问题，本文提出通道导向设计，通过通道级标记化保留空间局部证据，利用多视角自蒸馏在时间片段和随机通道子集间保持一致性。实验表明该方法有效避免了早期通道混合导致的信号损失，实现了高质量音乐重建。该工作为被动BCI中微弱信号解码提供了新思路，可推广至认知负荷等神经状态解码。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.06647v1",
+      "source": "arxiv",
+      "title": "The Identity Trap in EEG Foundation Models: A Diagnostic Audit",
+      "abstract": "Objective. EEG foundation models (FMs) report strong accuracy on clinical resting-state EEG. However, high accuracy under subject-disjoint cross-validation remains ambiguous: it can reflect a genuine clinical biomarker, or subject-identity features that correlate with the label. We name this the Identity Trap and ask whether it can be diagnosed at the representation level before fine-tuning.   Approach. We propose FMScope, a frozen-representation protocol packaging five diagnostics: variance decomposition, subject-axis erasure, aperiodic 1/f ablation, layer-wise label probing, and within-subject direction consistency. We apply it to three pretrained FMs (LaBraM, CBraMod, REVE) across four datasets in a 2x2 layout: subject relation of label x presence of a consensus cross-subject EEG marker.   Main results. (i) The Identity Trap is universal: frozen subject-variance is 13-89x a random null in 12/12 pairs, rising in all 12 under fine-tuning (+10 to +63 pp). This dominance is a removable linear axis: erasing it improves label decoding where the label varies within subject (+6 to +12 pp in primary cells; +4 to +27 pp across external cohorts). (ii) Aperiodic 1/f is one subject carrier: removing it drops the subject probe by 9-19 pp on LaBraM and CBraMod. REVE saturates subject identity without measurable aperiodic dependence. (iii) Fine-tuning amplifies label-variance only in cells with a literature-established cross-subject marker.   Significance. The Identity Trap is a physically-grounded instance of shortcut learning: the preferred cue has a measurable physiological component, and subject-disjoint splitting alone cannot rule it out. FMScope separates gains reflecting a biological marker from those reflecting subject identity.",
+      "authors": [
+        "Jun-You Lin",
+        "Ying Choon Wu",
+        "Tzyy-Ping Jung"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "q-bio.NC"
+      ],
+      "published": "2026-06-04T18:54:34+00:00",
+      "link": "https://arxiv.org/pdf/2606.06647v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG foundation model diagnostic audit",
+      "llm_evidence_cn": "EEG基础模型诊断审计",
+      "llm_evidence": "EEG基础模型诊断审计",
+      "canonical_evidence": "EEG基础模型诊断审计",
+      "llm_tldr_en": "Proposes FMScope to diagnose identity trap in EEG foundation models, ensuring genuine biomarker extraction via representation-level diagnostics.",
+      "llm_tldr_cn": "当前的EEG基础模型在受试者分离验证下可能混淆身份特征与真实生物标志物。本文提出FMScope协议，包含五个诊断测试，在微调前评估表示质量。在三个预训练模型和四个数据集上的实验表明，该协议能有效识别身份陷阱。这项工作为EEG基础模型的可信评估提供了重要工具。",
+      "llm_tldr": "当前的EEG基础模型在受试者分离验证下可能混淆身份特征与真实生物标志物。本文提出FMScope协议，包含五个诊断测试，在微调前评估表示质量。在三个预训练模型和四个数据集上的实验表明，该协议能有效识别身份陷阱。这项工作为EEG基础模型的可信评估提供了重要工具。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.07196v1",
+      "source": "arxiv",
+      "title": "Structure-Preserving Correction Learning for Sparse Bayesian Inference in Brain Source Imaging",
+      "abstract": "Classical sparse Type-II Bayesian methods for M/EEG brain imaging support joint estimation of source and noise hyperparameters, but rely on fixed iterative update rules. Although these updates are principled and interpretable, their dynamics cannot be adapted from data. We propose to learn the update mechanism itself while preserving the underlying Bayesian structure by unfolding a classical joint hyperparameter-learning solver into a trainable neural architecture whose layers mirror the original iterations. The resulting framework is initialized to recover the classical solver exactly before training and is enriched through progressively more expressive correction-learning mechanisms, ranging from learnable biases to adaptive MLP and attention-based contextual refinements. In this way, training does not replace Bayesian inference with a black-box predictor, but instead learns structured correction terms while retaining the interpretability and model-based character of the original update dynamics. Structured correction learning therefore aims to improve empirical reconstruction performance without replacing the original model-based inference mechanism. Experimental results show that the learned correction variants improve reconstruction performance and convergence behavior over the baseline unfolded solver while preserving its algorithmic transparency.",
+      "authors": [
+        "Marco Morik",
+        "Xiao Ruiting",
+        "Shinichi Nakajima",
+        "Stefan Haufe",
+        "Ismail Huseynov"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-05T12:04:08+00:00",
+      "link": "https://arxiv.org/pdf/2606.07196v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Deep learning method for EEG signal processing via unfolded Bayesian solver",
+      "llm_evidence_cn": "通过展开贝叶斯求解器的深度学习方法用于EEG信号处理",
+      "llm_evidence": "通过展开贝叶斯求解器的深度学习方法用于EEG信号处理",
+      "canonical_evidence": "通过展开贝叶斯求解器的深度学习方法用于EEG信号处理",
+      "llm_tldr_en": "The paper proposes a structure-preserving correction learning framework that unfolds a classical Bayesian solver into a neural network for M/EEG brain source imaging, offering a trainable deep learning approach for EEG signal processing.",
+      "llm_tldr_cn": "该论文提出一种结构保持校正学习方法，将经典稀疏贝叶斯求解器展开为可训练神经网络架构，用于M/EEG脑源成像。方法从经典求解器初始化，通过可学习偏置和自适应机制丰富表达力，在保持贝叶斯结构的同时实现数据驱动优化。实验验证了该方法在源成像精度上的提升，为EEG信号处理提供了通用深度学习框架。",
+      "llm_tldr": "该论文提出一种结构保持校正学习方法，将经典稀疏贝叶斯求解器展开为可训练神经网络架构，用于M/EEG脑源成像。方法从经典求解器初始化，通过可学习偏置和自适应机制丰富表达力，在保持贝叶斯结构的同时实现数据驱动优化。实验验证了该方法在源成像精度上的提升，为EEG信号处理提供了通用深度学习框架。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

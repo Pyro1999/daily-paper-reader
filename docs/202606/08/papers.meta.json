@@ -1,0 +1,54 @@
+{
+  "label": "2026-06-08",
+  "date": "2026-06-08",
+  "generated_at": "2026-06-08T21:59:28",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202606/08/2606.04040v1-channel-oriented-design-for-eeg-to-music-reconstruction",
+      "section": "deep",
+      "title_en": "Channel-Oriented Design for EEG-to-Music Reconstruction",
+      "authors": "Jiaxin Qing, Junwei Lu, Lexin Li",
+      "date": "2026-06-02",
+      "pdf": "https://arxiv.org/pdf/2606.04040v1",
+      "score": "8.0",
+      "evidence": "使用深度学习的被动BCI脑电图重建",
+      "tldr": "脑电解码音乐重建极具挑战，因信号弱且易受噪声与通道变异影响。本文发现早期通道混合会破坏微弱但关键的信号，提出通道导向设计，包括逐通道分词、多视角自蒸馏和数据增强，以保留空间局部神经证据并提升鲁棒性。集成到编码-对齐-解码流水线后，在多项指标上显著优于现有方法。理论分析也表明保留通道级结构有助于对齐，为弱信号脑机接口提供了新范式。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Brain-computer interfaces aim to decode naturalistic stimuli from neural signals, yet most progress to date has focused on vision and language. In this article, we study a more challenging but far less explored setting, EEG-to-music reconstruction, where signals are weak, distributed, and highly susceptible to noise and channel variability. Our central finding is that early channel mixing destroys weak but discriminative EEG signals. To address this, we propose a channel-oriented design with three key components. Specifically, channel-wise tokenization treats each electrode as an explicit token to retain spatially localized neural evidence, channel-wise multi-view self-distillation enforces consistency across temporal crops and random channel subsets to learn robust and distributed representations, and channel-wise data augmentation introduces structured channel dropout to improve invariance to noise, artifacts, and missing electrodes. Together, these components preserve weak yet informative signals across channels and enable stable alignment to a semantic music representation space. We integrate this channel-oriented design within an encoding-alignment-decoding pipeline for EEG-to-music reconstruction. Theoretically, we characterize when preserving channel-level structure leads to improved alignment. Empirically, we compare with a range of state-of-the-art baselines and demonstrate consistent and significant performance gains.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/08/2606.06647v1-the-identity-trap-in-eeg-foundation-models-a-diagnostic-audit",
+      "section": "deep",
+      "title_en": "The Identity Trap in EEG Foundation Models: A Diagnostic Audit",
+      "authors": "Jun-You Lin, Ying Choon Wu, Tzyy-Ping Jung",
+      "date": "2026-06-04",
+      "pdf": "https://arxiv.org/pdf/2606.06647v1",
+      "score": "8.0",
+      "evidence": "EEG基础模型诊断审计",
+      "tldr": "EEG基础模型在临床静息态数据上表现优异，但高准确率可能源于被试身份特征而非临床标记，即“身份陷阱”。本文提出FMScope诊断协议，包括方差分解、被试轴擦除、1/f成分消融等五项诊断。在三个预训练模型和四个数据集上发现：冻结特征中被试身份方差是随机的13-89倍，且可通过线性擦除改善标签解码；1/f成分是身份载体之一；微调仅在有跨被试标记的单元放大标签方差。FMScope能区分源于生物标记与被试身份的增益。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Objective. EEG foundation models (FMs) report strong accuracy on clinical resting-state EEG. However, high accuracy under subject-disjoint cross-validation remains ambiguous: it can reflect a genuine clinical biomarker, or subject-identity features that correlate with the label. We name this the Identity Trap and ask whether it can be diagnosed at the representation level before fine-tuning.   Approach. We propose FMScope, a frozen-representation protocol packaging five diagnostics: variance decomposition, subject-axis erasure, aperiodic 1/f ablation, layer-wise label probing, and within-subject direction consistency. We apply it to three pretrained FMs (LaBraM, CBraMod, REVE) across four datasets in a 2x2 layout: subject relation of label x presence of a consensus cross-subject EEG marker.   Main results. (i) The Identity Trap is universal: frozen subject-variance is 13-89x a random null in 12/12 pairs, rising in all 12 under fine-tuning (+10 to +63 pp). This dominance is a removable linear axis: erasing it improves label decoding where the label varies within subject (+6 to +12 pp in primary cells; +4 to +27 pp across external cohorts). (ii) Aperiodic 1/f is one subject carrier: removing it drops the subject probe by 9-19 pp on LaBraM and CBraMod. REVE saturates subject identity without measurable aperiodic dependence. (iii) Fine-tuning amplifies label-variance only in cells with a literature-established cross-subject marker.   Significance. The Identity Trap is a physically-grounded instance of shortcut learning: the preferred cue has a measurable physiological component, and subject-disjoint splitting alone cannot rule it out. FMScope separates gains reflecting a biological marker from those reflecting subject identity.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/08/2606.07196v1-structure-preserving-correction-learning-for-sparse-bayesian-inference-in-brain-source-imaging",
+      "section": "quick",
+      "title_en": "Structure-Preserving Correction Learning for Sparse Bayesian Inference in Brain Source Imaging",
+      "authors": "Marco Morik, Xiao Ruiting, Shinichi Nakajima, Stefan Haufe, Ismail Huseynov",
+      "date": "2026-06-05",
+      "pdf": "https://arxiv.org/pdf/2606.07196v1",
+      "score": "7.0",
+      "evidence": "通过展开贝叶斯求解器的深度学习方法用于EEG信号处理",
+      "tldr": "脑源成像中稀疏贝叶斯推理依赖固定迭代规则，无法从数据中自适应。本文通过展开经典求解器为可训练神经网络，在保留贝叶斯结构的同时学习校正项，如可学习偏置、MLP和注意力机制。训练不替代原始推理，而是提升重建性能和收敛速度。实验验证了方法的有效性，保持了算法透明性。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Classical sparse Type-II Bayesian methods for M/EEG brain imaging support joint estimation of source and noise hyperparameters, but rely on fixed iterative update rules. Although these updates are principled and interpretable, their dynamics cannot be adapted from data. We propose to learn the update mechanism itself while preserving the underlying Bayesian structure by unfolding a classical joint hyperparameter-learning solver into a trainable neural architecture whose layers mirror the original iterations. The resulting framework is initialized to recover the classical solver exactly before training and is enriched through progressively more expressive correction-learning mechanisms, ranging from learnable biases to adaptive MLP and attention-based contextual refinements. In this way, training does not replace Bayesian inference with a black-box predictor, but instead learns structured correction terms while retaining the interpretability and model-based character of the original update dynamics. Structured correction learning therefore aims to improve empirical reconstruction performance without replacing the original model-based inference mechanism. Experimental results show that the learned correction variants improve reconstruction performance and convergence behavior over the baseline unfolded solver while preserving its algorithmic transparency.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

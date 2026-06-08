@@ -6,29 +6,29 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-07
-- 运行时间：2026-06-07 21:08:23 UTC
+- 最新运行日期：2026-06-08
+- 运行时间：2026-06-08 21:59:22 UTC
 - 运行状态：成功
-- 本次总论文数：2
-- 精读区：0
-- 速读区：2
+- 本次总论文数：3
+- 精读区：2
+- 速读区：1
 
 ### 今日简报（AI）
-今日速读2篇脑科学前沿，聚焦EEG/MEG超图表示与高阶统计认知预测。  
-值得关注方向：基于caCoh的多元连接性超图建模，以及被大模型忽视的三阶统计量在认知预测中的优势。  
-建议读者优先深入理解超图结构对大脑网络分析的价值，后续可关注高阶统计特征在脑机接口中的应用潜力。
-- 详情：[/202606/07/README](/202606/07/README)
+今天精读了两篇脑电信号论文、速读了一篇脑源成像论文，重点关注脑电解码音乐重建和基础模型身份偏差诊断。最值得看的是《Channel-Oriented Design for EEG-to-Music Reconstruction》提出的通道定向框架，以及《The Identity Trap in EEG Foundation Models》对模型公平性的系统审计。建议优先精读这两篇8分论文，验证其方法在你自己的数据集或任务中的可迁移性。
+- 详情：[/202606/08/README](/202606/08/README)
 
 ### 精读区论文标签
-- 本次无精读推荐。
+1. [Channel-Oriented Design for EEG-to-Music Reconstruction](/202606/08/2606.04040v1-channel-oriented-design-for-eeg-to-music-reconstruction)  
+   标签：评分：8.0/10、query:pbci-load
+   evidence：使用深度学习的被动BCI脑电图重建
+2. [The Identity Trap in EEG Foundation Models: A Diagnostic Audit](/202606/08/2606.06647v1-the-identity-trap-in-eeg-foundation-models-a-diagnostic-audit)  
+   标签：评分：8.0/10、query:pbci-load
+   evidence：EEG基础模型诊断审计
 
 ### 速读区论文标签
-1. [Hypergraphs from multivariate connectivity: caCoh-based EEG/MEG representation](/202606/07/2606.01357v1-hypergraphs-from-multivariate-connectivity-cacoh-based-eegmeg-representation)  
+1. [Structure-Preserving Correction Learning for Sparse Bayesian Inference in Brain Source Imaging](/202606/08/2606.07196v1-structure-preserving-correction-learning-for-sparse-bayesian-inference-in-brain-source-imaging)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：基于EEG的超图表示方法，可用于频率分解分析
-2. [The Variance Brain Foundation Models Forgot: Third-Order Statistics Predict Cognition Where Billion-Parameter Models Fail](/202606/07/2606.04010v1-the-variance-brain-foundation-models-forgot-third-order-statistics-predict-cognition-where-billion-parameter-models-fail)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：脑基础模型分析可应用于EEG基础模型认知负荷评估
+   evidence：通过展开贝叶斯求解器的深度学习方法用于EEG信号处理
 
 
 <div class="dpr-home-promo-card">
