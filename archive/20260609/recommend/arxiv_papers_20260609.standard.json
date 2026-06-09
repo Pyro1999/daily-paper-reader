@@ -1,0 +1,272 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-09T22:02:14.949649+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 0,
+    "deep_cap": 7,
+    "deep_selected": 0,
+    "quick_candidates": 6,
+    "quick_skim_target": 12,
+    "quick_selected": 6
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.09770v1",
+      "source": "arxiv",
+      "title": "Discovering Functionally Selective Brain Regions with a Deep Topographic Multimodal Model",
+      "abstract": "Nearby neurons in cortex share similar response profiles, producing systematic spatial organization across sensory and cognitive systems. Recent topographic models reproduce aspects of this structure but remain unimodal and spatially constrain each layer separately, yielding fragmented maps that capture neither the contiguity of cortical processing streams nor their integration across modalities. We introduce Topo-Omni, a topographic multimodal model in which visual, auditory, and language/cognitive processing share a single contiguous in-silico sheet. Built by fine-tuning a pretrained foundation model with a spatial smoothness objective, this architecture develops clusters across modalities that are consistent with human neuroimaging, from sensory to cognitive systems. Driving or suppressing a cluster selectively biases or impairs perception, paralleling human intervention studies. Finally, we use our model to screen for novel clusters in-silico and discover new natural landscape and animal networks which we validate in human data. A single spatial principle thus organizes representations across modalities and processing stages, yielding testable hypotheses about cortical organization.",
+      "authors": [
+        "Badr AlKhamissi",
+        "Johannes Mehrer",
+        "Lara Marinov",
+        "Ahmed Abdelaal",
+        "Abdulkadir Gokce",
+        "Martin Schrimpf"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "cs.LG"
+      ],
+      "published": "2026-06-08T17:31:50+00:00",
+      "link": "https://arxiv.org/pdf/2606.09770v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "proposes a deep topographic multimodal model fine-tuned from a pretrained foundation model",
+      "llm_evidence_cn": "提出从预训练基础模型微调得到的深度地形多模态模型",
+      "llm_evidence": "提出从预训练基础模型微调得到的深度地形多模态模型",
+      "canonical_evidence": "提出从预训练基础模型微调得到的深度地形多模态模型",
+      "llm_tldr_en": "Introduces Topo-Omni, a topographic multimodal model built by fine-tuning a pretrained foundation model, producing brain-like clusters across modalities.",
+      "llm_tldr_cn": "现有地形模型只能处理单一模态且空间约束分离，无法模拟皮层处理流的连续性。本文提出Topo-Omni模型，通过微调预训练基础模型并加入空间平滑目标，在单一连续人工皮层上集成视觉、听觉和语言认知处理。该模型自发形成与人类神经影像一致的多模态簇，为EEG基础模型的发展提供了新的架构思路。",
+      "llm_tldr": "现有地形模型只能处理单一模态且空间约束分离，无法模拟皮层处理流的连续性。本文提出Topo-Omni模型，通过微调预训练基础模型并加入空间平滑目标，在单一连续人工皮层上集成视觉、听觉和语言认知处理。该模型自发形成与人类神经影像一致的多模态簇，为EEG基础模型的发展提供了新的架构思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.08240v1",
+      "source": "arxiv",
+      "title": "A dual-system approach for epilepsy diagnosis: integrating mamba-Bi-LSTM architecture with SHAP-based verification",
+      "abstract": "This study develops a medical AI-assisted diagnosis system based on deep learning, which provides intelligent diagnostic solutions for epilepsy, a disease that seriously threatens the life and health of patients. Epilepsy has sudden and unpredictable seizures. Traditional diagnostic methods mainly rely on doctors' manual interpretation of EEG, which is time-consuming and dependent by experience. In response to the above challenges, this study designed a dual-system intelligent diagnosis framework, which includes two core components: the main discrimination system and the verification system. The main discrimination system uses a deep learning model that combines the innovative Mamba architecture with the Bi-LSTM structure to integrate and analyze heterogeneous data to achieve extremely high diagnostic accuracy; the verification system provides an explainable diagnostic basis through the SHAP method to enhance the credibility of the results. This system establishes a cross-modal database to realize intelligent analysis of multi-source heterogeneous data-fusion EEG signals and clinical text data for epilepsy. The system outputs results based on diagnostic consistency and confidence levels, and high-confidence predictions can also be used as automatic feedback sources to optimize the model. The experimental results show that the accuracy of the main discriminant model of the intelligent diagnosis system for epilepsy has increased from 92.6% to 98.7% and the F1 score has increased from 0.895 to 0.992, all of which have exceeded the existing optimal methods; the average processing time for verification system feedback integration is only 220 ms, which increases the overall diagnostic accuracy by 5.1%.",
+      "authors": [
+        "Mufeng Chen",
+        "Jia Xie",
+        "Fuchang Luo",
+        "Quansheng Ren"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-06-06T15:54:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.08240v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "integrates deep learning (Mamba-Bi-LSTM) with EEG for diagnosis",
+      "llm_evidence_cn": "将深度学习（Mamba-Bi-LSTM）与脑电图结合用于诊断",
+      "llm_evidence": "将深度学习（Mamba-Bi-LSTM）与脑电图结合用于诊断",
+      "canonical_evidence": "将深度学习（Mamba-Bi-LSTM）与脑电图结合用于诊断",
+      "llm_tldr_en": "Proposes a dual-system epilepsy diagnosis framework using Mamba-Bi-LSTM and SHAP verification, demonstrating effective EEG-based classification.",
+      "llm_tldr_cn": "现有癫痫诊断依赖医生手动解读脑电图，耗时且依赖经验。本文提出双系统智能诊断框架，主系统结合Mamba架构与双向LSTM进行EEG分类，验证系统采用SHAP解释。实验表明该方法在癫痫诊断任务上表现优异，为深度学习在EEG信号处理中的应用提供了新思路。",
+      "llm_tldr": "现有癫痫诊断依赖医生手动解读脑电图，耗时且依赖经验。本文提出双系统智能诊断框架，主系统结合Mamba架构与双向LSTM进行EEG分类，验证系统采用SHAP解释。实验表明该方法在癫痫诊断任务上表现优异，为深度学习在EEG信号处理中的应用提供了新思路。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.08594v1",
+      "source": "arxiv",
+      "title": "How Much Capacity Does EEG Denoising Need? Ultra-Compact Networks reveal Benchmark Saturation and Metric-Utility Gap",
+      "abstract": "Deep learning EEG denoising architectures have scaled from tens of thousands to tens of millions of parameters, yet no prior study has isolated model capacity as the experimental variable or tested whether reconstruction metrics predict downstream neural-signal utility. We address both gaps by fixing architecture, loss, data split, and training recipe while sweeping only channel width from 1.05K to 40.26K parameters in a minimal depthwise-separable convolutional U-Net. Models were evaluated on the EEGDenoiseNet benchmark, cross-dataset BCI transfer tests, controlled baseline retraining, and downstream motor-imagery classification with five decoder families across all nine BCI Competition IV-2a subjects. Reconstruction performance saturated by 3-6.5K parameters, with post-elbow gains of at most 0.015 correlation coefficient per log10-parameter unit. An 8.46M-parameter baseline retrained under the same pipeline matched the 40.26K compact variant on EOG--a 200x parameter gap yielding no advantage--while a Patch-Transformer control reproduced the same diminishing-return shape. Downstream evaluation exposed a classifier-dependent metric-utility gap: reconstruction-optimized denoising significantly degraded CSP+LDA classification across all nine subjects and three artifact types (best denoised accuracy 0.547 vs. 0.612 noisy baseline; Bonferroni p=0.0488), persisting on naturally recorded trials (Delta=-0.047; BH-FDR q=0.0049). End-to-end neural decoders showed variable or neutral effects. Standard EEG denoising benchmarks are saturated far below current model capacity, and reconstruction metrics do not predict BCI utility. Ultra-compact models at 33-46 KB and 1.27-2.61M FLOPs/segment are practical for edge deployment. These findings argue for capacity-controlled evaluation, harder task-aware benchmarks, and mandatory downstream validation.",
+      "authors": [
+        "Jasmeet Singh Bindra",
+        "Siddharth Panwar",
+        "Shubhajit Roy Chowdhury"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-06-07T12:17:25+00:00",
+      "link": "https://arxiv.org/pdf/2606.08594v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "deep learning EEG denoising with BCI downstream evaluation",
+      "llm_evidence_cn": "基于深度学习的脑电图去噪，并在BCI下游任务评估",
+      "llm_evidence": "基于深度学习的脑电图去噪，并在BCI下游任务评估",
+      "canonical_evidence": "基于深度学习的脑电图去噪，并在BCI下游任务评估",
+      "llm_tldr_en": "This paper studies EEG denoising network capacity, sweeping channel width from 1.05K to 40.26K parameters, and evaluating on EEGDenoiseNet benchmark and BCI Competition IV-2a motor imagery classification.",
+      "llm_tldr_cn": "针对脑电图去噪网络容量缺乏系统研究的问题，该论文固定架构仅改变通道宽度，比较了从1.05K到40.26K参数的深度可分离卷积U-Net。在EEGDenoiseNet基准和BCI竞赛IV-2a运动想象分类上的实验表明，基准测试已饱和，且重建指标与下游任务效用存在差距。该工作为设计更轻量高效的EEG去噪模型提供了指导。",
+      "llm_tldr": "针对脑电图去噪网络容量缺乏系统研究的问题，该论文固定架构仅改变通道宽度，比较了从1.05K到40.26K参数的深度可分离卷积U-Net。在EEGDenoiseNet基准和BCI竞赛IV-2a运动想象分类上的实验表明，基准测试已饱和，且重建指标与下游任务效用存在差距。该工作为设计更轻量高效的EEG去噪模型提供了指导。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.09189v1",
+      "source": "arxiv",
+      "title": "Pretrained, Frozen, Still Leaking: Auditing Cross-Encoder Attribute Transfer in EEG Foundation Models",
+      "abstract": "EEG foundation-model releases are usually audited one endpoint at a time: raw-reconstruction, membership inference, identity linkage, or DP-SGD on the downstream head. We audit the same released embeddings under all four endpoints jointly, on BIOT, LaBraM, and EEGPT, and show that each single-endpoint audit clears releases that still leak spectral attributes. The decisive evidence is a cross-encoder transfer audit: a single ridge attribute decoder learned from one frozen encoder transfers, via a fitted linear bridge, to held-out-subject test splits of every other encoder, with subject-disjoint matched-control 95% CI lower bound at least 0.081 across all six BIOT/LaBraM/EEGPT directions. We prove a sufficient condition: two encoders sharing a nontrivial attribute-coordinate projector overlap beta admit a chained ridge bridge attacker with centered-gain lower bound sqrt(beta/(1+tau^2)) - eps_br - rho_0, and back-solve beta in [0.008, 0.198]. To turn the joint audit into a deployment-readable decision rule we introduce an audit-endpoint disagreement score (AEDS), prove sufficient conditions for its positivity, and bootstrap-calibrate it per cell; AEDS is positive in all eight matched-CI cells (BIOT/LaBraM/EEGPT on EEGMMI; LaBraM on Sleep-EDF, 54-channel LIMO, CHB-MIT pediatric scalp EEG) with p<0.001, while a head-level Carlini LiRA membership audit reaches AUC only 0.50-0.70. Standard defenses fail under audit: a Wiener-style noise-aware adaptive attacker, the LiRA audit, and DP-SGD at every utility-preserving epsilon in {4,8} leave the attribute channel essentially unchanged. The contribution is an audit framework that turns scattered single-endpoint defenses into a joint release decision, supported by a cross-encoder bridge theorem and adaptive-attacker, LiRA, and DP-SGD baselines; the audit licenses release-blocking, not raw-waveform exfiltration or held-out-subject identity recovery.",
+      "authors": [
+        "Jianwei Tai"
+      ],
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "published": "2026-06-08T08:24:03+00:00",
+      "link": "https://arxiv.org/pdf/2606.09189v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Audits EEG foundation models (BIOT, LaBraM, EEGPT) for privacy, directly relevant to foundation model evaluation",
+      "llm_evidence_cn": "审计EEG基础模型（BIOT, LaBraM, EEGPT）的隐私泄露，与基础模型研究直接相关",
+      "llm_evidence": "审计EEG基础模型（BIOT, LaBraM, EEGPT）的隐私泄露，与基础模型研究直接相关",
+      "canonical_evidence": "审计EEG基础模型（BIOT, LaBraM, EEGPT）的隐私泄露，与基础模型研究直接相关",
+      "llm_tldr_en": "Audits four privacy endpoints in EEG foundation models, revealing attribute leakage across encoders via a cross-encoder transfer audit, crucial for foundation model safety.",
+      "llm_tldr_cn": "本文针对EEG基础模型发布审计不全面的问题，在BIOT、LaBraM和EEGPT上联合审计四个隐私端点，并提出跨编码器迁移审计方法，证明单个端点审计可能遗漏频谱属性泄露。该工作揭示了基础模型的安全隐患，对认知负荷评估中基础模型的应用具有重要参考价值。",
+      "llm_tldr": "本文针对EEG基础模型发布审计不全面的问题，在BIOT、LaBraM和EEGPT上联合审计四个隐私端点，并提出跨编码器迁移审计方法，证明单个端点审计可能遗漏频谱属性泄露。该工作揭示了基础模型的安全隐患，对认知负荷评估中基础模型的应用具有重要参考价值。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-02-729705-v1",
+      "source": "biorxiv",
+      "title": "Neural decoding of speech using deep neural ensembles",
+      "abstract": "Speech brain-computer interfaces (BCIs) can restore rapid communication to people with paralysis, but decoding errors still limit performance. In recent brain-to-text decoding competitions, deep ensemble methods, which combine predictions from multiple independently trained decoders, have delivered striking accuracy improvements and account for the largest gains over baseline approaches. However, these methods have not previously been tested in real-time, require substantial computational resources, and their performance under various clinically relevant constraints remains poorly understood. Here, we present the first closed-loop test of deep ensembles in a participant with bilateral intracortical microelectrode arrays, demonstrating a reduction in word error rate from 33.7% to 26.0% on a large-vocabulary task. Using additional data from three participants, we then assess how these gains depend on baseline error rate, training dataset size, and ensemble size, including the resource-accuracy tradeoffs most relevant for real-world deployment. Finally, we introduce a computationally efficient pseudoensembling approach based on test-time augmentation that improves decoding accuracy while requiring only a single base decoder, greatly reducing the computational burden of ensembling. Together, these results show that the benefits of deep ensembling can be realized in real time and under practical resource constraints, bringing speech BCIs closer to broader clinical adoption.",
+      "authors": [
+        "Yoon, S.",
+        "Avansino, D. T.",
+        "Madugula, S.",
+        "Levin, A. D.",
+        "Fan, C.",
+        "Abramovich Krasa, B.",
+        "Singh, A.",
+        "Vo, C.",
+        "Hahn, N. V.",
+        "Card, N. S.",
+        "Fogg, Z.",
+        "Wairagkar, M.",
+        "Nason-Tomaszewski, S. R.",
+        "Jacques, B. G.",
+        "Bechefsky, P. H.",
+        "Iacobacci, C.",
+        "Deo, D. R.",
+        "Hochberg, L. R.",
+        "Brandman, D. M.",
+        "Stavisky, S. D.",
+        "Au Yong, N.",
+        "Pandarinath, C.",
+        "Henderson, J. M.",
+        "Willett, F. R."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-04T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.02.729705v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "deep neural ensembles for speech BCI decoding",
+      "llm_evidence_cn": "深度集成用于语音BCI解码",
+      "llm_evidence": "深度集成用于语音BCI解码",
+      "canonical_evidence": "深度集成用于语音BCI解码",
+      "llm_tldr_en": "First closed-loop test of deep ensemble methods in speech BCI, showing reduced word error rate and potential for clinical BCI applications.",
+      "llm_tldr_cn": "语音脑机接口（BCI）解码错误率仍制约性能。本文首次在真实闭环环境中测试深度集成方法，利用多个独立解码器的组合预测提升语音BCI解码准确率。在皮层内微电极阵列植入者中验证，词错误率显著降低。该工作展示了深度学习在BCI中的先进应用，为被动BCI中的高级算法研究提供了方法参考。",
+      "llm_tldr": "语音脑机接口（BCI）解码错误率仍制约性能。本文首次在真实闭环环境中测试深度集成方法，利用多个独立解码器的组合预测提升语音BCI解码准确率。在皮层内微电极阵列植入者中验证，词错误率显著降低。该工作展示了深度学习在BCI中的先进应用，为被动BCI中的高级算法研究提供了方法参考。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-04-730044-v1",
+      "source": "biorxiv",
+      "title": "Motor Resonance of Musical Emotion: A Machine Learning Approach to EEG Decoding During Expressive Music Performance",
+      "abstract": "Understanding the neural dynamics underlying expressive musical performance remains a major challenge at the intersection of neuroscience, music cognition, and computational modeling. While EEG studies of emotion have largely focused on passive exposure to affective stimuli, comparatively little research has examined oscillatory brain activity during active musical expression. The present single-subject study investigated whether band-limited EEG activity recorded during expressive piano performance by a professional concert pianist contains sufficient discriminative structure to support super-vised multi-class classification of musically defined emotional categories. Methods: EEG was recorded from 128 scalp sites while a professional concert pianist performed emotionally characterized excerpts from Bach, Beethoven, and Chopin in a continuous naturalistic session. Musical excerpts had been previously categorized and perceptually validated according to emotional valence, tempo, energy/arousal, and tonal structure. From the continuous EEG recording, 180 non-overlapping 2-second artifact-free segments were extracted, yielding 30 segments for each emotional category. Mean spectral power was computed within theta (3.5-7.5 Hz), alpha (7.5-12.5 Hz), and high-beta (24-30 Hz) frequency bands across selected centro-parietal and posterior electrodes, resulting in 24 EEG-derived features per segment. Linear Support Vector Machine, Random Forest, and Gradient Boosting classifiers were evaluated using an 80/20 train-test split combined with 5-fold cross-validation. Results: EEG-only classification achieved above-chance performance across models, with Random Forest yielding the highest accuracy (0.42), macro F1-score (0.414), and Cohen's k (0.30), exceeding the theoretical chance level of 0.167. Feature importance analysis revealed distributed contributions across theta, alpha, and high-beta oscillatory activity, particularly over parietal and occipital regions, without evidence for a single dominant neural marker. Inclusion of an additional binary arousal-related feature substantially improved Random Forest performance (accuracy = 0.58; macro F1 = 0.579; k = 0.50), indicating that arousal organization contributed strongly to category separability within the classification framework. Conclusions: These findings suggest that oscillatory EEG activity accompanying expressive musical action contains measurable statistical structure associated with emotionally differentiated performance states. Rather than identifying discrete neural correlates of emotion, the present results provide a computational characterization of distributed oscillatory dynamics emerging during expressive motor-acoustic interaction, extending affective EEG research beyond passive perception paradigms toward ecologically grounded musical performance contexts",
+      "authors": [
+        "Proverbio, A. M.",
+        "milovanovic, m."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-08T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.04.730044v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "applies machine learning to EEG decoding for emotion classification",
+      "llm_evidence_cn": "将机器学习应用于脑电图解码进行情感分类",
+      "llm_evidence": "将机器学习应用于脑电图解码进行情感分类",
+      "canonical_evidence": "将机器学习应用于脑电图解码进行情感分类",
+      "llm_tldr_en": "Uses EEG and machine learning to classify musical emotions during performance, showing discriminative structure in band-limited activity.",
+      "llm_tldr_cn": "现有情感EEG研究多关注被动刺激，本文研究主动音乐演奏时的脑电活动。采用128导EEG记录钢琴家演奏时的信号，通过监督多分类方法区分音乐情感类别。结果表明带限EEG活动包含足够判别结构，验证了机器学习在EEG解码中的有效性，为被动BCI的情感评估提供了方法论支持。",
+      "llm_tldr": "现有情感EEG研究多关注被动刺激，本文研究主动音乐演奏时的脑电活动。采用128导EEG记录钢琴家演奏时的信号，通过监督多分类方法区分音乐情感类别。结果表明带限EEG活动包含足够判别结构，验证了机器学习在EEG解码中的有效性，为被动BCI的情感评估提供了方法论支持。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

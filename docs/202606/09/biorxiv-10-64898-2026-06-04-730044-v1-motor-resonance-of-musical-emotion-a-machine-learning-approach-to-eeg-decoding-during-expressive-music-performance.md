@@ -1,0 +1,23 @@
+---
+title: "Motor Resonance of Musical Emotion: A Machine Learning Approach to EEG Decoding During Expressive Music Performance"
+title_zh: 音乐情感的动觉共振：表达性音乐演奏中脑电解码的机器学习方法
+authors: "Proverbio, A. M., milovanovic, m."
+date: 2026-06-08
+pdf: "https://www.biorxiv.org/content/10.64898/2026.06.04.730044v1.full.pdf"
+tags: ["query:pbci-load"]
+score: 6.0
+evidence: 将机器学习应用于脑电图解码进行情感分类
+tldr: 传统情感EEG研究多聚焦被动感知，主动音乐表达时的神经动态尚不明晰。本研究记录专业钢琴家演奏六类情感音乐片段的128导EEG，提取theta、alpha、高beta频段功率特征，使用支持向量机、随机森林和梯度提升进行情感分类。随机森林达到最佳准确率0.42，超过随机水平0.167；加入 arousal 特征后准确率提升至0.58。结果表明，主动演奏时的振荡脑电包含情感相关统计结构，为将情感EEG研究拓展至生态化音乐表演提供了计算框架。
+source: biorxiv
+selection_source: fresh_fetch
+motivation: 探索主动音乐表达过程中，脑电振荡活动是否能区分不同情感类别。
+method: 记录钢琴家演奏6类情感音乐时的128导EEG，提取theta、alpha、高beta频段功率特征，用SVM、随机森林和梯度提升分类。
+result: 随机森林准确率0.42（kappa=0.30），加入arousal特征后达0.58，均显著高于随机水平。
+conclusion: 主动音乐表达时的EEG振荡包含情感相关信息，为生态情感研究提供了新范式。
+---
+
+## 摘要
+理解表达性音乐演奏背后的神经动力学仍然是神经科学、音乐认知和计算建模交叉领域的一个重大挑战。虽然情感相关的脑电图研究主要关注对情感刺激的被动暴露，但很少研究主动音乐表达过程中的振荡脑活动。本单一被试研究调查了专业音乐会钢琴家在表达性钢琴演奏期间记录的带限脑电图活动是否包含足够的判别结构，以支持对音乐定义的情感类别进行监督多类分类。方法：在连续自然主义会话中，专业音乐会钢琴家演奏巴赫、贝多芬和肖邦的情感特征片段时，从128个头皮位置记录脑电图。音乐片段之前已根据情感效价、节奏、能量/唤醒度和调性结构进行分类和感知验证。从连续脑电图记录中提取了180个非重叠的2秒无伪影片段，每个情感类别产生30个片段。在选定的中央-顶叶和后部电极上计算θ（3.5-7.5 Hz）、α（7.5-12.5 Hz）和高β（24-30 Hz）频带内的平均频谱功率，每个片段产生24个脑电图特征。使用80/20训练-测试分割结合5折交叉验证评估线性支持向量机、随机森林和梯度提升分类器。结果：仅脑电图分类在各模型上均高于随机水平，随机森林获得最高准确率（0.42）、宏观F1分数（0.414）和Cohen's κ（0.30），超过理论随机水平0.167。特征重要性分析显示θ、α和高β振荡活动存在分布式贡献，特别是在顶叶和枕叶区域，没有证据表明存在单一主导神经标记。加入额外的二元唤醒相关特征显著提高了随机森林性能（准确率=0.58；宏观F1=0.579；κ=0.50），表明唤醒组织在分类框架中对类别可分性贡献很大。结论：这些发现表明伴随表达性音乐动作的振荡脑电图活动包含与情感差异化演奏状态相关的可测量统计结构。本研究并非识别离散的情感神经关联，而是提供了表达性运动-声学交互过程中出现的分布式振荡动力学的计算表征，将情感脑电图研究从被动感知范式扩展到了生态学基础的音乐演奏情境。
+
+## Abstract
+Understanding the neural dynamics underlying expressive musical performance remains a major challenge at the intersection of neuroscience, music cognition, and computational modeling. While EEG studies of emotion have largely focused on passive exposure to affective stimuli, comparatively little research has examined oscillatory brain activity during active musical expression. The present single-subject study investigated whether band-limited EEG activity recorded during expressive piano performance by a professional concert pianist contains sufficient discriminative structure to support super-vised multi-class classification of musically defined emotional categories. Methods: EEG was recorded from 128 scalp sites while a professional concert pianist performed emotionally characterized excerpts from Bach, Beethoven, and Chopin in a continuous naturalistic session. Musical excerpts had been previously categorized and perceptually validated according to emotional valence, tempo, energy/arousal, and tonal structure. From the continuous EEG recording, 180 non-overlapping 2-second artifact-free segments were extracted, yielding 30 segments for each emotional category. Mean spectral power was computed within theta (3.5-7.5 Hz), alpha (7.5-12.5 Hz), and high-beta (24-30 Hz) frequency bands across selected centro-parietal and posterior electrodes, resulting in 24 EEG-derived features per segment. Linear Support Vector Machine, Random Forest, and Gradient Boosting classifiers were evaluated using an 80/20 train-test split combined with 5-fold cross-validation. Results: EEG-only classification achieved above-chance performance across models, with Random Forest yielding the highest accuracy (0.42), macro F1-score (0.414), and Cohen's k (0.30), exceeding the theoretical chance level of 0.167. Feature importance analysis revealed distributed contributions across theta, alpha, and high-beta oscillatory activity, particularly over parietal and occipital regions, without evidence for a single dominant neural marker. Inclusion of an additional binary arousal-related feature substantially improved Random Forest performance (accuracy = 0.58; macro F1 = 0.579; k = 0.50), indicating that arousal organization contributed strongly to category separability within the classification framework. Conclusions: These findings suggest that oscillatory EEG activity accompanying expressive musical action contains measurable statistical structure associated with emotionally differentiated performance states. Rather than identifying discrete neural correlates of emotion, the present results provide a computational characterization of distributed oscillatory dynamics emerging during expressive motor-acoustic interaction, extending affective EEG research beyond passive perception paradigms toward ecologically grounded musical performance contexts
