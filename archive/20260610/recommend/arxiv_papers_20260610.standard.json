@@ -1,0 +1,176 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-10T22:19:02.062413+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 1,
+    "deep_cap": 7,
+    "deep_selected": 1,
+    "quick_candidates": 3,
+    "quick_skim_target": 12,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2606.09605v1",
+      "source": "arxiv",
+      "title": "Next-Token Prediction Learns Generalisable Representations of Sleep Physiology",
+      "abstract": "Foundation models offer a promising route to compress multi-modal physiological signals into compact representations of human health, with broad applications across sleep medicine, cardiology, neurology and other healthcare domains. Existing models have typically been trained with masked-reconstruction or contrastive objectives. However, masked reconstruction may be poorly suited to the stochastic nature of these signals, while contrastive approaches rely on positive-pair definitions despite the semantic invariances of physiological signals being poorly understood. In this work, we show that next-token prediction is a simple and scalable alternative. We develop Hypnos, a multi-modal sleep foundation model trained using eight different sensing modalities (e.g. EEG, ECG, respiratory signals) drawn from over 20,000 overnight polysomnography recordings. We tokenize each modality into streams of discrete tokens using residual vector quantization, then train a large auto-regressive RQ-Transformer to jointly predict the next token across all modalities in parallel. After training, Hypnos can be applied to continuous streams of sensor data from any subset of supported modalities, generating embeddings for downstream tasks. Across a range of benchmarks, Hypnos significantly outperforms existing foundation models. In sleep stage classification, we match the performance of strong supervised baselines on held-out test sets whilst using \\(100\\times\\) less labelled data. Hypnos even generalises to daytime physiology, surpassing a dedicated ECG foundation model at detecting atrial fibrillation. Our results demonstrate that next-token prediction is a strong self-supervised objective for representation learning from multi-modal physiological signals.",
+      "authors": [
+        "Jonathan F. Carter",
+        "Lionel Tarassenko"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-08T15:13:57+00:00",
+      "link": "https://arxiv.org/pdf/2606.09605v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "proposes a foundation model Hypnos for multi-modal physiological signals including EEG",
+      "llm_evidence_cn": "提出了一个包含EEG的多模态生理信号基础模型Hypnos",
+      "llm_evidence": "提出了一个包含EEG的多模态生理信号基础模型Hypnos",
+      "canonical_evidence": "提出了一个包含EEG的多模态生理信号基础模型Hypnos",
+      "llm_tldr_en": "Hypnos uses next-token prediction to learn generalisable representations of sleep physiology from eight sensing modalities, offering a scalable alternative to masked-reconstruction and contrastive objectives for multi-modal foundation models.",
+      "llm_tldr_cn": "现有的生理信号基础模型多采用掩码重建或对比学习目标，但掩码重建难以处理信号的随机性，对比学习又依赖对语义不变性的先验假设。本文提出下一代词预测作为简单可扩展的替代方案，开发了多模态睡眠基础模型Hypnos，使用八种传感模态（包括EEG）训练。该方法在多个下游睡眠任务上取得了优异表现，表明下一词预测能学习到泛化的生理信号表征，为EEG基础模型在认知负荷评估等领域的应用提供了新思路。",
+      "llm_tldr": "现有的生理信号基础模型多采用掩码重建或对比学习目标，但掩码重建难以处理信号的随机性，对比学习又依赖对语义不变性的先验假设。本文提出下一代词预测作为简单可扩展的替代方案，开发了多模态睡眠基础模型Hypnos，使用八种传感模态（包括EEG）训练。该方法在多个下游睡眠任务上取得了优异表现，表明下一词预测能学习到泛化的生理信号表征，为EEG基础模型在认知负荷评估等领域的应用提供了新思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.10718v1",
+      "source": "arxiv",
+      "title": "Transformer Based Model for Spatiotemporal Feature Learning in EEG Emotion Recognition",
+      "abstract": "Electroencephalography (EEG) is a widely adopted technique for monitoring brain activity, offering valuable insights into neurological states due to its high temporal resolution and cost-effectiveness. To enhance the analysis of complex EEG data, we propose EEG-TransNet, an architecture designed to capture temporal, regional, and synchronous features of EEG signals. EEG-TransNet introduces three key modules: 1) a preprocessing and feature extraction module leveraging ResNet and wavelet-based denoising, 2) a Local Self-Attention Block for regional feature learning, and 3) a Fuzzy-Attention Synchronous Transformer (FAST) to model spatiotemporal dependencies. Through extensive experiments on three EEG datasets (BETA, SEED, and DepEEG), the proposed model consistently outperforms other methods in terms of classification accuracy and robustness across varying signal lengths. Ablation studies confirm the contribution of the Local Self-Attention Block in improving performance, and the inclusion of depthwise separable convolutions in the decoder reduces computational complexity while maintaining high accuracy. EEG-TransNet's ability to generalize across subjects with minimal performance variation highlights its potential as a robust tool for EEG-based brain activity classification and emotion recognition tasks.",
+      "authors": [
+        "Xinglong Cui",
+        "Dian Gu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-09T11:25:43+00:00",
+      "link": "https://arxiv.org/pdf/2606.10718v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG deep learning Transformer for emotion recognition, method transferable to cognitive load estimation",
+      "llm_evidence_cn": "EEG深度学习Transformer用于情绪识别，方法可迁移至认知负荷评估",
+      "llm_evidence": "EEG深度学习Transformer用于情绪识别，方法可迁移至认知负荷评估",
+      "canonical_evidence": "EEG深度学习Transformer用于情绪识别，方法可迁移至认知负荷评估",
+      "llm_tldr_en": "Proposes EEG-TransNet, a Transformer-based architecture for spatiotemporal feature learning in EEG emotion recognition, demonstrating strong performance on multiple datasets.",
+      "llm_tldr_cn": "该论文针对EEG情绪识别任务，提出了一种基于Transformer的架构EEG-TransNet，包含局部自注意力块和模糊注意力同步Transformer（FAST）以建模时空依赖。在BETA、SEED和DepEEG三个数据集上取得了优异结果。虽然直接任务是情绪识别，但其深度学习和EEG特征学习方法对认知负荷评估具有借鉴意义。",
+      "llm_tldr": "该论文针对EEG情绪识别任务，提出了一种基于Transformer的架构EEG-TransNet，包含局部自注意力块和模糊注意力同步Transformer（FAST）以建模时空依赖。在BETA、SEED和DepEEG三个数据集上取得了优异结果。虽然直接任务是情绪识别，但其深度学习和EEG特征学习方法对认知负荷评估具有借鉴意义。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.05855v1",
+      "source": "arxiv",
+      "title": "EEGDancer: Dynamic Emotion Latent Space Masked Modeling with Reinforcement Learning for EEG Continuous Emotion Prediction",
+      "abstract": "Continuous electroencephalography (EEG) emotion prediction aims to model the temporal evolution of human emotional states from EEG signals. Unlike conventional discrete emotion recognition, continuous prediction requires capturing long-range temporal dependencies and coherent emotional dynamics. However, existing methods mainly rely on point-wise regression and directly model noisy high-dimensional EEG features, limiting their ability to characterize continuous emotional evolution.To address these challenges, we propose EEGDancer, a dynamic emotional latent space learning framework for continuous EEG emotion prediction. The framework integrates vector-quantized representation learning, masked temporal modeling, and reinforcement learning-based trajectory optimization into a unified architecture.Specifically, a causal spatiotemporal Vector-Quantization Variational Autoencoder (VQ-VAE) is designed to learn structured emotional prototypes and construct a discrete-continuous emotional latent space from EEG signals. Based on the learned latent representations, a Transformer-based masked dynamic modeling strategy captures long-range emotional dependencies and temporal evolution patterns. Furthermore, continuous emotion prediction is formulated as a sequential decision-making problem, and a Soft Actor-Critic (SAC) framework is introduced to optimize emotional prediction trajectories at the sequence level instead of frame-wise local fitting.Extensive experiments on the SEED, SEED-IV, and Long-Term Naturalistic Emotion datasets demonstrate that EEGDancer consistently outperforms existing machine learning and deep learning methods. Ablation studies further verify the effectiveness of the proposed latent space and reinforcement learning-based trajectory optimization for modeling continuous EEG emotional dynamics.",
+      "authors": [
+        "Zhihao Zhou",
+        "Weishan Ye",
+        "Li Zhang",
+        "Gan Huang",
+        "Zhen Liang"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI"
+      ],
+      "published": "2026-06-04T08:28:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.05855v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Deep learning framework for continuous EEG emotion prediction, method transferable to cognitive load assessment",
+      "llm_evidence_cn": "连续EEG情绪预测的深度学习框架，方法可迁移至认知负荷评估",
+      "llm_evidence": "连续EEG情绪预测的深度学习框架，方法可迁移至认知负荷评估",
+      "canonical_evidence": "连续EEG情绪预测的深度学习框架，方法可迁移至认知负荷评估",
+      "llm_tldr_en": "EEGDancer uses vector-quantized representation learning and masked modeling with reinforcement learning for continuous EEG emotion prediction, offering a transferable temporal modeling approach for cognitive load estimation.",
+      "llm_tldr_cn": "EEGDancer提出动态情绪潜空间学习框架，结合向量量化表示学习、掩码建模和强化学习，实现连续EEG情绪预测。该方法善于捕获长时间依赖和动态演变，其时间建模策略可迁移至基于EEG的认知负荷评估任务。",
+      "llm_tldr": "EEGDancer提出动态情绪潜空间学习框架，结合向量量化表示学习、掩码建模和强化学习，实现连续EEG情绪预测。该方法善于捕获长时间依赖和动态演变，其时间建模策略可迁移至基于EEG的认知负荷评估任务。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.08583v1",
+      "source": "arxiv",
+      "title": "A spectral audit framework reveals task-dependent aperiodic reliance across EEG and ECG deep learning",
+      "abstract": "Deep learning on physiological time series is interpreted through domain-specific features -- oscillatory rhythms in EEG, morphological complexes in ECG -- yet these signals sit atop a broadband aperiodic 1/f-like envelope that covaries with arousal, age, and pathology. We introduce a spectral audit framework combining aperiodic/periodic decomposition, phase-preserving Fourier interventions, sham controls, and simulation validation. Aperiodic reliance was task-dependent and architecture-general: across six neural architectures, flattening drops exceeded 0.42 balanced-accuracy points for sleep-wake classification, reached 0.07-0.13 for clinical abnormality detection, and remained minimal for motor imagery. Six of seven EEG foundation models showed FDR-significant aperiodic reliance on clinical EEG; age/sex and recording-era controls reduced but did not eliminate the effect. Applying the audit to PTB-XL ECG revealed neural drops of 0.32--0.36 persisting after demographic matching, confirming this confound class extends beyond EEG. Aperiodic controls should become standard for interpretable physiological time-series deep learning.",
+      "authors": [
+        "Jasmeet Singh Bindra",
+        "Siddharth Panwar",
+        "Shubhajit Roy Chowdhury"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-06-07T11:37:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.08583v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG deep learning spectral audit framework transferable to cognitive load estimation",
+      "llm_evidence_cn": "提出EEG深度学习频谱审计框架，可迁移至认知负荷评估",
+      "llm_evidence": "提出EEG深度学习频谱审计框架，可迁移至认知负荷评估",
+      "canonical_evidence": "提出EEG深度学习频谱审计框架，可迁移至认知负荷评估",
+      "llm_tldr_en": "Introduces a spectral audit framework combining aperiodic/periodic decomposition and Fourier interventions to reveal task-dependent aperiodic reliance across EEG deep learning models, applicable to cognitive load assessment.",
+      "llm_tldr_cn": "本文提出一个光谱审计框架，结合非周期/周期分解和相位保持傅里叶干预，揭示EEG深度学习模型的任务依赖非周期依赖。该框架可通用地评估模型对非周期信号的依赖程度，对于认知负荷评估等EEG任务中的模型解释和改进具有重要价值。实验表明非周期依赖随任务变化，且与架构无关。",
+      "llm_tldr": "本文提出一个光谱审计框架，结合非周期/周期分解和相位保持傅里叶干预，揭示EEG深度学习模型的任务依赖非周期依赖。该框架可通用地评估模型对非周期信号的依赖程度，对于认知负荷评估等EEG任务中的模型解释和改进具有重要价值。实验表明非周期依赖随任务变化，且与架构无关。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

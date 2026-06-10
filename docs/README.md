@@ -6,39 +6,34 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-09
-- 运行时间：2026-06-09 22:05:27 UTC
+- 最新运行日期：2026-06-10
+- 运行时间：2026-06-10 22:22:19 UTC
 - 运行状态：成功
-- 本次总论文数：6
-- 精读区：0
-- 速读区：6
+- 本次总论文数：4
+- 精读区：1
+- 速读区：3
 
 ### 今日简报（AI）
-今日更新6篇论文，聚焦深度地形多模态模型揭示脑区功能选择性及癫痫诊断双系统方法。最值得关注的是脑区功能发现与SHAP可解释验证的交叉方向，以及EEG去噪的模型压缩瓶颈。建议优先阅读《Discovering Functionally Selective Brain Regions》与《A dual-system approach for epilepsy diagnosis》，把握脑建模与医疗AI落地新动向。
-- 详情：[/202606/09/README](/202606/09/README)
+今日精读高分论文《Next-Token Prediction Learns Generalisable Representations of Sleep Physiology》，并速读EEG情绪识别、动态情感建模及生理信号深度学习等三篇研究。  
+最值得关注的方向：自监督预测学习在睡眠生理学泛化表征上的突破，以及EEG情绪识别中时空间特征与频谱依赖性的关键作用。  
+建议后续关注自监督模型与生理信号（如睡眠、心电图）结合的通用表征方法，以及情绪识别任务中非周期性频谱特征的调试策略。
+- 详情：[/202606/10/README](/202606/10/README)
 
 ### 精读区论文标签
-- 本次无精读推荐。
+1. [Next-Token Prediction Learns Generalisable Representations of Sleep Physiology](/202606/10/2606.09605v1-next-token-prediction-learns-generalisable-representations-of-sleep-physiology)  
+   标签：评分：8.0/10、query:pbci-load
+   evidence：提出了一个包含EEG的多模态生理信号基础模型Hypnos
 
 ### 速读区论文标签
-1. [Discovering Functionally Selective Brain Regions with a Deep Topographic Multimodal Model](/202606/09/2606.09770v1-discovering-functionally-selective-brain-regions-with-a-deep-topographic-multimodal-model)  
+1. [Transformer Based Model for Spatiotemporal Feature Learning in EEG Emotion Recognition](/202606/10/2606.10718v1-transformer-based-model-for-spatiotemporal-feature-learning-in-eeg-emotion-recognition)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：提出从预训练基础模型微调得到的深度地形多模态模型
-2. [A dual-system approach for epilepsy diagnosis: integrating mamba-Bi-LSTM architecture with SHAP-based verification](/202606/09/2606.08240v1-a-dual-system-approach-for-epilepsy-diagnosis-integrating-mamba-bi-lstm-architecture-with-shap-based-verification)  
+   evidence：EEG深度学习Transformer用于情绪识别，方法可迁移至认知负荷评估
+2. [EEGDancer: Dynamic Emotion Latent Space Masked Modeling with Reinforcement Learning for EEG Continuous Emotion Prediction](/202606/10/2606.05855v1-eegdancer-dynamic-emotion-latent-space-masked-modeling-with-reinforcement-learning-for-eeg-continuous-emotion-prediction)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：将深度学习（Mamba-Bi-LSTM）与脑电图结合用于诊断
-3. [How Much Capacity Does EEG Denoising Need? Ultra-Compact Networks reveal Benchmark Saturation and Metric-Utility Gap](/202606/09/2606.08594v1-how-much-capacity-does-eeg-denoising-need-ultra-compact-networks-reveal-benchmark-saturation-and-metric-utility-gap)  
+   evidence：连续EEG情绪预测的深度学习框架，方法可迁移至认知负荷评估
+3. [A spectral audit framework reveals task-dependent aperiodic reliance across EEG and ECG deep learning](/202606/10/2606.08583v1-a-spectral-audit-framework-reveals-task-dependent-aperiodic-reliance-across-eeg-and-ecg-deep-learning)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：基于深度学习的脑电图去噪，并在BCI下游任务评估
-4. [Pretrained, Frozen, Still Leaking: Auditing Cross-Encoder Attribute Transfer in EEG Foundation Models](/202606/09/2606.09189v1-pretrained-frozen-still-leaking-auditing-cross-encoder-attribute-transfer-in-eeg-foundation-models)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：审计EEG基础模型（BIOT, LaBraM, EEGPT）的隐私泄露，与基础模型研究直接相关
-5. [Neural decoding of speech using deep neural ensembles](/202606/09/biorxiv-10-64898-2026-06-02-729705-v1-neural-decoding-of-speech-using-deep-neural-ensembles)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：深度集成用于语音BCI解码
-6. [Motor Resonance of Musical Emotion: A Machine Learning Approach to EEG Decoding During Expressive Music Performance](/202606/09/biorxiv-10-64898-2026-06-04-730044-v1-motor-resonance-of-musical-emotion-a-machine-learning-approach-to-eeg-decoding-during-expressive-music-performance)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：将机器学习应用于脑电图解码进行情感分类
+   evidence：提出EEG深度学习频谱审计框架，可迁移至认知负荷评估
 
 
 <div class="dpr-home-promo-card">
