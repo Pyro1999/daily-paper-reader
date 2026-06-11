@@ -1,0 +1,54 @@
+{
+  "label": "2026-06-11",
+  "date": "2026-06-11",
+  "generated_at": "2026-06-11T21:24:18",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202606/11/2606.11066v1-graft-gain-recalibrated-adapters-for-transformer-based-neural-population-activity-modeling",
+      "section": "deep",
+      "title_en": "GRAFT: Gain-Recalibrated Adapters for Transformer-Based Neural Population Activity Modeling",
+      "authors": "Xiangsheng Ge, Yang Xie",
+      "date": "2026-06-09",
+      "pdf": "https://arxiv.org/pdf/2606.11066v1",
+      "score": "8.0",
+      "evidence": "基于Transformer的神经活动模型用于BCI，直接相关被动BCI深度学习",
+      "tldr": "神经群体活动模型通常与固定神经元集耦合，限制了长期脑机接口的应用。GRAFT提出基于Transformer的模型，将可重校准的神经元接口与共享时序骨干分离，并使用增益和位置机制。在MC Maze上达到0.3866 co-bps的新SOTA，跨天重校准仅更新9.21%参数即可适应新数据集，保持高性能。该接口-骨干分离架构既支持强建模能力，又实现了数据高效的跨天重校准。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Neural population activity models can recover rich temporal structure from binned spikes, but their read-in and readout layers often remain tied to a fixed set of recorded neurons. This coupling limits reuse in long-term brain-computer interfaces, where recorded neuron identities, counts, and response statistics can change across days. We introduce GRAFT, a Transformer-based neural population activity model that separates reusable temporal dynamics from a recalibratable neuron interface. The neuron interface controls how recorded neurons enter and leave the shared backbone, and auxiliary gain and positional mechanisms support neural activity modeling inside the Transformer. On MC Maze under the standard NLB'21 protocol, GRAFT reaches 0.3866 co-bps as an ensemble, setting a new state of the art on the primary co-bps metric among public and reported NLB'21 results. In a cross-day protocol constructed from the NLB'21 MC Maze dataset series, GRAFT recalibrates from MC Maze to the scaled MC Maze datasets (Large/Medium/Small) by updating only 9.21% of parameters, reaching 0.3749, 0.3112, and 0.3152 co-bps with restricted target-day support sets. These results show that the same interface-backbone separation supports both strong Transformer-based neural population activity modeling and data-efficient cross-day recalibration.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/11/2606.10718v1-transformer-based-model-for-spatiotemporal-feature-learning-in-eeg-emotion-recognition",
+      "section": "quick",
+      "title_en": "Transformer Based Model for Spatiotemporal Feature Learning in EEG Emotion Recognition",
+      "authors": "Xinglong Cui, Dian Gu",
+      "date": "2026-06-09",
+      "pdf": "https://arxiv.org/pdf/2606.10718v1",
+      "score": "6.0",
+      "evidence": "用于情绪识别的EEG深度学习模型，方法可迁移至认知负荷",
+      "tldr": "脑电信号情绪识别面临时空特征学习的挑战。提出EEG-TransNet，结合ResNet与小波去噪进行预处理，通过Local Self-Attention Block学习区域特征，并设计FAST模块捕捉时空依赖。在BETA、SEED和DepEEG三个数据集上，模型分类准确率与鲁棒性均优于现有方法，且深度可分离卷积降低了计算复杂度。该架构能跨被试泛化，为脑电情绪识别提供了高效工具。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Electroencephalography (EEG) is a widely adopted technique for monitoring brain activity, offering valuable insights into neurological states due to its high temporal resolution and cost-effectiveness. To enhance the analysis of complex EEG data, we propose EEG-TransNet, an architecture designed to capture temporal, regional, and synchronous features of EEG signals. EEG-TransNet introduces three key modules: 1) a preprocessing and feature extraction module leveraging ResNet and wavelet-based denoising, 2) a Local Self-Attention Block for regional feature learning, and 3) a Fuzzy-Attention Synchronous Transformer (FAST) to model spatiotemporal dependencies. Through extensive experiments on three EEG datasets (BETA, SEED, and DepEEG), the proposed model consistently outperforms other methods in terms of classification accuracy and robustness across varying signal lengths. Ablation studies confirm the contribution of the Local Self-Attention Block in improving performance, and the inclusion of depthwise separable convolutions in the decoder reduces computational complexity while maintaining high accuracy. EEG-TransNet's ability to generalize across subjects with minimal performance variation highlights its potential as a robust tool for EEG-based brain activity classification and emotion recognition tasks.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/11/biorxiv-10-64898-2026-06-03-730031-v1-emotion-representation-and-neural-synchrony-decoding-valence-and-arousal-with-wearable-eeg",
+      "section": "quick",
+      "title_en": "Emotion Representation and Neural Synchrony: Decoding Valence and Arousal with Wearable EEG",
+      "authors": "Yang, I., Park, C., Kim, J.",
+      "date": "2026-06-08",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.06.03.730031v1.full.pdf",
+      "score": "6.0",
+      "evidence": "使用可穿戴EEG解码情绪",
+      "tldr": "情绪是动态体验，但多数研究依赖静态刺激和实验室EEG。本研究使用可穿戴EEG在自然情境下解码效价和唤醒度，43名被试观看视频，采用分类、多维缩放和被试间相关分析。结果显示行为数据对效价和唤醒度分类良好，但EEG对效价分类稳定，对唤醒度不稳定，且神经同步较弱。研究表明效价在主观和神经层面更稳定，可穿戴EEG可用于生态效度情绪研究，但唤醒度解码需更长时间或时间分辨方法。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Emotions are dynamic experiences that unfold over time, yet most affective neuroscience studies have relied on static stimuli and laboratory-based EEG systems. This study examined whether emotional valence and arousal can be reliably decoded using a consumer-grade wearable EEG device in naturalistic contexts. Forty-three participants viewed video clips designed to elicit four core affect categories including high-arousal positive, low-arousal positive, high-arousal negative, and low-arousal negative, while EEG signals were continuously recorded. Multivariate analyses, including classification, multidimensional scaling (MDS), and intersubject correlation (ISC), were employed to assess affective representation and neural synchrony. Behavioral data demonstrated robust classification of both valence and arousal, whereas EEG data yielded consistent above-chance classification of valence but less stable decoding of arousal, particularly in within-participant analyses. MDS revealed that both behavioral and EEG responses were primarily organized along the valence dimension, with weaker separation along arousal. ISC analyses further indicated frequency- and region-specific neural synchrony, with stronger alignment in left and temporal electrodes, though overall ISC values were modest, likely reflecting the brief duration of stimuli. Taken together, these findings suggest that valence is more stably represented in both subjective and neural domains, whereas arousal may require time-resolved or longer-duration approaches for reliable decoding. This work demonstrates the feasibility and limitations of employing wearable EEG for theory-driven affective neuroscience, underscoring its potential for scalable and ecologically valid emotion research beyond laboratory settings.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
