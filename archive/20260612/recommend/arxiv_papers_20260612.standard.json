@@ -1,0 +1,217 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-12T22:05:43.934017+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 0,
+    "deep_cap": 7,
+    "deep_selected": 0,
+    "quick_candidates": 5,
+    "quick_skim_target": 12,
+    "quick_selected": 5
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-02-17-706305-v2",
+      "source": "biorxiv",
+      "title": "Selective Auditory Attention Decoding with a Two-Node Wireless EEG Sensor Network",
+      "abstract": "Selective auditory attention decoding (sAAD) enables neuro-steered hearing devices by identifying the attended speaker in a multi-speaker environment from neural activity recorded with electroencephalography (EEG). Despite algorithmic progress, practical deployment remains constrained by a lack of wearable, unobtrusive, and fully wireless EEG acquisition solutions. Therefore, this work aims to evaluate whether reliable sAAD can be achieved under realistic hardware constraints imposed by using a wireless EEG sensor network (WESN) consisting of miniaturized, galvanically isolated EEG sensor nodes. Here, we use such a WESN consisting of two synchronized, compact around-ear EEG sensor nodes worn bilaterally. Each node provides four local EEG channels derived from five pre-gelled electrodes, including a local reference. Sample-wise wireless synchronization of data from both nodes enables joint processing as an eight-channel EEG. On a newly recorded dataset acquired with this setup, correlation-based stimulus decoding achieves an average sAAD accuracy of 69.24% on 60s decision windows, comparable to wired around-ear EEG systems that measure long-distance scalp potentials. Hidden Markov model-based post-processing further improves to a steady-state accuracy of 77.17% with an average simulated attention switch detection time of 32.79s. Combining sensor nodes at both ears outperforms single-ear configurations, primarily by providing redundancy that increases robustness rather than by exploiting complementary spatial information. Finally, we show that a fixed bipolar configuration using four electrodes per ear, yielding three channels, suffices to maintain performance. These results demonstrate the practical feasibility of sAAD using a fully wireless, galvanically isolated around-ear WESN and establish a realistic performance benchmark under practical hardware constraints.",
+      "authors": [
+        "Geirnaert, S.",
+        "Ding, R.",
+        "Bertrand, A."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-12T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.02.17.706305v2.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Passive BCI with wireless EEG for attention decoding",
+      "llm_evidence_cn": "无线脑电图被动脑机接口用于注意力解码",
+      "llm_evidence": "无线脑电图被动脑机接口用于注意力解码",
+      "canonical_evidence": "无线脑电图被动脑机接口用于注意力解码",
+      "llm_tldr_en": "Evaluates reliable selective auditory attention decoding using a wireless EEG sensor network with two around-ear nodes, addressing hardware constraints for practical passive BCI.",
+      "llm_tldr_cn": "针对神经导向助听设备中听觉注意力解码的实际部署受限于可穿戴无线脑电采集问题，本文评估了使用无线脑电传感器网络实现可靠解码的可行性。系统采用两个同步的耳周脑电节点，每个节点提供四个本地通道。实验表明，在真实硬件约束下仍可实现有效的选择性听觉注意力解码，为被动脑机接口的实际应用提供了硬件解决方案。",
+      "llm_tldr": "针对神经导向助听设备中听觉注意力解码的实际部署受限于可穿戴无线脑电采集问题，本文评估了使用无线脑电传感器网络实现可靠解码的可行性。系统采用两个同步的耳周脑电节点，每个节点提供四个本地通道。实验表明，在真实硬件约束下仍可实现有效的选择性听觉注意力解码，为被动脑机接口的实际应用提供了硬件解决方案。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.08226v1",
+      "source": "arxiv",
+      "title": "CG-MambaNet: A spatiotemporal framework for cross-patient epileptic seizure prediction using CNN-GCN-Mamba-BiLSTM with event-level clinical evaluation",
+      "abstract": "Epileptic seizure prediction from scalp EEG is critical for closed-loop neurostimulation therapy. Existing deep-learning methods share two architectural limitations: they model EEG channels independently, neglecting inter-channel spatial synchrony, and process raw time-domain samples without frequency decomposition. A methodological limitation also affects the field: most studies use data splits that permit patient-level information leakage, yielding optimistic estimates that do not generalise to unseen patients. We present CG-MambaNet, a spatiotemporal seizure prediction framework addressing all three limitations. A depthwise separable CNN front-end decomposes each EEG patch into multi-scale spectro-temporal features, capturing delta-to-gamma band dynamics before sequence modelling. A two-layer graph convolutional network with a learnable adjacency matrix captures inter-channel functional synchrony without montage-specific coordinates, applicable to bipolar (CHB-MIT) and referential (SIENA) montages. A bidirectional Mamba encoder followed by a bidirectional LSTM models long- and short-range temporal dynamics, and a two-layer MLP produces the final seizure probability. This serial hierarchy ensures frequency decomposition precedes spatial mixing, which precedes temporal integration. Under strict leave-one-patient-out cross-validation with five independent random seeds, CG-MambaNet achieves AUC-ROC of 0.8152+/-0.0176 on CHB-MIT (n=22) and 0.7104+/-0.0261 on SIENA (n=6), surpassing all published cross-patient methods without domain adaptation. An event-level evaluation framework merging consecutive alarmed windows via a persistence filter reduces false predictions to 0.32 alarms/hour on CHB-MIT, demonstrating clinically meaningful alarm burden.",
+      "authors": [
+        "Mufeng Chen",
+        "Qi Wu",
+        "Bingchao Huang",
+        "Xiwen Lai",
+        "Zekai Chen",
+        "Xinge Ouyang",
+        "Tingyao Zhang",
+        "Xufang Yang",
+        "Quansheng Ren"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-06-06T15:29:58+00:00",
+      "link": "https://arxiv.org/pdf/2606.08226v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Proposes a deep learning spatiotemporal framework (CNN-GCN-Mamba-BiLSTM) for EEG analysis, transferable to cognitive load assessment",
+      "llm_evidence_cn": "提出了用于EEG分析的深度学习时空框架（CNN-GCN-Mamba-BiLSTM），可迁移至认知负荷评估",
+      "llm_evidence": "提出了用于EEG分析的深度学习时空框架（CNN-GCN-Mamba-BiLSTM），可迁移至认知负荷评估",
+      "canonical_evidence": "提出了用于EEG分析的深度学习时空框架（CNN-GCN-Mamba-BiLSTM），可迁移至认知负荷评估",
+      "llm_tldr_en": "CG-MambaNet uses CNN-GCN-Mamba-BiLSTM for cross-patient seizure prediction from scalp EEG, modeling channel synchrony and frequency decomposition, with event-level evaluation.",
+      "llm_tldr_cn": "现有癫痫预测深度学习方法存在忽略通道间空间同步和缺乏频率分解的局限，且数据划分可能导致患者信息泄漏。本文提出CG-MambaNet框架，采用深度可分离CNN进行频率分解，图卷积网络捕获通道空间关系，Mamba与BiLSTM建模时序依赖，并在事件层面进行临床评估。在跨患者预测任务中，该框架有效解决了上述局限，实现了更可靠的预测。其方法可推广至其他EEG分析任务如认知负荷评估。",
+      "llm_tldr": "现有癫痫预测深度学习方法存在忽略通道间空间同步和缺乏频率分解的局限，且数据划分可能导致患者信息泄漏。本文提出CG-MambaNet框架，采用深度可分离CNN进行频率分解，图卷积网络捕获通道空间关系，Mamba与BiLSTM建模时序依赖，并在事件层面进行临床评估。在跨患者预测任务中，该框架有效解决了上述局限，实现了更可靠的预测。其方法可推广至其他EEG分析任务如认知负荷评估。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-04-729738-v1",
+      "source": "biorxiv",
+      "title": "Beyond the Forest and the Trees: Overlooking the Overlooked Terrain of Neural State Dynamics",
+      "abstract": "State-transition approaches, including EEG microstate analysis and related fMRI methods such as hidden Markov models (HMMs) and co-activation pattern (CAP) analysis, provide widely used tools for coarse-graining neural dynamics into a small set of quasi-stable states. Its utility has been demonstrated across resting-state and task paradigms, with broad applications ranging from cognitive neuroscience to candidate biomarkers for psychiatric and neurological disorders. A fundamental limitation remains, however: nearly all downstream temporal measures are conditional on the template maps defined at the outset. In the conventional pipeline, templates are derived from polarity-invariant clustering of voltage maps at global field power (GFP) peaks, making the resulting state definitions sensitive to preprocessing, sampling, initialization, clustering algorithms, and the choice of cluster number. Consequently, the method captures coarse regularities in EEG dynamics, while only weakly constraining the larger geometric organization from which those states emerge. This template dependence poses a major challenge for reproducibility and for comparisons across studies and EEG caps. Here, we revisit this problem from a topological-geometric perspective. We treat templates not as cluster centroids extracted from GFP-peak maps, but as landmarks embedded in the global structure of a state space constructed from mutual similarities among scalp voltage maps. In this formulation, microstate templates are rediscovered as discrete representatives of dominant axes that organize continuous neural-state topography. This reformulation preserves polarity as a meaningful geometric relation instead of eliminating it at the outset as analytical redundancy. It also shifts attention from isolated state labels to the terrain of the state space itself: the broader relational structure within which local states become interpretable. Using this approach, we show that landmark-based state definitions outperform conventional templates in capturing state structure and improving analytical performance. These findings suggest that the central problem in EEG microstate analysis is broader than clustering optimization: it concerns how to define valid nodes for coarse-graining continuous dynamics without discarding the topology that organizes them. By shifting the conceptual basis of microstate analysis from templates to landmarks, the present approach provides a more principled and potentially more stable foundation for state definition, including in fMRI. This topolo-geometric reappraisal extends conventional microstate analysis and opens a path toward more unified comparisons across datasets, paradigms, and recording systems.",
+      "authors": [
+        "Asai, T.",
+        "Kashihara, S.",
+        "Chiyohara, S."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-09T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.04.729738v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG microstate dynamics for state analysis",
+      "llm_evidence_cn": "EEG微状态动力学用于状态分析",
+      "llm_evidence": "EEG微状态动力学用于状态分析",
+      "canonical_evidence": "EEG微状态动力学用于状态分析",
+      "llm_tldr_en": "This paper identifies a fundamental limitation of EEG state-transition methods: all temporal measures depend on initial template maps, and proposes a revised pipeline to address it.",
+      "llm_tldr_cn": "针对EEG微状态分析等状态转移方法中时序度量完全依赖于初始模板图的根本限制，本文提出了改进流程，通过重新审视模板生成步骤，增强了状态动力学分析的鲁棒性，可应用于认知负荷等任务中的状态变化检测。",
+      "llm_tldr": "针对EEG微状态分析等状态转移方法中时序度量完全依赖于初始模板图的根本限制，本文提出了改进流程，通过重新审视模板生成步骤，增强了状态动力学分析的鲁棒性，可应用于认知负荷等任务中的状态变化检测。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.09922v1",
+      "source": "arxiv",
+      "title": "The Bioelectrical Information Theory: Investigating the theoretical compression limit of bioelectrical signals under artificial intelligence",
+      "abstract": "Bioelectrical signals are increasingly acquired at scales that challenge the bandwidth of brain-computer interfaces. However, their compression is still often framed as a problem of waveform preservation, limited by the entropy of the raw signal. Here we propose an information-theoretic framework in which the effective information of bioelectrical data is determined not only by signal fidelity, but also by physiological structure, model capacity and downstream task requirements. We formulate bioelectrical compression as a three-level hierarchy. At the signal level, noise is reduced to the information they carry about latent physiological sources. At the physiological level, parametric encoders map purified signals into compact, structured and quantized representations. At the semantic level, task-irrelevant information is discarded, while deep learning models exploit causal dependencies to replace marginal entropy with conditional entropy. This perspective reframes the compression limit of bioelectrical signals as a model- and task-conditioned quantity rather than a fixed property of the waveform. As increasingly expressive models become integrated with neural and physiological interfaces, bioelectrical compression may shift from transmitting signals to transmitting only the residual information required for task-level interpretation.",
+      "authors": [
+        "Jiawen Zou",
+        "Bo Yan"
+      ],
+      "primary_category": "cs.IT",
+      "categories": [
+        "cs.IT",
+        "cs.AI"
+      ],
+      "published": "2026-06-07T04:18:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.09922v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Information theory for bioelectrical signal compression in BCI",
+      "llm_evidence_cn": "BCI中生物电信号压缩的信息理论",
+      "llm_evidence": "BCI中生物电信号压缩的信息理论",
+      "canonical_evidence": "BCI中生物电信号压缩的信息理论",
+      "llm_tldr_en": "This paper presents a three-level information-theoretic framework for bioelectrical signal compression, considering physiological structure and downstream task requirements, relevant for BCI bandwidth.",
+      "llm_tldr_cn": "针对BCI中生物电信号压缩仅关注波形保真度的局限，本文提出三级信息论框架，从信号级、生理级到任务级考虑有效信息，揭示了压缩极限由生理结构和下游任务共同决定，为BCI信号处理提供了理论基础。",
+      "llm_tldr": "针对BCI中生物电信号压缩仅关注波形保真度的局限，本文提出三级信息论框架，从信号级、生理级到任务级考虑有效信息，揭示了压缩极限由生理结构和下游任务共同决定，为BCI信号处理提供了理论基础。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-03-03-709208-v2",
+      "source": "biorxiv",
+      "title": "Long-term reliability and stability of parameterized resting state EEG: Evidence from a five-year follow-up",
+      "abstract": "Several aspects of parameterized neural activity, including the aperiodic exponent and individual peak alpha frequency, have emerged as promising biomarkers for ageing, pathology, and cognitive decline. Their potential clinical application is tempered by a lack of evidence on long-term temporal stability. Existing investigations have largely relied on cross-sectional designs or considered stability for up to 90 days. Here, we examined five-year reliability, stability, and age-related changes in periodic and aperiodic neural activity using electroencephalography in adults aged 20-70 years. Resting-state EEG was recorded in two sessions, approximately five years apart. We extracted the aperiodic exponent, aperiodic offset, peak alpha power, and individual alpha peak frequency and examined test-retest reliability at both the channel and cluster levels. All parameters demonstrated fair to excellent test-retest reliability (intraclass correlations = 0.51-0.88). Linear mixed models revealed that individual peak alpha frequency decreased, the aperiodic exponent flattened, and parameterized alpha power remained unchanged. There were no interactions between time and age. Our findings suggest that parameterized activity is reliable over long timeframes, and demonstrates changes consistent with ageing-related processes. Spectral parameterization may provide a means of characterizing within-person neurophysiological changes across adulthood. Future research should explore the utility of identifying deviations that may indicate pathology.",
+      "authors": [
+        "Politanskaia, P.",
+        "Bywater, J.",
+        "Finley, A. J.",
+        "Keage, H. A. D.",
+        "Kelley, N. J.",
+        "McKeown, D. J.",
+        "Schinazi, V. R.",
+        "Angus, D. J."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-11T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.03.03.709208v2.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "long-term reliability of parameterized resting-state EEG supports foundation model development",
+      "llm_evidence_cn": "参数化静息态脑电图的长期可靠性支持基础模型开发",
+      "llm_evidence": "参数化静息态脑电图的长期可靠性支持基础模型开发",
+      "canonical_evidence": "参数化静息态脑电图的长期可靠性支持基础模型开发",
+      "llm_tldr_en": "This study establishes the five-year reliability of periodic and aperiodic EEG parameters, providing essential knowledge for building robust EEG foundation models.",
+      "llm_tldr_cn": "该研究通过五年随访证实了脑电图周期性和非周期性参数的长期稳定性，为构建可靠的脑电基础模型提供了关键证据，直接支持脑电信号处理基础模型的需求。",
+      "llm_tldr": "该研究通过五年随访证实了脑电图周期性和非周期性参数的长期稳定性，为构建可靠的脑电基础模型提供了关键证据，直接支持脑电信号处理基础模型的需求。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
