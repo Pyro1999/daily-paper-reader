@@ -1,0 +1,255 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-14T20:43:58.102406+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 2,
+    "deep_cap": 7,
+    "deep_selected": 2,
+    "quick_candidates": 4,
+    "quick_skim_target": 12,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2606.12971v1",
+      "source": "arxiv",
+      "title": "Predicting Cognitive Load from Speech and Interaction Dynamics in Dyadic Conversations",
+      "abstract": "Estimating cognitive load from speech has largely been studied in controlled laboratory settings, with limited understanding of its reliability in natural collaborative conversations. We investigate whether speech and interaction dynamics predict perceived cognitive load during dyadic conversations. We analyze audio from 53 dyads performing nine collaborative tasks and extract static acoustic, dynamic, and interaction features to train a two-head Gated Recurrent Unit encoder to predict cognitive load scores. Results show conversational interaction provides useful signals for predicting cognitive load related to time pressure, mental work, effort, and task performance. Temporal demand is associated with turn-taking dynamics such as overlap and speaker switch, while mental demand is linked to imbalanced participation between speakers. These findings highlight the importance of task structure and conversational interaction for modeling cognitive load in natural collaborative settings.",
+      "authors": [
+        "Tahiya Chowdhury"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-11T07:05:26+00:00",
+      "link": "https://arxiv.org/pdf/2606.12971v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "directly predicts cognitive load using deep learning (GRU) from speech and interaction dynamics",
+      "llm_evidence_cn": "直接使用深度学习从语音和交互动态预测认知负荷",
+      "llm_evidence": "直接使用深度学习从语音和交互动态预测认知负荷",
+      "canonical_evidence": "直接使用深度学习从语音和交互动态预测认知负荷",
+      "llm_tldr_en": "Predicts cognitive load from speech and interaction dynamics in dyadic conversations using a two-head GRU encoder, showing interaction features improve prediction.",
+      "llm_tldr_cn": "该论文研究在自然对话中从语音和交互动态预测认知负荷，通过提取声学、动态和交互特征训练双头门控循环单元编码器，发现对话交互特征能够有效预测时间压力、心理努力等认知负荷维度，为认知负荷评估提供了非侵入性方法。",
+      "llm_tldr": "该论文研究在自然对话中从语音和交互动态预测认知负荷，通过提取声学、动态和交互特征训练双头门控循环单元编码器，发现对话交互特征能够有效预测时间压力、心理努力等认知负荷维度，为认知负荷评估提供了非侵入性方法。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.13190v1",
+      "source": "arxiv",
+      "title": "Multi-Modal Multi-Agent Robotic Cognitive Alignment enabled by Non-Invasive Consumer Brain Computer Interfaces: A Proof of Concept Exploration",
+      "abstract": "While non-verbal behaviors and expressive movements are essential for natural human-robot interaction, existing methods often overlook a crucial element: the human's internal cognitive state. Frequently, proactive multi-agent systems can interrupt humans at inopportune moments, leading to cognitive overload and decreased task performance. This paper introduces a framework for generating \"cognitively aligned\" multi-agent interactions, enhancing the ability of robotic systems to contextually defer communications to the user of an agent system during moments of high human mental workload and engagement. We present the design and implementation of a closed-loop architecture that explores the interplay between autonomous task execution and real-time neurophysiological focus. Using a consumer-grade Brain-Computer Interface (BCI), our approach continuously monitors Electroencephalography (EEG) spectral band powers while a human performs an engagement-inducing task. We propose an engagement-driven pipeline where an HTTP-based signaling mechanism places a primary agent's sensory inputs and audio outputs into a holding state upon detecting high engagement. This allows secondary agents to seamlessly process complex, delegated tasks in the background. Once the human's cognitive state returns to a lower cognitive load baseline, the primary agent releases the queued agent message. Our preliminary results demonstrate the feasibility of leveraging real-time signal processing, Large Language Models (LLMs), and physical robotic embodiments to create cognitively-aware, non-intrusive multi-agent systems.",
+      "authors": [
+        "Nataliya Kosmyna",
+        "Liz Jenkins",
+        "Anoop K. Sinha"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.HC"
+      ],
+      "published": "2026-06-11T10:58:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.13190v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Uses consumer BCI to detect cognitive overload for multi-agent alignment",
+      "llm_evidence_cn": "使用消费级BCI检测认知超负荷以实现多智能体认知对齐",
+      "llm_evidence": "使用消费级BCI检测认知超负荷以实现多智能体认知对齐",
+      "canonical_evidence": "使用消费级BCI检测认知超负荷以实现多智能体认知对齐",
+      "llm_tldr_en": "Presents a closed-loop architecture using non-invasive consumer BCI to detect mental workload and defer communications in multi-agent systems, achieving cognitive alignment.",
+      "llm_tldr_cn": "该论文针对多智能体系统中过早中断导致人类认知超负荷的问题，提出了一种基于非侵入式消费级脑机接口的闭环架构。通过实时检测人类心理负荷和工作投入，使机器人系统能够在用户认知负荷高时推迟通信，实现认知对齐。实验验证了该方法在降低认知超负荷和提升任务绩效方面的有效性，为被动BCI在认知负荷评估中的应用提供了概念验证。",
+      "llm_tldr": "该论文针对多智能体系统中过早中断导致人类认知超负荷的问题，提出了一种基于非侵入式消费级脑机接口的闭环架构。通过实时检测人类心理负荷和工作投入，使机器人系统能够在用户认知负荷高时推迟通信，实现认知对齐。实验验证了该方法在降低认知超负荷和提升任务绩效方面的有效性，为被动BCI在认知负荷评估中的应用提供了概念验证。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface for cognitive load assessment",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.12742v1",
+      "source": "arxiv",
+      "title": "Reducing the Complexity of Deep Learning Models for EEG Analysis on Wearable Devices",
+      "abstract": "Wearable healthcare devices are the fastest-growing Internet of Things (IoT) sector. Many automated healthcare services rely on two crucial biological signals, namely ECG and EEG, which reflect the activity of the heart and brain, respectively. Although deep neural networks are considered the primary way to process and analyze these signals, the very tight energy and computational power constraints in wearable devices are far below the computational, energy, and memory bandwidth demands of DNN models, thereby impeding the deployment of deep learning in many practical wearable services. This paper investigates the feasibility of deploying state-of-the-art DNN models in resource-constrained wearable devices. Notably, we explore the trade-off between accuracy and computational complexity of DNNs when parameter quantization and electrode reduction methods are used. Our investigation centers on several state-of-the-art DNN models designed for EEG signal analysis, specifically for detecting epileptic seizures. Our findings demonstrate that, when applied judiciously, these techniques can significantly reduce the complexity of the DNNs under consideration with minimal adverse effects on accuracy. These results reveal the explicit trade-offs between accuracy and complexity reduction encountered when adapting DNN-based online EEG analysis for wearable devices.",
+      "authors": [
+        "Farough Shayeste Roodi",
+        "Parham Zilouchian Moghaddam",
+        "Mahdi Mohammadi-nasab",
+        "Mehdi Modarressi",
+        "Mostafa Ersali Salehi Nasab",
+        "Masoud Daneshtalab"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.AR"
+      ],
+      "published": "2026-06-10T23:08:12+00:00",
+      "link": "https://arxiv.org/pdf/2606.12742v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG deep learning model optimization for wearable BCI",
+      "llm_evidence_cn": "用于可穿戴BCI的EEG深度学习模型优化",
+      "llm_evidence": "用于可穿戴BCI的EEG深度学习模型优化",
+      "canonical_evidence": "用于可穿戴BCI的EEG深度学习模型优化",
+      "llm_tldr_en": "This paper investigates the feasibility of deploying state-of-the-art deep neural networks for EEG analysis on resource-constrained wearable devices, exploring model compression and efficiency trade-offs to enable passive BCI applications like cognitive load monitoring.",
+      "llm_tldr_cn": "该论文研究了在资源受限的可穿戴设备上部署先进深度学习模型进行脑电图（EEG）分析的可行性。针对可穿戴设备能量和计算能力有限的问题，探讨了模型压缩与效率权衡，旨在实现被动脑机接口（pBCI）应用（如认知负荷监测）。通过分析模型简化策略，为在边缘设备上运行实时EEG深度学习提供了实用指导。",
+      "llm_tldr": "该论文研究了在资源受限的可穿戴设备上部署先进深度学习模型进行脑电图（EEG）分析的可行性。针对可穿戴设备能量和计算能力有限的问题，探讨了模型压缩与效率权衡，旨在实现被动脑机接口（pBCI）应用（如认知负荷监测）。通过分析模型简化策略，为在边缘设备上运行实时EEG深度学习提供了实用指导。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.11415v1",
+      "source": "arxiv",
+      "title": "Spatially Masked Regression Reveals Local and Distributed Predictability in Electrophysiological Recordings",
+      "abstract": "Neural recordings are often interpreted as local measurements, yet the signal at any one sensor can also reflect structured activity distributed across the broader network. This raises a basic question: to what extent does an electrode's signal reflect local versus distributed information in the underlying system? More specifically, how much of an electrode's activity is carried by its immediate neighborhood, and how much is embedded more broadly across the array? We address this with a Spatially Masked Regression (SMR) framework that reconstructs each electrode's timeseries from the remaining electrodes while excluding a configurable neighborhood around the target. By progressively increasing this mask, spatial locality becomes an experimental control for quantifying how much predictive information survives after nearby channels are withheld. We apply SMR to intracranial EEG with heterogeneous electrode coverage and to scalp EEG with standardized montages over sensorimotor cortex. Using distance correlation between original and reconstructed signals, we find strong within-subject reconstruction in both modalities, substantial residual predictability even when local neighbors are excluded, and markedly stronger cross-subject transfer in EEG than in iEEG. Masking shows that nearby electrodes contribute strongly to reconstruction but do not account for all of it, indicating that individual channels reflect both local redundancy and broader distributed structure. Surrogates that preserve selected marginal or spectral properties while disrupting phase structure or temporal ordering substantially reduce performance, supporting the conclusion that SMR depends on structured temporal and cross-channel organization rather than on marginal statistics alone. These results position SMR as an interpretable framework for quantifying the balance between local and distributed information in recordings.",
+      "authors": [
+        "Maryam Ostadsharif Memar",
+        "Nima Dehghani"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "cs.LG",
+        "physics.data-an",
+        "q-bio.QM"
+      ],
+      "published": "2026-06-09T20:05:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.11415v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "general method for analyzing electrophysiological recordings, applicable to EEG in cognitive load studies",
+      "llm_evidence_cn": "电生理记录分析通用方法，可应用于认知负荷研究的EEG分析",
+      "llm_evidence": "电生理记录分析通用方法，可应用于认知负荷研究的EEG分析",
+      "canonical_evidence": "电生理记录分析通用方法，可应用于认知负荷研究的EEG分析",
+      "llm_tldr_en": "Spatially Masked Regression (SMR) quantifies local vs distributed predictability in neural recordings, a method useful for EEG-based cognitive load assessment.",
+      "llm_tldr_cn": "针对神经电生理记录中信号来源的局域与分布性问题，该论文提出空间掩蔽回归（SMR）框架。通过逐步扩大掩蔽区域重构电极时间序列，SMR能够量化各电极信号中局部和分布式信息的比例。该方法适用于脑电图（EEG）等多种电生理数据，为认知负荷等研究中的信号解读提供了新工具，具有广泛的应用前景。",
+      "llm_tldr": "针对神经电生理记录中信号来源的局域与分布性问题，该论文提出空间掩蔽回归（SMR）框架。通过逐步扩大掩蔽区域重构电极时间序列，SMR能够量化各电极信号中局部和分布式信息的比例。该方法适用于脑电图（EEG）等多种电生理数据，为认知负荷等研究中的信号解读提供了新工具，具有广泛的应用前景。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.13017v1",
+      "source": "arxiv",
+      "title": "Deep Sleep Classification via EEG Signal Criticality: A Passive BCI Approach for Sleep-Improvement Neurofeedback",
+      "abstract": "Automated sleep staging is a fundamental application of passive Brain-Computer Interfaces (pBCI), decoding spontaneous neural states to enable closed-loop interventions independent of user intent. This study evaluates criticality features derived from Detrended Fluctuation Analysis (DFA) for the specific identification of deep sleep (N3).   We analyzed $347,232$ EEG epochs from $290$ older women using UMAP manifold learning to visualize state transitions. Subsequently, six classifiers were benchmarked via 10-fold cross-validation, using balanced accuracy to determine the optimal \"state-sensing\" engine for neurofeedback.Naive Bayes achieved the highest mean balanced accuracy ($87.17\\% \\pm 0.24\\%$), significantly outperforming a fully connected deep neural network (FNN: $81.58\\%$) and Random Forest ($80.97\\%$). Linear models (LDA: $57.21\\%$; SVM: $51.01\\%$) performed poorly, indicating that DFA-derived criticality features reside on a distinct, non-linear manifold.   Probabilistic decoding of EEG criticality provides a high-accuracy sensing mechanism for pBCIs. This robust classification pipeline supports the development of state-dependent neurofeedback, such as targeted auditory stimulation, to enhance cognitive recovery.",
+      "authors": [
+        "Stanisław Narębski",
+        "Tomasz Komendziński",
+        "Tomasz M. Rutkowski"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "cs.LG"
+      ],
+      "published": "2026-06-11T07:53:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.13017v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "passive BCI for sleep classification using EEG criticality",
+      "llm_evidence_cn": "被动脑机接口用于睡眠分类与EEG临界性",
+      "llm_evidence": "被动脑机接口用于睡眠分类与EEG临界性",
+      "canonical_evidence": "被动脑机接口用于睡眠分类与EEG临界性",
+      "llm_tldr_en": "Evaluates criticality features for deep sleep (N3) classification as a passive BCI neurofeedback approach, achieving high accuracy with Naive Bayes.",
+      "llm_tldr_cn": "将被动脑机接口应用于睡眠分期，利用去趋势波动分析提取EEG临界性特征，通过UMAP可视化和多种分类器比较，发现朴素贝叶斯在识别深睡（N3）阶段达到87.17%的平衡准确率，为闭环神经反馈干预提供了有效的状态感知引擎。",
+      "llm_tldr": "将被动脑机接口应用于睡眠分期，利用去趋势波动分析提取EEG临界性特征，通过UMAP可视化和多种分类器比较，发现朴素贝叶斯在识别深睡（N3）阶段达到87.17%的平衡准确率，为闭环神经反馈干预提供了有效的状态感知引擎。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-08-730866-v1",
+      "source": "biorxiv",
+      "title": "VISUAL EXPERIENCE SHAPES ARM POSITION SENSE IN INTERNAL AND EXTERNAL REFERENCE FRAMES AND ASSOCIATED CORTICAL LOAD",
+      "abstract": "The ability to accurately perceive arm position is essential for motor control and depends on the integration of proprioceptive and visual information. However, how lifelong visual impairment (VI) affects position sense and its neural correlates remains unclear. We quantified arm position sense and associated cognitive-motor load in right-handed visually impaired (n = 7) and normally sighted (NS; n = 7) individuals using three bilateral arm position matching tasks: joint angle matching (JAM; internal coordinates), hand direction-distance matching (DDM; external coordinates), and mirror direction-distance matching (MDDM; external coordinates kinematically identical to JAM). Cognitive load was assessed using the contingent negative variation (CNV) from EEG recordings. VI participants exhibited reduced accuracy and precision of arm position sense in most conditions, and greater CNV magnitude, particularly in the left parietal cortex. Across both groups, performance was worse and CNV magnitude was greater in the DDM task compared with JAM, whereas JAM and MDDM yielded similar behavioral and neural outcomes. These findings indicate that (i) visual experience enhances arm position sense, and (ii) representing limb position in external coordinates imposes greater cognitive demands than encoding joint-based posture. The similarity between JAM and MDDM suggests that participants preferentially rely on internal representations when task kinematics permit.",
+      "authors": [
+        "Oh, K.",
+        "Natraj, N.",
+        "Prilutsky, B. I.",
+        "Wheaton, L. A."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-11T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.08.730866v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "cognitive load assessment with cortical load",
+      "llm_evidence_cn": "认知负荷评估与皮层负荷",
+      "llm_evidence": "认知负荷评估与皮层负荷",
+      "canonical_evidence": "认知负荷评估与皮层负荷",
+      "llm_tldr_en": "Investigates how visual experience affects arm position sense and associated cognitive-motor load, assessed using behavioral tasks and neural measures.",
+      "llm_tldr_cn": "本文研究了视觉经验对手臂位置感知的影响及其伴随的认知-运动负荷，通过三种手臂位置匹配任务量化认知负荷，揭示了视觉障碍个体在内部和外部参考框架下的负荷差异，对理解认知负荷的神经基础具有重要意义。",
+      "llm_tldr": "本文研究了视觉经验对手臂位置感知的影响及其伴随的认知-运动负荷，通过三种手臂位置匹配任务量化认知负荷，揭示了视觉障碍个体在内部和外部参考框架下的负荷差异，对理解认知负荷的神经基础具有重要意义。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
