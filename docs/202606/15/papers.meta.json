@@ -1,0 +1,69 @@
+{
+  "label": "2026-06-15",
+  "date": "2026-06-15",
+  "generated_at": "2026-06-15T22:49:00",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202606/15/2606.12742v1-reducing-the-complexity-of-deep-learning-models-for-eeg-analysis-on-wearable-devices",
+      "section": "deep",
+      "title_en": "Reducing the Complexity of Deep Learning Models for EEG Analysis on Wearable Devices",
+      "authors": "Farough Shayeste Roodi, Parham Zilouchian Moghaddam, Mahdi Mohammadi-nasab, Mehdi Modarressi, Mostafa Ersali Salehi Nasab, Masoud Daneshtalab",
+      "date": "2026-06-10",
+      "pdf": "https://arxiv.org/pdf/2606.12742v1",
+      "score": "8.0",
+      "evidence": "面向可穿戴设备的脑电深度学习模型",
+      "tldr": "可穿戴设备资源受限，难以部署高计算需求的深度学习模型用于EEG分析。本文研究通过参数量化和电极减少来降低模型复杂度，以癫痫检测为例。结果表明，适当应用这些方法可在保持高准确率的前提下显著降低复杂度。揭示了准确率与复杂度之间的明确权衡，为可穿戴EEG分析提供了实用指导。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Wearable healthcare devices are the fastest-growing Internet of Things (IoT) sector. Many automated healthcare services rely on two crucial biological signals, namely ECG and EEG, which reflect the activity of the heart and brain, respectively. Although deep neural networks are considered the primary way to process and analyze these signals, the very tight energy and computational power constraints in wearable devices are far below the computational, energy, and memory bandwidth demands of DNN models, thereby impeding the deployment of deep learning in many practical wearable services. This paper investigates the feasibility of deploying state-of-the-art DNN models in resource-constrained wearable devices. Notably, we explore the trade-off between accuracy and computational complexity of DNNs when parameter quantization and electrode reduction methods are used. Our investigation centers on several state-of-the-art DNN models designed for EEG signal analysis, specifically for detecting epileptic seizures. Our findings demonstrate that, when applied judiciously, these techniques can significantly reduce the complexity of the DNNs under consideration with minimal adverse effects on accuracy. These results reveal the explicit trade-offs between accuracy and complexity reduction encountered when adapting DNN-based online EEG analysis for wearable devices.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/15/2606.14614v1-decoding-semantic-categories-from-picture-naming-eeg",
+      "section": "quick",
+      "title_en": "Decoding Semantic Categories from Picture-Naming EEG",
+      "authors": "Wei Hu, Binbin Xu",
+      "date": "2026-06-12",
+      "pdf": "https://arxiv.org/pdf/2606.14614v1",
+      "score": "7.0",
+      "evidence": "使用预训练单通道脑电编码器解码语义类别，与脑电基础模型相关",
+      "tldr": "图片命名涉及从视觉感知到口语输出的多阶段加工，其中语义类别的神经表征尚不明确。本研究利用预训练单通道EEG编码器，结合多语言文本嵌入构建9个语义类别，对高密度EEG进行通道级解码。结果发现，早期感知窗口（约0.562）和命名相关窗口（约0.610）的平衡准确率在融合后达到0.781，且类别信息在传感器上呈空间分布。该工作证明现代解码方法能揭示口语产生中语义类别的神经动态，为语言加工研究提供新视角。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Picture naming requires the transformation of visual object information into a spoken lexical response through perceptual, semantic, lexical, and articulatory processes. This study asked whether semantic-category information is recoverable from high-density EEG during overt picture naming. Sixteen native French-speaking participants performed a picture-naming task using line drawings. Picture labels were embedded with a multilingual text-embedding model and organized into nine interpretable semantic categories, providing a data-driven semantic target space for neural decoding. EEG activity was represented channel-wise using a pre-trained single-channel EEG encoder over an early post-stimulus window, a later naming-related window, and their combination. Nine-class decoding showed above-chance semantic-category discrimination in all temporal representations. Balanced accuracy increased from 0.562 in the early window to 0.610 in the naming-related window, and reached 0.781 when both windows were combined, with a maximum Macro-F1 of 0.784. Class-level F1 scores showed consistent gains across semantic categories, and sensor-level decoding maps indicated spatially distributed category information. These findings suggest that semantic-category structure is reflected in EEG activity during overt picture naming and that early and naming-related temporal windows provide complementary information. The results support the use of modern neural decoding methods as tools for investigating lexical-semantic processing in spoken language production.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/15/2606.10502v1-when-vr-meets-bci-unobservable-brainwave-aware-privacy-reconstruction-in-the-metaverse-via-unrestricted-inbuilt-motion-sensors",
+      "section": "quick",
+      "title_en": "When VR Meets BCI: (Un)Observable Brainwave-aware Privacy Reconstruction in the Metaverse via Unrestricted Inbuilt Motion Sensors",
+      "authors": "Tao Ni, Zehua Sun, Qingchuan Zhao, Wei-Bin Lee, Cong Wang",
+      "date": "2026-06-09",
+      "pdf": "https://arxiv.org/pdf/2606.10502v1",
+      "score": "6.0",
+      "evidence": "基于VR运动传感器重建脑电信号用于被动脑机接口",
+      "tldr": "VR头显中的内置运动传感器能捕获瞳孔响应引起的细微振动，进而重建脑电信号，泄露用户不可观察的感知隐私。本研究提出BraVeSpy系统，首次在元宇宙中利用加速度计等传感器重构脑相关表征，实现感知图像识别（准确率52.0%-67.2%），并在用户活动推断（网站指纹、应用、视频流）中达到85%以上精度，用户去匿名化、注视追踪和虚拟按键推断超96%。该工作揭示了新型侧信道攻击向量，远超传统可观察行为隐私泄露范围。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Metaverse devices, such as virtual reality (VR), have seen substantial development and widespread applications in numerous areas. Although recent studies have revealed privacy leakages in VR, these vulnerabilities were limited in the scope of observable behaviors in virtual scenes (e.g., what a user is seeing). In this work, we uncover the feasibility of going beyond the scope of observable user behaviors to unobservable brain EEG-correlated representations (e.g., what a user is perceiving) by leveraging unrestricted motion sensors in VR headsets to reconstruct brain EEG signals, a seemingly neglected but promising vector. The insight is that the inbuilt motion sensors (e.g., accelerometers) in the VR headset can capture subtle vibrations induced by pupillary responses, which are highly correlated with users' visual stimuli and in-brain perceptions.   Therefore, we design and implement BraVeSpy to systematically investigate and demonstrate the feasibility of this severe privacy leakage originating from brain EEG-correlated representations reconstructed from variations of inbuilt motion sensors. Our extensive evaluation results from different VR devices show that BraVeSpy, for the first time in the Metaverse, can reveal unobservable privacy, where we successfully unveiled perceptive images in the brain with 52.0%-67.2% accuracy. In particular, we also find that BraVeSpy outperforms the current approaches that are limited to coarse-grained inference of observable behaviors and achieves over 85.0% accuracy in inferring user activity-related sensitive information, such as fingerprinting websites, apps, and streaming videos, and over 96.0% accuracy in user de-anonymization, gaze movement tracking, and virtual keystroke inference.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/15/2606.11970v1-low-density-eeg-for-seizure-detection-evaluating-cnn-rnn-architectures-on-a-behind-the-ear-montage-setup",
+      "section": "quick",
+      "title_en": "Low-Density EEG for Seizure Detection: Evaluating CNN-RNN Architectures on a Behind-the-Ear Montage Setup",
+      "authors": "Annika Stiehl, Patrick Wingert, Nicolas Weeger, Nicole Ille, Christian Uhl, Stefan Geißelsöder",
+      "date": "2026-06-10",
+      "pdf": "https://arxiv.org/pdf/2606.11970v1",
+      "score": "6.0",
+      "evidence": "混合深度学习架构用于脑电分类，可迁移至认知负荷评估",
+      "tldr": "癫痫影响超过5000万人，自动检测可减轻医生负担。本研究利用TUSZ数据集模拟耳后低密度脑电，系统比较多种CNN-RNN混合架构。提出CNN-Merged模型整合时频特征，在保留测试集上达到85.89% ROC AUC和79.11%平衡准确率。该模型在不同参考导联上表现稳健，缩小了全头皮与可穿戴系统的性能差距。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Epilepsy affects over 50 million individuals globally, underscoring the need for automated seizure detection systems that can alleviate clinicians workload and enhance the accuracy of patient seizure diaries. In wearable EEG applications, however, reliable detection remains challenging due to the limited spatial resolution of low-density electrode configurations, reduced signal-to-noise ratios, and the scarcity of diverse, publicly available training datasets. This study investigates the efficacy of hybrid deep learning architectures for automated seizure detection using a simulated behind-the-ear montage derived from the Temple University Seizure Corpus (TUSZ, v2.0.3). We conduct a systematic comparison of several CNN-RNN models, including LSTM- and GRU-based variants, across multiple EEG montages to evaluate their capacity to compensate for the loss of spatial information inherent to reduced electrode configurations. The proposed CNN-Merged model, which integrates temporal and spectral feature representations, demonstrates superior performance, achieving a ROC AUC of 85.89% and a balanced accuracy of 79.11% on the held-out test set. Furthermore, the model exhibits strong robustness across different reference montages, effectively bridging the performance gap between conventional full-scalp recordings and resource-constrained wearable systems. These findings substantiate the potential of hybrid deep learning models as a promising avenue toward robust, patient-independent seizure detection in low-density EEG applications.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

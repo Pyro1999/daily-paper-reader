@@ -1,0 +1,182 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-15T22:46:48.987461+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 1,
+    "deep_cap": 7,
+    "deep_selected": 1,
+    "quick_candidates": 3,
+    "quick_skim_target": 12,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2606.12742v1",
+      "source": "arxiv",
+      "title": "Reducing the Complexity of Deep Learning Models for EEG Analysis on Wearable Devices",
+      "abstract": "Wearable healthcare devices are the fastest-growing Internet of Things (IoT) sector. Many automated healthcare services rely on two crucial biological signals, namely ECG and EEG, which reflect the activity of the heart and brain, respectively. Although deep neural networks are considered the primary way to process and analyze these signals, the very tight energy and computational power constraints in wearable devices are far below the computational, energy, and memory bandwidth demands of DNN models, thereby impeding the deployment of deep learning in many practical wearable services. This paper investigates the feasibility of deploying state-of-the-art DNN models in resource-constrained wearable devices. Notably, we explore the trade-off between accuracy and computational complexity of DNNs when parameter quantization and electrode reduction methods are used. Our investigation centers on several state-of-the-art DNN models designed for EEG signal analysis, specifically for detecting epileptic seizures. Our findings demonstrate that, when applied judiciously, these techniques can significantly reduce the complexity of the DNNs under consideration with minimal adverse effects on accuracy. These results reveal the explicit trade-offs between accuracy and complexity reduction encountered when adapting DNN-based online EEG analysis for wearable devices.",
+      "authors": [
+        "Farough Shayeste Roodi",
+        "Parham Zilouchian Moghaddam",
+        "Mahdi Mohammadi-nasab",
+        "Mehdi Modarressi",
+        "Mostafa Ersali Salehi Nasab",
+        "Masoud Daneshtalab"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.AR"
+      ],
+      "published": "2026-06-10T23:08:12+00:00",
+      "link": "https://arxiv.org/pdf/2606.12742v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "deep learning models for EEG analysis on wearable devices",
+      "llm_evidence_cn": "面向可穿戴设备的脑电深度学习模型",
+      "llm_evidence": "面向可穿戴设备的脑电深度学习模型",
+      "canonical_evidence": "面向可穿戴设备的脑电深度学习模型",
+      "llm_tldr_en": "Investigates reducing DNN complexity for EEG analysis on resource-constrained wearables, enabling deep learning deployment for EEG-based applications.",
+      "llm_tldr_cn": "该论文针对可穿戴设备资源受限的问题，研究如何降低深度学习模型在脑电分析中的复杂度。通过探索模型压缩与精度之间的权衡，为在穿戴设备上部署实时脑电分析（如认知负荷监测）提供了可行方案。",
+      "llm_tldr": "该论文针对可穿戴设备资源受限的问题，研究如何降低深度学习模型在脑电分析中的复杂度。通过探索模型压缩与精度之间的权衡，为在穿戴设备上部署实时脑电分析（如认知负荷监测）提供了可行方案。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.14614v1",
+      "source": "arxiv",
+      "title": "Decoding Semantic Categories from Picture-Naming EEG",
+      "abstract": "Picture naming requires the transformation of visual object information into a spoken lexical response through perceptual, semantic, lexical, and articulatory processes. This study asked whether semantic-category information is recoverable from high-density EEG during overt picture naming. Sixteen native French-speaking participants performed a picture-naming task using line drawings. Picture labels were embedded with a multilingual text-embedding model and organized into nine interpretable semantic categories, providing a data-driven semantic target space for neural decoding. EEG activity was represented channel-wise using a pre-trained single-channel EEG encoder over an early post-stimulus window, a later naming-related window, and their combination. Nine-class decoding showed above-chance semantic-category discrimination in all temporal representations. Balanced accuracy increased from 0.562 in the early window to 0.610 in the naming-related window, and reached 0.781 when both windows were combined, with a maximum Macro-F1 of 0.784. Class-level F1 scores showed consistent gains across semantic categories, and sensor-level decoding maps indicated spatially distributed category information. These findings suggest that semantic-category structure is reflected in EEG activity during overt picture naming and that early and naming-related temporal windows provide complementary information. The results support the use of modern neural decoding methods as tools for investigating lexical-semantic processing in spoken language production.",
+      "authors": [
+        "Wei Hu",
+        "Binbin Xu"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "eess.SP"
+      ],
+      "published": "2026-06-12T16:40:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.14614v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "uses pre-trained single-channel EEG encoder for semantic decoding, related to foundation model for EEG",
+      "llm_evidence_cn": "使用预训练单通道脑电编码器解码语义类别，与脑电基础模型相关",
+      "llm_evidence": "使用预训练单通道脑电编码器解码语义类别，与脑电基础模型相关",
+      "canonical_evidence": "使用预训练单通道脑电编码器解码语义类别，与脑电基础模型相关",
+      "llm_tldr_en": "Decodes semantic categories from picture-naming EEG using a pre-trained single-channel EEG encoder; demonstrates transferable representations relevant to EEG foundation models.",
+      "llm_tldr_cn": "该研究探究是否可以从图片命名的高密度脑电中解码语义类别信息。采用预训练的单通道脑电编码器，在早期和后期的时窗上进行通道级特征提取，结合文本嵌入模型构建九类语义空间。实验成功解码语义类别，验证了预训练编码器的迁移能力。该工作为脑电基础模型在认知解码中的应用提供了实证，但未涉及认知负荷评估。",
+      "llm_tldr": "该研究探究是否可以从图片命名的高密度脑电中解码语义类别信息。采用预训练的单通道脑电编码器，在早期和后期的时窗上进行通道级特征提取，结合文本嵌入模型构建九类语义空间。实验成功解码语义类别，验证了预训练编码器的迁移能力。该工作为脑电基础模型在认知解码中的应用提供了实证，但未涉及认知负荷评估。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.10502v1",
+      "source": "arxiv",
+      "title": "When VR Meets BCI: (Un)Observable Brainwave-aware Privacy Reconstruction in the Metaverse via Unrestricted Inbuilt Motion Sensors",
+      "abstract": "Metaverse devices, such as virtual reality (VR), have seen substantial development and widespread applications in numerous areas. Although recent studies have revealed privacy leakages in VR, these vulnerabilities were limited in the scope of observable behaviors in virtual scenes (e.g., what a user is seeing). In this work, we uncover the feasibility of going beyond the scope of observable user behaviors to unobservable brain EEG-correlated representations (e.g., what a user is perceiving) by leveraging unrestricted motion sensors in VR headsets to reconstruct brain EEG signals, a seemingly neglected but promising vector. The insight is that the inbuilt motion sensors (e.g., accelerometers) in the VR headset can capture subtle vibrations induced by pupillary responses, which are highly correlated with users' visual stimuli and in-brain perceptions.   Therefore, we design and implement BraVeSpy to systematically investigate and demonstrate the feasibility of this severe privacy leakage originating from brain EEG-correlated representations reconstructed from variations of inbuilt motion sensors. Our extensive evaluation results from different VR devices show that BraVeSpy, for the first time in the Metaverse, can reveal unobservable privacy, where we successfully unveiled perceptive images in the brain with 52.0%-67.2% accuracy. In particular, we also find that BraVeSpy outperforms the current approaches that are limited to coarse-grained inference of observable behaviors and achieves over 85.0% accuracy in inferring user activity-related sensitive information, such as fingerprinting websites, apps, and streaming videos, and over 96.0% accuracy in user de-anonymization, gaze movement tracking, and virtual keystroke inference.",
+      "authors": [
+        "Tao Ni",
+        "Zehua Sun",
+        "Qingchuan Zhao",
+        "Wei-Bin Lee",
+        "Cong Wang"
+      ],
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR"
+      ],
+      "published": "2026-06-09T07:28:16+00:00",
+      "link": "https://arxiv.org/pdf/2606.10502v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG signal reconstruction from motion sensors in VR for passive BCI",
+      "llm_evidence_cn": "基于VR运动传感器重建脑电信号用于被动脑机接口",
+      "llm_evidence": "基于VR运动传感器重建脑电信号用于被动脑机接口",
+      "canonical_evidence": "基于VR运动传感器重建脑电信号用于被动脑机接口",
+      "llm_tldr_en": "Shows that VR motion sensors can reconstruct EEG-correlated brain signals, posing privacy risks but also enabling passive BCI applications.",
+      "llm_tldr_cn": "该论文揭示了利用VR头显中的运动传感器（如加速度计）重建脑电信号的可能性，突破了仅能观察显式行为的局限。虽然聚焦于隐私风险，但其方法表明被动脑机接口可通过非侵入式运动传感器获取脑电相关信息。",
+      "llm_tldr": "该论文揭示了利用VR头显中的运动传感器（如加速度计）重建脑电信号的可能性，突破了仅能观察显式行为的局限。虽然聚焦于隐私风险，但其方法表明被动脑机接口可通过非侵入式运动传感器获取脑电相关信息。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.11970v1",
+      "source": "arxiv",
+      "title": "Low-Density EEG for Seizure Detection: Evaluating CNN-RNN Architectures on a Behind-the-Ear Montage Setup",
+      "abstract": "Epilepsy affects over 50 million individuals globally, underscoring the need for automated seizure detection systems that can alleviate clinicians workload and enhance the accuracy of patient seizure diaries. In wearable EEG applications, however, reliable detection remains challenging due to the limited spatial resolution of low-density electrode configurations, reduced signal-to-noise ratios, and the scarcity of diverse, publicly available training datasets. This study investigates the efficacy of hybrid deep learning architectures for automated seizure detection using a simulated behind-the-ear montage derived from the Temple University Seizure Corpus (TUSZ, v2.0.3). We conduct a systematic comparison of several CNN-RNN models, including LSTM- and GRU-based variants, across multiple EEG montages to evaluate their capacity to compensate for the loss of spatial information inherent to reduced electrode configurations. The proposed CNN-Merged model, which integrates temporal and spectral feature representations, demonstrates superior performance, achieving a ROC AUC of 85.89% and a balanced accuracy of 79.11% on the held-out test set. Furthermore, the model exhibits strong robustness across different reference montages, effectively bridging the performance gap between conventional full-scalp recordings and resource-constrained wearable systems. These findings substantiate the potential of hybrid deep learning models as a promising avenue toward robust, patient-independent seizure detection in low-density EEG applications.",
+      "authors": [
+        "Annika Stiehl",
+        "Patrick Wingert",
+        "Nicolas Weeger",
+        "Nicole Ille",
+        "Christian Uhl",
+        "Stefan Geißelsöder"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-06-10T11:50:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.11970v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "hybrid deep learning for EEG classification transferable to cognitive load",
+      "llm_evidence_cn": "混合深度学习架构用于脑电分类，可迁移至认知负荷评估",
+      "llm_evidence": "混合深度学习架构用于脑电分类，可迁移至认知负荷评估",
+      "canonical_evidence": "混合深度学习架构用于脑电分类，可迁移至认知负荷评估",
+      "llm_tldr_en": "Evaluates CNN-RNN architectures for seizure detection on low-density EEG, showing feasibility for automated EEG analysis with potential to cognitive load estimation.",
+      "llm_tldr_cn": "该论文针对低密度脑电癫痫检测，系统比较多种CNN-RNN混合架构。实验表明，在耳后导联设置下深度学习模型能有效检测癫痫发作，但性能受限于电极数和数据量。该研究为低密度脑电的深度学习分类提供了参考，其方法可迁移至被动脑机接口中的认知负荷评估。",
+      "llm_tldr": "该论文针对低密度脑电癫痫检测，系统比较多种CNN-RNN混合架构。实验表明，在耳后导联设置下深度学习模型能有效检测癫痫发作，但性能受限于电极数和数据量。该研究为低密度脑电的深度学习分类提供了参考，其方法可迁移至被动脑机接口中的认知负荷评估。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
