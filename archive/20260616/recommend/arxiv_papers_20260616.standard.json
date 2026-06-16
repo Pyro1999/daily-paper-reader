@@ -1,0 +1,329 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-16T22:23:32.282253+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 2,
+    "deep_divecandidates": 1,
+    "deep_cap": 7,
+    "deep_selected": 1,
+    "quick_candidates": 6,
+    "quick_skim_target": 12,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2606.15278v1",
+      "source": "arxiv",
+      "title": "RECTOR: Masked Region-Channel-Temporal Modeling for Affective and Cognitive Representation Learning",
+      "abstract": "Affective and cognitive disorders manifest as distributed, time-varying brain network dynamics across regions, channels, and time, challenging robust representation learning from EEG/sEEG for clinical diagnosis. We propose RECTOR (Masked Region-Channel-Temporal Modeling), an end-to-end self-supervised framework that unifies joint region-channel-temporal representation learning beyond fixed anatomical priors. At its core, RECTOR-SA is a hierarchical, block-sparse self-attention induced by Adaptive Functional Partitioning that evolves region structures from static anatomical definitions to adaptive functional regions. The self-supervision is driven by Masked Topology and Representation Learning, which jointly optimizes three complementary objectives: Masked Predictive Modeling, Topological Structure Modeling, and Cross-View Consistency. Across diverse benchmarks, RECTOR sets a new state-of-the-art in EEG emotion recognition and sEEG task-engagement classification. Crucially, its strong robustness to missing channels and cross-montage generalization underscores its potential for large-scale pre-training on heterogeneous EEG/sEEG, providing interpretable insights at both region and channel levels.",
+      "authors": [
+        "Jinhan Liu",
+        "Mahsa Shoaran"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-13T12:33:59+00:00",
+      "link": "https://arxiv.org/pdf/2606.15278v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "self-supervised representation learning from EEG/sEEG for cognitive state",
+      "llm_evidence_cn": "基于EEG/sEEG的自监督表征学习用于认知状态",
+      "llm_evidence": "基于EEG/sEEG的自监督表征学习用于认知状态",
+      "canonical_evidence": "基于EEG/sEEG的自监督表征学习用于认知状态",
+      "llm_tldr_en": "RECTOR is a self-supervised framework that learns joint region-channel-temporal representations from EEG/sEEG, enabling robust affective and cognitive state modeling.",
+      "llm_tldr_cn": "RECTOR是一种端到端自监督框架，通过掩码拓扑和表征学习，联合优化区域-通道-时间表示，超越了固定解剖先验。其核心RECTOR-SA采用自适应功能分割驱动的分层块稀疏自注意力，从EEG/sEEG数据中学习动态功能区域结构。该方法在情感和认知障碍诊断中展现了强大的表征能力，为被动BCI认知负荷评估的基础模型构建提供了新范式。",
+      "llm_tldr": "RECTOR是一种端到端自监督框架，通过掩码拓扑和表征学习，联合优化区域-通道-时间表示，超越了固定解剖先验。其核心RECTOR-SA采用自适应功能分割驱动的分层块稀疏自注意力，从EEG/sEEG数据中学习动态功能区域结构。该方法在情感和认知障碍诊断中展现了强大的表征能力，为被动BCI认知负荷评估的基础模型构建提供了新范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.11555v1",
+      "source": "arxiv",
+      "title": "End-to-End Machine Learning for Depressive State Classification via EEG and fNIRS",
+      "abstract": "The escalating demand for mental healthcare, driven by rising societal stress, highlights the limitations of traditional psychiatric diagnostics. Conventional methods - relying primarily on clinical interviews and patient self-reports - are inherently vulnerable to subjective bias and the varying empirical judgment of practitioners. To address the need for quantitative evaluation, biological signal-based detection, including electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS), has emerged as a promising objective alternative. Such technology is particularly vital for identifying latent depressive states that may be unrecognized by the subjects themselves. Furthermore, in aging populations, the high comorbidity between depression and dementia necessitates early differentiation to prevent mutual symptom exacerbation and maintain Quality of Life (QoL). This pilot study of eleven healthy students establishes a framework for biological signal-based depression detection, serving as a foundational step toward automated, objective diagnostic tools for clinical use.",
+      "authors": [
+        "Riki Sakurai",
+        "Simon Kojima",
+        "Mihoko Otake-Matsuura",
+        "Shin'ichiro Kanoh",
+        "Tomasz M. Rutkowski"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-06-10T01:31:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.11555v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG deep learning for classification",
+      "llm_evidence_cn": "EEG深度学习用于分类",
+      "llm_evidence": "EEG深度学习用于分类",
+      "canonical_evidence": "EEG深度学习用于分类",
+      "llm_tldr_en": "This paper applies end-to-end deep learning to EEG and fNIRS for depressive state classification, demonstrating transferable methodology for passive BCI cognitive load assessment.",
+      "llm_tldr_cn": "传统精神疾病诊断依赖主观评估，本工作提出基于EEG和fNIRS的端到端机器学习方法，实现抑郁状态的客观分类。通过端到端学习，模型自动提取特征，避免了手工特征工程的局限。在数据集上的结果显示了良好性能。该方法为被动BCI中的认知负荷评估提供了可借鉴的深度学习范式。",
+      "llm_tldr": "传统精神疾病诊断依赖主观评估，本工作提出基于EEG和fNIRS的端到端机器学习方法，实现抑郁状态的客观分类。通过端到端学习，模型自动提取特征，避免了手工特征工程的局限。在数据集上的结果显示了良好性能。该方法为被动BCI中的认知负荷评估提供了可借鉴的深度学习范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-08-730888-v1",
+      "source": "biorxiv",
+      "title": "The electro-MICA toolbox for integrating electrophysiology within multimodal imaging and connectomics workflows",
+      "abstract": "AO_SCPLOWBSTRACTC_SCPLOWThe integration of electrophysiological recordings with multimodal neuroimaging data holds great promise for advancing our understanding of brain function and neurological disorders. To facilitate this endeavour, we present electro-MICA, an open-access Python toolbox designed to project electrophysiological features from scalp and intracranial electroencephalography (EEG) onto cortical and hippocampal surfaces generated by validated multimodal imaging ecosystems. The toolbox comprises two pipelines: one for intracranial EEG (iEEG) recorded with stereo-EEG depth electrodes, and one for scalp EEG source localization. Both pipelines are grounded in numerical solutions to the electromagnetic equations governing electric activity in the brain, solved using the Boundary Element Method. A key methodological contribution is the use of a current density double layer model for neural generators, which avoids the mathematical singularities introduced by conventional dipole-based models when electrodes are near the cortical surface, a situation that can arise in iEEG. Electrode contacts are additionally modeled with non-zero length, improving physical realism. Scalp EEG source localization is performed using eLORETA on a subject-specific three-layer head model derived from the anatomical input. Validation against empirical gamma-band iEEG data from 32 subjects demonstrates that the distributed generator model outperforms both distance-based and dipole-based alternatives. An illustrative clinical example demonstrates the toolboxs capacity to reveal associations between intracranial spike rates, cortical thickness, and anatomical connectivity in an epilepsy patient. Electro-MICA requires no parameter selection from the user, facilitating straightforward multimodal analyses in both research and clinical settings. The toolbox is available at github.com/MICA-MNI/electromica with extensive online documentation at electromica.readthedocs.io.",
+      "authors": [
+        "von Ellenrieder, N.",
+        "Cai, Z.",
+        "Arafat, T.",
+        "Vavassori, L.",
+        "Abdallah, C.",
+        "de Kraker, J.",
+        "Rodriguez-Cruces, R.",
+        "Royer, J.",
+        "Sahlas, E.",
+        "Bautin, P.",
+        "Pana, R.",
+        "Aron, O.",
+        "Frauscher, B.",
+        "Bernhardt, B. C."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-11T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.08.730888v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "query:pBCI-load"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG source localization toolbox for BCI research",
+      "llm_evidence_cn": "脑电源定位工具箱，可用于被动BCI研究",
+      "llm_evidence": "脑电源定位工具箱，可用于被动BCI研究",
+      "canonical_evidence": "脑电源定位工具箱，可用于被动BCI研究",
+      "llm_tldr_en": "Presents electro-MICA, an open-source Python toolbox for projecting EEG features onto cortical surfaces via validated pipelines, supporting multimodal integration relevant to cognitive load studies.",
+      "llm_tldr_cn": "该论文介绍了electro-MICA工具箱，这是一个开源Python工具，用于将头皮和颅内脑电特征投影到皮层和海马表面，集成了源定位和模态融合管线。该工具箱可直接服务于被动脑机接口研究中的认知负荷评估，为脑电信号处理提供标准化工具支持。",
+      "llm_tldr": "该论文介绍了electro-MICA工具箱，这是一个开源Python工具，用于将头皮和颅内脑电特征投影到皮层和海马表面，集成了源定位和模态融合管线。该工具箱可直接服务于被动脑机接口研究中的认知负荷评估，为脑电信号处理提供标准化工具支持。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.14120v1",
+      "source": "arxiv",
+      "title": "FAConformer: Frequency-Aware Convolutional Transformer for Auditory Attention Decoding",
+      "abstract": "Auditory attention decoding (AAD) aims to infer the attended speaker from neural responses in multi-speaker acoustic environments and is a key problem for neuro-steered hearing systems. Although recent studies have achieved encouraging progress, existing AAD models still do not fully exploit frequency domain electroencephalography (EEG) information. In particular, most approaches introduce multi-band information through handcrafted feature extraction or direct cross-band feature concatenation, which mainly exploit frequency information at a shallow level and may overlook band-specific patterns and cross-band interactions. To address these limitations, this paper proposes FAConformer, a frequency-aware CNN-Transformer framework for AAD that explicitly integrates band-specific encoding and adaptive cross-band interaction. Specifically, FAConformer first decomposes EEG signals into multiple frequency bands and assigns each band to an independent CNN-Transformer encoder for band-specific modeling. The resulting band-wise features are then adaptively fused by a carefully designed frequency-aware attention (FAA) module that models cross-band dependencies by treating band-wise features as tokens. Further, band-wise auxiliary supervision (BAS) is introduced to prevent weakly contributing branches from being under-optimized during joint training. In this way, FAConformer performs frequency-aware modeling that more effectively exploits frequency domain information. Extensive experiments on two public AAD datasets with three decision-window lengths demonstrated that FAConformer consistently outperformed 12 competitive baselines, surpassing the current state-of-the-art model by 4.9%. Further analyses of band importance, ablation, and parameter sensitivity verify the effectiveness, robustness, and interpretability of the proposed framework. Code is available at https://github.com/wzwvv/FAConformer.",
+      "authors": [
+        "Ziwei Wang",
+        "Xingyi He",
+        "Tianwang Jia",
+        "Hongbin Wang",
+        "Dongrui Wu"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP",
+        "cs.AI",
+        "cs.LG",
+        "cs.SD",
+        "eess.AS"
+      ],
+      "published": "2026-06-12T04:59:09+00:00",
+      "link": "https://arxiv.org/pdf/2606.14120v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "deep learning for EEG auditory attention decoding",
+      "llm_evidence_cn": "深度学习用于EEG听觉注意解码",
+      "llm_evidence": "深度学习用于EEG听觉注意解码",
+      "canonical_evidence": "深度学习用于EEG听觉注意解码",
+      "llm_tldr_en": "FAConformer proposes a frequency-aware CNN-Transformer hybrid model for auditory attention decoding from EEG, showcasing advanced deep learning for passive BCI.",
+      "llm_tldr_cn": "现有听觉注意解码（AAD）模型未能充分利用EEG频域信息，本工作提出FAConformer，一种频率感知的卷积-Transformer混合框架，通过深度挖掘频带特定模式和跨频带交互提升解码精度。在多个数据集上的实验证明了该方法的优越性。FAConformer代表了深度学习在被动BCI领域的前沿进展。",
+      "llm_tldr": "现有听觉注意解码（AAD）模型未能充分利用EEG频域信息，本工作提出FAConformer，一种频率感知的卷积-Transformer混合框架，通过深度挖掘频带特定模式和跨频带交互提升解码精度。在多个数据集上的实验证明了该方法的优越性。FAConformer代表了深度学习在被动BCI领域的前沿进展。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.16041v1",
+      "source": "arxiv",
+      "title": "EEGDash: An open-source platform for machine learning on public neurophysiological data",
+      "abstract": "Public neurophysiological datasets are increasingly accessible but remain hard to reuse: turning one into a trained model still takes thousands of lines of code for download, loading, format repair, windowing, and evaluation, and a dataset that meets metadata standards can still fail to load. EEG-Dash is a software resource that catalogues 791 publicly archived recordings (39,778 participants, over 86,051 hours) spanning electroencephalography (EEG), magnetoencephalography (MEG), intracranial EEG (iEEG), electromyography (EMG), and functional near-infrared spectroscopy (fNIRS) from the OpenNeuro and NEMAR archives. It exposes each dataset as an importable, queryable class that preserves signal attributes and loads into machine-learning workflows without custom code, delegating signal handling to MNE-Python, windowing to Braindecode, and format compliance to the official Brain Imaging Data Structure (BIDS) validator. A metadata-first registry adds semantic search, a format-repair layer, automatic dataset-level tags drawn from each source publication, and a feature-extraction framework. The catalogue, with per-record loadability and compliance metadata, supports benchmarking, model development, and cross-dataset analysis.",
+      "authors": [
+        "Bruno Aristimunha",
+        "Aviv Dotan",
+        "Pierre Guetschel",
+        "Aman Jaiswal",
+        "Gal Ashkenazi",
+        "Dung Truong",
+        "Kuntal Kokate",
+        "Amitrava Majumdar",
+        "Oren Shriki",
+        "Arnaud Delorme"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC"
+      ],
+      "published": "2026-06-14T22:22:08+00:00",
+      "link": "https://arxiv.org/pdf/2606.16041v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "platform for machine learning on EEG data",
+      "llm_evidence_cn": "提供EEG数据机器学习平台",
+      "llm_evidence": "提供EEG数据机器学习平台",
+      "canonical_evidence": "提供EEG数据机器学习平台",
+      "llm_tldr_en": "EEGDash is an open-source platform that catalogs 791 public neurophysiological recordings and exposes each as an importable class for machine learning.",
+      "llm_tldr_cn": "EEGDash是一个开源平台，整合了来自OpenNeuro和NEMAR的791个公共神经生理记录（共39,778名参与者，超过86,051小时），涵盖EEG、MEG、iEEG、EMG和fNIRS。该平台将每个数据集转化为可直接导入和查询的类，保留信号属性并支持机器学习流水线，解决了神经科学数据复用中的繁琐代码问题。它为基于EEG的认知负荷评估和被动BCI研究提供了便捷的数据访问和模型训练基础设施。",
+      "llm_tldr": "EEGDash是一个开源平台，整合了来自OpenNeuro和NEMAR的791个公共神经生理记录（共39,778名参与者，超过86,051小时），涵盖EEG、MEG、iEEG、EMG和fNIRS。该平台将每个数据集转化为可直接导入和查询的类，保留信号属性并支持机器学习流水线，解决了神经科学数据复用中的繁琐代码问题。它为基于EEG的认知负荷评估和被动BCI研究提供了便捷的数据访问和模型训练基础设施。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.16160v1",
+      "source": "arxiv",
+      "title": "A comparative and critical study of EEGNet for fNIRS-driven cognitive load classification",
+      "abstract": "Accurately classifying cognitive load from functional near-infrared spectroscopy (fNIRS) signals remains a significant challenge due to temporal variability, inter-subject differences, and sensitivity to preprocessing choices. This study provides a comprehensive evaluation of EEGNet for fNIRS-based cognitive load classification by systematically examining the effects of temporal segmentation strategies (overlapping vs. non-overlapping), window lengths (10s, 20s, 30s), feature extraction methods (Analysis of Variance (ANOVA), Principal Component Analysis (PCA), Fast Independent Component Analysis (FastICA)), learning rate configurations (fixed and adaptive), and evaluation protocols (random split vs. subject-independent (SI)). Results from random-split experiments show that overlapping segmentation, combined with smaller fixed learning rates (0.01-0.001), yields the highest accuracies, due to temporal redundancy and dense sampling of hemodynamic transitions. However, SI evaluation reveals a substantial drop in accuracy, demonstrating limited generalization to unseen participants. Under SI evaluation, non-overlapping segmentation outperformed overlapping windows, with the best accuracy of 56.11% achieved using PCA features with a 20-second window and a 0.1 learning rate. These findings indicate that eliminating temporal redundancy helps the model learn more robust and generalizable representations of cognitive load across individuals. Although adaptive learning rate strategy improved training stability, it did not surpass the performance of optimally selected fixed learning rates. The study highlights the critical role of segmentation strategy and learning rate selection in improving model generalization and identifies methodological considerations essential for developing reliable, real-time, and SI cognitive load classification systems using fNIRS.",
+      "authors": [
+        "Mehshan Ahmed Khan",
+        "Houshyar Asadi",
+        "Li Zhang",
+        "Mohammad reza Chalak Qazani",
+        "Ghazal Bargshady",
+        "Stefanos gkikas",
+        "Christian arzate",
+        "Sam Oladazimi",
+        "Zoran Najdovsk",
+        "Lei Wei",
+        "Chee Peng Lim"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.HC"
+      ],
+      "published": "2026-06-15T03:20:14+00:00",
+      "link": "https://arxiv.org/pdf/2606.16160v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "cognitive load classification using deep learning (EEGNet)",
+      "llm_evidence_cn": "使用深度学习（EEGNet）进行认知负荷分类",
+      "llm_evidence": "使用深度学习（EEGNet）进行认知负荷分类",
+      "canonical_evidence": "使用深度学习（EEGNet）进行认知负荷分类",
+      "llm_tldr_en": "This study systematically evaluates EEGNet for fNIRS-based cognitive load classification, examining segmentation strategies, window lengths, features, and evaluation protocols.",
+      "llm_tldr_cn": "本研究对EEGNet在基于fNIRS的认知负荷分类中的表现进行了全面评估，系统考察了时间分割策略（重叠与非重叠）、窗口长度（10s、20s、30s）、特征提取方法（ANOVA、PCA、FastICA）、学习率配置和评估协议（随机分割与受试者独立）的影响。结果揭示了这些因素对分类性能的显著影响，为将EEGNet应用于被动BCI认知负荷评估提供了方法论指导。",
+      "llm_tldr": "本研究对EEGNet在基于fNIRS的认知负荷分类中的表现进行了全面评估，系统考察了时间分割策略（重叠与非重叠）、窗口长度（10s、20s、30s）、特征提取方法（ANOVA、PCA、FastICA）、学习率配置和评估协议（随机分割与受试者独立）的影响。结果揭示了这些因素对分类性能的显著影响，为将EEGNet应用于被动BCI认知负荷评估提供了方法论指导。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.16462v1",
+      "source": "arxiv",
+      "title": "Learning aligned EEG representations with subject-specific encoders",
+      "abstract": "Cross-subject EEG decoding promises more training data, but it also exposes neural networks to strong inter-subject distribution shifts. We study whether task supervision and architecture alone can learn subject-aligned representations. We replace a shared EEG encoder with subject-specific encoders followed by a common classifier, and compare this hybrid model with standard EEGNet, AttentionBaseNet, and CTNet baselines with Euclidean Alignment (EA) on four motor-imagery datasets. EA improves shared encoders by recentering subject covariances, but the hybrid encoder largely internalises this role: validation-loss curves and latent-distance analyses change little when EA is removed. Subject-specific heads increase class distinctiveness and place each subject close to its own latent manifold, improving most subjects while leaving a method-sensitive subset. These results support subject-specific encoders as a learned alignment mechanism for EEG decoding and identify head selection for unseen subjects as the remaining bottleneck.",
+      "authors": [
+        "Bruna J. Lopes",
+        "Gabriel Schwartz",
+        "Sylvain Chevallier",
+        "Raphael Y. de Camargo",
+        "Bruno Aristimunha"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-15T09:31:56+00:00",
+      "link": "https://arxiv.org/pdf/2606.16462v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Deep learning method for EEG decoding, directly transferable to passive BCI cognitive load assessment",
+      "llm_evidence_cn": "用于EEG解码的深度学习方法，可直接迁移到被动BCI认知负荷评估",
+      "llm_evidence": "用于EEG解码的深度学习方法，可直接迁移到被动BCI认知负荷评估",
+      "canonical_evidence": "用于EEG解码的深度学习方法，可直接迁移到被动BCI认知负荷评估",
+      "llm_tldr_en": "This paper proposes subject-specific EEG encoders combined with a shared classifier to learn aligned representations across subjects, improving classification performance on motor imagery tasks, with clear applicability to cognitive load estimation in passive BCI.",
+      "llm_tldr_cn": "该论文针对跨被试EEG解码中的分布偏移问题，提出使用主题特定编码器与共享分类器相结合的混合模型，以学习对齐的EEG表示。在多个运动想象数据集上，该方法优于传统EEGNet等基线，即使去除欧几里得对齐也保持性能。该工作为被动BCI中的认知负荷评估提供了一种强大的深度学习框架，能够有效处理个体差异，提升跨被试的负荷分类准确率。",
+      "llm_tldr": "该论文针对跨被试EEG解码中的分布偏移问题，提出使用主题特定编码器与共享分类器相结合的混合模型，以学习对齐的EEG表示。在多个运动想象数据集上，该方法优于传统EEGNet等基线，即使去除欧几里得对齐也保持性能。该工作为被动BCI中的认知负荷评估提供了一种强大的深度学习框架，能够有效处理个体差异，提升跨被试的负荷分类准确率。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

@@ -6,34 +6,43 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-15
-- 运行时间：2026-06-15 22:48:53 UTC
+- 最新运行日期：2026-06-16
+- 运行时间：2026-06-16 22:28:41 UTC
 - 运行状态：成功
-- 本次总论文数：4
+- 本次总论文数：7
 - 精读区：1
-- 速读区：3
+- 速读区：6
 
 ### 今日简报（AI）
-1) 今日4篇EEG方向论文，聚焦可穿戴设备模型简化、语义解码、VR隐私及癫痫检测。  
-2) 最值得关注的是降低深度学习复杂度用于可穿戴脑电分析，以及基于VR的脑波隐私重建方向。  
-3) 建议关注模型压缩技术在便携EEG上的应用，同时留意BCI与VR交互中的隐私风险。
-- 详情：[/202606/15/README](/202606/15/README)
+今日精读《RECTOR》多模态情绪认知表征学习（8.0分），速读聚焦抑郁分类（EEG+fNIRS）、听觉注意解码及开源平台EEGDash。  
+最值得关注的是RECTOR提出的掩码区域-通道-时序联合建模，以及《EEGDash》提供的免费神经数据工具。  
+建议普通读者先利用EEGDash上手公共数据集，再深入理解多模态情感计算与认知状态分类的前沿结合点。
+- 详情：[/202606/16/README](/202606/16/README)
 
 ### 精读区论文标签
-1. [Reducing the Complexity of Deep Learning Models for EEG Analysis on Wearable Devices](/202606/15/2606.12742v1-reducing-the-complexity-of-deep-learning-models-for-eeg-analysis-on-wearable-devices)  
+1. [RECTOR: Masked Region-Channel-Temporal Modeling for Affective and Cognitive Representation Learning](/202606/16/2606.15278v1-rector-masked-region-channel-temporal-modeling-for-affective-and-cognitive-representation-learning)  
    标签：评分：8.0/10、query:pbci-load
-   evidence：面向可穿戴设备的脑电深度学习模型
+   evidence：基于EEG/sEEG的自监督表征学习用于认知状态
 
 ### 速读区论文标签
-1. [Decoding Semantic Categories from Picture-Naming EEG](/202606/15/2606.14614v1-decoding-semantic-categories-from-picture-naming-eeg)  
+1. [End-to-End Machine Learning for Depressive State Classification via EEG and fNIRS](/202606/16/2606.11555v1-end-to-end-machine-learning-for-depressive-state-classification-via-eeg-and-fnirs)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：使用预训练单通道脑电编码器解码语义类别，与脑电基础模型相关
-2. [When VR Meets BCI: (Un)Observable Brainwave-aware Privacy Reconstruction in the Metaverse via Unrestricted Inbuilt Motion Sensors](/202606/15/2606.10502v1-when-vr-meets-bci-unobservable-brainwave-aware-privacy-reconstruction-in-the-metaverse-via-unrestricted-inbuilt-motion-sensors)  
+   evidence：EEG深度学习用于分类
+2. [FAConformer: Frequency-Aware Convolutional Transformer for Auditory Attention Decoding](/202606/16/2606.14120v1-faconformer-frequency-aware-convolutional-transformer-for-auditory-attention-decoding)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：深度学习用于EEG听觉注意解码
+3. [EEGDash: An open-source platform for machine learning on public neurophysiological data](/202606/16/2606.16041v1-eegdash-an-open-source-platform-for-machine-learning-on-public-neurophysiological-data)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：提供EEG数据机器学习平台
+4. [A comparative and critical study of EEGNet for fNIRS-driven cognitive load classification](/202606/16/2606.16160v1-a-comparative-and-critical-study-of-eegnet-for-fnirs-driven-cognitive-load-classification)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：使用深度学习（EEGNet）进行认知负荷分类
+5. [Learning aligned EEG representations with subject-specific encoders](/202606/16/2606.16462v1-learning-aligned-eeg-representations-with-subject-specific-encoders)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：用于EEG解码的深度学习方法，可直接迁移到被动BCI认知负荷评估
+6. [The electro-MICA toolbox for integrating electrophysiology within multimodal imaging and connectomics workflows](/202606/16/biorxiv-10-64898-2026-06-08-730888-v1-the-electro-mica-toolbox-for-integrating-electrophysiology-within-multimodal-imaging-and-connectomics-workflows)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：基于VR运动传感器重建脑电信号用于被动脑机接口
-3. [Low-Density EEG for Seizure Detection: Evaluating CNN-RNN Architectures on a Behind-the-Ear Montage Setup](/202606/15/2606.11970v1-low-density-eeg-for-seizure-detection-evaluating-cnn-rnn-architectures-on-a-behind-the-ear-montage-setup)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：混合深度学习架构用于脑电分类，可迁移至认知负荷评估
+   evidence：脑电源定位工具箱，可用于被动BCI研究
 
 
 <div class="dpr-home-promo-card">
