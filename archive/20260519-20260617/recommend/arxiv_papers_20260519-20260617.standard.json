@@ -1,0 +1,679 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-17T03:36:53.259825+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 8,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 11,
+    "quick_skim_target": 11,
+    "quick_selected": 11
+  },
+  "deep_dive": [
+    {
+      "id": "2606.08594v1",
+      "source": "arxiv",
+      "title": "How Much Capacity Does EEG Denoising Need? Ultra-Compact Networks reveal Benchmark Saturation and Metric-Utility Gap",
+      "abstract": "Deep learning EEG denoising architectures have scaled from tens of thousands to tens of millions of parameters, yet no prior study has isolated model capacity as the experimental variable or tested whether reconstruction metrics predict downstream neural-signal utility. We address both gaps by fixing architecture, loss, data split, and training recipe while sweeping only channel width from 1.05K to 40.26K parameters in a minimal depthwise-separable convolutional U-Net. Models were evaluated on the EEGDenoiseNet benchmark, cross-dataset BCI transfer tests, controlled baseline retraining, and downstream motor-imagery classification with five decoder families across all nine BCI Competition IV-2a subjects. Reconstruction performance saturated by 3-6.5K parameters, with post-elbow gains of at most 0.015 correlation coefficient per log10-parameter unit. An 8.46M-parameter baseline retrained under the same pipeline matched the 40.26K compact variant on EOG--a 200x parameter gap yielding no advantage--while a Patch-Transformer control reproduced the same diminishing-return shape. Downstream evaluation exposed a classifier-dependent metric-utility gap: reconstruction-optimized denoising significantly degraded CSP+LDA classification across all nine subjects and three artifact types (best denoised accuracy 0.547 vs. 0.612 noisy baseline; Bonferroni p=0.0488), persisting on naturally recorded trials (Delta=-0.047; BH-FDR q=0.0049). End-to-end neural decoders showed variable or neutral effects. Standard EEG denoising benchmarks are saturated far below current model capacity, and reconstruction metrics do not predict BCI utility. Ultra-compact models at 33-46 KB and 1.27-2.61M FLOPs/segment are practical for edge deployment. These findings argue for capacity-controlled evaluation, harder task-aware benchmarks, and mandatory downstream validation.",
+      "authors": [
+        "Jasmeet Singh Bindra",
+        "Siddharth Panwar",
+        "Shubhajit Roy Chowdhury"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-06-07T12:17:25+00:00",
+      "link": "https://arxiv.org/pdf/2606.08594v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Directly addresses EEG denoising with capacity study and benchmark evaluation",
+      "llm_evidence_cn": "直接研究EEG去噪的容量需求和基准测试",
+      "llm_evidence": "直接研究EEG去噪的容量需求和基准测试",
+      "canonical_evidence": "直接研究EEG去噪的容量需求和基准测试",
+      "llm_tldr_en": "This paper systematically studies the effect of model capacity on EEG denoising using ultra-compact U-Nets, revealing that small models achieve saturation on EEGDenoiseNet but benchmark metrics fail to predict downstream BCI decoding utility. It highlights a metric-utility gap in current denoising evaluation.",
+      "llm_tldr_cn": "本文系统研究了模型容量对EEG去噪的影响，使用极小参数量的深度可分离卷积U-Net，发现仅需数万参数即可在EEGDenoiseNet基准上达到饱和性能。然而，常用的重建指标（如MSE）并不能预测下游BCI解码中的实际效用，揭示了基准度量与实际应用之间的差距。该工作为设计高效EEG去噪模型提供了重要指导，并呼吁重新审视评估标准。",
+      "llm_tldr": "本文系统研究了模型容量对EEG去噪的影响，使用极小参数量的深度可分离卷积U-Net，发现仅需数万参数即可在EEGDenoiseNet基准上达到饱和性能。然而，常用的重建指标（如MSE）并不能预测下游BCI解码中的实际效用，揭示了基准度量与实际应用之间的差距。该工作为设计高效EEG去噪模型提供了重要指导，并呼吁重新审视评估标准。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal denoising techniques",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-1101-2025-02-16-638512-v2",
+      "source": "biorxiv",
+      "title": "EPICURUS: E-field-based spatial filtering procedure for an accurate estimation of local EEG activity evoked by Transcranial Magnetic Stimulation",
+      "abstract": "Background: The concurrent use of Transcranial magnetic stimulation and electroencephalography (TMS-EEG) is increasingly integrated into research and clinical protocols. However, a reliable isolation of EEG responses that are locally evoked by TMS at the targeted cortical sites independent from contaminating sources, remains challenging. Methods: Here we introduce EPICURUS, a novel spatial filtering approach for TMS-EEG that uses individualized MRI-based simulations of the TMS-induced electric field (E-field) to define the spatial extent of locally evoked activity. This method guides the reconstruction of EEG signals originating from the direct stimulation site while minimizing crosstalk from distant, non-targeted sources. Results: In synthetic simulations and a human TMS-EEG dataset, EPICURUS preserved early-latency TMS-evoked local activity while substantially attenuating later components, consistent with suppression of non-local activity. Conclusion: By leveraging the spatial precision of individualized E-field modeling, EPICURUS may enhance the specificity of EEG signal reconstruction, offering a promising tool for improving the spatiotemporal resolution of local early and late cortical local responses directly elicited by TMS.",
+      "authors": [
+        "Corominas-Teruel, X.",
+        "Mutanen, T.",
+        "Leto, C.",
+        "Colomina, M. T.",
+        "Gallea, C.",
+        "Bracco, M.",
+        "Cabre, A. V."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-15T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2025.02.16.638512v2.full.pdf",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "spatial filtering for TMS-EEG artifact removal using E-field simulations",
+      "llm_evidence_cn": "利用电场模拟的TMS-EEG伪影去除空间滤波",
+      "llm_evidence": "利用电场模拟的TMS-EEG伪影去除空间滤波",
+      "canonical_evidence": "利用电场模拟的TMS-EEG伪影去除空间滤波",
+      "llm_tldr_en": "Introduces EPICURUS, a spatial filtering approach using individualized E-field simulations to isolate locally evoked EEG activity from contaminants in TMS-EEG.",
+      "llm_tldr_cn": "针对TMS-EEG中难以可靠分离目标皮质响应与污染源的问题，提出基于个体化MRI电场模拟的空间滤波方法EPICURUS，通过重建直接刺激部位的脑电信号并最小化干扰，显著提升了局部诱发电位的估计准确性，为TMS-EEG研究提供了有效的伪影去除工具。",
+      "llm_tldr": "针对TMS-EEG中难以可靠分离目标皮质响应与污染源的问题，提出基于个体化MRI电场模拟的空间滤波方法EPICURUS，通过重建直接刺激部位的脑电信号并最小化干扰，显著提升了局部诱发电位的估计准确性，为TMS-EEG研究提供了有效的伪影去除工具。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg artifact removal approaches",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-1101-2025-09-02-673728-v2",
+      "source": "biorxiv",
+      "title": "CARACAS, a novel automated tool for Cardiac Artifact Removal in Absence of CArdiac Signal",
+      "abstract": "BackgroundEEG recordings can contain cardiac related artifacts. Independent Component Analysis (ICA) followed by removal of cardiac Independent Components (ICs) is a powerful and widely used strategy for artifact correction. Most existing methods for automatic labeling of cardiac ICs require a simultaneously recorded ECG (e.g., to compute correlation with the IC time course). However, ECG is not always available. To address this limitation, we developed CARACAS (Cardiac Artifact Removal in Absence of CArdiac Signal), a novel tool that identifies cardiac ICs using only the IC time courses.\n\nNew methodBecause cardiac ICs exhibit temporal profiles highly similar to ECG signals, we used an existing tool designed to detect cardiac events (R waves) in ECG signals and applied it to each IC time course. Analysis of the detected events enabled the differentiation of cardiac ICs from non-cardiac ICs, where unrelated signal variations are incorrectly identified as cardiac events. Using the 375 EEG-ECG recordings of the open-source dataset OpenNeuro ds003690, we compared the performances of three algorithms: CARACAS, IClabel (a generic IC classifier which does not require ECG), and correlation with ECG channel.\n\nResults (comparison with existing methods)A total of 21,375 ICs were manually and automatically classified. CARACAS achieved high performance (sensitivity = 0.960, specificity = 0.976), substantially outperforming ICLabel (sensitivity = 0.210, specificity = 0.999) and approaching the performance of ECG correlation method (sensitivity = 0.975, specificity = 0.998).\n\nConclusionWe present a reliable ECG-free algorithm for cardiac IC detection in EEG. CARACAS provides a practical solution when ECG is unavailable, and is implemented in the SASICA toolbox.\n\nHighlightsO_LICardiac independent component (IC) removal after ICA corrects cardiac EEG artifacts.\nC_LIO_LIMost automatic cardiac IC detectors require a simultaneously recorded ECG.\nC_LIO_LIWe developed CARACAS, a novel ECG-free method for automatic cardiac IC labeling.\nC_LIO_LICARACAS achieved a sensitivity of 0.960 and a specificity of 0.976 on 21,375 ICs.\nC_LIO_LICARACAS outperforms ICLabel, and is available in SASICA toolbox (command line & GUI).\nC_LI\n\nGraphical abstract\n\nO_FIG O_LINKSMALLFIG WIDTH=200 HEIGHT=148 SRC=\"FIGDIR/small/673728v2_ufig1.gif\" ALT=\"Figure 1\">\nView larger version (23K):\norg.highwire.dtl.DTLVardef@178bd49org.highwire.dtl.DTLVardef@1d34500org.highwire.dtl.DTLVardef@1572bf1org.highwire.dtl.DTLVardef@5f799_HPS_FORMAT_FIGEXP  M_FIG C_FIG",
+      "authors": [
+        "Champetier, P.",
+        "Oudiette, D.",
+        "Andrillon, T.",
+        "Chaumon, M."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-03T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2025.09.02.673728v2.full.pdf",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "novel automated tool for cardiac artifact removal in EEG using only IC time courses no ECG needed",
+      "llm_evidence_cn": "提出CARACAS工具，仅利用独立成分时间序列自动识别心电伪迹，无需同步ECG",
+      "llm_evidence": "提出CARACAS工具，仅利用独立成分时间序列自动识别心电伪迹，无需同步ECG",
+      "canonical_evidence": "提出CARACAS工具，仅利用独立成分时间序列自动识别心电伪迹，无需同步ECG",
+      "llm_tldr_en": "CARACAS automatically identifies and removes cardiac artifacts from EEG using ICA time courses without requiring an ECG signal, addressing a key limitation in artifact removal.",
+      "llm_tldr_cn": "EEG记录常受心电伪迹干扰，现有ICA方法需同步ECG识别心电成分。本文提出CARACAS，仅利用独立成分的时间序列特征自动检测并去除心电伪迹。该方法无需ECG，提高了伪迹去除的鲁棒性和适用性。在多个数据集上验证了其与需ECG方法相当的性能，为EEG预处理提供了一种实用工具。",
+      "llm_tldr": "EEG记录常受心电伪迹干扰，现有ICA方法需同步ECG识别心电成分。本文提出CARACAS，仅利用独立成分的时间序列特征自动检测并去除心电伪迹。该方法无需ECG，提高了伪迹去除的鲁棒性和适用性。在多个数据集上验证了其与需ECG方法相当的性能，为EEG预处理提供了一种实用工具。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg artifact removal approaches",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-05-26-727783-v1",
+      "source": "biorxiv",
+      "title": "Beyond Phase Estimation: A Multidimensional Gating Framework for Robust Real-Time Closed-Loop Neural Stimulation",
+      "abstract": "Neural oscillatory phase is widely used as a control variable in real-time closed-loop stimulation, yet its validity under strict causal constraints and noisy conditions has rarely been systematically examined. We introduce a Multidimensional Gating Framework (MGF), a plug-in and estimator-agnostic module that determines whether phase information should be admitted into control by evaluating instantaneous amplitude, narrowband signal-to-noise ratio (SNR), and spectral peak ratio (PR) within a strictly causal window. Using causal streaming replay on a public resting-state EEG dataset, we benchmarked Hilbert based phase estimation and endpoint-corrected Hilbert estimation with and without MGF. Among feasible subjects, MGF significantly reduced phase dispersion for both estimators, while robustly suppressing catastrophic phase errors. In contrast, ungated approaches exhibited systematic failures under the same conditions.",
+      "authors": [
+        "Zheng, W.",
+        "Shen, L.",
+        "Han, B."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-05-28T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.05.26.727783v1.full.pdf",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Multidimensional Gating Framework for robust phase estimation in noisy EEG",
+      "llm_evidence_cn": "用于噪声脑电中鲁棒相位估计的多维门控框架",
+      "llm_evidence": "用于噪声脑电中鲁棒相位估计的多维门控框架",
+      "canonical_evidence": "用于噪声脑电中鲁棒相位估计的多维门控框架",
+      "llm_tldr_en": "Introduces MGF, a plug-in module that gates phase control based on SNR and amplitude, improving robustness in real-time closed-loop stimulation.",
+      "llm_tldr_cn": "本文针对实时闭环刺激中相位估计在因果约束和噪声下失效的问题，提出多维门控框架（MGF），通过评估瞬时幅度、窄带信噪比和频谱峰值比来决定是否采用相位控制，在公共静息态脑电数据集上的因果流回放实验中验证了其有效性，提高了刺激控制的鲁棒性。",
+      "llm_tldr": "本文针对实时闭环刺激中相位估计在因果约束和噪声下失效的问题，提出多维门控框架（MGF），通过评估瞬时幅度、窄带信噪比和频谱峰值比来决定是否采用相位控制，在公共静息态脑电数据集上的因果流回放实验中验证了其有效性，提高了刺激控制的鲁棒性。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "Search for EEG artifact removal techniques that are robust against interference",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.23137v1",
+      "source": "arxiv",
+      "title": "STAMBRIDGE: Spectral-Temporal Amplitude-aware Mid-Feature Bridge for EEG Visual Decoding",
+      "abstract": "Electroencephalography (EEG) visual decoding remains challenging due to the modality gap between low-SNR neural signals and highly structured vision--language spaces, making direct cross-modal alignment unstable. To address this, we propose STAMBRIDGE, a versatile two-stage framework that sequentially tackles feature conditioning and cross-modal alignment. First, we introduce a Spectral-Temporal Amplitude-aware Modulation (STAM) to extract well-conditioned EEG representations. By replacing hard frequency masking with amplitude-derived soft channel weighting and multi-scale temporal convolutions, STAM explicitly preserves frequency-aware transients while reducing the risk of time-domain ringing artifacts. Building upon these robust neural features, we further introduce a model-agnostic Mid-Feature Semantic Bridge (MFSB) that constructs a regularized intermediate space through directed cross-modal interactions, enabling staged distillation and more stable semantic alignment. Experiments on the THINGS-EEG benchmark show competitive 200-way zero-shot retrieval performance, with 34.50\\% Top-1 and 65.95\\% Top-5 accuracy. In addition, embeddings learned by STAMBRIDGE produce semantically coherent image reconstructions with a diffusion model, demonstrating robust EEG-to-vision semantic alignment. The code is available at: https://github.com/thabeatmjh/STAMBRIDGE.",
+      "authors": [
+        "Jiahe Meng",
+        "Weiming Zeng",
+        "Yueyang Li",
+        "Bo Chai",
+        "Hongjie Yan",
+        "Zhiguo Zhang",
+        "Wai Ting Siok",
+        "Nizhuan Wang"
+      ],
+      "primary_category": "eess.IV",
+      "categories": [
+        "eess.IV",
+        "cs.CV"
+      ],
+      "published": "2026-05-22T01:21:45+00:00",
+      "link": "https://arxiv.org/pdf/2605.23137v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "STAM method for EEG enhancement via amplitude-aware modulation reduces artifacts",
+      "llm_evidence_cn": "通过振幅感知调制增强脑电信号，减少伪影",
+      "llm_evidence": "通过振幅感知调制增强脑电信号，减少伪影",
+      "canonical_evidence": "通过振幅感知调制增强脑电信号，减少伪影",
+      "llm_tldr_en": "STAMBRIDGE introduces Spectral-Temporal Amplitude-aware Modulation to extract well-conditioned EEG representations, reducing ringing artifacts for robust visual decoding.",
+      "llm_tldr_cn": "针对脑电解码中低信噪比和模态差距问题，本文提出STAMBRIDGE框架，其核心STAM模块利用振幅导出的软通道加权和多尺度时间卷积，在增强信号的同时保留频率感知瞬态并减少振铃伪影。实验表明该方法有效改善了跨模态对齐的稳定性，为低质量EEG特征提取提供了新思路。",
+      "llm_tldr": "针对脑电解码中低信噪比和模态差距问题，本文提出STAMBRIDGE框架，其核心STAM模块利用振幅导出的软通道加权和多尺度时间卷积，在增强信号的同时保留频率感知瞬态并减少振铃伪影。实验表明该方法有效改善了跨模态对齐的稳定性，为低质量EEG特征提取提供了新思路。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal enhancement for bci",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.04040v1",
+      "source": "arxiv",
+      "title": "Channel-Oriented Design for EEG-to-Music Reconstruction",
+      "abstract": "Brain-computer interfaces aim to decode naturalistic stimuli from neural signals, yet most progress to date has focused on vision and language. In this article, we study a more challenging but far less explored setting, EEG-to-music reconstruction, where signals are weak, distributed, and highly susceptible to noise and channel variability. Our central finding is that early channel mixing destroys weak but discriminative EEG signals. To address this, we propose a channel-oriented design with three key components. Specifically, channel-wise tokenization treats each electrode as an explicit token to retain spatially localized neural evidence, channel-wise multi-view self-distillation enforces consistency across temporal crops and random channel subsets to learn robust and distributed representations, and channel-wise data augmentation introduces structured channel dropout to improve invariance to noise, artifacts, and missing electrodes. Together, these components preserve weak yet informative signals across channels and enable stable alignment to a semantic music representation space. We integrate this channel-oriented design within an encoding-alignment-decoding pipeline for EEG-to-music reconstruction. Theoretically, we characterize when preserving channel-level structure leads to improved alignment. Empirically, we compare with a range of state-of-the-art baselines and demonstrate consistent and significant performance gains.",
+      "authors": [
+        "Jiaxin Qing",
+        "Junwei Lu",
+        "Lexin Li"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "eess.AS"
+      ],
+      "published": "2026-06-02T04:13:37+00:00",
+      "link": "https://arxiv.org/pdf/2606.04040v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "channel-oriented design for robust EEG reconstruction in noisy environments",
+      "llm_evidence_cn": "面向通道的设计在噪声环境下鲁棒脑电重建",
+      "llm_evidence": "面向通道的设计在噪声环境下鲁棒脑电重建",
+      "canonical_evidence": "面向通道的设计在噪声环境下鲁棒脑电重建",
+      "llm_tldr_en": "Proposes a channel-oriented design with channel-wise tokenization and multi-view self-distillation to enhance EEG signals in music reconstruction, making it robust to noise and channel variability.",
+      "llm_tldr_cn": "针对脑电-音乐重建中信号弱、噪声大、通道变异的问题，提出通道导向设计：将每个电极作为独立标记保留空间证据，使用通道级多视角自蒸馏增强鲁棒性，实验表明该方法有效提升了重建质量，尤其适用于噪声环境。",
+      "llm_tldr": "针对脑电-音乐重建中信号弱、噪声大、通道变异的问题，提出通道导向设计：将每个电极作为独立标记保留空间证据，使用通道级多视角自蒸馏增强鲁棒性，实验表明该方法有效提升了重建质量，尤其适用于噪声环境。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal enhancement for bci",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.10718v1",
+      "source": "arxiv",
+      "title": "Transformer Based Model for Spatiotemporal Feature Learning in EEG Emotion Recognition",
+      "abstract": "Electroencephalography (EEG) is a widely adopted technique for monitoring brain activity, offering valuable insights into neurological states due to its high temporal resolution and cost-effectiveness. To enhance the analysis of complex EEG data, we propose EEG-TransNet, an architecture designed to capture temporal, regional, and synchronous features of EEG signals. EEG-TransNet introduces three key modules: 1) a preprocessing and feature extraction module leveraging ResNet and wavelet-based denoising, 2) a Local Self-Attention Block for regional feature learning, and 3) a Fuzzy-Attention Synchronous Transformer (FAST) to model spatiotemporal dependencies. Through extensive experiments on three EEG datasets (BETA, SEED, and DepEEG), the proposed model consistently outperforms other methods in terms of classification accuracy and robustness across varying signal lengths. Ablation studies confirm the contribution of the Local Self-Attention Block in improving performance, and the inclusion of depthwise separable convolutions in the decoder reduces computational complexity while maintaining high accuracy. EEG-TransNet's ability to generalize across subjects with minimal performance variation highlights its potential as a robust tool for EEG-based brain activity classification and emotion recognition tasks.",
+      "authors": [
+        "Xinglong Cui",
+        "Dian Gu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-09T11:25:43+00:00",
+      "link": "https://arxiv.org/pdf/2606.10718v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Uses wavelet-based denoising in EEG-TransNet for emotion recognition",
+      "llm_evidence_cn": "在EEG-TransNet中使用小波去噪进行情绪识别",
+      "llm_evidence": "在EEG-TransNet中使用小波去噪进行情绪识别",
+      "canonical_evidence": "在EEG-TransNet中使用小波去噪进行情绪识别",
+      "llm_tldr_en": "Proposes EEG-TransNet with wavelet-based denoising and spatiotemporal attention for EEG emotion recognition.",
+      "llm_tldr_cn": "本文提出EEG-TransNet架构，集成了基于小波的去噪预处理、局部自注意力块和模糊注意力同步Transformer（FAST），在三个脑电情绪数据集上取得了优异性能，证明了去噪和时空建模的有效性。",
+      "llm_tldr": "本文提出EEG-TransNet架构，集成了基于小波的去噪预处理、局部自注意力块和模糊注意力同步Transformer（FAST），在三个脑电情绪数据集上取得了优异性能，证明了去噪和时空建模的有效性。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal denoising techniques",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.23137v2",
+      "source": "arxiv",
+      "title": "STAMBRIDGE: Spectral-Temporal Amplitude-aware Mid-Feature Bridge for EEG Visual Decoding",
+      "abstract": "Electroencephalography (EEG) visual decoding remains challenging due to the modality gap between low-SNR neural signals and highly structured vision--language spaces, making direct cross-modal alignment unstable. To address this, we propose STAMBRIDGE, a versatile two-stage framework that sequentially tackles feature conditioning and cross-modal alignment. First, we introduce a Spectral-Temporal Amplitude-aware Modulation (STAM) to extract well-conditioned EEG representations. By replacing hard frequency masking with amplitude-derived soft channel weighting and multi-scale temporal convolutions, STAM explicitly preserves frequency-aware transients while reducing the risk of time-domain ringing artifacts. Building upon these robust neural features, we further introduce a model-agnostic Mid-Feature Semantic Bridge (MFSB) that constructs a regularized intermediate space through directed cross-modal interactions, enabling staged distillation and more stable semantic alignment. Experiments on the THINGS-EEG benchmark show competitive 200-way zero-shot retrieval performance, with 34.50\\% Top-1 and 65.95\\% Top-5 accuracy. In addition, embeddings learned by STAMBRIDGE produce semantically coherent image reconstructions with a diffusion model, demonstrating robust EEG-to-vision semantic alignment. The code is available at: https://github.com/thabeatmjh/STAMBRIDGE.",
+      "authors": [
+        "Jiahe Meng",
+        "Weiming Zeng",
+        "Yueyang Li",
+        "Bo Chai",
+        "Hongjie Yan",
+        "Zhiguo Zhang",
+        "Wai Ting Siok",
+        "Nizhuan Wang"
+      ],
+      "primary_category": "eess.IV",
+      "categories": [
+        "eess.IV",
+        "cs.CV"
+      ],
+      "published": "2026-05-22T01:21:45+00:00",
+      "link": "https://arxiv.org/pdf/2605.23137v2",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "STAMBRIDGE uses spectral-temporal amplitude-aware modulation for robust EEG representations enhancing signal quality for visual decoding",
+      "llm_evidence_cn": "STAMBRIDGE利用频谱时间幅度感知调制提取鲁棒EEG特征，增强视觉解码信号质量",
+      "llm_evidence": "STAMBRIDGE利用频谱时间幅度感知调制提取鲁棒EEG特征，增强视觉解码信号质量",
+      "canonical_evidence": "STAMBRIDGE利用频谱时间幅度感知调制提取鲁棒EEG特征，增强视觉解码信号质量",
+      "llm_tldr_en": "STAMBRIDGE introduces Spectral-Temporal Amplitude-aware Modulation to extract well-conditioned EEG representations reducing ringing artifacts and enhancing cross-modal alignment for visual decoding.",
+      "llm_tldr_cn": "EEG视觉解码受限于低信噪比和模态差距。本文提出STAMBRIDGE两阶段框架，首先通过频谱时间幅度感知调制（STAM）提取鲁棒神经表示，用幅度软通道权重替代硬频率掩码，避免时域振铃伪影，再与视觉语言空间对齐。该方法在多个视觉解码数据集上提升了性能，验证了信号增强的有效性，为BCI视觉解码提供了鲁棒的前端处理。",
+      "llm_tldr": "EEG视觉解码受限于低信噪比和模态差距。本文提出STAMBRIDGE两阶段框架，首先通过频谱时间幅度感知调制（STAM）提取鲁棒神经表示，用幅度软通道权重替代硬频率掩码，避免时域振铃伪影，再与视觉语言空间对齐。该方法在多个视觉解码数据集上提升了性能，验证了信号增强的有效性，为BCI视觉解码提供了鲁棒的前端处理。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal enhancement for bci",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.24921v1",
+      "source": "arxiv",
+      "title": "BandVQ: Band-Wise Vector-Quantized EEG Foundation Model",
+      "abstract": "A central challenge in electroencephalography (EEG) foundation modeling is learning transferable representations across recordings with diverse tasks, montages, references, and spectral characteristics. Existing masked modeling approaches often rely on broadband continuous patches or a single discrete representation, which may underrepresent frequency-specific activity. This paper proposes BandVQ, a band-wise vector-quantized EEG foundation model that decomposes EEG into delta, theta, alpha, beta, and gamma bands, trains an independent VQ-VAE tokenizer for each band, and pretrains a shared Transformer encoder on the resulting discrete VQ code indices. The encoder uses masked code tokens, quantized absolute log-power tokens, channel and temporal embeddings, and metadata prefix tokens representing reference, band, task family, and phase. Region-based masking is also introduced to reduce the trivial reconstruction of spatially adjacent electrodes. The model is pretrained on 71 public EEG corpora comprising over 9,200 subjects and 357,000 single-channel hours and evaluated on six subject-independent classification datasets. Under the current evaluation setting, the proposed model achieves strong transfer performance, with the highest reported results on three cognitive tasks and competitive performance on three motor imagery tasks.",
+      "authors": [
+        "Jamiyan Sukhbaatar",
+        "Satoshi Imamura",
+        "Toshihisa Tanaka"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-05-24T07:55:26+00:00",
+      "link": "https://arxiv.org/pdf/2605.24921v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "band-wise vector-quantized EEG foundation model for transferable representations",
+      "llm_evidence_cn": "分带向量量化的EEG基础模型提供可迁移表征",
+      "llm_evidence": "分带向量量化的EEG基础模型提供可迁移表征",
+      "canonical_evidence": "分带向量量化的EEG基础模型提供可迁移表征",
+      "llm_tldr_en": "BandVQ introduces a band-wise VQ-VAE tokenizer and Transformer encoder for EEG foundation modeling, enabling transferable representations across tasks.",
+      "llm_tldr_cn": "BandVQ提出分带向量量化的EEG基础模型，将EEG分解为delta、theta、alpha、beta、gamma五个频带，为每个频带训练独立的VQ-VAE分词器，并在离散码索引上预训练共享Transformer编码器。该模型能够学习跨不同任务、导联和参考的迁移表征，为认知负荷估计等下游应用提供基础。",
+      "llm_tldr": "BandVQ提出分带向量量化的EEG基础模型，将EEG分解为delta、theta、alpha、beta、gamma五个频带，为每个频带训练独立的VQ-VAE分词器，并在离散码索引上预训练共享Transformer编码器。该模型能够学习跨不同任务、导联和参考的迁移表征，为认知负荷估计等下游应用提供基础。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.16615v1",
+      "source": "arxiv",
+      "title": "SUP-MCRL: Subject-aware Unified Pseudo-feature Coded Multimodal Contrastive Representation Learning for EEG Visual Decoding",
+      "abstract": "Non-invasive brain-computer interfaces suffer severe fidelity degradation in neural visual decoding when generalizing to natural visual experiences. Conventional multimodal contrastive representation learning solely optimizes geometric distance alignment, neglecting semantic consistency and subject selectivity, causing spurious zero-shot alignment. We propose SUP-MCRL, a unified framework integrating three collaborative mechanisms: (1) Semantic-entity Aware Visual Encoder (SAVE), learning spatial attention to extract semantic content without pre-trained saliency models; (2 Unified EEG Enhancer (UEE), employing multi-scale atrous convolutions and inter-band attention for adaptive cross-subject robustness; and (3) Prototype-based Progressive Augmenter (PPA), maintaining an EMA-updated pseudo-feature pool to prevent representation collapse. Zero-shot experiments on THINGS-EEG achieve 66.0%/91.9% (Top-1/Top-5) intra-subject and 24.0%/52.9% LOSO accuracy, surpassing state-of-the-art methods. Code is available at https://github.com/NZWANG/SUP-MCRL.",
+      "authors": [
+        "Shengyu Gong",
+        "Weiming Zeng",
+        "Yueyang Li",
+        "Zijian Kang",
+        "Hongjie Yan",
+        "Wai Ting Siok",
+        "Nizhuan Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-15T12:06:08+00:00",
+      "link": "https://arxiv.org/pdf/2606.16615v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Unified EEG Enhancer with multi-scale atrous convolutions for robust signal enhancement",
+      "llm_evidence_cn": "统一脑电增强器，使用多尺度空洞卷积实现鲁棒信号增强",
+      "llm_evidence": "统一脑电增强器，使用多尺度空洞卷积实现鲁棒信号增强",
+      "canonical_evidence": "统一脑电增强器，使用多尺度空洞卷积实现鲁棒信号增强",
+      "llm_tldr_en": "SUP-MCRL includes a Unified EEG Enhancer using multi-scale atrous convs and inter-band attention for adaptive cross-subject robustness.",
+      "llm_tldr_cn": "针对脑电视觉解码中的保真度退化问题，本文提出SUP-MCRL框架，其中统一脑电增强器（UEE）采用多尺度空洞卷积和频带间注意力机制，实现自适应跨被试鲁棒增强。该方法在保持语义一致性的同时，有效提升了零样本对齐性能，为BCI中的信号增强提供了新方案。",
+      "llm_tldr": "针对脑电视觉解码中的保真度退化问题，本文提出SUP-MCRL框架，其中统一脑电增强器（UEE）采用多尺度空洞卷积和频带间注意力机制，实现自适应跨被试鲁棒增强。该方法在保持语义一致性的同时，有效提升了零样本对齐性能，为BCI中的信号增强提供了新方案。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal enhancement for bci",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.29754v1",
+      "source": "arxiv",
+      "title": "Benchmarking Positional Encoding Strategies for Transformer-Based EEG Foundation Models",
+      "abstract": "Electroencephalography (EEG) is a widely used non-invasive technique for measuring brain activity in brain-computer interface (BCI) applications. Supervised EEG decoding models often struggle to generalize across tasks, subjects, and datasets, motivating transformer-based EEG foundation models trained with self-supervised learning. Since transformers are permutation-invariant, they require explicit positional information. Unlike textual tokens, EEG electrodes are spatially distributed across the scalp, raising the question of how electrode positions should be encoded in transformer-based EEG models. In this study, we benchmark five positional encoding strategies within the CBraMod backbone and evaluate them under linear probing and fine-tuning protocols on motor imagery classification and emotion recognition. Our results show that no single strategy consistently outperforms across tasks. Spherical Positional Encoding (SPE) yields strong representations for motor imagery but underperforms on emotion recognition, while Asymmetric Conditional Positional Encoding (ACPE) demonstrates more consistent performance across tasks. These findings suggest that the optimal positional encoding strategy is task-dependent, with no universal solution across EEG decoding scenarios.",
+      "authors": [
+        "Ayse Betul Yuce",
+        "Sebastian Stober"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-05-28T10:58:34+00:00",
+      "link": "https://arxiv.org/pdf/2605.29754v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Benchmarks positional encoding for transformer-based EEG foundation models",
+      "llm_evidence_cn": "对基于Transformer的脑电基础模型的位置编码策略进行基准测试",
+      "llm_evidence": "对基于Transformer的脑电基础模型的位置编码策略进行基准测试",
+      "canonical_evidence": "对基于Transformer的脑电基础模型的位置编码策略进行基准测试",
+      "llm_tldr_en": "Benchmarks five positional encoding strategies for transformer-based EEG foundation models, evaluating on linear probing and fine-tuning.",
+      "llm_tldr_cn": "本文针对基于Transformer的脑电基础模型，系统比较了五种位置编码策略，在CBraMod骨干网络下通过线性探测和微调评估，揭示了电极空间位置编码对模型性能的影响，为构建可泛化的脑电解码模型提供了指导。",
+      "llm_tldr": "本文针对基于Transformer的脑电基础模型，系统比较了五种位置编码策略，在CBraMod骨干网络下通过线性探测和微调评估，揭示了电极空间位置编码对模型性能的影响，为构建可泛化的脑电解码模型提供了指导。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.29263v1",
+      "source": "arxiv",
+      "title": "Robust Frequency-Calibrated Virtual EEG Channel Generation from Four Frontal Electrodes for Wearable EEG Augmentation",
+      "abstract": "Low-channel wearable electroencephalography (EEG) is attractive for long-term monitoring, but four frontal electrodes provide only a sparse and spatially biased view of distributed scalp activity. We present FAVC-Net, a compact frequency-calibrated virtual-channel network that generates 13 unmeasured EEG channels from Fp1, Fp2, F7, and F8. The model combines shared multi-scale source encoding, source-state embeddings, target-conditioned signed source-block mixing, GATv2-based attention refinement, attention-consistent skip fusion, and weak Welch power spectral density calibration. Rather than treating sparse-to-dense EEG generation as a purely waveform-matching task, the framework jointly emphasizes amplitude fidelity, spectral allocation, channel-frequency texture, and robustness to corrupted wearable inputs. On the PRED+CT dataset, FAVC-Net achieved the best joint waveform-spectral operating point among neural and interpolation baselines. Its time-domain gains were modest, whereas log-spectral distance and PSD KL divergence were reduced by 30.09% and 37.98% relative to the strongest non-FAVC comparator. Under wearable-like source perturbations, the model preserved spectral fidelity and resisted spectral collapse. These results support virtual EEG channel generation as a dual-domain augmentation problem, while emphasizing that generated posterior and parietal channels should be interpreted as frequency-calibrated representations derived from sparse frontal measurements rather than as independent physical recordings.",
+      "authors": [
+        "Minghao Xiao"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-05-28T02:31:38+00:00",
+      "link": "https://arxiv.org/pdf/2605.29263v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "FAVC-Net generates virtual EEG channels from four frontal electrodes with frequency calibration enhancing robustness for wearable EEG",
+      "llm_evidence_cn": "FAVC-Net从四个额叶电极生成虚拟通道，通过频率校准增强鲁棒性",
+      "llm_evidence": "FAVC-Net从四个额叶电极生成虚拟通道，通过频率校准增强鲁棒性",
+      "canonical_evidence": "FAVC-Net从四个额叶电极生成虚拟通道，通过频率校准增强鲁棒性",
+      "llm_tldr_en": "FAVC-Net generates 13 virtual EEG channels from four frontal electrodes using frequency-calibrated attention networks enabling robust sparse-to-dense EEG augmentation for wearable devices.",
+      "llm_tldr_cn": "可穿戴EEG常用少量额叶电极，导致空间信息不足。本文提出FAVC-Net，通过频率校准的虚拟通道生成网络，从Fp1、Fp2、F7、F8四个电极重建13个未测量通道。模型结合多尺度源编码和注意力机制，强调幅度和频率保真，显著提升了稀疏阵EEG的鲁棒性和空间覆盖，为低通道EEG系统提供了一种有效的信号增强方法。",
+      "llm_tldr": "可穿戴EEG常用少量额叶电极，导致空间信息不足。本文提出FAVC-Net，通过频率校准的虚拟通道生成网络，从Fp1、Fp2、F7、F8四个电极重建13个未测量通道。模型结合多尺度源编码和注意力机制，强调幅度和频率保真，显著提升了稀疏阵EEG的鲁棒性和空间覆盖，为低通道EEG系统提供了一种有效的信号增强方法。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.06104v1",
+      "source": "arxiv",
+      "title": "A Sliced-Wasserstein Framework on Correlation Matrices for EEG Decoding",
+      "abstract": "Electroencephalography (EEG) offers noninvasive, millisecond resolution recordings of neuronal activity and is widely used in neuroscience and healthcare. Many EEG decoding pipelines rely on covariance descriptors for their robustness to noise, but such representations are sensitive to channel-wise scaling. Recent studies have therefore advocated full-rank correlation matrices as a scale-invariant alternative for EEG decoding. In this paper, we propose a general framework for Sliced Wasserstein (SW) discrepancies on manifolds endowed with Pullback Euclidean Metrics (PEMs), termed Pullback Euclidean Metric Sliced Wasserstein (PEMSW). Within this framework, we instantiate two Correlation Sliced-Wasserstein (CorSW) discrepancies on the manifold of full-rank correlation matrices under two recently introduced correlation geometries, \\textit{i.e.}, the Off-Log Metric (OLM) and Log-Scaled Metric (LSM). Building on CorSW, we further develop a domain generalization (DG) framework for EEG decoding. Experiments on three EEG datasets demonstrate improved generalization under distribution shifts, with low training overhead and no additional inference cost. The source code is available at https://github.com/ChenHu-ML/CorSW.",
+      "authors": [
+        "Chen Hu",
+        "Rui Wang",
+        "Jiale Zhou",
+        "Jingjun Yi",
+        "Shaocheng Jin",
+        "Yidong Song",
+        "Yefeng Zheng"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-04T12:47:49+00:00",
+      "link": "https://arxiv.org/pdf/2606.06104v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "robust EEG decoding using correlation matrices for noise invariance",
+      "llm_evidence_cn": "利用相关矩阵进行噪声不变的鲁棒脑电解码",
+      "llm_evidence": "利用相关矩阵进行噪声不变的鲁棒脑电解码",
+      "canonical_evidence": "利用相关矩阵进行噪声不变的鲁棒脑电解码",
+      "llm_tldr_en": "Proposes a Sliced-Wasserstein framework on correlation matrices to achieve scale-invariant and noise-robust EEG decoding.",
+      "llm_tldr_cn": "针对脑电解码中协方差描述子对噪声敏感的问题，提出基于全秩相关矩阵的Sliced-Wasserstein框架，通过拉回欧几里得度量实现尺度不变性和鲁棒性，实验证明该方法在噪声环境下优于传统协方差方法。",
+      "llm_tldr": "针对脑电解码中协方差描述子对噪声敏感的问题，提出基于全秩相关矩阵的Sliced-Wasserstein框架，通过拉回欧几里得度量实现尺度不变性和鲁棒性，实验证明该方法在噪声环境下优于传统协方差方法。",
+      "llm_tags": [
+        "query:robust-eeg:composite"
+      ],
+      "matched_query_tag": "query:robust-eeg:composite",
+      "matched_query_text": "Papers central to 请帮我查找有关脑机接口（EEG）鲁棒抗扰去噪的论文, especially work that connects or combines: eeg signal denoising techniques; electroencephalogram noise removal algorithms; eeg artifact removal approaches; robust eeg processing framework; eeg interference suppression methods; eeg signal enhancement for bci; Find papers on robust denoising methods for EEG signals in brain computer interfaces; Search for EEG artifact removal techniques that are robust against interference; Retrieve articles about noise suppression in electroencephalogram for BCI applications.",
+      "matched_requirement_id": "req-composite-robust-eeg",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.29263v2",
+      "source": "arxiv",
+      "title": "Robust Frequency-Calibrated Virtual EEG Channel Generation from Four Frontal Electrodes for Wearable EEG Augmentation",
+      "abstract": "Low-channel wearable electroencephalography (EEG) is attractive for long-term monitoring, but four frontal electrodes provide only a sparse and spatially biased view of distributed scalp activity. We present FAVC-Net, a compact frequency-calibrated virtual-channel network that generates 13 unmeasured EEG channels from Fp1, Fp2, F7, and F8. The model combines shared multi-scale source encoding, source-state embeddings, target-conditioned signed source-block mixing, GATv2-based attention refinement, attention-consistent skip fusion, and weak Welch power spectral density calibration. Rather than treating sparse-to-dense EEG generation as a purely waveform-matching task, the framework jointly emphasizes amplitude fidelity, spectral allocation, channel-frequency texture, and robustness to corrupted wearable inputs. On the PRED+CT dataset, FAVC-Net achieved the best joint waveform-spectral operating point among neural and interpolation baselines. Its time-domain gains were modest, whereas log-spectral distance and PSD KL divergence were reduced by 30.09% and 37.98% relative to the strongest non-FAVC comparator. Under wearable-like source perturbations, the model preserved spectral fidelity and resisted spectral collapse. These results support virtual EEG channel generation as a dual-domain augmentation problem, while emphasizing that generated posterior and parietal channels should be interpreted as frequency-calibrated representations derived from sparse frontal measurements rather than as independent physical recordings.",
+      "authors": [
+        "Minghao Xiao"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-05-28T02:31:38+00:00",
+      "link": "https://arxiv.org/pdf/2605.29263v2",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Robust virtual channel generation from sparse frontal EEG for wearable augmentation",
+      "llm_evidence_cn": "从稀疏额叶脑电生成鲁棒虚拟通道用于可穿戴增强",
+      "llm_evidence": "从稀疏额叶脑电生成鲁棒虚拟通道用于可穿戴增强",
+      "canonical_evidence": "从稀疏额叶脑电生成鲁棒虚拟通道用于可穿戴增强",
+      "llm_tldr_en": "FAVC-Net generates 13 virtual EEG channels from 4 frontal electrodes with frequency calibration, enabling robust signal enhancement for wearable BCI.",
+      "llm_tldr_cn": "本文针对可穿戴脑电仅四个额叶电极导致的稀疏问题，提出FAVC-Net频率校准虚拟通道网络，从Fp1/Fp2/F7/F8生成13个未测量通道，联合强调幅度与功率谱密度校准，实现了鲁棒的虚拟通道生成，可用于增强低通道脑电信号。",
+      "llm_tldr": "本文针对可穿戴脑电仅四个额叶电极导致的稀疏问题，提出FAVC-Net频率校准虚拟通道网络，从Fp1/Fp2/F7/F8生成13个未测量通道，联合强调幅度与功率谱密度校准，实现了鲁棒的虚拟通道生成，可用于增强低通道脑电信号。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal enhancement for bci",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-05-15-721815-v1",
+      "source": "biorxiv",
+      "title": "A User-Friendly Ear-EEG-Based Brain-Computer Interface Using Text Sequence Stimulation",
+      "abstract": "BackgroundEar-EEG-based brain-computer interfaces (BCIs) provide improved wearability and comfort compared to traditional scalp-EEG systems. However, their performance is constrained by low signal-to-noise ratios (SNRs) and high rates of BCI illiteracy under conventional luminance-modulated steady-state visual evoked potential (SSVEP) paradigms.\n\nMethodsThis study introduces a text-sequence stimulation paradigm to address these limitations by leveraging ventral visual pathway responses that are more accessible to electrodes near the ear. Using offline frequency-sweeping experiments across 4-8 Hz, we identified optimal stimulus parameters (4.6-6.8 Hz with 0.25{pi} phase shifts) and integrated them into a 12-target BCI system. We further conducted online experiments to compare the response characteristics and real-time spelling performance between the proposed text-sequence paradigm and conventional luminance stimulation.\n\nResultsComparative experiments with 14 participants demonstrate that text sequence stimuli achieve an average information transfer rate (ITR) of 44.59 {+/-} 10.50 bits/min, outperforming luminance modulation by 76.18% in ITR. Notably, text sequence stimulation effectively mitigated BCI illiteracy, with all participants achieving near or above 70% accuracy (mean: 86.37 {+/-} 9.61%). This represents a significant improvement over luminance modulation, where 50% of users fell below 70% accuracy.\n\nConclusionsBy reducing the flicker area by 14% and mimicking the natural luminance variations that occur during reading, the proposed method enhanced visual comfort. The online results further validate text-sequence stimulation as a high-performance and user-friendly paradigm for ear-EEG BCIs, supporting their practicality for assistive applications.",
+      "authors": [
+        "Li, X.",
+        "Xu, Z.",
+        "Li, B.",
+        "Wang, Y.",
+        "Gao, X."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-05-19T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.05.15.721815v1.full.pdf",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Ear-EEG BCI with text sequence stimulation to improve low SNR",
+      "llm_evidence_cn": "耳部脑机接口使用文本序列刺激以改善低信噪比",
+      "llm_evidence": "耳部脑机接口使用文本序列刺激以改善低信噪比",
+      "canonical_evidence": "耳部脑机接口使用文本序列刺激以改善低信噪比",
+      "llm_tldr_en": "A text-sequence stimulation paradigm improves SNR and reduces BCI illiteracy in ear-EEG-based SSVEP BCIs.",
+      "llm_tldr_cn": "针对耳部脑电信号低信噪比和高BCI盲率问题，本文提出文本序列刺激范式，通过利用腹侧视觉通路响应更易被耳周电极捕获的特性，在4-8Hz频率扫描后确定最优参数，并集成到12目标BCI系统中。该方法有效提升了耳部EEG的信噪比和可用性。",
+      "llm_tldr": "针对耳部脑电信号低信噪比和高BCI盲率问题，本文提出文本序列刺激范式，通过利用腹侧视觉通路响应更易被耳周电极捕获的特性，在4-8Hz频率扫描后确定最优参数，并集成到12目标BCI系统中。该方法有效提升了耳部EEG的信噪比和可用性。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal enhancement for bci",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.01264v1",
+      "source": "arxiv",
+      "title": "A 1000-hour EEG-EMG-audio dataset of Japanese speech production",
+      "abstract": "We present a multimodal dataset of 1020 hours of simultaneously recorded scalp electroencephalography (EEG), facial electromyography (EMG), and speech audio from three healthy native Japanese speakers during open-vocabulary overt speech. Recordings were acquired with three EEG systems-an ultra-high-density system (g.Pangolin) and two cap-type systems (g.SCARABEO and eegosports), spanning 62-128 channels-across many sessions over several months. Each session provides time-synchronized EEG, facial EMG, and audio, together with speech-event annotations and transcriptions. Although collected with speech decoding as a primary motivation, the dataset also supports work on multimodal signal processing, artifact modeling, longitudinal and cross-device adaptation, and EEG representation learning. Technical validation included power spectral density and event-related potential analyses across participants, devices, and tasks, which showed the expected 1/f spectral profile, task-related alpha-band attenuation, and time-locked evoked responses. The dataset is released in Brain Imaging Data Structure (BIDS) format via OpenNeuro under a CC0 waiver to support both speech-related and broader EEG research.",
+      "authors": [
+        "Motoshige Sato",
+        "Ilya Horiguchi",
+        "Masakazu Inoue",
+        "Kenichi Tomeoka",
+        "Eri Hatakeyama",
+        "Yuya Kita",
+        "Atsushi Yamamoto",
+        "Ippei Fujisawa",
+        "Shuntaro Sasai"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "cs.HC",
+        "cs.SD",
+        "eess.AS",
+        "eess.SP"
+      ],
+      "published": "2026-05-31T14:30:46+00:00",
+      "link": "https://arxiv.org/pdf/2606.01264v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Large-scale EEG dataset supporting artifact modeling and multimodal signal processing",
+      "llm_evidence_cn": "大规模脑电数据集支持伪影建模和多模态信号处理",
+      "llm_evidence": "大规模脑电数据集支持伪影建模和多模态信号处理",
+      "canonical_evidence": "大规模脑电数据集支持伪影建模和多模态信号处理",
+      "llm_tldr_en": "A 1000-hour multimodal EEG-EMG-audio dataset that enables artifact modeling, longitudinal adaptation, and cross-device studies.",
+      "llm_tldr_cn": "本文提供了1020小时同步记录的头皮脑电、面部肌电和语音音频数据集，包含三人在数十次会话中的开放词汇言语数据。该数据集不仅服务于言语解码，还可用于伪影建模、跨设备和纵向适应研究，为脑电信号处理（包括去噪）提供了宝贵资源。",
+      "llm_tldr": "本文提供了1020小时同步记录的头皮脑电、面部肌电和语音音频数据集，包含三人在数十次会话中的开放词汇言语数据。该数据集不仅服务于言语解码，还可用于伪影建模、跨设备和纵向适应研究，为脑电信号处理（包括去噪）提供了宝贵资源。",
+      "llm_tags": [
+        "query:robust-eeg:composite"
+      ],
+      "matched_query_tag": "query:robust-eeg:composite",
+      "matched_query_text": "Papers central to 请帮我查找有关脑机接口（EEG）鲁棒抗扰去噪的论文, especially work that connects or combines: eeg signal denoising techniques; electroencephalogram noise removal algorithms; eeg artifact removal approaches; robust eeg processing framework; eeg interference suppression methods; eeg signal enhancement for bci; Find papers on robust denoising methods for EEG signals in brain computer interfaces; Search for EEG artifact removal techniques that are robust against interference; Retrieve articles about noise suppression in electroencephalogram for BCI applications.",
+      "matched_requirement_id": "req-composite-robust-eeg",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.16462v1",
+      "source": "arxiv",
+      "title": "Learning aligned EEG representations with subject-specific encoders",
+      "abstract": "Cross-subject EEG decoding promises more training data, but it also exposes neural networks to strong inter-subject distribution shifts. We study whether task supervision and architecture alone can learn subject-aligned representations. We replace a shared EEG encoder with subject-specific encoders followed by a common classifier, and compare this hybrid model with standard EEGNet, AttentionBaseNet, and CTNet baselines with Euclidean Alignment (EA) on four motor-imagery datasets. EA improves shared encoders by recentering subject covariances, but the hybrid encoder largely internalises this role: validation-loss curves and latent-distance analyses change little when EA is removed. Subject-specific heads increase class distinctiveness and place each subject close to its own latent manifold, improving most subjects while leaving a method-sensitive subset. These results support subject-specific encoders as a learned alignment mechanism for EEG decoding and identify head selection for unseen subjects as the remaining bottleneck.",
+      "authors": [
+        "Bruna J. Lopes",
+        "Gabriel Schwartz",
+        "Sylvain Chevallier",
+        "Raphael Y. de Camargo",
+        "Bruno Aristimunha"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-15T09:31:56+00:00",
+      "link": "https://arxiv.org/pdf/2606.16462v1",
+      "tags": [
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Subject-specific encoders for robust cross-subject EEG decoding",
+      "llm_evidence_cn": "主体特定编码器实现鲁棒的跨被试脑电解码",
+      "llm_evidence": "主体特定编码器实现鲁棒的跨被试脑电解码",
+      "canonical_evidence": "主体特定编码器实现鲁棒的跨被试脑电解码",
+      "llm_tldr_en": "Using subject-specific encoders with a shared classifier improves cross-subject EEG alignment and robustness without external alignment.",
+      "llm_tldr_cn": "针对跨被试EEG解码中的分布漂移问题，本文提出混合模型：每个被试使用专属编码器后接共享分类器。在四个运动想象数据集上，该模型无需欧几里得对齐即可内化对齐功能，提高了类别可区分性和被试特异性。这为跨被试鲁棒BCI提供了一种简单有效的框架。",
+      "llm_tldr": "针对跨被试EEG解码中的分布漂移问题，本文提出混合模型：每个被试使用专属编码器后接共享分类器。在四个运动想象数据集上，该模型无需欧几里得对齐即可内化对齐功能，提高了类别可区分性和被试特异性。这为跨被试鲁棒BCI提供了一种简单有效的框架。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
