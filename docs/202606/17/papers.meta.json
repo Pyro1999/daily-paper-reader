@@ -1,0 +1,39 @@
+{
+  "label": "2026-06-17",
+  "date": "2026-06-17",
+  "generated_at": "2026-06-17T22:19:55",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202606/17/2606.12742v2-reducing-the-complexity-of-deep-learning-models-for-eeg-analysis-on-wearable-devices",
+      "section": "quick",
+      "title_en": "Reducing the Complexity of Deep Learning Models for EEG Analysis on Wearable Devices",
+      "authors": "Farough Shayeste Roodi, Parham Zilouchian Moghaddam, Mahdi Mohammadi-nasab, Mehdi Modarressi, Mostafa Ersali Salehi Nasab, Masoud Daneshtalab",
+      "date": "2026-06-10",
+      "pdf": "https://arxiv.org/pdf/2606.12742v2",
+      "score": "7.0",
+      "evidence": "可穿戴设备上用于EEG分析的深度学习模型",
+      "tldr": "可穿戴设备资源受限，深度学习模型用于EEG分析面临计算和能量瓶颈。本文研究参数量化和电极缩减两种复杂度降低方法，应用于癫痫检测DNN模型。结果表明，合理使用这些技术可显著降低复杂度且精度损失极小。揭示了在可穿戴设备上部署DNN的精度-复杂度权衡。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Wearable healthcare devices are the fastest-growing Internet of Things (IoT) sector. Many automated healthcare services rely on two crucial biological signals, namely ECG and EEG, which reflect the activity of the heart and brain, respectively. Although deep neural networks are considered the primary way to process and analyze these signals, the very tight energy and computational power constraints in wearable devices are far below the computational, energy, and memory bandwidth demands of DNN models, thereby impeding the deployment of deep learning in many practical wearable services. This paper investigates the feasibility of deploying state-of-the-art DNN models in resource-constrained wearable devices. Notably, we explore the trade-off between accuracy and computational complexity of DNNs when parameter quantization and electrode reduction methods are used. Our investigation centers on several state-of-the-art DNN models designed for EEG signal analysis, specifically for detecting epileptic seizures. Our findings demonstrate that, when applied judiciously, these techniques can significantly reduce the complexity of the DNNs under consideration with minimal adverse effects on accuracy. These results reveal the explicit trade-offs between accuracy and complexity reduction encountered when adapting DNN-based online EEG analysis for wearable devices.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/17/biorxiv-10-64898-2026-01-07-698228-v2-successful-single-session-neural-self-regulation-through-neurofeedback-varies-between-features",
+      "section": "quick",
+      "title_en": "Successful single-session neural self-regulation through neurofeedback varies between features",
+      "authors": "Syrjänen, E., Silva, J., Astrand, E.",
+      "date": "2026-06-10",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.01.07.698228v2.full.pdf",
+      "score": "6.0",
+      "evidence": "基于EEG的被动脑机接口神经反馈",
+      "tldr": "神经反馈训练中个体学习动态差异大，许多用户无法学会自我调节。本研究让20名被试分别训练四种皮层节律（额中线Theta、枕部Alpha、感觉运动节律、中央Beta），采用被试内交叉设计直接比较。结果显示所有被试均成功调节至少两种节律，但无人能调节额中线Theta。聚类分析发现线性与非线性两种学习轨迹。表明“非学习者”非跨特征普遍特质，为设计个性化神经反馈协议提供依据。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Neurofeedback (NFB) and Brain-Computer Interface (BCI) research seldom present within-session individual learning dynamics. This is even though a large proportion of NFB and BCI users cannot learn the neural self-regulation required to control the feedback. Understanding the time course and learning dynamics between subjects will enable us to design more effective NFB and BCI protocols that promote the learning of neural self-regulation. In this study, we aimed to analyze individual learning trajectories of self-regulation of four different cortical rhythms, in terms of both frequency and spatial selectivity. Twenty healthy subjects performed four sessions of NFB training, each session with feedback reflecting a different cortical rhythm as measured with an electroencephalogram. We specifically tested frontal midline (fm) Theta, occipital Alpha, unilateral centrotemporal sensorimotor rhythms (SMR), and central Beta. We show that all subjects were able to self-regulate at least two of these features, however, with varied specificity in the spatial and frequency domains. Unexpectedly, we show that none of the subjects succeeded in regulating fm Theta. Using a clustering approach, we identified two different learning dynamics among the learners across features: a linear increase/decrease and a non-linear plateau-like trajectory. This is the first NFB study employing an intra-subject cross-over experimental design, enabling the direct comparison of neural self-regulation between multiple features. Our results provide important insights into the \"non-learner\" problem, showing that it is not a feature-universal personal trait. We further show feature-specific spatial and frequency selectivity of neural self-regulation, providing important considerations for future NFB protocols.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

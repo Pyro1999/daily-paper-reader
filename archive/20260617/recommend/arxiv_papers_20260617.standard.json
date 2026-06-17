@@ -1,0 +1,101 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-17T22:19:18.609049+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 2,
+    "quick_skim_target": 13,
+    "quick_selected": 2
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.12742v2",
+      "source": "arxiv",
+      "title": "Reducing the Complexity of Deep Learning Models for EEG Analysis on Wearable Devices",
+      "abstract": "Wearable healthcare devices are the fastest-growing Internet of Things (IoT) sector. Many automated healthcare services rely on two crucial biological signals, namely ECG and EEG, which reflect the activity of the heart and brain, respectively. Although deep neural networks are considered the primary way to process and analyze these signals, the very tight energy and computational power constraints in wearable devices are far below the computational, energy, and memory bandwidth demands of DNN models, thereby impeding the deployment of deep learning in many practical wearable services. This paper investigates the feasibility of deploying state-of-the-art DNN models in resource-constrained wearable devices. Notably, we explore the trade-off between accuracy and computational complexity of DNNs when parameter quantization and electrode reduction methods are used. Our investigation centers on several state-of-the-art DNN models designed for EEG signal analysis, specifically for detecting epileptic seizures. Our findings demonstrate that, when applied judiciously, these techniques can significantly reduce the complexity of the DNNs under consideration with minimal adverse effects on accuracy. These results reveal the explicit trade-offs between accuracy and complexity reduction encountered when adapting DNN-based online EEG analysis for wearable devices.",
+      "authors": [
+        "Farough Shayeste Roodi",
+        "Parham Zilouchian Moghaddam",
+        "Mahdi Mohammadi-nasab",
+        "Mehdi Modarressi",
+        "Mostafa Ersali Salehi Nasab",
+        "Masoud Daneshtalab"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.AR"
+      ],
+      "published": "2026-06-10T23:08:12+00:00",
+      "link": "https://arxiv.org/pdf/2606.12742v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "deep learning models for EEG analysis on wearable devices",
+      "llm_evidence_cn": "可穿戴设备上用于EEG分析的深度学习模型",
+      "llm_evidence": "可穿戴设备上用于EEG分析的深度学习模型",
+      "canonical_evidence": "可穿戴设备上用于EEG分析的深度学习模型",
+      "llm_tldr_en": "Explores reducing complexity of deep neural networks for EEG analysis under tight resource constraints on wearable devices, enabling practical deployment of DL for EEG-based services.",
+      "llm_tldr_cn": "针对可穿戴设备中深度学习模型部署时能量和算力严重受限的问题，本文研究了如何降低EEG分析深度神经网络的复杂度。通过分析模型压缩与性能的权衡，验证了在资源受限设备上运行先进DNN的可行性，为基于EEG的被动BCI认知负荷评估等应用提供了高效算法基础。",
+      "llm_tldr": "针对可穿戴设备中深度学习模型部署时能量和算力严重受限的问题，本文研究了如何降低EEG分析深度神经网络的复杂度。通过分析模型压缩与性能的权衡，验证了在资源受限设备上运行先进DNN的可行性，为基于EEG的被动BCI认知负荷评估等应用提供了高效算法基础。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-01-07-698228-v2",
+      "source": "biorxiv",
+      "title": "Successful single-session neural self-regulation through neurofeedback varies between features",
+      "abstract": "Neurofeedback (NFB) and Brain-Computer Interface (BCI) research seldom present within-session individual learning dynamics. This is even though a large proportion of NFB and BCI users cannot learn the neural self-regulation required to control the feedback. Understanding the time course and learning dynamics between subjects will enable us to design more effective NFB and BCI protocols that promote the learning of neural self-regulation. In this study, we aimed to analyze individual learning trajectories of self-regulation of four different cortical rhythms, in terms of both frequency and spatial selectivity. Twenty healthy subjects performed four sessions of NFB training, each session with feedback reflecting a different cortical rhythm as measured with an electroencephalogram. We specifically tested frontal midline (fm) Theta, occipital Alpha, unilateral centrotemporal sensorimotor rhythms (SMR), and central Beta. We show that all subjects were able to self-regulate at least two of these features, however, with varied specificity in the spatial and frequency domains. Unexpectedly, we show that none of the subjects succeeded in regulating fm Theta. Using a clustering approach, we identified two different learning dynamics among the learners across features: a linear increase/decrease and a non-linear plateau-like trajectory. This is the first NFB study employing an intra-subject cross-over experimental design, enabling the direct comparison of neural self-regulation between multiple features. Our results provide important insights into the \"non-learner\" problem, showing that it is not a feature-universal personal trait. We further show feature-specific spatial and frequency selectivity of neural self-regulation, providing important considerations for future NFB protocols.",
+      "authors": [
+        "Syrjänen, E.",
+        "Silva, J.",
+        "Astrand, E."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-10T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.01.07.698228v2.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "passive BCI with EEG neurofeedback",
+      "llm_evidence_cn": "基于EEG的被动脑机接口神经反馈",
+      "llm_evidence": "基于EEG的被动脑机接口神经反馈",
+      "canonical_evidence": "基于EEG的被动脑机接口神经反馈",
+      "llm_tldr_en": "Analyzes individual learning dynamics of neural self-regulation across four cortical rhythms using neurofeedback BCI, relevant to passive BCI design.",
+      "llm_tldr_cn": "本研究分析了20名健康受试者在四次神经反馈训练中自我调节四种不同皮质节律的学习轨迹，揭示了频率和空间选择性对学习效果的影响。研究结果对设计更有效的被动BCI协议具有指导意义。",
+      "llm_tldr": "本研究分析了20名健康受试者在四次神经反馈训练中自我调节四种不同皮质节律的学习轨迹，揭示了频率和空间选择性对学习效果的影响。研究结果对设计更有效的被动BCI协议具有指导意义。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
