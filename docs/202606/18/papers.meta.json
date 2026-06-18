@@ -1,0 +1,24 @@
+{
+  "label": "2026-06-18",
+  "date": "2026-06-18",
+  "generated_at": "2026-06-18T22:33:46",
+  "count": 1,
+  "papers": [
+    {
+      "paper_id": "202606/18/2606.18816v1-switchbraidnet-quantisation-aware-lightweight-architecture-for-hybrid-brain-computer-interface",
+      "section": "quick",
+      "title_en": "SwitchBraidNet: Quantisation-Aware Lightweight Architecture for Hybrid Brain-Computer Interface",
+      "authors": "Gourav Siddhad, Yogesh Kumar Meena",
+      "date": "2026-06-17",
+      "pdf": "https://arxiv.org/pdf/2606.18816v1",
+      "score": "6.0",
+      "evidence": "用于混合脑机接口的EEG深度学习架构",
+      "tldr": "混合脑机接口结合运动想象和稳态视觉诱发电位，但计算需求超出嵌入式硬件限制。提出SwitchBraidNet轻量架构，使用双路径时间辫提取多尺度特征、自适应空间开关门控电极、对数方差读出层编码频带功率，并通过量化感知训练实现紧凑部署。在OpenBMI数据集上，INT8模型仅3.03 KB，MI精度69.49%，SSVEP精度93.48%，混合信息传输率64.82 bits/min，性能优于基线且精度稳定，适合低功耗嵌入式场景。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Hybrid brain-computer interfaces (BCIs) that integrate motor imagery (MI) and steady-state visual evoked potentials (SSVEP) provide high-dimensional neural decoding but typically exceed the computational limits of embedded hardware. To address this, we propose SwitchBraidNet, a compact EEG classification architecture designed for low-power deployment. The model employs a dual-path temporal braid to extract multiscale oscillatory features, an adaptive squeeze-and-excitation spatial switch for electrode gating, and a log-variance readout layer for direct band-power encoding. Furthermore, through systematic quantisation-aware training on the OpenBMI dataset, we compared SwitchBraidNet against four established baselines across FP32, FP16, and INT8 precisions. Experimental results demonstrate superior efficiency and performance, achieving MI accuracy of 69.49% (FP16), SSVEP accuracy of 93.48% (FP32), and a hybrid information transfer rate of 64.82 bits/min (FP16). With an INT8 footprint of only 3.03 KB, SwitchBraidNet maintains high accuracy across varying numerical precisions, demonstrating its suitability for low-power embedded BCI deployment.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

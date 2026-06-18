@@ -1,0 +1,59 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-18T22:33:11.249728+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 1,
+    "quick_skim_target": 13,
+    "quick_selected": 1
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.18816v1",
+      "source": "arxiv",
+      "title": "SwitchBraidNet: Quantisation-Aware Lightweight Architecture for Hybrid Brain-Computer Interface",
+      "abstract": "Hybrid brain-computer interfaces (BCIs) that integrate motor imagery (MI) and steady-state visual evoked potentials (SSVEP) provide high-dimensional neural decoding but typically exceed the computational limits of embedded hardware. To address this, we propose SwitchBraidNet, a compact EEG classification architecture designed for low-power deployment. The model employs a dual-path temporal braid to extract multiscale oscillatory features, an adaptive squeeze-and-excitation spatial switch for electrode gating, and a log-variance readout layer for direct band-power encoding. Furthermore, through systematic quantisation-aware training on the OpenBMI dataset, we compared SwitchBraidNet against four established baselines across FP32, FP16, and INT8 precisions. Experimental results demonstrate superior efficiency and performance, achieving MI accuracy of 69.49% (FP16), SSVEP accuracy of 93.48% (FP32), and a hybrid information transfer rate of 64.82 bits/min (FP16). With an INT8 footprint of only 3.03 KB, SwitchBraidNet maintains high accuracy across varying numerical precisions, demonstrating its suitability for low-power embedded BCI deployment.",
+      "authors": [
+        "Gourav Siddhad",
+        "Yogesh Kumar Meena"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI",
+        "cs.ET"
+      ],
+      "published": "2026-06-17T08:35:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.18816v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG deep learning architecture for hybrid BCI",
+      "llm_evidence_cn": "用于混合脑机接口的EEG深度学习架构",
+      "llm_evidence": "用于混合脑机接口的EEG深度学习架构",
+      "canonical_evidence": "用于混合脑机接口的EEG深度学习架构",
+      "llm_tldr_en": "SwitchBraidNet proposes a lightweight EEG classification architecture with dual-path temporal braid and quantisation-aware training for low-power hybrid BCI, achieving high accuracy on OpenBMI.",
+      "llm_tldr_cn": "针对混合脑机接口（MI与SSVEP）在嵌入式硬件上计算资源受限的问题，本文提出了SwitchBraidNet，一种紧凑的EEG分类架构。它采用双路径时间编织提取多尺度振荡特征，自适应挤压激励空间开关进行电极门控，以及对数方差读出层进行直接频带能量编码。通过在OpenBMI数据集上进行系统量化感知训练，与四种基线相比，SwitchBraidNet在低比特宽度下保持了高分类精度，为脑机接口的嵌入式部署提供了一种高效方案。",
+      "llm_tldr": "针对混合脑机接口（MI与SSVEP）在嵌入式硬件上计算资源受限的问题，本文提出了SwitchBraidNet，一种紧凑的EEG分类架构。它采用双路径时间编织提取多尺度振荡特征，自适应挤压激励空间开关进行电极门控，以及对数方差读出层进行直接频带能量编码。通过在OpenBMI数据集上进行系统量化感知训练，与四种基线相比，SwitchBraidNet在低比特宽度下保持了高分类精度，为脑机接口的嵌入式部署提供了一种高效方案。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
