@@ -1,0 +1,54 @@
+{
+  "label": "2026-06-19",
+  "date": "2026-06-19",
+  "generated_at": "2026-06-19T21:38:33",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202606/19/2606.20074v1-evaluation-of-eeg-foundation-models-for-event-based-burst-suppression-detection-in-icu",
+      "section": "deep",
+      "title_en": "Evaluation of EEG Foundation Models for Event-Based Burst-Suppression Detection in ICU",
+      "authors": "Elisa Vasta, Thorir Mar Ingolfsson, Andrea Cossettini, Luca Benini, Tilman Beck, Emanuela Keller, Una Pale",
+      "date": "2026-06-18",
+      "pdf": "https://arxiv.org/pdf/2606.20074v1",
+      "score": "9.0",
+      "evidence": "评估EEG基础模型用于爆发抑制检测，与脑电信号处理基础模型直接相关",
+      "tldr": "爆发抑制是ICU中用于监测镇静深度的关键EEG模式，但其自动检测因患者间差异大和标注数据稀缺而面临挑战。该研究首次评估了EEG基础模型（如REVE-base、LUNA-large）在缩减导联ICU EEG中无需患者特定校准的爆发检测性能。采用事件检测框架评估，发现REVE-base在事件F1分数（0.868±0.167）上最优，并将每分钟爆发误差相对EEGNet和自适应阈值分别降低52.1%和36.2%。全微调优于冻结骨干或LoRA，且模型在仅使用25%标注数据时仍保持高F1分数，证明预训练表示在少标注场景下的有效性。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Burst suppression (BS) is a clinically relevant electroencephalographic (EEG) pattern used to monitor sedation depth and brain activity in critically ill patients, particularly during induced coma in Intensive Care Units (ICUs). Automatic burst detection remains challenging because BS patterns vary substantially between patients and annotated datasets are scarce. Recently, EEG Foundation Models (FMs) have shown promise across several downstream EEG applications, but their usefulness for BS detection remains unexplored. We present the first study to evaluate EEG FMs for burst detection in reduced-montage ICU EEG without patient-specific calibration. We compare REVE-base, LUNA-large and LuMamba-Tiny with an adaptive thresholding baseline and a task-specific EEGNet baseline. Additionally, we complement conventional EEG window-based classification with event-based burst detection evaluation. This helps assessing clinically whether burst episodes are correctly detected, reducing the impact of expected annotation variability. The best model, REVE-base, achieved the highest event-based F1-score ($0.868 \\pm 0.167$) and reduced burst-per-minute error by 52.1% and 36.2% compared to EEGNet and adaptive thresholding respectively, supporting FMs for scalable EEG monitoring in ICU. Ablation experiments showed that full fine-tuning was the most effective adaptation strategy with respect to frozen-backbone training, two-step fine-tuning, and LoRA-based adaptation, improving event-based F1-score over frozen-backbone training by up to $+0.102$ for LUNA-large. With reduced labeled datasets, pretrained REVE-base outperformed random initialization by $+0.723$ event-based F1 points at 25% of the cohort, demonstrating the benefit of pretraining FM representations when adapted to burst detection with limited labeled data.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/19/2606.16615v2-sup-mcrl-subject-aware-unified-pseudo-feature-coded-multimodal-contrastive-representation-learning-for-eeg-visual-decoding",
+      "section": "quick",
+      "title_en": "SUP-MCRL: Subject-aware Unified Pseudo-feature Coded Multimodal Contrastive Representation Learning for EEG Visual Decoding",
+      "authors": "Shengyu Gong, Weiming Zeng, Yueyang Li, Zijian Kang, Hongjie Yan, Wai Ting Siok, Nizhuan Wang",
+      "date": "2026-06-15",
+      "pdf": "https://arxiv.org/pdf/2606.16615v2",
+      "score": "7.0",
+      "evidence": "用于被动脑机接口EEG视觉解码的深度学习方法",
+      "tldr": "非侵入式脑机接口在真实图像场景下性能严重退化，因现有对比学习仅优化几何对齐而忽略语义一致性和个体差异。为此提出SUP-MCRL统一框架，包含语义感知视觉编码器SAVE、统一EEG增强器UEE和原型渐进增强器PPA。零样本实验在THINGS-EEG上达到66.0%/91.9%受试者内和24.0%/52.9%LOSO准确率，显著超越SOTA。这表明结构化语义对齐监督是提升跨模态解码的关键。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Non-invasive brain-computer interfaces exhibit significant performance degradation when moving from controlled laboratory stimuli to real-world natural images. This degradation occurs because conventional multimodal contrastive representation learning models focus exclusively on optimizing geometric distance alignment, thereby failing to account for semantic consistency and inter-subject variability in neural representation and selective attention. As a result, these models are prone to producing spurious zero-shot matches. To address these limitations, we propose SUP-MCRL, a unified framework integrating three collaborative mechanisms: (1) a Semantic-entity Aware Visual Encoder (SAVE) that learns spatial attention to extract semantic content without relying on pre-trained saliency models; (2) a Unified EEG Enhancer (UEE) that employs multi-scale atrous convolutions and inter-band attention for adaptive cross-subject robustness; and (3) a Prototype-based Progressive Augmenter (PPA) that maintains an EMA-updated pseudo-feature pool to prevent representation collapse. Zero-shot experiments on the THINGS-EEG achieve 66.0%/91.9% (Top-1/Top-5) intra-subject and 24.0%/52.9% LOSO accuracy, significantly surpassing state-of-the-art methods and demonstrating that structured alignment supervision is key to overcoming the limitations of cross-modal decoding. Code is available at https://github.com/NZWANG/SUP-MCRL.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/19/2606.12742v2-reducing-the-complexity-of-deep-learning-models-for-eeg-analysis-on-wearable-devices",
+      "section": "quick",
+      "title_en": "Reducing the Complexity of Deep Learning Models for EEG Analysis on Wearable Devices",
+      "authors": "Farough Shayeste Roodi, Parham Zilouchian Moghaddam, Mahdi Mohammadi-nasab, Mehdi Modarressi, Mostafa Ersali Salehi Nasab, Masoud Daneshtalab",
+      "date": "2026-06-10",
+      "pdf": "https://arxiv.org/pdf/2606.12742v2",
+      "score": "6.0",
+      "evidence": "面向可穿戴设备的EEG深度学习模型，支持被动脑机接口应用",
+      "tldr": "可穿戴设备的资源限制阻碍了深度学习在EEG分析中的部署。本文针对癫痫检测的DNN模型，研究参数量化和电极缩减技术降低复杂度。结果表明，恰当应用这些方法可大幅减少模型计算量，而对准确率影响极小。工作揭示了部署在线EEG分析时的准确率-复杂度权衡，为设计低功耗可穿戴医疗AI提供指导。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Wearable healthcare devices are the fastest-growing Internet of Things (IoT) sector. Many automated healthcare services rely on two crucial biological signals, namely ECG and EEG, which reflect the activity of the heart and brain, respectively. Although deep neural networks are considered the primary way to process and analyze these signals, the very tight energy and computational power constraints in wearable devices are far below the computational, energy, and memory bandwidth demands of DNN models, thereby impeding the deployment of deep learning in many practical wearable services. This paper investigates the feasibility of deploying state-of-the-art DNN models in resource-constrained wearable devices. Notably, we explore the trade-off between accuracy and computational complexity of DNNs when parameter quantization and electrode reduction methods are used. Our investigation centers on several state-of-the-art DNN models designed for EEG signal analysis, specifically for detecting epileptic seizures. Our findings demonstrate that, when applied judiciously, these techniques can significantly reduce the complexity of the DNNs under consideration with minimal adverse effects on accuracy. These results reveal the explicit trade-offs between accuracy and complexity reduction encountered when adapting DNN-based online EEG analysis for wearable devices.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

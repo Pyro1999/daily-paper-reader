@@ -1,0 +1,154 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-19T21:36:22.677555+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 2,
+    "quick_skim_target": 13,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2606.20074v1",
+      "source": "arxiv",
+      "title": "Evaluation of EEG Foundation Models for Event-Based Burst-Suppression Detection in ICU",
+      "abstract": "Burst suppression (BS) is a clinically relevant electroencephalographic (EEG) pattern used to monitor sedation depth and brain activity in critically ill patients, particularly during induced coma in Intensive Care Units (ICUs). Automatic burst detection remains challenging because BS patterns vary substantially between patients and annotated datasets are scarce. Recently, EEG Foundation Models (FMs) have shown promise across several downstream EEG applications, but their usefulness for BS detection remains unexplored. We present the first study to evaluate EEG FMs for burst detection in reduced-montage ICU EEG without patient-specific calibration. We compare REVE-base, LUNA-large and LuMamba-Tiny with an adaptive thresholding baseline and a task-specific EEGNet baseline. Additionally, we complement conventional EEG window-based classification with event-based burst detection evaluation. This helps assessing clinically whether burst episodes are correctly detected, reducing the impact of expected annotation variability. The best model, REVE-base, achieved the highest event-based F1-score ($0.868 \\pm 0.167$) and reduced burst-per-minute error by 52.1% and 36.2% compared to EEGNet and adaptive thresholding respectively, supporting FMs for scalable EEG monitoring in ICU. Ablation experiments showed that full fine-tuning was the most effective adaptation strategy with respect to frozen-backbone training, two-step fine-tuning, and LoRA-based adaptation, improving event-based F1-score over frozen-backbone training by up to $+0.102$ for LUNA-large. With reduced labeled datasets, pretrained REVE-base outperformed random initialization by $+0.723$ event-based F1 points at 25% of the cohort, demonstrating the benefit of pretraining FM representations when adapted to burst detection with limited labeled data.",
+      "authors": [
+        "Elisa Vasta",
+        "Thorir Mar Ingolfsson",
+        "Andrea Cossettini",
+        "Luca Benini",
+        "Tilman Beck",
+        "Emanuela Keller",
+        "Una Pale"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-06-18T10:49:36+00:00",
+      "link": "https://arxiv.org/pdf/2606.20074v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "evaluates EEG foundation models for burst-suppression detection, directly relevant to foundation model for EEG signal processing",
+      "llm_evidence_cn": "评估EEG基础模型用于爆发抑制检测，与脑电信号处理基础模型直接相关",
+      "llm_evidence": "评估EEG基础模型用于爆发抑制检测，与脑电信号处理基础模型直接相关",
+      "canonical_evidence": "评估EEG基础模型用于爆发抑制检测，与脑电信号处理基础模型直接相关",
+      "llm_tldr_en": "This study evaluates three EEG foundation models (REVE-base, LUNA-large, LuMamba-Tiny) for automatic burst-suppression detection in ICU EEG, finding that FMs outperform adaptive thresholding and generalize well across montages without calibration.",
+      "llm_tldr_cn": "ICU中爆发抑制（BS）的自动检测因患者间差异大和标注数据稀缺而具有挑战性。本文首次评估了EEG基础模型（FMs）在减少导联ICU EEG中的BS检测能力，比较了REVE-base、LUNA-large和LuMamba-Tiny与自适应阈值基线。结果显示，FMs在无需病人特定校准的情况下表现优异，且对导联配置变化具有鲁棒性，证明了基础模型在临床EEG任务中的巨大潜力。",
+      "llm_tldr": "ICU中爆发抑制（BS）的自动检测因患者间差异大和标注数据稀缺而具有挑战性。本文首次评估了EEG基础模型（FMs）在减少导联ICU EEG中的BS检测能力，比较了REVE-base、LUNA-large和LuMamba-Tiny与自适应阈值基线。结果显示，FMs在无需病人特定校准的情况下表现优异，且对导联配置变化具有鲁棒性，证明了基础模型在临床EEG任务中的巨大潜力。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.16615v2",
+      "source": "arxiv",
+      "title": "SUP-MCRL: Subject-aware Unified Pseudo-feature Coded Multimodal Contrastive Representation Learning for EEG Visual Decoding",
+      "abstract": "Non-invasive brain-computer interfaces exhibit significant performance degradation when moving from controlled laboratory stimuli to real-world natural images. This degradation occurs because conventional multimodal contrastive representation learning models focus exclusively on optimizing geometric distance alignment, thereby failing to account for semantic consistency and inter-subject variability in neural representation and selective attention. As a result, these models are prone to producing spurious zero-shot matches. To address these limitations, we propose SUP-MCRL, a unified framework integrating three collaborative mechanisms: (1) a Semantic-entity Aware Visual Encoder (SAVE) that learns spatial attention to extract semantic content without relying on pre-trained saliency models; (2) a Unified EEG Enhancer (UEE) that employs multi-scale atrous convolutions and inter-band attention for adaptive cross-subject robustness; and (3) a Prototype-based Progressive Augmenter (PPA) that maintains an EMA-updated pseudo-feature pool to prevent representation collapse. Zero-shot experiments on the THINGS-EEG achieve 66.0%/91.9% (Top-1/Top-5) intra-subject and 24.0%/52.9% LOSO accuracy, significantly surpassing state-of-the-art methods and demonstrating that structured alignment supervision is key to overcoming the limitations of cross-modal decoding. Code is available at https://github.com/NZWANG/SUP-MCRL.",
+      "authors": [
+        "Shengyu Gong",
+        "Weiming Zeng",
+        "Yueyang Li",
+        "Zijian Kang",
+        "Hongjie Yan",
+        "Wai Ting Siok",
+        "Nizhuan Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-15T12:06:08+00:00",
+      "link": "https://arxiv.org/pdf/2606.16615v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "deep learning method for passive BCI with EEG visual decoding",
+      "llm_evidence_cn": "用于被动脑机接口EEG视觉解码的深度学习方法",
+      "llm_evidence": "用于被动脑机接口EEG视觉解码的深度学习方法",
+      "canonical_evidence": "用于被动脑机接口EEG视觉解码的深度学习方法",
+      "llm_tldr_en": "Proposes SUP-MCRL, a subject-aware contrastive learning framework for EEG visual decoding, improving zero-shot matching on natural images.",
+      "llm_tldr_cn": "该论文提出SUP-MCRL框架，用于非侵入式脑机接口的EEG视觉解码。针对自然图像导致性能下降的问题，整合了语义感知视觉编码器、伪特征代码和对比学习，在多个数据集上提升了零样本匹配准确率，展示了从实验室到真实世界场景的迁移潜力。",
+      "llm_tldr": "该论文提出SUP-MCRL框架，用于非侵入式脑机接口的EEG视觉解码。针对自然图像导致性能下降的问题，整合了语义感知视觉编码器、伪特征代码和对比学习，在多个数据集上提升了零样本匹配准确率，展示了从实验室到真实世界场景的迁移潜力。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.12742v2",
+      "source": "arxiv",
+      "title": "Reducing the Complexity of Deep Learning Models for EEG Analysis on Wearable Devices",
+      "abstract": "Wearable healthcare devices are the fastest-growing Internet of Things (IoT) sector. Many automated healthcare services rely on two crucial biological signals, namely ECG and EEG, which reflect the activity of the heart and brain, respectively. Although deep neural networks are considered the primary way to process and analyze these signals, the very tight energy and computational power constraints in wearable devices are far below the computational, energy, and memory bandwidth demands of DNN models, thereby impeding the deployment of deep learning in many practical wearable services. This paper investigates the feasibility of deploying state-of-the-art DNN models in resource-constrained wearable devices. Notably, we explore the trade-off between accuracy and computational complexity of DNNs when parameter quantization and electrode reduction methods are used. Our investigation centers on several state-of-the-art DNN models designed for EEG signal analysis, specifically for detecting epileptic seizures. Our findings demonstrate that, when applied judiciously, these techniques can significantly reduce the complexity of the DNNs under consideration with minimal adverse effects on accuracy. These results reveal the explicit trade-offs between accuracy and complexity reduction encountered when adapting DNN-based online EEG analysis for wearable devices.",
+      "authors": [
+        "Farough Shayeste Roodi",
+        "Parham Zilouchian Moghaddam",
+        "Mahdi Mohammadi-nasab",
+        "Mehdi Modarressi",
+        "Mostafa Ersali Salehi Nasab",
+        "Masoud Daneshtalab"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.AR"
+      ],
+      "published": "2026-06-10T23:08:12+00:00",
+      "link": "https://arxiv.org/pdf/2606.12742v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "deep learning for EEG on wearable devices enables passive BCI applications",
+      "llm_evidence_cn": "面向可穿戴设备的EEG深度学习模型，支持被动脑机接口应用",
+      "llm_evidence": "面向可穿戴设备的EEG深度学习模型，支持被动脑机接口应用",
+      "canonical_evidence": "面向可穿戴设备的EEG深度学习模型，支持被动脑机接口应用",
+      "llm_tldr_en": "This paper investigates reducing DNN complexity for EEG analysis on wearables, enabling feasible deep learning for passive BCI systems.",
+      "llm_tldr_cn": "现有深度学习模型在可穿戴EEG设备上计算资源需求过高，限制了实际部署。本文系统研究了降低模型复杂度的方法，通过探索多种策略实现在资源受限设备上的高效运行。实验表明，精简后的模型仍保持较高分类性能，为被动脑机接口在可穿戴场景中的应用提供了可行方案。该工作推动了轻量化深度学习在EEG处理领域的发展。",
+      "llm_tldr": "现有深度学习模型在可穿戴EEG设备上计算资源需求过高，限制了实际部署。本文系统研究了降低模型复杂度的方法，通过探索多种策略实现在资源受限设备上的高效运行。实验表明，精简后的模型仍保持较高分类性能，为被动脑机接口在可穿戴场景中的应用提供了可行方案。该工作推动了轻量化深度学习在EEG处理领域的发展。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
