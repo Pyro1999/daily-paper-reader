@@ -1,0 +1,140 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-20T21:41:21.710656+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 2,
+    "quick_skim_target": 13,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "biorxiv-10-64898-2026-06-16-732398-v1",
+      "source": "biorxiv",
+      "title": "Intracortical BCI Performance is Robust to Changes in Attentional Load During Dual-Tasking",
+      "abstract": "High performance intracortical brain-computer interface (iBCI) control has been demonstrated in research settings, but performance can still vary within and between sessions. One potential source of this variability is the change in attentional load that comes from processing naturally occurring distractors such as thoughts, sounds, fatigue, or pain. To improve the consistency of iBCI performance in real-world environments where this sort of multi-tasking is inevitable, we must understand how shifts in attention can impact performance. Here we examined the effect of attentional load on iBCI performance and movement-related neural activity using a 2D cursor translation + click iBCI task paired with an N-Back working memory task to increase attentional load during dual-task performance. Two participants (P2 and P4) with tetraplegia completed the study while enrolled in a long-term clinical trial of an iBCI device (NCT1894802). Common neural correlates of attention (theta and alpha band power) were measured with simultaneously recorded scalp electroencephalography (EEG). While the EEG recordings and difficulty ratings suggested increased attentional load during dual tasking, iBCI performance was quite robust across the various dual tasking conditions. One participant, P2, experienced a small but significant increase in trial completion time and normalized path length during the mild attentional load condition. Signal quality differences between the two participants may have impacted the results, as P2 had lower signal quality and was therefore likely more vulnerable to attentional load. P4's higher signal quality likely allowed him to accommodate increased attentional load without a drop in performance. Overall, iBCI performance appears to be robust to attentional load, but the complex trends observed here reflect a need for continued investigation of BCI use under different cognitive states to elucidate potential challenges and compensatory mechanisms across participants.",
+      "authors": [
+        "Canario, E.",
+        "Shearer, C.",
+        "Akcakaya, M.",
+        "Weber, D.",
+        "Chase, S. M.",
+        "Collinger, J. L."
+      ],
+      "primary_category": "bioengineering",
+      "categories": [
+        "bioengineering"
+      ],
+      "published": "2026-06-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.16.732398v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "directly studies cognitive load (attentional load) effects on BCI performance using dual-task paradigm",
+      "llm_evidence_cn": "直接研究认知负荷（注意负荷）对脑机接口性能的影响",
+      "llm_evidence": "直接研究认知负荷（注意负荷）对脑机接口性能的影响",
+      "canonical_evidence": "直接研究认知负荷（注意负荷）对脑机接口性能的影响",
+      "llm_tldr_en": "This paper examines how attentional load (via N-Back) affects intracortical BCI performance, finding robustness, directly relevant to cognitive load assessment in BCI.",
+      "llm_tldr_cn": "该论文利用双任务范式（2D光标任务配合N-Back工作记忆任务）研究注意负荷对脑机接口性能的影响，发现脑机接口性能对注意负荷变化具有鲁棒性。研究直接涉及认知负荷（注意负荷）与脑机接口的交互，为被动脑机接口认知负荷评估提供了重要实证，但使用的是侵入式脑机接口而非被动式。",
+      "llm_tldr": "该论文利用双任务范式（2D光标任务配合N-Back工作记忆任务）研究注意负荷对脑机接口性能的影响，发现脑机接口性能对注意负荷变化具有鲁棒性。研究直接涉及认知负荷（注意负荷）与脑机接口的交互，为被动脑机接口认知负荷评估提供了重要实证，但使用的是侵入式脑机接口而非被动式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface for cognitive load assessment",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.14866v1",
+      "source": "arxiv",
+      "title": "Test-Time Adaptation of Spiking Neural Networks for Intracortical Neural Decoding using Membrane Potential Alignment",
+      "abstract": "Intracortical brain-computer interfaces suffer from day-to-day neural signal shifts that degrade pretrained decoders. Existing unsupervised adaptation methods rely on deep recurrent or adversarial architectures that are too computationally expensive for implantable hardware. We propose Membrane Potential Alignment (MPA), a test-time adaptation method for spiking neural networks that realigns a pretrained decoder to shifted recordings by only matching membrane potential distributions via KL divergence. By restricting updates to low-rank (LoRA) weights, MPA adapts fewer than 9% of parameters. On a non-human primate reaching task spanning over one month, MPA achieves performance competitive with the state-of-the-art NoMAD method, while using a simpler architecture and finer temporal resolution (4 ms vs. 20 ms). These results show that efficient SNN-based test-time adaptation is a practical path toward long-term, recalibration-free brain-computer interfaces.",
+      "authors": [
+        "Guangzhi Tang"
+      ],
+      "primary_category": "cs.NE",
+      "categories": [
+        "cs.NE"
+      ],
+      "published": "2026-06-12T18:08:28+00:00",
+      "link": "https://arxiv.org/pdf/2606.14866v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Test-time adaptation for BCI signal shifts, applicable to EEG enhancement",
+      "llm_evidence_cn": "面向脑机接口信号偏移的测试时自适应方法，可用于脑电信号增强",
+      "llm_evidence": "面向脑机接口信号偏移的测试时自适应方法，可用于脑电信号增强",
+      "canonical_evidence": "面向脑机接口信号偏移的测试时自适应方法，可用于脑电信号增强",
+      "llm_tldr_en": "Proposes Membrane Potential Alignment (MPA), a test-time adaptation method for spiking neural networks to realign decoders to shifted neural recordings. Achieves competitive performance on a primate reaching task with less than 9% parameter update.",
+      "llm_tldr_cn": "该论文针对脑机接口解码器因日常神经信号漂移而性能下降的问题，提出了一种基于膜电位对齐的测试时自适应方法。该方法仅通过KL散度匹配膜电位分布，并限制低秩权重更新，使得参数调整少于9%。在非人灵长类动物长达一个月的抓取任务上，该方法取得了与现有技术相竞争的性能，为脑机接口在真实场景中的鲁棒解码提供了低成本解决方案。",
+      "llm_tldr": "该论文针对脑机接口解码器因日常神经信号漂移而性能下降的问题，提出了一种基于膜电位对齐的测试时自适应方法。该方法仅通过KL散度匹配膜电位分布，并限制低秩权重更新，使得参数调整少于9%。在非人灵长类动物长达一个月的抓取任务上，该方法取得了与现有技术相竞争的性能，为脑机接口在真实场景中的鲁棒解码提供了低成本解决方案。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal enhancement for bci",
+      "matched_requirement_id": "req-23",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-1101-2025-09-03-673947-v2",
+      "source": "biorxiv",
+      "title": "A multimodal human-computer interaction dataset for neurocognitive user state evaluation",
+      "abstract": "We introduce the Simulated Environment for Neurocognitive State Evaluation (SENSE-42), a multimodal dataset collected during user interactions with desktop computers. It is designed for studying spontaneous fluctuations in the neurocognitive state related to the tonic alertness of computer users, with recordings from 42 participants over 2-hour sessions. Within a simulated desktop environment, participants performed real-world routine tasks, including application switching, file management, typing, and web browsing. High-resolution data were recorded across physiological (electroencephalography, electrocardiography, respiration) and subjective modalities of alertness. At five-minute intervals, alertness state was reported using seven questions, addressing sleepiness (Karolinska Sleepiness Scale), mental and temporal demand, perceived performance, effort and frustration (NASA Task Load Index), as well as attentiveness. Behavioural data included keyboard, mouse and webcam inputs. Demographic information for the experience, habits, and preferences of computer usage was collected. In addition, individual differences in sleep quality were evaluated using the Pittsburgh Sleep Quality Index and the Epworth Sleepiness Scale. The SENSE-42 dataset can contribute to future research in user state monitoring, behavioural analysis and physiological computing.",
+      "authors": [
+        "Zhang, S.",
+        "Bai, X.",
+        "Hartley-O'Dwyer, C.",
+        "Warren, H.",
+        "Beyer, F.",
+        "Noreika, V."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-19T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2025.09.03.673947v2.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multimodal EEG dataset for neurocognitive state evaluation, relevant to cognitive load assessment",
+      "llm_evidence_cn": "多模态EEG数据集用于神经认知状态评估，与认知负荷评估相关",
+      "llm_evidence": "多模态EEG数据集用于神经认知状态评估，与认知负荷评估相关",
+      "canonical_evidence": "多模态EEG数据集用于神经认知状态评估，与认知负荷评估相关",
+      "llm_tldr_en": "Introduces SENSE-42, a multimodal dataset with EEG, ECG, respiration, and subjective reports collected during realistic desktop tasks, designed for studying neurocognitive state fluctuations related to alertness. Provides data for passive BCI and cognitive load research.",
+      "llm_tldr_cn": "该论文提出了SENSE-42数据集，在模拟桌面交互环境中同时采集EEG、ECG、呼吸和主观报告，用于研究用户警觉性等神经认知状态的波动。该数据集包含超过2小时的多模态记录，可用于被动脑机接口和认知负荷评估的研究。通过提供生态效度较高的基准数据，为相关算法的开发提供了重要资源。",
+      "llm_tldr": "该论文提出了SENSE-42数据集，在模拟桌面交互环境中同时采集EEG、ECG、呼吸和主观报告，用于研究用户警觉性等神经认知状态的波动。该数据集包含超过2小时的多模态记录，可用于被动脑机接口和认知负荷评估的研究。通过提供生态效度较高的基准数据，为相关算法的开发提供了重要资源。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

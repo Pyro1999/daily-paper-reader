@@ -1,0 +1,54 @@
+{
+  "label": "2026-06-20",
+  "date": "2026-06-20",
+  "generated_at": "2026-06-20T21:42:44",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202606/20/biorxiv-10-64898-2026-06-16-732398-v1-intracortical-bci-performance-is-robust-to-changes-in-attentional-load-during-dual-tasking",
+      "section": "deep",
+      "title_en": "Intracortical BCI Performance is Robust to Changes in Attentional Load During Dual-Tasking",
+      "authors": "Canario, E., Shearer, C., Akcakaya, M., Weber, D., Chase, S. M., Collinger, J. L.",
+      "date": "2026-06-20",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.06.16.732398v1.full.pdf",
+      "score": "8.0",
+      "evidence": "直接研究认知负荷（注意负荷）对脑机接口性能的影响",
+      "tldr": "脑机接口在真实应用中常遇到多任务导致的注意力变化，可能影响性能。本研究通过结合2D光标控制与N-Back工作记忆任务，探究注意力负荷对皮层内脑机接口性能的影响。两名四肢瘫痪参与者完成实验，同时记录EEG。结果显示，尽管EEG和主观难度表明注意力负荷增加，iBCI性能总体稳健，仅一名低信号质量参与者在轻度负荷下略有下降。研究说明iBCI对注意力负荷具有鲁棒性，但信号质量等因素可能调节这种效应。",
+      "tags": "query:pbci-load",
+      "abstract_en": "High performance intracortical brain-computer interface (iBCI) control has been demonstrated in research settings, but performance can still vary within and between sessions. One potential source of this variability is the change in attentional load that comes from processing naturally occurring distractors such as thoughts, sounds, fatigue, or pain. To improve the consistency of iBCI performance in real-world environments where this sort of multi-tasking is inevitable, we must understand how shifts in attention can impact performance. Here we examined the effect of attentional load on iBCI performance and movement-related neural activity using a 2D cursor translation + click iBCI task paired with an N-Back working memory task to increase attentional load during dual-task performance. Two participants (P2 and P4) with tetraplegia completed the study while enrolled in a long-term clinical trial of an iBCI device (NCT1894802). Common neural correlates of attention (theta and alpha band power) were measured with simultaneously recorded scalp electroencephalography (EEG). While the EEG recordings and difficulty ratings suggested increased attentional load during dual tasking, iBCI performance was quite robust across the various dual tasking conditions. One participant, P2, experienced a small but significant increase in trial completion time and normalized path length during the mild attentional load condition. Signal quality differences between the two participants may have impacted the results, as P2 had lower signal quality and was therefore likely more vulnerable to attentional load. P4's higher signal quality likely allowed him to accommodate increased attentional load without a drop in performance. Overall, iBCI performance appears to be robust to attentional load, but the complex trends observed here reflect a need for continued investigation of BCI use under different cognitive states to elucidate potential challenges and compensatory mechanisms across participants.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/20/2606.14866v1-test-time-adaptation-of-spiking-neural-networks-for-intracortical-neural-decoding-using-membrane-potential-alignment",
+      "section": "quick",
+      "title_en": "Test-Time Adaptation of Spiking Neural Networks for Intracortical Neural Decoding using Membrane Potential Alignment",
+      "authors": "Guangzhi Tang",
+      "date": "2026-06-12",
+      "pdf": "https://arxiv.org/pdf/2606.14866v1",
+      "score": "7.0",
+      "evidence": "面向脑机接口信号偏移的测试时自适应方法，可用于脑电信号增强",
+      "tldr": "皮层内脑机接口面临日常神经信号偏移导致预训练解码器性能下降的问题。现有无监督适应方法计算开销大，难以用于植入式硬件。本文提出膜电位对齐（MPA），一种脉冲神经网络测试时适应方法，通过KL散度匹配膜电位分布并采用LoRA更新少量参数。在非人灵长类抓取任务上，MPA以更简单的架构和4ms时间分辨率达到与NoMAD相当的精度，为长期免校准脑机接口提供了高效方案。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "Intracortical brain-computer interfaces suffer from day-to-day neural signal shifts that degrade pretrained decoders. Existing unsupervised adaptation methods rely on deep recurrent or adversarial architectures that are too computationally expensive for implantable hardware. We propose Membrane Potential Alignment (MPA), a test-time adaptation method for spiking neural networks that realigns a pretrained decoder to shifted recordings by only matching membrane potential distributions via KL divergence. By restricting updates to low-rank (LoRA) weights, MPA adapts fewer than 9% of parameters. On a non-human primate reaching task spanning over one month, MPA achieves performance competitive with the state-of-the-art NoMAD method, while using a simpler architecture and finer temporal resolution (4 ms vs. 20 ms). These results show that efficient SNN-based test-time adaptation is a practical path toward long-term, recalibration-free brain-computer interfaces.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/20/biorxiv-10-1101-2025-09-03-673947-v2-a-multimodal-human-computer-interaction-dataset-for-neurocognitive-user-state-evaluation",
+      "section": "quick",
+      "title_en": "A multimodal human-computer interaction dataset for neurocognitive user state evaluation",
+      "authors": "Zhang, S., Bai, X., Hartley-O'Dwyer, C., Warren, H., Beyer, F., Noreika, V.",
+      "date": "2026-06-19",
+      "pdf": "https://www.biorxiv.org/content/10.1101/2025.09.03.673947v2.full.pdf",
+      "score": "6.0",
+      "evidence": "多模态EEG数据集用于神经认知状态评估，与认知负荷评估相关",
+      "tldr": "针对计算机用户神经认知状态（特别是紧张警觉）评估需求，构建了SENSE-42多模态数据集。在模拟桌面环境中，42名参与者执行日常任务2小时，同步记录EEG、ECG、呼吸等生理信号及主观警觉度报告。数据集包含行为、生理和主观多维特征，可用于用户状态监测和生理计算研究。该数据集为自然情境下警觉度相关的多模态分析提供了重要资源。",
+      "tags": "query:pbci-load",
+      "abstract_en": "We introduce the Simulated Environment for Neurocognitive State Evaluation (SENSE-42), a multimodal dataset collected during user interactions with desktop computers. It is designed for studying spontaneous fluctuations in the neurocognitive state related to the tonic alertness of computer users, with recordings from 42 participants over 2-hour sessions. Within a simulated desktop environment, participants performed real-world routine tasks, including application switching, file management, typing, and web browsing. High-resolution data were recorded across physiological (electroencephalography, electrocardiography, respiration) and subjective modalities of alertness. At five-minute intervals, alertness state was reported using seven questions, addressing sleepiness (Karolinska Sleepiness Scale), mental and temporal demand, perceived performance, effort and frustration (NASA Task Load Index), as well as attentiveness. Behavioural data included keyboard, mouse and webcam inputs. Demographic information for the experience, habits, and preferences of computer usage was collected. In addition, individual differences in sleep quality were evaluated using the Pittsburgh Sleep Quality Index and the Epworth Sleepiness Scale. The SENSE-42 dataset can contribute to future research in user state monitoring, behavioural analysis and physiological computing.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
