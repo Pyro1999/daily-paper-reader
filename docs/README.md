@@ -6,29 +6,30 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-20
-- 运行时间：2026-06-20 21:42:37 UTC
+- 最新运行日期：2026-06-21
+- 运行时间：2026-06-21 21:29:21 UTC
 - 运行状态：成功
 - 本次总论文数：3
-- 精读区：1
-- 速读区：2
+- 精读区：0
+- 速读区：3
 
 ### 今日简报（AI）
-今日精读1篇、速读2篇，聚焦脑机接口性能、脉冲神经网络解码及多模态交互数据集。最值得关注的是精读论文发现：皮层内脑机接口在双任务注意力变化下仍保持稳定性能。建议重点关注脉冲神经网络的测试时自适应方法，以提升解码鲁棒性。
-- 详情：[/202606/20/README](/202606/20/README)
+今天速读3篇论文，涵盖生理信号多模态情感识别、自监督学习与sEMG实时校正系统。最值得关注的是深度时间建模与集成融合在情感识别中的有效性，以及基于状态空间模型的自监督学习框架。建议进一步探索自监督方法在低延迟实时系统中的应用潜力。
+- 详情：[/202606/21/README](/202606/21/README)
 
 ### 精读区论文标签
-1. [Intracortical BCI Performance is Robust to Changes in Attentional Load During Dual-Tasking](/202606/20/biorxiv-10-64898-2026-06-16-732398-v1-intracortical-bci-performance-is-robust-to-changes-in-attentional-load-during-dual-tasking)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：直接研究认知负荷（注意负荷）对脑机接口性能的影响
+- 本次无精读推荐。
 
 ### 速读区论文标签
-1. [Test-Time Adaptation of Spiking Neural Networks for Intracortical Neural Decoding using Membrane Potential Alignment](/202606/20/2606.14866v1-test-time-adaptation-of-spiking-neural-networks-for-intracortical-neural-decoding-using-membrane-potential-alignment)  
-   标签：评分：7.0/10、query:robust-eeg
-   evidence：面向脑机接口信号偏移的测试时自适应方法，可用于脑电信号增强
-2. [A multimodal human-computer interaction dataset for neurocognitive user state evaluation](/202606/20/biorxiv-10-1101-2025-09-03-673947-v2-a-multimodal-human-computer-interaction-dataset-for-neurocognitive-user-state-evaluation)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：多模态EEG数据集用于神经认知状态评估，与认知负荷评估相关
+1. [Deep Temporal Modeling and Ensemble Fusion for Multimodal Emotion Recognition from Physiological Signals](/202606/21/2606.15026v1-deep-temporal-modeling-and-ensemble-fusion-for-multimodal-emotion-recognition-from-physiological-signals)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：深度学习用于生理信号情感识别，方法可迁移至认知负荷评估
+2. [SL-S4Wave: Self-Supervised Learning of Physiological Waveforms with Structured State Space Models](/202606/21/2606.19888v1-sl-s4wave-self-supervised-learning-of-physiological-waveforms-with-structured-state-space-models)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：自监督学习用于生理波形，采用S4模型，可应用于EEG基础模型
+3. [Design of a Low-Latency sEMG Real-Time Correction System Based on High CMRR and EMRMS Mathematical Modeling](/202606/21/biorxiv-10-64898-2026-06-11-724714-v2-design-of-a-low-latency-semg-real-time-correction-system-based-on-high-cmrr-and-emrms-mathematical-modeling)  
+   标签：评分：6.0/10、query:robust-eeg
+   evidence：肌电去噪方法可迁移至脑电解噪
 
 
 <div class="dpr-home-promo-card">

@@ -1,0 +1,54 @@
+{
+  "label": "2026-06-21",
+  "date": "2026-06-21",
+  "generated_at": "2026-06-21T21:29:29",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202606/21/2606.15026v1-deep-temporal-modeling-and-ensemble-fusion-for-multimodal-emotion-recognition-from-physiological-signals",
+      "section": "quick",
+      "title_en": "Deep Temporal Modeling and Ensemble Fusion for Multimodal Emotion Recognition from Physiological Signals",
+      "authors": "Desta Haileselassie Hagos, Saurav Keshari Aryal, Patrick Ymele-Leki, Anietie Andy, Legand L. Burge",
+      "date": "2026-06-12",
+      "pdf": "https://arxiv.org/pdf/2606.15026v1",
+      "score": "7.0",
+      "evidence": "深度学习用于生理信号情感识别，方法可迁移至认知负荷评估",
+      "tldr": "生理信号情感识别对健康监测至关重要。本文在WESAD数据集上评估LSTM、TCN和Transformer模型，并采用早期融合及晚期融合集成策略。结果显示，集成方法取得98.91%准确率和98.56%宏F1分数，且Transformer在多模态设置中表现最优，TCN在仅腕部信号中最佳。研究证明了传感器融合与集成学习的有效性。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Physiological stress and emotion recognition are important for health monitoring and affective computing. In this work, we present a comprehensive evaluation of deep learning models such as Long Short-Term Memory (LSTM), Temporal Convolutional Networks (TCN), and Transformer on the WESAD dataset for multimodal affect recognition using wrist and chest sensor signals. We perform ablation studies to assess the individual contributions of each modality by training models on wrist-only and chest-only inputs. In addition, we implement a late-fusion ensemble strategy that combines predictions from all three architectures trained on multimodal input. We also employ early fusion at the sensor level by concatenating wrist and chest signals before feeding them into each model. Our results show that Transformer models consistently achieve the highest accuracy in multimodal settings, while TCN models perform best in the wrist-only configuration. The ensemble method yields the highest overall accuracy (98.91 +/- 0.13%) and macro-F1 score (98.56 +/- 0.17%). These findings demonstrate the effectiveness of sensor fusion and ensemble-based fusion in developing robust systems for physiological emotion recognition.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/21/2606.19888v1-sl-s4wave-self-supervised-learning-of-physiological-waveforms-with-structured-state-space-models",
+      "section": "quick",
+      "title_en": "SL-S4Wave: Self-Supervised Learning of Physiological Waveforms with Structured State Space Models",
+      "authors": "Feng Wu, Harsh Deep, Eric Lehman, Sanyam Kapoor, Guoshuai Zhao, Rahul Krishnan, Gari Clifford, Li-wei H Lehman",
+      "date": "2026-06-18",
+      "pdf": "https://arxiv.org/pdf/2606.19888v1",
+      "score": "7.0",
+      "evidence": "自监督学习用于生理波形，采用S4模型，可应用于EEG基础模型",
+      "tldr": "生理波形（如心电图）采样率高、多通道、噪声大且标注数据有限，现有自监督方法难以捕获长程依赖和噪声不变特征。本文提出SL-S4Wave框架，结合对比学习与基于结构化状态空间模型的编码器，通过多尺度子核的多层全局卷积同时建模精细局部模式和长程时序依赖。在心律失常检测任务上，方法显著优于现有监督和自监督方法，标签效率高，长序列鲁棒性强，并能泛化到未见心律失常类型及脑电图任务。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Modeling long-sequence medical time series data, such as electrocardiograms (ECG), poses significant challenges due to high sampling rates, multichannel signal complexity, inherent noise, and limited labeled data. While recent self-supervised learning (SSL) methods, based on various encoder architectures such as convolutional neural networks, have been proposed to learn representations from unlabeled data, they often fall short in capturing long-range dependencies and noise-invariant features. Structured state space models (S4) excel at long-sequence modeling, but existing S4 architectures fail to capture the unique characteristics of multichannel physiological waveforms. In this work, we propose SL-S4Wave, a self-supervised learning framework that combines contrastive learning with a tailored encoder built on structured state space models. The encoder incorporates multi-layer global convolution using multiscale subkernels, enabling the capture of both fine-grained local patterns and long-range temporal dependencies in noisy, high-resolution multichannel waveforms. Extensive experiments on real-world datasets demonstrate that SL-S4Wave (1) consistently outperforms state-of-the-art supervised and self-supervised baselines in a challenging arrhythmia detection task, (2) achieves high performance with significantly fewer labeled examples, showcasing strong label efficiency, and (3) maintains robust performance on long waveform segments, highlighting its capacity to model complex temporal dynamics in long sequences that most existing approaches fail to efficiently model, and (4) transfers effectively to unseen arrhythmia types, underscoring its robust cross-domain generalization. We additionally evaluate SL-S4Wave on multiple EEG tasks, achieving superior performance over strong baselines, demonstrating generalizability of our approach beyond cardiac waveforms.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/21/biorxiv-10-64898-2026-06-11-724714-v2-design-of-a-low-latency-semg-real-time-correction-system-based-on-high-cmrr-and-emrms-mathematical-modeling",
+      "section": "quick",
+      "title_en": "Design of a Low-Latency sEMG Real-Time Correction System Based on High CMRR and EMRMS Mathematical Modeling",
+      "authors": "Lo, H. U., Gao, Z., Loi, H. F., Cheng, S. K.",
+      "date": "2026-06-19",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.06.11.724714v2.full.pdf",
+      "score": "6.0",
+      "evidence": "肌电去噪方法可迁移至脑电解噪",
+      "tldr": "表面肌电信号受工频干扰和数字处理群延迟限制临床推广。本文提出协同设计的模拟-数字校正系统，含高CMRR前端、指数窗RMS包络估计器和递归单音PLI自适应消除器。EMRMS估计器将计算复杂度从O(L)降为O(1)，无数据依赖分支，实现确定性执行。参考实现每样本延迟8.2μs，端到端约30ms，CPU占空比仅1.6%。在Ninapro DB2数据集上平均SNR提升13.9dB，包络RMSE为70μV，形态保真度高达0.993。系统开源，为肌电假肢等提供低延迟高保真实时方案。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "Surface electromyography (sEMG) is the most practical non-invasive interface for myoelectric prostheses, exoskeletons, and rehabilitation systems, but power-line interference (PLI) contamination and excessive digital pipeline group delay still limit its clinical adoption. This paper proposes a co-designed analog-digital correction system combining a high-CMRR front-end with an exponentially-windowed RMS (EMRMS) envelope estimator and a recursive single-tone PLI canceller. We present a closed-form CMRR model capturing the electrode-skin imbalance, and provide a complete stability analysis of the LMS canceller. The EMRMS estimator reduces the computational overhead from[O] (L) to strictly[O] (1) in both time and space complexities. Featuring no data-dependent branching, the algorithm achieves deterministic algorithmic execution time (zero jitter under an RTOS environment) and is natively compatible with fixed-point arithmetic on microcontrollers lacking a hardware Floating-Point Unit (FPU). A reference implementation reaches an 8.2 {micro}s median per-sample latency, yielding an end-to-end delay of[~] 30 ms -- leaving a generous >90 ms budget for electromechanical actuation -- while requiring an active CPU duty cycle of merely 1.6%, enabling prolonged deep-sleep intervals. Validation on the public Ninapro DB2 dataset demonstrates a 13.9 dB mean SNR improvement (averaged across 12 channels; single-channel comparison: 9.7 dB, Table 3) and a 70.0 {micro}V envelope RMSE against a length-200 rectangular reference. Paired Wilcoxon signed-rank tests confirm statistical significance (p < 0.001) over static baselines, and Pearson correlation analysis ({rho} = 0.993 {+/-} 0.0002) confirms strict morphological fidelity. The full open-source codebase and benchmarks are publicly released.\n\nO_TBL View this table:\norg.highwire.dtl.DTLVardef@192c116org.highwire.dtl.DTLVardef@1c2966aorg.highwire.dtl.DTLVardef@213522org.highwire.dtl.DTLVardef@277968org.highwire.dtl.DTLVardef@193b8ab_HPS_FORMAT_FIGEXP  M_TBL O_FLOATNOTable 3:C_FLOATNO O_TABLECAPTIONQuantitative comparison on a common 60 s segment of Ninapro-like synthetic sEMG (single channel) with a 3 mV 50.3 Hz mains tone  slightly drifted from the static notchs design centre at 50.0 Hz, stress-testing the adaptive corrector under a frequency mismatch. The Ninapro multi-channel aggregate (13.9 dB) reported in Section 3.4 uses mains exactly at 50 Hz (matched notch) and so achieves a higher {Delta} SNR. \"MAC/sample\" excludes the EMRMS square root and the pre-computed LMS sine/cosine.\n\nC_TABLECAPTION C_TBL",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

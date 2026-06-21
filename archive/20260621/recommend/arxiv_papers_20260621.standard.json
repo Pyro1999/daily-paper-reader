@@ -1,0 +1,147 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-21T21:27:40.712989+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 3,
+    "quick_skim_target": 13,
+    "quick_selected": 3
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.15026v1",
+      "source": "arxiv",
+      "title": "Deep Temporal Modeling and Ensemble Fusion for Multimodal Emotion Recognition from Physiological Signals",
+      "abstract": "Physiological stress and emotion recognition are important for health monitoring and affective computing. In this work, we present a comprehensive evaluation of deep learning models such as Long Short-Term Memory (LSTM), Temporal Convolutional Networks (TCN), and Transformer on the WESAD dataset for multimodal affect recognition using wrist and chest sensor signals. We perform ablation studies to assess the individual contributions of each modality by training models on wrist-only and chest-only inputs. In addition, we implement a late-fusion ensemble strategy that combines predictions from all three architectures trained on multimodal input. We also employ early fusion at the sensor level by concatenating wrist and chest signals before feeding them into each model. Our results show that Transformer models consistently achieve the highest accuracy in multimodal settings, while TCN models perform best in the wrist-only configuration. The ensemble method yields the highest overall accuracy (98.91 +/- 0.13%) and macro-F1 score (98.56 +/- 0.17%). These findings demonstrate the effectiveness of sensor fusion and ensemble-based fusion in developing robust systems for physiological emotion recognition.",
+      "authors": [
+        "Desta Haileselassie Hagos",
+        "Saurav Keshari Aryal",
+        "Patrick Ymele-Leki",
+        "Anietie Andy",
+        "Legand L. Burge"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-06-12T23:50:33+00:00",
+      "link": "https://arxiv.org/pdf/2606.15026v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "deep learning on physiological signals for affect recognition, method applicable to cognitive load",
+      "llm_evidence_cn": "深度学习用于生理信号情感识别，方法可迁移至认知负荷评估",
+      "llm_evidence": "深度学习用于生理信号情感识别，方法可迁移至认知负荷评估",
+      "canonical_evidence": "深度学习用于生理信号情感识别，方法可迁移至认知负荷评估",
+      "llm_tldr_en": "Evaluates LSTM, TCN, and Transformer on WESAD dataset for emotion recognition, showing ensemble fusion achieves strong results, methodology transferable to cognitive load assessment.",
+      "llm_tldr_cn": "本文在WESAD生理信号数据集上系统评估了LSTM、TCN和Transformer三种深度学习模型用于多模态情感识别，并采用晚期融合集成策略。消融实验揭示了各模态的贡献。该研究框架和方法可迁移至基于EEG的认知负荷评估任务。",
+      "llm_tldr": "本文在WESAD生理信号数据集上系统评估了LSTM、TCN和Transformer三种深度学习模型用于多模态情感识别，并采用晚期融合集成策略。消融实验揭示了各模态的贡献。该研究框架和方法可迁移至基于EEG的认知负荷评估任务。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-11-724714-v2",
+      "source": "biorxiv",
+      "title": "Design of a Low-Latency sEMG Real-Time Correction System Based on High CMRR and EMRMS Mathematical Modeling",
+      "abstract": "Surface electromyography (sEMG) is the most practical non-invasive interface for myoelectric prostheses, exoskeletons, and rehabilitation systems, but power-line interference (PLI) contamination and excessive digital pipeline group delay still limit its clinical adoption. This paper proposes a co-designed analog-digital correction system combining a high-CMRR front-end with an exponentially-windowed RMS (EMRMS) envelope estimator and a recursive single-tone PLI canceller. We present a closed-form CMRR model capturing the electrode-skin imbalance, and provide a complete stability analysis of the LMS canceller. The EMRMS estimator reduces the computational overhead from[O] (L) to strictly[O] (1) in both time and space complexities. Featuring no data-dependent branching, the algorithm achieves deterministic algorithmic execution time (zero jitter under an RTOS environment) and is natively compatible with fixed-point arithmetic on microcontrollers lacking a hardware Floating-Point Unit (FPU). A reference implementation reaches an 8.2 {micro}s median per-sample latency, yielding an end-to-end delay of[~] 30 ms -- leaving a generous >90 ms budget for electromechanical actuation -- while requiring an active CPU duty cycle of merely 1.6%, enabling prolonged deep-sleep intervals. Validation on the public Ninapro DB2 dataset demonstrates a 13.9 dB mean SNR improvement (averaged across 12 channels; single-channel comparison: 9.7 dB, Table 3) and a 70.0 {micro}V envelope RMSE against a length-200 rectangular reference. Paired Wilcoxon signed-rank tests confirm statistical significance (p < 0.001) over static baselines, and Pearson correlation analysis ({rho} = 0.993 {+/-} 0.0002) confirms strict morphological fidelity. The full open-source codebase and benchmarks are publicly released.\n\nO_TBL View this table:\norg.highwire.dtl.DTLVardef@192c116org.highwire.dtl.DTLVardef@1c2966aorg.highwire.dtl.DTLVardef@213522org.highwire.dtl.DTLVardef@277968org.highwire.dtl.DTLVardef@193b8ab_HPS_FORMAT_FIGEXP  M_TBL O_FLOATNOTable 3:C_FLOATNO O_TABLECAPTIONQuantitative comparison on a common 60 s segment of Ninapro-like synthetic sEMG (single channel) with a 3 mV 50.3 Hz mains tone  slightly drifted from the static notchs design centre at 50.0 Hz, stress-testing the adaptive corrector under a frequency mismatch. The Ninapro multi-channel aggregate (13.9 dB) reported in Section 3.4 uses mains exactly at 50 Hz (matched notch) and so achieves a higher {Delta} SNR. \"MAC/sample\" excludes the EMRMS square root and the pre-computed LMS sine/cosine.\n\nC_TABLECAPTION C_TBL",
+      "authors": [
+        "Lo, H. U.",
+        "Gao, Z.",
+        "Loi, H. F.",
+        "Cheng, S. K."
+      ],
+      "primary_category": "bioengineering",
+      "categories": [
+        "bioengineering"
+      ],
+      "published": "2026-06-19T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.11.724714v2.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "sEMG noise removal method transferable to EEG denoising",
+      "llm_evidence_cn": "肌电去噪方法可迁移至脑电解噪",
+      "llm_evidence": "肌电去噪方法可迁移至脑电解噪",
+      "canonical_evidence": "肌电去噪方法可迁移至脑电解噪",
+      "llm_tldr_en": "Proposes a low-latency sEMG correction system with high-CMRR front-end and adaptive PLI canceller, offering real-time noise suppression that can be adapted for EEG denoising in BCI contexts.",
+      "llm_tldr_cn": "本文针对表面肌电信号中的电源线干扰和延迟问题，设计了一种联合模拟-数字校正系统，包括高共模抑制比前端和递归单音PLI消除器。该系统的数学建模和稳定性分析提供了可迁移至脑电解噪的技术，有望用于脑机接口中的实时抗干扰处理。",
+      "llm_tldr": "本文针对表面肌电信号中的电源线干扰和延迟问题，设计了一种联合模拟-数字校正系统，包括高共模抑制比前端和递归单音PLI消除器。该系统的数学建模和稳定性分析提供了可迁移至脑电解噪的技术，有望用于脑机接口中的实时抗干扰处理。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal denoising techniques",
+      "matched_requirement_id": "req-18",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.19888v1",
+      "source": "arxiv",
+      "title": "SL-S4Wave: Self-Supervised Learning of Physiological Waveforms with Structured State Space Models",
+      "abstract": "Modeling long-sequence medical time series data, such as electrocardiograms (ECG), poses significant challenges due to high sampling rates, multichannel signal complexity, inherent noise, and limited labeled data. While recent self-supervised learning (SSL) methods, based on various encoder architectures such as convolutional neural networks, have been proposed to learn representations from unlabeled data, they often fall short in capturing long-range dependencies and noise-invariant features. Structured state space models (S4) excel at long-sequence modeling, but existing S4 architectures fail to capture the unique characteristics of multichannel physiological waveforms. In this work, we propose SL-S4Wave, a self-supervised learning framework that combines contrastive learning with a tailored encoder built on structured state space models. The encoder incorporates multi-layer global convolution using multiscale subkernels, enabling the capture of both fine-grained local patterns and long-range temporal dependencies in noisy, high-resolution multichannel waveforms. Extensive experiments on real-world datasets demonstrate that SL-S4Wave (1) consistently outperforms state-of-the-art supervised and self-supervised baselines in a challenging arrhythmia detection task, (2) achieves high performance with significantly fewer labeled examples, showcasing strong label efficiency, and (3) maintains robust performance on long waveform segments, highlighting its capacity to model complex temporal dynamics in long sequences that most existing approaches fail to efficiently model, and (4) transfers effectively to unseen arrhythmia types, underscoring its robust cross-domain generalization. We additionally evaluate SL-S4Wave on multiple EEG tasks, achieving superior performance over strong baselines, demonstrating generalizability of our approach beyond cardiac waveforms.",
+      "authors": [
+        "Feng Wu",
+        "Harsh Deep",
+        "Eric Lehman",
+        "Sanyam Kapoor",
+        "Guoshuai Zhao",
+        "Rahul Krishnan",
+        "Gari Clifford",
+        "Li-wei H Lehman"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-18T07:46:34+00:00",
+      "link": "https://arxiv.org/pdf/2606.19888v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "self-supervised learning for physiological waveforms using S4, applicable to EEG foundation model",
+      "llm_evidence_cn": "自监督学习用于生理波形，采用S4模型，可应用于EEG基础模型",
+      "llm_evidence": "自监督学习用于生理波形，采用S4模型，可应用于EEG基础模型",
+      "canonical_evidence": "自监督学习用于生理波形，采用S4模型，可应用于EEG基础模型",
+      "llm_tldr_en": "SL-S4Wave proposes a self-supervised framework with structured state space models for long-sequence physiological signals, achieving robust representation learning, directly relevant as an EEG foundation model approach.",
+      "llm_tldr_cn": "本文针对多通道生理波形长序列建模的挑战，提出SL-S4Wave自监督学习框架，利用结构化状态空间模型捕获长程依赖和噪声不变特征。该方法在心电等信号上取得了优异表征，其设计可直接迁移至EEG基础模型，支持认知负荷评估等下游任务。",
+      "llm_tldr": "本文针对多通道生理波形长序列建模的挑战，提出SL-S4Wave自监督学习框架，利用结构化状态空间模型捕获长程依赖和噪声不变特征。该方法在心电等信号上取得了优异表征，其设计可直接迁移至EEG基础模型，支持认知负荷评估等下游任务。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
