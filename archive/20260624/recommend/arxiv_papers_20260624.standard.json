@@ -1,0 +1,564 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-24T22:03:36.992025+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 6,
+    "deep_cap": 8,
+    "deep_selected": 6,
+    "quick_candidates": 7,
+    "quick_skim_target": 13,
+    "quick_selected": 7
+  },
+  "deep_dive": [
+    {
+      "id": "2606.20812v1",
+      "source": "arxiv",
+      "title": "B[FM]$^2$: Brain Foundation Model via Flow Matching with SplitUNet",
+      "abstract": "EEG foundation models can learn generalizable representations from large-scale EEG corpora to enable single-backbone transfer across diverse clinical and brain-computer interface tasks. Existing models typically discretize the continuous multi-channel EEG waveform into patches or codebook tokens and train a transformer with masked self-supervision. Recognizing that this discretization fragments continuous brain rhythms and obscures fine-grained temporal dynamics, we present B[FM]$^2$(Brain Foundation Model via Flow Matching), whose inductive bias aligns with the data by pretraining directly on the raw signal using continuous-time flow matching without patches, tokenization, or masking. However, multi-channel EEG signals pose an architectural challenge for flow matching: time is densely sampled and highly autocorrelated (thousands of timepoints), while the electrode axis is short (tens of channels) at distinct scalp positions. To address this time-electrode asymmetry, we introduce SplitUNet, a velocity network that factorizes each block into separate 1D temporal and 1D electrode convolutions and downsamples only along time, preserving electrode topology throughout the hierarchy. B[FM]$^2$ sets a new state of the art on 7 of 9 standard downstream EEG classification tasks, using a pretraining budget of only 36,895 segments ($\\approx$ 307h), 1-2 orders of magnitude ($\\approx$ 30x) less than required by existing EEG foundation models. Further, it generates synthetic EEGs that two board-certified neurologists cannot distinguish from brain data (Cohen's $κ=$ -0.096). https://jd730.github.io/projects/BFM2",
+      "authors": [
+        "Jaedong Hwang",
+        "Kathleen Zhang",
+        "Wei Dai",
+        "Konstantinos Kontras",
+        "Maarten Vanmarcke",
+        "Maarten De Vos",
+        "Ila Fiete",
+        "Paul Pu Liang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-18T18:01:26+00:00",
+      "link": "https://arxiv.org/pdf/2606.20812v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes a brain foundation model for EEG via flow matching, directly applicable to BCI tasks",
+      "llm_evidence_cn": "提出基于流匹配的脑电基础模型，可直接用于脑机接口任务",
+      "llm_evidence": "提出基于流匹配的脑电基础模型，可直接用于脑机接口任务",
+      "canonical_evidence": "提出基于流匹配的脑电基础模型，可直接用于脑机接口任务",
+      "llm_tldr_en": "Presents B[FM]^2, an EEG foundation model pretrained via continuous-time flow matching on raw multi-channel EEG without discretization, enabling single-backbone transfer for diverse BCI tasks.",
+      "llm_tldr_cn": "现有EEG基础模型通常将连续多通道信号离散化为片段进行遮蔽预训练，破坏了脑电节律的连续性。本文提出B[FM]^2模型，直接在原始EEG信号上进行连续时间流匹配预训练，无需分片、分词或遮蔽操作。该方法利用SplitUNet架构处理多通道信号，在多个BCI基准任务上取得优异性能，证明连续信号预训练能更好地保留精细时间动态。该工作为EEG基础模型的设计提供了新范式。",
+      "llm_tldr": "现有EEG基础模型通常将连续多通道信号离散化为片段进行遮蔽预训练，破坏了脑电节律的连续性。本文提出B[FM]^2模型，直接在原始EEG信号上进行连续时间流匹配预训练，无需分片、分词或遮蔽操作。该方法利用SplitUNet架构处理多通道信号，在多个BCI基准任务上取得优异性能，证明连续信号预训练能更好地保留精细时间动态。该工作为EEG基础模型的设计提供了新范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.21973v1",
+      "source": "arxiv",
+      "title": "SPOTR: Spatio-temporal Pooling One-Token Reconstruction for Universal Physiological Signal Self-supervised Learning",
+      "abstract": "Physiological signals such as EEG, ECG, and PPG are widely used in clinical monitoring. Recent self-supervised learning (SSL) methods offer an attractive way to leverage unlabeled recordings, yet they still fall short in practice. In particular, current SSL methods struggle across heterogeneous datasets, often distorting clinically meaningful structures or learning shortcuts from temporal and cross-channel redundancy. Consequently, existing SSL methods often deliver limited performance under linear probing, a lightweight adaptation setting that better matches real-world medical scenarios. Moreover, most Transformer-based SSL models encode a flattened spatiotemporal token sequence, incurring high computation and memory cost, and are typically developed within a single modality. To address these limitations, we present SPOTR (Spatio-temporal Pooling One-Token Reconstruction), a compress-reconstruct pretraining framework that introduces a single-token global bottleneck for physiological signals. SPOTR compresses each waveform into a single-token representation and reconstructs the signal conditioned only on this representation. Meanwhile, SPOTR introduces an efficient spatio-temporal compaction module to reduce computation and memory cost. Pretrained on 20 datasets spanning EEG, iEEG, ECG, and PPG, SPOTR consistently outperforms the strongest baseline under linear probing, improving average AUC by 18.49%, 21.71%, 17.86%, and 4.64%, respectively. Compared with a representative general-purpose time-series foundation model, SPOTR achieves around 78% lower latency and 52% lower peak GPU memory on average. The code can be found at https://github.com/5GYYYYY/SPOTR.",
+      "authors": [
+        "Yiyu Gui",
+        "Mingzhi Chen",
+        "Yuesheng Zhu",
+        "Guibo Luo",
+        "Yuchao Yang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-20T10:01:55+00:00",
+      "link": "https://arxiv.org/pdf/2606.21973v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "universal self-supervised learning framework for EEG signals",
+      "llm_evidence_cn": "通用的EEG信号自监督学习框架",
+      "llm_evidence": "通用的EEG信号自监督学习框架",
+      "canonical_evidence": "通用的EEG信号自监督学习框架",
+      "llm_tldr_en": "Proposes SPOTR, a spatio-temporal pooling one-token reconstruction SSL method for universal physiological signal representation, showing strong performance on EEG linear probing.",
+      "llm_tldr_cn": "该论文针对当前自监督学习方法在异构生理信号数据集上表现不佳的问题，提出SPOTR框架。该方法通过时空池化单令牌重构策略学习通用表征，在EEG等多种生理信号的线性探测评估中取得优异结果。SPOTR可作为EEG信号处理的基础模型，为后续认知负荷评估等下游任务提供高质量特征。",
+      "llm_tldr": "该论文针对当前自监督学习方法在异构生理信号数据集上表现不佳的问题，提出SPOTR框架。该方法通过时空池化单令牌重构策略学习通用表征，在EEG等多种生理信号的线性探测评估中取得优异结果。SPOTR可作为EEG信号处理的基础模型，为后续认知负荷评估等下游任务提供高质量特征。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.22657v1",
+      "source": "arxiv",
+      "title": "Foundation Models for Epileptogenic Zone Identification in Drug-Resistant Epilepsy",
+      "abstract": "Accurate identification of the epileptogenic zone (EZ) is essential for seizure freedom after resective surgery in drug-resistant epilepsy, yet seizure freedom rates remain below 50%. We developed EpiiSLM, a dual foundation model system for EZ identification with stereo-electroencephalography (sEEG), by training a signal foundation model on 104,990 minutes of sEEG recordings from the Montreal Neurological Institute & Hospital, while leveraging all recordings regardless of surgical outcome and anchoring EZ biomarker extraction on non-epileptic signals. A language foundation model then integrates sEEG-derived outputs with multimodal clinical information to produce interpretable predictions. Under leave-one-patient-out evaluation, EpiiSLM achieved 0.978 contact-level positive predictive value (PPV), outperforming the seizure onset zone(SOZ)-as-EZ baseline by 15.1% (p < 0.05), and 100% region-level accuracy; on an external dataset, EpiiSLM achieved 0.857 contact-level PPV. EpiiSLM requires only one night of interictal sleep data, suggesting potential to reduce invasive sEEG monitoring duration and improve surgical outcomes.",
+      "authors": [
+        "Thi Kieu Khanh Ho",
+        "Thomas Lai",
+        "Petr Klimes",
+        "Jan Cimbalnik",
+        "Martin Pail",
+        "Milan Brazdil",
+        "Birgit Frauscher",
+        "Narges Armanfard"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-21T20:20:06+00:00",
+      "link": "https://arxiv.org/pdf/2606.22657v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes a dual foundation model system for EEG (sEEG) signal processing",
+      "llm_evidence_cn": "提出用于颅内脑电信号处理的双基座模型系统",
+      "llm_evidence": "提出用于颅内脑电信号处理的双基座模型系统",
+      "canonical_evidence": "提出用于颅内脑电信号处理的双基座模型系统",
+      "llm_tldr_en": "EpiiSLM is a dual foundation model system for epileptogenic zone identification using sEEG, achieving high accuracy and interpretability.",
+      "llm_tldr_cn": "针对难治性癫痫手术中病灶识别准确率低的问题，提出EpiiSLM双基座模型系统。该系统在10.5万分钟颅内脑电数据上训练信号基座模型，并通过语言基座模型整合多模态临床信息，实现可解释的病灶预测。留一患者交叉验证显示良好效果，为EEG基座模型在临床中的应用提供了范例。",
+      "llm_tldr": "针对难治性癫痫手术中病灶识别准确率低的问题，提出EpiiSLM双基座模型系统。该系统在10.5万分钟颅内脑电数据上训练信号基座模型，并通过语言基座模型整合多模态临床信息，实现可解释的病灶预测。留一患者交叉验证显示良好效果，为EEG基座模型在临床中的应用提供了范例。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.21754v1",
+      "source": "arxiv",
+      "title": "Embedded Polygon Symbolic Transfer Entropy (EPSTE): A Geometric Token and Deep Learning Approach to Estimating Transfer Entropy in Neuroimaging Time Series",
+      "abstract": "Inferring directed interactions between neural systems from EEG and MEG remains challenging due to noise, nonstationarity, and the high sample complexity of information-theoretic estimators. Transfer Entropy (TE) provides a principled and model-free measure of directed information flow; however, its practical estimation is not stable in finite data regimes (particularly as embedding dimension increases). This work introduces Embedded Polygon Symbolic Transfer Entropy (EPSTE), a framework that reframes TE estimation as a learnable problem operating on structured symbolic representations of local temporal morphology rather than raw signal amplitudes. Neural time series are decomposed into sequences of geometric primitives derived from local triplets of samples encoding complementary aspects of waveform structure such as magnitude, curvature and directional change. These primitives are discretised into symbolic tokens, yielding a compact but expressive state space over which symbolic TE is estimated. A recurrent neural network with attention-based multiple-instance learning is trained to predict surrogate-validated TE values from bags of symbolic temporal windows. The method is evaluated on source-reconstructed MEG data parcellated using the AAL90 atlas and compared against a standard symbolic baseline using identical architectures and supervision. The results demonstrate that while local window-level predictions are noisy, aggregation across trials and channel pairs yields stable directed dependencies. At the pair level, EPSTE achieves near-perfect recovery of ground-truth directed structure and significantly lower absolute error than the baseline, indicating that representational geometry plays a critical role in enabling practical learnability of information-theoretic dependencies.",
+      "authors": [
+        "David Alexander Finnigan"
+      ],
+      "primary_category": "cs.IT",
+      "categories": [
+        "cs.IT",
+        "stat.ML"
+      ],
+      "published": "2026-06-19T21:13:56+00:00",
+      "link": "https://arxiv.org/pdf/2606.21754v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "deep learning framework for estimating directed interactions from EEG, applicable to cognitive load analysis",
+      "llm_evidence_cn": "提出深度学习框架用于从EEG估计有向交互，可用于认知负荷分析",
+      "llm_evidence": "提出深度学习框架用于从EEG估计有向交互，可用于认知负荷分析",
+      "canonical_evidence": "提出深度学习框架用于从EEG估计有向交互，可用于认知负荷分析",
+      "llm_tldr_en": "Introduces EPSTE, a deep learning method that estimates transfer entropy from EEG/MEG using geometric symbolic representations of temporal morphology, addressing noise and nonstationarity issues, enabling robust connectivity analysis for cognitive state assessment.",
+      "llm_tldr_cn": "从EEG/MEG推断神经有向交互受噪声和非平稳性影响，传统传递熵估计不稳定。本文提出EPSTE，将传递熵估计转化为深度学习问题，通过提取局部时间形态的几何符号表示，而非直接使用原始信号振幅。该方法在有限数据下表现稳定，可用于分析认知任务中的脑网络动态。该框架为认知负荷评估等应用提供了鲁棒的连接性分析工具。",
+      "llm_tldr": "从EEG/MEG推断神经有向交互受噪声和非平稳性影响，传统传递熵估计不稳定。本文提出EPSTE，将传递熵估计转化为深度学习问题，通过提取局部时间形态的几何符号表示，而非直接使用原始信号振幅。该方法在有限数据下表现稳定，可用于分析认知任务中的脑网络动态。该框架为认知负荷评估等应用提供了鲁棒的连接性分析工具。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-04-24-720604-v2",
+      "source": "biorxiv",
+      "title": "OPM-FLUX: A Pipeline for OPM MEG Data Analysis",
+      "abstract": "Optically pumped magnetometer-based magnetoencephalography (OPM-MEG) has recently emerged as a powerful neuroimaging approach in cognitive neuroscience, extending beyond the limitations of conventional cryogenic systems with greater experimental flexibility and wearable recording. Despite these advantages, standardised data analysis frameworks specifically tailored to OPM technology are still lacking, leading to variability in processing choices and reduced reproducibility across laboratories and hardware platforms. We introduce OPM-FLUX, a comprehensive and fully documented end-to-end analysis pipeline developed for OPM-MEG data. The pipeline defines a clear sequence of preprocessing, noise suppression, artifact handling, spectral analysis, evoked response analysis along with recommended parameter settings. It also includes source reconstruction to identify where in the brain the signals originate. In addition, OPM-FLUX supports multivariate pattern analysis (MVPA), enabling time-resolved decoding of cognitive processes from sensor level data. OPM-FLUX is implemented in MNE-Python and distributed as interactive Jupyter Notebooks that combine executable code with detailed methodological explanations and graphical outputs. The pipeline further provides standardized reporting templates and a data acquisition Standard Operating Procedure to facilitate preregistration, consistent documentation, and standard practices across research sites. The workflow is demonstrated using openly available datasets acquired from both Cerca/QuSpin and FieldLine OPM systems during a visuospatial attention paradigm that modulates alpha, beta, and gamma oscillations and elicits event-related responses. By supporting multiple OPM platforms and promoting consistent methodological choices, OPM-FLUX enhances transparency, comparability, and replication in OPM-MEG research. The pipeline also serves as an educational resource for students and researchers entering the field and is designed to evolve alongside ongoing technological and methodological advances in OPM-based brain imaging.",
+      "authors": [
+        "Rakshit, A.",
+        "Ghafari, T.",
+        "Kowalczyk, A. U.",
+        "Jensen, O."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.04.24.720604v2.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "OPM-FLUX pipeline for noise suppression and artifact handling, directly transferable to EEG BCI",
+      "llm_evidence_cn": "OPM-FLUX流水线提供噪声抑制和伪迹处理，可直接迁移至脑电脑机接口",
+      "llm_evidence": "OPM-FLUX流水线提供噪声抑制和伪迹处理，可直接迁移至脑电脑机接口",
+      "canonical_evidence": "OPM-FLUX流水线提供噪声抑制和伪迹处理，可直接迁移至脑电脑机接口",
+      "llm_tldr_en": "OPM-FLUX provides a complete pipeline for OPM-MEG data analysis including noise suppression and artifact removal. Methods are transferable to EEG for robust BCI.",
+      "llm_tldr_cn": "该论文提出了OPM-FLUX，一个针对光泵磁强计脑磁图（OPM-MEG）数据的端到端分析流水线。流水线明确定义了预处理、噪声抑制、伪迹处理、频谱分析等步骤，弥补了标准化分析框架的缺失。虽然针对MEG，但其所使用的噪声和伪迹处理技术可直接应用于脑电（EEG）信号，为构建稳健的脑电脑机接口系统提供了工具。该流水线的模块化设计有助于提高不同实验室间的可重复性。",
+      "llm_tldr": "该论文提出了OPM-FLUX，一个针对光泵磁强计脑磁图（OPM-MEG）数据的端到端分析流水线。流水线明确定义了预处理、噪声抑制、伪迹处理、频谱分析等步骤，弥补了标准化分析框架的缺失。虽然针对MEG，但其所使用的噪声和伪迹处理技术可直接应用于脑电（EEG）信号，为构建稳健的脑电脑机接口系统提供了工具。该流水线的模块化设计有助于提高不同实验室间的可重复性。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "Find papers on robust denoising methods for EEG signals in brain computer interfaces",
+      "matched_requirement_id": "req-24",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.22925v1",
+      "source": "arxiv",
+      "title": "EEG Benchmarking Needs a Task Specification Layer: NeuroDoc for Rulebook-Guided, Executable Benchmark Construction",
+      "abstract": "Electroencephalography (EEG) foundation models increasingly rely on multi-dataset training and evaluation, yet public EEG datasets still lack a shared task specification layer that can turn heterogeneous recordings into reusable benchmark units. Existing standards organize files, metadata, and provenance, but they do not specify EEG tasks under a common language and rulebook, leaving critical task semantics scattered across papers, code, and manual interpretation. We investigate whether heterogeneous public EEG datasets can be standardized through a structured task specification language paired with a shared rulebook. Our methodology represents each benchmark entry as a task document synchronized with an executable task kernel, with the rulebook defining task fields, evidence requirements, document-kernel alignment, review states, and machine-checkable constraints. Using this methodology, we release a community-reviewed EEG benchmark corpus centered on 53 completed and reviewed entries with 245 task definitions spanning diverse paradigms, and we introduce NeuroDoc and NeuroAudit as the operational support layer for rulebook-guided drafting, upgrading, review, amendment, and release management. We further examine whether the resulting benchmark units can be instantiated in a shared downstream setting across four EEG foundation model backbones, providing execution-based evidence for reusable, auditable, and executable EEG benchmarking infrastructure.",
+      "authors": [
+        "Chengxuan Qin",
+        "Zhige Chen",
+        "Shu Peng",
+        "Rui Yang",
+        "Jiping Cui",
+        "Yikai Dong",
+        "Jun Li",
+        "Liu Peng",
+        "Zhida Shang",
+        "Mingze Tang",
+        "Kay Chen Tan",
+        "Jibin Wu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.NE"
+      ],
+      "published": "2026-06-22T07:02:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.22925v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG foundation model benchmark construction for multi-dataset evaluation",
+      "llm_evidence_cn": "脑电基础模型基准构建，用于多数据集评估",
+      "llm_evidence": "脑电基础模型基准构建，用于多数据集评估",
+      "canonical_evidence": "脑电基础模型基准构建，用于多数据集评估",
+      "llm_tldr_en": "NeuroDoc introduces a task specification layer for EEG benchmarking, enabling standardized evaluation of foundation models on heterogeneous datasets.",
+      "llm_tldr_cn": "论文指出现有脑电数据集缺乏统一任务规范层，阻碍了基础模型的可复用评估。为此提出NeuroDoc，一种结构化任务描述语言配套规则手册，将异构记录转化为可执行基准单元。该方法支持多数据集训练和评估，为脑电基础模型发展提供标准化基础设施。对被动BCI认知负荷评估中的模型比较具有重要支撑作用。",
+      "llm_tldr": "论文指出现有脑电数据集缺乏统一任务规范层，阻碍了基础模型的可复用评估。为此提出NeuroDoc，一种结构化任务描述语言配套规则手册，将异构记录转化为可执行基准单元。该方法支持多数据集训练和评估，为脑电基础模型发展提供标准化基础设施。对被动BCI认知负荷评估中的模型比较具有重要支撑作用。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.21055v1",
+      "source": "arxiv",
+      "title": "Robust EEG Functional Connectivity Metrics for Decoding Action Observation Conditions and Observed Actions",
+      "abstract": "Action observation (AO) paradigms probe motor-system engagement, yet the electroencephalographic (EEG) functional connectivity (FC) metrics that best capture AO-related dynamics remain unclear. This pilot study benchmarked five sensor-level FC metrics, including coherence (COH), imaginary coherence (iCOH), phase-locking value (PLV), partial directed coherence (PDC), and spectral Granger causality (SpcG), for decoding AO stimuli in five healthy adults. EEG signals were recorded while participants observed upper-limb actions performed by human or robot agents, as well as non-action control stimuli. Ten motor-area channels were analyzed in the alpha (8-12 Hz) and beta (13-30 Hz) bands. Trial-wise 10 x 10 FC matrices were used as inputs to multiple classifiers for two tasks: (i) six-class AO-condition decoding and (ii) five-class action-type decoding. Across both tasks, metrics robust to volume conduction consistently outperformed their counterparts. iCOH achieved the highest macro-area under the receiver operating characteristic curve (macro-AUC) for most classifiers, with PDC and SpcG showing comparable performance. Graph neural networks (GNNs) provided the most robust and stable results across all FC metrics, while convolutional neural networks and random forests also performed strongly. These findings highlight the importance of suppressing zero-phase-lag interactions and incorporating directed connectivity when characterizing AO-related brain activity. They further demonstrate the ability of GNNs to exploit the inherent graph structure of FC representations, providing practical guidance for selecting connectivity measures and machine learning models in future large-scale studies of action observation.",
+      "authors": [
+        "Anh T. Nguyen",
+        "Zachary A. Rentala",
+        "Michelle J. Johnson"
+      ],
+      "primary_category": "cs.CE",
+      "categories": [
+        "cs.CE"
+      ],
+      "published": "2026-06-19T02:45:17+00:00",
+      "link": "https://arxiv.org/pdf/2606.21055v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "benchmarks robust EEG FC metrics for decoding",
+      "llm_evidence_cn": "基准测试了稳健的脑电功能连接指标用于解码",
+      "llm_evidence": "基准测试了稳健的脑电功能连接指标用于解码",
+      "canonical_evidence": "基准测试了稳健的脑电功能连接指标用于解码",
+      "llm_tldr_en": "Benchmarks five robust EEG functional connectivity metrics for decoding action observation; provides insight into robust EEG processing. Useful for passive BCI.",
+      "llm_tldr_cn": "该论文在动作观察范式下系统基准测试了五种脑电功能连接指标（COH、iCOH、PLV、PDC、SpcG）的稳健性。实验基于五名健康被试的脑电数据，分析了alpha和beta频段的功能连接矩阵。结果显示不同指标对动作观察条件的解码性能存在差异，为选择稳健的脑电连接度量提供了依据。该工作对被动脑机接口中的脑电信号处理具有重要参考价值。",
+      "llm_tldr": "该论文在动作观察范式下系统基准测试了五种脑电功能连接指标（COH、iCOH、PLV、PDC、SpcG）的稳健性。实验基于五名健康被试的脑电数据，分析了alpha和beta频段的功能连接矩阵。结果显示不同指标对动作观察条件的解码性能存在差异，为选择稳健的脑电连接度量提供了依据。该工作对被动脑机接口中的脑电信号处理具有重要参考价值。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-21",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.21329v1",
+      "source": "arxiv",
+      "title": "MedTS-TTT: Test-Time Training for Medical Time Series Classification",
+      "abstract": "Medical time series (MedTS) signals such as electroencephalography (EEG) and electrocardiography (ECG) support many clinical applications. However, substantial subject-level heterogeneity often induces subject-level distribution shift, causing a fixed parameter set to generalize poorly to unseen individuals. Compared with domain adaptation methods that often depend on extra adaptation components or target-batch statistics, Test-Time Training (TTT) provides a more practical solution for sequential clinical data by enabling online adaptation from unlabeled test samples. However, many representative TTT methods require iterative inner-loop optimization, increasing test-time overhead. In this paper, we propose MedTS-TTT, a test-time training framework for medical time series modeling. MedTS-TTT is built upon Closed-Loop Self-Alignment Test-Time Training (CLSA-TTT) and a Gated Convolutional Backbone (GCB). CLSA-TTT constructs a token-level self-supervised target and performs a single-step fast-weight update for intra-layer closed-loop alignment, enabling rapid sample-wise adaptation without iterative inner-loop optimization. GCB combines CLSA-TTT-based fast adaptation and token-level fusion with a gated convolutional branch to balance local dynamic modeling and information-flow control. On 4 public datasets (2 EEG and 2 ECG) with subject-independent splits, MedTS-TTT achieves 11 top-1 rankings out of 12 evaluations across 9 baselines and 3 metrics. The code is publicly available at https://github.com/mingzhi-c/MedTS-TTT.",
+      "authors": [
+        "Mingzhi Chen",
+        "Yiyu Gui",
+        "Guibo Luo"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-19T11:22:28+00:00",
+      "link": "https://arxiv.org/pdf/2606.21329v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "proposes test-time training deep learning method for medical time series including EEG, applicable to cognitive load assessment",
+      "llm_evidence_cn": "提出适用于EEG等医疗时间序列的测试时训练深度学习方法，可迁移至认知负荷评估",
+      "llm_evidence": "提出适用于EEG等医疗时间序列的测试时训练深度学习方法，可迁移至认知负荷评估",
+      "canonical_evidence": "提出适用于EEG等医疗时间序列的测试时训练深度学习方法，可迁移至认知负荷评估",
+      "llm_tldr_en": "MedTS-TTT introduces a test-time training framework for medical time series (EEG/ECG) classification that handles subject-level distribution shifts without iterative inner loops, achieving efficient online adaptation.",
+      "llm_tldr_cn": "针对医疗时间序列分类中因被试间分布偏移导致模型泛化差的问题，提出MedTS-TTT测试时训练框架。该框架无需内循环优化，通过在线自适应从无标签测试样本中学习，有效处理EEG等信号中的个体差异，为深度学习方法在认知负荷等任务中的应用提供了高效自适应工具。",
+      "llm_tldr": "针对医疗时间序列分类中因被试间分布偏移导致模型泛化差的问题，提出MedTS-TTT测试时训练框架。该框架无需内循环优化，通过在线自适应从无标签测试样本中学习，有效处理EEG等信号中的个体差异，为深度学习方法在认知负荷等任务中的应用提供了高效自适应工具。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.23713v1",
+      "source": "arxiv",
+      "title": "Unifying Adaptive Fourier and Möbius-Based Models for Efficient and Interpretable Biomedical Signal Decomposition",
+      "abstract": "Oscillatory biomedical signals such as electrocardiograms (ECG) and electroencephalograms (EEG) call for decompositions that are both computationally efficient and interpretable. This paper establishes a formal connection between two finite-order frameworks that have largely evolved independently: Adaptive Fourier Decomposition (AFD), based on orthonormal Takenaka-Malmquist expansions, and the Frequency-Modulated Mobius (FMM) model, a parametric decomposition built on Mobius transforms with morphologically meaningful parameters. We prove that finite-order AFD and FMM decompositions are mathematically equivalent. Under mild regularity assumptions, we further show that their associated estimation procedures solve the same underlying optimization problem when FMM is formulated with independent Gaussian noise. The results are extended to multi-channel signals, which are central in multilead bioelectric recordings. Practically, the equivalence clarifies how fast AFD approximations, including FFT-based implementations, relate to FMM-style parametrization and component interpretability. We illustrate these implications with an EEG example evaluating approximation behavior as the number of components increases, and with an ECG use case comparing five-component decompositions on representative beats, contrasting unlabeled AFD components with physiologically identified FMM components. Overall, the proposed equivalence provides a principled basis to leverage the computational advantages of AFD alongside the interpretability of FMM in biomedical signal analysis.",
+      "authors": [
+        "Christian Canedo",
+        "Rocío Carratalá-Sáez",
+        "Cristina Rueda"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP",
+        "stat.ME"
+      ],
+      "published": "2026-06-16T07:04:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.23713v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG signal decomposition for enhancement",
+      "llm_evidence_cn": "用于EEG信号增强的分解方法",
+      "llm_evidence": "用于EEG信号增强的分解方法",
+      "canonical_evidence": "用于EEG信号增强的分解方法",
+      "llm_tldr_en": "This paper unifies Adaptive Fourier Decomposition and Frequency-Modulated Mobius model for efficient and interpretable decomposition of oscillatory biomedical signals like EEG, proving equivalence and simplifying estimation to convex optimization, offering a theoretical foundation for EEG signal enhancement in BCI.",
+      "llm_tldr_cn": "心电和脑电等振荡生物医学信号需要既高效又具有可解释性的分解方法。本文首次建立了自适应傅里叶分解（AFD）与调频莫比乌斯模型（FMM）之间的数学等价性，证明有限阶分解等价且估计过程可简化为凸优化问题。该统一框架在保持信号形态学可解释性的同时大幅降低了计算复杂度，为脑电图（EEG）等生物医学信号的高效处理与抗干扰分析提供了新的理论支撑，有望在脑机接口信号增强中发挥关键作用。",
+      "llm_tldr": "心电和脑电等振荡生物医学信号需要既高效又具有可解释性的分解方法。本文首次建立了自适应傅里叶分解（AFD）与调频莫比乌斯模型（FMM）之间的数学等价性，证明有限阶分解等价且估计过程可简化为凸优化问题。该统一框架在保持信号形态学可解释性的同时大幅降低了计算复杂度，为脑电图（EEG）等生物医学信号的高效处理与抗干扰分析提供了新的理论支撑，有望在脑机接口信号增强中发挥关键作用。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal enhancement for bci",
+      "matched_requirement_id": "req-23",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-11-724714-v1",
+      "source": "biorxiv",
+      "title": "Design of a Low-Latency sEMG Real-Time Correction System Based on High CMRR and EMRMS Mathematical Modeling",
+      "abstract": "Surface electromyography (sEMG) is the most practical non-invasive interface for myoelectric prostheses, exoskeletons, and rehabilitation systems, but power-line interference (PLI) contamination and excessive digital pipeline group delay still limit its clinical adoption. This paper proposes a co-designed analog-digital correction system combining a high-CMRR front-end with an exponentially-windowed RMS (EMRMS) envelope estimator and a recursive single-tone PLI canceller. We present a closed-form CMRR model capturing the electrode-skin imbalance, and provide a complete stability analysis of the LMS canceller. The EMRMS estimator reduces the computational overhead from O(L) to strictly O(1) in both time and space complexities. Featuring no data-dependent branching, the algorithm achieves deterministic algorithmic execution time (zero jitter under an RTOS environment) and is natively compatible with fixed-point arithmetic on microcontrollers lacking a hardware Floating-Point Unit (FPU). A reference implementation reaches an 8.2 {micro}s median per-sample latency, yielding an end-to-end delay of[~] 30 ms -- leaving a generous >90 ms budget for electromechanical actuation -- while requiring an active CPU duty cycle of merely 1.6%, enabling prolonged deep-sleep intervals. Validation on the public Ninapro DB2 dataset demonstrates a 13.9 dB mean SNR improvement (averaged across 12 channels; single-channel comparison: 9.7 dB, Table 3) and a 70.0 {micro}V envelope RMSE against a length-200 rectangular reference. Paired Wilcoxon signed-rank tests confirm statistical significance (p < 0.001) over static baselines, and Pearson correlation analysis ({rho} = 0.993 {+/-} 0.0002) confirms strict morphological fidelity. The full open-source codebase and benchmarks are publicly released.\n\nO_TBL View this table:\norg.highwire.dtl.DTLVardef@1ca028forg.highwire.dtl.DTLVardef@16e0576org.highwire.dtl.DTLVardef@2886b5org.highwire.dtl.DTLVardef@a4055eorg.highwire.dtl.DTLVardef@5c7a58_HPS_FORMAT_FIGEXP  M_TBL O_FLOATNOTable 3:C_FLOATNO O_TABLECAPTIONQuantitative comparison on a common 60 s segment of Ninapro-like synthetic sEMG (single channel) with a 3 mV 50.3 Hz mains tone  slightly drifted from the static notchs design centre at 50.0 Hz, stress-testing the adaptive corrector under a frequency mismatch. The Ninapro multi-channel aggregate (13.9 dB) reported in Section 3.4 uses mains exactly at 50 Hz (matched notch) and so achieves a higher {Delta} SNR. \"MAC/sample\" excludes the EMRMS square root and the pre-computed LMS sine/cosine.\n\nC_TABLECAPTION C_TBL",
+      "authors": [
+        "Lo, H. U.",
+        "Gao, Z.",
+        "Loi, H. F.",
+        "Cheng, S. K."
+      ],
+      "primary_category": "bioengineering",
+      "categories": [
+        "bioengineering"
+      ],
+      "published": "2026-06-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.11.724714v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "sEMG interference suppression method applicable to EEG denoising",
+      "llm_evidence_cn": "sEMG干扰抑制方法可迁移至EEG去噪",
+      "llm_evidence": "sEMG干扰抑制方法可迁移至EEG去噪",
+      "canonical_evidence": "sEMG干扰抑制方法可迁移至EEG去噪",
+      "llm_tldr_en": "Proposes a low-latency sEMG correction system with high CMRR and EMRMS for power-line interference removal. The method is transferable to EEG denoising for robust BCI preprocessing.",
+      "llm_tldr_cn": "本文设计了一种低延迟的表面肌电信号（sEMG）实时校正系统，通过高共模抑制比前端和指数加权RMS估计器有效抑制工频干扰，并提供完整的稳定性分析。虽然针对sEMG，但所提出的干扰抑制框架可适用于脑电图（EEG）信号去噪，为鲁棒脑机接口中的抗干扰预处理提供方法学支撑。",
+      "llm_tldr": "本文设计了一种低延迟的表面肌电信号（sEMG）实时校正系统，通过高共模抑制比前端和指数加权RMS估计器有效抑制工频干扰，并提供完整的稳定性分析。虽然针对sEMG，但所提出的干扰抑制框架可适用于脑电图（EEG）信号去噪，为鲁棒脑机接口中的抗干扰预处理提供方法学支撑。",
+      "llm_tags": [
+        "query:robust-eeg:composite"
+      ],
+      "matched_query_tag": "query:robust-eeg:composite",
+      "matched_query_text": "Papers central to 请帮我查找有关脑机接口（EEG）鲁棒抗扰去噪的论文, especially work that connects or combines: eeg signal denoising techniques; electroencephalogram noise removal algorithms; eeg artifact removal approaches; robust eeg processing framework; eeg interference suppression methods; eeg signal enhancement for bci; Find papers on robust denoising methods for EEG signals in brain computer interfaces; Search for EEG artifact removal techniques that are robust against interference; Retrieve articles about noise suppression in electroencephalogram for BCI applications.",
+      "matched_requirement_id": "req-composite-robust-eeg",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.23864v1",
+      "source": "arxiv",
+      "title": "Generative Modeling for Physiological Signals",
+      "abstract": "Physiological signals support clinical diagnosis, health monitoring, rehabilitation, wearable sensing, and human--machine interaction. However, their applications are often constrained by limited labeled data, class imbalance, noisy or incomplete recordings, heterogeneous acquisition settings, and privacy restrictions. Generative modeling has therefore attracted increasing attention as a means of addressing some of these barriers. Recent studies have used generative models to augment scarce datasets, restore degraded recordings, translate between modalities, and synthesize conditional physiological waveforms. This review summarizes recent work on generative modeling for cardiovascular, neural, muscular, peripheral, and specialized physiological signals. Major model families are covered, including generative adversarial networks (GANs), autoencoders and variational autoencoders (AEs/VAEs), diffusion models, autoregressive sequence models, and hybrid architectures. In addition, it organizes existing evaluation practices into a hierarchical framework spanning signal-level similarity, dataset-level distribution, physiological validity, task-oriented utility, and assessments of generalization and robustness. By linking signal-specific constraints, generative roles, model families, and evaluation evidence, this review provides structured guidance for the future use and evaluation of generative models in physiological-signal research.",
+      "authors": [
+        "Xinqi Bao",
+        "Ernest Kamavuako",
+        "Saikat Chatterjee"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-06-22T19:03:45+00:00",
+      "link": "https://arxiv.org/pdf/2606.23864v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "generative modeling for physiological signals including EEG, supports data augmentation for cognitive load",
+      "llm_evidence_cn": "生理信号生成模型综述（含EEG），支持认知负荷数据增强",
+      "llm_evidence": "生理信号生成模型综述（含EEG），支持认知负荷数据增强",
+      "canonical_evidence": "生理信号生成模型综述（含EEG），支持认知负荷数据增强",
+      "llm_tldr_en": "Comprehensive review of generative models for physiological signals (including neural). Discusses data augmentation, noise restoration, and synthesis, which are crucial for addressing limited data in cognitive load assessment with deep learning.",
+      "llm_tldr_cn": "该综述系统回顾了心血管、神经、肌肉等生理信号的生成建模方法，重点讨论了生成模型在数据增强、噪声恢复、模态转换和信号合成中的应用。对于基于深度学习的认知负荷评估而言，生成模型可有效缓解标记数据不足和异质性等问题，为被动脑机接口中的EEG基础模型训练提供支持。",
+      "llm_tldr": "该综述系统回顾了心血管、神经、肌肉等生理信号的生成建模方法，重点讨论了生成模型在数据增强、噪声恢复、模态转换和信号合成中的应用。对于基于深度学习的认知负荷评估而言，生成模型可有效缓解标记数据不足和异质性等问题，为被动脑机接口中的EEG基础模型训练提供支持。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-17-732982-v1",
+      "source": "biorxiv",
+      "title": "Data aggregation strategies for a P300 speller: decoding models, epoch averaging, cross-subject ensembles, and multi-channel models",
+      "abstract": "Accurate detection of P300 event-related potentials from electroencephalography (EEG) remains challenging for small numbers of trials due to low signal-to-noise ratios and substantial inter-subject variability. This study presents a systematic comparison of data aggregation strategies for improving P300 classification, evaluated on a 10-subject dataset using two convolutional neural network architectures (EEGNet and BaseCNN) and a support vector machine (SVM). We compared: (1)~subject-specific and pooled general models for single trials; (2)~epoch averaging with 5 and 10 stimuli repetitions; (3)~multi-channel models where subjects corresponded to different input channels; (4)~cross-subject averaging; (5)~mixed (uncontrolled) averaging; (6)~a combined approach with $K$ trials per subject across all participants; and (7)~time-shifted channels from extended single-trial epochs. Decoding performance was quantified using the Information Transfer Rate (ITR), computed for binary classification accuracy. We found that single-trial ITR was unpractical (0.15--0.64~bits/trial), whereas controlled aggregation improved the performance. The combined cross-subject approach with $K=3$ trials per participant (30 channels) achieves the highest ITR with multi-channel EEGNet: 0.95~bits/aggregated decision in the no-aperture recordings and 0.97~bits/aggregated decision on Aperture data, approaching the theoretical binary-classification limit for the aggregated decision. Controlled cross-subject averaging consistently outperformed random trial mixing, and multi-channel architectures outperformed simple averaging when inter-subject structure was preserved. These findings contribute to improving P300 decoding and implementing multi-subject brain-computer interfaces (BCIs).",
+      "authors": [
+        "Sidorov, L.",
+        "Makarova, A.",
+        "Maysuradze, A.",
+        "Lebedev, M."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-22T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.17.732982v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "P300 speller EEG decoding using deep learning models, relevant to passive BCI",
+      "llm_evidence_cn": "P300拼写器EEG解码，使用深度学习模型，与被动脑机接口相关",
+      "llm_evidence": "P300拼写器EEG解码，使用深度学习模型，与被动脑机接口相关",
+      "canonical_evidence": "P300拼写器EEG解码，使用深度学习模型，与被动脑机接口相关",
+      "llm_tldr_en": "This paper systematically compares data aggregation strategies for P300 classification using convolutional neural networks and SVM, showing cross-subject ensembles improve accuracy, directly advancing passive BCI decoding.",
+      "llm_tldr_cn": "该研究针对EEG中P300事件相关电位检测中信号噪声大和个体差异的问题，系统比较了多种数据聚合策略，包括单试次模型、试次平均、多通道模型和跨被试集成，并使用EEGNet等卷积神经网络和SVM进行评估。结果表明跨被试集成方法可显著提升分类性能，为被动BCI中基于P300的认知状态解码提供了实用的技术方案。",
+      "llm_tldr": "该研究针对EEG中P300事件相关电位检测中信号噪声大和个体差异的问题，系统比较了多种数据聚合策略，包括单试次模型、试次平均、多通道模型和跨被试集成，并使用EEGNet等卷积神经网络和SVM进行评估。结果表明跨被试集成方法可显著提升分类性能，为被动BCI中基于P300的认知状态解码提供了实用的技术方案。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-14-732153-v1",
+      "source": "biorxiv",
+      "title": "Quantum machine learning for detection of sleep deprivation from EEG signals",
+      "abstract": "Approximately 50% of the population in India is estimated to experience sleep-related disorders. Sleep deprivation is a prevalent condition that adversely impacts cognitive performance, neural functioning, and overall health. Electroencephalography (EEG) offers an objective means of capturing neural alterations associated with sleep loss, making it well-suited for automated detection frameworks. In this study, we explore the application of a Quantum Support Vector Machine and Hybrid Quantum Neural Networks to classify sleep-deprived and well-rested states using resting-state EEG signals.\n\nA comprehensive feature extraction pipeline is employed, incorporating spectral band power, band ratios, Hjorth parameters, and functional connectivity measures. These features are subsequently encoded into quantum states to construct a quantum kernel, which is then utilized for classification. Model performance is evaluated under both epoch-level and subject-level data partitioning schemes.\n\nThe Hybrid Quantum Neural Network (HQNN) achieves the highest performance across both evaluation settings, attaining an accuracy of 96.88% at the epoch level and 81.25% at the subject level. The QSVM model achieves accuracies of 93.75% and 75.00% for epoch-level and subject-level evaluations, respectively. At subject-level and epoch -level evaluation, HQNN outperforms previously reported results (68.23% and 95.72%). Overall, these findings highlight the potential of quantum machine learning as a competitive approach for EEG-based sleep deprivation detection, with promising implications for real-world biomedical applications.",
+      "authors": [
+        "Sarma-Sarkar, P.",
+        "Saini, R.",
+        "Roy, P. P."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-18T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.14.732153v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "uses EEG and quantum machine learning for cognitive state detection, relevant to cognitive load assessment",
+      "llm_evidence_cn": "使用EEG和量子机器学习检测认知状态，与认知负荷评估相关",
+      "llm_evidence": "使用EEG和量子机器学习检测认知状态，与认知负荷评估相关",
+      "canonical_evidence": "使用EEG和量子机器学习检测认知状态，与认知负荷评估相关",
+      "llm_tldr_en": "This paper applies quantum SVM and hybrid quantum neural networks to classify sleep-deprived vs. well-rested states from EEG, demonstrating a transferable method for EEG-based cognitive state assessment.",
+      "llm_tldr_cn": "睡眠剥夺严重影响认知与健康，EEG可客观捕捉神经变化。本研究探索量子支持向量机与混合量子神经网络，基于静息态EEG的频谱功率、Hjorth参数和功能连接特征进行二分类。实验表明量子机器学习能有效区分睡眠剥夺与正常状态。该方法为EEG认知状态评估提供了新工具，可启发认知负荷检测任务，相比传统方法在特征空间利用上展现出独特优势。",
+      "llm_tldr": "睡眠剥夺严重影响认知与健康，EEG可客观捕捉神经变化。本研究探索量子支持向量机与混合量子神经网络，基于静息态EEG的频谱功率、Hjorth参数和功能连接特征进行二分类。实验表明量子机器学习能有效区分睡眠剥夺与正常状态。该方法为EEG认知状态评估提供了新工具，可启发认知负荷检测任务，相比传统方法在特征空间利用上展现出独特优势。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
