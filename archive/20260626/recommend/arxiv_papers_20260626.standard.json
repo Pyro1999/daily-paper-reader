@@ -1,0 +1,448 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-26T20:36:43.075920+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 2,
+    "deep_cap": 8,
+    "deep_selected": 2,
+    "quick_candidates": 8,
+    "quick_skim_target": 13,
+    "quick_selected": 8
+  },
+  "deep_dive": [
+    {
+      "id": "2606.26518v1",
+      "source": "arxiv",
+      "title": "NeuraDock Visual Cognitive Load Agent Tutorial: A Quality-Gated Open-Source EEG Workflow for Alpha Dynamics and Real-Time Applications",
+      "abstract": "This tutorial paper provides a step-by-step, reproducible walkthrough of NeuraDock Agent, an open-source EEG agent focused on Alpha dynamics and visual cognitive-load analysis. The goal is practical: a reader should be able to install the agent, run EEG preprocessing and quality control, generate Alpha dynamics figures, perform within-subject Rest/Task visual cognitive-load comparison, run the public mini-dataset analyses and compare them with the reference validation summary, start an online dashboard, call the real-time API from an external application, and use the LLM interpretation layer to explain quality risks. Existing EEG toolkits provide excellent offline analysis, but assembling a real-time, quality-gated cognitive-load pipeline often requires manually bridging acquisition, custom QC, Alpha feature extraction, and a web API; this tutorial closes that offline-to-online gap. The tutorial uses a quality-gated workflow: downstream Alpha and workload metrics are computed only after preprocessing and QC gating rather than directly from raw EEG. In the included mini-dataset validation, the agent processed 18 recordings, generated 10 within-subject comparisons, observed task-related posterior Alpha suppression in 7 of 10 contrasts, estimated initial evidence of within-subject repeatability, and benchmarked local online API latency. The tutorial is intended for researchers, developers, and applied teams who want a transparent path from EEG files to real-time visual cognitive-load prototypes.",
+      "authors": [
+        "Zhiyuan Xu",
+        "Yueqing Dai",
+        "Junling Li",
+        "Junwen Luo"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-25T01:44:51+00:00",
+      "link": "https://arxiv.org/pdf/2606.26518v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG visual cognitive load analysis workflow",
+      "llm_evidence_cn": "基于EEG的视觉认知负荷分析工作流",
+      "llm_evidence": "基于EEG的视觉认知负荷分析工作流",
+      "canonical_evidence": "基于EEG的视觉认知负荷分析工作流",
+      "llm_tldr_en": "NeuraDock Agent provides an open-source EEG workflow for visual cognitive load analysis, including preprocessing, quality control, alpha dynamics, and real-time API.",
+      "llm_tldr_cn": "该论文介绍了一个名为NeuraDock Agent的开源EEG工作流教程，专门用于视觉认知负荷分析。它解决了现有工具包缺乏集成化可复现流程的问题，通过质量门控预处理、Alpha动态生成和实时API调用，支持研究者高效地进行静息态与任务态对比。该工作流还包含LLM解释层以评估质量风险，为认知负荷的实时监测提供了实用框架。",
+      "llm_tldr": "该论文介绍了一个名为NeuraDock Agent的开源EEG工作流教程，专门用于视觉认知负荷分析。它解决了现有工具包缺乏集成化可复现流程的问题，通过质量门控预处理、Alpha动态生成和实时API调用，支持研究者高效地进行静息态与任务态对比。该工作流还包含LLM解释层以评估质量风险，为认知负荷的实时监测提供了实用框架。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.25456v1",
+      "source": "arxiv",
+      "title": "Towards Robust EEG Decoding Based on Riemannian Self-Attention",
+      "abstract": "Brain-Computer Interface (BCI) based on electroencephalography (EEG) enables direct interaction between the brain and external environments and has significant applications in assistive technologies, medical rehabilitation, and entertainment. Recently, EEG decoding methods based on Symmetric Positive Definite (SPD) learning have demonstrated superior performance. However, these methods typically employ basic network architectures and do not explicitly capture local relationships between EEG signals. This limitation is problematic for EEG signals due to their inherently low Signal-to-Noise Ratio (SNR). Moreover, most existing Riemannian manifold-based methods are restricted to specific metrics. The most widely used is the Affine-Invariant Metric (AIM). However, it has a quadratic dependency on the SPD matrices and cannot handle ill-conditioned SPD matrices, which hinders the effectiveness of networks. In contrast, the Bures-Wasserstein Metric (BWM) exhibits linear dependence on SPD matrices and demonstrates superior performance for ill conditioning. To overcome these challenges, we propose a Riemannian self-attention network based on the BWM. Additionally, the recently introduced power-deformed generalized Bures-Wasserstein metric reveals a nonlinear relationship between SPD matrices and matrix power deformation. This metric provides a more nuanced representation of the geometric structure of the SPD manifold. Consequently, we extend our model to a learnable version. For simplicity, we refer to it as GBWAtt. Experimental results on three EEG benchmarking datasets validate the robustness and effectiveness of our proposed method. The code is available at https://github.com/jissc/GBWAtt.",
+      "authors": [
+        "Shaocheng Jin",
+        "Tao Zhou",
+        "Rui Wang",
+        "Ziheng Chen",
+        "Xiaoqing Luo",
+        "Xiaojun Wu",
+        "Josef Kittler"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-24T06:31:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.25456v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Riemannian self-attention for robust EEG decoding in BCI",
+      "llm_evidence_cn": "基于黎曼自注意力的鲁棒EEG解码，适用于BCI信号增强",
+      "llm_evidence": "基于黎曼自注意力的鲁棒EEG解码，适用于BCI信号增强",
+      "canonical_evidence": "基于黎曼自注意力的鲁棒EEG解码，适用于BCI信号增强",
+      "llm_tldr_en": "Proposes a Riemannian self-attention method for EEG decoding that captures local relationships and improves robustness to low SNR, directly applicable to BCI signal enhancement.",
+      "llm_tldr_cn": "本文提出一种基于黎曼流形自注意力机制的EEG解码方法，通过显式建模EEG通道间的局部关系，克服了传统SPD网络对低信噪比敏感的缺陷。在脑机接口（BCI）数据集上的实验表明，该方法显著提升了分类准确率和对噪声的鲁棒性，为被动BCI认知负荷评估中的信号增强提供了有效工具。",
+      "llm_tldr": "本文提出一种基于黎曼流形自注意力机制的EEG解码方法，通过显式建模EEG通道间的局部关系，克服了传统SPD网络对低信噪比敏感的缺陷。在脑机接口（BCI）数据集上的实验表明，该方法显著提升了分类准确率和对噪声的鲁棒性，为被动BCI认知负荷评估中的信号增强提供了有效工具。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal enhancement for bci",
+      "matched_requirement_id": "req-23",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.23382v1",
+      "source": "arxiv",
+      "title": "Energy-Based Transformers as Predictors of Reading Difficulty",
+      "abstract": "Transformer language models have become established tools for modeling human sentence processing, with measures such as surprisal and attention entropy serving as effective predictors of reading difficulty that together capture complementary aspects of processing load. Here, we explore a related class of transformer models: energy-based transformers, which provide a principled formal link to associative memory models, bringing processing research into direct contact with the broader literature on Hopfield networks and dense associative memory. To our knowledge, this is the first exploration of an energy-based transformer measure in computational psycholinguistics. Across reading-time corpora (Natural Stories, UCL eye-tracking, UCL self-paced reading), the energy measure is a robust predictor of reading times, providing significant fit beyond surprisal in all three. In a controlled experiment on relative clause processing, energy at a single layer captures the well-known object/subject asymmetry. We find evidence that it subsumes effects attributable to both attention entropy and surprisal, suggesting that energy may serve as a single unified predictor where multiple complementary measures have previously been required.",
+      "authors": [
+        "Jakub Dotlacil",
+        "Ece Takmaz"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-06-22T14:11:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.23382v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Deep learning model for reading difficulty prediction (cognitive load assessment)",
+      "llm_evidence_cn": "用于阅读困难预测的深度学习模型（认知负荷评估）",
+      "llm_evidence": "用于阅读困难预测的深度学习模型（认知负荷评估）",
+      "canonical_evidence": "用于阅读困难预测的深度学习模型（认知负荷评估）",
+      "llm_tldr_en": "Energy-based transformers predict reading difficulty, offering a deep learning approach for cognitive load assessment from text, not EEG but relevant as a method for workload estimation.",
+      "llm_tldr_cn": "该论文探索了能量基变压器模型在预测阅读困难方面的能力，通过计算能量度量来反映处理负荷。在多个阅读时间语料库上，能量度量与阅读时间指标显著相关，超越了传统的惊讶度和注意力熵。这项工作首次将能量基变压器应用于计算心理语言学，为评估认知负荷提供了新的深度学习工具，尽管不直接使用脑电，但其方法可启发脑电认知负荷评估中的特征提取。",
+      "llm_tldr": "该论文探索了能量基变压器模型在预测阅读困难方面的能力，通过计算能量度量来反映处理负荷。在多个阅读时间语料库上，能量度量与阅读时间指标显著相关，超越了传统的惊讶度和注意力熵。这项工作首次将能量基变压器应用于计算心理语言学，为评估认知负荷提供了新的深度学习工具，尽管不直接使用脑电，但其方法可启发脑电认知负荷评估中的特征提取。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.22695v1",
+      "source": "arxiv",
+      "title": "SPIDER -- Stitched Power-spectra for Inferring Directed information flow from incomplete and asynchronous Experimental Recordings",
+      "abstract": "Mapping the directed flow of information between brain regions -- their effective connectivity -- is central to understanding brain function, yet large-scale recordings sample only a fraction of the brain at a time: sessions, animals, and laboratories cover different, partially overlapping regions, usually without a shared temporal reference. Established directed-connectivity methods (Granger causality, dynamic causal modeling, partial directed coherence, PDC) require all regions to be recorded simultaneously and with a common clock. We introduce SPIDER, a non-parametric, frequency-domain framework that recovers directed information flow from such incomplete, asynchronous recordings: it stitches local power-spectral estimates from overlapping channel subsets into a global spectral matrix and obtains frequency-resolved directed interactions by canonical spectral factorization and PDC, without temporal alignment, while nuclear-norm completion fills in never-co-observed region pairs. With consistency guarantees, we validate SPIDER on simulations, two-photon calcium imaging, and the International Brain Laboratory Neuropixels dataset, recovering directed flow among 50 areas from 43 sessions in 12 laboratories never recorded together. Beyond validation, SPIDER reveals what no single recording can: brain-wide spontaneous flow is largely recurrent, but in the theta band it forms a significant feedforward hierarchy with the hippocampal formation at its source. Applied to resting human intracranial EEG (43 patients, non-overlapping coverage), it recovers the same theta-band hierarchy across species and modality. SPIDER makes whole-brain effective-connectivity analysis tractable for multi-session, multi-animal datasets previously incompatible with directed-flow inference.",
+      "authors": [
+        "Yisi S. Zhang",
+        "Daniel Y. Takahashi"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "stat.ME"
+      ],
+      "published": "2026-06-21T22:19:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.22695v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Robust framework for EEG connectivity inference from incomplete recordings",
+      "llm_evidence_cn": "从不完整记录中鲁棒推断脑电连接性的框架",
+      "llm_evidence": "从不完整记录中鲁棒推断脑电连接性的框架",
+      "canonical_evidence": "从不完整记录中鲁棒推断脑电连接性的框架",
+      "llm_tldr_en": "SPIDER stitches power spectra from incomplete asynchronous neural recordings to infer directed information flow, providing a robust method for EEG connectivity analysis.",
+      "llm_tldr_cn": "该论文针对传统有效连接方法要求所有区域同时记录且时间同步的限制，提出了SPIDER框架。它通过拼接来自不完整、异步记录的功率谱，无参数地恢复有向信息流。在模拟和真实数据上的实验表明，SPIDER能够利用部分重叠的记录重建全脑连接图，为处理实际采集中的缺失数据提供了鲁棒方案。该方法对于脑机接口中的信号增强和噪声抑制具有潜在应用价值。",
+      "llm_tldr": "该论文针对传统有效连接方法要求所有区域同时记录且时间同步的限制，提出了SPIDER框架。它通过拼接来自不完整、异步记录的功率谱，无参数地恢复有向信息流。在模拟和真实数据上的实验表明，SPIDER能够利用部分重叠的记录重建全脑连接图，为处理实际采集中的缺失数据提供了鲁棒方案。该方法对于脑机接口中的信号增强和噪声抑制具有潜在应用价值。",
+      "llm_tags": [
+        "query:robust-eeg:composite"
+      ],
+      "matched_query_tag": "query:robust-eeg:composite",
+      "matched_query_text": "Papers central to 请帮我查找有关脑机接口（EEG）鲁棒抗扰去噪的论文, especially work that connects or combines: eeg signal denoising techniques; electroencephalogram noise removal algorithms; eeg artifact removal approaches; robust eeg processing framework; eeg interference suppression methods; eeg signal enhancement for bci; Find papers on robust denoising methods for EEG signals in brain computer interfaces; Search for EEG artifact removal techniques that are robust against interference; Retrieve articles about noise suppression in electroencephalogram for BCI applications.",
+      "matched_requirement_id": "req-composite-robust-eeg",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.24394v1",
+      "source": "arxiv",
+      "title": "Average Rankings Mask Per-Subject Optimality: A Friedman-Nemenyi Benchmark of EEG Motor-Imagery BCI Decoders",
+      "abstract": "Electroencephalography (EEG) is the dominant non-invasive modality for brain-computer interfaces (BCIs), yet reliable decoding of motor imagery is hampered by inter- and intra-individual variability. A recurring claim is that one decoding pipeline, most often a spatial or Riemannian method, is broadly preferable. We test the weakest version of that claim under the most favourable conditions. Using the Mother of All BCI Benchmarks (MOABB) framework, we evaluated 1,056 decoding configurations (feature extractor x scaler x classifier), >340,000 subject-level model fits, across three public left-versus-right motor-imagery datasets (PhysionetMI, 109 participants; Cho2017, 52; Zhou2016, 4) and two frequency bands (8-15 Hz, 8-30 Hz). Every model is fit and tested within a single session of a single participant, the easiest regime, giving every pipeline its best chance. We apply the statistics standard for multi-classifier comparison: Friedman omnibus tests, Nemenyi critical-difference analysis and Wilcoxon signed-rank tests with effect sizes. Covariance tangent-space projection (cov-tgsp) and Common Spatial Patterns (CSP) are the strongest families, but their ordering is dataset-dependent and, on the largest and most heterogeneous cohort (PhysionetMI), statistically indistinguishable (Nemenyi p = 0.27; Kendall's W = 0.11). At the individual level the single best pipeline is optimal for only 35% of PhysionetMI participants, and nonlinear descriptors are best for roughly one third; matching pipeline to participant adds about seven accuracy points over the best fixed choice. The ranking is not an artefact of dimensionality, and classifier and scaler choices are secondary to the feature representation. Even in the easiest regime, no single pipeline dominates: a lower bound on the personalization problem and a quantitative case for participant-aware model selection rather than a universal decoder.",
+      "authors": [
+        "Xavier Vasques",
+        "Paul Barbaste",
+        "Olivier Oullier"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI",
+        "cs.RO",
+        "q-bio.NC"
+      ],
+      "published": "2026-06-23T10:26:27+00:00",
+      "link": "https://arxiv.org/pdf/2606.24394v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "comprehensive benchmark of EEG motor-imagery BCI decoders including deep learning methods",
+      "llm_evidence_cn": "对包括深度学习方法在内的EEG运动想象BCI解码器进行综合基准测试",
+      "llm_evidence": "对包括深度学习方法在内的EEG运动想象BCI解码器进行综合基准测试",
+      "canonical_evidence": "对包括深度学习方法在内的EEG运动想象BCI解码器进行综合基准测试",
+      "llm_tldr_en": "Large-scale benchmark of 1,056 EEG motor-imagery BCI decoding configurations showing per-subject optimality varies, challenging one-size-fits-all claims.",
+      "llm_tldr_cn": "研究利用MOABB框架对1056种EEG运动想象BCI解码配置（包括多种深度学习方法）进行了大规模基准测试，分析了超过340,000次模型拟合。结果表明，平均性能排名掩盖了个体差异性，每种解码器对每个被试的最佳选择不同，强调了个性化解码的重要性。",
+      "llm_tldr": "研究利用MOABB框架对1056种EEG运动想象BCI解码配置（包括多种深度学习方法）进行了大规模基准测试，分析了超过340,000次模型拟合。结果表明，平均性能排名掩盖了个体差异性，每种解码器对每个被试的最佳选择不同，强调了个性化解码的重要性。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.22925v1",
+      "source": "arxiv",
+      "title": "EEG Benchmarking Needs a Task Specification Layer: NeuroDoc for Rulebook-Guided, Executable Benchmark Construction",
+      "abstract": "Electroencephalography (EEG) foundation models increasingly rely on multi-dataset training and evaluation, yet public EEG datasets still lack a shared task specification layer that can turn heterogeneous recordings into reusable benchmark units. Existing standards organize files, metadata, and provenance, but they do not specify EEG tasks under a common language and rulebook, leaving critical task semantics scattered across papers, code, and manual interpretation. We investigate whether heterogeneous public EEG datasets can be standardized through a structured task specification language paired with a shared rulebook. Our methodology represents each benchmark entry as a task document synchronized with an executable task kernel, with the rulebook defining task fields, evidence requirements, document-kernel alignment, review states, and machine-checkable constraints. Using this methodology, we release a community-reviewed EEG benchmark corpus centered on 53 completed and reviewed entries with 245 task definitions spanning diverse paradigms, and we introduce NeuroDoc and NeuroAudit as the operational support layer for rulebook-guided drafting, upgrading, review, amendment, and release management. We further examine whether the resulting benchmark units can be instantiated in a shared downstream setting across four EEG foundation model backbones, providing execution-based evidence for reusable, auditable, and executable EEG benchmarking infrastructure.",
+      "authors": [
+        "Chengxuan Qin",
+        "Zhige Chen",
+        "Shu Peng",
+        "Rui Yang",
+        "Jiping Cui",
+        "Yikai Dong",
+        "Jun Li",
+        "Liu Peng",
+        "Zhida Shang",
+        "Mingze Tang",
+        "Kay Chen Tan",
+        "Jibin Wu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.NE"
+      ],
+      "published": "2026-06-22T07:02:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.22925v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "proposes NeuroDoc for standardized EEG task specification to support reproducible benchmarking",
+      "llm_evidence_cn": "提出NeuroDoc用于标准化EEG任务规范，支持可复现的基准测试",
+      "llm_evidence": "提出NeuroDoc用于标准化EEG任务规范，支持可复现的基准测试",
+      "canonical_evidence": "提出NeuroDoc用于标准化EEG任务规范，支持可复现的基准测试",
+      "llm_tldr_en": "Introduces NeuroDoc, a rulebook-guided task specification layer for constructing executable EEG benchmarks from heterogeneous datasets.",
+      "llm_tldr_cn": "研究提出NeuroDoc，一种规则书引导的任务规范层，可将异构公共EEG数据集转化为可执行基准测试单元。该方案解决了现有标准缺失任务语义的问题，为脑电基础模型的跨数据集评估提供了统一框架。",
+      "llm_tldr": "研究提出NeuroDoc，一种规则书引导的任务规范层，可将异构公共EEG数据集转化为可执行基准测试单元。该方案解决了现有标准缺失任务语义的问题，为脑电基础模型的跨数据集评估提供了统一框架。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-18-733142-v1",
+      "source": "biorxiv",
+      "title": "Representational similarity analysis of EEG reveals multiple spatiotemporal dynamics of selective attention",
+      "abstract": "Selective attention allows listeners to follow a target speaker in complex scenes, but less is known about the neural mechanisms that control this capacity. We collected electroencephalography (EEG) during an auditory attention task encompassing spatial attention, talker-based attention, and passive listening. Time-resolved representational similarity analysis (RSA) of broadband scalp voltage and alpha-band oscillations revealed distinct representational trajectories in the two measurements: scalp voltage produced brief peaks in task discriminability shortly after the target cue and around 300 ms after target onset, whereas alpha-band power emerged more slowly and remained elevated throughout the trial. These patterns distinguish attentive from passive conditions and spatial from talker attention. Furthermore, broadband activity and alpha power encode complementary information, while other frequency bands contribute little independent explanatory power. These results demonstrate that RSA allows a unified interpretation of evoked and induced EEG measures, revealing how distinct neural computations jointly encode the spatiotemporal dynamics of selective attention.",
+      "authors": [
+        "Kim, J.",
+        "An, W. W.",
+        "Noyce, A.",
+        "Shinn-Cunningham, B."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-23T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.18.733142v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG study using passive listening paradigm, relevant to passive BCI with EEG",
+      "llm_evidence_cn": "利用被动聆听范式的EEG研究，与被动脑机接口相关",
+      "llm_evidence": "利用被动聆听范式的EEG研究，与被动脑机接口相关",
+      "canonical_evidence": "利用被动聆听范式的EEG研究，与被动脑机接口相关",
+      "llm_tldr_en": "Uses EEG representational similarity analysis to reveal distinct spatiotemporal dynamics of selective attention under passive listening, relevant to passive BCI.",
+      "llm_tldr_cn": "通过EEG时间分辨表示相似性分析，揭示了被动聆听条件下选择性注意的多重时空动态：头皮电压在目标线索后和靶刺激后约300毫秒出现短暂辨别峰值，而α频段功率缓慢上升并维持。该研究为被动BCI的脑状态解码提供了重要神经标志。",
+      "llm_tldr": "通过EEG时间分辨表示相似性分析，揭示了被动聆听条件下选择性注意的多重时空动态：头皮电压在目标线索后和靶刺激后约300毫秒出现短暂辨别峰值，而α频段功率缓慢上升并维持。该研究为被动BCI的脑状态解码提供了重要神经标志。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.24164v1",
+      "source": "arxiv",
+      "title": "Breaking Shortcut Learning for Cross-Trial EEG-Guided Target Speech Extraction via Two-Stage Training",
+      "abstract": "Recent end-to-end models for EEG-guided target speech extraction report impressive results, underscoring potential for neuro-steered hearing technologies. However, our analysis reveals that high within-trial performance can be driven by trial-specific EEG structure that acts as shortcuts for target selection, leading to poor generalization on unseen trials. To overcome this gap, we propose TRUST-TSE, a two-stage framework to mitigate shortcut learning. By introducing contrastive pretraining with attended-speaker negative sampling, we encourage the EEG encoder to capture fine-grained EEG--speech alignment while suppressing trial-identity cues. We also employ a confidence-weighted extraction objective based on EEG--source similarity to guide extraction using the learned representations. Experiments on KUL and DTU datasets show that TRUST-TSE outperforms end-to-end baselines under strict cross-trial protocols, addressing a key reliability bottleneck of existing approaches.",
+      "authors": [
+        "Wonchul Shin",
+        "Inyong Choi",
+        "Kyogu Lee"
+      ],
+      "primary_category": "eess.AS",
+      "categories": [
+        "eess.AS",
+        "cs.AI",
+        "cs.SD"
+      ],
+      "published": "2026-06-23T05:37:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.24164v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG deep learning method for target speech extraction, transferable to passive BCI",
+      "llm_evidence_cn": "基于深度学习的EEG目标语音提取方法，可迁移至被动BCI",
+      "llm_evidence": "基于深度学习的EEG目标语音提取方法，可迁移至被动BCI",
+      "canonical_evidence": "基于深度学习的EEG目标语音提取方法，可迁移至被动BCI",
+      "llm_tldr_en": "Proposes TRUST-TSE, a two-stage training framework to mitigate shortcut learning in EEG-guided target speech extraction, improving cross-trial generalization.",
+      "llm_tldr_cn": "针对EEG引导的目标语音提取中的捷径学习问题，提出TRUST-TSE两阶段训练框架，通过对比预训练和置信加权目标函数，抑制试验特异性线索，提升跨试验泛化能力。该方法为被动BCI中的深度学习应用提供了有效的训练策略。",
+      "llm_tldr": "针对EEG引导的目标语音提取中的捷径学习问题，提出TRUST-TSE两阶段训练框架，通过对比预训练和置信加权目标函数，抑制试验特异性线索，提升跨试验泛化能力。该方法为被动BCI中的深度学习应用提供了有效的训练策略。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.25400v1",
+      "source": "arxiv",
+      "title": "BrainAgent: A Large Language Model-Driven Multi-Agent Framework for Autonomous Brain Signal Understanding",
+      "abstract": "Brain-Computer Interfaces (BCIs) and brain signal understanding are pivotal for clinical health and next-generation interactions. Despite this significance, its widespread adoption in real-world scenarios remains restricted, primarily because current analytical paradigms lack sufficient agentic intelligence. First, existing methodologies impose prohibitive technical barriers, requiring extensive specialized expertise. Second, they remain inherently static and task-specific, failing to execute the complex, long-horizon workflows essential for real-world deployment. To accelerate the democratization of brain signal understanding, we draw inspiration from Large Language Models (LLMs) to introduce BrainAgent, an LLM-driven multi-agent framework designed to ground abstract natural language intent into rigorous, executable, and end-to-end processing pipelines. BrainAgent employs a hierarchical architecture where a central supervisor orchestrates specialized sub-agents for adaptive task decomposition and execution. Furthermore, we establish a comprehensive, systematic benchmark for evaluating agentic systems in brain signal analysis. Empirical results demonstrate that BrainAgent effectively automates complex workflows with superior reliability, marking a paradigm shift toward democratized brain signal understanding.",
+      "authors": [
+        "Yangxuan Zhou",
+        "Sha Zhao",
+        "Jiquan Wang",
+        "Shijian Li",
+        "Gang Pan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-24T04:54:26+00:00",
+      "link": "https://arxiv.org/pdf/2606.25400v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "LLM-driven multi-agent framework for autonomous brain signal understanding, relevant to foundation model for EEG",
+      "llm_evidence_cn": "提出基于大语言模型的多智能体框架自动理解脑信号，与脑电基础模型相关",
+      "llm_evidence": "提出基于大语言模型的多智能体框架自动理解脑信号，与脑电基础模型相关",
+      "canonical_evidence": "提出基于大语言模型的多智能体框架自动理解脑信号，与脑电基础模型相关",
+      "llm_tldr_en": "Proposes BrainAgent, an LLM-driven multi-agent framework that autonomously analyzes brain signals (EEG) for BCI applications, reducing expert dependency.",
+      "llm_tldr_cn": "该论文为克服传统脑信号分析需要专业知识且缺乏自动化的问题，提出了BrainAgent框架，利用大语言模型驱动多个智能体协同完成EEG数据处理、特征提取和分类。在多个BCI数据集上验证了其有效性，为构建通用EEG基础模型提供了新思路。",
+      "llm_tldr": "该论文为克服传统脑信号分析需要专业知识且缺乏自动化的问题，提出了BrainAgent框架，利用大语言模型驱动多个智能体协同完成EEG数据处理、特征提取和分类。在多个BCI数据集上验证了其有效性，为构建通用EEG基础模型提供了新思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.26506v1",
+      "source": "arxiv",
+      "title": "TinyCNNDeep: Lightweight Attention-Based CNN for EEG Classification of Eye States and Sleep Deprivation",
+      "abstract": "Sleep deprivation impairs vigilance and cognitive function, yet jointly identifying the sleep condition (normal vs deprived) and the eye state (open vs closed) from electroencephalography (EEG) remains underexplored. We address this four-class problem with TinyCNNDeep, a lightweight convolutional neural network that combines residual learning with a Squeeze-and-Excitation (SE) attention module. We convert short multi-channel EEG segments from five physiologically relevant channels (Fp1, Fp2, O1, Oz, O2) into 224x224 grayscale images through per-channel Z-score normalization, min-max scaling, and center padding, enabling 2D convolutions to jointly model inter-channel and temporal structure. On a 35-subject dataset recorded under normal-sleep and sleep-deprivation sessions, TinyCNNDeep attains a subject-wise mean accuracy of 83.69%, outperforming the strongest baseline (Random Forest with combined time-frequency features, 47.66%) by 36.03 percentage points, while three established EEG architectures (EEGNet, ShallowConvNet, DeepConvNet) operate near chance. Per-subject analysis quantifies inter-subject variability, and confusion-matrix inspection shows that residual misclassifications concentrate between eyes-closed states across sleep conditions. These results indicate that an image-based EEG representation paired with residual feature extraction and channel attention provides an accurate and computationally efficient framework for multiclass sleep-related EEG classification under a minimal electrode configuration.",
+      "authors": [
+        "Thien Nhan Vo",
+        "Yen Nhi Tran Thi",
+        "Ngan Nguyen Xuan Phuong",
+        "Xuan-The Tran"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-06-25T01:25:13+00:00",
+      "link": "https://arxiv.org/pdf/2606.26506v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Deep learning CNN for EEG classification of cognitive states",
+      "llm_evidence_cn": "用于脑电认知状态分类的深度学习CNN",
+      "llm_evidence": "用于脑电认知状态分类的深度学习CNN",
+      "canonical_evidence": "用于脑电认知状态分类的深度学习CNN",
+      "llm_tldr_en": "Introduces TinyCNNDeep, a lightweight attention-based CNN for classifying eye states and sleep deprivation from EEG, demonstrating transferable deep learning approach for EEG-based state assessment.",
+      "llm_tldr_cn": "该论文提出了一种轻量级注意力卷积神经网络TinyCNNDeep，用于从脑电信号中同时识别眼状态（睁/闭）和睡眠状态（正常/剥夺）。通过将多通道脑电段转换为2D图像，利用残差学习和挤压激励注意力模块，模型在35名受试者数据上取得了高分类准确率。这项工作展示了深度学习在脑电状态评估中的潜力，其方法可迁移至认知负荷评估等类似任务。",
+      "llm_tldr": "该论文提出了一种轻量级注意力卷积神经网络TinyCNNDeep，用于从脑电信号中同时识别眼状态（睁/闭）和睡眠状态（正常/剥夺）。通过将多通道脑电段转换为2D图像，利用残差学习和挤压激励注意力模块，模型在35名受试者数据上取得了高分类准确率。这项工作展示了深度学习在脑电状态评估中的潜力，其方法可迁移至认知负荷评估等类似任务。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

@@ -1,0 +1,558 @@
+Title: Representational similarity analysis of EEG reveals multiple spatiotemporal dynamics of selective attention
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.18.733142v1.full.pdf
+
+Number of Pages: 34
+
+Markdown Content:
+11234
+
+# Representational similarity analysis of EEG reveals 5
+
+# multiple spatiotemporal dynamics of selective 6
+
+# attention 7
+
+8
+
+9Jinhee Kim 1 , Winko W. An 2,3 , Abigail Noyce 4, Barbara Shinn -Cunningham 4
+
+10 11 1 Department of Psychology, Carnegie Mellon University, Pittsburgh, PA, USA 12 2 Developmental Medicine, Boston Children’s Hospital, Boston, MA, USA 13 3 Harvard Medical School, Boston, MA, USA 14 4 Neuroscience Institute, Carnegie Mellon University, Pittsburgh, PA, USA 15 16 17 
+
+Corresponding Author 18 Barbara Shinn-Cunningham, Neuroscience Institute, Carnegie Mellon University, Pittsburgh, 19 Pennsylvania, United States 20 Email: bgsc@andrew.cmu.edu 21 22 
+
+(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint 2Abstract 23 Selective attention allows listeners to follow a target speaker in complex scenes, but less is 24 known about the neural mechanisms that control this capacity. We collected 25 electroencephalography (EEG) during an auditory attention task encompassing spatial attention, 26 talker-based attention, and passive listening. Time-resolved representational similarity analysis 27 (RSA) of broadband scalp voltage and alpha-band oscillations revealed distinct representational 28 trajectories in the two measurements: scalp voltage produced brief peaks in task discriminability 29 shortly after the target cue and around 300 ms after target onset, whereas alpha-band power 30 emerged more slowly and remained elevated throughout the trial. These patterns distinguish 31 attentive from passive conditions and spatial from talker attention. Furthermore, broadband 32 activity and alpha power encode complementary information, while other frequency bands 33 contribute little independent explanatory power. These results demonstrate that RSA allows a 34 unified interpretation of evoked and induced EEG measures, revealing how distinct neural 35 computations jointly encode the spatiotemporal dynamics of selective attention. 36 1. Introduction 37 Whether in a busy restaurant trying to order food or attending a Zoom meeting in a cafe, we 38 face the daily challenge of selecting and focusing on one auditory target among many 39 competing sounds. This challenge, known as the “cocktail party problem” (Cherry, 1953), 40 highlights the importance of auditory selective attention—the ability to focus on a specific sound 41 source while ignoring distractions (Alain & Bernstein, 2008). Understanding how auditory 42 selective attention is implemented and controlled is critical to explaining how we perceive 43 speech in noisy environments. Further, because even modest hearing impairment interferes 44 with auditory selective attention (Dai et al., 2018), identifying the mechanisms that support 45 selective listening in noisy environments has substantial clinical relevance. 46 47 Listeners rely on a range of cues to identify and selectively attend to task-relevant speech 48 amidst distractors. One prominent and well-studied cue is talker location. The representation of 49 the location of a sound source first emerges in the brainstem and propagates to auditory cortex; 50 when behaviorally relevant, spatial position can even be decoded in frontal cortex (Blauert, 51 1997; Lewald & Getzmann, 2011; van der Heijden et al., 2019; Middlebrooks, 2021). Another 52 key cue is the voice identity of the speaker, shaped by fundamental acoustic features such as 53 pitch and timbre (Darwin et al., 2003; Oh et al., 2021; Shinn-Cunningham, 2008). Differences in 54 fundamental frequency and vocal tract length allow listeners to distinguish individual talkers 55 even in challenging listening conditions (Darwin et al., 2003). In addition, the structure of the 56 speech signal itself contributes to attentional selection. Temporal features in the speech 57 envelope help listeners track a continuous speech stream (Henry & Obleser, 2012; Obleser & 58 Kayser 2019). While listeners are able to use these different types of cues to focus on task-59 relevant speech, the underlying neural mechanisms through which attention employs each cue 60 remain only partially understood. 61 62 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+3Electroencephalography (EEG) provides a powerful tool for studying neural activity during 63 auditory attention, primarily due to its high temporal resolution (Näätänen & Picton, 1987; Luck, 64 2014). Attention modulates neural activity through multiple mechanisms, and EEG recordings 65 reflect these modulations (Tavano et al., 2023). For example, auditory event-related potentials 66 (ERPs) are modulated by attention when listeners track one of two competing streams (Choi et 67 al., 2013; Hillyard et al., 1973; Nguyen et al., 2024). Frequency-based features also reflect 68 attentional modulation. Alpha-band power (8-12 Hz) in parietal regions is a hallmark of spatial 69 attention (Kerlin et al., 2010; Wöstmann et al., 2021). Parietal alpha lateralization correlates with 70 spatial cue direction—alpha power increases ipsilateral to the attended location and decreases 71 contralaterally (Deng et al., 2020). Parietal alpha power also has been implicated in non-spatial 72 auditory attention (Wöstmann et al., 2017; Viswanathan et al., 2023). Neural activity in lower 73 frequency bands like delta (2-4 Hz) and theta (4-8 Hz) may also be important in selective 74 processing of attended speech, as they closely track speech features such as temporal 75 envelope (Etard & Reichenbach, 2019; Ding et al., 2016). 76 77 Despite these decades of studies, it remains unclear how various EEG features index the neural 78 mechanisms supporting different aspects of auditory attention. There are a number of 79 challenges. First, the high dimensionality of EEG data makes it challenging to compare 80 condition-related differences in a single view. Different types of auditory attention lead to 81 different patterns of coordinated activity across multiple, spatially distributed brain regions. 82 Decoding these differences requires fine-grained temporal resolution and access to the spatial 83 distribution of neural activity across various EEG features, such as time-domain signals and 84 frequency band power. Second, comparing these EEG features is challenging because they 85 differ in both spatial and temporal characteristics. For instance, ERPs reflect short-latency, 86 stimulus-evoked activity in frontocentral regions, while alpha-band oscillations reflect sustained 87 spatial attention in posterior areas. Third, the magnitude of these features differ, complicating 88 efforts to combine information across them. 89 90 Representational similarity analysis (RSA; Kriegeskorte et al., 2008) offers a unified framework 91 for describing neural activity across conditions and measurement techniques. The approach first 92 computes pairwise similarity between conditions and then infers their representational structure 93 from the resulting pattern of all comparisons. From its initial applications in examining visual 94 representations in the brain using fMRI (Kriegeskorte et al., 2008; Cichy et al., 2014), RSA has 95 since been applied to fMRI data to explore diverse topics such as semantic knowledge and 96 episodic memory (Clarke & Tyler, 2014; Xue, 2018). More recently, RSA has been used to 97 exploit fine-scale temporal information of EEG signals to gain insights into object recognition, 98 audiovisual processing, and reading comprehension (Kaneshiro et al., 2015; Cecere et al., 99 2017; Wang et al., 2020). For example, Cecere et al. (2017) computed time-resolved neural 100 representational patterns to assess the similarity between auditory-leading and visual-leading 101 multimodal stimuli, showing that they elicit distinct neural representational structures. 102 103 A key advantage of RSA emerges when analyzing condition-rich experimental designs; RSA 104 makes it possible to represent many experimental conditions within a single visualization and to 105 compare them within the same analysis framework. This makes it possible to assess broad 106 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+4distinctions (e.g., attention vs. passive) alongside finer-grained contrasts (e.g., left vs. right 107 spatial attention) in a unified representational space. 108 109 Most previous RSA studies have focused on comparing perceptual processing as a function of 110 the external stimuli (e.g., different visual objects, the timing of audiovisual inputs, etc.), while 111 comparatively little work has examined how representational structure changes with internal 112 states such as attention. Moreover, applying RSA to EEG using diverse feature types–each 113 potentially reflecting different mechanisms of attentional processing–remains in its early stages. 114 115 An et al. (2023) examined representational patterns associated with spatial vs non-spatial 116 auditory attention and showed that ERP and alpha-band power exhibited distinct spatiotemporal 117 dynamics during cue presentation. However, they did not investigate how these features evolve 118 during the subsequent period of active attention, nor how each feature uniquely contributes 119 across the task. Building on this, we applied RSA to a condition-rich EEG dataset from the same 120 auditory attention task explored in An et al. (2023). Our goal was to probe the spatiotemporal 121 dynamics with which attentional control uses different dimensions of the acoustic inputs. We 122 measured representations of auditory attention in evoked and induced neural activity, describing 123 their changes over time and their scalp distributions. We further identified key dynamics unique 124 to evoked and induced neural activity, advancing the understanding of how different neural 125 signals contribute to selective auditory attention. 126 2. Methods 127 2.1. Data Collection 128 2.1.1. Participants 129 Our dataset included thirty participants (16 men; 14 women; ages 19 to 44) (An et al., 2023). All 130 participants reported normal hearing and no history of neurological disorders. All experimental 131 procedures were approved by the IRB at Boston University’s Charles River Campus, and all 132 participants provided written informed consent. 133 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+5
+
+2.1.2. Task 134 135 
+
+Figure 1. Trial structure. Each trial began with a visual task cue indicating the attention type, 136 
+
+followed by an auditory target cue specifying either the location (spatial attention) or the talker 137 
+
+identity (talker attention) of the upcoming target. Four overlapping auditory syllables were then 138 
+
+played, and participants identified the syllable spoken at the target location or by the target 139 
+
+talker. After stimulus presentation, a color change at fixation prompted the participant to make a 140 
+
+buttonpress response. Each trial was followed by feedback (correct / incorrect). From each trial, 141 
+
+we extract a Cue Period epoch (-1100–1000 ms from target cue onset) and a Stimulus Period 142 
+
+epoch (-400–700 ms from target onset) for subsequent analyses. 143 In the task, participants had to report a target syllable (/ba/, /da/, or /ga/, each 600 ms long) 144 among overlapping distractors selected from the same set (Figure 1). Each of the target and 145 distractor syllables was spoken by one of four different talkers (two male and two female; all 146 native speakers of American English) and presented at one of five possible locations (90° left, 147 30° left, center, 30° right, or 90° right; spatialized using a generic head-related transfer function 148 (Gardner and Martin, 1994). 149 150 Each trial began with a visual task cue indicating how the participant should perform the 151 upcoming trial. “Space” indicated that spatial attention would be required; “talker” indicated that 152 talker attention would be required; and “relax” indicated that the participant should passively 153 listen to the stimuli but did not need to engage attention. This task cue was followed by a 154 spoken target cue /a/ that specified the exact target. In spatial attention trials, the cue was 155 spatialized to the exact location from which the target syllable would be presented, but spoken 156 in a gender-neutral voice. In talker attention trials, the cue was spoken by the exact talker who 157 would say the target syllable, but was presented at the center. In passive listening, the cue was 158 centered and gender neutral. 159 160 After a 1000 ms preparatory period, four overlapping syllables were presented sequentially, with 161 onsets 300ms apart. On each trial, the various syllables were randomly permuted across target 162 and distractors; however, we always set the first and the last syllable as distractors spatialized 163 
+
+5sk 
+
+e, 
+
+er 
+
+en 
+
+et 
+
+a
+
+ial, 
+
+od 
+
+g) nd all ft, on he at ly aas en ho as ith et ed 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+6to the center with a neutral voice, reducing primacy and recency effects and ensuring targets 164 were masked throughout their entire presentation. The target syllable could be either the second 165 or third syllable; the other (third or second) syllable was a main distractor whose spatial location 166 and talker voice varied across conditions. 167 168 After the overlapping syllables, a color change at the fixation dot cued participants to report the 169 target identity (1 for /ba/, 2 for /da/, 3 for /ga/), after which they received visual feedback (green 170 for correct, red for incorrect). Participants were instructed to press any button in relax trials. The 171 inter-trial interval was randomly set to either 1 or 1.5 seconds. 172 173 174 
+
+# Task Location of 
+
+Target Location of Main Distractor Gender of Target and Main Distractor 1 Spatial attention 90° Left 30° Left Different 
+
+2 Same 
+
+3 90° Right Different 
+
+4 Same 
+
+5 90° Right 30° Right Different 
+
+6 Same 
+
+7 90° Left Different 8 Same 
+
+# Task Talker Gender 
+
+of Target Talker Gender of Main Distractor Location of Target and Main Distractor 9 Talker attention Female Male Co-located 
+
+10 Different location on the same side 
+
+11 Different sides 
+
+12 Male Female Co-located 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+7
+
+13 Different location on the same side 
+
+14 Different sides 
+
+# Task Location of 2nd and 3rd syllable Talker Gender of 2nd and 3rd 
+
+syllable 15 Passive listening Different locations on the left side Different 
+
+16 Same 
+
+17 Different sides Different 
+
+18 Same 
+
+19 Different locations on the right side Different 
+
+20 Same 
+
+21 Co-located Different 
+
+Table 1. Experimental conditions. There were 21 experimental conditions defined by task 175 
+
+type, sound location, and the talker gender of the target and distractors. In the passive listening 176 
+
+trials, conditions were designed to match their counterparts in the attention conditions. 177 There were a total of 21 conditions: 8 “spatial”, 6 “talker”, and 7 “relax” (Table 1). Each condition 178 comprised a specific combination of task type (spatial attention, talker attention, or passive 179 listening), target syllable (left vs. right, female vs. male), and relationship between the target and 180 the main distractor (e.g., how spatially close they were, whether the voices were the same or 181 different gender). We generated 36 trials in each condition, resulting in 756 trials total. All trials 182 were randomly shuffled, then grouped into 12 blocks for presentation. 183 184 Before the main experiment, participants practiced the attention tasks on a laptop. Participants 185 repeated test runs of 21 trials (i.e., one trial for each condition) until they reached 75% accuracy. 186 All audio was presented through a pair of insert earphones (ER1, Etymotic Research) in a 187 sound-attenuated booth. Visual stimuli were presented on an LCD monitor within the booth. 188 2.1.3. EEG acquisition and preprocessing 189 EEG was recorded using a 64-channel Biosemi ActiveTwo system, following the standard 10-20 190 electrode placement. All signals were sampled at 2048 Hz. After recording, EEG signals were 191 first re-referenced to the average of two mastoid channels, then bandpass filtered between 0.5 192 Hz and 50 Hz using a zero-phase filter with a Hamming window, and downsampled to 512 Hz. 193 Bad channels were rejected based on a predefined rule: channels whose maximum absolute 194 amplitude exceeded 400 †V and whose standard deviation was larger than three times the 195 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+8average of all channels. Rejected channels were interpolated using a spherical spline method. 196 This yielded a minimally processed dataset. 197 198 In order to identify and reject oculomotor artifacts, we applied independent component analysis 199 (ICA) and the automated artifact-labeling tool ICLabel. To improve the quality of ICA 200 decomposition and the automatic labeling (Pion-Tonachini et al., 2019), we computed the ICA 201 weights using the infomax algorithm on a temporary copy of the data that was bandpass filtered 202 between 1 Hz and 30 Hz. Interpolated bad channels were excluded from ICA because 203 interpolation reduces the effective rank of the data. The resulting independent components were 204 ordered according to explained variance, and automatically labeled by ICLabel, a deep-learning-205 based artifact labeling algorithm (Pion-Tonachini et al., 2019). Components that were within the 206 top 15 variance-explaning components and classified as ‘Eye’ with more than 85% confidence 207 were identified for removal. Once computed, these ICA weights were applied back to the 208 minimally processed EEG data; this corrected data was used for all subsequent analyses. 209 210 Time-varying power spectra for each trial were estimated using Morlet wavelets from 2 to 50 Hz 211 (divided into 96 logarithmically spaced frequencies with a scale spacing of 0.05), with the 212 number of cycles dynamically adjusted relative to frequency. Within each trial, power was 213 averaged within five frequency bands: delta (2–4 Hz), theta (4–8 Hz), alpha (8–14 Hz), beta 214 (14–20 Hz), and gamma (20–50 Hz). Two epochs were extracted from each trial: “Cue Period” 215 epochs incorporate the task and target cue presentation (from -1100 ms to 1000 ms relative to 216 target cue onset) and “Stimulus Period” epochs incorporate the presentation of the target 217 syllable (from -400 ms to 700 ms relative to its onset). Because we were particularly interested 218 in the dynamics of neural control as listeners prepared to deploy selective attention, the cue 219 epoch is approximately twice as long as the stimulus epoch. Both epochs were baseline 220 corrected using a common baseline window: -500 ms to -200 ms before the visual task cue. 221 222 While we investigated representations of auditory selective attention in all five frequency bands, 223 the results below present only representations within the alpha band (8–14 Hz) and the 224 broadband scalp voltage, as their contributions to attention representation were by far the 225 strongest. Results in other frequency bands are presented in the supplementary materials. 226 227 Note that this preprocessing pipeline worked in a semi-automated manner for reproducibility. All 228 preprocessing was done in Python 3.12.9 with MNE-Python 1.9.0. Raw and preprocessed EEG 229 data are available at https://doi.org/10.1184/R1/c.8200769, and code for preprocessing and 230 analysis is available at https://github.com/LiMN-CMU/auditory-attention-RSA. 231 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+9
+
+# 2.2. Representational Similarity Analysis (RSA) 232 233 
+
+Figure 2. Analysis pipeline of representational similarity analysis (RSA). For each time 234 
+
+point t, we (1) extract an EEG feature f (i.e. scalp voltage or alpha-band power) from all 235 
+
+channels for every trial and condition, (2) concatenate the feature values across channels to 236 
+
+form a multivariate sensor-space pattern for each trial, (3) train a linear SVM to discriminate 237 
+
+each pair of conditions using these multivariate patterns, and (4) use pairwise decoding 238 
+
+performance to populate the representational dissimilarity matrix (RDM) at time t. Repeating this 239 
+
+procedure across time points yields time-resolved RDMs that summarize the separability of all 240 
+
+condition pairs over time. 241 2.2.1. Decoding-based Representational Dissimilarity Matrices (RDMs) 242 From the preprocessing, we obtained six time-varying EEG features: broadband EEG scalp 243 voltage and power in five frequency bands (delta, theta, alpha, beta, and gamma). For each 244 EEG feature, the dataset comprised participants, conditions, trials per 245 condition, recorded across channels over time points (which varied depending on the 246 epoch type). 247 248 To gain insight into the dynamics of auditory attentional control, we computed representational 249 dissimilarity matrices (RDMs) for each participant, each EEG feature, and each time point within 250 the epochs (see Figure 2 for an overview of the analysis pipeline). We operationalized 251 dissimilarity as the accuracy with which a linear support vector machine (SVM) was able to 252 classify trials. That is, we selected one participant, EEG feature, and time point, and iterated 253 over each possible pair from the set of conditions (210 condition pairs). Employing 254 leave-one-trial-out cross-validation (36 2 = 1296 folds), we trained the SVM to discriminate 255 between the two conditions. The classification accuracy was averaged across all folds to yield a 256 dissimilarity value for that specific condition pair, participant, feature, and time point. This 257 process was repeated for each of the 210 condition pairs, each of the 30 participants, each of 258 the 6 EEG features, and each of the time points. Statistical analyses are performed at the level 259 of individual subject RDMs; visualizations show grand average RDMs created by combining 260 across all subjects. 261 262 SVMs were fit separately for each time point and feature to avoid information leakage across 263 time or features. The SVM regularization parameter of 1 was selected a priori, but lambda 264 values from to 1 at representative time points (500ms after the target cue for the Cue 265 
+
+9
+
+e
+
+all 
+
+to 
+
+te 
+
+ng 
+
+his 
+
+all 
+
+lp ch er he al in ed to ed ng te ais of el ng ss da ue 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+10 
+
+Period, 400ms after the target onset for the Stimulus Period) yielded highly similar RDMs (mean 266 pairwise correlations ≥ 0.75 during the Cue Period and ≥ 0.89 during the Stimulus Period), 267 confirming that our results are robust to the specific choice of regularization value. 268 269 An example grand average RDM is shown in Figure 3a. Each cell in the matrix represents the 270 dissimilarity between a pair of conditions, operationalized as the mean accuracy with which a 271 classifier is able to distinguish between the two. Higher decoding accuracy indicates that the 272 neural activity measured under those two conditions is more discriminable, which implies that 273 the two conditions have distinct neural representations. 274 275 276 
+
+Figure 3. Example results from representational similarity analysis (RSA). (a) 277 
+
+Representational dissimilarity matrix (RDM). Each cell indicates the dissimilarity (classifier 278 
+
+accuracy) between one pair of conditions. Conditions are given in the same order as in Table 1, 279 
+
+and are grouped for visualization by their attention task type (spatial attention, talker attention, 280 
+
+passive listening) and primary target feature. (b) Time-resolved dissimilarity index. The top 281 
+
+schematic illustrates the derivation of dissimilarity index (Cichy et al., 2014) which quantifies the 282 
+
+difference between within-condition and between-condition dissimilarity by subtracting the 283 
+
+average within-condition decoding accuracy from the between-condition average. This index 284 
+
+reflects the similarity of attention-related representations over time. The bottom panel shows an 285 
+
+example time course of this index. (c) Spatial importance map. Haufe-transformed classifier 286 
+
+channel weights indicate how strongly each channel contributes to decoding. Positive values 287 
+
+10 an d), he ahe at 
+
+(a) 
+
+ier 
+
+1, 
+
+n, 
+
+op 
+
+he 
+
+he 
+
+ex 
+
+an 
+
+ier 
+
+es 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+11 
+
+indicate that a channel contributes more strongly to condition , negative values to condition ,288 
+
+and values near zero suggest the channel is not informative for distinguishing two conditions. 289 To visualize representational changes across the course of a trial, we created three dissimilarity 290 indices quantifying how strongly different aspects of attention are represented (after Cichy et al., 291 2014; Figure 3b). Each dissimilarity index is computed by first averaging classifier accuracy 292 across all cells where the compared conditions differ along the dimension of interest. From this 293 value, we subtract the mean classifier accuracy across all cells where the compared conditions 294 
+
+share that dimension. We computed dissimilarity indices for three contrasts: attentive listening 295 (conditions 1-14) versus passive listening (conditions 15-21); spatial attention (conditions 1-8) 296 versus talker attention (conditions 9-14); and attention to left hemifield targets (conditions 1-4) 297 versus to right hemifield targets (conditions 5-8). For example, for attentive versus passive 298 listening, we first average decoding accuracy across all pairs of conditions in which one 299 condition involves attentive listening and the other involves passive listening, and then subtract 300 the mean accuracy across pairs in which both conditions are attentive or both are passive. In 301 the Results, time courses of these dissimilarity indices are presented alongside RDMs from key 302 time points. For visualization, we plotted 95% within-subject confidence intervals computed 303 using Cousineau–Morey method (standard error of the normalized data with Morey’s correction; 304 Cousineau, 2005; Morey, 2008). 305 306 Dissimilarity indices were tested for significant differences from zero using one-dimensional 307 cluster-based permutation tests (Maris & Oostenveld, 2007). At each time point, we computed 308 the t-statistic against zero; adjacent time points with t-value > 2.756 (corresponding to an 309 uncorrected two-tailed p < .01 for df = 29) were grouped into clusters; cluster-level statistics 310 were defined as the sum of t-values within that cluster. A null distribution of cluster statistics was 311 created using 1,000 random permutations of condition labels, and p-values were computed by 312 comparing the observed clusters against this distribution. Statistical significance was 313 determined at p < 0.05 with Holm-Bonferroni correction for multiple comparisons (Holm, 1979). 314 2.2.2. Spatial importance maps 315 In order to understand which EEG channels carry the strongest neural representations, we 316 projected the classifier’s weights back into channel space to visualize how these spatial patterns 317 change over the course of the task and differ across condition contrasts. Since classifiers were 318 trained independently at every time point, consistent weights across time may reflect persistent 319 underlying processes. 320 321 As described above, we trained SVMs to classify each pair of conditions for each subject, EEG 322 feature, and time point using leave-one-trial-out cross-validation. For the current analysis, we 323 averaged the SVM weight vectors across cross-validation folds, yielding one 64-channel weight 324 vector for each condition pair. We then applied the Haufe transformation (Haufe et al., 2014) to 325 convert these averaged decoding weights into encoding patterns that are more directly 326 interpretable in channel space, as raw classifier weights can be influenced by noise correlations 327 and feature scaling rather than reflecting signal strength at each channel. We again constructed 328 three contrasts: attentive listening versus passive listening, spatial attention versus talker 329 
+
+11 
+
+,
+
+ity l., cy is ns ng 8) 4) ve ne ct In ey ed n; al ed an cs as by as ens re nt Geht to tly ns ed er 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+12 attention, and attention to left versus right spatial hemifield. For each contrast of interest, we 330 averaged the Haufe-transformed weights from all relevant condition pairs in that contrast. For 331 example, for the attentive-passive contrast, we averaged weights from all classifiers 332 distinguishing an attentive condition from a passive condition. We then averaged these contrast-333 specific weight maps across participants to create grand-average spatial importance maps for 334 each time point. 335 336 An example spatial map is shown in Figure 3c. Positive values (green) indicate channels more 337 strongly associated with one condition, whereas negative values (purple) indicate channels 338 more strongly associated with the other. Values near zero indicate minimal contribution to 339 discriminating the two conditions. Thus, the sign indicates which side of the contrast a channel 340 is more strongly aligned with, whereas the magnitude indicates how strongly that channel 341 contributes to the discriminative spatial pattern. These maps characterize channels in terms of 342 their contribution to discriminating different conditions, unlike conventional EEG topographies, 343 which show the amplitude of an EEG feature at each channel. 344 2.2.3. Unique contribution analysis 345 Alpha power has been associated with selective attention in many studies (e.g., Deng et al., 346 2020; Kerlin et al., 2010; Wöstmann et al., 2021) and represented attention most strongly in our 347 data (see Results). To assess whether the representation in other EEG features was 348 complementary or redundant to that in alpha power, we compared RDMs derived from dual-349 feature decoding (using both alpha power and one other feature) to those derived using each 350 feature independently. Alpha power was concatenated with one additional feature (EEG scalp 351 voltage, delta-, theta-, beta-, or gamma-band power) along the channel axis, resulting in a 128-352 channel weight vector. A stronger regularization parameter of 0.01 was used to account for the 353 doubled number of inputs. The rest of the parameters and the training procedure remained the 354 same. 355 356 To evaluate how evoked and induced EEG activity each contribute to the representation of 357 attention, we quantified how much decoding accuracy with dual-feature decoding exceeded 358 accuracy with a single feature (Di Liberto et al., 2018). For example, the unique contribution of 359 alpha-band power (induced) relative to broadband voltage (evoked) was computed by 360 subtracting the RDM based on broadband voltage alone from the RDM derived from both 361 features together. Representational structure present in the dual-feature but not the single-362 feature RDM can thus be attributed to the unique contribution of alpha-band oscillations. The 363 converse was done to estimate the unique contribution of evoked activity relative to induced 364 alpha-band activity. As above, we computed dissimilarity indices to summarize these RDMs 365 over time and identified windows of statistically significant contributions using cluster-based 366 permutation testing. 367 368 The main manuscript presents the unique contribution analysis of alpha-band power and 369 broadband scalp voltage; analysis of alpha compared to other frequency bands is presented in 370 the supplemental materials. 371 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+13 3. Results 372 3.1. Behavior 373 All participants achieved high accuracy in recognizing the target syllable (Mean=0.88, SD=0.07 374 in spatial attention, Mean=0.94, SD=0.05 in talker attention). Thus, we included all trials—both 375 correct and incorrect—in subsequent analyses. Detailed information can be found in An et al. 376 (2023). 377 3.2. Representational Dissimilarity of Attention 378 To probe the spatiotemporal dynamics of attention during a challenging auditory attention task, 379 we measured two neural features (evoked broadband scalp voltage and induced alpha-band 380 power) and computed timepoint by timepoint representational dissimilarity in two epochs: the 381 Cue Period epoch spanning the task cue, target cue, and the time leading up to stimulus 382 presentation, and Stimulus Period epoch surrounding the presentation of the target syllable (see 383 Methods). 384 385 3.2.1. Cue Period 386 We first examined the Cue Period during which listeners prepared to deploy selective attention. 387 Neural representations reflected in evoked broadband scalp voltage and in induced alpha-band 388 power showed distinct time dynamics. Scalp voltage (Figure 4a–c) exhibited a rapid increase 389 immediately after the target cue, followed by a decline over time, whereas alpha-band power 390 showed a more gradual increase that persisted through the Cue Period. 391 392 In broadband scalp voltage, there was no representation of task before the onset of any trial-393 specific information, 1100 ms before target cue onset. The attentive-passive dissimilarity index 394 became significantly positive approximately 400 ms after task cue onset and remained elevated 395 for nearly the entire epoch. The space-talker dissimilarity index hovered near zero until the 396 target cue occurred. Both dissimilarity indices peaked around 100–200 ms after target cue onset 397 and then decreased over time. Note that clusters shorter than 30 ms were removed to reduce 398 the influence of short-term noise. Representational dissimilarity matrices (RDMs) at 150ms and 399 350ms after target cue show clear structure: specifically, spatial attention representations are 400 most distinct from other conditions. In the same period, spatial importance maps displayed 401 higher weights in the frontocentral area for the space-talker attention contrast. 402 403 In alpha-band power (Figure 4d–f), the attentive-passive dissimilarity index increased following 404 the task cue, becoming significantly greater than zero at approximately 500 ms after task cue 405 and remaining positive until the end of the Cue Period. Shortly after target cue onset, the space-406 talker index also increased, becoming significantly greater than zero at around 50 ms and 407 persisting until the end of the Cue Period. The RDM at 1000 ms after target cue shows clear 408 separation for both contrasts (attentive-passive and spatial-talker attention). In the 409 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+14 corresponding spatial importance maps, parietal-occipital channels carry higher weights for both 410 contrasts 1000 ms after target cue. 411 412 
+
+(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint 15 
+
+413 
+
+Figure 4. Representational dissimilarity during Cue Period in broadband scalp voltage 414 
+
+(top) and alpha-band power (bottom). (a,d) Dissimilarity indices over time for the contrast 415 
+
+between attentive and passive listening (orange) and between spatial and talker attention 416 
+
+15 
+
+ge 
+
+st 
+
+on 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+16 
+
+(gray). Error bands are 95% within-subject, standard error-based confidence intervals of the 417 
+
+mean. Onsets of the task cue (-1000 ms, dashed line) and target cue (0 ms, solid line) are 418 
+
+indicated. Horizontal lines denote temporal clusters of statistical significance. (b,e) 419 
+
+Representational dissimilarity matrices (RDMs) at representative time points throughout the Cue 420 
+
+Period. (c,f) Spatial importance maps illustrating channel-level contributions to SVM 421 
+
+classification at each representative time point. 422 Lower frequency bands (delta and theta) followed a pattern similar to scalp voltage, with peaks 423 around 100–200 ms and a rapid attenuation. In contrast, decoding accuracies based on beta-424 and gamma-band power remained generally low throughout the period (Supplementary Figure 425 1). 426 427 428 
+
+Figure 5. Representational dissimilarity in alpha power between left and right spatial 429 
+
+attention during Cue Period. (a) Dissimilarity indices over time for spatial attention trials with 430 
+
+left versus right hemifield targets. Error bands are 95% within-subject, standard error-based 431 
+
+confidence intervals of the mean. Onsets of the task cue (-1000 ms, dashed line) and target cue 432 
+
+(0 ms, solid line) are indicated. Horizontal lines denote temporal clusters of statistical 433 
+
+significance, (b) Representational dissimilarity matrices (RDMs) at representative time points 434 
+
+throughout the Cue Period for spatial attention conditions. (c) Spatial importance maps 435 
+
+illustrating channel-level contributions to SVM classification at those representative time points. 436 Because we expected the anticipated spatial location of an upcoming target to be represented 437 in the distribution of alpha-band oscillations (as in Deng et al., 2020; Gutteling et al., 2022), we 438 examined the contrast between spatial attention to a left hemifield target and to a right hemifield 439 target during the Cue Period (Figure 5). The left-right dissimilarity index is significantly above 440 zero 350–800 ms after target cue onset; the RDMs at these times also reflect the encoding of 441 the direction of attentional focus. The spatial importance maps identified lateralized activity in 442 the parietal region at 350 ms and 500 ms after target cue onset. 443 
+
+16 
+
+he 
+
+re 
+
+,e) 
+
+ue 
+
+M
+
+ks -re 
+
+ial 
+
+ith 
+
+ed 
+
+ue 
+
+cal 
+
+ts 
+
+ps 
+
+ed eld ve of in 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+17 3.2.2. Stimulus Period 444 Our second epoch of interest encompassed the target syllable and its immediate neighbors, 445 capturing neural activity during active selective attention. Overall, neural representations of 446 attention remained significantly above zero throughout this period in both evoked broadband 447 scalp voltage and induced alpha-band power, but their temporal dynamics differed. 448 449 In scalp voltage (Figure 6a–c), the attentive-passive dissimilarity index was positive throughout 450 this period, but increased markedly shortly after the onset of the target syllable, remaining 451 elevated from approximately 300 ms after syllable onset until the end of the epoch. The spatial 452 importance maps showed a consistent central-posterior distribution until 200ms, but this pattern 453 shifted toward posterior sensors around 400 ms. The RDMs also directly confirmed this, with 454 the strongest dissimilarity values emerging late in the Stimulus Period. Space-talker 455 dissimilarity, however, remained largely non-significant except for a transient period 300–400 456 ms after target onset, and its peak was much lower than for other contrasts. 457 458 In contrast, alpha power demonstrated high decoding accuracy throughout the entire period 459 (Figure 6d–f), with both dissimilarity indices significantly positive. Alpha-band RDMs showed 460 high levels of dissimilarity across conditions throughout this entire period, with little change in 461 the degree or structure. Spatial importance maps show a broad central-posterior weighting for 462 both contrasts until target syllable presentation, after which they diverge. Channel weights in 463 attentive-passive contrast flip from positive to negative at 400 ms after target syllable onset, 464 while those in the spatial-talker contrast show no clearly defined spatial pattern at either 200 465 and 400 ms. Similar but weaker patterns were observed in other frequency bands. 466 (Supplementary Figure 2). 467 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+18 
+
+468 469 
+
+Figure 6. Representational dissimilarity during Stimulus Period in broadband scalp 470 
+
+voltage (top) and alpha-band power (bottom). (a,d) Dissimilarity indices over time for the 471 
+
+18 
+
+lp 
+
+he 
+
+(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint 19 
+
+contrast between attentive and passive listening (orange) and between spatial and talker 472 
+
+attention (gray). Error bands are 95% within-subject, standard error-based confidence intervals 473 
+
+of the mean. Onsets of the pre-target syllable (-300 ms, dashed line), target syllable (0 ms, solid 474 
+
+line), and post-target syllable (300 ms, dashed line) are indicated. Horizontal lines denote 475 
+
+temporal clusters of statistical significance. b,e) Representational dissimilarity matrices (RDMs) 476 
+
+at representative time points throughout the Stimulus Period. (c,f) Spatial importance maps 477 
+
+illustrating channel-level contributions to SVM classification at each representative time point. 478 479 
+
+Figure 7. Representational dissimilarity matrices in alpha power between left and right 480 
+
+spatial attention during Stimulus Period. (a) Dissimilarity indices over time for the contrast 481 
+
+between spatial attention trials with a left hemifield target and with a right hemifield target. Error 482 
+
+bands are 95% within-subject, standard error-based confidence intervals of the mean. Onsets of 483 
+
+the pre-target syllable (-300 ms, dashed line), target syllable (0 ms, solid line), and post-target 484 
+
+syllable (300 ms, dashed line) are indicated. Horizontal lines denote temporal clusters of 485 
+
+statistical significance. (b) Representational dissimilarity matrices (RDMs) at representative time 486 
+
+points throughout the Cue Period for spatial attention conditions. (c) Spatial importance maps 487 
+
+illustrating channel-level contributions to SVM classification at those representative time points. 488 Alpha-band oscillations carry representations of target location during spatial attention (Figure 489 7). Left-right dissimilarity remained significantly above zero from the onset of the pre-target 490 syllable through the end of the following one (also visible in the RDMs), especially those at 200 491 and 400 ms after target syllable onset. Consistent with these findings, the spatial importance 492 maps at these times exhibited parietal lateralization similar to that observed during the Cue 493 Period. 494 3.3. Unique Contribution of EEG Features 495 To measure whether broadband scalp voltage and EEG alpha power are carrying redundant or 496 complementary information, we estimated timepoint by timepoint RDMs from both features 497 combined (Supplementary Figures 3 and 5), then subtracted single-feature RDMs at the 498 
+
+19 
+
+er 
+
+als 
+
+lid 
+
+te 
+
+s) 
+
+ps 
+
+ht 
+
+st 
+
+ror 
+
+of 
+
+et 
+
+of 
+
+e
+
+ps 
+
+re et 00 ce ue or es he 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+20 corresponding timepoints. That is, to estimate the information that is represented uniquely in 499 alpha oscillations, we subtracted the broadband RDMs from the dual-feature (broadband + 500 alpha) RDMs. The converse operation yielded RDMs describing the information contributed 501 uniquely by broadband activity. 502 3.3.1. Cue Period 503 In the Cue Period, evoked broadband scalp voltage and induced alpha power exhibited 504 complementary time courses. The unique contribution of scalp voltage (Figure 8a) was short-505 lived, with brief periods of significant dissimilarity within 500 ms following the onset of target cue. 506 In contrast, the unique contribution of alpha power (Figure 8b) developed more slowly but was 507 sustained, becoming significantly positive around 200 ms after target cue and remaining robust 508 throughout the period. 509 510 Similar analyses compared alpha power representations to those in other frequency bands and 511 found that improvements were mostly driven by alpha, with little contribution from the others 512 except theta, which displayed a brief peak immediately following the target cue (Supplementary 513 Figures 4). 514 515 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+21 
+
+516 
+
+Figure 8. Unique contribution of (a) broadband scalp voltage and (b) alpha power during 517 
+
+Cue Period. Upper panel: Dissimilarity indices over time for the contrast between attention and 518 
+
+passive (orange) and between spatial and talker attention (gray), summarizing the information 519 
+
+carried in one EEG measurement above that carried by the other. Error bands are 95% within-520 
+
+subject, standard error-based confidence intervals of the mean. Onsets of the task cue (-1000 521 
+
+ms, dashed line) and target cue (0 ms, solid line) are indicated. Horizontal lines denote temporal 522 
+
+clusters of statistical significance. Lower panel: Unique contribution RDMs at representative 523 
+
+time points throughout the Cue Period. 524 3.3.2. Stimulus Period 525 During stimulus presentation, the contribution of EEG scalp voltage remained low until –300 ms 526 after the target syllable onset (Figure 9a). After 300 ms, the attentive-passive listening 527 dissimilarity index increased and reached statistical significance. The spatial-talker attention 528 contrast was not significant at any time point. 529 530 Alpha power remained the dominant contributor to decoding throughout the period (Figure 9b). 531 Attentive-passive dissimilarity was significant across the entire period, while the spatial-talker 532 attention contrast was significant for approximately 600 ms surrounding the target onset. Other 533 
+
+21 
+
+ng 
+
+nd 
+
+on 
+
+-
+
+00 
+
+ral 
+
+ive 
+
+sng on b). er er 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+22 
+
+frequency bands provide little to no additional information beyond that carried in alpha 534 (Supplementary Figures 6). 535 536 537 
+
+Figure 9. Unique contribution of (a) broadband scalp voltage and (b) alpha power during 538 
+
+Stimulus Period. Upper panel: Dissimilarity indices over time for the contrast between attention 539 
+
+and passive (orange) and between spatial and talker attention (gray), summarizing the 540 
+
+information carried in one EEG measurement above that carried by the other. Error bands are 541 
+
+95% within-subject, standard error-based confidence intervals of the mean. Onsets of the pre-542 
+
+target syllable (-300 ms, dashed line), target syllable (0 ms, solid line), and post-target syllable 543 
+
+(300 ms, dashed line) are indicated. Horizontal lines denote temporal clusters of statistical 544 
+
+significance. Lower panel: Unique contribution RDMs at representative time points throughout 545 
+
+the Stimulus Period. 546 4. Discussion 547 We demonstrated that representational similarity analysis (RSA) can effectively capture the 548 dynamics of both evoked and induced EEG activity during an auditory attention task. Broadband 549 scalp voltage revealed two stimulus evoked representational patterns: one emerging shortly 550 
+
+22 ha 
+
+ng 
+
+on 
+
+he 
+
+re 
+
+-
+
+le 
+
+cal 
+
+ut 
+
+he nd tly 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+23 after the target identity cue, and another following the onset of the target syllable. In contrast, 551 representations in induced alpha-band activity developed gradually and persisted throughout 552 the trial. Unique contribution analysis revealed that these two types of neural activity carried 553 complementary representations, each encoding information beyond that carried by the other. 554 555 By applying RSA to internal cognitive states, this study examines the neural representations of 556 task goals and attentional control. We minimized effects of acoustic difference across conditions 557 by carefully matching the auditory stimuli while varying the cue dimension that would identify the 558 target. This design allowed us to isolate changes in representation that were attributable to 559 internal task goals and differences in how attention was deployed. 560 Neural representations in broadband scalp voltage show patterns similar to 561 auditory event-related potentials. 562 Transient representational differences between attention and passive listening conditions were 563 apparent in broadband voltage shortly after the auditory cue (Figures 4a–c). Previous work has 564 shown that attention modulates auditory evoked responses within 100-300 ms of sound onset 565 (Choi et al., 2013; Hillyard et al., 1973; Nguyen et al., 2024, Näätänen & Picton, 1987), which is 566 the time window in which we observed this effect. In the sensory gain control framework 567 (Hillyard et al., 1973, Hillyard et al., 1998), attention selectively modulates sensory responses in 568 auditory cortex such that evoked responses to a particular sound are relatively larger when that 569 sound is attended compared to when it is ignored. Our spatial importance maps showed 570 relatively higher classifier weights in frontocentral channels at 150 ms and 350 ms post-cue 571 when comparing attentive to passive listening. These channels typically show attentional 572 modulation of auditory evoked responses in traditional EEG experiments (Hillyard et al., 1973; 573 Näätänen & Picton, 1987). 574 575 Throughout stimulus presentation, the attentive-passive dissimilarity was reliably significant, but 576 dissimilarity increased from approximately 300 ms after target onset (Figure 6a). This time 577 window is consistent with the evoked P300 target-detection response, which arises in centro-578 parietal channels after a task  relevant target is detected (Donchin & Coles, 1988). The P300 579 may reflect working memory updates when important or task-relevant information is perceived 580 (Polich, 2007; Watter et al., 2001; Guerrero et al., 2023). Consistent with this interpretation, 581 spatial importance maps show high central-parietal weights in attentive-passive contrasts at this 582 time. However, other processes such as motor planning or short-term memory maintenance 583 may also contribute to this response (Verleger et al., 2005; Ruchkin et al., 1992). 584 585 Representational differences between spatial and talker attention were only reliably significant 586 shortly after the target identity cue (around 100–300 ms, see Figure 4a). However, the target 587 identity cues were not as carefully matched as other stimulus parameters. In spatial attention 588 trials, this cue was lateralized to the target location with a neutral voice; in talker attention and 589 passive listening trials, this cue was presented at the center with the same voice as the target 590 syllable. ERPs elicited by lateralized sounds are larger than for medial sounds, even under 591 passive listening (Näätänen & Picton 1987). This decoding success may thus reflect physical 592 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+24 properties of auditory stimuli (i.e., source laterality) rather than (or in addition to) differences in 593 the internal states of participants. During stimulus presentations where both target and distractor 594 were lateralized, the space-talker dissimilarity was not reliably significant. We interpret this 595 pattern as indicating that the evoked activity represents attentional engagement but does not 596 represent the task-relevant feature to a degree that can be decoded from scalp voltage. 597 Neural representations in alpha-band power showed consistent patterns 598 from preparatory period to stimulus presentation. 599 Representational differences extracted from alpha power emerged gradually after the target cue 600 and persisted throughout the trial. RDM patterns were strong, particularly during the Stimulus 601 Period when attentional engagement was likely highest. Representations in alpha power were 602 more distinctive than those in any other EEG feature, consistent with many prior findings linking 603 alpha oscillations to attention (e.g., Deng et al., 2020; Kerlin et al., 2010; Wöstmann et al., 2021; 604 Klimesch, 2012). 605 606 Alpha-band oscillations have been linked to a gating mechanism that shields ongoing cognitive 607 processing from interference (Jensen & Mazaheri, 2010; Foxe & Snyder, 2011; Strauß et al., 608 2014). Alpha power measured at the scalp likely reflects several different neural generators that 609 are engaged during selective attention (Deng et al., 2020; Wöstmann et al., 2017; Gutteling et 610 al., 2022; see review in Jensen & Bonnefond, 2026). Posterior parietal and occipital alpha is 611 strongly related to spatial attention to a specific hemifield, with alpha power increasing 612 ipsilaterally and decreasing contralaterally to the target location, as if it is suppressing inputs at 613 task-irrelevant locations (Deng et al., 2020; Wöstmann et al., 2019). Beyond spatial orienting, 614 alpha power also reflects more general aspects of attentional demand and cognitive control 615 (Wöstmann et al., 2017, 2019; Gutteling et al., 2022). For example, increases in posterior alpha 616 accompany higher acoustic detail or disturbance in the distractor stream, consistent with a role 617 in shielding target processing from interfering input (Wöstmann et al., 2019). Further, parieto-618 occipital alpha power predicts trial-wise speech intelligibility in competing sounds, linking this 619 shielding mechanism to behavioral performance (Viswanathan et al., 2023). 620 621 Within this framework, the stable alpha-based RDM patterns from preparation through stimulus 622 presentation suggest that alpha oscillations persistently represent attentional state. We observe 623 robust separation of attentive versus passive conditions and spatial weighting of parietal-624 occipital channels, both consistent with models in which posterior alpha maintains the gain 625 control that prioritizes certain sensory inputs for subsequent processing. In our data, alpha thus 626 appears to index an ongoing control signal that maintains target-relevant representations over 627 time. At the same time, our scalp-level measurements cannot isolate which neural generators 628 are primarily responsible for the observed alpha patterns. Future work using measurements with 629 high spatial precision or causal perturbations (e.g., parietal or frontal TMS) will be necessary to 630 determine which nodes of the attention network actually generate the persistent alpha-band 631 representational structure we report here. 632 633 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+25 Alpha-band activity also reflected which attentional dimension participants used: spatial versus 634 talker identity cues were associated with different neural patterns reflected in alpha power, both 635 during preparation and during stimulus presentation (Figure 4d and 6d). When we further 636 separated spatial attention by target location (i.e., left vs. right hemifield), alpha-based spatial 637 importance maps exhibited clear parietal lateralization, particularly 300–500 ms following cue 638 onset and 300 ms after the target (Figure 5 and 7). This lateralized pattern is consistent with 639 previous reports of alpha-band modulation during spatial attention (Deng et al., 2020; 640 Wöstmann et al., 2017; Gutteling et al., 2022). Together, these findings suggest that distributed 641 alpha-band dynamics carry information about both the spatial and non-spatial dimensions of 642 auditory attention, with spatial attention exhibiting a more distinct topography. 643 644 We note that alpha power can also be modulated by factors such as overall arousal and 645 listening effort (e.g., Obleser et al., 2012; Wöstmann et al., 2017). However, in the present study 646 the acoustic input in the Stimulus Period was identical across tasks, the different attentional 647 conditions were interleaved with relatively short intervals, and behavioral performance was high 648 in both tasks. These features make it unlikely that our alpha effects can be fully explained by 649 systematic differences in these factors between tasks. 650 651 The fact that alpha-based representations differentiate both the type of attentional cue (spatial 652 versus talker identity) and the specific spatial focus (left versus right) shows that alpha-related 653 processes do more than distinguish attentive from passive states; they also carry information 654 about which acoustic dimension is guiding attention. Many studies have linked alpha increases 655 to spatial attention in both auditory and visual tasks (Deng et al., 2020; Gutteling et al., 2022), 656 but only a few have examined how non-spatial attention (such as talker identity) is expressed in 657 alpha-band activity (Wöstmann et al., 2017; Viswanathan et al., 2023). Our findings therefore 658 extend prior work on spatial alpha by demonstrating that the distributed patterns of alpha-band 659 activity can distinguish spatial from non-spatial attentional sets such as talker-based attention. 660 661 Our results also indicate a limit to what can be decoded from EEG in this paradigm. Although 662 talker-based attention formed a distinct representational pattern in alpha-band activity, we could 663 not reliably discriminate between attention to female versus male talkers within the talker 664 attention task. This may reflect both the limited spatial resolution of EEG and the distributed 665 cortical representation of voice pitch and timbre (Burle et al., 2015; Hamilton et al., 2021). 666 Future work that contrasts spatial selection from multiple forms of non-spatial selection (e.g., 667 talker identity, pitch, temporal envelope, semantic category) at the representational level will be 668 important for determining how specifically alpha-related processes code spatial versus non-669 spatial attention. To resolve such fine-grained talker-identity representations, modalities with 670 higher spatial precision, such as MEG, fMRI, or intracranial EEG are likely required (for 671 instance, see recent intracranial work on speech; van der Heijden et al., 2025). 672 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+26 Information in scalp voltage and alpha-band power is unique and 673 complementary, unlike other frequency bands. 674 Unique contribution analysis highlighted distinct and complementary roles of broadband activity 675 and alpha oscillations. Broadband voltage showed strong representational strength at two 676 different time points, one near target cue onset and the other after the target syllable (Figure 8a 677 and 9a). In contrast, representations encoded in alpha power gradually increased after the cue 678 and remained elevated throughout the trial (Figure 8b and 9b). In particular, scalp voltage 679 exhibited representational dissimilarity for attentive-passive contrasts, in which key information 680 appears in a specific stimulus at a specific time. Conversely, alpha power encoded both 681 attentive-passive and spatial-talker attention contrasts, capturing sustained task engagement 682 and attentional state. Spatial importance maps also differed at these time points: broadband 683 voltage showed peaks over frontocentral channels, whereas alpha power was strongest over 684 parietal-occipital sensors. These differences remained after removing information shared 685 between the two features. 686 687 Compared to the complementary relationship broadband scalp voltage and alpha oscillations, 688 information in other frequency bands is largely redundant with these two signals (Supplemental 689 figures 4–7 and 9–12). Lower frequency bands (delta, theta) showed rapid increases in 690 discrimination accuracy during the Cue Period that faded quickly, likely reflecting ERP 691 components within those bands. Consistent with this, theta-band spatial importance maps 692 during the Cue Period resembled those of EEG scalp voltage. This suggests that, at least in this 693 paradigm, much of the discriminative information in delta and theta is redundant with broadband 694 evoked activity, rather than providing a window into any other attentional mechanisms. 695 696 Higher frequencies (beta, gamma) displayed patterns similar to those in alpha power but with 697 considerably weaker effects. Unique contribution analysis emphasized alpha power’s 698 dominance, revealing substantial overlap of the information conveyed by alpha and these other 699 bands. Prior research has suggested that gamma band fluctuations contribute to speech 700 processing, and are modulated by attention (Viswanathan et al., 2019; Synigal et al., 2020). 701 Consistent with this, we find that high frequency features do carry information distinguishing 702 attentive from passive listening. However, the small unique contribution of beta and gamma 703 power (despite their visual resemblance to alpha patterns) indicates that high-frequency induced 704 activity adds relatively little independent information about task state beyond what is already 705 captured by alpha in this task design. 706 707 Together, these results demonstrate that RSA-based unique contribution analysis can help 708 disentangle which EEG features truly add independent information about attentional state rather 709 than simply re-expressing the same underlying neural dynamics in a different EEG feature. 710 Limitations & Future work 711 We estimated dissimilarity between conditions using classifier accuracy rather than Euclidean, 712 crossnobis, or correlation-based distance measures (Schütt et al., 2023; see Diedrichsen & 713 Kriegeskorte, 2017 for review). We chose this approach to emphasize the decodability of neural 714 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+27 information, making the metric interpretable: it reflects how easily information can be read out 715 from the EEG patterns. Moreover, a multi-channel classifier yields weight maps that can 716 highlight the sensors or spatiotemporal patterns contributing most strongly to distinguishing 717 different states. We used a linear SVM as the decoding model because it combines moderate 718 performance with a simple linear decision rule: it implements a weighted summation followed by 719 a decision boundary, matching the standard linear readout assumptions often used in 720 neuroscience and making our assumptions about downstream decoding explicit (Hung et al., 721 2005; Yamins et al., 2014; Diedrichsen & Kriegeskorte, 2017). Using a linear SVM also ensures 722 that these weight maps arise from a simple linear relationship between features and classifier 723 output and can be transformed into interpretable encoding patterns. 724 725 At the same time, using classifier accuracy introduces several limitations. Dissimilarity estimates 726 depend on the choice of classifier, regularization, and cross  validation scheme, potentially 727 reducing robustness and reproducibility. In our study, we mitigated this by using a simple linear 728 model and validated regularization parameters, but the conceptual dependence remains. In 729 addition, although Haufe  transformed weight maps make it possible to move from classifier 730 weights to activation patterns, interpreting individual sensor values as positively or negatively 731 associated with an outcome remains difficult, since the weights could be influenced by noise 732 correlations and multicollinearity (Haufe et al., 2014). Future work should therefore complement 733 accuracy  based RDMs with continuous distance measures. 734 735 Intrinsic differences in temporal resolution between scalp voltage and frequency-band features 736 is an important limitation for our dynamic RSA. Although each RDM is computed on data from a 737 single timepoint, the covariance between successive timepoints differs between the broadband 738 voltage and the oscillatory power. Each estimate of power at a given time and frequency 739 requires integration over several cycles of the underlying oscillation, yielding temporal smearing 740 and uncertainty. These temporal correlations mean that decoding at one time point can be 741 influenced by activity occurring slightly before or after that specific time—and this temporal 742 dependence differs across EEG features. As a result, the temporal precision of our time-743 resolved RDMs differ across broadband scalp voltage and for frequency-band features (not to 744 mention across different frequency bands), limiting the validity of cross-feature comparisons. 745 746 This caveat means that fine-grained timing differences–especially when comparing scalp 747 voltage to band power–should be interpreted cautiously. Given these constraints, we focused 748 our interpretation on effects that exceeded the temporal precision of our measures: scalp-749 voltage discriminability typically unfolded over windows of roughly 100 ms or more, and alpha-750 based discriminability was sustained over several hundred milliseconds, both longer than the 751 temporal smearing introduced by preprocessing and time-frequency decomposition. Future work 752 could systematically manipulate and match the temporal smoothing applied to different EEG 753 features. 754 755 We trained classifiers for each feature independently for simplicity, but cross-feature interactions 756 may influence results (Patel et al., 2022; Studenova et al., 2023). Interaction between different 757 speech features such as talker location and talker identity modulate neural speech responses: 758 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+28 spatial location affects mean response levels, while talker identity influences response variability 759 (Patel et al., 2022; Zhang et al., 2016). Future work should therefore explore additivity across 760 different channels and incorporate multi-feature interactions. 761 762 Beyond these limitations, RSA can be utilized in a broader context; to compare neural 763 representations across brain regions, species, and imaging modalities. In particular, cross-764 modal RDMs could compare spatial and temporal representations between different modalities. 765 Extending RSA to fMRI and magnetoencephalography (MEG) data revealed the spatiotemporal 766 dynamics of object recognition and linking neural representations across time and space (Cichy 767 et al. 2014). Salmela et al. (2016) also investigated distinct attention networks during 768 audiovisual tasks by combining RSA with EEG- and fMRI-derived representations. This line of 769 research could evolve into EEG-fMRI fusion RDMs, leveraging EEG’s temporal resolution and 770 fMRI’s spatial specificity to provide insight into the spatiotemporal dynamics of attentional 771 control across cortex (Cichy et al., 2020). 772 773 Conclusions 774 This study showed that RSA can effectively capture both evoked and induced EEG responses 775 during an auditory attention task. Scalp voltage signals reflected fast, cue-locked changes tied 776 to auditory ERPs, while alpha power developed more slowly and was sustained throughout the 777 task, closely tracking attentional demands. These features contributed differently over time, 778 supporting their complementary roles in decoding attentional states. Overall, our findings 779 support the use of RSA for uncovering the dynamics of attention in EEG data and suggest 780 promising directions for future work, including cross-modal analyses with fMRI or MEG to better 781 understand the spatial and temporal aspects of attentional processing. 782 783 Acknowledgements 784 We thank Alex Pei for assistance with data collection, Tim Verstynen for helpful advice about 785 the analysis, Vibha Viswanathan for valuable comments on the manuscript, and Maggie 786 Henderson for suggesting the unique contribution analysis. This work was supported by the 787 Office of Naval Research (N00014-53618-1-2069) and U.S. Department of Defense Hearing 788 Restoration and Rehabilitation Program grants (HT9425-23-1-0912). 789 References 790 Alain, C., & Bernstein, L. J. (2008). From sounds to meaning: the role of attention during 791 auditory scene analysis. Current Opinion in Otolaryngology & Head and Neck Surgery, 16(5), 792 485-489. 793 794 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+29 An, W. W., Noyce, A., Pei, A., & Shinn-Cunningham, B. (2023). Neural representation of spatial 795 and non-spatial auditory attention in EEG signals. In bioRxiv (p. 2023.07.13.548897). 796 https://doi.org/10.1101/2023.07.13.548897 797 798 Blauert, J. (1997). Spatial hearing: the psychophysics of human sound localization. MIT press. 799 800 Burle, B., Spieser, L., Roger, C., Casini, L., Hasbroucq, T., & Vidal, F. (2015). Spatial and 801 temporal resolutions of EEG: Is it really black and white? A scalp current density view. 802 International Journal of Psychophysiology: Official Journal of the International Organization of 803 Psychophysiology, 97(3), 210–220. 804 805 Cecere, R., Gross, J., Willis, A., & Thut, G. (2017). Being first matters: Topographical 806 representational similarity analysis of ERP signals reveals separate networks for audiovisual 807 temporal binding depending on the leading sense. The Journal of Neuroscience: The Official 808 Journal of the Society for Neuroscience, 37(21), 5274–5287. 809 810 Cherry, E. C. (1953). Some experiments on the recognition of speech, with one and with two 811 ears. Journal of the Acoustical Society of America. 812 813 Choi, I., Rajaram, S., Varghese, L. A., & Shinn-Cunningham, B. G. (2013). Quantifying 814 attentional modulation of auditory-evoked cortical responses from single-trial 815 electroencephalography. Frontiers in Human Neuroscience, 7, 115. 816 817 Cichy, R. M., Pantazis, D., & Oliva, A. (2014). Resolving human object recognition in space and 818 time. Nature Neuroscience, 17(3), 455–462. 819 820 Cichy, R. M., Pantazis, D., & Oliva, A. (2020). A Primer on M/EEG–fMRI Fusion: Resolving 821 Human Brain Responses in Space and Time. Neuron, 107(5), 772-789. 822 https://doi.org/10.1016/j.neuron.2020.07.001 823 824 Clarke, A., & Tyler, L. K. (2014). Object-specific semantic coding in human perirhinal cortex. 825 The Journal of Neuroscience: The Official Journal of the Society for Neuroscience, 34(14), 826 4766–4775. 827 828 Cousineau, D. (2005). Confidence intervals in within-subject designs: A simpler solution to 829 Loftus and Masson’s method. Tutorials in Quantitative Methods for Psychology, 1(1), 42–45. 830 831 Dai, L., Best, V., & Shinn-Cunningham, B. G. (2018). Sensorineural hearing loss degrades 832 behavioral and physiological measures of human spatial selective auditory attention. 833 Proceedings of the National Academy of Sciences of the United States of America, 115(14), 834 E3286–E3295. 835 836 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+30 Darwin, C. J., Brungart, D. S., & Simpson, B. D. (2003). Effects of fundamental frequency and 837 vocal-tract length changes on attention to one of two simultaneous talkers. The Journal of the 838 Acoustical Society of America, 114(5), 2913–2922. 839 840 Di Liberto, G. M., Crosse, M. J., & Lalor, E. C. (2018). Cortical measures of phoneme-level 841 speech encoding correlate with the perceived clarity of natural speech. eNeuro, 5(2), 842 ENEURO.0084-18.2018. 843 844 Diedrichsen, J., & Kriegeskorte, N. (2017). Representational models: A common framework for 845 understanding encoding, pattern-component, and representational-similarity analysis. PLoS 846 Computational Biology, 13(4), e1005508. 847 848 Ding, N., Melloni, L., Zhang, H., Tian, X., & Poeppel, D. (2016). Cortical tracking of hierarchical 849 linguistic structures in connected speech. Nature Neuroscience, 19(1), 158–164. 850 851 Donchin, E., & Coles, M. G. H. (1988). Is the P300 component a manifestation of context 852 updating? The Behavioral and Brain Sciences, 11(3), 357–374. 853 854 Etard, O., & Reichenbach, T. (2019). Neural speech tracking in the theta and in the delta 855 frequency band differentially encode clarity and comprehension of speech in noise. The Journal 856 of Neuroscience: The Official Journal of the Society for Neuroscience, 39(29), 5750–5759. 857 858 Foxe, J. J., & Snyder, A. C. (2011). The role of alpha-band brain oscillations as a sensory 859 suppression mechanism during selective attention. Frontiers in Psychology, 2, 154. 860 861 Guerrero, L., Bouazzaoui, B., Isingrini, M., & Angel, L. (2023). Impact of working memory 862 capacity on predominance of parietal over frontal P300 amplitude. Brain and Cognition, 863 170(106056), 106056. 864 865 Hamilton, L. S., Oganian, Y., Hall, J., & Chang, E. F. (2021). Parallel and distributed encoding of 866 speech across human auditory cortex. Cell, 184(18), 4626-4639.e13. 867 868 Haufe, S., Meinecke, F., Görgen, K., Dähne, S., Haynes, J.-D., Blankertz, B., & Bießmann, F. 869 (2014). On the interpretation of weight vectors of linear models in multivariate neuroimaging. 870 NeuroImage, 87, 96–110. 871 872 Henry, M. J., & Obleser, J. (2012). Frequency modulation entrains slow neural oscillations and 873 optimizes human listening behavior. Proceedings of the National Academy of Sciences of the 874 United States of America, 109(49), 20095–20100. 875 876 Hillyard, S. A., Hink, R. F., Schwent, V. L., & Picton, T. W. (1973). Electrical signs of selective 877 attention in the human brain. Science (New York, N.Y.), 182(4108), 177–180. 878 879 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+31 Hillyard, S. A., Vogel, E. K., & Luck, S. J. (1998). Sensory gain control (amplification) as a 880 mechanism of selective attention: electrophysiological and neuroimaging evidence. 881 Philosophical Transactions of the Royal Society of London. Series B, Biological Sciences, 882 353(1373), 1257–1270. 883 884 Holm, S. (1979). A Simple Sequentially Rejective Multiple Test Procedure. Scandinavian 885 Journal of Statistics, 6, 65–70. 886 887 Hung, C. P., Kreiman, G., Poggio, T., & DiCarlo, J. J. (2005). Fast readout of object identity from 888 macaque inferior temporal cortex. Science (New York, N.Y.), 310(5749), 863–866. 889 890 Jensen, O., & Bonnefond, M. (2026). The alpha rhythm: from physiology to behavior. 891 Physiological Reviews, 106(3), 1123–1159. 892 893 Jensen, O., & Mazaheri, A. (2010). Shaping functional architecture by oscillatory alpha activity: 894 gating by inhibition. Frontiers in Human Neuroscience, 4, 186. 895 896 Kaneshiro, B., Perreau Guimaraes, M., Kim, H.-S., Norcia, A. M., & Suppes, P. (2015). A 897 Representational Similarity Analysis of the dynamics of object processing using single-trial EEG 898 classification. PloS One, 10(8), e0135697. 899 900 Kerlin, J. R., Shahin, A. J., & Miller, L. M. (2010). Attentional gain control of ongoing cortical 901 speech representations in a “cocktail party.” The Journal of Neuroscience: The Official Journal 902 of the Society for Neuroscience, 30(2), 620–628. 903 904 Klimesch, W. (2012). Alpha-band oscillations, attention, and controlled access to stored 905 information. Trends in cognitive sciences, 16(12), 606-617. 906 907 Kriegeskorte, N. (2008). Representational similarity analysis – connecting the branches of 908 systems neuroscience. Frontiers in Systems Neuroscience. 909 https://doi.org/10.3389/neuro.06.004.2008 910 911 Lewald, J., & Getzmann, S. (2011). When and where of auditory spatial processing in cortex: a 912 novel approach using electrotomography. PloS One, 6(9), e25146. 913 914 Luck, S. J. (2014). An introduction to the event-related potential technique. MIT press. 915 916 Maris, E., & Oostenveld, R. (2007). Nonparametric statistical testing of EEG- and MEG-data. 917 Journal of Neuroscience Methods, 164(1), 177–190. 918 919 Middlebrooks, J. C. (2021). A Search for a Cortical Map of Auditory Space. Journal of 920 Neuroscience, 41(27), 5772–5778. https://doi.org/10.1523/JNEUROSCI.0501-21.2021 921 922 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+32 Morey, R. D. (2008). Confidence intervals from normalized data: A correction to Cousineau 923 (2005). Tutorials in quantitative methods for psychology, 4(2), 61-64. 924 925 Näätänen, R., & Picton, T. (1987). The N1 wave of the human electric and magnetic response 926 to sound: a review and an analysis of the component structure. Psychophysiology, 24(4), 375– 927 425. 928 929 Nguyen, N. D. T., Mikkelsen, K., & Kidmose, P. (2024). Cognitive component of auditory 930 attention to natural speech events. Frontiers in Human Neuroscience, 18, 1460139. 931 932 Obleser, J., & Kayser, C. (2019). Neural Entrainment and Attentional Selection in the Listening 933 Brain. Trends in Cognitive Sciences, 23(11), 913–926. 934 935 Oh, Y., Zuwala, J. C., Salvagno, C. M., & Tilbrook, G. A. (2021). The impact of pitch and timbre 936 cues on auditory grouping and stream segregation. Frontiers in Neuroscience, 15, 725093. 937 938 Patel, P., van der Heijden, K., Bickel, S., Herrero, J. L., Mehta, A. D., & Mesgarani, N. (2022). 939 Interaction of bottom-up and top-down neural mechanisms in spatial multi-talker speech 940 perception. Current Biology: CB, 32(18), 3971-3986.e4. 941 942 Pion-Tonachini, L., Kreutz-Delgado, K., & Makeig, S. (2019). ICLabel: An automated 943 electroencephalographic independent component classifier, dataset, and website. NeuroImage, 944 198, 181–197. 945 946 Polich, J. (2007). Updating P300: an integrative theory of P3a and P3b. Clinical 947 Neurophysiology: Official Journal of the International Federation of Clinical Neurophysiology, 948 118(10), 2128–2148. 949 950 Ruchkin, D. S., Johnson, R., Jr, Grafman, J., Canoune, H., & Ritter, W. (1992). Distinctions and 951 similarities among working memory processes: an event-related potential study. Brain 952 Research. Cognitive Brain Research, 1(1), 53–66. 953 954 Salmela, V., Salo, E., Salmi, J., & Alho, K. (2016). Spatiotemporal Dynamics of Attention 955 Networks Revealed by Representational Similarity Analysis of EEG and fMRI. Cerebral Cortex. 956 https://doi.org/10.1093/cercor/bhw389 957 958 Schütt, H. H., Kipnis, A. D., Diedrichsen, J., & Kriegeskorte, N. (2023). Statistical inference on 959 representational geometries. eLife, 12. https://doi.org/10.7554/eLife.82566 960 961 Shinn-Cunningham, B. G. (2008). Object-based auditory and visual attention. Trends in 962 Cognitive Sciences, 12(5), 182–186. 963 964 Strauß, A., Wöstmann, M., & Obleser, J. (2014). Cortical alpha oscillations as a tool for auditory 965 selective inhibition. Frontiers in Human Neuroscience, 8, 350. 966 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+33 967 Studenova, A., Forster, C., Engemann, D. A., Hensch, T., Sanders, C., Mauche, N., Hegerl, U., 968 Loffler, M., Villringer, A., & Nikulin, V. (2023). Event-related modulation of alpha rhythm explains 969 the auditory P300-evoked response in EEG. eLife, 12(RP88367), RP88367. 970 971 Synigal, S. R., Teoh, E. S., & Lalor, E. C. (2020). Including measures of high gamma power can 972 improve the decoding of natural speech from EEG. Frontiers in Human Neuroscience, 14(130), 973 130. 974 975 Tavano, A., Rimmele, J. M., Michalareas, G., & Poeppel, D. (2023). Neural Oscillations in EEG 976 and MEG: Principles, Methods, and Future Perspectives of Investigation. In M. Grimaldi, E. 977 978 van der Heijden, K., Patel, P., Bickel, S., Herrero, J. L., Mehta, A. D., & Mesgarani, N. (2025). 979 Joint population coding and temporal coherence link an attended talker’s voice and location 980 features in naturalistic multi-talker scenes. The Journal of Neuroscience: The Official Journal of 981 the Society for Neuroscience, 45(47), e0754252025. 982 983 Verleger, R., Ja śkowski, P., & Wascher, E. (2005). Evidence for an integrative role of P3b in 984 linking reaction to perception. Journal of Psychophysiology, 19(3), 165–181. 985 986 Viswanathan, V., Bharadwaj, H. M., & Shinn-Cunningham, B. G. (2019). 987 Electroencephalographic signatures of the neural representation of speech during selective 988 attention. eNeuro, 6(5), ENEURO.0057-19.2019. 989 990 Viswanathan, V., Bharadwaj, H. M., Heinz, M. G., & Shinn-Cunningham, B. G. (2023). Induced 991 alpha and beta electroencephalographic rhythms covary with single-trial speech intelligibility in 992 competition. Scientific Reports , 13 (1), 10216. 993 994 Wang, L., Wlotko, E., Alexander, E., Schoot, L., Kim, M., Warnke, L., & Kuperberg, G. R. 995 (2020). Neural evidence for the prediction of animacy features during language comprehension: 996 Evidence from MEG and EEG representational similarity analysis. The Journal of Neuroscience: 997 The Official Journal of the Society for Neuroscience, 40(16), 3278–3291. 998 999 Watter, S., Geffen, G. M., & Geffen, L. B. (2001). The n-back as a dual-task: P300 morphology 1000 under divided attention. Psychophysiology, 38(6), 998–1003. 1001 1002 Wöstmann, M., Lim, S. J., & Obleser, J. (2017). The human neural alpha response to speech is 1003 a proxy of attentional control. Cerebral cortex, 27(6), 3307-3317. 1004 1005 Wöstmann, M., Maess, B., & Obleser, J. (2021). Orienting auditory attention in time: Lateralized 1006 alpha power reflects spatio-temporal filtering. NeuroImage, 228(117711), 117711. 1007 1008 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 23, 2026. ;https://doi.org/10.64898/2026.06.18.733142 doi: bioRxiv preprint
+
+34 Wöstmann, M., Waschke, L., & Obleser, J. (2019). Prestimulus neural alpha power predicts 1009 confidence in discriminating identical auditory stimuli. European Journal of Neuroscience, 49(1), 1010 94-105. 1011 1012 Xue, G. (2018). The neural representations underlying human episodic memory. Trends in 1013 Cognitive Sciences, 22(6), 544–561. 1014 1015 Yamins, D. L. K., Hong, H., Cadieu, C. F., Solomon, E. A., Seibert, D., & DiCarlo, J. J. (2014). 1016 Performance-optimized hierarchical models predict neural responses in higher visual cortex. 1017 Proceedings of the National Academy of Sciences of the United States of America, 111(23), 1018 8619–8624. 1019 1020 Zhang, C., Pugh, K. R., Mencl, W. E., Molfese, P. J., Frost, S. J., Magnuson, J. S., Peng, G., & 1021 Wang, W. S.-Y. (2016). Functionally integrated neural processing of linguistic and talker 1022 information: An event-related fMRI and ERP study. NeuroImage, 124(Pt A), 536–549. 1023

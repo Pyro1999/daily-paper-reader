@@ -6,59 +6,50 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-24
-- 运行时间：2026-06-24 22:11:56 UTC
+- 最新运行日期：2026-06-26
+- 运行时间：2026-06-26 20:41:07 UTC
 - 运行状态：成功
-- 本次总论文数：13
-- 精读区：6
-- 速读区：7
+- 本次总论文数：10
+- 精读区：2
+- 速读区：8
 
 ### 今日简报（AI）
-今天聚焦脑与生理信号基础模型，精读两篇高分论文：基于流匹配的脑基础模型和基于时空池化单token重构的通用生理信号自监督学习。最值得关注的方向是脑基础模型与通用生理信号自监督学习，分别采用流匹配和单token重构实现高效特征提取。下一步建议尝试将流匹配或自监督方法应用到自己的EEG/生理信号分析任务中，提升模型泛化能力。
-- 详情：[/202606/24/README](/202606/24/README)
+今日EEG研究聚焦自注意力鲁棒解码与开源认知负荷工作流，同时探索阅读难度预测及个体最优解码器差异。最值得关注的方向：基于黎曼几何的自注意力机制提升EEG鲁棒性，以及质量门控开源工作流实现实时Alpha动态分析。建议优先精读这两篇高评分论文，并关注速读中关于个体差异的基准测试方法。
+- 详情：[/202606/26/README](/202606/26/README)
 
 ### 精读区论文标签
-1. [B[FM]$^2$: Brain Foundation Model via Flow Matching with SplitUNet](/202606/24/2606.20812v1-bfm2-brain-foundation-model-via-flow-matching-with-splitunet)  
-   标签：评分：9.0/10、query:pbci-load
-   evidence：提出基于流匹配的脑电基础模型，可直接用于脑机接口任务
-2. [SPOTR: Spatio-temporal Pooling One-Token Reconstruction for Universal Physiological Signal Self-supervised Learning](/202606/24/2606.21973v1-spotr-spatio-temporal-pooling-one-token-reconstruction-for-universal-physiological-signal-self-supervised-learning)  
-   标签：评分：9.0/10、query:pbci-load
-   evidence：通用的EEG信号自监督学习框架
-3. [Foundation Models for Epileptogenic Zone Identification in Drug-Resistant Epilepsy](/202606/24/2606.22657v1-foundation-models-for-epileptogenic-zone-identification-in-drug-resistant-epilepsy)  
-   标签：评分：9.0/10、query:pbci-load
-   evidence：提出用于颅内脑电信号处理的双基座模型系统
-4. [Embedded Polygon Symbolic Transfer Entropy (EPSTE): A Geometric Token and Deep Learning Approach to Estimating Transfer Entropy in Neuroimaging Time Series](/202606/24/2606.21754v1-embedded-polygon-symbolic-transfer-entropy-epste-a-geometric-token-and-deep-learning-approach-to-estimating-transfer-entropy-in-neuroimaging-time-series)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：提出深度学习框架用于从EEG估计有向交互，可用于认知负荷分析
-5. [EEG Benchmarking Needs a Task Specification Layer: NeuroDoc for Rulebook-Guided, Executable Benchmark Construction](/202606/24/2606.22925v1-eeg-benchmarking-needs-a-task-specification-layer-neurodoc-for-rulebook-guided-executable-benchmark-construction)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：脑电基础模型基准构建，用于多数据集评估
-6. [OPM-FLUX: A Pipeline for OPM MEG Data Analysis](/202606/24/biorxiv-10-64898-2026-04-24-720604-v2-opm-flux-a-pipeline-for-opm-meg-data-analysis)  
+1. [Towards Robust EEG Decoding Based on Riemannian Self-Attention](/202606/26/2606.25456v1-towards-robust-eeg-decoding-based-on-riemannian-self-attention)  
    标签：评分：8.0/10、query:robust-eeg
-   evidence：OPM-FLUX流水线提供噪声抑制和伪迹处理，可直接迁移至脑电脑机接口
+   evidence：基于黎曼自注意力的鲁棒EEG解码，适用于BCI信号增强
+2. [NeuraDock Visual Cognitive Load Agent Tutorial: A Quality-Gated Open-Source EEG Workflow for Alpha Dynamics and Real-Time Applications](/202606/26/2606.26518v1-neuradock-visual-cognitive-load-agent-tutorial-a-quality-gated-open-source-eeg-workflow-for-alpha-dynamics-and-real-time-applications)  
+   标签：评分：8.0/10、query:pbci-load
+   evidence：基于EEG的视觉认知负荷分析工作流
 
 ### 速读区论文标签
-1. [Robust EEG Functional Connectivity Metrics for Decoding Action Observation Conditions and Observed Actions](/202606/24/2606.21055v1-robust-eeg-functional-connectivity-metrics-for-decoding-action-observation-conditions-and-observed-actions)  
-   标签：评分：7.0/10、query:robust-eeg
-   evidence：基准测试了稳健的脑电功能连接指标用于解码
-2. [Unifying Adaptive Fourier and Möbius-Based Models for Efficient and Interpretable Biomedical Signal Decomposition](/202606/24/2606.23713v1-unifying-adaptive-fourier-and-mbius-based-models-for-efficient-and-interpretable-biomedical-signal-decomposition)  
-   标签：评分：7.0/10、query:robust-eeg
-   evidence：用于EEG信号增强的分解方法
-3. [Generative Modeling for Physiological Signals](/202606/24/2606.23864v1-generative-modeling-for-physiological-signals)  
+1. [Energy-Based Transformers as Predictors of Reading Difficulty](/202606/26/2606.23382v1-energy-based-transformers-as-predictors-of-reading-difficulty)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：生理信号生成模型综述（含EEG），支持认知负荷数据增强
-4. [Quantum machine learning for detection of sleep deprivation from EEG signals](/202606/24/biorxiv-10-64898-2026-06-14-732153-v1-quantum-machine-learning-for-detection-of-sleep-deprivation-from-eeg-signals)  
+   evidence：用于阅读困难预测的深度学习模型（认知负荷评估）
+2. [Average Rankings Mask Per-Subject Optimality: A Friedman-Nemenyi Benchmark of EEG Motor-Imagery BCI Decoders](/202606/26/2606.24394v1-average-rankings-mask-per-subject-optimality-a-friedman-nemenyi-benchmark-of-eeg-motor-imagery-bci-decoders)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：使用EEG和量子机器学习检测认知状态，与认知负荷评估相关
-5. [MedTS-TTT: Test-Time Training for Medical Time Series Classification](/202606/24/2606.21329v1-medts-ttt-test-time-training-for-medical-time-series-classification)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：提出适用于EEG等医疗时间序列的测试时训练深度学习方法，可迁移至认知负荷评估
-6. [Design of a Low-Latency sEMG Real-Time Correction System Based on High CMRR and EMRMS Mathematical Modeling](/202606/24/biorxiv-10-64898-2026-06-11-724714-v1-design-of-a-low-latency-semg-real-time-correction-system-based-on-high-cmrr-and-emrms-mathematical-modeling)  
+   evidence：对包括深度学习方法在内的EEG运动想象BCI解码器进行综合基准测试
+3. [Representational similarity analysis of EEG reveals multiple spatiotemporal dynamics of selective attention](/202606/26/biorxiv-10-64898-2026-06-18-733142-v1-representational-similarity-analysis-of-eeg-reveals-multiple-spatiotemporal-dynamics-of-selective-attention)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：利用被动聆听范式的EEG研究，与被动脑机接口相关
+4. [SPIDER -- Stitched Power-spectra for Inferring Directed information flow from incomplete and asynchronous Experimental Recordings](/202606/26/2606.22695v1-spider----stitched-power-spectra-for-inferring-directed-information-flow-from-incomplete-and-asynchronous-experimental-recordings)  
    标签：评分：6.0/10、query:robust-eeg
-   evidence：sEMG干扰抑制方法可迁移至EEG去噪
-7. [Data aggregation strategies for a P300 speller: decoding models, epoch averaging, cross-subject ensembles, and multi-channel models](/202606/24/biorxiv-10-64898-2026-06-17-732982-v1-data-aggregation-strategies-for-a-p300-speller-decoding-models-epoch-averaging-cross-subject-ensembles-and-multi-channel-models)  
+   evidence：从不完整记录中鲁棒推断脑电连接性的框架
+5. [EEG Benchmarking Needs a Task Specification Layer: NeuroDoc for Rulebook-Guided, Executable Benchmark Construction](/202606/26/2606.22925v1-eeg-benchmarking-needs-a-task-specification-layer-neurodoc-for-rulebook-guided-executable-benchmark-construction)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：P300拼写器EEG解码，使用深度学习模型，与被动脑机接口相关
+   evidence：提出NeuroDoc用于标准化EEG任务规范，支持可复现的基准测试
+6. [Breaking Shortcut Learning for Cross-Trial EEG-Guided Target Speech Extraction via Two-Stage Training](/202606/26/2606.24164v1-breaking-shortcut-learning-for-cross-trial-eeg-guided-target-speech-extraction-via-two-stage-training)  
+   标签：评分：6.0/10、query:pbci-load
+   evidence：基于深度学习的EEG目标语音提取方法，可迁移至被动BCI
+7. [BrainAgent: A Large Language Model-Driven Multi-Agent Framework for Autonomous Brain Signal Understanding](/202606/26/2606.25400v1-brainagent-a-large-language-model-driven-multi-agent-framework-for-autonomous-brain-signal-understanding)  
+   标签：评分：6.0/10、query:pbci-load
+   evidence：提出基于大语言模型的多智能体框架自动理解脑信号，与脑电基础模型相关
+8. [TinyCNNDeep: Lightweight Attention-Based CNN for EEG Classification of Eye States and Sleep Deprivation](/202606/26/2606.26506v1-tinycnndeep-lightweight-attention-based-cnn-for-eeg-classification-of-eye-states-and-sleep-deprivation)  
+   标签：评分：6.0/10、query:pbci-load
+   evidence：用于脑电认知状态分类的深度学习CNN
 
 
 <div class="dpr-home-promo-card">
