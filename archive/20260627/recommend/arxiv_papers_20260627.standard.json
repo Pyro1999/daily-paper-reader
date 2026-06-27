@@ -1,0 +1,270 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-27T21:40:31.977347+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 6,
+    "quick_skim_target": 13,
+    "quick_selected": 6
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.24087v1",
+      "source": "arxiv",
+      "title": "NeuroSonic: Conditional Flow Matching for EEG-to-Speech Reconstruction",
+      "abstract": "Reconstructing continuous speech from scalp electroencephalography (EEG) remains fundamentally challenging. EEG provides a weak, spatially diffuse, and highly variable measurement of distributed cortical activity, whereas speech is organized as a coherent acoustic trajectory with strong harmonic and temporal structure. The resulting mismatch makes waveform regression unstable and causes stochastic multi-step generation to be sensitive to artifact-dependent conditioning and subject variability. We introduce NeuroSonic, a conditional flow-matching framework for EEG-to-speech reconstruction. Instead of predicting waveforms directly or refining them through stochastic denoising, NeuroSonic learns a deterministic probability-flow velocity field that transports a noise-corrupted acoustic state toward clean speech under EEG conditioning. EEG and audio are embedded into a shared token space and processed by a time-conditioned gated Transformer that parameterizes the transport ordinary differential equation. This formulation models trajectory evolution explicitly while avoiding iterative stochastic sampling. We evaluate NeuroSonic on the CineBrain and EAV benchmarks under cross-subject evaluation. Across both datasets, the proposed method improves distributional realism, spectral fidelity, and perceptual quality over representative GAN-, diffusion-, and mean-flow baselines, with up to a 26.3\\% gain in overall perceptual quality. The performance gap is most evident in artifact-heavy segments, where conditioning variability is strongest. These findings indicate that deterministic conditional transport provides a stable and effective formulation for EEG-driven speech reconstruction. Code is available at https://github.com/Y-Research-SBU/NeuroSonic/ .",
+      "authors": [
+        "Wenhao Gao",
+        "Yifan Wang",
+        "Yijia Ma",
+        "Carl Yang",
+        "Wen Li",
+        "Chenyu You"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-23T03:04:53+00:00",
+      "link": "https://arxiv.org/pdf/2606.24087v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG foundation model using conditional flow matching",
+      "llm_evidence_cn": "基于条件流匹配的脑电基础模型",
+      "llm_evidence": "基于条件流匹配的脑电基础模型",
+      "canonical_evidence": "基于条件流匹配的脑电基础模型",
+      "llm_tldr_en": "NeuroSonic proposes a conditional flow-matching framework for EEG-to-speech reconstruction, learning a deterministic probability-flow velocity field instead of direct waveform prediction or stochastic denoising, offering a novel foundation model for EEG signal processing.",
+      "llm_tldr_cn": "针对EEG信号弱、噪声大、个体差异大导致语音重建困难的问题，本文提出NeuroSonic框架，采用条件流匹配学习确定性概率流速度场，避免了波形直接预测的不稳定性和随机去噪的伪影。实验表明该方法在多个指标上优于现有方法，为EEG信号处理提供了一种新的基础模型范式。",
+      "llm_tldr": "针对EEG信号弱、噪声大、个体差异大导致语音重建困难的问题，本文提出NeuroSonic框架，采用条件流匹配学习确定性概率流速度场，避免了波形直接预测的不稳定性和随机去噪的伪影。实验表明该方法在多个指标上优于现有方法，为EEG信号处理提供了一种新的基础模型范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.23864v1",
+      "source": "arxiv",
+      "title": "Generative Modeling for Physiological Signals",
+      "abstract": "Physiological signals support clinical diagnosis, health monitoring, rehabilitation, wearable sensing, and human--machine interaction. However, their applications are often constrained by limited labeled data, class imbalance, noisy or incomplete recordings, heterogeneous acquisition settings, and privacy restrictions. Generative modeling has therefore attracted increasing attention as a means of addressing some of these barriers. Recent studies have used generative models to augment scarce datasets, restore degraded recordings, translate between modalities, and synthesize conditional physiological waveforms. This review summarizes recent work on generative modeling for cardiovascular, neural, muscular, peripheral, and specialized physiological signals. Major model families are covered, including generative adversarial networks (GANs), autoencoders and variational autoencoders (AEs/VAEs), diffusion models, autoregressive sequence models, and hybrid architectures. In addition, it organizes existing evaluation practices into a hierarchical framework spanning signal-level similarity, dataset-level distribution, physiological validity, task-oriented utility, and assessments of generalization and robustness. By linking signal-specific constraints, generative roles, model families, and evaluation evidence, this review provides structured guidance for the future use and evaluation of generative models in physiological-signal research.",
+      "authors": [
+        "Xinqi Bao",
+        "Ernest Kamavuako",
+        "Saikat Chatterjee"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-06-22T19:03:45+00:00",
+      "link": "https://arxiv.org/pdf/2606.23864v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "generative modeling survey for physiological signal enhancement, applicable to EEG denoising",
+      "llm_evidence_cn": "生理信号生成建模综述，方法可用于EEG去噪与增强",
+      "llm_evidence": "生理信号生成建模综述，方法可用于EEG去噪与增强",
+      "canonical_evidence": "生理信号生成建模综述，方法可用于EEG去噪与增强",
+      "llm_tldr_en": "Reviews generative models for physiological signals including neural ones, addressing data scarcity, noise, and heterogeneity; methods can be adapted for EEG denoising in BCI.",
+      "llm_tldr_cn": "生理信号应用受限于标注数据少、噪声干扰等问题。本文综述了生成模型在心血管、神经等生理信号上的最新进展，包括数据增强、去噪和模态转换。其中针对神经信号的生成方法可迁移至EEG信号处理，用于被动BCI中的鲁棒去噪，提升认知负荷评估的可靠性。",
+      "llm_tldr": "生理信号应用受限于标注数据少、噪声干扰等问题。本文综述了生成模型在心血管、神经等生理信号上的最新进展，包括数据增强、去噪和模态转换。其中针对神经信号的生成方法可迁移至EEG信号处理，用于被动BCI中的鲁棒去噪，提升认知负荷评估的可靠性。",
+      "llm_tags": [
+        "query:robust-eeg:composite"
+      ],
+      "matched_query_tag": "query:robust-eeg:composite",
+      "matched_query_text": "Papers central to 请帮我查找有关脑机接口（EEG）鲁棒抗扰去噪的论文, especially work that connects or combines: eeg signal denoising techniques; electroencephalogram noise removal algorithms; eeg artifact removal approaches; robust eeg processing framework; eeg interference suppression methods; eeg signal enhancement for bci; Find papers on robust denoising methods for EEG signals in brain computer interfaces; Search for EEG artifact removal techniques that are robust against interference; Retrieve articles about noise suppression in electroencephalogram for BCI applications.",
+      "matched_requirement_id": "req-composite-robust-eeg",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.26519v1",
+      "source": "arxiv",
+      "title": "Boundary-Aware Context Grounding for A Low-Channel EEG Agent",
+      "abstract": "Large language models (LLMs) can make scientific software easier to use. However, a general model does not automatically know which measurements a particular sensor can support, which algorithms are implemented in the current software, or which conclusions are justified by a computed result. These distinctions are especially important for low-channel electroencephalography (EEG), where sparse spatial coverage and variable signal quality make plausible but unsupported interpretations easy to produce. We present NeuraDock Agent, an open-source architecture that separates a deterministic local EEG engine from a hardware-aware language layer. The numerical engine parses recordings, performs quality control, executes reviewed spectral workflows, and writes machine-readable artifacts. The LLM receives only a compact, allowlisted summary and a versioned context pack. The context describes the seven-channel hardware, reviewed workflows, result fields, implementation boundaries, scientific limits, and reference cases. Raw EEG and dense per-sample arrays remain local   We evaluate the system at three levels. First, 12 recordings produced identical structured results over ten numerical repetitions, and a complete Rest/Task run produced identical result, report, and figure hashes over three repetitions. Second, request-capture and failure-injection experiments confirmed the tested data boundary and preservation of local artifacts under HTTP, malformed-output, and connection failures. Third, a boundary-awareness benchmark tested 36 ordinary and adversarial questions under four context ablations and two LLMs, yielding 288 outputs.These results support hardware- and implementation-aware grounding as a practical mechanism for calibrating what an EEG agent accepts, qualifies, or refuses; they do not establish clinical validity or a validated absolute cognitive-load index.",
+      "authors": [
+        "Zhiyuan Xu",
+        "Yueqing Dai",
+        "Junling Li",
+        "Junwen Luo"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-25T01:51:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.26519v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Provides a low-channel EEG processing framework with quality control and spectral workflows, enhancing robustness",
+      "llm_evidence_cn": "提供一个低通道脑电处理框架，包含质量控制和频谱分析，增强鲁棒性",
+      "llm_evidence": "提供一个低通道脑电处理框架，包含质量控制和频谱分析，增强鲁棒性",
+      "canonical_evidence": "提供一个低通道脑电处理框架，包含质量控制和频谱分析，增强鲁棒性",
+      "llm_tldr_en": "NeuraDock Agent separates a deterministic EEG engine from a language layer, performing quality control and spectral analysis for low-channel EEG, enabling robust and interpretable EEG analysis, aligning with robust EEG processing requirements.",
+      "llm_tldr_cn": "该论文针对低通道脑电信号质量易受干扰的问题，提出NeuraDock Agent架构，将确定性数值引擎与语言层分离。数值引擎负责信号解析、质量控制及频谱分析，确保处理结果的可靠性。该系统为低通道EEG提供了鲁棒的处理框架，有助于减少噪声影响，支持多种脑电应用场景，符合鲁棒脑电处理的需求。",
+      "llm_tldr": "该论文针对低通道脑电信号质量易受干扰的问题，提出NeuraDock Agent架构，将确定性数值引擎与语言层分离。数值引擎负责信号解析、质量控制及频谱分析，确保处理结果的可靠性。该系统为低通道EEG提供了鲁棒的处理框架，有助于减少噪声影响，支持多种脑电应用场景，符合鲁棒脑电处理的需求。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-21",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.26579v1",
+      "source": "arxiv",
+      "title": "An exploratory behavioral and electroencephalographic study of artificial intelligence-assisted learning modes in high school students",
+      "abstract": "As artificial intelligence (AI) is rapidly integrating into education, concerns have emerged regarding its potential implications on cognitive engagement and problem-solving behavior. However, existing research largely treats AI exposure as a binary condition (AI vs. no-AI), with limited differentiation between interaction modalities and post-exposure effects. This study investigates whether distinct AI interaction modes (Tutor, Collaborator, Solver) influence frontal EEG spectral activity. Electroencephalography (EEG) data and quantified behavioral metrics were recorded from 48 study participants (24 males, 24 females; ages 14-18) across two counterbalanced quizzes in a within-subject design. Statistical analyses included Friedman tests, repeated-measures ANOVA, paired t-tests, and effect size calculations. Behavioral changes were mathematically analyzed in an observation matrix of three characteristics -Initiation, Processing, and Stress-measured on an ordinal scale. Each mode showed significant differences in all three behavioral measures. Descriptive EEG patterns in AI interaction mode were observed, and the possibility of short-term carryover effects of AI was explored. Although the EEG data did not reach statistical significance, the patterns observed across the three AI interaction modes warrant further investigation. This study provides preliminary behavioral evidence and investigative electrophysiological observations, exploring possible AI-interaction-mode-based differences in neural activity and behavior, while establishing a replicable framework for future human-AI interaction studies.",
+      "authors": [
+        "Kashika Khurana",
+        "Ally Liew"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.CY"
+      ],
+      "published": "2026-06-25T04:01:19+00:00",
+      "link": "https://arxiv.org/pdf/2606.26579v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG-based cognitive load estimation in AI-assisted learning",
+      "llm_evidence_cn": "基于EEG的认知负荷估计在AI辅助学习中的应用",
+      "llm_evidence": "基于EEG的认知负荷估计在AI辅助学习中的应用",
+      "canonical_evidence": "基于EEG的认知负荷估计在AI辅助学习中的应用",
+      "llm_tldr_en": "This exploratory study uses frontal EEG spectral activity to assess cognitive engagement under different AI interaction modes, directly relevant to EEG-based cognitive load estimation.",
+      "llm_tldr_cn": "现有研究将AI暴露视为二值条件，缺乏对交互模式差异的考察。本文通过采集48名高中生在不同AI辅助模式（导师、协作、解答）下的额叶EEG频谱和行为数据，发现不同模式显著影响认知投入。该工作为基于EEG的认知负荷估计提供了实验范式。",
+      "llm_tldr": "现有研究将AI暴露视为二值条件，缺乏对交互模式差异的考察。本文通过采集48名高中生在不同AI辅助模式（导师、协作、解答）下的额叶EEG频谱和行为数据，发现不同模式显著影响认知投入。该工作为基于EEG的认知负荷估计提供了实验范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-1101-2025-06-02-657541-v2",
+      "source": "biorxiv",
+      "title": "aNy-way ICA and its application to estimate cortico-thalamo-cerebellar functional links in schizophrenia",
+      "abstract": "Multimodal data collected by international and national biobanking efforts have distinct scales and model orders and provide unique and complementary insights into disease mechanisms. We propose a novel, flexible and efficient data fusion approach, aNy-way independent component analysis (aNy-way ICA). aNy-way ICA fuses N-way multimodal or multidomain data by optimizing the entire loading correlation structure of linked components via Gaussian independent vector analysis (IVA-G) and simultaneously optimizing independence via separate ICAs. This allows for distinct model orders for different modalities/domains and multiple linked sources detection across any number of modalities or domains without requiring orthogonality constraints on sources. Simulation results demonstrate that aNy-way ICA identifies the designed sources and loadings, as well as the true covariance patterns, with improved accuracy compared to other approaches, especially under noisy conditions. Applying aNy-way ICA to fuse 4D multi-domain fMRI data in schizophrenia, we identified a cortico-thalamo-cerebellar circuit, highlighting the functional linkages among higher order thalamic nuclei, the visual cortex, default mode network, and the posterior lobe of cerebellum. Their function links were replicated in two independent datasets. The connection among higher order thalamic nuclei, the visual cortex, and default mode network discriminates schizophrenia from controls and this aberrant connection is related to multiple cognitive deficits in both discovery and replication datasets, indicating the identified cortico-thalamo-cerebellar circuit may underlie \"cognitive dysmetria\" in schizophrenia.",
+      "authors": [
+        "Duan, K.",
+        "Silva, R. F.",
+        "Rahaman, M. A.",
+        "Fu, Z.",
+        "Liu, J.",
+        "Kochunov, P.",
+        "van Erp, T. G. M.",
+        "Shultz, S.",
+        "Calhoun, V. D."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-25T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2025.06.02.657541v2.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Novel ICA method (aNy-way ICA) applicable to EEG artifact removal",
+      "llm_evidence_cn": "提出的aNy-way ICA方法可应用于EEG伪影去除",
+      "llm_evidence": "提出的aNy-way ICA方法可应用于EEG伪影去除",
+      "canonical_evidence": "提出的aNy-way ICA方法可应用于EEG伪影去除",
+      "llm_tldr_en": "Proposes aNy-way ICA, a flexible data fusion method using IVA-G and separate ICAs, enabling distinct model orders across modalities, applicable to EEG artifact removal.",
+      "llm_tldr_cn": "针对多模态数据融合中模态间模型阶次不同的问题，提出aNy-way ICA方法，通过高斯独立向量分析和独立成分分析联合优化，支持任意数量模态的灵活融合。该方法可适用于EEG伪影去除，提高信号质量，在精神分裂症功能连接估计中展示了有效性。",
+      "llm_tldr": "针对多模态数据融合中模态间模型阶次不同的问题，提出aNy-way ICA方法，通过高斯独立向量分析和独立成分分析联合优化，支持任意数量模态的灵活融合。该方法可适用于EEG伪影去除，提高信号质量，在精神分裂症功能连接估计中展示了有效性。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg artifact removal approaches",
+      "matched_requirement_id": "req-20",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2025-12-20-695571-v3",
+      "source": "biorxiv",
+      "title": "Bayesian Nonparametric Identification of Frequency-Selective Neural Oscillatory States",
+      "abstract": "Identifying neural oscillations is essential for linking fast brain dynamics to underlying cognitive processes. However, this is challenging because oscillatory events can be brief, embedded in 1/f-like background activity, and may comprise an unknown number of spectrally distinct states. Conventional approaches often apply narrowband band-pass filters to one or a few predefined frequency bands and then use amplitude thresholding to identify oscillatory events, but detection outcomes can be highly sensitive to these choices. Although recent unsupervised alternatives based on hidden Markov models (HMMs) address these limitations, they still require the number of states to be specified in advance and can underfit or overfit when this number is misspecified. We propose a Bayesian nonparametric method that identifies distinct oscillatory states while inferring an appropriate number of states directly from the data. This method combines time-delay embedding (TDE) with the Dirichlet-process Gaussian mixture model (DP-GMM). TDE augments the signal with time-shifted copies, enabling the DP-GMM to capture frequency-specific local autocovariance structures, while the Dirichlet-process prior adapts model complexity by pruning inactive components. We benchmarked the approach against a filter-based thresholding method and the time-delay embedded HMM using single-channel synthetic data designed to mimic neural time series (e.g., EEG, MEG, and local field potentials), with multiple frequency components masked by 1/f-like noise. In this setting, the proposed model reliably recovered multiple distinct frequency components under noisy conditions while also inferring the number of oscillatory states. Applied to a resting-state motor-cortex MEG dataset, the model identified multiple frequency-selective, short-lived oscillatory states alongside distinct aperiodic states with different spectral profiles. These states exhibited substantial inter-individual heterogeneity in peak frequency, occurrence rate, and power. Overall, this provides an unsupervised framework for discovering frequency-selective oscillatory states without predefining frequency bands or fixing the number of states.",
+      "authors": [
+        "Yamada, S.",
+        "Nagel, S. E.",
+        "Kobeleva, X.",
+        "Schmidt, R."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-25T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2025.12.20.695571v3.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Bayesian nonparametric method for identifying neural oscillatory states relevant to cognitive load",
+      "llm_evidence_cn": "贝叶斯无参数方法识别与认知负荷相关的神经振荡状态",
+      "llm_evidence": "贝叶斯无参数方法识别与认知负荷相关的神经振荡状态",
+      "canonical_evidence": "贝叶斯无参数方法识别与认知负荷相关的神经振荡状态",
+      "llm_tldr_en": "This paper develops a Bayesian nonparametric method to identify frequency-selective neural oscillatory states without predefining the number of states, overcoming limitations of bandpass filtering and hidden Markov models, enabling more accurate detection of oscillatory events from EEG/MEG data.",
+      "llm_tldr_cn": "针对传统滤波和隐马尔可夫模型在识别神经振荡时需预设状态数量的限制，本文提出了一种贝叶斯无参数方法，能够自动确定频谱不同的振荡状态数量。该方法在合成和真实EEG/MEG数据上优于现有方法，为认知负荷评估中关键的神经振荡分析提供了更灵活的统计工具。",
+      "llm_tldr": "针对传统滤波和隐马尔可夫模型在识别神经振荡时需预设状态数量的限制，本文提出了一种贝叶斯无参数方法，能够自动确定频谱不同的振荡状态数量。该方法在合成和真实EEG/MEG数据上优于现有方法，为认知负荷评估中关键的神经振荡分析提供了更灵活的统计工具。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
