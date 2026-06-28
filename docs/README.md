@@ -6,41 +6,36 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-27
-- 运行时间：2026-06-27 21:42:16 UTC
+- 最新运行日期：2026-06-28
+- 运行时间：2026-06-28 20:59:45 UTC
 - 运行状态：成功
-- 本次总论文数：6
+- 本次总论文数：5
 - 精读区：0
-- 速读区：6
+- 速读区：5
 
 ### 今日简报（AI）
-今日速读6篇论文，聚焦脑电信号重建、低通道脑机接口与精神分裂症脑网络三大热点。  
-最值得关注：条件流匹配实现脑电到语音重建（NeuroSonic），以及边界感知上下文增强低通道EEG代理的性能。  
-建议关注脑电语音合成与低功耗脑机接口的落地应用，尤其是精神分裂症等脑疾病的连接组分析方向。
-- 详情：[/202606/27/README](/202606/27/README)
+今天速读5篇论文，聚焦认知负荷、脑网络动态与轻度认知障碍检测。最值得关注两个方向：事件驱动眼动识别认知负荷（EveLoad）和脑相位相干网络动态分析。建议普通读者重点关注认知状态实时监测技术，对脑健康评估有实用价值。
+- 详情：[/202606/28/README](/202606/28/README)
 
 ### 精读区论文标签
 - 本次无精读推荐。
 
 ### 速读区论文标签
-1. [NeuroSonic: Conditional Flow Matching for EEG-to-Speech Reconstruction](/202606/27/2606.24087v1-neurosonic-conditional-flow-matching-for-eeg-to-speech-reconstruction)  
+1. [EveLoad: Cognitive Workload Recognition from Event-Based Eye Movements](/202606/28/2606.25177v1-eveload-cognitive-workload-recognition-from-event-based-eye-movements)  
    标签：评分：7.0/10、query:pbci-load
-   evidence：基于条件流匹配的脑电基础模型
-2. [Boundary-Aware Context Grounding for A Low-Channel EEG Agent](/202606/27/2606.26519v1-boundary-aware-context-grounding-for-a-low-channel-eeg-agent)  
+   evidence：基于事件眼动的认知负荷识别深度学习
+2. [Uncovering dynamic human brain phase coherence networks](/202606/28/biorxiv-10-1101-2024-11-15-623830-v5-uncovering-dynamic-human-brain-phase-coherence-networks)  
    标签：评分：7.0/10、query:robust-eeg
-   evidence：提供一个低通道脑电处理框架，包含质量控制和频谱分析，增强鲁棒性
-3. [aNy-way ICA and its application to estimate cortico-thalamo-cerebellar functional links in schizophrenia](/202606/27/biorxiv-10-1101-2025-06-02-657541-v2-any-way-ica-and-its-application-to-estimate-cortico-thalamo-cerebellar-functional-links-in-schizophrenia)  
-   标签：评分：7.0/10、query:robust-eeg
-   evidence：提出的aNy-way ICA方法可应用于EEG伪影去除
-4. [Bayesian Nonparametric Identification of Frequency-Selective Neural Oscillatory States](/202606/27/biorxiv-10-64898-2025-12-20-695571-v3-bayesian-nonparametric-identification-of-frequency-selective-neural-oscillatory-states)  
-   标签：评分：7.0/10、query:pbci-load
-   evidence：贝叶斯无参数方法识别与认知负荷相关的神经振荡状态
-5. [Generative Modeling for Physiological Signals](/202606/27/2606.23864v1-generative-modeling-for-physiological-signals)  
-   标签：评分：6.0/10、query:robust-eeg
-   evidence：生理信号生成建模综述，方法可用于EEG去噪与增强
-6. [An exploratory behavioral and electroencephalographic study of artificial intelligence-assisted learning modes in high school students](/202606/27/2606.26579v1-an-exploratory-behavioral-and-electroencephalographic-study-of-artificial-intelligence-assisted-learning-modes-in-high-school-students)  
+   evidence：基于相位的混合建模，可对抗噪声和伪迹，实现鲁棒连接分析
+3. [Interpretable Concept-Guided Polynomial Tabular Kolmogorov-Arnold Network for EEG-Based Mild Cognitive Impairment Detection](/202606/28/2606.25434v1-interpretable-concept-guided-polynomial-tabular-kolmogorov-arnold-network-for-eeg-based-mild-cognitive-impairment-detection)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：基于EEG的认知负荷估计在AI辅助学习中的应用
+   evidence：基于EEG的认知障碍检测与使用深度学习的认知负荷评估目标相似
+4. [Drowsiness alters the neural dynamics but not the core computations of multisensory integration](/202606/28/biorxiv-10-64898-2026-01-12-699055-v2-drowsiness-alters-the-neural-dynamics-but-not-the-core-computations-of-multisensory-integration)  
+   标签：评分：6.0/10、query:pbci-load
+   evidence：基于EEG的警觉性/认知负荷研究
+5. [Characterizing load-dependent changes in whole-brain activity patterns during an extended N-back task](/202606/28/biorxiv-10-64898-2026-06-19-733380-v1-characterizing-load-dependent-changes-in-whole-brain-activity-patterns-during-an-extended-n-back-task)  
+   标签：评分：6.0/10、query:pbci-load
+   evidence：使用N-back任务的负荷依赖脑活动模式
 
 
 <div class="dpr-home-promo-card">

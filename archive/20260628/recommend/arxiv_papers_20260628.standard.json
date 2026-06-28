@@ -1,0 +1,222 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-28T20:58:40.373070+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 5,
+    "quick_skim_target": 13,
+    "quick_selected": 5
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.25177v1",
+      "source": "arxiv",
+      "title": "EveLoad: Cognitive Workload Recognition from Event-Based Eye Movements",
+      "abstract": "Cognitive workload monitoring is important for adaptive rehabilitation and assistive interfaces, where task difficulty, pacing, and feedback should be adjusted according to the user's cognitive state to avoid overload and under-challenge. Emerging extended reality and robot-assisted rehabilitation environments provide controllable training tasks, but they require unobtrusive sensing methods that can capture rapid ocular dynamics during interaction. Existing eye-movement-based cognitive workload recognition methods mainly rely on frame-based eye trackers, which often suffer from limited temporal resolution and degraded robustness under rapid eye movements. In contrast, event cameras provide microsecond-level temporal resolution, high dynamic range and low latency, making them suitable for capturing fine-grained ocular dynamics. Many previous studies rely on free-viewing or similar paradigms, where gaze locations can vary across tasks. As a result, models may learn associations between gaze-location distributions and cognitive workload, rather than workload-related eye movement characteristics themselves. In this work, we introduce EveLoad, which, to the best of our knowledge, is the first event-based eye-movement dataset with graded cognitive workload annotations, collected from 20 healthy participants under spatially constrained and task-driven conditions using a controlled N-back-guided fixation paradigm. Based on this dataset, we establish a benchmark for cognitive workload recognition with six workload levels and propose a learning framework that encodes spatiotemporal event representations. Experimental results show that our approach achieves an average subject-specific accuracy of 96.36% and 96.13% under mixed random split evaluation. These results suggest that event-based eye movements may provide a useful sensing pathway for future workload-aware rehabilitation.",
+      "authors": [
+        "Guorui Lu",
+        "Shaohua Guan",
+        "Zhen Xu",
+        "Qinyu Chen"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.HC"
+      ],
+      "published": "2026-06-23T21:06:40+00:00",
+      "link": "https://arxiv.org/pdf/2606.25177v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "cognitive workload recognition using deep learning (event-based eye movements)",
+      "llm_evidence_cn": "基于事件眼动的认知负荷识别深度学习",
+      "llm_evidence": "基于事件眼动的认知负荷识别深度学习",
+      "canonical_evidence": "基于事件眼动的认知负荷识别深度学习",
+      "llm_tldr_en": "EveLoad uses event cameras and deep learning to recognize cognitive workload from eye movements, achieving better robustness than traditional frame-based trackers under rapid gaze shifts.",
+      "llm_tldr_cn": "本文针对认知负荷监测中眼动追踪时间分辨率低的问题，提出基于事件相机的认知负荷识别方法EveLoad。利用事件相机的高时间分辨率和动态范围，捕获快速眼动，结合深度学习模型进行认知负荷识别。实验表明该方法在快速眼动场景下鲁棒性优于传统帧基方法。该工作为认知负荷监测提供了新的非侵入式传感途径，适用于自适应康复和辅助接口。",
+      "llm_tldr": "本文针对认知负荷监测中眼动追踪时间分辨率低的问题，提出基于事件相机的认知负荷识别方法EveLoad。利用事件相机的高时间分辨率和动态范围，捕获快速眼动，结合深度学习模型进行认知负荷识别。实验表明该方法在快速眼动场景下鲁棒性优于传统帧基方法。该工作为认知负荷监测提供了新的非侵入式传感途径，适用于自适应康复和辅助接口。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.25434v1",
+      "source": "arxiv",
+      "title": "Interpretable Concept-Guided Polynomial Tabular Kolmogorov-Arnold Network for EEG-Based Mild Cognitive Impairment Detection",
+      "abstract": "Early and scalable detection of mild cognitive impairment (MCI) remains an unresolved clinical challenge. Existing EEG-based screening approaches are constrained by handcrafted feature pipelines that discard neurophysiologically meaningful domain structure and deep learning classifiers that sacrifice interpretability for performance. No existing work unifies physiologically organized concept encoders, cross-concept interaction modeling, and nonlinear tabular classification in a sleep EEG-based MCI detection framework. This study proposes Concept-guided Polynomial-transformed Tabular learning using Kolmogorov-Arnold Network (CPTabKAN), which maps heterogeneous EEG-derived features into domain-informed concept representations, expands them via degree-2 polynomial transformation to expose first- and second-order interactions, and applies a Fourier-parameterized TabKAN classifier to learn nonlinear decision boundaries. CPTabKAN was evaluated on the Study of Osteoporotic Fractures cohort (372 subjects, overnight polysomnography), using 1,379 features organized into ten physiologically motivated concept groups. Under 10-fold cross-validation, CPTabKAN-Second Order achieved a weighted F1-score of 0.9038 (SD 0.034), outperforming GradientBoosting by 5.65 percentage points (t(9)=1.934,p=0.043, one-sided paired test), with advantages persisting under SMOTE-based balancing. Ablation analysis confirmed independent contributions from each component. Concept importance analysis revealed that power spectral density, multi-scale entropy, and Hjorth parameters dominated first-order weights, while cross-concept interactions involving Lempel-Ziv-Welch complexity, statistics, demographics, and slow oscillations exceeded all first-order scores. These results demonstrate that concept-structured, interaction-aware tabular learning surfaces physiologically coherent reasoning, supporting clinical trust.",
+      "authors": [
+        "Yosef Bernardus Wirian",
+        "Qiang Cheng"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-24T05:54:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.25434v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG-based cognitive impairment detection shares goal of cognitive assessment using deep learning",
+      "llm_evidence_cn": "基于EEG的认知障碍检测与使用深度学习的认知负荷评估目标相似",
+      "llm_evidence": "基于EEG的认知障碍检测与使用深度学习的认知负荷评估目标相似",
+      "canonical_evidence": "基于EEG的认知障碍检测与使用深度学习的认知负荷评估目标相似",
+      "llm_tldr_en": "Proposes CPTabKAN, a deep learning network for EEG-based MCI detection that integrates concept encoders and cross-concept interactions, offering interpretable classification on sleep EEG features.",
+      "llm_tldr_cn": "现有EEG筛查方法受限于手工特征和不可解释的深度学习模型。该文提出CPTabKAN网络，将生理学概念编码器、跨概念交互建模和非线性表格分类统一到基于睡眠EEG的轻度认知障碍检测框架中。该方法在保留可解释性的同时提升了分类性能，为认知功能的自动化评估提供了新途径。",
+      "llm_tldr": "现有EEG筛查方法受限于手工特征和不可解释的深度学习模型。该文提出CPTabKAN网络，将生理学概念编码器、跨概念交互建模和非线性表格分类统一到基于睡眠EEG的轻度认知障碍检测框架中。该方法在保留可解释性的同时提升了分类性能，为认知功能的自动化评估提供了新途径。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-1101-2024-11-15-623830-v5",
+      "source": "biorxiv",
+      "title": "Uncovering dynamic human brain phase coherence networks",
+      "abstract": "Complex cognitive functions rely on coordinated communication between distributed brain regions, yet capturing these interactions as they evolve over time remains challenging. Traditional analyses of functional brain connectivity largely rely on correlations in signal amplitude, which are sensitive to noise and artifacts such as head motion. Here, we introduce a mixture modeling approach that focuses on the phase of brain signals, allowing dynamic patterns of large-scale synchronization in brain phase coherence networks to be studied directly and in their entirety. We lay the mathematical and conceptual groundwork for phase modeling and introduce the complex angular central Gaussian mixture model, providing a principled way to analyze phase-based interactions across the brain. Applied to fMRI data, the model identifies recurring states of brain-wide synchronized activity that reliably distinguish cognitive tasks and generalize across previously unseen individuals, without requiring any task labels during training. These results show that modeling signal phase offers a clean and informative view of brain synchronization dynamics, opening new avenues for studying large-scale neural coordination.",
+      "authors": [
+        "Olsen, A. S.",
+        "Brammer, A.",
+        "Fisher, P. M.",
+        "Moerup, M."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-26T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2024.11.15.623830v5.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "phase-based mixture modeling for robust brain connectivity against noise and artifacts",
+      "llm_evidence_cn": "基于相位的混合建模，可对抗噪声和伪迹，实现鲁棒连接分析",
+      "llm_evidence": "基于相位的混合建模，可对抗噪声和伪迹，实现鲁棒连接分析",
+      "canonical_evidence": "基于相位的混合建模，可对抗噪声和伪迹，实现鲁棒连接分析",
+      "llm_tldr_en": "Introduces complex angular central Gaussian mixture model to analyze dynamic phase coherence networks from brain signals, robust to amplitude noise and artifacts.",
+      "llm_tldr_cn": "传统功能连接分析依赖信号幅度相关，易受噪声和头动伪迹干扰。该文提出复杂角度中心高斯混合模型，专注于脑信号相位以研究大规模同步动态模式。该方法提供了原理性方式分析基于相位的相互作用，对噪声和伪迹具有鲁棒性，可用于构建鲁棒的EEG处理框架。",
+      "llm_tldr": "传统功能连接分析依赖信号幅度相关，易受噪声和头动伪迹干扰。该文提出复杂角度中心高斯混合模型，专注于脑信号相位以研究大规模同步动态模式。该方法提供了原理性方式分析基于相位的相互作用，对噪声和伪迹具有鲁棒性，可用于构建鲁棒的EEG处理框架。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-21",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-01-12-699055-v2",
+      "source": "biorxiv",
+      "title": "Drowsiness alters the neural dynamics but not the core computations of multisensory integration",
+      "abstract": "Fluctuations in alertness shape perception and behaviour, yet how they affect the brains ability to integrate information across senses remains poorly understood. Here we investigated whether multisensory integration is preserved as humans transition from wakefulness to sleep. Participants (18 females, 8 males) performed an audio-tactile detection task while electroencephalography tracked spontaneous declines in alertness. Behaviourally, multisensory stimulation continued to facilitate responses during drowsiness, despite slowing and increased omissions. Although race-model predictions were consistent with preserved evidence for multisensory integration, event-related signatures of multisensory interactions were attenuated or no longer detectable during drowsiness. Crucially, multivariate decoding showed that multisensory neural representations remained detectable, although less temporally stable, and early cross-state generalization revealed shared representational structure across alertness levels, indicating preserved core multisensory computations. These findings show that multisensory integration remains functional but dynamically altered as alertness declines, revealing how the brain maintains adaptive behaviour during the wake-to-sleep transition.\n\nSignificance StatementMultisensory integration has often been described as a stable and automatic perceptual process. However, growing evidence indicates that it can be modulated by ongoing brain states and cognitive demands. Here, we ask whether this computation remains invariant as alertness declines. We show that multisensory integration is neither abolished nor fully invariant during drowsiness. Instead, behavioural benefits are maintained despite less stable neural dynamics. Although event-related responses are attenuated, core multisensory representations remain shared across levels of alertness. These findings indicate that multisensory integration is preserved across fluctuations in alertness, while their neural dynamics are flexibly altered as alertness decreases.",
+      "authors": [
+        "Alameda, C.",
+        "Avancini, C.",
+        "Sanabria, D.",
+        "Bekinschtein, T. A.",
+        "Ciria, L. F."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-25T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.01.12.699055v2.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG study on drowsiness and multisensory integration, relevant to cognitive load or mental workload assessment",
+      "llm_evidence_cn": "基于EEG的警觉性/认知负荷研究",
+      "llm_evidence": "基于EEG的警觉性/认知负荷研究",
+      "canonical_evidence": "基于EEG的警觉性/认知负荷研究",
+      "llm_tldr_en": "This EEG study on multisensory integration during drowsiness shows alertness effects on neural dynamics, relevant to passive BCI for cognitive load.",
+      "llm_tldr_cn": "该研究利用EEG记录并分析了从清醒到嗜睡过程中听觉-触觉检测任务下的脑电反应，发现嗜睡减弱了多感觉整合的事件相关电位特征，但行为上仍保持整合。这项工作为被动BCI中认知负荷/警觉性评估提供了神经动力学依据。",
+      "llm_tldr": "该研究利用EEG记录并分析了从清醒到嗜睡过程中听觉-触觉检测任务下的脑电反应，发现嗜睡减弱了多感觉整合的事件相关电位特征，但行为上仍保持整合。这项工作为被动BCI中认知负荷/警觉性评估提供了神经动力学依据。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-19-733380-v1",
+      "source": "biorxiv",
+      "title": "Characterizing load-dependent changes in whole-brain activity patterns during an extended N-back task",
+      "abstract": "Working memory (WM) is a core cognitive function that supports goal-directed behavior by temporarily maintaining and manipulating information. One of the most widely used paradigms for investigating WM function is the N-back task, and numerous neuroimaging studies have examined load-dependent neural responses using a variety of analytical approaches. However, most previous studies have focused on low-to-moderate load ranges (primarily 0-3-back), and it remains unclear how whole-brain activity patterns reconfigure across a broader range of WM demands, including conditions approaching capacity limits. In the present study, we investigated behavioral performance and whole-brain activity patterns across an extended N-back task ranging from 0-back to 7-back. Behavioral analyses revealed that discrimination sensitivity (d') decreased nonlinearly with increasing WM load, whereas reaction time (RT) exhibited an inverted-U pattern, peaking at intermediate load conditions. To characterize load-dependent whole-brain activity patterns, we computed relative activation maps by subtracting the participant-wise mean activation map across all conditions from each condition-specific activation map. Spatial similarity analyses with the Yeo 7-network templates revealed that low-load conditions showed relatively high similarity to default mode network (DMN)-related patterns. Similarity to the dorsal attention network (DAN) and frontoparietal network (FPN) was maximal at intermediate load levels, indicating load-dependent changes in network similarity profiles. High-load conditions were characterized by partial re-emergence of DMN-related patterns, accompanied by reduced DAN/FPN similarity. In addition, semantic similarity analysis using Neurosynth-derived semantic maps revealed relatively high similarity to default mode-related and self-referential representations under low-load conditions. Intermediate-load conditions showed strong correspondence with working memory- and executive control-related representations, whereas high-load conditions exhibited increased similarity to salience-, aversive/interoceptive-, and inhibitory-control-related representations. Together, these findings suggest that increasing WM load is associated not merely with stronger activation, but with changes in whole-brain activity patterns accompanied by nonlinear changes in network similarity profiles across levels of cognitive demand. Furthermore, the relative activation map-based whole-brain pattern analysis used in this study may provide a useful approach for evaluating changes in whole-brain state representations associated with cognitive load.",
+      "authors": [
+        "Chiyohara, S.",
+        "Asai, T.",
+        "Hiromitsu, K.",
+        "Imamizu, H."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-24T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.19.733380v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "load-dependent brain activity patterns using N-back task",
+      "llm_evidence_cn": "使用N-back任务的负荷依赖脑活动模式",
+      "llm_evidence": "使用N-back任务的负荷依赖脑活动模式",
+      "canonical_evidence": "使用N-back任务的负荷依赖脑活动模式",
+      "llm_tldr_en": "Investigates whole-brain activity patterns across extended N-back load levels, revealing load-dependent reconfiguration.",
+      "llm_tldr_cn": "该论文通过扩展N-back任务研究了工作记忆负荷依赖的全脑活动模式变化，发现从低负荷到接近容量极限的过程中，大脑活动模式发生系统性重配置，为认知负荷评估提供了神经影像学证据。",
+      "llm_tldr": "该论文通过扩展N-back任务研究了工作记忆负荷依赖的全脑活动模式变化，发现从低负荷到接近容量极限的过程中，大脑活动模式发生系统性重配置，为认知负荷评估提供了神经影像学证据。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
