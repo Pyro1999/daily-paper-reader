@@ -1,0 +1,54 @@
+{
+  "label": "2026-06-29",
+  "date": "2026-06-29",
+  "generated_at": "2026-06-29T22:04:01",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202606/29/2606.25718v1-what-does-the-brain-see-multiview-neural-representations-to-demystify-the-brain-visual-alignment",
+      "section": "deep",
+      "title_en": "What Does the Brain See? Multiview Neural Representations to Demystify the Brain-Visual Alignment",
+      "authors": "Salini Yadav, Taveena Lotey, Pravendra Singh, Partha Pratim Roy",
+      "date": "2026-06-24",
+      "pdf": "https://arxiv.org/pdf/2606.25718v1",
+      "score": "8.0",
+      "evidence": "使用深度学习进行多视图脑电表征学习，解决脑电信号挑战",
+      "tldr": "脑电图(EEG)视觉解码面临信噪比低、非平稳等问题。本文提出多视图EEG表示学习框架，联合建模时态动力学、频谱分解与电极图结构，通过对比学习对齐视觉语义。在THINGS-EEG上达到54.8% Top-1和85.6% Top-5精度（内被试），跨被试15.3% Top-1和45.4% Top-5，首次跨会话评估达40.8% Top-1。表明显式建模多视图神经结构能提升语义对齐与泛化能力。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Zero-shot visual decoding from electroencephalography (EEG) aims to infer visual semantics from non-invasive neural recordings, but remains challenging due to the low signal-to-noise ratio, non-stationarity, and limited spatial resolution of EEG. Existing EEG-vision alignment methods often rely on holistic EEG embeddings, which can obscure the complementary temporal, spectral, and spatial structure underlying visual perception. We introduce a unified multiview EEG representation learning framework for aligning brain responses with visual semantic embeddings. Our method builds an EEG encoder that jointly models three complementary views: input-conditioned state-space temporal dynamics, learnable wavelet-based spectral decomposition for sample-adaptive frequency modeling, and attention-modulated graph learning for structured electrode interactions. The resulting multiview EEG embeddings are fused and aligned with pretrained visual representations in a shared semantic space using contrastive learning with EEG-specific regularization, enabling 200-way zero-shot visual classification. Experiments on THINGS-EEG benchmark show that our method achieves state-of-the-art performance, with 54.8% Top-1 and 85.6% Top-5 accuracy in the within-subject setting and 15.3% Top-1 and 45.4% Top-5 accuracy in the cross-subject setting. We further present the first systematic cross-session EEG-image decoding evaluation, achieving 40.8% Top-1 and 78.0% Top-5 accuracy. These results suggest that explicitly modeling multiview neural structure improves both semantic alignment and generalization in EEG-based visual decoding.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/29/2606.26519v2-what-the-llm-should-not-say-boundary-aware-context-grounding-for-a-seven-channel-eeg-agent",
+      "section": "quick",
+      "title_en": "What the LLM Should Not Say: Boundary-Aware Context Grounding for A Seven-Channel EEG Agent",
+      "authors": "Zhiyuan Xu, Yueqing Dai, Junling Li, Junwen Luo",
+      "date": "2026-06-25",
+      "pdf": "https://arxiv.org/pdf/2606.26519v2",
+      "score": "7.0",
+      "evidence": "带有质量控制和确定性引擎的鲁棒EEG处理框架",
+      "tldr": "大语言模型辅助科学软件时，由于缺乏对硬件和算法边界的认知，在低通道EEG分析中容易生成看似合理但实际无依据的解释。本文提出NeuraDock Agent架构，将确定性数值引擎与硬件感知语言层分离，数值引擎负责原始信号处理和工作流执行，LLM仅接收经过允许列表的摘要和版本化上下文包，从而感知硬件限制和实现边界。在数值重复、故障注入和边界对抗问题测试中，系统表现出稳定性和有效的拒绝机制。该工作为EEG代理提供了实用的边界感知方法，但尚未达到临床验证阶段。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "Large language models (LLMs) can make scientific software easier to use. However, a general model does not automatically know which measurements a particular sensor can support, which algorithms are implemented in the current software, or which conclusions are justified by a computed result. These distinctions are especially important for low-channel electroencephalography (EEG), where sparse spatial coverage and variable signal quality make plausible but unsupported interpretations easy to produce. We present NeuraDock Agent, an open-source architecture that separates a deterministic local EEG engine from a hardware-aware language layer. The numerical engine parses recordings, performs quality control, executes reviewed spectral workflows, and writes machine-readable artifacts. The LLM receives only a compact, allowlisted summary and a versioned context pack. The context describes the seven-channel hardware, reviewed workflows, result fields, implementation boundaries, scientific limits, and reference cases. Raw EEG and dense per-sample arrays remain local   We evaluate the system at three levels. First, 12 recordings produced identical structured results over ten numerical repetitions, and a complete Rest/Task run produced identical result, report, and figure hashes over three repetitions. Second, request-capture and failure-injection experiments confirmed the tested data boundary and preservation of local artifacts under HTTP, malformed-output, and connection failures. Third, a boundary-awareness benchmark tested 36 ordinary and adversarial questions under four context ablations and two LLMs, yielding 288 outputs.These results support hardware- and implementation-aware grounding as a practical mechanism for calibrating what an EEG agent accepts, qualifies, or refuses; they do not establish clinical validity or a validated absolute cognitive-load index.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/29/biorxiv-10-64898-2026-06-18-733200-v1-comcat-combating-covariate-effects-in-brain-analysis",
+      "section": "quick",
+      "title_en": "ComCat: Combating Covariate Effects in Brain Analysis",
+      "authors": "Gaser, C., Dahnke, R., Ganjgahi, H., Nichols, T.",
+      "date": "2026-06-23",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.06.18.733200v1.full.pdf",
+      "score": "6.0",
+      "evidence": "ComCat框架消除脑数据中的连续混杂变量",
+      "tldr": "多站点脑影像分析中，现有ComBat仅处理分类站点效应，无法消除连续混杂变量（如图像质量、头动）。ComCat扩展ComBat，通过B样条基展开建模连续协变量的平滑非线性效应，同时去除站点和连续混杂。在五个多样化数据集（含旅行幻影、单扫描仪变参数、运动伪影等）上，ComCat相比ComBat-GAM降低脑龄预测平均绝对误差（MAE），且能保留疾病组间差异（如ABIDE中ASD与对照）。ComCat无需站点标签也可工作，适用于体素/表面形态学、规范建模和机器学习预测，提升多站点数据整合的鲁棒性。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "As neuroimaging analysis shifts toward large-scale, multi-site studies, managing the unwanted variability introduced by combining heterogeneous datasets has become a critical challenge. Although tools such as ComBat and its neuroimaging extensions are widely used to address this variability, they only permit the modeling of categorical site effects and cannot account for continuous sources of confounding, such as image quality, head motion, and acquisition parameters. We introduce ComCat, an extension of the ComBat framework that preserves biologically relevant covariates while removing the effects of categorical site indicators and continuous nuisance variables. The latter are modeled as smooth nonlinear functions via B-spline basis expansion. ComCat is applicable to a broad range of brain analysis tasks, including voxel- and surface-based morphometry, normative modeling, and machine learning-based prediction. To demonstrate its capabilities, we evaluated ComCat on brain age prediction across five datasets covering complementary multi-site harmonization scenarios: ON-Harmony (10 subjects x 6 scanners; n = 80); the Buchert traveling-phantom dataset (1 subject x 116 scanners; n = 531); the Tohoku single-scanner, varying-acquisition dataset (n = 121); MR-ART (148 subjects with varying motion levels); and an ABIDE subset comprising 229 control subjects and 208 individuals with autism spectrum disorder across 14 scanners. Using image quality measures derived from CAT12 as continuous nuisance variables, ComCat reduced the mean absolute error (MAE) in brain age prediction relative to ComBat-GAM in all five datasets, including the two scenarios where site information was unavailable or uninformative. In the ABIDE dataset, ComCat improved harmonization while preserving the difference between the control and ASD groups, demonstrating that scanner-related variance can be removed without affecting biologically meaningful signals. ComCat can operate with or without site labels and is agnostic to the source of image quality metrics.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

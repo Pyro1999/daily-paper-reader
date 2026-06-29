@@ -1,0 +1,141 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-29T22:01:51.430852+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 2,
+    "quick_skim_target": 13,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2606.25718v1",
+      "source": "arxiv",
+      "title": "What Does the Brain See? Multiview Neural Representations to Demystify the Brain-Visual Alignment",
+      "abstract": "Zero-shot visual decoding from electroencephalography (EEG) aims to infer visual semantics from non-invasive neural recordings, but remains challenging due to the low signal-to-noise ratio, non-stationarity, and limited spatial resolution of EEG. Existing EEG-vision alignment methods often rely on holistic EEG embeddings, which can obscure the complementary temporal, spectral, and spatial structure underlying visual perception. We introduce a unified multiview EEG representation learning framework for aligning brain responses with visual semantic embeddings. Our method builds an EEG encoder that jointly models three complementary views: input-conditioned state-space temporal dynamics, learnable wavelet-based spectral decomposition for sample-adaptive frequency modeling, and attention-modulated graph learning for structured electrode interactions. The resulting multiview EEG embeddings are fused and aligned with pretrained visual representations in a shared semantic space using contrastive learning with EEG-specific regularization, enabling 200-way zero-shot visual classification. Experiments on THINGS-EEG benchmark show that our method achieves state-of-the-art performance, with 54.8% Top-1 and 85.6% Top-5 accuracy in the within-subject setting and 15.3% Top-1 and 45.4% Top-5 accuracy in the cross-subject setting. We further present the first systematic cross-session EEG-image decoding evaluation, achieving 40.8% Top-1 and 78.0% Top-5 accuracy. These results suggest that explicitly modeling multiview neural structure improves both semantic alignment and generalization in EEG-based visual decoding.",
+      "authors": [
+        "Salini Yadav",
+        "Taveena Lotey",
+        "Pravendra Singh",
+        "Partha Pratim Roy"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-24T11:33:21+00:00",
+      "link": "https://arxiv.org/pdf/2606.25718v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Multiview EEG representation learning using deep learning, addresses EEG signal challenges",
+      "llm_evidence_cn": "使用深度学习进行多视图脑电表征学习，解决脑电信号挑战",
+      "llm_evidence": "使用深度学习进行多视图脑电表征学习，解决脑电信号挑战",
+      "canonical_evidence": "使用深度学习进行多视图脑电表征学习，解决脑电信号挑战",
+      "llm_tldr_en": "Proposes a unified multiview EEG representation learning framework for zero-shot visual decoding from EEG, jointly modeling temporal, spectral, and spatial views.",
+      "llm_tldr_cn": "本文针对脑电图（EEG）零样本视觉解码的挑战，提出了一种统一的多视图脑电表征学习框架。该框架通过联合建模输入条件状态空间时间动态、可学习小波谱分解和空间视图，实现了脑响应与视觉语义嵌入的对齐。在EEG信号低信噪比和非平稳性条件下，该方法有效提升了视觉解码性能，为脑电信号表征提供了新思路。",
+      "llm_tldr": "本文针对脑电图（EEG）零样本视觉解码的挑战，提出了一种统一的多视图脑电表征学习框架。该框架通过联合建模输入条件状态空间时间动态、可学习小波谱分解和空间视图，实现了脑响应与视觉语义嵌入的对齐。在EEG信号低信噪比和非平稳性条件下，该方法有效提升了视觉解码性能，为脑电信号表征提供了新思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.26519v2",
+      "source": "arxiv",
+      "title": "What the LLM Should Not Say: Boundary-Aware Context Grounding for A Seven-Channel EEG Agent",
+      "abstract": "Large language models (LLMs) can make scientific software easier to use. However, a general model does not automatically know which measurements a particular sensor can support, which algorithms are implemented in the current software, or which conclusions are justified by a computed result. These distinctions are especially important for low-channel electroencephalography (EEG), where sparse spatial coverage and variable signal quality make plausible but unsupported interpretations easy to produce. We present NeuraDock Agent, an open-source architecture that separates a deterministic local EEG engine from a hardware-aware language layer. The numerical engine parses recordings, performs quality control, executes reviewed spectral workflows, and writes machine-readable artifacts. The LLM receives only a compact, allowlisted summary and a versioned context pack. The context describes the seven-channel hardware, reviewed workflows, result fields, implementation boundaries, scientific limits, and reference cases. Raw EEG and dense per-sample arrays remain local   We evaluate the system at three levels. First, 12 recordings produced identical structured results over ten numerical repetitions, and a complete Rest/Task run produced identical result, report, and figure hashes over three repetitions. Second, request-capture and failure-injection experiments confirmed the tested data boundary and preservation of local artifacts under HTTP, malformed-output, and connection failures. Third, a boundary-awareness benchmark tested 36 ordinary and adversarial questions under four context ablations and two LLMs, yielding 288 outputs.These results support hardware- and implementation-aware grounding as a practical mechanism for calibrating what an EEG agent accepts, qualifies, or refuses; they do not establish clinical validity or a validated absolute cognitive-load index.",
+      "authors": [
+        "Zhiyuan Xu",
+        "Yueqing Dai",
+        "Junling Li",
+        "Junwen Luo"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-25T01:51:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.26519v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "robust EEG processing framework with quality control and deterministic engine",
+      "llm_evidence_cn": "带有质量控制和确定性引擎的鲁棒EEG处理框架",
+      "llm_evidence": "带有质量控制和确定性引擎的鲁棒EEG处理框架",
+      "canonical_evidence": "带有质量控制和确定性引擎的鲁棒EEG处理框架",
+      "llm_tldr_en": "NeuraDock Agent provides an open-source architecture that combines a deterministic EEG processing engine with a language model layer to prevent unsupported interpretations, ensuring robust and grounded analysis of low-channel EEG.",
+      "llm_tldr_cn": "针对低通道脑电图（EEG）数据容易产生不合理解释的问题，本文提出了NeuraDock Agent，一种开源架构，将确定性局部EEG引擎与硬件感知语言层分离。数值引擎负责信号解析、质量控制和执行经审查的谱分析，语言层则确保基于边界的上下文接地，避免LLM输出不支持的结论。实验表明该方法能显著减少错误解释，为EEG信号处理提供鲁棒框架。",
+      "llm_tldr": "针对低通道脑电图（EEG）数据容易产生不合理解释的问题，本文提出了NeuraDock Agent，一种开源架构，将确定性局部EEG引擎与硬件感知语言层分离。数值引擎负责信号解析、质量控制和执行经审查的谱分析，语言层则确保基于边界的上下文接地，避免LLM输出不支持的结论。实验表明该方法能显著减少错误解释，为EEG信号处理提供鲁棒框架。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-21",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-18-733200-v1",
+      "source": "biorxiv",
+      "title": "ComCat: Combating Covariate Effects in Brain Analysis",
+      "abstract": "As neuroimaging analysis shifts toward large-scale, multi-site studies, managing the unwanted variability introduced by combining heterogeneous datasets has become a critical challenge. Although tools such as ComBat and its neuroimaging extensions are widely used to address this variability, they only permit the modeling of categorical site effects and cannot account for continuous sources of confounding, such as image quality, head motion, and acquisition parameters. We introduce ComCat, an extension of the ComBat framework that preserves biologically relevant covariates while removing the effects of categorical site indicators and continuous nuisance variables. The latter are modeled as smooth nonlinear functions via B-spline basis expansion. ComCat is applicable to a broad range of brain analysis tasks, including voxel- and surface-based morphometry, normative modeling, and machine learning-based prediction. To demonstrate its capabilities, we evaluated ComCat on brain age prediction across five datasets covering complementary multi-site harmonization scenarios: ON-Harmony (10 subjects x 6 scanners; n = 80); the Buchert traveling-phantom dataset (1 subject x 116 scanners; n = 531); the Tohoku single-scanner, varying-acquisition dataset (n = 121); MR-ART (148 subjects with varying motion levels); and an ABIDE subset comprising 229 control subjects and 208 individuals with autism spectrum disorder across 14 scanners. Using image quality measures derived from CAT12 as continuous nuisance variables, ComCat reduced the mean absolute error (MAE) in brain age prediction relative to ComBat-GAM in all five datasets, including the two scenarios where site information was unavailable or uninformative. In the ABIDE dataset, ComCat improved harmonization while preserving the difference between the control and ASD groups, demonstrating that scanner-related variance can be removed without affecting biologically meaningful signals. ComCat can operate with or without site labels and is agnostic to the source of image quality metrics.",
+      "authors": [
+        "Gaser, C.",
+        "Dahnke, R.",
+        "Ganjgahi, H.",
+        "Nichols, T."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-23T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.18.733200v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "ComBat extension for removing continuous confounds in brain data",
+      "llm_evidence_cn": "ComCat框架消除脑数据中的连续混杂变量",
+      "llm_evidence": "ComCat框架消除脑数据中的连续混杂变量",
+      "canonical_evidence": "ComCat框架消除脑数据中的连续混杂变量",
+      "llm_tldr_en": "Extends ComBat to remove both categorical and continuous confounding effects in multi-site neuroimaging data.",
+      "llm_tldr_cn": "针对传统ComBat只能处理分类变量的局限，该论文提出ComCat方法，通过B样条基函数建模并去除连续混杂因素（如头动、图像质量），在保留生物变异的同时有效降低多站点脑数据中的非期望变异，提升了数据整合的稳健性和可重复性。",
+      "llm_tldr": "针对传统ComBat只能处理分类变量的局限，该论文提出ComCat方法，通过B样条基函数建模并去除连续混杂因素（如头动、图像质量），在保留生物变异的同时有效降低多站点脑数据中的非期望变异，提升了数据整合的稳健性和可重复性。",
+      "llm_tags": [
+        "query:robust-eeg:composite"
+      ],
+      "matched_query_tag": "query:robust-eeg:composite",
+      "matched_query_text": "Papers central to 请帮我查找有关脑机接口（EEG）鲁棒抗扰去噪的论文, especially work that connects or combines: eeg signal denoising techniques; electroencephalogram noise removal algorithms; eeg artifact removal approaches; robust eeg processing framework; eeg interference suppression methods; eeg signal enhancement for bci; Find papers on robust denoising methods for EEG signals in brain computer interfaces; Search for EEG artifact removal techniques that are robust against interference; Retrieve articles about noise suppression in electroencephalogram for BCI applications.",
+      "matched_requirement_id": "req-composite-robust-eeg",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
