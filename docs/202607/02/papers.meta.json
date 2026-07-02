@@ -1,0 +1,54 @@
+{
+  "label": "2026-07-02",
+  "date": "2026-07-02",
+  "generated_at": "2026-07-02T21:54:48",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202607/02/2606.30104v1-temporal-feature-extractors-in-eeg-foundation-models-a-controlled-comparison-including-a-pretrained-time-series-model",
+      "section": "deep",
+      "title_en": "Temporal Feature Extractors in EEG Foundation Models: A Controlled Comparison Including a Pretrained Time-Series Model",
+      "authors": "Ayşe Betül Yüce, Chris Joey Leffler, Sarun Varghese, Myra Spiliopoulou, Sebastian Stober",
+      "date": "2026-06-29",
+      "pdf": "https://arxiv.org/pdf/2606.30104v1",
+      "score": "8.0",
+      "evidence": "EEG基础模型时间特征提取器研究",
+      "tldr": "EEG基础模型面临时间特征提取器设计问题。本文在统一框架内比较线性、卷积和预训练TSFM（MOMENT）三种时间特征提取策略。运动想象任务中简单表征已足够，情绪识别任务则需更丰富时间建模。结果表明，即使未针对EEG调整，通用时间序列模型作为冻结特征提取器也有效。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Electroencephalography (EEG) foundation models aim to learn generalizable representations from large-scale brain recordings. However, the role of temporal feature extractors and whether pretrained time-series foundation models (TSFMs) can be effectively transferred to this setting remains underexplored. We conduct a controlled comparison of three temporal feature extraction strategies, including a linear baseline, a convolutional encoder, and a frozen pretrained TSFM (MOMENT), within a unified EEG foundation model. We evaluate their impact on representation quality using two downstream tasks: motor imagery and emotion recognition. Results reveal different trends across the evaluated benchmarks. On the motor imagery dataset, simple temporal representations perform competitively, whereas the emotion dataset benefits from richer temporal modeling. Although not specifically adapted to EEG, the pretrained TSFM serves as an effective temporal feature extractor, suggesting that general-purpose time-series representations can be transferred as frozen temporal feature extractors within EEG foundation models.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/02/2606.28202v1-an-enhanced-source-free-unsupervised-domain-adaptation-framework-for-cross-dataset-eeg-emotion-recognition-via-predictive-coding-and-test-time-training",
+      "section": "quick",
+      "title_en": "An Enhanced Source-Free Unsupervised Domain Adaptation Framework for Cross-Dataset EEG Emotion Recognition via Predictive Coding and Test-Time Training",
+      "authors": "Md Niaz Imtiaz, Naimul Khan",
+      "date": "2026-06-26",
+      "pdf": "https://arxiv.org/pdf/2606.28202v1",
+      "score": "6.0",
+      "evidence": "跨数据集脑电分类的深度学习域适应框架",
+      "tldr": "跨数据集脑电情感识别面临域偏移和源数据隐私限制。本文提出增强的无源无监督域适应框架，采用预测编码自监督预训练提取时序特征，通过类级聚类与预测不一致估计目标域结构，结合双阶段自适应正则化和局部一致性学习提升抗噪性，并引入轻量级测试时训练处理不确定样本。在DEAP、SEED、DREAMER上取得69.56%和63.03%等准确率，显著优于现有方法。贡献在于有效解决了大规模域差异和伪标签噪声问题。",
+      "tags": "query:pbci-load",
+      "abstract_en": "EEG-based emotion recognition is widely used in affective computing but suffers from poor generalization due to domain shifts caused by inter-subject variability, dataset differences, and recording conditions, especially in cross-dataset settings. Conventional unsupervised domain adaptation methods require source data, which is often unavailable due to privacy constraints. Although source-free UDA addresses this limitation, existing methods still struggle with large domain gaps, noisy pseudo-labels, and unstable adaptation. To address these challenges, we propose an enhanced source-free unsupervised domain adaptation (SF-UDA) framework for cross-dataset EEG emotion recognition. The framework introduces a non-contrastive predictive coding-based self-supervised pretraining strategy to learn robust and transferable EEG representations by modeling temporal dependencies in a reconstruction-based manner. During adaptation, we estimate target-domain structure through class-wise clustering and prediction disagreement, and optimize the model using a dual-stage strategy consisting of Multi-Loss Adaptive Regularization and Localized Consistency Learning, improving stability and neighborhood consistency under noisy pseudo-labels. We also propose a lightweight test-time training mechanism that enables selective online updates for uncertain samples using predictive reconstruction loss and entropy minimization. Experiments on DEAP, SEED, and DREAMER show consistent improvements over state-of-the-art SF-UDA methods, achieving 69.56% and 63.03% accuracy on SEED and DREAMER when trained on DEAP, and 61.38% and 68.90% when trained on SEED.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/02/biorxiv-10-64898-2026-06-27-734819-v1-closed-loop-optimization-of-a-high-dimensional-generative-latent-space-for-rhythmic-visual-response",
+      "section": "quick",
+      "title_en": "Closed-loop optimization of a high-dimensional generative latent space for rhythmic visual response",
+      "authors": "Livezey, J. A., Su, Y., Wolfer, S., Ingster, A., Klein, D. J., Hanina, A.",
+      "date": "2026-07-02",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.06.27.734819v1.full.pdf",
+      "score": "6.0",
+      "evidence": "使用非侵入式脑电图进行SSVEP闭环调制，与被动脑机接口相关",
+      "tldr": "神经振荡伴随多种认知状态，以往闭环调制主要依赖侵入记录并聚焦发放率。本文利用非侵入性EEG测量SSVEP相对功率，在10-40维潜空间中优化图像刺激参数以调节alpha/theta频带。实验在单次会话内成功调制，且优化刺激可泛化至新被试。结果表明闭环刺激优化是非侵入性节律神经调制的有效方法。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Neural oscillations accompany a wide range of cognitive states and behaviors including perception, memory, and movement, and modulating them is of growing interest for both basic neuroscience and clinical research. Previous demonstrations of closed-loop modulation of visual neural responses mainly relied on invasive recordings and focused on firing-rate maximization rather than rhythmic modulation. Here, we show that the relative power of steady-state visual evoked response (SSVEP), measured with readily-available, non-invasive electroencephalography, can be modulated in closed-loop as a function of image stimulus parameters for single participants within a single session. Stimulus optimization with flicker frequencies in the alpha and theta bands was successful in 10, 20, and 40 dimensional latent spaces. We also show that optimized stimuli generalize to new participants when shown in open-loop. Finally, we characterize the visual features that modulate relative SSVEP power and find that low-frequency spatial power in the image drives theta and alpha in opposite directions. Together, our results show that closed-loop stimulus optimization is a viable method for rhythmic neural modulation using noninvasive neuroimaging methods.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

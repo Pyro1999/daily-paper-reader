@@ -1,0 +1,142 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-02T21:52:44.240928+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 2,
+    "quick_skim_target": 13,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2606.30104v1",
+      "source": "arxiv",
+      "title": "Temporal Feature Extractors in EEG Foundation Models: A Controlled Comparison Including a Pretrained Time-Series Model",
+      "abstract": "Electroencephalography (EEG) foundation models aim to learn generalizable representations from large-scale brain recordings. However, the role of temporal feature extractors and whether pretrained time-series foundation models (TSFMs) can be effectively transferred to this setting remains underexplored. We conduct a controlled comparison of three temporal feature extraction strategies, including a linear baseline, a convolutional encoder, and a frozen pretrained TSFM (MOMENT), within a unified EEG foundation model. We evaluate their impact on representation quality using two downstream tasks: motor imagery and emotion recognition. Results reveal different trends across the evaluated benchmarks. On the motor imagery dataset, simple temporal representations perform competitively, whereas the emotion dataset benefits from richer temporal modeling. Although not specifically adapted to EEG, the pretrained TSFM serves as an effective temporal feature extractor, suggesting that general-purpose time-series representations can be transferred as frozen temporal feature extractors within EEG foundation models.",
+      "authors": [
+        "Ayşe Betül Yüce",
+        "Chris Joey Leffler",
+        "Sarun Varghese",
+        "Myra Spiliopoulou",
+        "Sebastian Stober"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-29T10:39:40+00:00",
+      "link": "https://arxiv.org/pdf/2606.30104v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG foundation models temporal feature extractor study",
+      "llm_evidence_cn": "EEG基础模型时间特征提取器研究",
+      "llm_evidence": "EEG基础模型时间特征提取器研究",
+      "canonical_evidence": "EEG基础模型时间特征提取器研究",
+      "llm_tldr_en": "This paper compares temporal feature extractors for EEG foundation models, including a pretrained time-series model, evaluated on motor imagery and emotion recognition, providing methodological insights for EEG foundation models.",
+      "llm_tldr_cn": "该论文系统比较了EEG基础模型中三种时间特征提取策略（线性基线、卷积编码器、预训练时间序列模型MOMENT），在运动想象和情绪识别任务上评估表示质量。发现不同基准下表现不同，为构建适用于认知负荷评估的EEG基础模型提供了重要方法学指导。",
+      "llm_tldr": "该论文系统比较了EEG基础模型中三种时间特征提取策略（线性基线、卷积编码器、预训练时间序列模型MOMENT），在运动想象和情绪识别任务上评估表示质量。发现不同基准下表现不同，为构建适用于认知负荷评估的EEG基础模型提供了重要方法学指导。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.28202v1",
+      "source": "arxiv",
+      "title": "An Enhanced Source-Free Unsupervised Domain Adaptation Framework for Cross-Dataset EEG Emotion Recognition via Predictive Coding and Test-Time Training",
+      "abstract": "EEG-based emotion recognition is widely used in affective computing but suffers from poor generalization due to domain shifts caused by inter-subject variability, dataset differences, and recording conditions, especially in cross-dataset settings. Conventional unsupervised domain adaptation methods require source data, which is often unavailable due to privacy constraints. Although source-free UDA addresses this limitation, existing methods still struggle with large domain gaps, noisy pseudo-labels, and unstable adaptation. To address these challenges, we propose an enhanced source-free unsupervised domain adaptation (SF-UDA) framework for cross-dataset EEG emotion recognition. The framework introduces a non-contrastive predictive coding-based self-supervised pretraining strategy to learn robust and transferable EEG representations by modeling temporal dependencies in a reconstruction-based manner. During adaptation, we estimate target-domain structure through class-wise clustering and prediction disagreement, and optimize the model using a dual-stage strategy consisting of Multi-Loss Adaptive Regularization and Localized Consistency Learning, improving stability and neighborhood consistency under noisy pseudo-labels. We also propose a lightweight test-time training mechanism that enables selective online updates for uncertain samples using predictive reconstruction loss and entropy minimization. Experiments on DEAP, SEED, and DREAMER show consistent improvements over state-of-the-art SF-UDA methods, achieving 69.56% and 63.03% accuracy on SEED and DREAMER when trained on DEAP, and 61.38% and 68.90% when trained on SEED.",
+      "authors": [
+        "Md Niaz Imtiaz",
+        "Naimul Khan"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-06-26T15:50:56+00:00",
+      "link": "https://arxiv.org/pdf/2606.28202v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Deep learning domain adaptation framework for cross-dataset EEG classification",
+      "llm_evidence_cn": "跨数据集脑电分类的深度学习域适应框架",
+      "llm_evidence": "跨数据集脑电分类的深度学习域适应框架",
+      "canonical_evidence": "跨数据集脑电分类的深度学习域适应框架",
+      "llm_tldr_en": "Proposes a source-free unsupervised domain adaptation framework for cross-dataset EEG emotion recognition using predictive coding and test-time training.",
+      "llm_tldr_cn": "该论文提出一种增强型无源无监督域适应框架，用于跨数据集脑电情感识别。方法利用预测编码和测试时训练解决域漂移、伪标签噪声和适应不稳定问题。在多个情感数据集上验证了有效性，提升了跨数据集泛化性能。该框架可推广至其他EEG分类任务如认知负荷评估。",
+      "llm_tldr": "该论文提出一种增强型无源无监督域适应框架，用于跨数据集脑电情感识别。方法利用预测编码和测试时训练解决域漂移、伪标签噪声和适应不稳定问题。在多个情感数据集上验证了有效性，提升了跨数据集泛化性能。该框架可推广至其他EEG分类任务如认知负荷评估。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-27-734819-v1",
+      "source": "biorxiv",
+      "title": "Closed-loop optimization of a high-dimensional generative latent space for rhythmic visual response",
+      "abstract": "Neural oscillations accompany a wide range of cognitive states and behaviors including perception, memory, and movement, and modulating them is of growing interest for both basic neuroscience and clinical research. Previous demonstrations of closed-loop modulation of visual neural responses mainly relied on invasive recordings and focused on firing-rate maximization rather than rhythmic modulation. Here, we show that the relative power of steady-state visual evoked response (SSVEP), measured with readily-available, non-invasive electroencephalography, can be modulated in closed-loop as a function of image stimulus parameters for single participants within a single session. Stimulus optimization with flicker frequencies in the alpha and theta bands was successful in 10, 20, and 40 dimensional latent spaces. We also show that optimized stimuli generalize to new participants when shown in open-loop. Finally, we characterize the visual features that modulate relative SSVEP power and find that low-frequency spatial power in the image drives theta and alpha in opposite directions. Together, our results show that closed-loop stimulus optimization is a viable method for rhythmic neural modulation using noninvasive neuroimaging methods.",
+      "authors": [
+        "Livezey, J. A.",
+        "Su, Y.",
+        "Wolfer, S.",
+        "Ingster, A.",
+        "Klein, D. J.",
+        "Hanina, A."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-02T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.27.734819v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "closed-loop SSVEP modulation with non-invasive EEG, relevant to passive BCI",
+      "llm_evidence_cn": "使用非侵入式脑电图进行SSVEP闭环调制，与被动脑机接口相关",
+      "llm_evidence": "使用非侵入式脑电图进行SSVEP闭环调制，与被动脑机接口相关",
+      "canonical_evidence": "使用非侵入式脑电图进行SSVEP闭环调制，与被动脑机接口相关",
+      "llm_tldr_en": "This paper demonstrates closed-loop optimization of steady-state visual evoked potential (SSVEP) power using non-invasive EEG, enabling single-session modulation of rhythmic visual responses.",
+      "llm_tldr_cn": "现有闭环神经调控多依赖侵入式记录，且侧重于速率最大化而非节律调制。本文利用非侵入式脑电图（EEG），在单次实验内通过闭环优化图像刺激参数来调节稳态视觉诱发电位（SSVEP）的相对功率，展示了基于EEG的被动脑机接口可行性，为认知状态评估提供了潜在工具。",
+      "llm_tldr": "现有闭环神经调控多依赖侵入式记录，且侧重于速率最大化而非节律调制。本文利用非侵入式脑电图（EEG），在单次实验内通过闭环优化图像刺激参数来调节稳态视觉诱发电位（SSVEP）的相对功率，展示了基于EEG的被动脑机接口可行性，为认知状态评估提供了潜在工具。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
