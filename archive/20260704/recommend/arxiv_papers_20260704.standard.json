@@ -1,0 +1,289 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-04T21:35:06.569611+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 3,
+    "deep_cap": 8,
+    "deep_selected": 3,
+    "quick_candidates": 3,
+    "quick_skim_target": 13,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2607.01795v1",
+      "source": "arxiv",
+      "title": "Single-Channel EEG-Based Cognitive Load Assessment in Online Learning: A Hybrid Deep Learning Approach",
+      "abstract": "Monitoring cognitive load during online learning could help instructors identify content that learners find difficult, but remote settings remove the visual cues that support this judgement in a classroom. We study whether a single-channel, consumer-grade EEG device (the NeuroSky MindWave Mobile 2) can distinguish easy from difficult educational-video content, using the publicly available dataset of Wang et al. [24] (ten learners, one excluded for excessive noise, leaving nine). We implement a hybrid CNN+LSTM+Attention model that combines the raw waveform with band-power features. In a within-subject setting, the model reaches up to 78.5% accuracy, compared with 55% for conventional feature-based classifiers; regularization (dropout and L2) closes the large gap between training and validation accuracy that we observe without it, keeping validation accuracy stable at roughly 68-73%. We are deliberately cautious about these numbers: with only nine subjects, within-subject evaluation is optimistic, and we argue that subject-independent evaluation -- in which no learner appears in both training and test data -- should be the standard for this task. To that end we release a reproducible evaluation pipeline. We frame the work as a feasibility study rather than a deployable system, and pair it with an open, notebook-based tool that records EEG, runs inference, and visualizes estimated cognitive load as a heatmap over the video timeline to help educators locate potentially challenging segments.",
+      "authors": [
+        "Rowan Hussein",
+        "Mohamed Ouf"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-07-02T07:13:01+00:00",
+      "link": "https://arxiv.org/pdf/2607.01795v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "cognitive load assessment using deep learning on single-channel EEG",
+      "llm_evidence_cn": "使用深度学习进行单通道脑电认知负荷评估",
+      "llm_evidence": "使用深度学习进行单通道脑电认知负荷评估",
+      "canonical_evidence": "使用深度学习进行单通道脑电认知负荷评估",
+      "llm_tldr_en": "This paper uses a hybrid CNN+LSTM+Attention model on single-channel consumer EEG to distinguish easy from difficult educational content, achieving 78.5% accuracy, demonstrating feasibility of cognitive load assessment in online learning.",
+      "llm_tldr_cn": "该论文针对远程学习中缺乏视觉线索来评估认知负荷的问题，提出使用单通道消费级脑电设备（NeuroSky MindWave Mobile 2）结合混合深度学习模型（CNN+LSTM+Attention），对教育视频内容的难易程度进行区分。在公开数据集上，该模型在个体内设置下达到78.5%的准确率，显著优于传统特征基分类器的55%，并通过正则化防止过拟合。研究表明，单通道脑电可用于在线学习环境中的认知负荷监测，为被动脑机接口在自适应学习中的应用提供了实证支持。",
+      "llm_tldr": "该论文针对远程学习中缺乏视觉线索来评估认知负荷的问题，提出使用单通道消费级脑电设备（NeuroSky MindWave Mobile 2）结合混合深度学习模型（CNN+LSTM+Attention），对教育视频内容的难易程度进行区分。在公开数据集上，该模型在个体内设置下达到78.5%的准确率，显著优于传统特征基分类器的55%，并通过正则化防止过拟合。研究表明，单通道脑电可用于在线学习环境中的认知负荷监测，为被动脑机接口在自适应学习中的应用提供了实证支持。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.00249v1",
+      "source": "arxiv",
+      "title": "Device Passport: Enabling Spatio-Temporal Pretrained Models to Generalize Across Input Layouts",
+      "abstract": "New device layouts pose a challenging modeling problem due to the lack of large datasets for each specific layout. Biosignal foundation models offer a plausible solution if they are able to generalize to new layouts effectively. To improve cross-layout transfer, we study how different channel embedding techniques behave when pretraining layouts differ substantially from the downstream decoding layout. We propose Device Passport, a new channel embedding technique that learns experts and mixture models that take each channel's functional activity and metadata as input. This contrasts with prior embedding methods, which typically use only functional information or only metadata to look up learned or fixed positional embeddings. Across controlled subset-transfer experiments and realistic transfer to ear-EEG, Device Passport is competitive overall and improves over the strongest learned baseline in the layout-transfer regimes that motivate this work. These results suggest that channel embedding design is a key consideration when reusing large-scale pretrained biosignal models on new devices.",
+      "authors": [
+        "Geeling Chau",
+        "Ran Liu",
+        "Juri Minxha",
+        "Wenhui Cui",
+        "Erdrin Azemi",
+        "Ellen L. Zippi",
+        "Behrooz Mahasseni",
+        "Christopher M. Sandino"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-06-30T22:58:09+00:00",
+      "link": "https://arxiv.org/pdf/2607.00249v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "proposes Device Passport for biosignal foundation model layout generalization",
+      "llm_evidence_cn": "提出Device Passport方法用于生物信号基础模型布局泛化",
+      "llm_evidence": "提出Device Passport方法用于生物信号基础模型布局泛化",
+      "canonical_evidence": "提出Device Passport方法用于生物信号基础模型布局泛化",
+      "llm_tldr_en": "Device Passport learns expert mixture embeddings from channel activity and metadata, enabling pretrained biosignal models to generalize across device layouts, crucial for EEG foundation model deployment.",
+      "llm_tldr_cn": "该论文针对生物信号基础模型在不同设备布局间泛化困难的问题，提出Device Passport方法：通过学习每个通道的功能活动和元数据，利用专家混合模型生成通道嵌入，使预训练模型能够适应新布局。实验表明该方法显著优于传统嵌入技术，为EEG基础模型的跨设备应用提供关键支撑。",
+      "llm_tldr": "该论文针对生物信号基础模型在不同设备布局间泛化困难的问题，提出Device Passport方法：通过学习每个通道的功能活动和元数据，利用专家混合模型生成通道嵌入，使预训练模型能够适应新布局。实验表明该方法显著优于传统嵌入技术，为EEG基础模型的跨设备应用提供关键支撑。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.01279v1",
+      "source": "arxiv",
+      "title": "I\\textsuperscript{2}RiMA: Spectral Riemannian Representation with Temporal Attention for Mental Stress Detection based on EEG Signals",
+      "abstract": "Cross-subject EEG stress detection remains challenging because discriminative stress-related patterns are both subject-dependent and frequency-specific. Conventional Riemannian methods model spatial covariance mainly in the time domain, overlooking neural oscillations that are critical for high-level cognitive state decoding, while standard temporal tokenization often fragments inter-slice temporal coherence. To address these limitations, we propose \\method{}, an Intra-Inter Riemannian Manifold Attention Network for EEG-based stress detection. \\method{} constructs spatial covariance matrices independently at each frequency point and maps them to the SPD tangent space, preserving channel-wise geometry together with frequency-specific discriminative cues. It further introduces frequency cluster aggregation to select informative spectral components and reduce redundancy by forming compact, data-driven frequency clusters aligned with EEG rhythms. Finally, an intra-inter slice attention module adaptively integrates local slice-level spectral dynamics and global temporal context across EEG sequences. Experiments on three datasets show that \\method{} consistently outperforms five state-of-the-art baselines, achieving up to 82.78\\% balanced accuracy while remaining efficient with only 1.60M parameters and 31.95M FLOPs.",
+      "authors": [
+        "Cheng He",
+        "Kunyu Peng",
+        "Shangen Han",
+        "Jinming Ma",
+        "Jinhong Ding",
+        "Likun Xia"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-07-01T07:23:32+00:00",
+      "link": "https://arxiv.org/pdf/2607.01279v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG-based mental stress detection using deep learning on Riemannian manifold with temporal attention",
+      "llm_evidence_cn": "基于EEG的深度学习精神压力检测，方法可迁移至认知负荷评估",
+      "llm_evidence": "基于EEG的深度学习精神压力检测，方法可迁移至认知负荷评估",
+      "canonical_evidence": "基于EEG的深度学习精神压力检测，方法可迁移至认知负荷评估",
+      "llm_tldr_en": "Proposes I2RiMA, a deep learning framework combining spectral Riemannian manifold and temporal attention for cross-subject EEG stress detection, demonstrating strong potential for cognitive load estimation tasks.",
+      "llm_tldr_cn": "针对跨被试EEG压力检测中时-频域特征难以有效融合的问题，本文提出I2RiMA网络，采用频谱黎曼流形保留通道间频率特定协方差，结合时序注意力增强跨片段一致性。在公开数据集上取得了优于传统黎曼方法和深度学习模型的压力分类精度，为基于EEG的认知负荷评估提供了可迁移的深度学习框架。",
+      "llm_tldr": "针对跨被试EEG压力检测中时-频域特征难以有效融合的问题，本文提出I2RiMA网络，采用频谱黎曼流形保留通道间频率特定协方差，结合时序注意力增强跨片段一致性。在公开数据集上取得了优于传统黎曼方法和深度学习模型的压力分类精度，为基于EEG的认知负荷评估提供了可迁移的深度学习框架。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.30879v1",
+      "source": "arxiv",
+      "title": "Neural Signatures of Programming Expertise: Classifying Programmer Skill Levels Using EEG Data",
+      "abstract": "Accurately assessing a programmer's skill level is critical for hiring, team composition, and performance evaluation in the software industry. Conventional methods, such as coding tests or interviews, often fail to capture the full spectrum of cognitive abilities underlying programming expertise. This study explores using electroencephalography (EEG) and machine learning to investigate neural correlates of programming skill. We analyzed an existing EEG dataset recorded during code comprehension from 37 programmers with 1 to 30 years of experience (8.1 +/- 6.3 years) to examine relationships between neural activity and expertise. Additionally, we conducted classification experiments using Random Forest classifiers with diverse features for binary (experts vs. novices) and multi-class (experts, intermediates, novices) setups.We identified EEG features and brain regions associated with programming expertise. Specifically, EEG entropy showed the strongest correlation with skill level. Furthermore, experts' brains were characterized by highly localized centro-frontal activation, whereas frontal activation in other groups was part of a more distributed network. Regarding classification, our setup achieved an average accuracy of 91.83% (binary) and 78.15% (multi-class) in stratified 10-fold cross-validation, while leave-one-subject-out validation achieved 85.00% and 58.80%, respectively. Individual frequency bands outperformed full-spectrum analyses, and both program comprehension and resting-state data yielded strong results. These findings demonstrate that EEG features effectively capture neural correlates across different skill levels and highlight the potential of neural data to complement traditional methods of skill assessment.",
+      "authors": [
+        "Maurice Rekrut",
+        "Mahima Mahabaleshwar Acharya",
+        "Taisiia Ulianova",
+        "Norman Peitek",
+        "Annabelle Bergum",
+        "Mariya Toneva",
+        "Sven Apel",
+        "Antonio Krüger"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-06-29T20:10:54+00:00",
+      "link": "https://arxiv.org/pdf/2606.30879v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG-based cognitive state classification using machine learning",
+      "llm_evidence_cn": "基于EEG的认知状态分类，使用机器学习",
+      "llm_evidence": "基于EEG的认知状态分类，使用机器学习",
+      "canonical_evidence": "基于EEG的认知状态分类，使用机器学习",
+      "llm_tldr_en": "This paper uses EEG data and machine learning to classify programmer skill levels, demonstrating a method that can be transferred to cognitive load estimation in passive BCI.",
+      "llm_tldr_cn": "该论文利用脑电图（EEG）数据和机器学习方法对程序员技能水平进行分类。研究分析了37名程序员在代码理解过程中的EEG数据，采用随机森林等分类器，成功识别了不同经验水平的神经特征。该方法可迁移至被动脑机接口中的认知负荷评估，为基于EEG的认知状态估计提供了有效框架。",
+      "llm_tldr": "该论文利用脑电图（EEG）数据和机器学习方法对程序员技能水平进行分类。研究分析了37名程序员在代码理解过程中的EEG数据，采用随机森林等分类器，成功识别了不同经验水平的神经特征。该方法可迁移至被动脑机接口中的认知负荷评估，为基于EEG的认知状态估计提供了有效框架。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.30319v1",
+      "source": "arxiv",
+      "title": "BrainJanus: A Unified Model for Understanding and Generation across Brain, Vision, and Language",
+      "abstract": "Modeling the bidirectional correspondence between external sensory stimuli and internal neural activity has emerged as a critical frontier in neuroscience. However, existing approaches predominantly treat brain encoding and decoding as isolated tasks, relying heavily on unimodal alignment and external priors while overlooking the brain's intrinsic nature as a multimodal integration system. To address these limitations, we propose BrainJanus, the first unified brain model that integrates brain, vision, and language within a single framework. Specifically, we introduce a Unified Brain Tokenizer to quantize continuous neural dynamics into discrete tokens aligned with visual and linguistic representations in a shared Omni space. Building on this, we utilize an All-in-One autoregressive architecture that leverages next-token prediction to enable seamless any-to-any generation, which encompasses image-to-brain and text-to-brain encoding, and brain-to-image and brain-to-text decoding. Extensive experiments demonstrate that BrainJanus achieves superior performance across diverse benchmarks. Furthermore, our framework exhibits zero-shot generalization and preserves interpretable biological topography, highlighting its potential as a general-purpose brain modeling paradigm. The code is available at \\href{https://github.com/HaitaoWuTJU/BrainJanus}{GitHub}.",
+      "authors": [
+        "Haitao Wu",
+        "Qirui Zhang",
+        "Zhouheng Yao",
+        "Shangquan Sun",
+        "Qihao Zheng",
+        "Mianxin Liu",
+        "Chi Zhang",
+        "Wanli Ouyang",
+        "Chunfeng Song",
+        "Changqing Zhang",
+        "Jiamin Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-29T14:02:15+00:00",
+      "link": "https://arxiv.org/pdf/2606.30319v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified brain model that could serve as foundation for EEG",
+      "llm_evidence_cn": "统一的脑模型可作为脑电信号处理的基础模型",
+      "llm_evidence": "统一的脑模型可作为脑电信号处理的基础模型",
+      "canonical_evidence": "统一的脑模型可作为脑电信号处理的基础模型",
+      "llm_tldr_en": "BrainJanus proposes a unified brain foundation model integrating brain, vision, and language using a discrete tokenizer; transferable to EEG foundation modeling.",
+      "llm_tldr_cn": "本文提出BrainJanus，首个统一的大脑、视觉与语言的联合模型，通过统一脑分词器将神经活动离散化为与视觉语言对齐的token。该模型可推广至脑电（EEG）基础模型构建，为被动脑机接口中的认知负荷评估等任务提供通用表示。",
+      "llm_tldr": "本文提出BrainJanus，首个统一的大脑、视觉与语言的联合模型，通过统一脑分词器将神经活动离散化为与视觉语言对齐的token。该模型可推广至脑电（EEG）基础模型构建，为被动脑机接口中的认知负荷评估等任务提供通用表示。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.30879v2",
+      "source": "arxiv",
+      "title": "Neural Signatures of Programming Expertise: Classifying Programmer Skill Levels Using EEG Data",
+      "abstract": "Accurately assessing a programmer's skill level is critical for hiring, team composition, and performance evaluation in the software industry. Conventional methods, such as coding tests or interviews, often fail to capture the full spectrum of cognitive abilities underlying programming expertise. This study explores using electroencephalography (EEG) and machine learning to investigate neural correlates of programming skill. We analyzed an existing EEG dataset recorded during code comprehension from 37 programmers with 1 to 30 years of experience (8.1 +/- 6.3 years) to examine relationships between neural activity and expertise. Additionally, we conducted classification experiments using Random Forest classifiers with diverse features for binary (experts vs. novices) and multi-class (experts, intermediates, novices) setups. We identified EEG features and brain regions associated with programming expertise. Specifically, EEG entropy showed the strongest correlation with skill level. Furthermore, experts' brains were characterized by highly localized centro-frontal activation, whereas frontal activation in other groups was part of a more distributed network. Regarding classification, our setup achieved an average accuracy of 91.83% (binary) and 78.15% (multi-class) in stratified 10-fold cross-validation, while leave-one-subject-out validation achieved 85.00% and 58.80%, respectively. Individual frequency bands outperformed full-spectrum analyses, and both program comprehension and resting-state data yielded strong results. These findings demonstrate that EEG features effectively capture neural correlates across different skill levels and highlight the potential of neural data to complement traditional methods of skill assessment.",
+      "authors": [
+        "Maurice Rekrut",
+        "Mahima Mahabaleshwar Acharya",
+        "Taisiia Ulianova",
+        "Norman Peitek",
+        "Annabelle Bergum",
+        "Mariya Toneva",
+        "Sven Apel",
+        "Antonio Krüger"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-06-29T20:10:54+00:00",
+      "link": "https://arxiv.org/pdf/2606.30879v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG-based cognitive state classification; analogous to cognitive load estimation",
+      "llm_evidence_cn": "基于EEG的认知状态分类；可类比认知负荷估计",
+      "llm_evidence": "基于EEG的认知状态分类；可类比认知负荷估计",
+      "canonical_evidence": "基于EEG的认知状态分类；可类比认知负荷估计",
+      "llm_tldr_en": "Uses EEG and machine learning (Random Forest) to classify programmer skill levels, demonstrating feasibility of EEG-based expertise assessment; method transferable to cognitive load estimation.",
+      "llm_tldr_cn": "该论文利用EEG和机器学习（随机森林）对程序员技能水平进行分类，证明了基于EEG的专长评估的可行性。其方法可用于认知负荷估计，虽然未直接涉及深度学习，但特征提取和分类框架具有迁移价值。结果表明EEG可以区分不同技能水平，为被动BCI中的认知状态评估提供了参考。",
+      "llm_tldr": "该论文利用EEG和机器学习（随机森林）对程序员技能水平进行分类，证明了基于EEG的专长评估的可行性。其方法可用于认知负荷估计，虽然未直接涉及深度学习，但特征提取和分类框架具有迁移价值。结果表明EEG可以区分不同技能水平，为被动BCI中的认知状态评估提供了参考。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

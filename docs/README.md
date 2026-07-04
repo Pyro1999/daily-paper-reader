@@ -6,29 +6,38 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-02
-- 运行时间：2026-07-02 21:54:42 UTC
+- 最新运行日期：2026-07-04
+- 运行时间：2026-07-04 21:38:01 UTC
 - 运行状态：成功
-- 本次总论文数：3
-- 精读区：1
-- 速读区：2
+- 本次总论文数：6
+- 精读区：3
+- 速读区：3
 
 ### 今日简报（AI）
-今日精读评估EEG基础模型时间特征提取器，并速读跨数据集情绪识别与视觉响应优化研究。 最值得关注精读文章对预训练时序模型的对比分析（8.0分），以及速读中结合预测编码与测试时训练的无监督域适应框架。 普通读者可优先精读第一篇，深入理解基础模型提取时间特征的优劣，再按需查阅情绪识别与视觉优化方法。
-- 详情：[/202607/02/README](/202607/02/README)
+今日精读3篇、速读3篇，聚焦认知负荷评估与模型泛化。最值得关注：基于单通道脑电的混合深度学习在线学习评估（10分），以及支持跨输入布局的设备通行证预训练模型（8分）。建议进一步了解EEG数据如何揭示编程技能水平差异，作为前沿应用方向参考。
+- 详情：[/202607/04/README](/202607/04/README)
 
 ### 精读区论文标签
-1. [Temporal Feature Extractors in EEG Foundation Models: A Controlled Comparison Including a Pretrained Time-Series Model](/202607/02/2606.30104v1-temporal-feature-extractors-in-eeg-foundation-models-a-controlled-comparison-including-a-pretrained-time-series-model)  
+1. [Single-Channel EEG-Based Cognitive Load Assessment in Online Learning: A Hybrid Deep Learning Approach](/202607/04/2607.01795v1-single-channel-eeg-based-cognitive-load-assessment-in-online-learning-a-hybrid-deep-learning-approach)  
+   标签：评分：10.0/10、query:pbci-load
+   evidence：使用深度学习进行单通道脑电认知负荷评估
+2. [Device Passport: Enabling Spatio-Temporal Pretrained Models to Generalize Across Input Layouts](/202607/04/2607.00249v1-device-passport-enabling-spatio-temporal-pretrained-models-to-generalize-across-input-layouts)  
    标签：评分：8.0/10、query:pbci-load
-   evidence：EEG基础模型时间特征提取器研究
+   evidence：提出Device Passport方法用于生物信号基础模型布局泛化
+3. [I\textsuperscript{2}RiMA: Spectral Riemannian Representation with Temporal Attention for Mental Stress Detection based on EEG Signals](/202607/04/2607.01279v1-itextsuperscript2rima-spectral-riemannian-representation-with-temporal-attention-for-mental-stress-detection-based-on-eeg-signals)  
+   标签：评分：8.0/10、query:pbci-load
+   evidence：基于EEG的深度学习精神压力检测，方法可迁移至认知负荷评估
 
 ### 速读区论文标签
-1. [An Enhanced Source-Free Unsupervised Domain Adaptation Framework for Cross-Dataset EEG Emotion Recognition via Predictive Coding and Test-Time Training](/202607/02/2606.28202v1-an-enhanced-source-free-unsupervised-domain-adaptation-framework-for-cross-dataset-eeg-emotion-recognition-via-predictive-coding-and-test-time-training)  
+1. [Neural Signatures of Programming Expertise: Classifying Programmer Skill Levels Using EEG Data](/202607/04/2606.30879v1-neural-signatures-of-programming-expertise-classifying-programmer-skill-levels-using-eeg-data)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：基于EEG的认知状态分类，使用机器学习
+2. [BrainJanus: A Unified Model for Understanding and Generation across Brain, Vision, and Language](/202607/04/2606.30319v1-brainjanus-a-unified-model-for-understanding-and-generation-across-brain-vision-and-language)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：跨数据集脑电分类的深度学习域适应框架
-2. [Closed-loop optimization of a high-dimensional generative latent space for rhythmic visual response](/202607/02/biorxiv-10-64898-2026-06-27-734819-v1-closed-loop-optimization-of-a-high-dimensional-generative-latent-space-for-rhythmic-visual-response)  
+   evidence：统一的脑模型可作为脑电信号处理的基础模型
+3. [Neural Signatures of Programming Expertise: Classifying Programmer Skill Levels Using EEG Data](/202607/04/2606.30879v2-neural-signatures-of-programming-expertise-classifying-programmer-skill-levels-using-eeg-data)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：使用非侵入式脑电图进行SSVEP闭环调制，与被动脑机接口相关
+   evidence：基于EEG的认知状态分类；可类比认知负荷估计
 
 
 <div class="dpr-home-promo-card">
