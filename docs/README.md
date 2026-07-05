@@ -6,38 +6,29 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-04
-- 运行时间：2026-07-04 21:38:01 UTC
+- 最新运行日期：2026-07-05
+- 运行时间：2026-07-05 21:29:15 UTC
 - 运行状态：成功
-- 本次总论文数：6
-- 精读区：3
-- 速读区：3
+- 本次总论文数：2
+- 精读区：0
+- 速读区：2
 
 ### 今日简报（AI）
-今日精读3篇、速读3篇，聚焦认知负荷评估与模型泛化。最值得关注：基于单通道脑电的混合深度学习在线学习评估（10分），以及支持跨输入布局的设备通行证预训练模型（8分）。建议进一步了解EEG数据如何揭示编程技能水平差异，作为前沿应用方向参考。
-- 详情：[/202607/04/README](/202607/04/README)
+今日速读2篇脑机接口论文，聚焦神经解码数据泄漏预防与运动想象任务的独立被试通道选择。  
+最值得关注：数据泄漏会高估模型性能，而简单通道选择方法可能提升实际应用鲁棒性。  
+建议优先精读《Preventing Data Leakage in Neural Decoding》，避免后续研究中的常见陷阱。
+- 详情：[/202607/05/README](/202607/05/README)
 
 ### 精读区论文标签
-1. [Single-Channel EEG-Based Cognitive Load Assessment in Online Learning: A Hybrid Deep Learning Approach](/202607/04/2607.01795v1-single-channel-eeg-based-cognitive-load-assessment-in-online-learning-a-hybrid-deep-learning-approach)  
-   标签：评分：10.0/10、query:pbci-load
-   evidence：使用深度学习进行单通道脑电认知负荷评估
-2. [Device Passport: Enabling Spatio-Temporal Pretrained Models to Generalize Across Input Layouts](/202607/04/2607.00249v1-device-passport-enabling-spatio-temporal-pretrained-models-to-generalize-across-input-layouts)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：提出Device Passport方法用于生物信号基础模型布局泛化
-3. [I\textsuperscript{2}RiMA: Spectral Riemannian Representation with Temporal Attention for Mental Stress Detection based on EEG Signals](/202607/04/2607.01279v1-itextsuperscript2rima-spectral-riemannian-representation-with-temporal-attention-for-mental-stress-detection-based-on-eeg-signals)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：基于EEG的深度学习精神压力检测，方法可迁移至认知负荷评估
+- 本次无精读推荐。
 
 ### 速读区论文标签
-1. [Neural Signatures of Programming Expertise: Classifying Programmer Skill Levels Using EEG Data](/202607/04/2606.30879v1-neural-signatures-of-programming-expertise-classifying-programmer-skill-levels-using-eeg-data)  
-   标签：评分：7.0/10、query:pbci-load
-   evidence：基于EEG的认知状态分类，使用机器学习
-2. [BrainJanus: A Unified Model for Understanding and Generation across Brain, Vision, and Language](/202607/04/2606.30319v1-brainjanus-a-unified-model-for-understanding-and-generation-across-brain-vision-and-language)  
+1. [Preventing Data Leakage in Neural Decoding](/202607/05/biorxiv-10-64898-2026-01-26-701583-v2-preventing-data-leakage-in-neural-decoding)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：统一的脑模型可作为脑电信号处理的基础模型
-3. [Neural Signatures of Programming Expertise: Classifying Programmer Skill Levels Using EEG Data](/202607/04/2606.30879v2-neural-signatures-of-programming-expertise-classifying-programmer-skill-levels-using-eeg-data)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：基于EEG的认知状态分类；可类比认知负荷估计
+   evidence：防止神经解码中的数据泄露，与被动BCI认知负荷评估的深度学习相关
+2. [A Simple Subject Independent Channel Selection in EEG for Motor Imagery Task](/202607/05/biorxiv-10-64898-2026-06-26-734867-v1-a-simple-subject-independent-channel-selection-in-eeg-for-motor-imagery-task)  
+   标签：评分：6.0/10、query:robust-eeg
+   evidence：面向脑机接口的独立于被试的脑电通道选择方法
 
 
 <div class="dpr-home-promo-card">

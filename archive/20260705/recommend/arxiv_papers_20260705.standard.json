@@ -1,0 +1,97 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-05T21:28:56.724575+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 2,
+    "quick_skim_target": 13,
+    "quick_selected": 2
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-01-26-701583-v2",
+      "source": "biorxiv",
+      "title": "Preventing Data Leakage in Neural Decoding",
+      "abstract": "Neural decoding is a widely-used machine learning technique for investigating how behavior, perception and cognition are represented in neural activity. However without careful application data leakage can occur, where information from the test set contaminates the training set, leading to biased estimates of decoding performance and potentially invalidating biological conclusions. Here we show that leakage can be introduced in neural decoding studies by common supervised and unsupervised preprocessing steps, including dimensionality reduction. We reveal that in some cases leakage can paradoxically decrease decoding performance relative to unbiased estimates, and we provide theoretical analyses explaining how this occurs. We also show that, for autocorrelated neural time series, randomized k-fold cross-validation can dramatically overstate decoding performance. Based on these findings, we provide detailed recommendations for avoiding data leakage in neural decoding.",
+      "authors": [
+        "Wong, R.",
+        "McCullough, M. H.",
+        "Lu, T.",
+        "Zhu, S. I.",
+        "Goodhill, G. J."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-29T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.01.26.701583v2.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "prevents data leakage in neural decoding, relevant to deep learning for passive BCI cognitive load assessment",
+      "llm_evidence_cn": "防止神经解码中的数据泄露，与被动BCI认知负荷评估的深度学习相关",
+      "llm_evidence": "防止神经解码中的数据泄露，与被动BCI认知负荷评估的深度学习相关",
+      "canonical_evidence": "防止神经解码中的数据泄露，与被动BCI认知负荷评估的深度学习相关",
+      "llm_tldr_en": "Shows how data leakage degrades neural decoding performance and provides remedies, directly applicable to EEG-based deep learning models for cognitive load estimation.",
+      "llm_tldr_cn": "该论文揭示了神经解码中常见的数据泄露问题，指出有监督和无监督预处理步骤（如降维）会引入偏差，甚至导致性能反常下降。提供了理论分析和解决方案，对于使用深度学习进行脑电认知负荷评估的研究至关重要，能提升模型评估的可靠性和结论的有效性。",
+      "llm_tldr": "该论文揭示了神经解码中常见的数据泄露问题，指出有监督和无监督预处理步骤（如降维）会引入偏差，甚至导致性能反常下降。提供了理论分析和解决方案，对于使用深度学习进行脑电认知负荷评估的研究至关重要，能提升模型评估的可靠性和结论的有效性。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-26-734867-v1",
+      "source": "biorxiv",
+      "title": "A Simple Subject Independent Channel Selection in EEG for Motor Imagery Task",
+      "abstract": "Classification of motor imagery (MI) tasks through EEG is valuable in brain-computer interfacing and rehabilitation engineering. EEG channels selection for MI task classification is well discussed problem and is challenging due to its combinatorial nature. Most of the existing methods are subject and task-dependent. This paper introduces a subject-independent EEG channel selection. The proposed approach consists of two stages. First, we rank channels based on their divergence from a reference channel Cz. We hypothesize that channels less divergent from Cz are more relevant for MI task classification. In the second stage, we employ a three-stage feature selection and classification model to evaluate the selected channels. It consists of a bandpass filter, followed by common spatial pattern (CSP) filter and three classifiers viz. SVM, 1-NN and 5-NN. Two publicly available datasets viz. PhysioNet and BCI Competition III IVa datasets have been used to assess the method. It performs 15.21% more than 3Cs and just 2.91% less than all-channels accuracy with as few as 20/118 channels on BCI Competition data and 19.64% more than 3Cs on the PhysioNet dataset with 16/64 channels. Empirical comparison implies that the method performs better than classical models such as CSP Rank, fishers rank, and normalized mutual information, significantly. Results support that our hypothesis that divergence between channels and a reference channel Cz can be used as a ranking measure for channel selection.",
+      "authors": [
+        "Dev, R.",
+        "Kumar, S.",
+        "Gandhi, T. K."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-01T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.26.734867v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "subject-independent EEG channel selection for BCI",
+      "llm_evidence_cn": "面向脑机接口的独立于被试的脑电通道选择方法",
+      "llm_evidence": "面向脑机接口的独立于被试的脑电通道选择方法",
+      "canonical_evidence": "面向脑机接口的独立于被试的脑电通道选择方法",
+      "llm_tldr_en": "Proposes a subject-independent EEG channel selection method for motor imagery BCI, ranking channels by divergence from reference Cz and using a 3-stage feature selection and classification model.",
+      "llm_tldr_cn": "脑机接口中运动想象任务的EEG通道选择通常依赖被试和任务，缺乏通用性。本文提出一种独立于被试的通道选择方法：首先基于与参考电极Cz的差异度对通道排序，然后采用三阶段特征选择与分类模型评估所选通道。实验表明该方法在不同被试间表现一致，为BCI系统的鲁棒信号增强提供了新思路。",
+      "llm_tldr": "脑机接口中运动想象任务的EEG通道选择通常依赖被试和任务，缺乏通用性。本文提出一种独立于被试的通道选择方法：首先基于与参考电极Cz的差异度对通道排序，然后采用三阶段特征选择与分类模型评估所选通道。实验表明该方法在不同被试间表现一致，为BCI系统的鲁棒信号增强提供了新思路。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal enhancement for bci",
+      "matched_requirement_id": "req-23",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

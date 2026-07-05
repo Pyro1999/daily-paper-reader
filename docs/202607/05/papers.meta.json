@@ -1,0 +1,39 @@
+{
+  "label": "2026-07-05",
+  "date": "2026-07-05",
+  "generated_at": "2026-07-05T21:29:22",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202607/05/biorxiv-10-64898-2026-01-26-701583-v2-preventing-data-leakage-in-neural-decoding",
+      "section": "quick",
+      "title_en": "Preventing Data Leakage in Neural Decoding",
+      "authors": "Wong, R., McCullough, M. H., Lu, T., Zhu, S. I., Goodhill, G. J.",
+      "date": "2026-06-29",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.01.26.701583v2.full.pdf",
+      "score": "6.0",
+      "evidence": "防止神经解码中的数据泄露，与被动BCI认知负荷评估的深度学习相关",
+      "tldr": "神经解码研究中，数据泄漏会污染训练集导致性能估计偏差甚至错误结论。常见预处理（如降维）和自相关时间序列的交叉验证均可能引入泄漏。泄漏有时反常地降低解码性能，而随机k折交叉验证会高估性能。本文通过理论分析和实验揭示了这些现象，并给出了避免泄漏的具体建议。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Neural decoding is a widely-used machine learning technique for investigating how behavior, perception and cognition are represented in neural activity. However without careful application data leakage can occur, where information from the test set contaminates the training set, leading to biased estimates of decoding performance and potentially invalidating biological conclusions. Here we show that leakage can be introduced in neural decoding studies by common supervised and unsupervised preprocessing steps, including dimensionality reduction. We reveal that in some cases leakage can paradoxically decrease decoding performance relative to unbiased estimates, and we provide theoretical analyses explaining how this occurs. We also show that, for autocorrelated neural time series, randomized k-fold cross-validation can dramatically overstate decoding performance. Based on these findings, we provide detailed recommendations for avoiding data leakage in neural decoding.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/05/biorxiv-10-64898-2026-06-26-734867-v1-a-simple-subject-independent-channel-selection-in-eeg-for-motor-imagery-task",
+      "section": "quick",
+      "title_en": "A Simple Subject Independent Channel Selection in EEG for Motor Imagery Task",
+      "authors": "Dev, R., Kumar, S., Gandhi, T. K.",
+      "date": "2026-07-01",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.06.26.734867v1.full.pdf",
+      "score": "6.0",
+      "evidence": "面向脑机接口的独立于被试的脑电通道选择方法",
+      "tldr": "运动想象脑电分类中，现有通道选择方法依赖被试和任务。本文提出一种无主题依赖的通道选择，基于各通道与参考通道Cz的差异度进行排序，差异越小越相关。结合带通滤波、共空间模式滤波和SVM/1-NN/5-NN分类器评估。在PhysioNet和BCI Competition数据集上，仅用20/118或16/64通道，精度比3通道高15-20%，仅比全通道低2.91%，显著优于CSP Rank等传统方法。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "Classification of motor imagery (MI) tasks through EEG is valuable in brain-computer interfacing and rehabilitation engineering. EEG channels selection for MI task classification is well discussed problem and is challenging due to its combinatorial nature. Most of the existing methods are subject and task-dependent. This paper introduces a subject-independent EEG channel selection. The proposed approach consists of two stages. First, we rank channels based on their divergence from a reference channel Cz. We hypothesize that channels less divergent from Cz are more relevant for MI task classification. In the second stage, we employ a three-stage feature selection and classification model to evaluate the selected channels. It consists of a bandpass filter, followed by common spatial pattern (CSP) filter and three classifiers viz. SVM, 1-NN and 5-NN. Two publicly available datasets viz. PhysioNet and BCI Competition III IVa datasets have been used to assess the method. It performs 15.21% more than 3Cs and just 2.91% less than all-channels accuracy with as few as 20/118 channels on BCI Competition data and 19.64% more than 3Cs on the PhysioNet dataset with 16/64 channels. Empirical comparison implies that the method performs better than classical models such as CSP Rank, fishers rank, and normalized mutual information, significantly. Results support that our hypothesis that divergence between channels and a reference channel Cz can be used as a ranking measure for channel selection.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
