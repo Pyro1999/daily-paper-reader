@@ -1,0 +1,54 @@
+{
+  "label": "2026-07-06",
+  "date": "2026-07-06",
+  "generated_at": "2026-07-06T20:57:54",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202607/06/2607.00410v1-mindau-eeg-conditioned-facial-action-unit-editing-via-dual-stream-manifold-alignment",
+      "section": "quick",
+      "title_en": "MindAU: EEG-Conditioned Facial Action Unit Editing via Dual-Stream Manifold Alignment",
+      "authors": "Zhenhang Li, Xin Zhou, Hao Deng, Lijun Yin",
+      "date": "2026-07-01",
+      "pdf": "https://arxiv.org/pdf/2607.00410v1",
+      "score": "6.0",
+      "evidence": "基于EEG的面部动作编辑作为被动脑机接口",
+      "tldr": "基于EEG信号进行面部动作单元编辑存在从噪声中提取面部动作相关模式的挑战。本文提出MindAU框架，通过时间掩码重建和AU分类学习鲁棒EEG表示，利用双流流形对齐将EEG特征与AU文本语义及视觉位移轨迹对齐，并在多模态扩散编辑器中融入位置编码和区域监督，实现高保真身份保持的面部编辑。在E-CAFE基准上验证了有效性，为面部神经肌肉障碍患者提供了辅助表达技术潜力。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Recent brain decoding studies have made substantial progress in reconstructing externally perceived visual content from neural signals. However, using electroencephalography (EEG) recordings to guide facial expression editing remains largely unexplored and poses a distinct challenge: rather than recovering what a subject sees, it requires identifying facial-action related patterns from noisy EEG signals and grounding them in localized, identity-preserving expression edits. In this paper, we investigate EEG-conditioned facial image editing for fine-grained facial action unit (AU) control and propose MindAU, a unified framework for controlling facial AU edits from EEG signals. MindAU first learns noise-robust and AU-discriminative EEG representations through temporal masked reconstruction and AU classification supervision. It then bridges the modality gap via Dual-Stream Manifold Alignment, aligning EEG features with AU-level text semantics and identity-reduced visual displacement trajectories in the multimodal space of Qwen2.5-VL. Finally, MindAU incorporates EEG-aware Multimodal Rotary Positional Embeddings, landmark-guided reference masking, and AU-aware region supervision into a multimodal diffusion-based editor for high-fidelity identity-preserving editing. We also introduce E-CAFE, a curated benchmark for EEG-Conditioned Action-Unit Facial Editing with paired EEG-face editing samples and standardized evaluation protocols. Extensive experiments demonstrate the effectiveness of MindAU and suggest its potential as a step towards future assistive expression technologies for individuals with facial neuromuscular disorders.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/06/biorxiv-10-64898-2026-04-23-719165-v2-advantages-of-using-empirical-mode-decomposition-and-hilbert-transformation-for-delineating-resting-state-functional-brain-networks",
+      "section": "quick",
+      "title_en": "Advantages of using Empirical Mode Decomposition and Hilbert Transformation for Delineating Resting State Functional Brain Networks",
+      "authors": "Kaur, T., Yadav, S., Jain, N.",
+      "date": "2026-07-05",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.04.23.719165v2.full.pdf",
+      "score": "6.0",
+      "evidence": "经验模态分解和希尔伯特变换方法可用于脑电去噪，实现鲁棒处理",
+      "tldr": "静息态功能连接研究常用fMRI的BOLD信号计算皮尔逊相关系数，但所得功能连接与已知结构连接相关性不佳。本文提出结合经验模态分解（EMD）和希尔伯特变换（HT）的方法，以静息态运动网络为例进行分析。结果表明，该方法显著提高了功能连接与结构连接的一致性，尤其适用于低时间分辨率（低TR）的fMRI数据。该工作为更准确地描绘静息态功能脑网络提供了新途径。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "The goal of the resting-state functional connectivity studies is to determine the inherent dynamics of the brain networks while the body is at rest. These networks get differentially activated when the brain is involved in various tasks such as processing of sensory inputs, initiating motor activities, or various cognitive tasks. Resting state functional connectivity networks are commonly revealed by determining Pearson Correlation Coefficients of the Blood Oxygenation Level Dependent (BOLD) signals collected from different brain regions using functional Magnetic Resonance Imaging (fMRI) while the subject is not actively performing any task. However, the functional connectivity thus determined does not correlate well with the known structural connectivity between different brain regions. Here, we used Empirical Mode decomposition (EMD), followed by Hilbert Transformation (HT), to determine the resting state functional connectivity in the human brains. We show the advantage of using this EMD-HT method using somatomotor network as an example. We show that the time series data decomposed by this method improves correlation of the derived functional connectivity with the known structural connectivity (especially for low -TR fMRI data) as compared to the methods commonly used.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/06/biorxiv-10-64898-2026-06-22-733876-v1-rhythmic-replay-of-short-term-memory-neural-patterns-revealed-by-time-resolved-error-prediction",
+      "section": "quick",
+      "title_en": "Rhythmic replay of short-term memory neural patterns revealed by time-resolved error prediction",
+      "authors": "Syrov, N., Schmidt, S., Rademacher, R., Kobeleva, X.",
+      "date": "2026-06-28",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.06.22.733876v1.full.pdf",
+      "score": "6.0",
+      "evidence": "使用EEG估计记忆负荷并预测回忆错误，与基于EEG的认知负荷估计直接相关",
+      "tldr": "短时记忆编码是否受theta振荡节律性影响尚不清楚。本研究使用EEG时间分辨多变量模式分析预测回忆误差，发现额顶叶theta/beta活动在theta频率波动预测误差，且跨时态泛化显示同一神经模式重现。结果表明编码是节律性递归过程，链接行为theta波动与分布式神经机制。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Theta oscillations are thought to provide a temporal scaffold for short-term memory (STM), organizing item encoding and maintenance into successive phases to reduce representational conflict. Whether this rhythm also determines encoding fidelity, that is, how precisely items are encoded in human cortical activity, remains unclear. Here, we show that STM encoding fidelity fluctuates rhythmically at theta frequency. EEG was recorded while participants encoded arrays of colored, oriented objects under two memory loads and, after a delay, reported the features of a retrospectively cued item on a continuous scale. Using time-resolved multivariate pattern analysis, we predicted subsequent recall error from encoding- and maintenance-period activity. Fronto-parietal theta- and beta-band activity predicted subsequent memory error. This prediction was not sustained but fluctuated at theta frequency and was not modulated by memory load. Cross-temporal generalization indicated that the same neural pattern recurred across encoding and maintenance, underlying the rhythmic fluctuations in memory-error prediction. Prediction fluctuations were temporally offset across spatial positions and object features. These findings characterize STM encoding as a rhythmic, recurrent process and link behavioral theta fluctuations to a distributed neural mechanism.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

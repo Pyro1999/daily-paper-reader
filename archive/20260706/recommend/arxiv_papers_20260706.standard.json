@@ -1,0 +1,139 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-06T20:56:41.930526+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 3,
+    "quick_skim_target": 13,
+    "quick_selected": 3
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2607.00410v1",
+      "source": "arxiv",
+      "title": "MindAU: EEG-Conditioned Facial Action Unit Editing via Dual-Stream Manifold Alignment",
+      "abstract": "Recent brain decoding studies have made substantial progress in reconstructing externally perceived visual content from neural signals. However, using electroencephalography (EEG) recordings to guide facial expression editing remains largely unexplored and poses a distinct challenge: rather than recovering what a subject sees, it requires identifying facial-action related patterns from noisy EEG signals and grounding them in localized, identity-preserving expression edits. In this paper, we investigate EEG-conditioned facial image editing for fine-grained facial action unit (AU) control and propose MindAU, a unified framework for controlling facial AU edits from EEG signals. MindAU first learns noise-robust and AU-discriminative EEG representations through temporal masked reconstruction and AU classification supervision. It then bridges the modality gap via Dual-Stream Manifold Alignment, aligning EEG features with AU-level text semantics and identity-reduced visual displacement trajectories in the multimodal space of Qwen2.5-VL. Finally, MindAU incorporates EEG-aware Multimodal Rotary Positional Embeddings, landmark-guided reference masking, and AU-aware region supervision into a multimodal diffusion-based editor for high-fidelity identity-preserving editing. We also introduce E-CAFE, a curated benchmark for EEG-Conditioned Action-Unit Facial Editing with paired EEG-face editing samples and standardized evaluation protocols. Extensive experiments demonstrate the effectiveness of MindAU and suggest its potential as a step towards future assistive expression technologies for individuals with facial neuromuscular disorders.",
+      "authors": [
+        "Zhenhang Li",
+        "Xin Zhou",
+        "Hao Deng",
+        "Lijun Yin"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-07-01T04:12:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.00410v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG-controlled facial action editing as passive BCI",
+      "llm_evidence_cn": "基于EEG的面部动作编辑作为被动脑机接口",
+      "llm_evidence": "基于EEG的面部动作编辑作为被动脑机接口",
+      "canonical_evidence": "基于EEG的面部动作编辑作为被动脑机接口",
+      "llm_tldr_en": "MindAU uses EEG signals to control facial action unit editing via dual-stream manifold alignment, demonstrating a passive BCI for expression generation.",
+      "llm_tldr_cn": "现有脑解码研究多关注视觉内容重建，而利用EEG指导面部表情编辑尚未探索。本文提出MindAU框架，通过双流流形对齐学习噪声鲁棒的EEG特征，实现精细的面部动作单元控制。实验表明该框架能有效从EEG信号中解码面部动作意图，为被动脑机接口在虚拟现实和辅助技术中的应用提供了新途径。",
+      "llm_tldr": "现有脑解码研究多关注视觉内容重建，而利用EEG指导面部表情编辑尚未探索。本文提出MindAU框架，通过双流流形对齐学习噪声鲁棒的EEG特征，实现精细的面部动作单元控制。实验表明该框架能有效从EEG信号中解码面部动作意图，为被动脑机接口在虚拟现实和辅助技术中的应用提供了新途径。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-04-23-719165-v2",
+      "source": "biorxiv",
+      "title": "Advantages of using Empirical Mode Decomposition and Hilbert Transformation for Delineating Resting State Functional Brain Networks",
+      "abstract": "The goal of the resting-state functional connectivity studies is to determine the inherent dynamics of the brain networks while the body is at rest. These networks get differentially activated when the brain is involved in various tasks such as processing of sensory inputs, initiating motor activities, or various cognitive tasks. Resting state functional connectivity networks are commonly revealed by determining Pearson Correlation Coefficients of the Blood Oxygenation Level Dependent (BOLD) signals collected from different brain regions using functional Magnetic Resonance Imaging (fMRI) while the subject is not actively performing any task. However, the functional connectivity thus determined does not correlate well with the known structural connectivity between different brain regions. Here, we used Empirical Mode decomposition (EMD), followed by Hilbert Transformation (HT), to determine the resting state functional connectivity in the human brains. We show the advantage of using this EMD-HT method using somatomotor network as an example. We show that the time series data decomposed by this method improves correlation of the derived functional connectivity with the known structural connectivity (especially for low -TR fMRI data) as compared to the methods commonly used.",
+      "authors": [
+        "Kaur, T.",
+        "Yadav, S.",
+        "Jain, N."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-05T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.04.23.719165v2.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EMD and Hilbert Transformation methods applicable to EEG denoising for robust processing",
+      "llm_evidence_cn": "经验模态分解和希尔伯特变换方法可用于脑电去噪，实现鲁棒处理",
+      "llm_evidence": "经验模态分解和希尔伯特变换方法可用于脑电去噪，实现鲁棒处理",
+      "canonical_evidence": "经验模态分解和希尔伯特变换方法可用于脑电去噪，实现鲁棒处理",
+      "llm_tldr_en": "This paper advocates using Empirical Mode Decomposition and Hilbert Transformation for delineating resting-state functional brain networks from fMRI data, a signal processing framework transferable to EEG artifact removal and denoising.",
+      "llm_tldr_cn": "静息态功能连接研究通常依赖fMRI的BOLD信号相关性分析，但存在局限性。本文提出使用经验模态分解（EMD）和希尔伯特变换替代传统方法，以更准确地描绘脑网络动态。虽然研究基于fMRI，但该信号处理框架可直接迁移至EEG数据，用于去除伪影和噪声，增强信号鲁棒性。结果表明，该方法能揭示更丰富的网络特征，为EEG鲁棒处理提供了有效手段。",
+      "llm_tldr": "静息态功能连接研究通常依赖fMRI的BOLD信号相关性分析，但存在局限性。本文提出使用经验模态分解（EMD）和希尔伯特变换替代传统方法，以更准确地描绘脑网络动态。虽然研究基于fMRI，但该信号处理框架可直接迁移至EEG数据，用于去除伪影和噪声，增强信号鲁棒性。结果表明，该方法能揭示更丰富的网络特征，为EEG鲁棒处理提供了有效手段。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal denoising techniques",
+      "matched_requirement_id": "req-18",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-22-733876-v1",
+      "source": "biorxiv",
+      "title": "Rhythmic replay of short-term memory neural patterns revealed by time-resolved error prediction",
+      "abstract": "Theta oscillations are thought to provide a temporal scaffold for short-term memory (STM), organizing item encoding and maintenance into successive phases to reduce representational conflict. Whether this rhythm also determines encoding fidelity, that is, how precisely items are encoded in human cortical activity, remains unclear. Here, we show that STM encoding fidelity fluctuates rhythmically at theta frequency. EEG was recorded while participants encoded arrays of colored, oriented objects under two memory loads and, after a delay, reported the features of a retrospectively cued item on a continuous scale. Using time-resolved multivariate pattern analysis, we predicted subsequent recall error from encoding- and maintenance-period activity. Fronto-parietal theta- and beta-band activity predicted subsequent memory error. This prediction was not sustained but fluctuated at theta frequency and was not modulated by memory load. Cross-temporal generalization indicated that the same neural pattern recurred across encoding and maintenance, underlying the rhythmic fluctuations in memory-error prediction. Prediction fluctuations were temporally offset across spatial positions and object features. These findings characterize STM encoding as a rhythmic, recurrent process and link behavioral theta fluctuations to a distributed neural mechanism.",
+      "authors": [
+        "Syrov, N.",
+        "Schmidt, S.",
+        "Rademacher, R.",
+        "Kobeleva, X."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-06-28T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.22.733876v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Uses EEG to estimate memory load and predict recall error, directly relevant to EEG-based cognitive load estimation.",
+      "llm_evidence_cn": "使用EEG估计记忆负荷并预测回忆错误，与基于EEG的认知负荷估计直接相关",
+      "llm_evidence": "使用EEG估计记忆负荷并预测回忆错误，与基于EEG的认知负荷估计直接相关",
+      "canonical_evidence": "使用EEG估计记忆负荷并预测回忆错误，与基于EEG的认知负荷估计直接相关",
+      "llm_tldr_en": "Shows that short-term memory encoding fidelity fluctuates at theta rhythm using EEG, predicting recall error and enabling cognitive load estimation.",
+      "llm_tldr_cn": "短时记忆编码保真度是否受节律影响尚不清楚。本研究通过EEG记录被试在不同记忆负荷下编码和保持期的脑电，使用时间分辨多变量模式分析从神经活动预测后续回忆错误。发现编码保真度在theta频段呈节律性波动，且回忆错误可被准确预测。该方法提供了一种基于EEG的认知负荷（记忆负荷）的隐式估计途径，对被动BCI应用有参考价值。",
+      "llm_tldr": "短时记忆编码保真度是否受节律影响尚不清楚。本研究通过EEG记录被试在不同记忆负荷下编码和保持期的脑电，使用时间分辨多变量模式分析从神经活动预测后续回忆错误。发现编码保真度在theta频段呈节律性波动，且回忆错误可被准确预测。该方法提供了一种基于EEG的认知负荷（记忆负荷）的隐式估计途径，对被动BCI应用有参考价值。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
