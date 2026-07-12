@@ -1,0 +1,179 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-12T21:25:31.085681+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 4,
+    "quick_skim_target": 13,
+    "quick_selected": 4
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2607.04934v1",
+      "source": "arxiv",
+      "title": "Lightweight ML-Based Automatic Sleep Staging Framework with Constrained CNN and Mamba for Small-Sample EEG Datasets",
+      "abstract": "Automatic sleep staging is a key technology for precise diagnosis and treatment of sleep disorders as well as long-term home sleep monitoring. Portable electroencephalogram (EEG) devices have become the focus of research due to their convenience in data collection. However, current methods still face three major challenges: large parameter sizes that easily lead to overfitting on small datasets, low accuracy in classifying difficult stages such as N1 and REM, unclear optimal training dataset size, and difficulty in deployment. This paper proposes GamSleepNet, a lightweight and low-latency automatic sleep staging framework for single-channel EEG. The framework features the FEB module, which combines improved Gabor kernels with learnable filters for feature extraction, uses the Mamba architecture to build a temporal classification network, introduces a novel contrastive loss and a two-stage training strategy, and experimentally validates the optimal dataset size for single-channel EEG sleep staging models. On the Sleepedf dataset, this model achieves an overall accuracy of 87.86 percent with only 30.86 thousand parameters, with all metrics reaching SOTA levels and significantly improving the identification accuracy of challenging sleep stages.",
+      "authors": [
+        "Zihao Wei",
+        "Yulin Gong",
+        "Yudan Lv"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-07-06T11:06:16+00:00",
+      "link": "https://arxiv.org/pdf/2607.04934v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Lightweight deep learning framework for EEG sleep staging with CNN and Mamba, applicable to cognitive load assessment",
+      "llm_evidence_cn": "基于CNN和Mamba的轻量级深度学习EEG睡眠分期框架，适用于认知负荷评估",
+      "llm_evidence": "基于CNN和Mamba的轻量级深度学习EEG睡眠分期框架，适用于认知负荷评估",
+      "canonical_evidence": "基于CNN和Mamba的轻量级深度学习EEG睡眠分期框架，适用于认知负荷评估",
+      "llm_tldr_en": "Proposes GamSleepNet, a lightweight CNN-Mamba framework for automatic sleep staging from single-channel EEG, addressing small-sample overfitting and low accuracy on difficult stages; its efficient architecture is transferable to cognitive load estimation in passive BCI.",
+      "llm_tldr_cn": "该论文针对便携式EEG设备在自动睡眠分期中面临的小样本过拟合、N1和REM等难分期准确率低的问题，提出GamSleepNet轻量级框架，包含FEB模块结合改进的CNN和Mamba。在单通道EEG上实现了低延迟和高性能。该框架的轻量设计和有效特征提取方法可被直接迁移至被动BCI中的认知负荷评估任务，尤其适用于资源受限场景。",
+      "llm_tldr": "该论文针对便携式EEG设备在自动睡眠分期中面临的小样本过拟合、N1和REM等难分期准确率低的问题，提出GamSleepNet轻量级框架，包含FEB模块结合改进的CNN和Mamba。在单通道EEG上实现了低延迟和高性能。该框架的轻量设计和有效特征提取方法可被直接迁移至被动BCI中的认知负荷评估任务，尤其适用于资源受限场景。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.06630v1",
+      "source": "arxiv",
+      "title": "When Certificates Fail: A Unified Safety Framework for Embedded Neural Interface Models",
+      "abstract": "Formal robustness certificates for embedded neural-interface models can pass while task accuracy collapses: at perturbation budget e=0.25, EEGNet classification accuracy drops by 25.7% under projected-gradient attack while the Lipschitz-style certificate remains valid for all 9 tested subjects. We argue that this gap between mathematical certification and operational safety is one instance of a broader alignment failure in neural interfaces, where training objectives diverge from user welfare. We propose a unified empirical audit framework organized around three such failures: verification insufficiency, in which certificates pass while task behavior degrades; proxy-fidelity divergence, in which task-optimized representations damage neural signal structure (a time-domain auxiliary objective reduces reconstruction MSE by 0.1132 while worsening spectral log-MSE); and latent information exfiltration, in which public-task embeddings retain private attributes (subject identity recoverable at 48.1% versus 6.7% chance). We instantiate the framework on BCI Competition IV 2a and SEED-IV using multiple deep and classical EEG decoders, official session-level validation, null controls, and paired statistical tests. The verification gap persists across EEGNet, CSP+LDA, and FBCSP+LDA, and is therefore architecture-independent. Our results establish that operational safety auditing, not certificate verification alone, is necessary for responsible neural-interface deployment.",
+      "authors": [
+        "Jasmeet Singh Bindra"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-07-07T13:03:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.06630v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Proposes a safety audit framework for EEGNet-based BCI models addressing robustness issues",
+      "llm_evidence_cn": "提出了针对基于EEGNet的BCI模型的安全审计框架解决鲁棒性问题",
+      "llm_evidence": "提出了针对基于EEGNet的BCI模型的安全审计框架解决鲁棒性问题",
+      "canonical_evidence": "提出了针对基于EEGNet的BCI模型的安全审计框架解决鲁棒性问题",
+      "llm_tldr_en": "This paper reveals that formal robustness certificates can pass while EEGNet accuracy drops under attack, and proposes a unified empirical audit framework to bridge the gap between certification and operational safety in neural interfaces.",
+      "llm_tldr_cn": "该论文揭示了传统鲁棒性证书在神经接口模型中的失效现象:在0.25扰动预算下EEGNet分类准确率下降25.7%而Lipschitz式证书对9名受试者均有效。作者认为这是安全认证与用户福利偏离的体现并提出了一个统一经验审计框架涵盖验证不足、代理保真度分歧等三类失败。该框架为神经接口模型的安全评估和鲁棒性增强提供了新视角。",
+      "llm_tldr": "该论文揭示了传统鲁棒性证书在神经接口模型中的失效现象:在0.25扰动预算下EEGNet分类准确率下降25.7%而Lipschitz式证书对9名受试者均有效。作者认为这是安全认证与用户福利偏离的体现并提出了一个统一经验审计框架涵盖验证不足、代理保真度分歧等三类失败。该框架为神经接口模型的安全评估和鲁棒性增强提供了新视角。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-21",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-03-736278-v1",
+      "source": "biorxiv",
+      "title": "The impact of behavioural activity on the EEG power spectrum, its source localisation, and global functional connectivity in rats",
+      "abstract": "The behavioural activity of freely moving animals is a confounding factor that affects the recording, analysis, and final results of animal EEG experiments. Along with the lack of standardisation in animal in vivo electrophysiology experiments, this could lead to huge inconsistencies, especially in the analysis of centrally acting drugs. Therefore, the main aim of this paper is to investigate the effects of behavioural activity versus inactivity on the multichannel EEG in freely moving rats. In a large sample (n = 116) of waking recordings from 12 cortical electrodes (ECoG) in Wistar rats, we evaluated behavioural activity-related changes in the power spectrum, current source density, and power-based global functional connectivity (GFC) in a 3D rat brain model, according to the TOHOKU Rat Brain Atlas. The main findings were that behavioural activity induced 1) a robust power increase in 6-8 Hz, peaking at 7 Hz with maximum changes over the parietal and temporal cortex, 2) an increase in gamma power (30-80 Hz) across the whole brain, 3) a decrease in delta (1-4 Hz) and beta (12-30 Hz) power across the whole cortex. Changes were also localised in subcortical regions, particularly in the diencephalon/thalamus. The GFC analysis showed a similar pattern of power changes across the 6-8 Hz, delta, and beta bands; however, GFC in the gamma band decreased. Again, the GFC analysis revealed changes in connectivity within subcortical structures, primarily in the thalamus. None of the measures was affected in the alpha band (8-12 Hz). These findings emphasise behavioural state as a critical factor influencing EEG outcomes, with important implications for the standardisation and translational validity of preclinical neurophysiological studies.",
+      "authors": [
+        "Vejmola, C.",
+        "Jiricek, S.",
+        "Bochin, M.",
+        "Koudelka, V.",
+        "Palenicek, T."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-08T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.03.736278v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "investigates impact of behavioral activity on EEG power spectrum and source localization",
+      "llm_evidence_cn": "研究行为活动对脑电功率谱和源定位的影响",
+      "llm_evidence": "研究行为活动对脑电功率谱和源定位的影响",
+      "canonical_evidence": "研究行为活动对脑电功率谱和源定位的影响",
+      "llm_tldr_en": "This paper systematically examines how behavioral activity confounds EEG power spectrum, source localization, and functional connectivity in freely moving rats.",
+      "llm_tldr_cn": "动物脑电实验常受行为活动干扰，缺乏标准化。本文在大样本（n=116）自由活动大鼠中，评估行为活动对多通道皮层脑电功率谱、电流源密度和功能连接的影响。结果量化了活动状态与静息态下的脑电差异，为脑电图中的噪声抑制和鲁棒特征提取提供了关键先验知识。该结论可直接指导被动脑机接口中运动伪影去除方法的设计。",
+      "llm_tldr": "动物脑电实验常受行为活动干扰，缺乏标准化。本文在大样本（n=116）自由活动大鼠中，评估行为活动对多通道皮层脑电功率谱、电流源密度和功能连接的影响。结果量化了活动状态与静息态下的脑电差异，为脑电图中的噪声抑制和鲁棒特征提取提供了关键先验知识。该结论可直接指导被动脑机接口中运动伪影去除方法的设计。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-21",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-06-736575-v1",
+      "source": "biorxiv",
+      "title": "Seamless interaction in VR: decoding user intent with eye gaze and passive brain-computer interfaces",
+      "abstract": "Virtual reality (VR) interaction remains largely dependent on explicit motor input, limiting seamless and adaptive interaction. This study investigated whether electroencephalography (EEG)-based passive brain-computer interfaces (BCIs), combined with eye gaze, can decode interaction intent directly from its underlying neurophysiological correlates during dynamic VR gameplay. We operationalized interaction intent as comprising two components: affordance-related evaluation, indicating whether an attended object affords interaction, and approach-avoidance evaluation, indicating the directional tendency of interaction toward desirable or undesirable outcomes. Twenty-three participants completed a VR game with two calibration sessions and one online BCI session. Offline analyses showed above-chance decoding of the binary approach-avoidance decision classification across all actionable trials, with a grand-average accuracy of 66.28% across participants. This decoding transferred to online closed-loop gameplay, where grand-average accuracy remained above chance at 69.64%. Category-level analyses further revealed substantial variability in classification separability. For approach-avoidance-related classifications, accuracy reached 80.84% for the most distinct pairing between clearly valenced reward and punishment categories, but dropped to near chance at 59.03% for the more context-dependent pairing with ambiguous motivational valence. Affordance-related classifications between non-actionable and actionable item categories were consistently high, ranging from 77.76% to 83.50%. User Experience questionnaire results showed that, despite limitations leading to perceived loss of control and reduced ease of use, participants found the BCI-based interaction paradigm itself more fun than the controller baseline. To our knowledge, this is the first demonstration of real-time EEG decoding of interaction intent during dynamic VR gameplay, contributing toward intuitive user-adapted interfaces driven by physiological signals in immersive environments.",
+      "authors": [
+        "Pan, Y.",
+        "Rabe, L.",
+        "Zander, T.",
+        "Klug, M."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-10T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.06.736575v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG-based passive BCI with eye gaze for decoding user intent in VR",
+      "llm_evidence_cn": "基于EEG的被动脑机接口结合眼动在VR中解码用户意图",
+      "llm_evidence": "基于EEG的被动脑机接口结合眼动在VR中解码用户意图",
+      "canonical_evidence": "基于EEG的被动脑机接口结合眼动在VR中解码用户意图",
+      "llm_tldr_en": "Investigates EEG-based passive BCI with eye gaze to decode interaction intent during dynamic VR gameplay, showing that EEG and gaze can jointly predict affordance and approach-avoidance evaluations.",
+      "llm_tldr_cn": "虚拟现实交互依赖显式运动输入，限制了无缝体验。本研究探索基于EEG的被动脑机接口（BCI）联合眼动，在动态VR游戏中直接解码交互意图的神经相关。将交互意图分解为可负担性评估和趋避评估，通过23名被试的VR实验验证了EEG+眼动解码的有效性。该方法为VR自适应交互提供了新途径。",
+      "llm_tldr": "虚拟现实交互依赖显式运动输入，限制了无缝体验。本研究探索基于EEG的被动脑机接口（BCI）联合眼动，在动态VR游戏中直接解码交互意图的神经相关。将交互意图分解为可负担性评估和趋避评估，通过23名被试的VR实验验证了EEG+眼动解码的有效性。该方法为VR自适应交互提供了新途径。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
