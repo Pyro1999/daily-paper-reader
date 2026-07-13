@@ -1,0 +1,24 @@
+{
+  "label": "2026-07-13",
+  "date": "2026-07-13",
+  "generated_at": "2026-07-13T21:43:09",
+  "count": 1,
+  "papers": [
+    {
+      "paper_id": "202607/13/2607.09543v1-cocot-eeg-contrastive-pretrained-multiscale-convolutional-transformer-for-eeg-decoding",
+      "section": "deep",
+      "title_en": "CoCoT-EEG: Contrastive-Pretrained Multiscale Convolutional Transformer for EEG Decoding",
+      "authors": "Gabriel Mahuas, Victoria Shevchenko, Ugo Tanielian, Yassir Bendou, Richard Gao",
+      "date": "2026-07-10",
+      "pdf": "https://arxiv.org/pdf/2607.09543v1",
+      "score": "9.0",
+      "evidence": "对比预训练的脑电基础模型用于解码",
+      "tldr": "现有掩码重建预训练对高噪声、信息集中在窄带的EEG数据效果不佳。为此提出对比预训练的EEG模型CoCoT，采用多尺度时间卷积输入和Transformer编码器。在异构电极配置的基准任务上，CoCoT匹配或超越最先进重建预训练模型，且从头训练也优于单任务模型。本研究证明了对比学习用于EEG基础模型的可行性，并提供了关键架构设计建议。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Self-supervised pretrained foundation models (FM) have shown early promise for non-invasive electroencephalogram (EEG) decoding applications. Many recent large-scale models converged on the approach of tokenizing raw EEG followed by masked reconstruction pretraining. However, this recipe has been shown to be suboptimal for data, like EEG, with high noise amplitude and information confined to limited dimensions such as narrow frequency bands. Building on this insight, we develop a novel contrastive-pretrained EEG model with multiscale temporal convolution input layers and Transformer encoder blocks (CoCoT). CoCoT matches or beats state-of-the-art reconstruction-pretrained EEG models on extensive benchmark decoding tasks with heterogeneous electrode configurations. Furthermore, CoCoT trained from scratch outperforms previous single-task decoding models and even rivals pretrained models, showcasing the architecture's flexibility and data efficiency. Through systematic ablations, including model architecture and pretraining objective, we demonstrate the viability of contrastive learning for building EEG FMs while suggesting key architectural design considerations, prompting further investigations in alternative large-scale pretraining strategies.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
