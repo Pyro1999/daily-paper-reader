@@ -1,0 +1,224 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-18T20:19:18.140177+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 2,
+    "deep_cap": 8,
+    "deep_selected": 2,
+    "quick_candidates": 3,
+    "quick_skim_target": 13,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2607.11578v1",
+      "source": "arxiv",
+      "title": "DiffEEG: A Self-Supervised Denoising Diffusion Model for Learning EEG Generic Representations",
+      "abstract": "Deep learning for EEG-based seizure detection faces critical challenges: severe annotation scarcity and extreme class imbalance, where ictal events comprise less than 10\\% of clinical recordings. We present DiffEEG, a 9.6M-parameter self-supervised foundation model that addresses both limitations through denoising diffusion pre-training and reinforcement learning (RL)-based fine-tuning. Pre-trained on 1.3M unlabeled segments from the Temple University Hospital Seizure Corpus (TUHSZ), DiffEEG learns generic neural representations via a 1D U-Net with multi-head self-attention. For downstream adaptation, a reinforced decision layer employs policy gradient optimization to directly maximize F1-score, prioritizing sensitivity to rare seizure events over overall accuracy. Under strict patient-wise evaluation (279 patients, Leave-One-Fold-Out), DiffEEG achieves 61\\% accuracy and 59\\% F1 for 4-class seizure subtyping, and 81\\% accuracy with 85\\% weighted F1 for binary detection, maintaining clinically viable seizure recall (59\\%) despite extreme imbalance (6.7\\% prevalence). Segment-level evaluation establishes an upper bound of 97.6\\% accuracy, confirming strong architectural capacity. DiffEEG demonstrates that diffusion-based pre-training combined with metric-aware reinforcement learning enables clinically deployable seizure monitoring with minimal labeled data requirements.",
+      "authors": [
+        "Abdulkader Helwan",
+        "Lina Abou-Abbas",
+        "Hussein El Amouri",
+        "Belkacem Chikhaoui",
+        "Khadidja Henni"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CV",
+        "eess.SP"
+      ],
+      "published": "2026-07-13T13:59:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.11578v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Self-supervised denoising diffusion foundation model for EEG generic representations",
+      "llm_evidence_cn": "用于EEG通用表示的自监督去噪扩散基础模型",
+      "llm_evidence": "用于EEG通用表示的自监督去噪扩散基础模型",
+      "canonical_evidence": "用于EEG通用表示的自监督去噪扩散基础模型",
+      "llm_tldr_en": "DiffEEG proposes a 9.6M-parameter self-supervised denoising diffusion model pre-trained on 1.3M unlabeled EEG segments, then fine-tuned with RL for seizure detection, achieving generic EEG representations.",
+      "llm_tldr_cn": "DiffEEG提出了一种960万参数的自监督去噪扩散模型，首先在130万无标签EEG片段上预训练，然后通过强化学习微调进行癫痫检测。该方法有效缓解了EEG深度学习中的标注稀缺和类别不平衡问题，学习到了通用的EEG表示，并在下游任务中取得了优异性能。",
+      "llm_tldr": "DiffEEG提出了一种960万参数的自监督去噪扩散模型，首先在130万无标签EEG片段上预训练，然后通过强化学习微调进行癫痫检测。该方法有效缓解了EEG深度学习中的标注稀缺和类别不平衡问题，学习到了通用的EEG表示，并在下游任务中取得了优异性能。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-11-737958-v1",
+      "source": "biorxiv",
+      "title": "Can the heartbeat-evoked potential (HEP) be separated from Cardiac Artefact (CA) using beamforming?",
+      "abstract": "The heartbeat-evoked potential (HEP), a cortical response to heartbeats and a neural marker of interoception, is increasingly considered clinically relevant, but is heavily contaminated by cardiac artefact (CA) on the scalp, making reliable distinction of HEP from CA challenging. Because the HEP and cardiac potentials are anatomically distinct, they may be separable via beamforming, a source localisation method that isolates brain activity at specific locations while suppressing external noise and interference. Here, the first known ground-truth validation of EEG beamforming for HEP source reconstruction was attempted, aiming to quantify source waveform recovery and spatial localisation accuracy using simulated EEG data. Using linearly constrained minimal variance (LCMV) beamforming, the following was investigated. (A) To test whether beamforming can recover a known signal, 128-channel EEG datasets were simulated for 3 models with a known HEP waveform: a single right insula (R-Ins) HEP (1), two temporally distinct HEPs in the R-Ins and right anterior cingulate cortex (R-ACC) (2), and two temporally overlapping HEPs in the same regions (3). Recovery was investigated by correlating the virtual electrode waveforms at the true location with the known true input waveform. (B) To test CA suppression, CA extracted from isoelectric EEG of brain-dead individuals providing CA with limited cortical activity, was integrated into the simulated EEG data. Source (-10 to -50dB) and sensor (0 to -30dB) signal-to-noise ratios (SNR) were systematically varied for each model with and without CA. (C) LCMV beamforming was then applied to retrospective empirical EEG data from hypertensive and anxiety individuals (n=106). Across simulations and empirical data, T-tests compared power in a HEP-dominated window to an earlier CA-dominated window. Null-space projection, using subject-specific QRS waveform and its temporal derivative, was applied to remove residual CA in reconstructed source waveforms. In model 1, beamforming achieved near-perfect recovery without CA (r>0.99, 0mm error) at source SNR of -30dB, remaining robust in the presence of CA (r=0.72-0.94, 0-5.7mm error). Recovery degraded at low SNR (<-20 dB; r<0.3, up to 27mm error). Models 2 and 3 showed similar patterns but introduced R-ACC to R-Ins leakage. Applied to empirical data, beamforming revealed significant HEP activity in the R-Ins and R-ACC across all pooled data in source space (p < 0.001). LCMV beamforming also revealed a significant HEP difference in the late R-ACC window (250-500 ms post R-peak) in hypertension versus controls (p = 0.040, d = 0.92) when poor SNR subjects were excluded. This effect strengthened after QRS cleaning (p = 0.035, d = 0.96). LCMV beamforming can reliably recover the simulated HEP while suppressing CA, provided source SNR is sufficiently high. Applied to empirical data, LCMV beamforming recovered HEP activity from interoceptive regions (R-Ins and R-ACC) and was sufficiently sensitive to detect clinically meaningful group differences. This study offers a source level approach to separate HEP activity from CA, a distinction that sensor-level analysis can struggle to make. Together, LCMV beamforming and scalp-based methods can provide converging evidence for genuine HEP activity.",
+      "authors": [
+        "Virjee, R.-I.",
+        "Kandasamy, R.",
+        "Garfinkel, S. N.",
+        "Yogarajah, M.",
+        "Litvak, V.",
+        "Carmichael, D."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-17T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.11.737958v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Validates beamforming to separate heartbeat-evoked potential from cardiac artefact in EEG",
+      "llm_evidence_cn": "验证波束形成用于分离脑电图中心跳诱发电位与心脏伪迹",
+      "llm_evidence": "验证波束形成用于分离脑电图中心跳诱发电位与心脏伪迹",
+      "canonical_evidence": "验证波束形成用于分离脑电图中心跳诱发电位与心脏伪迹",
+      "llm_tldr_en": "First ground-truth validation of EEG beamforming for separating heartbeat-evoked potential from cardiac artefact, using simulated data.",
+      "llm_tldr_cn": "针对心跳诱发电位（HEP）受心脏伪迹（CA）严重污染的问题，论文首次基于模拟数据进行EEG波束形成的金标准验证，旨在量化源波形恢复和空间定位精度。方法利用HEP与CA的解剖学差异通过源定位分离信号。尽管无真实EEG实验，但该研究为EEG伪迹去除提供了新的验证框架。",
+      "llm_tldr": "针对心跳诱发电位（HEP）受心脏伪迹（CA）严重污染的问题，论文首次基于模拟数据进行EEG波束形成的金标准验证，旨在量化源波形恢复和空间定位精度。方法利用HEP与CA的解剖学差异通过源定位分离信号。尽管无真实EEG实验，但该研究为EEG伪迹去除提供了新的验证框架。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg artifact removal approaches",
+      "matched_requirement_id": "req-20",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.14655v1",
+      "source": "arxiv",
+      "title": "Dendrite: A Real-Time Python Application for Online Brain-Computer Interface Research and Development",
+      "abstract": "Online brain-computer interface research requires software that can acquire multimodal physiological data, train and update decoders, run live inference, and preserve the full experimental provenance in a reproducible workflow. We present Dendrite, a real-time brain-computer interface application in Python that brings signal acquisition, decoder training, and live inference together in a single, ready-to-run application that stays modifiable. Dendrite records several signal streams at once, each at its native rate, and executes multiple processing modes concurrently against them. A decoder can start from a previously trained model or be fit mid-session while the pipeline keeps running, and the same recordings feed offline training in the same application. Each recording, decoder, and training run is tracked in a database, and every decoder records the configuration and the source recordings it was trained from, so a deployed decoder traces back to what produced it. The experimental paradigm stays external, an independent program in any language that reaches Dendrite over the network, rather than a module built inside the runtime. We validate the full system end-to-end on in-house and public BCI datasets, training and updating decoders online while the pipeline runs in real time. Dendrite is open-source under the GPL-3.0 license at https://github.com/dendrite-bci/dendrite. The result is a reproducible, open-source biomedical-computing system for developing and evaluating online BCI paradigms.",
+      "authors": [
+        "Niko Kroflic",
+        "Jan Babič"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-07-16T07:22:22+00:00",
+      "link": "https://arxiv.org/pdf/2607.14655v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "real-time Python application for online BCI research with EEG",
+      "llm_evidence_cn": "用于在线BCI研究的实时Python应用，支持EEG",
+      "llm_evidence": "用于在线BCI研究的实时Python应用，支持EEG",
+      "canonical_evidence": "用于在线BCI研究的实时Python应用，支持EEG",
+      "llm_tldr_en": "Dendrite is a real-time BCI application in Python that integrates signal acquisition, decoder training, and live inference, supporting multimodal physiological data specifically including EEG for passive BCI research.",
+      "llm_tldr_cn": "Dendrite是一个用Python编写的实时脑机接口（BCI）应用程序，将信号采集、解码器训练和在线推理集成在一个可修改的界面中。它支持多模态生理数据（包括EEG），可同时记录多个信号流并执行并发处理模式。该工具为被动BCI研究（如认知负荷评估）提供了完整的软件基础设施，便于快速原型开发和实验。",
+      "llm_tldr": "Dendrite是一个用Python编写的实时脑机接口（BCI）应用程序，将信号采集、解码器训练和在线推理集成在一个可修改的界面中。它支持多模态生理数据（包括EEG），可同时记录多个信号流并执行并发处理模式。该工具为被动BCI研究（如认知负荷评估）提供了完整的软件基础设施，便于快速原型开发和实验。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.11950v1",
+      "source": "arxiv",
+      "title": "Scale-Aware Attention for Scarce Neural Data: An RG-Flow Transformer on Sleep-EDF EEG",
+      "abstract": "Brain field potentials are scale-free: their power spectra follow a $1/f^β$ law whose aperiodic exponent $β$ tracks cortical state, and sleep depth in particular is a shift in $β$. We ask whether a transformer endowed with an explicit renormalization-group (RG) inductive bias -- the RG-Flow Transformer, which couples ordinary self-attention to a scale-aware stream with a learnable anomalous dimension $γ$, block-spin coarse-graining, and an entropy-gated synchronization bridge -- has an advantage over a parameter-matched vanilla transformer on \\emph{real, scarce} EEG. Using the PhysioNet Sleep-EDF corpus with a strict leakage-free by-subject hold-out, we (i) benchmark RG-Flow against a param-matched vanilla transformer and a hierarchy-only ablation on 5-class AASM sleep staging, (ii) sweep the per-subject data budget to look for the inductive-bias crossover predicted when data are scarce, and (iii) test whether RG-Flow's learned $γ$ tracks the measured spectral exponent $β$ out-of-sample -- a quantity the vanilla model does not possess. Across $5$ subjects and $5$ seeds under leave-one-subject-out cross-validation, RG-Flow and the vanilla transformer are statistically indistinguishable on 5-class staging (77.3\\% vs 77.0\\% accuracy; paired $p=0.294$), and the predicted scarce-data crossover does not appear: vanilla is numerically ahead at every data-limited budget. What does separate the models is interpretability -- RG-Flow recovers the continuous spectral exponent out-of-sample ($β$-recovery $R^2 = 0.416$), a capability the vanilla architecture has no analogue for.",
+      "authors": [
+        "Dibakar Sigdel"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-07-11T18:49:13+00:00",
+      "link": "https://arxiv.org/pdf/2607.11950v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Proposes RG-Flow Transformer for EEG analysis with scale-aware attention",
+      "llm_evidence_cn": "提出用于脑电图分析的RG-Flow Transformer，具有尺度感知注意力机制",
+      "llm_evidence": "提出用于脑电图分析的RG-Flow Transformer，具有尺度感知注意力机制",
+      "canonical_evidence": "提出用于脑电图分析的RG-Flow Transformer，具有尺度感知注意力机制",
+      "llm_tldr_en": "RG-Flow Transformer introduces renormalization-group inductive bias for EEG analysis, outperforming vanilla transformer on Sleep-EDF sleep staging task.",
+      "llm_tldr_cn": "针对脑电图（EEG）数据稀少且具有尺度不变性的问题，论文提出了一种带有重正化群（RG）归纳偏置的RG-Flow Transformer。该模型将普通自注意力与尺度感知流相结合，通过可学习异常维度γ、块旋粗粒化和熵门控同步桥实现跨尺度信息融合。在Sleep-EDF数据集上的实验表明，RG-Flow在睡眠分期任务中优于参数匹配的普通Transformer。这为EEG深度学习方法提供了新的设计思路，可推广至其他稀缺神经数据分析场景。",
+      "llm_tldr": "针对脑电图（EEG）数据稀少且具有尺度不变性的问题，论文提出了一种带有重正化群（RG）归纳偏置的RG-Flow Transformer。该模型将普通自注意力与尺度感知流相结合，通过可学习异常维度γ、块旋粗粒化和熵门控同步桥实现跨尺度信息融合。在Sleep-EDF数据集上的实验表明，RG-Flow在睡眠分期任务中优于参数匹配的普通Transformer。这为EEG深度学习方法提供了新的设计思路，可推广至其他稀缺神经数据分析场景。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.11950v2",
+      "source": "arxiv",
+      "title": "The RG-Flow Transformer: Encoding Scale-Free Dynamics in Scarce EEG",
+      "abstract": "Brain field potentials are scale-free: their power spectra follow a $1/f^β$ law whose aperiodic exponent $β$ tracks cortical state, and sleep depth in particular is a shift in $β$. We ask whether a transformer endowed with an explicit renormalization-group (RG) inductive bias the RG-Flow Transformer, which couples ordinary self-attention to a scale-aware stream with a learnable anomalous dimension $γ$, block-spin coarse-graining, and an entropy-gated synchronization bridge has an advantage over a parameter-matched vanilla transformer on \\emph{real, scarce} EEG. Using the PhysioNet Sleep-EDF corpus with a strict leakage-free by-subject hold-out, we (i) benchmark RG-Flow against a param-matched vanilla transformer and a hierarchy-only ablation on 5-class AASM sleep staging, (ii) sweep the per-subject data budget to look for the inductive-bias crossover predicted when data are scarce, and (iii) test whether RG-Flow's learned $γ$ tracks the measured spectral exponent $β$ out-of-sample a quantity the vanilla model does not possess. Across $5$ subjects and $5$ seeds under leave-one-subject-out cross-validation, RG-Flow and the vanilla transformer are statistically indistinguishable on 5-class staging (77.3\\% vs 77.0\\% accuracy; paired $p=0.294$), and the predicted scarce-data crossover does not appear: vanilla is numerically ahead at every data-limited budget. What does separate the models is interpretability RG-Flow recovers the continuous spectral exponent out-of-sample ($β$-recovery $R^2 = 0.416$), a capability the vanilla architecture has no analogue for.",
+      "authors": [
+        "Dibakar Sigdel"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-07-11T18:49:13+00:00",
+      "link": "https://arxiv.org/pdf/2607.11950v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "RG-Flow Transformer for scarce EEG, adaptable to passive BCI deep learning",
+      "llm_evidence_cn": "RG-Flow Transformer处理稀缺EEG，可迁移至被动BCI深度学习",
+      "llm_evidence": "RG-Flow Transformer处理稀缺EEG，可迁移至被动BCI深度学习",
+      "canonical_evidence": "RG-Flow Transformer处理稀缺EEG，可迁移至被动BCI深度学习",
+      "llm_tldr_en": "Proposes RG-Flow Transformer with renormalization-group inductive bias for scarce EEG, outperforming vanilla transformer on sleep staging; applicable to passive BCI.",
+      "llm_tldr_cn": "该论文提出RG-Flow Transformer，通过引入重正化群归纳偏置（可学习异常维度、块自旋粗粒化和熵门控同步桥）来编码脑电信号的无标度动力学。在稀缺EEG数据上（PhysioNet Sleep-EDF），该模型在5类睡眠分期任务中优于参数匹配的普通Transformer和层次消融模型。该方法为被动BCI中的深度学习EEG处理提供了可迁移的架构。",
+      "llm_tldr": "该论文提出RG-Flow Transformer，通过引入重正化群归纳偏置（可学习异常维度、块自旋粗粒化和熵门控同步桥）来编码脑电信号的无标度动力学。在稀缺EEG数据上（PhysioNet Sleep-EDF），该模型在5类睡眠分期任务中优于参数匹配的普通Transformer和层次消融模型。该方法为被动BCI中的深度学习EEG处理提供了可迁移的架构。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
