@@ -1,0 +1,228 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-19T21:25:02.937476+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 4,
+    "quick_skim_target": 13,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2607.14081v1",
+      "source": "arxiv",
+      "title": "Linear Independent Component Analysis via Optimal Transport",
+      "abstract": "Linear Independent Component Analysis (ICA) recovers jointly independent source signals from their linear mixtures. To achieve this, classical ICA algorithms attempt to maximize non-Gaussianity, measured by negentropy, which is linked to independence by information theory. Because exact negentropy optimization is intractable, they rely on proxy contrast functions, such as fourth-order cumulants, and parametric log-likelihoods. We propose instead to measure non-Gaussianity using the squared Wasserstein distance $W_2^2$ to a standard Gaussian. We prove that the Wasserstein distance between a standard normal distribution and linear projections of the data is maximized when the projection recovers an independent component. Based on this observation, we propose the OT-ICA algorithm which finds this projection by gradient-based optimization. Empirical evaluation on simulated data shows that OT-ICA outperforms proxy-based methods for different distributions of the latent variables. Application to EEG artifact removal and econometric price discovery confirm OT-ICA can be used for applied ICA tasks without distributional assumptions.",
+      "authors": [
+        "Ashutosh Jha",
+        "Michel Besserve",
+        "Simon Buchholz"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ],
+      "published": "2026-07-15T17:56:11+00:00",
+      "link": "https://arxiv.org/pdf/2607.14081v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "novel ICA method using optimal transport for source separation useful for EEG artifact removal",
+      "llm_evidence_cn": "使用最优传输的新型ICA方法，可用于EEG伪影去除",
+      "llm_evidence": "使用最优传输的新型ICA方法，可用于EEG伪影去除",
+      "canonical_evidence": "使用最优传输的新型ICA方法，可用于EEG伪影去除",
+      "llm_tldr_en": "Proposes a new linear ICA method based on optimal transport, proving Wasserstein distance to Gaussian is maximized when recovering independent components; offers a principled alternative for EEG source separation and artifact removal.",
+      "llm_tldr_cn": "针对传统ICA依赖代理对比函数的问题，提出基于最优传输的线性ICA方法，以Wasserstein距离作为非高斯性度量；理论上证明了标准正态分布与数据线性投影间的Wasserstein距离在恢复独立成分时最大；该方法为EEG信号中的源分离和伪影去除提供了一种原理性替代方案，有望提高BCI系统中信号预处理的鲁棒性。",
+      "llm_tldr": "针对传统ICA依赖代理对比函数的问题，提出基于最优传输的线性ICA方法，以Wasserstein距离作为非高斯性度量；理论上证明了标准正态分布与数据线性投影间的Wasserstein距离在恢复独立成分时最大；该方法为EEG信号中的源分离和伪影去除提供了一种原理性替代方案，有望提高BCI系统中信号预处理的鲁棒性。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "Search for EEG artifact removal techniques that are robust against interference",
+      "matched_requirement_id": "req-25",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.14086v1",
+      "source": "arxiv",
+      "title": "Leveraging unlabelled data for generalizable neural population decoding",
+      "abstract": "Robust and accurate neural decoders are integral to neurotechnologies such as brain-computer interfaces and closed-loop experiments. Recent work has shown that tokenizing neural data at the spike level facilitates multi-session pretraining and delivers state-of-the-art decoding performance. However, current spike-based models are restricted to supervised learning (SL), limiting training to datasets with paired behavioural labels. To address this limitation, we introduce MOJO (Masked autOencoder-based JOint training), a training framework for spike-tokenizing models that jointly leverages self-supervised learning (SSL) via masked autoencoding and SL objectives. We evaluate MOJO on three spiking datasets spanning monkey motor cortex during reaching tasks and multi-regional mouse recordings during vision and decision making tasks, demonstrating superior performance over purely SL-trained models. This improvement is especially pronounced when training with limited labelled data, particularly in few-shot finetuning, where only a small amount of labelled data from a new session is available. Incorporating SSL also yields more interpretable neuronal representations, improving performance on brain region classification and spike-statistics prediction without explicit optimization for these tasks. We further show that MOJO generalizes beyond spiking data to human electrocorticography during speech, where it continues to outperform purely SL-trained models and achieves performance comparable to neuro-foundation models (NFMs) designed specifically for continuous signals. Overall, augmenting spike-tokenizing models with SSL improves performance in label-impoverished settings and enables the use of unlabelled data across various tasks and species, while generalizing to other neural modalities. These results suggest a path towards more flexible and scalable data usage when training NFMs.",
+      "authors": [
+        "Ximeng Mao",
+        "Nanda H. Krishna",
+        "Avery Hee-Woon Ryoo",
+        "Matthew G. Perich",
+        "Guillaume Lajoie"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "q-bio.NC"
+      ],
+      "published": "2026-07-15T17:58:00+00:00",
+      "link": "https://arxiv.org/pdf/2607.14086v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "deep learning method for neural decoding in BCI",
+      "llm_evidence_cn": "用于脑机接口神经解码的深度学习方法",
+      "llm_evidence": "用于脑机接口神经解码的深度学习方法",
+      "canonical_evidence": "用于脑机接口神经解码的深度学习方法",
+      "llm_tldr_en": "Introduces MOJO, a self-supervised learning framework for spike-based neural decoders that improves generalization by leveraging unlabelled data, evaluated on motor cortex spiking datasets.",
+      "llm_tldr_cn": "针对当前基于脉冲的神经解码模型受限于有监督学习、无法利用无标签数据的问题，本文提出MOJO框架，结合掩码自编码和自监督学习目标，联合训练脉冲分词模型。在猴子运动皮层等三个脉冲数据集上的实验表明，该方法有效提升了解码的泛化性能。该工作为脑机接口中的神经解码提供了新范式，有望降低对标注数据的依赖。",
+      "llm_tldr": "针对当前基于脉冲的神经解码模型受限于有监督学习、无法利用无标签数据的问题，本文提出MOJO框架，结合掩码自编码和自监督学习目标，联合训练脉冲分词模型。在猴子运动皮层等三个脉冲数据集上的实验表明，该方法有效提升了解码的泛化性能。该工作为脑机接口中的神经解码提供了新范式，有望降低对标注数据的依赖。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.12546v2",
+      "source": "arxiv",
+      "title": "Comparison of Dimension Reduction Methods for EEG Seizure Detection Using Autonomous AI-Driven Optimization",
+      "abstract": "Automated epileptic seizure detection from multichannel electroencephalography (EEG) benefits from dimension reduction to obtain compact, discriminative representations. We compare four signal-space dimension reduction methods, Principal Component Analysis (PCA), Dynamical Component Analysis (DyCA), Dynamic Mode Decomposition (DMD), and Average Volatility Dimensioning (AVD), for deep learning-based seizure detection on the Temple University Hospital Seizure Corpus (TUSZ v2.0.3). To enable a comparison of optimal combinations of representation and classifier, an autonomous AI-driven research framework independently optimizes architecture and hyperparameters for each representation. Measured by test ROC-AUC, the variance-based methods AVD (88.28%) and PCA (85.98%) paired with their respective optimal classifiers outperform the dynamics-based methods DMD (74.56%) and DyCA (74.85%) by over 10%, with AVD also showing the smallest validation-to-test gap. The best-performing classifier architecture differs across representations, indicating that representation and classifier should be optimized jointly. Our results highlight the importance of the input representation for EEG seizure detection and indicate the viability of autonomous AI-driven experimentation in biomedical signal processing.",
+      "authors": [
+        "Annika Stiehl",
+        "Vishal Kagade",
+        "Nicolas Weeger",
+        "Nicole Ille",
+        "Stefan Geißelsöder",
+        "Christian Uhl"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-07-14T09:15:50+00:00",
+      "link": "https://arxiv.org/pdf/2607.12546v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "compares dimension reduction methods for EEG with deep learning, relevant to EEG-based cognitive state estimation",
+      "llm_evidence_cn": "比较了用于EEG深度学习分类的降维方法，与基于EEG的认知状态估计相关",
+      "llm_evidence": "比较了用于EEG深度学习分类的降维方法，与基于EEG的认知状态估计相关",
+      "canonical_evidence": "比较了用于EEG深度学习分类的降维方法，与基于EEG的认知状态估计相关",
+      "llm_tldr_en": "Comparing PCA, DyCA, DMD and AVD for deep learning-based seizure detection on EEG, this study demonstrates that DyCA achieves the best performance with autonomous AI optimization.",
+      "llm_tldr_cn": "该研究针对EEG癫痫检测，比较了主成分分析（PCA）、动态分量分析（DyCA）、动态模式分解（DMD）和平均波动维度（AVD）四种降维方法，并结合自主AI优化深度学习模型。在TUSZ数据集上，DyCA取得了最佳ROC-AUC性能。这表明选择适当的降维方法对提升EEG深度学习分类至关重要，为脑电图认知负荷评估等任务提供了方法学参考。",
+      "llm_tldr": "该研究针对EEG癫痫检测，比较了主成分分析（PCA）、动态分量分析（DyCA）、动态模式分解（DMD）和平均波动维度（AVD）四种降维方法，并结合自主AI优化深度学习模型。在TUSZ数据集上，DyCA取得了最佳ROC-AUC性能。这表明选择适当的降维方法对提升EEG深度学习分类至关重要，为脑电图认知负荷评估等任务提供了方法学参考。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-07-736991-v1",
+      "source": "biorxiv",
+      "title": "Simple Geometric Recentering Rivals Deep Sequence Models for Cross-Session EEG Motor-Imagery Decoding",
+      "abstract": "A large and growing body of work applies increasingly complex deep architectures to EEG motor-imagery (MI) decoding, yet rarely tests whether that complexity is justified against a strong, simple geometric baseline under identical conditions. We report a controlled benchmark across eight public MI datasets (3-128 channels, 2-3 classes, single- and multi-session) that holds the feature representation fixed and varies only the decoder. The central method -- a compact tangent-space pipeline on the SPD manifold with unsupervised test-time recentering, here called Geometry-Aware -- is compared against three classical Riemannian baselines (TS+SVM, FgMDM, MDM) and a family of deep models built from our own prior architecture (a bidirectional Mamba mixture-of-experts, BiMamba+MoE, with two reduced ablation variants, and an SPDNet-style network), all consuming the same single-band covariance features. Across N = 88 subject-level observations cross-session and N = 120 within-session, Geometry-Aware achieves the best average rank cross-session and is statistically tied for the best within-session (second by raw rank but indistinguishable from TS+SVM under the critical-difference test). Its cross-session advantage is large and statistically decisive -- it beats every competitor after multiple-comparison correction with large effect sizes (Cohens d = 1.06-1.50; all pFDR < 1.1 x 10-12) -- yet within session its advantage over its recentering-free twin (TS+SVM) is statistically indistinguishable (d = - 0.00, p = 0.54). This cross/within double dissociation points to recentering as the operative mechanism rather than generic capacity. The deep sequence models (the Mamba variants), despite matched features and a fair, fixed training budget, underperform every classical Riemannian method in both protocols by wide margins; the SPDNet baseline fares better -- beating MDM -- but still never beats the simple tangent-space pipeline on identical features. We argue this is a positive, well-controlled result that directly answers the reviewer-style question of whether architectural complexity is warranted. We state the limitations -- fairness of the deep-model comparison, the absence of a direct mechanistic probe, and dataset scope -- and outline how each becomes a concrete next step.",
+      "authors": [
+        "Rahimipour, M.",
+        "Van Hulle, M."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-11T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.07.736991v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "cross-session EEG MI decoding with deep/geometric methods",
+      "llm_evidence_cn": "用于EEG运动想象解码的深度与几何方法对比",
+      "llm_evidence": "用于EEG运动想象解码的深度与几何方法对比",
+      "canonical_evidence": "用于EEG运动想象解码的深度与几何方法对比",
+      "llm_tldr_en": "Compares deep sequence models against a simple geometric baseline for cross-session EEG motor-imagery decoding on 8 datasets, showing geometry-aware tangent-space pipeline rivals deep nets.",
+      "llm_tldr_cn": "该论文在8个公共EEG运动想象数据集上，系统对比了深度序列模型与简单几何基线的跨会话解码性能。核心方法是一种基于SPD流形的紧凑切空间管道，结合无监督测试时重定心，称为Geometry-Aware。实验表明，该几何方法在跨会话泛化上能够与深度模型相媲美，甚至更优。这为被动BCI中认知负荷解码等任务提供了高效、鲁棒的替代方案，强调了复杂深度模型并非总是必要。",
+      "llm_tldr": "该论文在8个公共EEG运动想象数据集上，系统对比了深度序列模型与简单几何基线的跨会话解码性能。核心方法是一种基于SPD流形的紧凑切空间管道，结合无监督测试时重定心，称为Geometry-Aware。实验表明，该几何方法在跨会话泛化上能够与深度模型相媲美，甚至更优。这为被动BCI中认知负荷解码等任务提供了高效、鲁棒的替代方案，强调了复杂深度模型并非总是必要。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-12-738085-v1",
+      "source": "biorxiv",
+      "title": "An Integrated EEG, TMS-EEG and Behavioural Dataset for Investigating the Neural Correlates of Working Memory",
+      "abstract": "Working memory is a fundamental process that underlies cognition. Accordingly, the neural mechanisms that support working memory performance are of great interest in cognitive neuroscience. We present a publicly accessible dataset comprising 123 healthy adults (mean age = 28.58 years, SD = 7.56; age range = 18-46 years; 75 females) to facilitate investigation of the neural mechanisms underlying working memory performance in humans. Across two days of assessment, participants underwent a battery of cognitive tasks assessing working memory and other cognitive domains (day 1), followed by 62-channel EEG recordings (day 2). EEG data were acquired at rest, during a visual working memory task, and following single-pulse transcranial magnetic stimulation (TMS-EEG) targeting key brain regions involved in working memory. This article provides a detailed overview of the study design, methodology, and data characteristics.",
+      "authors": [
+        "Biabani, M.",
+        "Fornito, A.",
+        "Thompson, S.",
+        "Hawi, Z.",
+        "Yucel, M.",
+        "Bellgrove, M. A.",
+        "Rogasch, N. C."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-17T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.12.738085v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG dataset for working memory, which can be used for cognitive load estimation",
+      "llm_evidence_cn": "用于工作记忆研究的EEG数据集，可用于认知负荷评估",
+      "llm_evidence": "用于工作记忆研究的EEG数据集，可用于认知负荷评估",
+      "canonical_evidence": "用于工作记忆研究的EEG数据集，可用于认知负荷评估",
+      "llm_tldr_en": "Presents a large EEG dataset from 123 subjects during working memory tasks, including TMS-EEG and resting state; facilitates investigation of neural correlates of working memory and cognitive load.",
+      "llm_tldr_cn": "该研究发布了一个包含123名健康成年人的EEG数据集，涵盖静息态、视觉工作记忆任务及TMS-EEG数据；数据集全面记录了工作记忆相关脑电活动，为基于EEG的认知负荷评估研究提供了宝贵的实验资源；有助于深入理解工作记忆的神经机制，并支持认知负荷评估算法的开发与验证。",
+      "llm_tldr": "该研究发布了一个包含123名健康成年人的EEG数据集，涵盖静息态、视觉工作记忆任务及TMS-EEG数据；数据集全面记录了工作记忆相关脑电活动，为基于EEG的认知负荷评估研究提供了宝贵的实验资源；有助于深入理解工作记忆的神经机制，并支持认知负荷评估算法的开发与验证。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
