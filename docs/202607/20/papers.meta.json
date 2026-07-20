@@ -1,0 +1,24 @@
+{
+  "label": "2026-07-20",
+  "date": "2026-07-20",
+  "generated_at": "2026-07-20T21:53:28",
+  "count": 1,
+  "papers": [
+    {
+      "paper_id": "202607/20/biorxiv-10-64898-2026-07-14-738604-v1-a-minimally-invasiveness-hybrid-brain-computer-interface-a-distributed-scalable-and-evolvable-architecture-for-whole-brain-access",
+      "section": "quick",
+      "title_en": "A Minimally Invasiveness Hybrid Brain-Computer Interface: A Distributed, Scalable and Evolvable Architecture for Whole Brain Access",
+      "authors": "Li, Z., Liu, N., Wan, L., Liu, M., Wu, C.",
+      "date": "2026-07-15",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.14.738604v1.full.pdf",
+      "score": "7.0",
+      "evidence": "用于全脑接入的微创混合BCI架构，包含EEG",
+      "tldr": "传统脑机接口在非侵入式的低信号质量与侵入式的高手术负担间存在权衡。本文提出一种微创混合BCI架构，将颅骨作为分布式接口层，通过微孔颅骨钻孔植入皮下微电极，结合外部可穿戴头戴设备与AI辅助控制。大鼠实验证实微孔安全制备，混合BCI能显著提高静息态功率谱及感觉诱发响应信噪比，计算模型显示可聚焦时域干涉刺激深部脑目标。该架构具备分布式、可扩展、可演进特性，有望扩大微创BCI的临床应用。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Brain-computer interfaces face a fundamental trade-off between the signal fidelity and stimulation precision of noninvasive systems and the surgical burden and scalability of invasive systems. Non-invasive BCIs suffer from low signal quality and poor stimulation accuracy due to the skull barrier and the variability introduced by the scalp and skull. Existing invasive BCIs rely on traumatic surgical procedures or brain-penetrating electrodes, which limits their spatial extensibility, application, and patient acceptance. Here, we introduce a minimally invasive hybrid BCI architecture that uses the skull as a distributed interface layer rather than treating it solely as a barrier. The hybrid BCI comprises four integrated components: (1) the safe and smart micro-hole craniotomy; (2) distributed microelectrodes subcutaneously implanted in micro-holes in the skull with the distal end in contact with the dura; (3) an external bi-directional wearable headset for coupling, recording, stimulation, and channel selection; and (4) an AI-assisted planning and control agent. Animal studies have shown that micro-holes with a diameter of 300-800 m can be safely and conveniently prepared at any predefined locations across the skull without impairing the dura. In vivo experiments on rats demonstrate that the hybrid BCI with skull-implanted microelectrodes evidently increases resting-state spectral power and improves the signal-to-noise ratio of somatosensory and steady-state visual evoked responses compared to the scalp EEG; the computational modelling shows that distributed skull-dura microelectrodes can increase the intracranial electrical field strength and steer focused temporal-interference fields towards predefined deep brain targets. These findings will lay a solid foundation for future endeavors in wireless integration, safety evaluation and clinical benefits of the hybrid BCI. In summary, we propose the hybrid BCI as a distinct minimally invasive BCI paradigm with the great potential as a distributed, scalable, and upgradable neural interface that can expand the clinical application of minimally invasive BCI techniques.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

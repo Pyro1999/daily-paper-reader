@@ -1,0 +1,58 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-20T21:52:06.743913+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 1,
+    "quick_skim_target": 13,
+    "quick_selected": 1
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-07-14-738604-v1",
+      "source": "biorxiv",
+      "title": "A Minimally Invasiveness Hybrid Brain-Computer Interface: A Distributed, Scalable and Evolvable Architecture for Whole Brain Access",
+      "abstract": "Brain-computer interfaces face a fundamental trade-off between the signal fidelity and stimulation precision of noninvasive systems and the surgical burden and scalability of invasive systems. Non-invasive BCIs suffer from low signal quality and poor stimulation accuracy due to the skull barrier and the variability introduced by the scalp and skull. Existing invasive BCIs rely on traumatic surgical procedures or brain-penetrating electrodes, which limits their spatial extensibility, application, and patient acceptance. Here, we introduce a minimally invasive hybrid BCI architecture that uses the skull as a distributed interface layer rather than treating it solely as a barrier. The hybrid BCI comprises four integrated components: (1) the safe and smart micro-hole craniotomy; (2) distributed microelectrodes subcutaneously implanted in micro-holes in the skull with the distal end in contact with the dura; (3) an external bi-directional wearable headset for coupling, recording, stimulation, and channel selection; and (4) an AI-assisted planning and control agent. Animal studies have shown that micro-holes with a diameter of 300-800 m can be safely and conveniently prepared at any predefined locations across the skull without impairing the dura. In vivo experiments on rats demonstrate that the hybrid BCI with skull-implanted microelectrodes evidently increases resting-state spectral power and improves the signal-to-noise ratio of somatosensory and steady-state visual evoked responses compared to the scalp EEG; the computational modelling shows that distributed skull-dura microelectrodes can increase the intracranial electrical field strength and steer focused temporal-interference fields towards predefined deep brain targets. These findings will lay a solid foundation for future endeavors in wireless integration, safety evaluation and clinical benefits of the hybrid BCI. In summary, we propose the hybrid BCI as a distinct minimally invasive BCI paradigm with the great potential as a distributed, scalable, and upgradable neural interface that can expand the clinical application of minimally invasive BCI techniques.",
+      "authors": [
+        "Li, Z.",
+        "Liu, N.",
+        "Wan, L.",
+        "Liu, M.",
+        "Wu, C."
+      ],
+      "primary_category": "bioengineering",
+      "categories": [
+        "bioengineering"
+      ],
+      "published": "2026-07-15T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.14.738604v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Minimally invasive hybrid BCI architecture for whole brain access with EEG",
+      "llm_evidence_cn": "用于全脑接入的微创混合BCI架构，包含EEG",
+      "llm_evidence": "用于全脑接入的微创混合BCI架构，包含EEG",
+      "canonical_evidence": "用于全脑接入的微创混合BCI架构，包含EEG",
+      "llm_tldr_en": "This paper proposes a minimally invasive hybrid BCI that uses the skull as a distributed interface layer, balancing signal fidelity and surgical burden for scalable brain access.",
+      "llm_tldr_cn": "传统BCI在非侵入式信号质量与侵入式手术风险间难以平衡。该论文提出一种微创混合BCI架构，将头骨作为分布式接口层，而非单纯屏障，从而在不增加创伤的前提下提升信号质量。该设计具有可扩展性和可演进化，有望实现全脑接入。初步结果显示了其在保持低手术负担的同时提供更高信号保真度的潜力，为下一代BCI系统提供了新思路。",
+      "llm_tldr": "传统BCI在非侵入式信号质量与侵入式手术风险间难以平衡。该论文提出一种微创混合BCI架构，将头骨作为分布式接口层，而非单纯屏障，从而在不增加创伤的前提下提升信号质量。该设计具有可扩展性和可演进化，有望实现全脑接入。初步结果显示了其在保持低手术负担的同时提供更高信号保真度的潜力，为下一代BCI系统提供了新思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

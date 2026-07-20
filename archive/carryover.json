@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-07-19T21:25:02.938345+00:00",
-  "updated_date": "20260719",
+  "generated_at": "2026-07-20T21:52:06.744461+00:00",
+  "updated_date": "20260720",
   "carryover_days": 9,
   "tag_states": {
     "pBCI-load": {
-      "updated_date": "20260719",
+      "updated_date": "20260720",
       "carryover_days": 9,
       "items": []
     },
     "bci-pilot": {
-      "updated_date": "20260719",
+      "updated_date": "20260720",
       "carryover_days": 9,
       "items": []
     },
     "robust-eeg": {
-      "updated_date": "20260719",
+      "updated_date": "20260720",
       "carryover_days": 9,
       "items": []
     }
