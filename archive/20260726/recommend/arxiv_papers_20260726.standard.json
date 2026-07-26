@@ -1,0 +1,610 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-26T21:26:42.650822+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 7,
+    "deep_cap": 8,
+    "deep_selected": 7,
+    "quick_candidates": 7,
+    "quick_skim_target": 13,
+    "quick_selected": 7
+  },
+  "deep_dive": [
+    {
+      "id": "2607.16647v1",
+      "source": "arxiv",
+      "title": "EEGPrep: a validated Python implementation of the EEGLAB preprocessing pipeline",
+      "abstract": "Objective. Automated EEG preprocessing is common in research and clinical work, but few pipelines have been tested systematically. In a recent benchmark, the default EEGLAB pipeline was the only pipeline that significantly outperformed simple high pass filtering. Its MATLAB implementation, however, complicates deployment in Python and cloud workflows. We developed EEGPrep to reproduce this pipeline in Python while supporting BIDS data. The main technical problem was numerical: small floating point differences can accumulate during recursive filtering and ICA. Approach. EEGPrep covers the default EEGLAB workflow: average rereferencing, artifact removal with the clean rawdata plugin, Picard ICA, ICLabel component classification, channel interpolation, and epoching. We compared each stage with MATLAB reference output on ARM arm64, the primary analysis, and Intel x86 64, the supplementary analysis. The test dataset contained 64 channel P300 auditory oddball recordings from 13 participants. We measured maximum absolute difference, RMS error, AMARI distance for ICA, and agreement between ICLabel decisions. Main Results. On ARM arm64, import and rereferencing matched exactly for all 12 analysed subjects. The clean rawdata and Picard ICA stages remained at numerical zero, with maximum RMS equal to 1.5 x 10^-12 microvolts, AMARI distance less than or equal to 0.000001, and mean correlation equal to 1.000. ICLabel neural network inference introduced the only measurable difference, with maximum RMS equal to 2.0 x 10^-5 microvolts. Rejection decisions nevertheless agreed for every subject, and the difference did not increase through interpolation and epoching, with end to end maximum RMS less than or equal to 2.1 x 10^-5 microvolts. The Intel x86 64 analysis matched to the same precision. Significance. EEGPrep reproduces the validated EEGLAB pipeline and can be installed from PyPI or run in Docker.",
+      "authors": [
+        "Arnaud Delorme",
+        "Suraj Ranganath",
+        "Christian Kothe",
+        "Aman Jaiswal",
+        "Scott Makeig",
+        "Bruno Aristimunha"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-07-18T05:33:02+00:00",
+      "link": "https://arxiv.org/pdf/2607.16647v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Validated EEG preprocessing pipeline with artifact removal, robust for BCI applications",
+      "llm_evidence_cn": "经过验证的EEG预处理管道，包含伪迹去除，适用于BCI鲁棒处理",
+      "llm_evidence": "经过验证的EEG预处理管道，包含伪迹去除，适用于BCI鲁棒处理",
+      "canonical_evidence": "经过验证的EEG预处理管道，包含伪迹去除，适用于BCI鲁棒处理",
+      "llm_tldr_en": "EEGPrep reproduces the validated EEGLAB preprocessing pipeline in Python, including artifact removal, ICA, and ICLabel, making robust EEG denoising accessible for BCI and other applications.",
+      "llm_tldr_cn": "现有EEG预处理管道多基于MATLAB，难以集成到Python工作流。本文提出EEGPrep，在Python中忠复制了经过系统验证的EEGLAB默认预处理管道，包括平均重参考、clean_rawdata伪迹去除、Picard独立成分分析（ICA）、ICLabel成分分类及通道插值等步骤，并支持BIDS数据格式。实验表明，EEGPrep在关键指标上与原MATLAB版本一致，有效解决了递归滤波和ICA中的浮点数累积问题。该工作为Python社区提供了可靠的EEG预处理基准工具，可直接支撑BCI系统等对信号质量要求高的应用。",
+      "llm_tldr": "现有EEG预处理管道多基于MATLAB，难以集成到Python工作流。本文提出EEGPrep，在Python中忠复制了经过系统验证的EEGLAB默认预处理管道，包括平均重参考、clean_rawdata伪迹去除、Picard独立成分分析（ICA）、ICLabel成分分类及通道插值等步骤，并支持BIDS数据格式。实验表明，EEGPrep在关键指标上与原MATLAB版本一致，有效解决了递归滤波和ICA中的浮点数累积问题。该工作为Python社区提供了可靠的EEG预处理基准工具，可直接支撑BCI系统等对信号质量要求高的应用。",
+      "llm_tags": [
+        "query:robust-eeg:composite"
+      ],
+      "matched_query_tag": "query:robust-eeg:composite",
+      "matched_query_text": "Papers central to 请帮我查找有关脑机接口（EEG）鲁棒抗扰去噪的论文, especially work that connects or combines: eeg signal denoising techniques; electroencephalogram noise removal algorithms; eeg artifact removal approaches; robust eeg processing framework; eeg interference suppression methods; eeg signal enhancement for bci; Find papers on robust denoising methods for EEG signals in brain computer interfaces; Search for EEG artifact removal techniques that are robust against interference; Retrieve articles about noise suppression in electroencephalogram for BCI applications.",
+      "matched_requirement_id": "req-composite-robust-eeg",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.18568v1",
+      "source": "arxiv",
+      "title": "AMICA-Python: Adaptive Mixture Independent Component Analysis with Anderson Acceleration",
+      "abstract": "Adaptive Mixture Independent Component Analysis (AMICA) is widely used in EEG research and has long been associated with strong empirical performance for blind source separation. Despite its impact, practical use has historically depended on a single Fortran implementation, accessed via the EEGLAB toolbox for MATLAB, limiting its accessibility for analytical pipelines not designed within the MATLAB ecosystem. Here we present AMICA-Python, a Python implementation of the AMICA algorithm, with a scikit-learn-conformant API designed for integration with existing scientific Python pipelines. The implementation follows the reference algorithm closely while adopting modern software engineering practices and an interface familiar to Python users. Additionally, we introduce an optional Anderson acceleration scheme that can dramatically reduce the time to convergence for this relatively slow algorithm. To evaluate numerical agreement and practical performance, we benchmarked AMICA-Python against the reference Fortran implementation on 14 open EEG recordings. After averaging 3 runs of each implementation on all 14 recordings, AMICA-Python closely matched the reference, with a median final normalized log-likelihoods of 11.572 for both the Fortran and Python implementations, and a negligible median relative absolute difference of only $1.07\\times10^{-8}$ when normalized by the absolute Fortran value. Runtime was also competitive. Relative to the reference implementation, AMICA-Python was 17.7\\% faster, while the Anderson-accelerated variant was 34.1\\% faster. AMICA-Python reproduces the reference implementation to high numerical precision with competitive runtime, while making AMICA available through a more accessible and extensible Python interface.",
+      "authors": [
+        "Scott Huberty",
+        "Christian O'Reilly"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-07-20T23:03:40+00:00",
+      "link": "https://arxiv.org/pdf/2607.18568v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Python implementation of AMICA for EEG blind source separation and artifact removal",
+      "llm_evidence_cn": "AMICA的Python实现，用于脑电盲源分离和伪迹去除",
+      "llm_evidence": "AMICA的Python实现，用于脑电盲源分离和伪迹去除",
+      "canonical_evidence": "AMICA的Python实现，用于脑电盲源分离和伪迹去除",
+      "llm_tldr_en": "Implements the AMICA algorithm in Python with a scikit-learn API, enabling EEG artifact removal without MATLAB dependency, broadcast adoption in Python-based BCI pipelines.",
+      "llm_tldr_cn": "自适应混合独立成分分析（AMICA）是脑电研究中广泛使用的盲源分离算法，但长期仅依赖MATLAB实现。该文提出AMICA-Python，提供与scikit-learn兼容的API，可无缝集成于Python科学计算生态。该方法为脑电伪迹去除提供了开放、可复现的工具，有望推动基于Python的脑机接口分析流水线的发展。",
+      "llm_tldr": "自适应混合独立成分分析（AMICA）是脑电研究中广泛使用的盲源分离算法，但长期仅依赖MATLAB实现。该文提出AMICA-Python，提供与scikit-learn兼容的API，可无缝集成于Python科学计算生态。该方法为脑电伪迹去除提供了开放、可复现的工具，有望推动基于Python的脑机接口分析流水线的发展。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg artifact removal approaches",
+      "matched_requirement_id": "req-20",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.21384v1",
+      "source": "arxiv",
+      "title": "Multimodal Pretraining for Generalizable EEG Representation Learning",
+      "abstract": "Electroencephalography (EEG) models used for epilepsy are often limited to specific datasets and tasks. This limited approach can make it challenging to apply these models across different datasets or in various situations. However, recent studies in foundation models and self-supervised learning suggest that an adaptable EEG backbone could support a range of EEG related tasks. In this study, we have developed a multimodal EEG foundation model that combines a raw signal encoder based on the Mamba architecture, a Vision Transformer (ViT)-style encoder for time-frequency data, and a lightweight encoder for text, all within a shared embedding space. The pretraining process relies on several innovative techniques, such as masked modeling, cross-view contrastive alignment, and temporal consistency losses. These methods are designed to create rich, seizure-relevant representations without requiring labeled data. To assess the efficacy and generalization of our pretrained model, we fine-tuned it on the canonical CHB-MIT seizure detection benchmark and additional seizure detection datasets, and conducted extensive experiments comparing different model variants. On the standard CHB-MIT split, our best single model achieved an AUROC of 0.874, and an ensemble variant reached 0.878 AUROC, representing state-of-the-art performance on this benchmark. In addition to standard train-test splits, we evaluated performance under a leave-one-subject-out (LOSO) protocol, which is rarely reported in prior EEG seizure modeling work and highlights the difficulty of patient-independent seizure detection, with a mean LOSO balanced accuracy of 0.558 across 19 subjects. Across datasets and evaluation settings, our multimodal foundation model enabled robust seizure detection and straightforward adaptation to new seizure detection scenarios, while also supporting interpretable seizure localization.",
+      "authors": [
+        "Targol Bakhtiarvand",
+        "Jugal Kalita",
+        "Adham Atyabi"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-23T14:47:00+00:00",
+      "link": "https://arxiv.org/pdf/2607.21384v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "multimodal EEG foundation model with Mamba and ViT encoders",
+      "llm_evidence_cn": "多模态脑电基础模型，结合Mamba和ViT编码器",
+      "llm_evidence": "多模态脑电基础模型，结合Mamba和ViT编码器",
+      "canonical_evidence": "多模态脑电基础模型，结合Mamba和ViT编码器",
+      "llm_tldr_en": "This paper proposes a multimodal EEG foundation model combining raw signal Mamba encoder, time-frequency ViT, and text encoder, pretrained with masked modeling and contrastive learning for generalizable EEG representation.",
+      "llm_tldr_cn": "针对现有EEG模型泛化性差的问题，该文提出多模态脑电基础模型，集成Mamba架构的原始信号编码器、Vision Transformer格式的时频编码器和轻量文本编码器，通过掩码建模和跨视图对比学习进行预训练。实验表明该模型能学习通用表征，适用于多种EEG任务，为认知负荷评估和被动BCI提供了可迁移的基础网络。",
+      "llm_tldr": "针对现有EEG模型泛化性差的问题，该文提出多模态脑电基础模型，集成Mamba架构的原始信号编码器、Vision Transformer格式的时频编码器和轻量文本编码器，通过掩码建模和跨视图对比学习进行预训练。实验表明该模型能学习通用表征，适用于多种EEG任务，为认知负荷评估和被动BCI提供了可迁移的基础网络。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.21402v1",
+      "source": "arxiv",
+      "title": "MSBraM: A Multi-scale Self-supervised Brain Foundation Model for Hierarchical EEG Dynamics Learning",
+      "abstract": "Self-supervised foundation models have recently shown strong potential for electroencephalogram (EEG)-based analysis. However, existing approaches struggle to capture the inherently multi-scale temporal structure of EEG signals, where local neural patterns and long-range dependencies jointly encode task-relevant information. This limitation hampers cross-scale representation learning and generalization across diverse downstream tasks. To address this challenge, we propose MSBraM, a Multi-Scale self-supervised Brain foundation Model designed to learn hierarchical EEG representations. MSBraM follows a two-stage pretraining framework. First, a multi-scale neural tokenizer discretizes raw EEG signals into semantic codes at different temporal resolutions via vector-quantized reconstruction. Second, the model is pretrained to predict masked codes using a curriculum multi-scale masking strategy, progressively integrating fine-grained local patterns with global temporal context. We pretrain MSBraM on over 2,400 hours of EEG data and evaluate it across 10 downstream tasks on 12 public datasets. Extensive experiments show that MSBraM achieves superior performance on other state-of-the-art pretrained models, demonstrating strong generalization and transferability. These results indicate that explicitly modeling multi-scale temporal dynamics is critical for effective EEG foundation models.",
+      "authors": [
+        "Tao Zhou",
+        "Jing Han",
+        "Lingyu Shu",
+        "Zixing Zhang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-23T15:03:04+00:00",
+      "link": "https://arxiv.org/pdf/2607.21402v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "multi-scale self-supervised foundation model for EEG",
+      "llm_evidence_cn": "多尺度自监督脑电图基础模型",
+      "llm_evidence": "多尺度自监督脑电图基础模型",
+      "canonical_evidence": "多尺度自监督脑电图基础模型",
+      "llm_tldr_en": "Proposes MSBraM, a multi-scale self-supervised brain foundation model that learns hierarchical EEG representations via two-stage pretraining with multi-scale neural tokenizer, enabling generalization across diverse downstream tasks.",
+      "llm_tldr_cn": "现有脑电图基础模型难以捕捉多尺度时间结构。该论文提出MSBraM，一种多尺度自监督脑基础模型，通过两阶段预训练框架：首先用多尺度神经分词器将原始EEG信号离散化为语义编码，然后进行掩码预测学习分层表示。该模型在多个下游任务上表现出优异的迁移能力，为EEG分析提供通用的基础模型。",
+      "llm_tldr": "现有脑电图基础模型难以捕捉多尺度时间结构。该论文提出MSBraM，一种多尺度自监督脑基础模型，通过两阶段预训练框架：首先用多尺度神经分词器将原始EEG信号离散化为语义编码，然后进行掩码预测学习分层表示。该模型在多个下游任务上表现出优异的迁移能力，为EEG分析提供通用的基础模型。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.18344v1",
+      "source": "arxiv",
+      "title": "FSDBN: Foreground-Aware EEG--Visual Alignment via Dynamic Brain Networks",
+      "abstract": "EEG-based visual decoding provides a non-invasive pathway for interpreting visual semantics. However, existing methods often overlook the perceptual asymmetry between foreground and background in complex scenes, leading to background interference and semantic misalignment. EEG signals also exhibit rapid temporal dynamics and nonstationary spatial patterns, making it difficult to capture the time-varying brain connectivity associated with focal visual attention. To address these limitations, we propose FSDBN, a unified framework for robust EEG-visual decoding. FSDBN introduces Semantic-Consistent Saliency Alignment to separate semantically relevant foreground regions from background noise under joint saliency and semantic constraints. It further employs Semantic-Prior Dynamic Gating Foreground Fusion to adaptively regulate the contributions of foreground and background features. In parallel, EEG signals are modeled as adaptive spatiotemporal brain networks whose functional connectivity dynamically reorganizes to capture neural responses to salient foregrounds. Experiments on zero-shot brain-to-image retrieval demonstrate that FSDBN achieves 69.0 percent top-1 accuracy and 92.2 percent top-5 accuracy, outperforming previous state-of-the-art methods. Code is available at https://github.com/LiuYiheng1/FSDBN-EEG.",
+      "authors": [
+        "Yiheng Liu",
+        "Chuhang Zheng",
+        "Peiliang Gong",
+        "Jingtao Liu",
+        "Daoqiang Zhang",
+        "Qi Zhu"
+      ],
+      "primary_category": "eess.IV",
+      "categories": [
+        "eess.IV",
+        "cs.AI"
+      ],
+      "published": "2026-07-20T07:40:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.18344v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG-based visual decoding for passive BCI",
+      "llm_evidence_cn": "基于脑电的视觉解码用于被动脑机接口",
+      "llm_evidence": "基于脑电的视觉解码用于被动脑机接口",
+      "canonical_evidence": "基于脑电的视觉解码用于被动脑机接口",
+      "llm_tldr_en": "Proposes a foreground-aware EEG-visual alignment framework using dynamic brain networks for robust passive BCI decoding, addressing background interference and temporal dynamics.",
+      "llm_tldr_cn": "现有EEG视觉解码方法常忽略复杂场景中前景与背景的感知不对称，导致背景干扰和语义错位。本文提出FSDBN框架，通过语义一致显著性对齐分离前景区域与背景噪声，并采用动态脑网络建模EEG信号的时变连接性。实验表明该方法能有效提升视觉解码的鲁棒性。该工作为被动脑机接口中基于EEG的视觉语义理解提供了新思路。",
+      "llm_tldr": "现有EEG视觉解码方法常忽略复杂场景中前景与背景的感知不对称，导致背景干扰和语义错位。本文提出FSDBN框架，通过语义一致显著性对齐分离前景区域与背景噪声，并采用动态脑网络建模EEG信号的时变连接性。实验表明该方法能有效提升视觉解码的鲁棒性。该工作为被动脑机接口中基于EEG的视觉语义理解提供了新思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-14-738519-v1",
+      "source": "biorxiv",
+      "title": "Canonical Correlation Analysis and Multi-Channel Cardiography Improve Artefact Cleaning in Heartbeat-Locked Analyses",
+      "abstract": "Cardiac artefacts are problematic for neurophysiological analyses, especially for heartbeat-locked brain responses where neural activity and artefacts co-occur in time. Traditional approaches using single-channel electrocardiography for artefact removal do not fully capture the multidimensional spread of cardiac fields. Moreover, even if several channels are recorded, no established methods exist for integrating them for artefact removal. Here, we propose a multivariate approach based on Canonical Correlation for cardiac artefact removal and report its effectiveness in electroencephalography recorded simultaneously with a custom 15-channel electrocardiography in 14 participants. We quantify cleaning quality via residual R-peak artefact and neural signal preservation via alpha power. Canonical Correlation systematically outperforms the traditional Independent Component Analysis in both reducing R-peak artefacts and preserving alpha power. By analysing all possible channel combinations, we found that neck or supraclavicular electrodes improve cleaning when only a few channels are available. With four or five channels, precordial electrodes in combination with limb or supraclavicular locations provide a performance comparable to the 15-channel setup. While these findings require validation in other datasets, we outline clear decision criteria for cleaning efficiency and show that canonical correlation is a reliable approach for multi-channel cardiac artefact removal.",
+      "authors": [
+        "Vidaurre, C.",
+        "Azanova, M.",
+        "Germanova, K.",
+        "Greschke, E.",
+        "Steinfath, T. P.",
+        "Laufs, U.",
+        "Uhe, T.",
+        "Villringer, A.",
+        "Nikulin, V."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.14.738519v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "proposes CCA-based cardiac artefact removal in EEG",
+      "llm_evidence_cn": "提出基于CCA的多通道心电伪影去除方法用于脑电信号",
+      "llm_evidence": "提出基于CCA的多通道心电伪影去除方法用于脑电信号",
+      "canonical_evidence": "提出基于CCA的多通道心电伪影去除方法用于脑电信号",
+      "llm_tldr_en": "This paper introduces a CCA-based multivariate approach for cardiac artefact removal in EEG using 15-channel ECG to better capture cardiac field spread, improving cleaning quality for heartbeat-locked analyses.",
+      "llm_tldr_cn": "针对心电伪影影响神经生理分析的问题，本文提出基于典型相关分析的多通道心电伪影去除方法，利用15导联心电记录全面捕获心脏电场分布，在14名受试者的同步EEG-ECG数据上验证，显著提高了心跳锁定分析中的伪影清理质量，为脑电数据处理提供了有效的鲁棒去噪框架。",
+      "llm_tldr": "针对心电伪影影响神经生理分析的问题，本文提出基于典型相关分析的多通道心电伪影去除方法，利用15导联心电记录全面捕获心脏电场分布，在14名受试者的同步EEG-ECG数据上验证，显著提高了心跳锁定分析中的伪影清理质量，为脑电数据处理提供了有效的鲁棒去噪框架。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "Search for EEG artifact removal techniques that are robust against interference",
+      "matched_requirement_id": "req-25",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.18614v1",
+      "source": "arxiv",
+      "title": "End-to-End Markov State Sequence Learning for Auditory Attention Decoding",
+      "abstract": "Auditory attention decoding (AAD) identifies the speaker a listener attends to from neural responses like electroencephalography (EEG), making it a key algorithm in neuro-steered hearing aids. However, most neural AAD models are trained as independent short-window classifiers, despite auditory attention being a temporally persistent cognitive state and short-window EEG--audio evidence often being noisy and ambiguous. We propose an end-to-end Markov AAD framework based on conditional random field (CRF) that trains window-level neural emissions under a two-state attention prior. The framework treats the logits of any AAD backbone as Markov emissions, learns the transition rate from a standard HMM initialization, and jointly optimizes cross-entropy and CRF objectives, allowing temporal continuity to guide representation learning rather than merely smoothing predictions after training. We also introduce ESCNet, an EEG--speech correlation backbone that preserves time-aligned features and converts the difference between two mean Pearson correlations into state logits. We evaluate the framework with four emission backbones spanning correlation-based, convolutional, recurrent, and attention-based designs. On the dynamic AVGC dataset, CRF training generally outperforms post-hoc HMM smoothing; with ESCNet, it achieves $86.5\\%$ causal and $92.4\\%$ non-causal accuracy using $1$s windows. On the static KUL and USTC datasets, it improves causal decoding over fixed-rate post-hoc HMM baselines by $5.6\\%$ and $2.0\\%$, respectively, showing the superiority of learning AAD as attention state sequence over isolated-window classification.",
+      "authors": [
+        "Yushan Yashengjiang",
+        "Jie Zhang",
+        "Miao Sun",
+        "Huadong Liang",
+        "Xin Li",
+        "Zhen-hua Ling"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.HC"
+      ],
+      "published": "2026-07-21T01:33:59+00:00",
+      "link": "https://arxiv.org/pdf/2607.18614v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "deep learning method for passive BCI auditory attention decoding",
+      "llm_evidence_cn": "用于被动BCI听觉注意解码的深度学习方法",
+      "llm_evidence": "用于被动BCI听觉注意解码的深度学习方法",
+      "canonical_evidence": "用于被动BCI听觉注意解码的深度学习方法",
+      "llm_tldr_en": "Proposes an end-to-end Markov AAD framework using CRF and deep learning backbone for auditory attention decoding from EEG, improving temporal modeling.",
+      "llm_tldr_cn": "该论文针对听觉注意解码中短窗口分类器忽略注意力时间持续性的问题，提出一种端到端马尔可夫AAD框架，通过条件随机场将深度学习骨干输出作为马尔可夫发射，学习状态转移速率，联合优化交叉熵损失，显著提高了对听力注意状态的解码准确性，为神经控制助听器提供了更鲁棒的算法。",
+      "llm_tldr": "该论文针对听觉注意解码中短窗口分类器忽略注意力时间持续性的问题，提出一种端到端马尔可夫AAD框架，通过条件随机场将深度学习骨干输出作为马尔可夫发射，学习状态转移速率，联合优化交叉熵损失，显著提高了对听力注意状态的解码准确性，为神经控制助听器提供了更鲁棒的算法。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.16629v1",
+      "source": "arxiv",
+      "title": "Toward a Stable and Deployable Adaptive Chirplet Transform: Residual Projection, Hybrid GPU Acceleration, and Multi-Channel Scalability",
+      "abstract": "The Adaptive Chirplet Transform is a flexible framework that can decompose non-stationary signals into sparse chirplets; it has been applied to signals such as electroencephalography, electromyography and radar. However, the practical deployment of this transform has been hindered by two challenges: algorithmic instability in prior implementations, which can lead to divergent decompositions, and the computational cost of searching over a high-dimensional parameter space. This paper addresses both by a sequence of contributions. Firstly, unit normalization and residual-based projection are introduced to align the decomposition with Matching Pursuit Theory, thereby eliminating divergence and substantially reducing residual error across all signal domains, as demonstrated on three representative signal types. A hybrid CPU-GPU architecture offloads chirplet family generation to the CPU while parallelizing the search on the GPU, removing bottlenecks in CPU-only search and GPU-only generation, achieving speedups of 6.6-7.38 on desktop hardware, with consistent gains observed across laptop and embedded platforms. Multichannel batching enabled simultaneous multi-signal processing, amplifying the speedup, which scaled from 3.94 for a single channel to 8.22 at 10 channels. Finally, a hierarchical coarse-to-fine search, inspired by Logon Expectation Maximization, is introduced. This reduced peak memory usage below 1 GB while maintaining similar reconstruction quality, at the cost of longer runtime. Together, these contributions establish a correct, stable and practically deployable foundation for chirplet-based signal decomposition. Index Terms: Chirplet Transform, GPU Computing, Matching Pursuit, Signal Decomposition, Sparse Representation, Time-Frequency Analysis",
+      "authors": [
+        "Nishant Kumar",
+        "Steve Mann"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-07-18T04:16:25+00:00",
+      "link": "https://arxiv.org/pdf/2607.16629v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Adaptive Chirplet Transform for non-stationary EEG signal decomposition enabling denoising and artifact removal",
+      "llm_evidence_cn": "自适应Chirplet变换用于非平稳EEG信号分解，实现去噪和伪迹去除",
+      "llm_evidence": "自适应Chirplet变换用于非平稳EEG信号分解，实现去噪和伪迹去除",
+      "canonical_evidence": "自适应Chirplet变换用于非平稳EEG信号分解，实现去噪和伪迹去除",
+      "llm_tldr_en": "Proposes a stable adaptive chirplet transform with residual projection and GPU acceleration for decomposing non-stationary signals like EEG, enabling robust denoising and feature extraction for BCI applications.",
+      "llm_tldr_cn": "本文针对自适应Chirplet变换在实际部署中的算法不稳定和计算成本高的问题，提出引入单位归一化和残差投影以消除发散，并通过混合GPU加速提升效率。该方法可有效分解EEG等非平稳信号，为脑机接口中的鲁棒去噪和特征提取提供了新的信号处理工具。实验表明该方法在多通道场景下具有良好可扩展性，有望增强后续认知负荷评估任务的信号质量。",
+      "llm_tldr": "本文针对自适应Chirplet变换在实际部署中的算法不稳定和计算成本高的问题，提出引入单位归一化和残差投影以消除发散，并通过混合GPU加速提升效率。该方法可有效分解EEG等非平稳信号，为脑机接口中的鲁棒去噪和特征提取提供了新的信号处理工具。实验表明该方法在多通道场景下具有良好可扩展性，有望增强后续认知负荷评估任务的信号质量。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal denoising techniques",
+      "matched_requirement_id": "req-18",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.17602v1",
+      "source": "arxiv",
+      "title": "Exploring Brain Networks Using Noninvasive Electrophysiological Measurements: Methods and Applications",
+      "abstract": "Electroencephalography (EEG) and magnetoencephalography (MEG) provide noninvasive measurements of brain activity with millisecond temporal resolution, enabling the investigation of functional and effective interactions within large-scale brain networks. This chapter presents a comprehensive overview of the methodological foundations and practical workflows for EEG/MEG-based brain network analysis. We first review the physical principles underlying EEG and MEG, emphasizing their complementary strengths and limitations. We then describe the forward and inverse problems, including subject-specific head modeling, source reconstruction techniques, and the importance of accurate anatomical modeling for reliable source localization. Strategies for mitigating volume conduction and signal leakage are discussed, together with best practices for source-space connectivity analysis. The chapter reviews widely used functional and effective connectivity measures, including coherence, phase synchronization metrics, amplitude envelope correlation, Granger causality, dynamic causal modeling, and transfer entropy, highlighting their assumptions, advantages, and limitations. Modern end-to-end analysis pipelines are presented, with particular emphasis on Brainstorm and complementary open-source software for reproducible EEG/MEG research. Finally, we discuss emerging approaches, including time-varying connectivity, cross-frequency interactions, and network-based analyses, illustrating how noninvasive electrophysiology contributes to understanding brain organization in health and disease. The chapter provides both conceptual foundations and practical guidance for researchers and advanced students seeking to map and interpret human brain networks using EEG and MEG.",
+      "authors": [
+        "Richard Leahy",
+        "Takfarinas Medani"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "math-ph"
+      ],
+      "published": "2026-07-20T06:42:51+00:00",
+      "link": "https://arxiv.org/pdf/2607.17602v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "comprehensive overview of EEG/MEG methods for brain network analysis, relevant to passive BCI",
+      "llm_evidence_cn": "EEG/MEG脑网络分析方法的全面概述，与被动BCI相关",
+      "llm_evidence": "EEG/MEG脑网络分析方法的全面概述，与被动BCI相关",
+      "canonical_evidence": "EEG/MEG脑网络分析方法的全面概述，与被动BCI相关",
+      "llm_tldr_en": "This chapter provides a comprehensive review of EEG/MEG-based brain network analysis methods, covering forward/inverse problems and source reconstruction, essential for passive BCI research.",
+      "llm_tldr_cn": "本章全面综述了基于EEG/MEG的脑网络分析方法，包括物理原理、前向和逆向问题、源重建技术及头模型构建。该工作为被动脑机接口研究提供了重要的方法论基础，有助于理解认知过程中的脑网络动态，但其内容为综述性质，未聚焦于特定认知负荷或飞行员选拔任务。",
+      "llm_tldr": "本章全面综述了基于EEG/MEG的脑网络分析方法，包括物理原理、前向和逆向问题、源重建技术及头模型构建。该工作为被动脑机接口研究提供了重要的方法论基础，有助于理解认知过程中的脑网络动态，但其内容为综述性质，未聚焦于特定认知负荷或飞行员选拔任务。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.18149v1",
+      "source": "arxiv",
+      "title": "Differentiable Logic Gate Networks for Low-Latency EEG Classification on Edge Devices",
+      "abstract": "Real-time EEG classification on edge devices is bottlenecked by the floating-point arithmetic of conventional neural networks. We investigated Differentiable Logic Gate Networks (Diff-Logic) as a hardware-native alternative that compiles models into pure Boolean circuits executable via bitwise CPU operations. Through rigorous iso-parameter experiments across four EEG datasets spanning two classification tasks, binary dementia detection and 3-class emotion recognition, we compared Diff-Logic against matched-capacity Multi-Layer Perceptron (MLP) and Binarized Neural Network (BNN) baselines at four complexity tiers (50k-500k parameters). On dementia screening, Diff-Logic achieved 80.2% Macro F1, outperforming the MLP baseline by 6.8%. On emotion recognition, the MLP retained a moderate performance advantage but incurred a 2.3$\\times$ higher latency and 14$\\times$ larger model size when deployed on a power-constrained (7W) Nvidia Jetson Orin Nano CPU (Single-core). Critically, Diff-Logic inference time remained nearly constant across a 10$\\times$ increase in model scale, achieving a peak speedup of 2.9$\\times$ over MLPs at the largest complexity tier. Our results establish logic-based neural architectures as a practical paradigm for resource-constrained brain-computer interfaces, achieving competitive or superior performance while natively satisfying the latency and memory constraints of portable edge deployment. Code is available on GitHub: https://github.com/Shyamal-Dharia/eeg-difflogic",
+      "authors": [
+        "Shyamal Y. Dharia",
+        "Stephen D. Smith",
+        "Camilo E. Valderrama"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-07-20T16:49:30+00:00",
+      "link": "https://arxiv.org/pdf/2607.18149v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "deep learning method for EEG classification applicable to cognitive load assessment",
+      "llm_evidence_cn": "用于EEG分类的深度学习方法，可应用于认知负荷评估",
+      "llm_evidence": "用于EEG分类的深度学习方法，可应用于认知负荷评估",
+      "canonical_evidence": "用于EEG分类的深度学习方法，可应用于认知负荷评估",
+      "llm_tldr_en": "Differentiable Logic Gate Networks (Diff-Logic) are proposed for low-latency EEG classification on edge devices, outperforming MLP on dementia and emotion tasks, offering a hardware-native deep learning alternative for cognitive load monitoring.",
+      "llm_tldr_cn": "针对边缘设备上实时EEG分类的浮点运算瓶颈，本文提出可微分逻辑门网络（Diff-Logic），将模型编译为纯布尔电路通过位运算执行。在四个EEG数据集上的实验表明，Diff-Logic在痴呆筛查任务上Macro F1达80.2%，超过MLP基线6.8%，并在情绪识别任务中表现优异。该方法为基于深度学习的认知负荷评估提供了一种硬件友好的高效分类方案。",
+      "llm_tldr": "针对边缘设备上实时EEG分类的浮点运算瓶颈，本文提出可微分逻辑门网络（Diff-Logic），将模型编译为纯布尔电路通过位运算执行。在四个EEG数据集上的实验表明，Diff-Logic在痴呆筛查任务上Macro F1达80.2%，超过MLP基线6.8%，并在情绪识别任务中表现优异。该方法为基于深度学习的认知负荷评估提供了一种硬件友好的高效分类方案。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.18344v2",
+      "source": "arxiv",
+      "title": "FSDBN: Foreground-Aware EEG-Visual Alignment via Dynamic Brain Networks",
+      "abstract": "EEG-based visual decoding provides a non-invasive pathway for interpreting visual semantics. However, existing methods often overlook the perceptual asymmetry between foreground and background in complex scenes, leading to background interference and semantic misalignment. EEG signals also exhibit rapid temporal dynamics and nonstationary spatial patterns, making it difficult to capture the time-varying brain connectivity associated with focal visual attention. To address these limitations, we propose FSDBN, a unified framework for robust EEG-visual decoding. FSDBN introduces Semantic-Consistent Saliency Alignment to separate semantically relevant foreground regions from background noise under joint saliency and semantic constraints. It further employs Semantic-Prior Dynamic Gating Foreground Fusion to adaptively regulate the contributions of foreground and background features. In parallel, EEG signals are modeled as adaptive spatiotemporal brain networks whose functional connectivity dynamically reorganizes to capture neural responses to salient foregrounds. Experiments on zero-shot brain-to-image retrieval demonstrate that FSDBN achieves 69.0 percent top-1 accuracy and 92.2 percent top-5 accuracy, outperforming previous state-of-the-art methods. Code is available at https://github.com/LiuYiheng1/FSDBN-EEG.",
+      "authors": [
+        "Yiheng Liu",
+        "Chuhang Zheng",
+        "Peiliang Gong",
+        "Jingtao Liu",
+        "Daoqiang Zhang",
+        "Qi Zhu"
+      ],
+      "primary_category": "eess.IV",
+      "categories": [
+        "eess.IV",
+        "cs.AI"
+      ],
+      "published": "2026-07-20T07:40:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.18344v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "deep learning method for EEG-based visual decoding, applicable to passive BCI",
+      "llm_evidence_cn": "用于EEG视觉解码的深度学习方法，可应用于被动BCI",
+      "llm_evidence": "用于EEG视觉解码的深度学习方法，可应用于被动BCI",
+      "canonical_evidence": "用于EEG视觉解码的深度学习方法，可应用于被动BCI",
+      "llm_tldr_en": "FSDBN proposes foreground-aware EEG-visual alignment using dynamic brain networks, achieving robust decoding for passive BCI applications.",
+      "llm_tldr_cn": "针对EEG视觉解码中前景背景不对称和信号非平稳问题，提出FSDBN框架，通过语义一致显著性对齐分离前景背景噪声，并结合动态脑网络捕获时变连接。该方法在复杂场景下实现了鲁棒的EEG语义解码，为被动脑机接口中的视觉注意力评估提供了新思路，其深度学习架构可迁移至认知负荷分析。",
+      "llm_tldr": "针对EEG视觉解码中前景背景不对称和信号非平稳问题，提出FSDBN框架，通过语义一致显著性对齐分离前景背景噪声，并结合动态脑网络捕获时变连接。该方法在复杂场景下实现了鲁棒的EEG语义解码，为被动脑机接口中的视觉注意力评估提供了新思路，其深度学习架构可迁移至认知负荷分析。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.19429v1",
+      "source": "arxiv",
+      "title": "Adaptive Multi-Expert Graph Transformer for Interpretable EEG-Based Diagnostics",
+      "abstract": "Electroencephalographic (EEG) abnormalities arise from dynamic changes in neural synchrony across spatial and temporal scales, yet many computational approaches reduce these dynamics to static features. We present a Spatial Multi-Expert Graph Transformer that models each EEG recording as a sequence of dynamic functional connectivity graphs. Time-resolved connectivity is estimated using the weighted Phase Lag Index (wPLI), and hierarchical graph encoding aggregates information from electrode to regional and global levels. A multi-expert transformer architecture enables subtype-aware reasoning, with a gating mechanism adaptively fusing expert outputs for global abnormality prediction. Experiments on the TUAB dataset show competitive abnormal EEG detection performance and demonstrate the potential of dynamic graph modeling with adaptive expert fusion for interpretable, subtype-aware spatial--temporal analysis.",
+      "authors": [
+        "Maryam Rahimimovassagh",
+        "Md Elias Hossain",
+        "Ivan Garibay",
+        "Niloofar Yousefi"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-07-20T19:04:41+00:00",
+      "link": "https://arxiv.org/pdf/2607.19429v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "deep learning graph transformer for EEG diagnostics transferable to cognitive load assessment",
+      "llm_evidence_cn": "用于脑电图诊断的深度学习图变换器可迁移至认知负荷评估",
+      "llm_evidence": "用于脑电图诊断的深度学习图变换器可迁移至认知负荷评估",
+      "canonical_evidence": "用于脑电图诊断的深度学习图变换器可迁移至认知负荷评估",
+      "llm_tldr_en": "Proposes an Adaptive Multi-Expert Graph Transformer for EEG-based diagnostics using dynamic functional connectivity graphs; achieves competitive abnormal EEG detection on TUAB dataset.",
+      "llm_tldr_cn": "该论文针对传统方法将脑电异常简化为静态特征的问题，提出了自适应多专家图变换网络。该方法将每次脑电记录建模为动态功能连接图序列，利用加权相位滞后指数估计时变连接，并通过分层图编码和多专家注意力机制融合全局异常预测。在TUAB数据集上的实验表明，该方法在异常脑电检测上具有竞争力，为基于脑电的被动脑机接口认知负荷评估提供了可迁移的深度学习框架。",
+      "llm_tldr": "该论文针对传统方法将脑电异常简化为静态特征的问题，提出了自适应多专家图变换网络。该方法将每次脑电记录建模为动态功能连接图序列，利用加权相位滞后指数估计时变连接，并通过分层图编码和多专家注意力机制融合全局异常预测。在TUAB数据集上的实验表明，该方法在异常脑电检测上具有竞争力，为基于脑电的被动脑机接口认知负荷评估提供了可迁移的深度学习框架。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.18345v1",
+      "source": "arxiv",
+      "title": "Addressing Limited Data in Auditory Attention Decoding with Diffusion Generative Models",
+      "abstract": "Limited training data constrains deep learning models for Auditory Attention Decoding (AAD) in hearing aids (HAs). AAD uses electroencephalogram (EEG) data to decode listener's attention, enabling real-time tracking of specific sound sources. However, achieving high AAD performance with short time windows typical in HAs (<=1s) is challenging due to the scarcity of real-world speech-evoked EEG data. To address this issue, we investigate diffusion probabilistic models (DPMs) for generating synthetic speech-evoked EEG data. DPMs learn the underlying complex data structure through a denoising process and can generate realistic samples suitable for data augmentation. We evaluate the use of synthetic EEG data for augmenting datasets in locus-of-attention (LoA) classification tasks. Our experiments demonstrate that DPMs can generate realistic EEG signals and that incorporating synthetic data significantly improves AAD performance compared to models trained solely on measured EEG data (p<0.05). These results highlight the potential of diffusion-based data augmentation to mitigate training data limitations and improve the robustness of short-window AAD models in HA applications.",
+      "authors": [
+        "David Rannaleet",
+        "Victor Gunnarsson",
+        "Bo Bernhardsson",
+        "Martin A. Skoglund",
+        "Emina Alickovic"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-07-20T07:47:20+00:00",
+      "link": "https://arxiv.org/pdf/2607.18345v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "uses diffusion generative models for synthetic EEG data augmentation in auditory attention decoding",
+      "llm_evidence_cn": "使用扩散生成模型为听觉注意解码合成EEG数据进行数据增强",
+      "llm_evidence": "使用扩散生成模型为听觉注意解码合成EEG数据进行数据增强",
+      "canonical_evidence": "使用扩散生成模型为听觉注意解码合成EEG数据进行数据增强",
+      "llm_tldr_en": "This paper addresses limited EEG data for auditory attention decoding by investigating diffusion probabilistic models to generate synthetic speech-evoked EEG data, enabling data augmentation for improved decoding performance in hearing aids.",
+      "llm_tldr_cn": "针对听觉注意解码中EEG数据稀缺的问题，本文探索扩散概率模型生成合成语音诱发脑电数据，用于数据增强，以提升助听器场景中短时间窗下的解码性能，展示了生成模型在增强被动脑机接口系统方面的潜力，为认知负荷评估等类似被动BCI任务的数据增强提供了可迁移的方法。",
+      "llm_tldr": "针对听觉注意解码中EEG数据稀缺的问题，本文探索扩散概率模型生成合成语音诱发脑电数据，用于数据增强，以提升助听器场景中短时间窗下的解码性能，展示了生成模型在增强被动脑机接口系统方面的潜力，为认知负荷评估等类似被动BCI任务的数据增强提供了可迁移的方法。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.19417v1",
+      "source": "arxiv",
+      "title": "Enabling Rapid Calibration of BCI Systems that Detect Movement-Related Cortical Potentials in Children with Cerebral Palsy",
+      "abstract": "Brain-computer interface neurofeedback (BCI-NFT) has shown promise for neuromotor rehabilitation, but its clinical adoption -- particularly in pediatric populations -- remains limited in part by the lengthy calibration required before each therapy session. This study developed and evaluated a deep-learning framework to reduce calibration requirements for movement-related cortical potential (MRCP)-based movement-intention detection in children with cerebral palsy (CP). Electroencephalography (EEG) was collected during repeated ankle dorsiflexion tasks across 27 sessions in four children with CP. A bidirectional long short-term memory (Bi-LSTM) network was evaluated using seven training strategies, ranging from conventional within-session calibration to cumulative cross-subject learning and transfer learning. Cross-subject cumulative learning achieved 91\\% accuracy without within-session calibration, while the addition of transfer learning increased accuracy to 93\\% with minimal within-session calibration. Both approaches significantly outperformed conventional calibration strategies and achieved the highest F1-scores and receiver operating characteristic (ROC) performance, demonstrating robust generalization across sessions and participants. These findings show that cumulative learning and transfer learning can substantially reduce calibration requirements while maintaining high decoding performance, supporting the development of clinically practical MRCP-based pediatric BCI systems",
+      "authors": [
+        "R. Saadatyar",
+        "D. Damiano",
+        "A. Behboodi"
+      ],
+      "primary_category": "q-bio.QM",
+      "categories": [
+        "q-bio.QM",
+        "eess.SP"
+      ],
+      "published": "2026-07-18T23:13:04+00:00",
+      "link": "https://arxiv.org/pdf/2607.19417v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "deep learning Bi-LSTM for EEG-based BCI movement intention detection",
+      "llm_evidence_cn": "基于深度学习的脑机接口运动意图检测",
+      "llm_evidence": "基于深度学习的脑机接口运动意图检测",
+      "canonical_evidence": "基于深度学习的脑机接口运动意图检测",
+      "llm_tldr_en": "This paper develops a Bi-LSTM deep learning framework to reduce calibration time for MRCP-based BCI in children with cerebral palsy, achieving rapid movement intention detection from EEG.",
+      "llm_tldr_cn": "为缩短脑机接口神经反馈的校准时间，该研究针对脑瘫儿童开发了基于双向LSTM的深度学习框架，用于检测运动相关皮层电位。在多次踝背屈任务中采集脑电数据，评估了多种训练策略。结果表明，该框架能有效减少校准需求，为被动BCI中认知负荷评估的深度学习算法提供了方法论参考。",
+      "llm_tldr": "为缩短脑机接口神经反馈的校准时间，该研究针对脑瘫儿童开发了基于双向LSTM的深度学习框架，用于检测运动相关皮层电位。在多次踝背屈任务中采集脑电数据，评估了多种训练策略。结果表明，该框架能有效减少校准需求，为被动BCI中认知负荷评估的深度学习算法提供了方法论参考。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

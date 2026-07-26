@@ -1,0 +1,244 @@
+Title: EEGPrep: a validated Python implementation of the EEGLAB preprocessing pipeline
+
+URL Source: https://arxiv.org/pdf/2607.16647v1
+
+Published Time: Tue, 21 Jul 2026 00:26:03 GMT
+
+Number of Pages: 18
+
+Markdown Content:
+# EEGPrep: a validated Python implementation of the EEGLAB preprocessing pipeline 
+
+## Arnaud Delorme 1,2,∗, Suraj Ranganath 1, Christian Kothe 3,Aman Jaiswal 1, Scott Makeig 1, Bruno Aristimunha 1,4
+
+> 1
+
+Swartz Center for Computational Neuroscience, University of California San Diego, La Jolla, CA, USA 
+
+> 2
+
+Centre de Recherche Cerveau et Cognition, CNRS, Toulouse, France 
+
+> 3
+
+Intheon, La Jolla, CA, USA 
+
+> 4
+
+Yneuro, Paris, France 
+
+> ∗
+
+Author to whom any correspondence should be addressed: adelorme@ucsd.edu 
+
+Abstract Objective. Automated EEG preprocessing is common in research and clinical work, but few pipelines have been tested systematically. In a recent benchmark, the default EEGLAB pipeline was the only pipeline that significantly outperformed simple high-pass filtering. Its MATLAB implementation, however, complicates de-ployment in Python and cloud workflows. We developed EEGPrep to reproduce this pipeline in Python while supporting BIDS data. The main technical problem was numerical: small floating-point differences can accumulate during recursive filtering and ICA. 
+
+Approach. EEGPrep covers the default EEGLAB workflow: average re-reference, artifact removal with the clean rawdata plugin, Picard ICA, ICLabel plugin com-ponent classification, channel interpolation, and epoching. We compared each stage with MATLAB reference output on ARM arm64 (primary analysis) and Intel x86 64 (supplementary analysis). The test dataset contained 64-channel P300 auditory oddball recordings from 13 participants. We measured maximum absolute differ-ence, RMS error, AMARI distance for ICA, and agreement between ICLabel deci-sions. 
+
+Main Results. On ARM arm64, import and re-reference matched exactly for all 12 analysed subjects. The clean rawdata and Picard ICA stages remained at nu-merical zero (maximum RMS = 1 .5 × 10 −12 μV; AMARI distance ≤ 0.000001; mean correlation = 1 .000). ICLabel neural-network inference introduced the only measur-able difference (maximum RMS = 2 .0 × 10 −5 μV). Rejection decisions nevertheless agreed for every subject, and the difference did not increase through interpolation 
+
+1arXiv:2607.16647v1 [eess.SP] 18 Jul 2026 and epoching (end-to-end maximum RMS ≤ 2.1 × 10 −5 μV). The Intel x86 64 anal-ysis matched to the same precision.  
+
+> Significance. EEGPrep reproduces the EEGLAB validated pipeline and can be installed from PyPI or run in Docker. In addition to processing individual subjects, the full workflow may read BIDS input and write BIDS derivatives.
+
+Keywords: EEG preprocessing, pipeline validation, BIDS, ICA, ICLabel, Python, reproducibility 
+
+# 1 Introduction 
+
+Many EEG studies now depend on automated preprocessing, yet most pipelines have not been tested systematically against established standards. Researchers therefore have little basis for deciding whether two pipelines differ because of their algorithms, their implementations, or both. This problem sits within the wider reproducibility concerns documented in neuroscience [1]. MATLAB remains central to EEG analysis, but licensing and containerization make MATLAB workflows harder to run on shared or cloud infrastructure. Python is already supported by common data-science and cloud platforms. A Python port of an established workflow is useful only if its behavior can be checked against the reference, rather than assumed from algorithm names alone. EEGLAB [2] is an open-source EEG toolbox with more than 20,000 citations and users in hundreds of laboratories. A recent benchmark compared four pipelines (EEGLAB, FieldTrip, MNE-Python, and Brainstorm) on three public datasets after scanning and optimizing their parameters using a cross validation scheme [3]. Several other published EEGLAB pipelines were also considered, including HAPPE [4] and PREP [5], which in-cludes a noise-resistant reference procedure. After parametrization, only the standard EEGLAB pipeline performed significantly better than simple high-pass filtering, increas-ing detection of experimental effects by 5–18%. The authors attributed much of this gain to the bad-channel detection and interpolation in the clean rawdata EEGLAB plugin. While, the EEGLAB, FieldTrip, and Brainstorm pipelines were evaluated in MATLAB, the MNE-Python pipeline used Autoreject [6], and the configuration assessed in the bench-mark did not compare favorably with the other tested pipelines [3]. The default EEGLAB workflow uses the clean rawdata plugin [7] for artifact rejection and the ICLabel plugin [8] for ICA component classification. Within clean rawdata, Arti-fact Subspace Reconstruction (ASR) identifies high-amplitude transients while retaining the remaining signal [7]. ICLabel assigns each component to brain, muscle, eye, heart, line noise, channel noise, or other. Its labels can then drive component rejection without manual review. Previous work on ICLabel found that, after careful optimization, Python and MATLAB implementations agreed within 0.001% [9]. 2Exact agreement across languages is difficult. Floating-point arithmetic is not associa-tive, and math libraries may use different reduction orders [10]. Recursive and iterative computations can magnify the last-bit discrepancies: filters feed their output back as in-put, while an ICA solver may follow another optimization path after a small perturbation. Related differences have been reported across neuroimaging packages [11]. This study asks whether a Python implementation can reproduce the default EEGLAB preprocessing workflow and, when it cannot, where the first numerical difference appears. We implemented clean rawdata, Picard ICA, and ICLabel within the same seven-step pipeline, then compared each intermediate output with MATLAB. A separate analysis measured ICA variability to put cross-language differences in context. After more than one year of careful optimization, here we present a numerically equivalent port of the EEGLAB MATLAB pipeline to Python. 
+
+# 2 Methods 
+
+## 2.1 Pipeline architecture 
+
+EEGPrep follows the default EEGLAB workflow in seven steps (Figure 1), which corre-spond to the stages in the parity analysis (Table 1). It reads BIDS-formatted EEG data and writes a BIDS derivatives dataset. 
+
+• Step 1 ( Import ). EEG data are loaded from the BIDS dataset. Channels classified as EOG, EMG, or triggers are excluded. 
+
+• Step 2 ( Re-reference ). Signals are re-referenced to the common average. 
+
+• Step 3 uses clean rawdata to remove bad channels, high-amplitude transients, and noisy time periods [7]. Artifact Subspace Reconstruction (ASR) uses default pa-rameters calibrated on a clean reference period. 
+
+• Step 4 ( Picard ICA ). Independent component analysis is performed with Picard [12]. 
+
+• Step 5 ( ICLabel ). ICLabel classifies each component as brain, muscle, eye, heart, line noise, channel noise, or other [8]. Components assigned to muscle or eye with probability ≥ 0.9 are removed, following the default EEGLAB optimized thresholds. 
+
+• Step 6 ( Interpolation ). Spherical-spline interpolation reconstructs channels removed by clean rawdata and restores the full montage. 
+
+• Step 7 ( Epoching ). The continuous recording is segmented around experimental events. 3BIDS Dataset (Input) 
+
+> Step 1: Import
+> Step 2: Re-reference
+> Step 3: clean rawdata
+> Step 4: Picard ICA
+> Step 5: ICLabel
+> Step 6: Interpolation
+> Step 7: Epoching
+> BIDS Derivatives (Output)
+> I/O
+> Preprocessing
+> Artifact Removal
+> ICA/ICLabel
+> Epoching
+
+Figure 1: The seven-step EEGPrep workflow from BIDS input to BIDS derivatives. The steps match those in the parity analysis (Table 1). Colours identify I/O (brown), preprocessing (blue), artifact removal (red), ICA/ICLabel (teal), and epoching (navy). Intermediate results can be saved at every step. 
+
+The pipeline can save each intermediate result in EEGLAB .set format for direct comparison. Channel locations, events, and experimental parameters are retained. 
+
+## 2.2 Implementation details 
+
+EEGPrep is written for Python 3.8 and later. It uses NumPy for numerical operations [13] and SciPy for signal processing [14]. Picard optimizes the same maximum-likelihood (Info-max) objective as EEGLAB’s default runica [15], but uses a deterministic quasi-Newton solver [12]. Its fixed convergence path permits an exact cross-language comparison. The earlier MATLAB port of Picard contained several minor discrepancies from the canonical Python implementation maintained by the algorithm’s authors. We corrected the MATLAB port used for the reference output, bringing the two implementations into exact agreement. ICLabel inference runs in PyTorch [16] with weights ported directly from the MATLAB model. The Python EEG data structure is implemented as a dictionary that mirrors the MATLAB EEGLAB structure field by field. The Python functions retain the names of their MATLAB counterparts, while their parameters are adapted to Python conventions. 
+
+BIDS integration. The core functions operate on individual EEG files and do not require a dataset layout. For this validation, we placed an optional BIDS layer above them. Given 4a dataset that follows BIDS for EEG [17], this layer locates the EEG, channel-location, and event files from their names. It writes the BIDS output and metadata, including 
+
+dataset description.json and participants.tsv , to a BIDS derivatives directory. 
+
+Random-seed control. Several steps use random samples, especially the RANSAC bad-channel detection in clean rawdata. Each stochastic function accepts a seed. NumPy’s 
+
+numpy.random.RandomState and MATLAB’s default rng(..., ’twister’) share the MT19937 core. With the MATLAB default seed of 5489, they produce the same uni-form random sequence. However, the Gaussian random draws use a different algorithm in Python and MATLAB, so EEGPrep builds every stochastic operation from uniform draws. RANSAC channel sampling and permutation use a swap-based Fisher–Yates shuf-fle, consume uniform random values, and apply MATLAB’s round-half-away-from-zero rule. The resulting stochastic decisions are thus identical. 
+
+Distribution. The PyPI package can be installed with pip install eegprep and Docker images are also provided. The smaller installation omits PyTorch and stops at clean rawdata. The full installation adds ICLabel and occupies approximately 2 GB because of the Py-Torch dependency. An EEGPrep container was deployed on the brainlife.io cloud com-puting platform ( https://brainlife.io/app/6793e2ee81d348aa5654e893 ). 
+
+## 2.3 Testing framework 
+
+We compared EEGPrep with EEGLAB 2026.0.0. To evaluate individual stages, both pipelines first receive byte-identical input. They then receive the output from the previous stage in their respective pipelines to assess cumulative pipeline drift. The source was the BIDS dataset NEMAR ds003061 ( https://nemar.org ), a P300 auditory oddball task with 70% standard, 15% oddball, and 15% distractor trials. The dataset contains 64-channel BioSemi Active 2 recordings from 13 participants, sampled at 256 Hz. We analysed run 1. Participant sub-012 was excluded because only approximately 10% of the expected stimulus events were present, and no data remained for epoching after artefact rejection. The final analysis therefore included 12 recordings. The primary analysis ran on ARM arm64 (macOS, Apple Silicon) with Python 3.11 and MATLAB R2025a (Apple Accelerate). We repeated it on Intel x86 64 (macOS) with Python 3.10 and MATLAB R2022b (Intel MKL), with results reported in Supplementary Table 1. On each architecture, MATLAB ran through the MATLAB Engine and the Python pipeline used its native PyTorch ICLabel implementation. The Intel run required NumPy 1.x. That numerical configuration produces small differences from the ARM reference, as discussed in the Discussion section. The pytest suite invokes both implementations with the same inputs and parameters, using a compatibility layer to call the original, unmodified EEGLAB functions through the MATLAB Engine for Python. This enables direct comparison at every stage. 52.4 Comparison metrics 
+
+For each processing stage, we computed the following metrics to quantify differences between Python and MATLAB implementations: 
+
+• Maximum absolute difference: max( |Xpy − Xmat |) across all data points 
+
+• Mean absolute difference: mean( |Xpy − Xmat |)
+
+• Root mean square (RMS): pmean(( Xpy − Xmat )2)where Xpy and Xmat are the Python and MATLAB EEG data matrices at a given stage (channels × time points). Cumulative metrics measure the total difference from the initial import stage through the current stage and capture error propagation across the pipeline. Incremental metrics isolate the contribution of each stage by computing differences relative to the previous stage. For Picard ICA at Step 4, we matched Python and MATLAB components by applying the Hungarian algorithm to the absolute cross-correlation matrix [18]. This bipartite assignment maximizes the sum of correlations across all matched pairs. Matching used columns of the mixing matrix, which represent scalp projections. For each matched component pair i, we computed Pearson correlation: 
+
+ri = cov( IC py,i , IC mat,i )
+
+σ(IC py,i ) · σ(IC mat,i ) (1) We report the mean, minimum, and maximum correlation across components, as well as the AMARI distance [19]. After Step 5, we compared the ICLabel probabilities, component labels, and rejection decisions produced by the two implementations. 
+
+# 3 Results 
+
+## 3.1 Stage-by-stage numerical accuracy 
+
+The primary ARM arm64 analysis included 12 P300 recordings (64-channel BioSemi Ac-tive 2, 256 Hz, run 1; sub-012 excluded). We compared Python and MATLAB output after each of the seven stages using maximum absolute difference and RMS in microvolts (Table 1). Figure 2 shows each subject’s RMS error at every step. Supplementary Table 1 reports the Intel x86 64 results. Import and re-reference produced zero difference across every channel and time point. At clean rawdata, both implementations rejected the same channels and time points for 6Table 1: Stage-by-stage numerical parity between Python eegprep and MATLAB eeglabcompat pipelines (run 1). MaxAbsDiff and RMS computed across all channels and time points. Values in μV. 
+
+Step N Mean RMS Max RMS Max MaxAbsDiff 
+
+1. Import 12 0 0 02. Re-reference 12 0 0 03. clean rawdata 12 1.0 × 10 −12 1.5 × 10 −12 1.8 × 10 −11 
+
+4. Picard ICA 12 1.0 × 10 −12 1.5 × 10 −12 1.8 × 10 −11 
+
+5. ICLabel 12 3.9 × 10 −6 2.0 × 10 −5 4.7 × 10 −4
+
+6. Interpolation 12 3.9 × 10 −6 2.1 × 10 −5 4.7 × 10 −4
+
+7. Epoch 12 3.5 × 10 −6 1.6 × 10 −5 2.3 × 10 −4Import Re-reference clean_rawdata Picard ICA ICLabel Interpolation Epoch         
+
+> Pipeline Step
+> 10 8
+> 10 7
+> 10 6
+> 10 5
+> 10 4
+> 10 3
+> 10 2
+> 10 1
+> 10 0
+> RMS Difference (μV)
+> Median
+> Per subject
+
+Figure 2: RMS difference between Python EEGPrep and MATLAB at each pipeline step (run 1, ARM arm64, 12 subjects). Bars show medians and dots show subjects. RMS is zero or approximately 10 −12 μV through Step 4. The first non-zero error occurs during ICLabel inference at Step 5 and changes little during interpolation and epoching. 
+
+all 12 subjects. Output matched to numerical precision through Picard ICA, with RMS values of approximately 10 −12 μV (Table 1). The first measurable difference appeared at ICLabel (Step 5): mean RMS was 3 .9 ×
+
+10 −6 μV (maximum 2 .0 × 10 −5), and maximum absolute difference reached 4 .7 × 10 −4 μV. PyTorch and MATLAB produce slightly different float32 classification probabilities during neural-network inference. Even so, the rejection decisions matched for all 12 subjects. At Step 6, spherical-spline interpolation restored the removed channels. The incoming difference did not measurably increase: mean RMS was 3 .9 × 10 −6 μV and the maximum was 2 .1 × 10 −5 μV (Figure 3). Nor did it vary with the number of interpolated channels. 7Figure 3: Parity after interpolation for 12 ARM arm64 subjects (run 1). Step 6 reconstructs channels removed by clean rawdata and restores the 64-channel montage. ( A) Maximum abso-lute difference in the continuous data; green diamonds show the number of interpolated chan-nels. (B) RMS difference across channels and time points. Maximum absolute difference was 
+
+≤ 4.7 × 10 −4 μV and RMS was ≤ 2.1 × 10 −5 μV. The error enters at ICLabel and does not increase with interpolation or with the number of reconstructed channels. 
+
+After epoching, mean RMS was 3 .5 × 10 −6 μV (maximum 1 .6 × 10 −5), so every end-to-end difference remained below one microvolt. 
+
+## 3.2 clean rawdata rejection parity 
+
+Python and MATLAB clean rawdata rejected the same channels and time points for every subject (Table 2). The number of rejected channels ranged from 4 for sub-013 to 31 for sub-002 and sub-011, out of 64. With the same input, the two implementations therefore made the same discrete rejection decisions. 8Table 2: clean rawdata rejection decisions per subject (run 1, ARM arm64). Channel and time-point counts were identical between Python and MATLAB for all 12 analysed subjects (sub-012 excluded). 
+
+Subject Retained Ch. Rejected Ch. Time Points 
+
+sub-001 57 7 187,971 sub-002 33 31 149,647 sub-003 55 9 185,619 sub-004 56 8 169,692 sub-005 50 14 191,669 sub-006 52 12 195,543 sub-007 54 10 121,668 sub-008 59 5 182,255 sub-009 57 7 154,286 sub-010 56 8 181,548 sub-011 33 31 176,640 sub-013 60 4 166,132 
+
+## 3.3 ICA decomposition fidelity 
+
+Both implementations ran Picard with the same parameters [12]. For every subject, the AMARI distance was ≤ 0.000001 and mean component correlation was 1.000. Supple-mentary Table 2 lists the values by subject. Picard is a deterministic quasi-Newton method with identity initialization and SVD sign normalization. It therefore avoids the seed-dependent variability of Infomax ICA. Given the same input, the Python and MATLAB implementations followed the same numerical path for all 12 subjects. 
+
+## 3.4 ICLabel classification comparison 
+
+The two ICLabel implementations made the same rejection decision for every subject (Supplementary Table 3). Four subjects had no rejected components; the largest count was three for sub-005. In total, both implementations rejected 15 components. Small float32 differences in PyTorch and MATLAB inference produced a maximum RMS of 2.0 × 10 −5 μV and a maximum absolute difference of 4 .7 × 10 −4 μV, but none changed a decision. 
+
+## 3.5 Computational performance 
+
+On a 2.4 GHz eight-core system with 32 GB RAM, the complete pipeline processed sub-001 in approximately 8.5 minutes with Python and 9.2 minutes with MATLAB. Picard accounted for about 60% of each run. Memory use peaked near 4 GB during ICA. 94 Discussion 
+
+Across 12 P300 recordings, Python and MATLAB matched to numerical precision through Picard ICA on ARM arm64. The Intel x86 64 analysis gave the same result. At Step 3, both implementations rejected the same channels and time points and the Picard AMARI distance did not exceed 0.000001. The first measurable difference appeared during ICLabel inference. Within each architecture, it did not change a rejection decision or grow during interpolation and epoching. The largest RMS difference was 2 .1 × 10 −5 μV. 
+
+## 4.1 Numerical precision and its limits 
+
+The stage-level comparison locates the source of each difference. Import and re-reference matched exactly. After Steps 3 and 4, RMS was approximately 10 −12 μV, which is nu-merical zero at the scale of these data. Both implementations calculate the average reference as ( I − J/n ) · X. On ARM, NumPy used Apple Accelerate and MATLAB R2025a used MATLAB’s ARM libraries, yet their output still agreed through Picard. On Intel, both programs linked Intel MKL and therefore used the same accumulation order (Supplementary Table 1). Reaching this agreement required several corrections to the Python port. One was replacing data -mean(data) with the matrix multiplication used by MATLAB’s reref.m .Last-bit agreement still depends on compatible floating-point reductions. Re-reference and clean rawdata use matrix multiplications, so their output depends on the BLAS accumulation order. The two stacks agreed on both tested architectures, but this need not hold for another library build. We tested this dependence by forcing NumPy to use OpenBLAS, as required for PyTorch ICLabel with an older NumPy version on Intel macOS. Re-reference then differed by approximately 5 × 10 −3 μV at the first matrix operation. Picard amplified this float32-ULP-scale perturbation to as much as 0 .15 μV RMS in the epoched output, and ASR burst boundaries could move by a few samples. Channel-rejection and ICLabel decisions did not change in this test. Exact replication should therefore report the random seed and BLAS build; last-bit identity should be expected only with compatible backends. The observed residuals are physiologically negligible, but ICA can amplify them in other environments. ICLabel introduced the only measurable error on ARM, with a maximum RMS of 2.0 × 10 −5 μV. The source is float32 inference in PyTorch and MATLAB, which yielded slightly different probabilities but the same decisions. Spherical-spline interpolation nei-ther increased the error nor made it depend on the number of reconstructed channels (Figure 3). After epoching, RMS remained below 1 .6 × 10 −5 μV for every subject. 10 4.2 Implications for reproducibility 
+
+The relevant scientific question is whether an implementation difference can alter a phys-iological or statistical conclusion. Exact equality is useful for debugging, but it is not the final validation target. Here, final RMS differences below 2 × 10 −5 μV are 6–7 orders of magnitude smaller than typical EEG amplitudes: 10–100 μV for event-related potentials and approximately 5 μV for resting-state oscillations. Measurable error came only from ICLabel inference. For comparison, thermal noise is about 0.1 μV and quantization noise is 0.0061 μV for a 16-bit system with a ±200 μV range and environmental interference adds further varia-tion. Session-to-session EEG correlations are typically 0.6–0.9 [20]. The implementation differences measured here are much smaller than any of these sources. These measurements suggest four practical precautions for exact reproducibility: 1. Report the random seed and the linear-algebra library build. A seed controls RANSAC sampling in clean rawdata, while the BLAS backend controls reduction order. 2. Process conditions that will be compared directly, such as drug and placebo record-ings, on the same platform and software version. 3. Treat effects near the measured platform variation with caution. An effect below 1 μV may be statistically significant without being physiologically meaningful. 4. Test preprocessing on more than one dataset and compare downstream measures such as signal-to-noise ratio and effect size. After comparing the data matrices, one should check whether any differences affect the experimental results. A difference matters only if it changes whether an effect is detected, and small differences between two arrays do not matter by themselves. 
+
+## 4.3 Comparison with other pipelines and tools 
+
+Delorme’s benchmark [3] included MNE-Python’s Autoreject [6, 21], artifact rejection from FieldTrip and Brainstorm, PREP’s robust-reference procedure [5], and the EEGLAB-based HAPPE pipeline [4]. The EEGLAB pipeline implemented here was the only one to perform significantly better than high-pass filtering [3]. Autoreject, for example, re-jected 19% of Oddball trials at p < 0.0001, but the surviving trials had less statistical power. PREP and other re-reference procedures also reduced the percentage of significant channels. Other methods fell outside that benchmark. Recent artifact-removal approaches such as ARMBR [22], which uses multivariate backward regression for blink removal, and ICA 11 with continuous wavelet transform [23] for low-channel systems, target specific artifact types rather than complete preprocessing workflows and have not undergone comparable effect-level benchmarking. 
+
+## 4.4 Cloud deployment and BIDS integration 
+
+EEGPrep can be installed from PyPI without a MATLAB licence or manual toolbox setup. It runs in common Python environments, including Google Colab, AWS SageMaker, and Azure ML. The Docker image uses fixed versions of all dependencies and numerical li-braries, including the BLAS backend that affected the comparisons above. Each subject and run is processed independently, allowing a cluster scheduler to distribute the tasks. The optional BIDS layer provides interoperability throughout the workflow. It reads and writes data in BIDS format and can process more than 500 public MEEG datasets accessible through NEMAR [24]. To our knowledge, EEGPrep is the only pipeline that produces derived BIDS data that pass the BIDS Validator, rather than merely writing output to a derivatives folder, and includes the metadata required by downstream BIDS tools. EEGPrep can also be run natively on brainlife.io [25], which records processing prove-nance, and the Neuroscience Gateway [26], which provides high-performance computing resources. 
+
+## 4.5 Limitations 
+
+This validation covers one 64-channel P300 dataset and only run 1. Resting-state, sleep, clinical, lower-density, and repeated-run data may expose other differences. We also tested only the default parameter set, which performed best in the original benchmark [3]. Other ICA algorithms, ICLabel thresholds, and filter settings remain untested. Nor did we measure the effect on time-frequency decomposition, source localization, or connectivity. Within an architecture, no ICLabel probability lay close enough to 0.9 for the inference difference between Python and MATLAB to change a rejection. Other datasets may contain such components, and a probabilistic treatment of classification uncertainty may then be preferable. Architecture itself did change two decisions: sub-003 and sub-006 each lost two components on ARM but one on Intel, giving totals of 15 and 13. Python and MATLAB agreed within each architecture, but small differences between Apple Accelerate and Intel MKL reached ICA and moved those components across the threshold. Sub-microvolt data differences can therefore change a discrete decision near 0.9. 12 5 Conclusion 
+
+EEGPrep reproduced the MATLAB EEGLAB workflow to numerical precision. Within the workflow, ICLabel inference introduced the first measurable error, with RMS below 2.1 × 10 −5 μV after the full pipeline and no change in rejection decisions within either tested architecture. EEGPrep is available from GitHub ( https://github.com/sccn/eegprep ), PyPI ( pip install eegprep ), and Docker Hub. The package reads BIDS data, writes BIDS deriva-tives, and is available through PyPI and Docker. These choices permit local or hosted processing without a MATLAB licence and make the software environment recordable. Users seeking exact replication should record the seed, package versions, and BLAS build. 
+
+# Acknowledgments 
+
+This work was supported by NIH grants R01EB023297 and R24MH120037, which fund the Open EEGLAB Portal and NEMAR, respectively. We thank the NEMAR team for providing access to the BIDS datasets used in validation. 
+
+# Conflict of interest 
+
+The authors declare no competing interests. EEGPrep is released as free and open-source software. 
+
+# Ethical statement 
+
+This study used only the publicly available, fully de-identified BIDS dataset ds003061, obtained from the NEMAR repository. No new data were collected from human partici-pants; accordingly, no additional ethical approval was required for this secondary analysis of openly available data. 
+
+# Data and code availability 
+
+EEGPrep is available at https://github.com/sccn/eegprep and via PyPI ( pip install eegprep ). Docker images are available at https://hub.docker.com/r/a rnodelorme/eegprep . The validation dataset (ds003061) is publicly available through NEMAR ( https://nemar.org ). All analysis scripts and validation results are available in the project repository. 13 References 
+
+[1] Button K S, Ioannidis J P, Mokrysz C, Nosek B A, Flint J, Robinson E S and Munaf` oM R 2013 Nature Reviews Neuroscience 14 365–376 [2] Delorme A and Makeig S 2004 Journal of Neuroscience Methods 134 9–21 [3] Delorme A 2023 Scientific Reports 13 2372 [4] Gabard-Durnam L J, Mendez Leal A S, Wilkinson C L and Levin A R 2018 Frontiers in Neuroscience 12 97 [5] Bigdely-Shamlo N, Mullen T, Kothe C, Su K M and Robbins K A 2015 Frontiers in Neuroinformatics 9 16 [6] Jas M, Engemann D A, Bekhti Y, Raimondo F and Gramfort A 2017 NeuroImage 
+
+159 417–429 [7] Mullen T R, Kothe C A, Chi Y M, Ojeda A, Kerth T, Makeig S, Jung T P and Cauwenberghs G 2015 IEEE Transactions on Biomedical Engineering 62 2553–2567 [8] Pion-Tonachini L, Kreutz-Delgado K and Makeig S 2019 NeuroImage 198 181–197 [9] Delorme A, Truong D, Pion-Tonachini L and Makeig S 2024 Automatic EEG indepen-dent component classification using ICLabel in Python 2024 IEEE Signal Processing in Medicine and Biology Symposium (SPMB) (IEEE) [10] Goldberg D 1991 ACM Computing Surveys 23 5–48 [11] Bowring A, Maumet C and Nichols T E 2019 Human Brain Mapping 40 3362–3384 [12] Ablin P, Cardoso J F and Gramfort A 2018 Faster independent component anal-ysis by preconditioning with hessian approximations IEEE Transactions on Signal Processing vol 66 (IEEE) pp 4040–4049 [13] Harris C R, Millman K J, Van Der Walt S J, Gommers R, Virtanen P, Cournapeau D, Wieser E, Taylor J, Berg S, Smith N J et al. 2020 Nature 585 357–362 [14] Virtanen P, Gommers R, Oliphant T E, Haberland M, Reddy T, Cournapeau D, Burovski E, Peterson P, Weckesser W, Bright J et al. 2020 Nature Methods 17 261– 272 [15] Bell A J and Sejnowski T J 1995 Neural Computation 7 1129–1159 [16] Paszke A, Gross S, Massa F, Lerer A, Bradbury J, Chanan G, Killeen T, Lin Z, Gimelshein N, Antiga L et al. 2019 Pytorch: An imperative style, high-performance deep learning library Advances in Neural Information Processing Systems vol 32 14 [17] Pernet C R, Appelhoff S, Gorgolewski K J, Flandin G, Phillips C, Delorme A and Oostenveld R 2019 Scientific Data 6 1–5 [18] Kuhn H W 1955 Naval Research Logistics Quarterly 2 83–97 [19] Amari S i, Cichocki A and Yang H H 1996 A new learning algorithm for blind signal separation Advances in Neural Information Processing Systems vol 8 (MIT Press) pp 757–763 [20] Cassidy S M, Robertson I H and O’Connell R G 2012 Psychophysiology 49 659–664 [21] Gramfort A, Luessi M, Larson E, Engemann D A, Strohmeier D, Brodbeck C, Goj R, Jas M, Brooks T, Parkkonen L et al. 2013 Frontiers in Neuroscience 7 267 [22] Alkhoury L, Scanavini G, Louviot S, Radanovic A, Shah S A and Hill N J 2025 
+
+Journal of Neural Engineering 22 36048 [23] Maddirala A K and Veluvolu K C 2022 IEEE Transactions on Neural Systems and Rehabilitation Engineering 30 1361–1373 [24] Delorme A, Truong D, Youn C, Sivagnanam S, Stirm C, Yoshimoto K, Poldrack R A, Majumdar A and Makeig S 2022 Database 2022 baac096 [25] Hayashi S, Caron B A, Heinsfeld A S, Vinci-Booher S, McPherson B, Bullock D N, Bert` o G, Niso G, Hanekamp S, Levitas D et al. 2024 Nature Methods 21 809–813 [26] Majumdar A, Sivagnanam S, Yoshimoto K, Yeu S, Kandes M, Choi D and Carnevale T 2023 Neuroscience gateway – software dissemination and large-scale modeling and data processing on supercomputing resources Practice and Experience in Advanced Research Computing (ACM) pp 1–5 15 Supplementary Table 1: Stage-by-stage numerical parity on Intel x86 64 macOS. We re-peated the seven-stage analysis with Python 3.10, NumPy 1.x, and MATLAB R2022b. NumPy and MATLAB both linked Intel MKL, and Python used the native PyTorch ICLabel imple-mentation. As in the primary ARM analysis, sub-012 was excluded, giving N = 12 for run 1. Values are in μV. All subject-level RMS values through Step 4 were approximately 10 −12 μV, which was the same numerical-zero result found on ARM. Because NumPy and MATLAB both linked Intel MKL, re-reference and clean rawdata used the same floating-point accumulation order. PyTorch ICLabel inference introduced the first measurable error at Step 5, and RMS remained ≤ 2.4 × 10 −5 μV after interpolation and epoching. For all 12 subjects, the Picard AMARI distance was ≤ 0.000001 and mean component correlation was 1.000, matching the primary analysis. Python and MATLAB made the same ICLabel decisions within each architec-ture. Intel rejected 13 components and ARM rejected 15 because sub-003 and sub-006 each lost one component on Intel and two on ARM. Both architectures used the same PyTorch ICLabel implementation. The cross-architecture difference therefore arose earlier, when small numeri-cal differences between Intel MKL and Apple Accelerate passed through ICA and moved two near-threshold probabilities across 0.9. On ARM, Python used Apple Accelerate and MATLAB R2025a used a different linear-algebra library, yet their outputs still agreed through Picard to numerical precision. The result does not require a shared BLAS library, although it does require backends that resolve reductions compatibly. 
+
+Step N Mean RMS Max RMS Max MaxAbsDiff 
+
+1. Import 12 0 0 02. Re-reference 12 0 0 03. clean rawdata 12 1.3 × 10 −12 1.9 × 10 −12 2.3 × 10 −11 
+
+4. Picard ICA 12 1.3 × 10 −12 1.9 × 10 −12 2.3 × 10 −11 
+
+5. ICLabel 12 4.1 × 10 −6 2.2 × 10 −5 3.3 × 10 −4
+
+6. Interpolation 12 4.1 × 10 −6 2.3 × 10 −5 3.3 × 10 −4
+
+7. Epoch 12 4.1 × 10 −6 2.4 × 10 −5 3.0 × 10 −4
+
+16 Supplementary Table 2: Picard ICA parity per subject (run 1): Python EEGPrep vs MAT-LAB eeglabcompat. AMARI distance and component correlation were computed on matched mixing matrices. 
+
+Subject Comp AMARI distance Corr (mean) Corr (min) 
+
+sub-001 57 0.000000 1.000 1.000 sub-002 33 0.000000 1.000 1.000 sub-003 55 0.000000 1.000 1.000 sub-004 56 0.000000 1.000 1.000 sub-005 50 0.000001 1.000 1.000 sub-006 52 0.000000 1.000 1.000 sub-007 54 0.000000 1.000 1.000 sub-008 59 0.000001 1.000 1.000 sub-009 57 0.000000 1.000 1.000 sub-010 56 0.000000 1.000 1.000 sub-011 33 0.000000 1.000 1.000 sub-013 60 0.000000 1.000 1.000 17 Supplementary Table 3: ICLabel component rejection per subject (run 1). Rejection thresh-old: Muscle ≥ 0.9 or Eye ≥ 0.9. 
+
+Subject Rej (MAT) Rej (PY) Match 
+
+sub-001 2 2 Yes sub-002 0 0 Yes sub-003 2 2 Yes sub-004 0 0 Yes sub-005 3 3 Yes sub-006 2 2 Yes sub-007 0 0 Yes sub-008 2 2 Yes sub-009 2 2 Yes sub-010 0 0 Yes sub-011 1 1 Yes sub-013 1 1 Yes 18
