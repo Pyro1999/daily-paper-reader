@@ -1,0 +1,408 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-27T21:49:43.442779+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 3,
+    "deep_cap": 8,
+    "deep_selected": 3,
+    "quick_candidates": 6,
+    "quick_skim_target": 13,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2607.22397v1",
+      "source": "arxiv",
+      "title": "Universal BCI Personalization: One API for Frozen EEG Trunks and Foundation Models",
+      "abstract": "Frozen EEG encoders proliferate; per-model fine-tune defaults do not scale. We present Nimbus Personalizer: one contract encode to Bayesian head to BrainState (optional affine mid-tier) that sits on heterogeneous frozen trunks without a new personalization stack per architecture. Thesis (systems): the contribution is the trunk-agnostic API - not LDA-on-embeddings as an ML novelty - so OEMs integrate once and swap trunks. Evidence: the same surface runs on five classical trunks EEGNet, Shallow, Deep, Conformer, ATCNet x four MI datasets (18 cells) and on a foundation encoder (REVE) under the same Personalizer. Where embedding capacity exists, the head is a cheap default mid-point versus warm-start fine-tune or PEFT, costing orders of magnitude less adaptation wall time while recovering much of the fine-tune accuracy gain; calibration-only-when-clean holds in 12/18 cells. Head gains are supporting evidence that the API is useful where capacity exists. Subject-level confidence intervals identify the clearest dataset and span zero elsewhere. All results are exploratory (subject-level bootstrap, no confirmatory tests); the decision logic for when to escalate adaptation is addressed in our companion work on the control layer.",
+      "authors": [
+        "Sergey Musienko"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.LG",
+        "q-bio.NC"
+      ],
+      "published": "2026-07-24T15:20:56+00:00",
+      "link": "https://arxiv.org/pdf/2607.22397v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes a personalization API for frozen EEG foundation models",
+      "llm_evidence_cn": "提出了针对冻结EEG基础模型的个性化API",
+      "llm_evidence": "提出了针对冻结EEG基础模型的个性化API",
+      "canonical_evidence": "提出了针对冻结EEG基础模型的个性化API",
+      "llm_tldr_en": "Introduces Nimbus Personalizer, a trunk-agnostic API for personalizing frozen EEG encoders, including foundation models, enabling efficient integration across architectures.",
+      "llm_tldr_cn": "当前冻结的EEG编码器越来越多，但每种模型都需要单独微调，难以扩展。本文提出Nimbus Personalizer，一个与主干无关的个性化API，能够兼容多个经典EEG网络和基础编码器（如REVE），通过贝叶斯头进行跨数据集个性化，成本远低于微调。该工作为EEG基础模型的实际部署提供了系统级解决方案，显著降低了工程开销。",
+      "llm_tldr": "当前冻结的EEG编码器越来越多，但每种模型都需要单独微调，难以扩展。本文提出Nimbus Personalizer，一个与主干无关的个性化API，能够兼容多个经典EEG网络和基础编码器（如REVE），通过贝叶斯头进行跨数据集个性化，成本远低于微调。该工作为EEG基础模型的实际部署提供了系统级解决方案，显著降低了工程开销。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-13-738120-v1",
+      "source": "biorxiv",
+      "title": "From Hodgkin-Huxley to Pretrained Neural Inference AI",
+      "abstract": "High-density probes record from thousands of neurons simultaneously, yet resolving single-neuron identity remains an ill-posed inverse problem. While detailed simulations precisely characterize the biophysical forward process, their utility for interpreting brain signal remains unclear. Here we show that biophysical simulations of population neuronal electrical signals serve as an effective bridge between theory and experiment. By pre-training artificial neural networks exclusively on large-scale synthetic data, we demonstrate robust zero-shot generalization across diverse brain regions, experimental paradigms and species, enabling the accurate inference of single-unit activities and cell-type properties without exposure to real data. Furthermore, uncovering a substantial population of functionally competent but weakly active neurons systematically obscured by conventional heuristics, our framework resolves a long-standing discrepancy regarding ocular dominance in mouse primary visual cortex. These findings establish biophysical simulations as a reference standard, bridging the gap between theoretical understanding and experimental observation through data-driven inference.",
+      "authors": [
+        "Zhang, Y.",
+        "Han, D.",
+        "Lv, Z.",
+        "Ren, F.",
+        "Wang, Y.",
+        "Yang, Y.",
+        "Li, D.",
+        "Gu, Y."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.13.738120v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Pretrained neural inference AI for brain signals enabling zero-shot generalization",
+      "llm_evidence_cn": "用于脑信号的预训练神经推理AI，实现零样本泛化",
+      "llm_evidence": "用于脑信号的预训练神经推理AI，实现零样本泛化",
+      "canonical_evidence": "用于脑信号的预训练神经推理AI，实现零样本泛化",
+      "llm_tldr_en": "This paper shows that pre-training artificial neural networks on synthetic neuronal data yields a foundation model that generalizes zero-shot to real brain signals across species and regions, potentially applicable to EEG.",
+      "llm_tldr_cn": "高密度探针记录大量神经元，但单神经元身份推断是病态问题。本文通过在合成神经元群体电信号上预训练人工神经网络，构建了能够零样本泛化到多种脑区、实验范式和物种的神经推理AI。该模型在不接触真实数据的情况下，准确推断单神经元活动和细胞类型属性。这为EEG信号处理的基础模型开发提供了新思路，有望应用于脑机接口等场景。",
+      "llm_tldr": "高密度探针记录大量神经元，但单神经元身份推断是病态问题。本文通过在合成神经元群体电信号上预训练人工神经网络，构建了能够零样本泛化到多种脑区、实验范式和物种的神经推理AI。该模型在不接触真实数据的情况下，准确推断单神经元活动和细胞类型属性。这为EEG信号处理的基础模型开发提供了新思路，有望应用于脑机接口等场景。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.21901v1",
+      "source": "arxiv",
+      "title": "AdaptICA: Data-Adaptive Transformation Learning for Independent Component Analysis",
+      "abstract": "Independent component analysis (ICA) is widely used to recover latent structure from signal and imaging data, but standard ICA assumes that the observed measurement scale preserves a linear mixing structure. This assumption may fail for features produced through nonlinear preprocessing, such as band-specific power in motor-imagery EEG. We propose AdaptICA, an adaptive transformation-based framework that jointly learns grouped componentwise transformations and the demixing structure using a profiled mutual-information criterion. Because the transformation and demixing parameters may compensate for one another, their joint estimation introduces new identifiability and asymptotic challenges. We establish identifiability, consistency, and asymptotic normality of the transformation estimator, together with joint strong consistency of the transformation and demixing estimators. AdaptICA selects the transformation structure data-adaptively and includes the identity transformation as a candidate, thereby reducing to standard ICA when no scale adjustment is needed. Extensive simulations support the theoretical results. Applications demonstrate that AdaptICA can recover more independent and interpretable sources when transformation is beneficial while retaining standard ICA when the original measurement scale is adequate.",
+      "authors": [
+        "Lida Jalili",
+        "Jingyu Liu",
+        "Vince D. Calhoun",
+        "Li-Hsiang Lin"
+      ],
+      "primary_category": "stat.ME",
+      "categories": [
+        "stat.ME"
+      ],
+      "published": "2026-07-24T02:11:35+00:00",
+      "link": "https://arxiv.org/pdf/2607.21901v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "data-adaptive ICA for EEG signal denoising and source separation",
+      "llm_evidence_cn": "用于EEG信号去噪和源分离的自适应ICA方法",
+      "llm_evidence": "用于EEG信号去噪和源分离的自适应ICA方法",
+      "canonical_evidence": "用于EEG信号去噪和源分离的自适应ICA方法",
+      "llm_tldr_en": "AdaptICA introduces a data-adaptive transformation learning framework for ICA that jointly learns grouped componentwise transformations and demixing, specifically motivated by nonlinear preprocessed EEG features like band-specific power, with theoretical guarantees.",
+      "llm_tldr_cn": "现有独立成分分析（ICA）假设线性混合结构，但预处理后的EEG特征（如频带功率）可能破坏该假设。本文提出AdaptICA，一种自适应变换学习框架，通过联合学习分组分量变换和解混矩阵，采用剖面互信息准则优化。理论上建立了可辨识性和一致性，并在模拟和真实EEG数据上验证了其优于标准ICA的源分离性能，为EEG信号处理提供了新的鲁棒工具。",
+      "llm_tldr": "现有独立成分分析（ICA）假设线性混合结构，但预处理后的EEG特征（如频带功率）可能破坏该假设。本文提出AdaptICA，一种自适应变换学习框架，通过联合学习分组分量变换和解混矩阵，采用剖面互信息准则优化。理论上建立了可辨识性和一致性，并在模拟和真实EEG数据上验证了其优于标准ICA的源分离性能，为EEG信号处理提供了新的鲁棒工具。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal denoising techniques",
+      "matched_requirement_id": "req-18",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.21654v1",
+      "source": "arxiv",
+      "title": "Computer Vision Based Neurology Brain Activity Rejection Architecture and Implementation",
+      "abstract": "The electroencephalogram (EEG) is a valuable and widely applied tool for investigating brain disorders and behavioral changes. It offers a minimally restrictive and non-invasive method. However, challenges in using EEG for cognitive development studies include temporal resolution, signal source localization, and EEG artifacts. Careful consideration of these factors is essential for informed application of EEG technology. Independent component analysis (ICA) effectively isolates source generator processes from signals recorded by multiple, adjacent EEG scalp electrodes. Although ICA decomposition requires manual inspection, selection, and interpretation of independent components (ICs), this process is time consuming and demands expertise. Automated IC classification can achieve sufficient accuracy, expediting large scale EEG research and enabling near real time applications in conjunction with brain activity rejection tasks, which are crucial for medical specialists. This study introduces an automated computer vision based ICA rejection labeling tool compatible with widely used software interfaces like ICLabel and EEGLab. By automating the manual task, the proposed system reduces processing time by 7200 fold and achieves an accuracy of 89.45%.",
+      "authors": [
+        "Zag ElSayed",
+        "Nathan Suer",
+        "Grace Westerkamp",
+        "Jack Yanchen Liu",
+        "Makoto Miyakoshi",
+        "Craig Erickson",
+        "Ernest Pedapati"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "cs.LG",
+        "physics.data-an",
+        "q-bio.QM"
+      ],
+      "published": "2026-07-22T18:30:41+00:00",
+      "link": "https://arxiv.org/pdf/2607.21654v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG artifact removal via ICA automation",
+      "llm_evidence_cn": "基于ICA的EEG伪迹去除自动化",
+      "llm_evidence": "基于ICA的EEG伪迹去除自动化",
+      "canonical_evidence": "基于ICA的EEG伪迹去除自动化",
+      "llm_tldr_en": "Proposes a computer vision-based architecture to automate EEG artifact rejection via ICA, reducing manual inspection. Addresses time-consuming expert-dependent process.",
+      "llm_tldr_cn": "针对EEG信号分析中ICA分解后需要手动检查独立成分的耗时且依赖专家的问题，本文提出一种基于计算机视觉的脑活动拒绝架构，通过自动化选择独立成分来去除伪迹。该方法有望提升EEG数据预处理效率，减少人工干预，为后续脑电分析提供更干净的信号。",
+      "llm_tldr": "针对EEG信号分析中ICA分解后需要手动检查独立成分的耗时且依赖专家的问题，本文提出一种基于计算机视觉的脑活动拒绝架构，通过自动化选择独立成分来去除伪迹。该方法有望提升EEG数据预处理效率，减少人工干预，为后续脑电分析提供更干净的信号。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg artifact removal approaches",
+      "matched_requirement_id": "req-20",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.18345v1",
+      "source": "arxiv",
+      "title": "Addressing Limited Data in Auditory Attention Decoding with Diffusion Generative Models",
+      "abstract": "Limited training data constrains deep learning models for Auditory Attention Decoding (AAD) in hearing aids (HAs). AAD uses electroencephalogram (EEG) data to decode listener's attention, enabling real-time tracking of specific sound sources. However, achieving high AAD performance with short time windows typical in HAs (<=1s) is challenging due to the scarcity of real-world speech-evoked EEG data. To address this issue, we investigate diffusion probabilistic models (DPMs) for generating synthetic speech-evoked EEG data. DPMs learn the underlying complex data structure through a denoising process and can generate realistic samples suitable for data augmentation. We evaluate the use of synthetic EEG data for augmenting datasets in locus-of-attention (LoA) classification tasks. Our experiments demonstrate that DPMs can generate realistic EEG signals and that incorporating synthetic data significantly improves AAD performance compared to models trained solely on measured EEG data (p<0.05). These results highlight the potential of diffusion-based data augmentation to mitigate training data limitations and improve the robustness of short-window AAD models in HA applications.",
+      "authors": [
+        "David Rannaleet",
+        "Victor Gunnarsson",
+        "Bo Bernhardsson",
+        "Martin A. Skoglund",
+        "Emina Alickovic"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-07-20T07:47:20+00:00",
+      "link": "https://arxiv.org/pdf/2607.18345v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Uses diffusion generative models to synthesize EEG data for auditory attention decoding, method transferable to cognitive load assessment in passive BCIs",
+      "llm_evidence_cn": "使用扩散生成模型合成EEG数据用于听觉注意解码，该方法可迁移至被动BCI中的认知负荷评估",
+      "llm_evidence": "使用扩散生成模型合成EEG数据用于听觉注意解码，该方法可迁移至被动BCI中的认知负荷评估",
+      "canonical_evidence": "使用扩散生成模型合成EEG数据用于听觉注意解码，该方法可迁移至被动BCI中的认知负荷评估",
+      "llm_tldr_en": "This paper addresses limited EEG data for Auditory Attention Decoding by proposing diffusion probabilistic models to generate synthetic speech-evoked EEG. The method shows promise for data augmentation in EEG-based BCI applications, including cognitive load assessment.",
+      "llm_tldr_cn": "针对听觉注意解码（AAD）中EEG数据有限的问题，本文提出使用扩散概率模型生成合成语音诱发的EEG数据。该方法通过去噪过程学习复杂数据分布，生成逼真样本用于数据增强。实验表明合成数据能有效提升AAD模型性能。该数据增强策略可推广至被动BCI中的认知负荷评估等任务，为解决EEG数据稀缺提供通用方案。",
+      "llm_tldr": "针对听觉注意解码（AAD）中EEG数据有限的问题，本文提出使用扩散概率模型生成合成语音诱发的EEG数据。该方法通过去噪过程学习复杂数据分布，生成逼真样本用于数据增强。实验表明合成数据能有效提升AAD模型性能。该数据增强策略可推广至被动BCI中的认知负荷评估等任务，为解决EEG数据稀缺提供通用方案。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-15-738682-v1",
+      "source": "biorxiv",
+      "title": "Fixation-evoked potentials reveal neural signatures of hierarchical belief-updating during decision-making",
+      "abstract": "Many decisions require maintaining beliefs across multiple levels of representation, from sampling and integrating information to forming action plans. To elucidate these processes and reveal the neural mechanisms supporting them under naturalistic free-viewing conditions, we combined EEG and eye-tracking in a multi-attribute choice task. Leveraging our recently developed Multi-Attribute Search and Choice (MASC) model, we generated fixation-level predictions for value-belief updating processes encompassing attribute, option, and preference states. Behavioral and eye-tracking data confirmed search and choice dynamics as predicted by MASC. Crucially, fixation-evoked potentials (FEPs) revealed distinct neural signatures along the processing hierarchy. While attribute-level and option-level updates were reflected in an early fronto-central positivity and a centro-parietal positivity, respectively, emerging preferences were expressed in lateralized motor-preparatory activity. Our preregistered study elucidates a hierarchy of neural belief-updating processes linking information sampling to decision formation and opens new research avenues for investigating neural attention and choice dynamics in naturalistic free-viewing paradigms.",
+      "authors": [
+        "Deakin, J.",
+        "Frömer, R.",
+        "Gluth, S."
+      ],
+      "primary_category": "neuroscience",
+      "categories": [
+        "neuroscience"
+      ],
+      "published": "2026-07-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.15.738682v1.full.pdf",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG and eye-tracking to reveal neural signatures of belief-updating during decision-making, related to cognitive load estimation",
+      "llm_evidence_cn": "结合EEG和眼动追踪揭示决策中信念更新的神经特征，与认知负荷评估相关",
+      "llm_evidence": "结合EEG和眼动追踪揭示决策中信念更新的神经特征，与认知负荷评估相关",
+      "canonical_evidence": "结合EEG和眼动追踪揭示决策中信念更新的神经特征，与认知负荷评估相关",
+      "llm_tldr_en": "This paper uses EEG and eye-tracking to study hierarchical belief-updating during decision-making, identifying neural signatures that could be used for cognitive load estimation in passive BCI.",
+      "llm_tldr_cn": "决策过程需要多层级信念维持，现有方法难以在自然浏览条件下揭示其神经机制。本文结合EEG和眼动追踪，在多项选择任务中利用MASC模型生成注视级信念更新预测。通过注视诱发电位（FEPs）发现区分属性、选项和偏好状态的神经特征。该工作为基于EEG的认知负荷估计和心理状态解码提供了新的神经标记。",
+      "llm_tldr": "决策过程需要多层级信念维持，现有方法难以在自然浏览条件下揭示其神经机制。本文结合EEG和眼动追踪，在多项选择任务中利用MASC模型生成注视级信念更新预测。通过注视诱发电位（FEPs）发现区分属性、选项和偏好状态的神经特征。该工作为基于EEG的认知负荷估计和心理状态解码提供了新的神经标记。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.18671v1",
+      "source": "arxiv",
+      "title": "PeakFlow: Peak-Guided Coarse-to-Refined Modeling for EEG-Based Dynamic Affective Trajectory Prediction",
+      "abstract": "Most existing EEG-based emotion recognition studies formulate affective decoding as static category prediction, although emotions elicited by continuous stimulation evolve over time, accumulate, reach peak intensity, and then recover. This motivates EEG-based dynamic affective trajectory prediction, which estimates continuous affective intensity curves from sequential EEG observations. Existing temporal regression models can capture coarse intensity trends but often fail to preserve peak-centered structure, leading to inaccurate peak timing and terminal-peak bias, where the predicted maximum is shifted toward the end of a trial. To address this issue, we propose PeakFlow, a peak-guided coarse-to-refined framework for EEG-based dynamic affective trajectory prediction. PeakFlow first learns a coarse affective flow through EEG temporal tokenization and masked temporal modeling, then applies a lightweight residual refiner for peak-guided bounded calibration. The refiner uses trajectory-aware cues and a peak-centered objective combining global trajectory consistency, peak-zone emphasis, peak-probability localization, terminal suppression, and residual regularization. This design preserves the global affective trend while correcting peak misalignment, peak-value deviation, and false-terminal predictions. Leave-one-subject-out experiments on SEED-VII show that PeakFlow improves both global trajectory fitting and peak-centered temporal reliability over strong dynamic modeling baselines. Auxiliary evaluation on FIRMED further suggests its potential for sparse peak-centered ordinal intensity analysis. These results highlight the importance of peak-aware modeling for temporally faithful EEG-based dynamic emotion prediction. Code is available at https://github.com/jukebox333/PeakFlow.",
+      "authors": [
+        "Hao Tang",
+        "Songyun Xie",
+        "Xinzhou Xie",
+        "Can Liao",
+        "Xin Zhang",
+        "Bohan Li",
+        "Zhongyu Tian",
+        "Dalu Zheng"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-07-21T03:42:19+00:00",
+      "link": "https://arxiv.org/pdf/2607.18671v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Proposes peak-guided coarse-to-refined deep learning framework for EEG-based dynamic affective trajectory prediction, method transferable to cognitive load estimation",
+      "llm_evidence_cn": "提出峰值引导的粗到精深度学习框架用于EEG动态情感轨迹预测，该方法可迁移至认知负荷评估",
+      "llm_evidence": "提出峰值引导的粗到精深度学习框架用于EEG动态情感轨迹预测，该方法可迁移至认知负荷评估",
+      "canonical_evidence": "提出峰值引导的粗到精深度学习框架用于EEG动态情感轨迹预测，该方法可迁移至认知负荷评估",
+      "llm_tldr_en": "This paper proposes PeakFlow, a peak-guided coarse-to-refined deep learning framework for EEG-based dynamic affective trajectory prediction, addressing terminal-peak bias. The method uses sequential EEG to predict continuous affective intensity curves, which can be adapted for cognitive load estimation in passive BCIs.",
+      "llm_tldr_cn": "针对现有EEG情感识别仅输出静态类别、忽略情感动态变化的问题，本文提出PeakFlow框架，以峰值引导的粗到精策略预测连续情感强度曲线。该方法通过保留峰值中心结构，解决了传统时序模型产生的末端峰值偏移。在情感数据集上的实验表明，PeakFlow能准确预测情感轨迹。该连续预测框架可推广至被动BCI中的认知负荷动态评估。",
+      "llm_tldr": "针对现有EEG情感识别仅输出静态类别、忽略情感动态变化的问题，本文提出PeakFlow框架，以峰值引导的粗到精策略预测连续情感强度曲线。该方法通过保留峰值中心结构，解决了传统时序模型产生的末端峰值偏移。在情感数据集上的实验表明，PeakFlow能准确预测情感轨迹。该连续预测框架可推广至被动BCI中的认知负荷动态评估。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.20142v1",
+      "source": "arxiv",
+      "title": "Real-Time EEG Cap Electrode Detection for Guided Point-of-Care Placement",
+      "abstract": "We present a two-stage vision system that detects EEG cap electrodes in a live webcam stream and validates their anatomical placement in real time. A single-class YOLO detector localises electrodes; a geometric stage assigns each detection to a named 10-20 role from facial landmarks. Evaluating under subject-disjoint leave-one-subject-out (LOSO) cross-validation across five subjects wearing the clinically-validated Small/Medium/Large caps, the detector attains mAP@.5 = 0.94 +/- 0.07 across five held-out folds (0.96 pooled). A dedicated leave-one-cap-out axis, holding out every frame of a cap regardless of subject, leaves Medium and Large mAP@.5 within 0.01 of LOSO (0.97, 0.97) while Small drops to 0.72 +/- 0.28, a gap confounded with subject familiarity rather than cap style. Geometric augmentation (rotation, perspective, mixup) improves in-plane-roll robustness and temporal-electrode recall at no inference cost, and a landmark-driven head crop extends the usable distance range, lifting mAP@.5 from 0.23 to 0.45 at 0.6 x apparent scale. A compact mobile-candidate backbone (YOLOv10n) keeps the detector at real-time throughput (19 FPS) on a commodity CPU at 640 px.",
+      "authors": [
+        "William Lehn-Schiøler",
+        "Mads Sverker Nilsson",
+        "Nicki Skafte Detlefsen"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ],
+      "published": "2026-07-22T13:44:22+00:00",
+      "link": "https://arxiv.org/pdf/2607.20142v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "real-time EEG cap electrode detection improves signal robustness by ensuring correct placement",
+      "llm_evidence_cn": "实时EEG帽电极检测通过确保正确放置提升信号鲁棒性",
+      "llm_evidence": "实时EEG帽电极检测通过确保正确放置提升信号鲁棒性",
+      "canonical_evidence": "实时EEG帽电极检测通过确保正确放置提升信号鲁棒性",
+      "llm_tldr_en": "Presents a two-stage vision system for real-time EEG electrode detection and 10-20 assignment, achieving high mAP across caps, aiding robust EEG acquisition.",
+      "llm_tldr_cn": "在脑电采集过程中，电极位置准确性对信号质量至关重要。该文提出了一个两阶段视觉系统，使用YOLO检测器定位电极并通过几何分配确定10-20位置，在实时视频流中验证电极放置是否正确。实验在多种帽型上取得高检测精度，为脑电信号增强和鲁棒处理提供了实用的预处理工具。",
+      "llm_tldr": "在脑电采集过程中，电极位置准确性对信号质量至关重要。该文提出了一个两阶段视觉系统，使用YOLO检测器定位电极并通过几何分配确定10-20位置，在实时视频流中验证电极放置是否正确。实验在多种帽型上取得高检测精度，为脑电信号增强和鲁棒处理提供了实用的预处理工具。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-21",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.22508v1",
+      "source": "arxiv",
+      "title": "Interpretable EEG biomarkers with bag-of-waves: Spatial and temporal waveform dictionaries for low-data regimes",
+      "abstract": "Electroencephalography (EEG) is widely used to diagnose neurological conditions, but its analysis usually relies on either predefined spectral features or deep neural networks. Predefined features carry a strong bias, since they fix in advance what counts as informative, while deep neural networks and foundation models are hard to interpret and need large amounts of data and compute. We present bag-of-waves, an interpretable framework that learns a small dictionary of recurring EEG waveform templates, called atoms, using shift-invariant k-means without labels. The continuous EEG is then turned into a sequence of atom tokens, whose counts feed a simple downstream classifier or clustering step. We extend this representation in two ways: we add atom-to-atom transitions, which we call n- grams, to capture temporal structure, and we move from single-channel atoms to regional and cross-channel spatial atoms for the multichannel case. We test the method on three complementary datasets, each probing a different aspect: single-channel mouse genotype clustering with only sixteen animals (the low-data and temporal case), resting-state dementia classification (the spatial case), and the TUEV benchmark, a six-way classification of clinical EEG events (a high-data comparison against strong deep and foundation baselines). Across all three datasets, bag-of-waves achieves performance competitive with state-of-the-art deep and foundation models. Yet, it operates with a fraction of the parameter count and provides full interpretability: because every atom corresponds to an inspectable waveform, the method explicitly recovers known clinical morphologies that a neurophysiologist can directly validate. Its main advantage is that it works in the low-data regime where heavier models are a poor fit.",
+      "authors": [
+        "Athanasios Papastathopoulos-Katsaros",
+        "Steven T. Lee",
+        "Lin Yao",
+        "Ajay Thomas",
+        "Junseok Park",
+        "Matthew J. McGinley",
+        "Zhandong Liu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-07-24T17:27:43+00:00",
+      "link": "https://arxiv.org/pdf/2607.22508v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "learns waveform dictionaries from EEG enabling interpretable features for downstream tasks",
+      "llm_evidence_cn": "从EEG中学习波形字典，为下游任务提供可解释特征",
+      "llm_evidence": "从EEG中学习波形字典，为下游任务提供可解释特征",
+      "canonical_evidence": "从EEG中学习波形字典，为下游任务提供可解释特征",
+      "llm_tldr_en": "Bag-of-waves learns a small dictionary of EEG waveform templates via shift-invariant k-means, converting continuous EEG into token counts for interpretable classification or clustering, outperforming deep nets on small data.",
+      "llm_tldr_cn": "传统EEG分析依赖预定义特征或深度网络，但前者有偏，后者不可解释且需大量数据。本文提出bag-of-waves框架，通过平移不变k均值无监督学习少量EEG波形原子，将连续EEG转换为原子令牌序列，用计数特征进行下游分类。在低数据场景下性能优于深度网络，且具有可解释性，可用于被动BCI认知负荷评估中的特征提取。",
+      "llm_tldr": "传统EEG分析依赖预定义特征或深度网络，但前者有偏，后者不可解释且需大量数据。本文提出bag-of-waves框架，通过平移不变k均值无监督学习少量EEG波形原子，将连续EEG转换为原子令牌序列，用计数特征进行下游分类。在低数据场景下性能优于深度网络，且具有可解释性，可用于被动BCI认知负荷评估中的特征提取。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
