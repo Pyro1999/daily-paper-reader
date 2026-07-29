@@ -1,0 +1,231 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-29T20:01:47.221078+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 4,
+    "quick_skim_target": 13,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2607.24834v1",
+      "source": "arxiv",
+      "title": "Foundation Models for EEG Are Blind to Long-Range Temporal Correlations: A Spectral-Temporal Dissociation Behind Their Cross-Population Fragility",
+      "abstract": "Objective. Electroencephalography (EEG) foundation models (FMs) are trained to reconstruct or contrastively align short patches, then pooled into a fixed embedding. We tested whether these embeddings retained the long-range temporal correlations (LRTC) quantified by the detrended-fluctuation-analysis (DFA) exponent of the alpha-band envelope, and whether it governs cross-population transfer.   Approach. We probed five EEG FMs spanning raw-waveform and spectral-input architectures (REVE, LaBraM, BENDR, CBraMod, BIOT) on two out-of-distribution cohorts, comparing recovery of the DFA exponent against the static 1/f aperiodic slope. Order-preserving and residualization controls tested for pooling or aperiodic shadowing. A montage-harmonized, zero-shot transfer task compared the frozen embedding with the DFA exponent across three cohorts (adding a Western reference).   Main results. None of the five FMs represented the LRTC in the temporal order. Raw-waveform models (REVE, LaBraM, BENDR) recovered neither the DFA exponent nor the 1/f slope (R^2 <= 0.12); for these three the probe is uninformative, so the dissociation is specific to the spectral-input models (CBraMod, BIOT), which recovered 1/f strongly (R^2 = 0.59-0.73) but not DFA across cohorts. A classical DFA feature recovered the exponent (R^2 = 0.32-0.38 against a 0.64 reliability ceiling), and LRTC was orthogonal to the aperiodic slope (r = -0.06). On cross-population transfer, the frozen REVE embedding did not beat chance (W to K, 0.45) and the dimensionless DFA exponent transferred directionally but not at family-wise significance; the other four did not uniformly replicate it. All five were dominated by a recording-site axis (decodable at 0.98-1.00 vs. 0.500 chance), whereas the DFA exponent they discard is site-robust (0.71).",
+      "authors": [
+        "Marzieh Zare"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "cs.AI",
+        "cs.ET",
+        "cs.LG"
+      ],
+      "published": "2026-07-23T18:00:15+00:00",
+      "link": "https://arxiv.org/pdf/2607.24834v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "evaluates EEG foundation models' ability to retain long-range temporal correlations",
+      "llm_evidence_cn": "评估EEG基础模型对长程时间相关性的保持能力",
+      "llm_evidence": "评估EEG基础模型对长程时间相关性的保持能力",
+      "canonical_evidence": "评估EEG基础模型对长程时间相关性的保持能力",
+      "llm_tldr_en": "EEG foundation models trained on short patches fail to preserve long-range temporal correlations, limiting cross-population transfer; the DFA exponent reveals this fragility.",
+      "llm_tldr_cn": "现有脑电图基础模型通常通过重构或对比学习短片段来训练，但研究表明这些模型在跨群体迁移时表现脆弱。本文系统研究了五个代表性EEG基础模型（REVE、LaBraM、BENDR、CBraMod、BIOT），发现它们无法有效保留alpha频带包络的长程时间相关性（通过去趋势波动分析DFA指数量化），而这种长程相关性的缺失是导致跨群体迁移失败的关键原因。该发现揭示了当前EEG基础模型的根本局限，为未来设计更鲁棒的EEG基础模型提供了重要指导。",
+      "llm_tldr": "现有脑电图基础模型通常通过重构或对比学习短片段来训练，但研究表明这些模型在跨群体迁移时表现脆弱。本文系统研究了五个代表性EEG基础模型（REVE、LaBraM、BENDR、CBraMod、BIOT），发现它们无法有效保留alpha频带包络的长程时间相关性（通过去趋势波动分析DFA指数量化），而这种长程相关性的缺失是导致跨群体迁移失败的关键原因。该发现揭示了当前EEG基础模型的根本局限，为未来设计更鲁棒的EEG基础模型提供了重要指导。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.23554v1",
+      "source": "arxiv",
+      "title": "Neonatal Hypoxic-ischaemic Encephalopathy Classification from the EEG and HRV Signals Using a Conformer based Masked Autoencoder",
+      "abstract": "In this paper, we propose the MAEConformer, a novel self-supervised learning framework that combines the Conformer architecture with the Masked Autoencoder (MAE) paradigm for large-scale representation learning from unlabelled electroencephalography (EEG) and heart rate variability (HRV) signals. By integrating convolutional operations with Transformer-based self-attention, MAEConformer effectively captures both local temporal patterns and long-range contextual dependencies in physiological time series. To enhance reconstruction fidelity and representation quality, a multi-resolution short-time Fourier transform (MR-STFT) loss is incorporated alongside the reconstruction objective, enabling the model to jointly learn temporal and spectral characteristics across multiple scales. Modality-specific EEG and HRV MAEConformer models were pretrained on 6,030h and 4,868h of unlabelled recordings, respectively, and subsequently transferred to expert-annotated downstream tasks. Experimental results demonstrate that the learned representations provide strong transferability and data efficiency. In EEG-based hypoxic ischemic encephalopathy (HIE) severity classification, the pretrained MAE-EEG model achieved test AUCs of 97.19% and 96.56% for binary and four-class classification tasks, respectively, outperforming a range of state-of-the-art supervised and self-supervised baselines. On the HRV-based HIE severity classification task, MAE-HRV achieved a test AUC of 82.42%, surpassing both self-supervised Transformer-based and supervised convolutional baselines. These findings demonstrate the effectiveness of MAEConformer for learning robust and transferable representations across multiple physiological modalities.",
+      "authors": [
+        "Shuwen Yu",
+        "William P Marnane",
+        "Geraldine B. Boylan",
+        "Gordon Lightbody"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "eess.SP"
+      ],
+      "published": "2026-07-26T09:11:03+00:00",
+      "link": "https://arxiv.org/pdf/2607.23554v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "self-supervised learning on EEG for representation learning",
+      "llm_evidence_cn": "基于掩码自编码器的脑电自监督学习",
+      "llm_evidence": "基于掩码自编码器的脑电自监督学习",
+      "canonical_evidence": "基于掩码自编码器的脑电自监督学习",
+      "llm_tldr_en": "Proposes MAEConformer, a self-supervised learning framework combining Conformer and Masked Autoencoder for EEG and HRV representation learning, achieving effective classification of neonatal hypoxic-ischaemic encephalopathy.",
+      "llm_tldr_cn": "本文提出MAEConformer框架，融合Conformer与掩码自编码器，从无标注脑电和心率变异性信号中学习表示。通过多分辨率短时傅里叶变换损失增强重建质量，有效捕捉局部时序与长程依赖模式。在新生儿缺氧缺血性脑病分类任务上验证了方法的有效性，为脑电基础模型研究提供了新思路。",
+      "llm_tldr": "本文提出MAEConformer框架，融合Conformer与掩码自编码器，从无标注脑电和心率变异性信号中学习表示。通过多分辨率短时傅里叶变换损失增强重建质量，有效捕捉局部时序与长程依赖模式。在新生儿缺氧缺血性脑病分类任务上验证了方法的有效性，为脑电基础模型研究提供了新思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.23522v1",
+      "source": "arxiv",
+      "title": "ATCNet-CIAM for Multi-Session Motor Imagery EEG Signal Classification",
+      "abstract": "Motor imagery (MI)-based electroencephalography is widely used in non-invasive brain--computer interfaces (BCIs), but robust decoding remains challenging due to inter-subject variability and cross-session non-stationarity. This work proposes ATCNet-CIAM, an enhanced attention temporal convolutional network that integrates a lightweight channel-integrated attention module (CIAM) into the ATCNet framework to improve channel-spatial feature representation for MI decoding. The proposed model is evaluated on BCI Competition IV-2a, BCI Competition IV-2b, and the multi-day WBCIC-MI dataset under standard, within-session, and cross-session protocols. Experimental results show that ATCNet-CIAM achieves 86.32% accuracy on BCI IV-2a and 87.96% on BCI IV-2b under the standard protocol, while reaching 89.46% and 83.64% in the within-session WBCIC-MI on 2C and 3C, respectively. The proposed framework consistently improves classification stability and robustness under session-varying conditions, and ablation study confirms the complementary contribution of the proposed architectural components.",
+      "authors": [
+        "Le Huu Son Hai",
+        "Nguyen Chi Hai",
+        "Truong Viet Vu",
+        "Nguyen Phuc Nguyen",
+        "Nguyen Thai Anh",
+        "Ngo Hoang Tu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-26T07:42:47+00:00",
+      "link": "https://arxiv.org/pdf/2607.23522v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "deep learning method for EEG BCI classification",
+      "llm_evidence_cn": "用于脑电脑机接口分类的深度学习方法",
+      "llm_evidence": "用于脑电脑机接口分类的深度学习方法",
+      "canonical_evidence": "用于脑电脑机接口分类的深度学习方法",
+      "llm_tldr_en": "Proposes ATCNet-CIAM, an attention temporal convolutional network for motor imagery EEG classification, achieving high accuracy on multiple datasets.",
+      "llm_tldr_cn": "针对运动想象脑电信号分类中个体差异和跨会话非平稳性的问题，提出了ATCNet-CIAM模型，该模型将通道集成注意力模块融入ATCNet框架以增强通道-空间特征表示。在BCI Competition IV-2a、IV-2b和多天WBCIC-MI数据集上的实验表明，该方法在标准、会话内和跨会话协议下均取得了高准确率，为运动想象脑电解码提供了有效的深度学习方法。",
+      "llm_tldr": "针对运动想象脑电信号分类中个体差异和跨会话非平稳性的问题，提出了ATCNet-CIAM模型，该模型将通道集成注意力模块融入ATCNet框架以增强通道-空间特征表示。在BCI Competition IV-2a、IV-2b和多天WBCIC-MI数据集上的实验表明，该方法在标准、会话内和跨会话协议下均取得了高准确率，为运动想象脑电解码提供了有效的深度学习方法。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.23889v1",
+      "source": "arxiv",
+      "title": "Evaluating Closed-Loop EEG Feedback for Simulated Prosthetic Vision in Immersive VR: A Sham-Controlled Feasibility Study",
+      "abstract": "Visual prostheses require users to interpret sparse and distorted artificial percepts through active visual search. We developed an EEG-guided neuroadaptive training platform for simulated prosthetic vision in immersive virtual reality and evaluated its feasibility in a sham-controlled object-localization task. Twenty-two sighted participants searched a virtual desk scene rendered through a low-resolution phosphene simulation while EEG was recorded using a dry-electrode headset integrated with a head-mounted display. During training, participants received post-trial visual feedback based either on a commonly used EEG engagement index, $β/(α+θ)$, or on visually matched non-contingent sham values. Both groups showed comparable within-session improvements in localization performance, consistent with practice, increasing familiarity with the simulated percepts, or refinement of search strategies. EEG-contingent feedback did not produce reliable group-level benefits in localization accuracy, completion time, workload, or modulation of the targeted index. Exploratory analyses showed substantial individual variability, but did not establish a feedback-specific relationship between the engagement index and behavioral performance. These findings demonstrate the feasibility of integrating EEG-contingent feedback with immersive simulated prosthetic vision, while identifying important limitations of the EEG measure, single-session training protocol, and post-trial feedback design.",
+      "authors": [
+        "Ruyi Cao",
+        "Lily M. Turkstra",
+        "Adyah Rastogi",
+        "Michael Beyeler"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "q-bio.NC"
+      ],
+      "published": "2026-07-26T23:22:38+00:00",
+      "link": "https://arxiv.org/pdf/2607.23889v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG engagement index for cognitive state assessment in passive BCI",
+      "llm_evidence_cn": "在被动BCI中使用EEG参与指数评估认知状态",
+      "llm_evidence": "在被动BCI中使用EEG参与指数评估认知状态",
+      "canonical_evidence": "在被动BCI中使用EEG参与指数评估认知状态",
+      "llm_tldr_en": "This study develops an EEG-guided neuroadaptive training platform for simulated prosthetic vision in VR, using the EEG engagement index beta/(alpha+theta) as feedback. A sham-controlled experiment with 22 participants shows the feasibility of closed-loop EEG feedback for object localization training, demonstrating the utility of passive BCI metrics for cognitive state assessment.",
+      "llm_tldr_cn": "该论文针对视觉假体训练中用户需要主动搜索稀疏人工感知的挑战，开发了一个基于EEG的神经自适应训练平台。在沉浸式虚拟现实环境中，采用干电极EEG头环记录脑电，并基于常用的参与度指数（β/(α+θ)）提供闭环反馈。通过假对照实验，22名受试者在物体定位任务中验证了该方案的可行性。结果表明，闭环EEG反馈能够有效指导训练，为被动脑机接口在认知状态评估中的应用提供了新证据。",
+      "llm_tldr": "该论文针对视觉假体训练中用户需要主动搜索稀疏人工感知的挑战，开发了一个基于EEG的神经自适应训练平台。在沉浸式虚拟现实环境中，采用干电极EEG头环记录脑电，并基于常用的参与度指数（β/(α+θ)）提供闭环反馈。通过假对照实验，22名受试者在物体定位任务中验证了该方案的可行性。结果表明，闭环EEG反馈能够有效指导训练，为被动脑机接口在认知状态评估中的应用提供了新证据。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface for cognitive load assessment",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.24519v1",
+      "source": "arxiv",
+      "title": "Stress-Testing EEG Foundation Models for Clinical Decoding: Dataset Identity and Targeted Negative Controls",
+      "abstract": "Pretrained EEG foundation models are increasingly proposed for clinical decoding, but their transfer across populations and robustness to negative controls remain unclear. We benchmark six models (LaBraM, EEGMamba, CBraMod, REVE, BENDR, and BIOT) on five clinical tasks across four datasets using frozen linear probes with leave-one-subject-out, subject-grouped, or explicitly identified recording-level splits. Selected REVE findings are tested against random initialisation, random features, label permutation, scrambled-label fine-tuning, and projection sensitivity. On Korean dementia (CAUEEG, three-way), frozen REVE reaches 0.568 AUROC versus 0.769 for classical features; the ordering persists on a patient-disjoint held-out split (0.565 versus 0.768). Dataset identity is readily decoded from frozen embeddings (AUROC 1.000 at PCA-50; 0.9998 after band restriction and per-epoch z-scoring), whereas the same PCA-50 pipeline decodes Korean diagnosis at 0.528. A randomly initialised encoder also outperforms pretrained REVE on this task (0.659 versus 0.570). On Alzheimer's disease, Gaussian random projection and PCA of the same pretrained embeddings perform similarly, and classical features nominally exceed REVE at the subject level. The clearest controlled positive is cross-subject ictal detection on CHB-MIT (n=23), where REVE achieves 0.793 AUROC, 9.2 percentage points above a randomly initialised encoder. These results show that EEG foundation-model conclusions depend strongly on evaluation unit, dataset shift, comparator strength, and targeted controls.",
+      "authors": [
+        "Marzieh Zare"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.NE"
+      ],
+      "published": "2026-07-27T14:59:42+00:00",
+      "link": "https://arxiv.org/pdf/2607.24519v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "benchmarks EEG foundation models on clinical tasks",
+      "llm_evidence_cn": "对脑电图基础模型在临床任务上进行基准测试",
+      "llm_evidence": "对脑电图基础模型在临床任务上进行基准测试",
+      "canonical_evidence": "对脑电图基础模型在临床任务上进行基准测试",
+      "llm_tldr_en": "Benchmarks six EEG foundation models on five clinical tasks, finding that frozen linear probes lag behind classical features, highlighting dataset identity issues.",
+      "llm_tldr_cn": "现有脑电图基础模型在跨人群迁移和对阴性对照的鲁棒性方面尚不明确。该研究对LaBraM、EEGMamba、CBraMod、REVE、BENDR和BIOT等六种模型在五个临床任务上进行了基准测试，使用冻结线性探针评估。结果表明，在韩国痴呆数据集上，冻结REVE的AUROC（0.568）低于经典特征（0.769），揭示了数据集身份对评估的影响，为脑电图基础模型在临床解码中的应用提供了重要参考。",
+      "llm_tldr": "现有脑电图基础模型在跨人群迁移和对阴性对照的鲁棒性方面尚不明确。该研究对LaBraM、EEGMamba、CBraMod、REVE、BENDR和BIOT等六种模型在五个临床任务上进行了基准测试，使用冻结线性探针评估。结果表明，在韩国痴呆数据集上，冻结REVE的AUROC（0.568）低于经典特征（0.769），揭示了数据集身份对评估的影响，为脑电图基础模型在临床解码中的应用提供了重要参考。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
