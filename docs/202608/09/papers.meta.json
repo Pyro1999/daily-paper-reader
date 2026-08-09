@@ -1,0 +1,54 @@
+{
+  "label": "2026-08-09",
+  "date": "2026-08-09",
+  "generated_at": "2026-08-09T21:00:23",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202608/09/2608.01618v1-sgad-a-state-guided-adaptive-decision-framework-for-robust-eeg-based-auditory-attention-switch-decoding",
+      "section": "quick",
+      "title_en": "SGAD: A State-Guided Adaptive Decision Framework for Robust EEG-Based Auditory Attention Switch Decoding",
+      "authors": "Yuting Ding, Xuefei Wang, Ximin Chen, Chunlin Li, Fei Chen",
+      "date": "2026-08-03",
+      "pdf": "https://arxiv.org/pdf/2608.01618v1",
+      "score": "7.0",
+      "evidence": "基于EEG的被动脑机接口鲁棒自适应决策框架",
+      "tldr": "脑电信号的非平稳性给听觉注意切换解码带来困难，而现有方法对混杂因素控制不足，导致性能被高估。为提升鲁棒性，提出SGAD框架，它通过因果状态检测推断注意转换状态，并利用状态引导的自适应门控动态调节时间平滑。引入六种分层评估协议，从音频、说话人和受试者等维度全面检验泛化能力。实验表明，SGAD在不同场景下均提高解码精度与稳定性，且保持低延迟，同时揭示数据划分偏差的影响，为神经助听应用提供坚实支撑。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Achieving robust EEG-based auditory attention switch decoding (AASD) is crucial for intelligent hearing aids. However, its application is limited as EEG non-stationarity complicates sequential decision-making, and insufficient control of potential confounding factors may overestimate performance. Therefore, we propose a state-guided adaptive decision (SGAD) framework that infers attention transition states via causal state detection and dynamically modulates temporal smoothing through state-guided adaptive gating. We further introduce six hierarchical evaluation protocols to assess generalization across audio, speaker, and subject dimensions. Experimental results show that SGAD improves decoding accuracy and stability while maintaining low response latency across evaluation scenarios. Performance variations across protocols further suggest data partition-related biases. Together, these findings advance robust AASD for neuro-steered hearing applications.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/09/2608.05315v1-rectifying-geometric-misalignment-online-source-free-adaptation-for-class-imbalanced-eeg",
+      "section": "quick",
+      "title_en": "Rectifying Geometric Misalignment: Online Source-Free Adaptation for Class-Imbalanced EEG",
+      "authors": "Shiwen Chu, Shanglin Li, Motoaki Kawanabe, Reinmar Kobler",
+      "date": "2026-08-05",
+      "pdf": "https://arxiv.org/pdf/2608.05315v1",
+      "score": "7.0",
+      "evidence": "面向类别不平衡EEG提出在线无源黎曼流形自适应，是提升BCI泛化的深度学习方法，可迁移到被动BCI负荷评估",
+      "tldr": "在线BCI中标签分布动态变化，使依赖平衡类别先验的标准Riemannian对齐（如RCT）产生几何错位。为此提出OSPDIM，在切空间映射中引入流形约束偏置参数，并通过信息最大化在线优化以纠正不平衡数据流导致的几何倾斜。2D SPD模拟表明其能修正标准居中失败的错位，多个运动想象数据集上显著超越Riemannian基线，尤其在严重类不平衡的在线适应场景中。该无源在线框架为实用且即插即用的BCI系统提供了鲁棒解决方案。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Electroencephalography (EEG) based Brain-Computer Interfaces (BCIs) often require unsupervised domain adaptation (UDA) to generalize across subjects and sessions. While Riemannian alignment methods like the Riemannian Centering Transformation (RCT) are effective for handling covariate shifts, they implicitly assume balanced class priors. However, in realistic online BCI scenarios, the label distributions vary dynamically (label shift), causing standard alignment techniques to geometrically misalign the target data distributions. In this work, we propose OSPDIM (Online SPD manifold information maximization), a source-free online UDA framework designed to address label shifts on the Riemannian manifold. OSPDIM introduces a manifold-constrained bias parameter into the tangent space mapping, which is optimized via information maximization to correct the geometric skew caused by imbalanced data streams. Unlike offline methods relying on global batch statistics, OSPDIM estimates and corrects geometric bias on-the-fly. Simulations on 2D SPD matrices visually demonstrate that OSPDIM successfully rectifies the misalignment where standard centering fails. Extensive experiments on multiple motor imagery datasets show that OSPDIM significantly outperforms standard Riemannian baselines, particularly in challenging online adaptation scenarios with severe class imbalance, offering a robust solution for practical, plug-and-play BCI systems.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/09/2608.04389v1-neuropb-scaling-neural-decoding-with-pretrained-behavioral-representations",
+      "section": "quick",
+      "title_en": "NeuroPB: Scaling Neural Decoding with Pretrained Behavioral Representations",
+      "authors": "Luyao Jin, Yonghao Song, Huan Zhao, Vincent C. K. Cheung, Wei-Hsin Liao",
+      "date": "2026-08-05",
+      "pdf": "https://arxiv.org/pdf/2608.04389v1",
+      "score": "6.0",
+      "evidence": "在脑机接口中利用预训练行为表示进行神经解码；类似基础模型的方法可迁移至基于脑电的认知负荷评估",
+      "tldr": "神经解码受限于神经数据规模小且异质，而行为数据易大规模获取。NeuroPB在大规模行为数据上预训练运动编码器，再通过少量神经-行为配对对齐表征，仅用10%校准数据即可匹配从头训练。跨猕猴数据集上轨迹解码R²提升8%-11%，机器人预训练效果与猕猴相当，且随数据规模增加而改进。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Decoding continuous motor trajectories from neural activity is essential for developing practical brain-computer interfaces (BCIs). However, current neural decoders are constrained by the limited scale and heterogeneity of neural recordings. In contrast, behavioral data can be collected more readily and at substantially larger scale from humans, animals, simulations, and robotic systems. Here, we introduce NeuroPB, a framework that scales neural decoding by transferring knowledge from pretrained behavioral representations. NeuroPB first pretrains a motor encoder on large-scale motor behavior data and then aligns neural activity with the resulting behavioral representation space using a limited set of paired neural-behavioral recordings. A neural encoder and lightweight motor decoder are subsequently optimized to reconstruct continuous movement from the aligned neural representations. Across multiple macaque motor datasets, behavioral pretraining improves trajectory decoding, including an 11% $R^2$ increase on center-out and 8% on random-target compared with training the motor encoder from scratch. Notably, pretraining on robotic trajectories achieves performance comparable to pretraining on macaque trajectories, demonstrating that transferable kinematic structure is shared across biological and artificial models. Moreover, decoding performance improves as the scale and diversity of robotic pretraining data increase, when the amount of neural data is fixed. Pretraining also enhances generalization across recording sessions, subjects, and motor tasks, with only 10% calibration needed to match training from scratch. Overall, these results establish behavioral pretraining as a scalable source for neural decoding and provide a promising route toward high-performance and calibration-efficient BCIs under limited neural data.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
