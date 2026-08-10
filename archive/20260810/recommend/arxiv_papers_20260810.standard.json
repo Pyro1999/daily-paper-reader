@@ -1,0 +1,145 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-10T19:51:58.382577+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 2,
+    "quick_skim_target": 13,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2608.07033v1",
+      "source": "arxiv",
+      "title": "ZIPBrain: Can EEG Foundation Models Be Faster, Locally Deployable, but Accurate?",
+      "abstract": "This work investigates whether Electroencephalograph (EEG) foundation models (EFMs) can be made faster and locally deployable without sacrificing accuracy. EEG foundation models are a major trend, offering strong general-purpose representations. However, their computational burden grows quadratically with input length, hindering deployment on resource-constrained scenario, particularly for real-time clinical monitoring. EEG's low SNR further suggests many of these tokens are redundant and compressible with little accuracy cost. We propose ZIPBrain, a novel redundancy-aware EEG token pooling module that leverages this low-SNR characteristic to reduce token count. Given a token sequence, ZIPBrain partitions tokens into redundant and unique groups, then merges each redundant token with its most similar counterpart in the unique group. Furthermore, ZIPBrain serves as a training-free, plug-and-play module that seamlessly integrates into standard Transformer encoders with negligible computational overhead. Extensive experiments across multiple EEG foundation models show ZIPBrain's strong versatility, achieving 1.3%-10.5% average improvement over baselines, while reducing wall-clock inference time by 32.7% (up to 41.8% with CUDA Graph) compared to the original EEG foundation models.",
+      "authors": [
+        "Lingwei Li",
+        "Yirong Kan",
+        "Peng Chen",
+        "Xu Cao",
+        "Zheng Chen",
+        "Yasuhiko Nakashima"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-07T09:45:02+00:00",
+      "link": "https://arxiv.org/pdf/2608.07033v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG foundation model efficiency with token pooling",
+      "llm_evidence_cn": "脑电基础模型的高效化与Token池化",
+      "llm_evidence": "脑电基础模型的高效化与Token池化",
+      "canonical_evidence": "脑电基础模型的高效化与Token池化",
+      "llm_tldr_en": "ZIPBrain proposes a redundancy-aware EEG token pooling module to make EEG foundation models faster and locally deployable while retaining accuracy by exploiting low-SNR redundancy.",
+      "llm_tldr_cn": "脑电基础模型虽然表征能力强，但计算复杂度随输入长度二次增长，难以在资源受限场景部署。针对脑电低信噪比导致大量冗余Token的问题，本文提出ZIPBrain冗余感知Token池化模块，将Token划分为冗余组与独特组以压缩序列。实验表明该方法在显著降低计算开销的同时保持精度，为脑电基础模型的本地化实时应用提供可行方案。",
+      "llm_tldr": "脑电基础模型虽然表征能力强，但计算复杂度随输入长度二次增长，难以在资源受限场景部署。针对脑电低信噪比导致大量冗余Token的问题，本文提出ZIPBrain冗余感知Token池化模块，将Token划分为冗余组与独特组以压缩序列。实验表明该方法在显著降低计算开销的同时保持精度，为脑电基础模型的本地化实时应用提供可行方案。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.02183v1",
+      "source": "arxiv",
+      "title": "SWINSleepNet: A Hierarchical Context-Aware Framework for Sleep Staging (v2)",
+      "abstract": "Automatic sleep staging is a critical role in sleep disorder diagnosis, sleep quality assessment, and long-term health monitoring; however, existing approaches suffer poor performance on ambiguous and transition-related sleep stages, caused by inadequate modeling of fine-grained intra-epoch structures and complex cross-region spectral dependencies. Traditional epoch-level encoders commonly fail to extract subtle temporal microstructures and intra-epoch cross-region interactions, resulting in unsatisfactory recognition accuracy for hard categories such as the N1 stage. To tackle these drawbacks, we propose SwinSleepNet, a hierarchical context-aware dual-stream framework that separately optimizes intra-epoch representation learning and inter-epoch contextual modeling. Concretely, we characterize each sleep epoch from two complementary perspectives: raw time-domain EEG signal and its time-frequency transformation. The time-domain branch adopts convolutional encoders to capture fine waveform temporal details, and the time-frequency branch uses Swin Transformer to extract local spectro-temporal features, hierarchical multi-scale information and long-range spatial dependencies. The multi-branch extracted features are fused into integrated embeddings, which are optimized by a bidirectional context module to capture cross-epoch temporal dependencies for final sleep stage classification. Comprehensive experiments on Sleep-EDF-20, Sleep-EDF-78 and SHHS datasets verify that our method achieves competitive overall performance, and exhibits stronger robustness and stability on difficult N1 stages and transitional epochs. The results prove that optimized intra-epoch representation learning based on hierarchical architecture greatly benefits automatic sleep staging tasks.",
+      "authors": [
+        "Chongjian Wang",
+        "Junjie Gao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-03T13:07:49+00:00",
+      "link": "https://arxiv.org/pdf/2608.02183v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG deep learning framework for sleep staging, a passive BCI application; method transferable to cognitive state estimation",
+      "llm_evidence_cn": "EEG深度学习睡眠分期框架，属于被动脑机接口应用，方法可迁移至认知状态评估",
+      "llm_evidence": "EEG深度学习睡眠分期框架，属于被动脑机接口应用，方法可迁移至认知状态评估",
+      "canonical_evidence": "EEG深度学习睡眠分期框架，属于被动脑机接口应用，方法可迁移至认知状态评估",
+      "llm_tldr_en": "SWINSleepNet is a hierarchical context-aware dual-stream framework for EEG sleep staging, enhancing ambiguous N1 recognition via intra-epoch representation learning and inter-epoch dependency modeling.",
+      "llm_tldr_cn": "该论文提出SWINSleepNet，一种面向睡眠分期的层次化上下文感知双流框架。它分别优化epoch内表示学习和epoch间依赖建模，解决了现有方法对N1等模糊睡眠阶段识别不佳的问题。实验表明，该框架在睡眠分期基准上提升了准确率，尤其是困难类别的识别。鉴于其处理脑电时序表征的通用能力，该方法有潜力迁移到认知负荷评估等EEG应用。",
+      "llm_tldr": "该论文提出SWINSleepNet，一种面向睡眠分期的层次化上下文感知双流框架。它分别优化epoch内表示学习和epoch间依赖建模，解决了现有方法对N1等模糊睡眠阶段识别不佳的问题。实验表明，该框架在睡眠分期基准上提升了准确率，尤其是困难类别的识别。鉴于其处理脑电时序表征的通用能力，该方法有潜力迁移到认知负荷评估等EEG应用。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.06023v1",
+      "source": "arxiv",
+      "title": "BioKD: Selective Physiology-to-Video Knowledge Distillation via Reliability Gate for Emotion Recognition",
+      "abstract": "To address the limitations of video-based emotion recognition under ambiguous or socially masked behavioral cues, as well as the poor deployability of physiological signals, this paper proposes a reliability-aware physiology-to-video knowledge distillation framework, termed BioKD. The proposed framework leverages physiological signals as privileged information during training to guide a video-based student model in learning deep affective representations, while relying solely on non-intrusive video inputs at inference time. To cope with the high noise and instability of physiological teacher supervision caused by inter-subject variability, signal artifacts, and temporal inconsistency, BioKD incorporates a sample-wise reliability-aware gating mechanism together with a progressive distillation strategy. By adaptively regulating the strength of knowledge transfer, the framework suppresses negative transfer induced by unreliable physiological supervision and enables more stable cross-modal distillation. Experiments on DEAP and AMIGOS show that BioKD consistently outperforms representative baselines under both trial-wise and subject-wise evaluation protocols for valence and arousal recognition. For example, BioKD achieves 68.01\\% on DEAP (trial-wise arousal) and 65.29\\% under the more challenging subject-wise setting, demonstrating improved performance under a subject-independent evaluation setting. Further analyses show that BioKD effectively mitigates overconfident teacher errors and outperforms an entropy-only weighting strategy, confirming the importance of explicitly modeling supervision reliability. In addition, BioKD introduces no additional inference-time overhead relative to the same video student architecture and removes the need for physiological sensing and multimodal synchronization.",
+      "authors": [
+        "Bojing Hou",
+        "Ruohao Li",
+        "Yitong Zhu",
+        "Hongjun Liu",
+        "Luwen Yu",
+        "Yuyang Wang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-06T13:30:13+00:00",
+      "link": "https://arxiv.org/pdf/2608.06023v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "physiology-based passive BCI emotion recognition via knowledge distillation and reliability gating",
+      "llm_evidence_cn": "基于生理信号的被动脑机接口情感识别，采用知识蒸馏与可靠性门控",
+      "llm_evidence": "基于生理信号的被动脑机接口情感识别，采用知识蒸馏与可靠性门控",
+      "canonical_evidence": "基于生理信号的被动脑机接口情感识别，采用知识蒸馏与可靠性门控",
+      "llm_tldr_en": "Uses physiological signals as privileged information via knowledge distillation with a reliability gate to train video-based emotion recognition, tackling noise and artifact instability.",
+      "llm_tldr_cn": "针对视频情感识别在行为线索模糊时受限、生理信号部署困难的问题，提出BioKD可靠性门控的生理-视频知识蒸馏框架：训练时利用生理信号作为特权信息引导视频学生模型，推理时仅需视频。通过样本级可靠性门控应对跨被试差异和伪迹噪声，实验验证其在情感识别上的有效性，为被动脑机接口中多模态知识迁移提供新思路。",
+      "llm_tldr": "针对视频情感识别在行为线索模糊时受限、生理信号部署困难的问题，提出BioKD可靠性门控的生理-视频知识蒸馏框架：训练时利用生理信号作为特权信息引导视频学生模型，推理时仅需视频。通过样本级可靠性门控应对跨被试差异和伪迹噪声，实验验证其在情感识别上的有效性，为被动脑机接口中多模态知识迁移提供新思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

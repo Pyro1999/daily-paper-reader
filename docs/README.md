@@ -6,30 +6,29 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-08-09
-- 运行时间：2026-08-09 21:00:16 UTC
+- 最新运行日期：2026-08-10
+- 运行时间：2026-08-10 19:54:37 UTC
 - 运行状态：成功
 - 本次总论文数：3
-- 精读区：0
-- 速读区：3
+- 精读区：1
+- 速读区：2
 
 ### 今日简报（AI）
-今日速读3篇EEG相关论文，无精读，聚焦听觉注意力解码、域适应与神经表征。最值得关注的是两篇7分工作：SGAD状态引导自适应听觉注意力切换，以及类不平衡EEG的在线无源几何校准。建议优先精读这两篇，从听觉注意力和鲁棒校准方向切入。
-- 详情：[/202608/09/README](/202608/09/README)
+今日精读《ZIPBrain》（8.0/10），探讨脑电基础模型能否更快速、可本地部署且保持准确，另速读睡眠分期与生理-视频情绪识别两篇（均6.0/10）。最值得关注的是ZIPBrain在效率与精度间的平衡思路，以及SWINSleepNet的分层上下文建模。建议优先了解轻量化EEG模型的实际部署潜力，并留意跨模态知识蒸馏在情绪识别中的应用。
+- 详情：[/202608/10/README](/202608/10/README)
 
 ### 精读区论文标签
-- 本次无精读推荐。
+1. [ZIPBrain: Can EEG Foundation Models Be Faster, Locally Deployable, but Accurate?](/202608/10/2608.07033v1-zipbrain-can-eeg-foundation-models-be-faster-locally-deployable-but-accurate)  
+   标签：评分：8.0/10、query:pbci-load
+   evidence：脑电基础模型的高效化与Token池化
 
 ### 速读区论文标签
-1. [SGAD: A State-Guided Adaptive Decision Framework for Robust EEG-Based Auditory Attention Switch Decoding](/202608/09/2608.01618v1-sgad-a-state-guided-adaptive-decision-framework-for-robust-eeg-based-auditory-attention-switch-decoding)  
-   标签：评分：7.0/10、query:pbci-load
-   evidence：基于EEG的被动脑机接口鲁棒自适应决策框架
-2. [Rectifying Geometric Misalignment: Online Source-Free Adaptation for Class-Imbalanced EEG](/202608/09/2608.05315v1-rectifying-geometric-misalignment-online-source-free-adaptation-for-class-imbalanced-eeg)  
-   标签：评分：7.0/10、query:pbci-load
-   evidence：面向类别不平衡EEG提出在线无源黎曼流形自适应，是提升BCI泛化的深度学习方法，可迁移到被动BCI负荷评估
-3. [NeuroPB: Scaling Neural Decoding with Pretrained Behavioral Representations](/202608/09/2608.04389v1-neuropb-scaling-neural-decoding-with-pretrained-behavioral-representations)  
+1. [SWINSleepNet: A Hierarchical Context-Aware Framework for Sleep Staging (v2)](/202608/10/2608.02183v1-swinsleepnet-a-hierarchical-context-aware-framework-for-sleep-staging-v2)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：在脑机接口中利用预训练行为表示进行神经解码；类似基础模型的方法可迁移至基于脑电的认知负荷评估
+   evidence：EEG深度学习睡眠分期框架，属于被动脑机接口应用，方法可迁移至认知状态评估
+2. [BioKD: Selective Physiology-to-Video Knowledge Distillation via Reliability Gate for Emotion Recognition](/202608/10/2608.06023v1-biokd-selective-physiology-to-video-knowledge-distillation-via-reliability-gate-for-emotion-recognition)  
+   标签：评分：6.0/10、query:pbci-load
+   evidence：基于生理信号的被动脑机接口情感识别，采用知识蒸馏与可靠性门控
 
 
 <div class="dpr-home-promo-card">
