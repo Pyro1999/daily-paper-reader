@@ -1,0 +1,322 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-16T20:39:24.473968+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 4,
+    "deep_cap": 8,
+    "deep_selected": 4,
+    "quick_candidates": 3,
+    "quick_skim_target": 13,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2608.10647v1",
+      "source": "arxiv",
+      "title": "ProtoGIB-Workload: Learning Workload-Specific Neural Topology Prototypes across Subjects",
+      "abstract": "Reliable electroencephalography (EEG)-based mental workload recognition is crucial for adaptive human-centered systems, yet practical deployment requires models to generalize to users unseen during training. Although functional connectivity graphs are widely adopted to capture workload-related neural interactions, they inherently entangle task-relevant structures with subject-specific physiological traits and sample-level noise. This entanglement often leads models to learn structural shortcuts, severely degrading cross-subject generalization. To address this, we propose ProtoGIB-Workload, a novel framework that explicitly regularizes and aligns graph structures for subject-independent workload recognition. Our approach introduces a Stochastic Graph Information Bottleneck (SGIB) to compress dense correlation priors into compact, task-relevant subgraphs, filtering out input-related redundancy. Crucially, to prevent the retention of subject-specific spurious edges, we propose a Class-Conditional Topology Stabilizer (CTS). Leveraging the fixed electrode coordinates of EEG data, CTS operates directly on graph-generation probabilities to encourage consistent edge-generation statistics across different subjects sharing the same workload class. Extensive experiments on two public EEG workload datasets and one in-house EEG cognitive load dataset of air traffic controllers under strict leave-one-subject-out (LOSO) protocols demonstrate that ProtoGIB-Workload significantly outperforms state-of-the-art temporal and graph-based baselines, improving the cross-subject Macro-F1 score by an average of 5.15% (up to 6.34%). Further analyses confirm that our method successfully extracts stable, cross-subject consistent neural connectivity patterns.",
+      "authors": [
+        "Yuzhe Zhang",
+        "Yixi Zhang",
+        "Shengdian Jiang",
+        "Chengxi Xie",
+        "Jihong Wang",
+        "Huan Liu",
+        "Man Yao",
+        "Minnan Luo",
+        "Chao Shen"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-08-11T08:31:31+00:00",
+      "link": "https://arxiv.org/pdf/2608.10647v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "EEG-based mental workload recognition with graph prototype learning",
+      "llm_evidence_cn": "基于脑电的脑力负荷识别与图原型学习",
+      "llm_evidence": "基于脑电的脑力负荷识别与图原型学习",
+      "canonical_evidence": "基于脑电的脑力负荷识别与图原型学习",
+      "llm_tldr_en": "ProtoGIB-Workload proposes workload-specific neural topology prototypes for subject-independent EEG-based mental workload recognition, explicitly regularizing and aligning graph structures to overcome subject-specific traits and noise, improving cross-subject generalization.",
+      "llm_tldr_cn": "现有基于脑电的脑力负荷识别模型常将任务相关结构与被试个体差异和噪声纠缠，导致跨被试泛化性能差。为此提出ProtoGIB-Workload框架，通过显式正则化和对齐图结构，学习工作负荷特定的神经拓扑原型，实现与个体无关的负荷识别。实验表明该方法能有效缓解结构捷径，在跨被试场景下显著提升识别准确率，为自适应用户系统提供了可靠的脑电负荷评估方案。",
+      "llm_tldr": "现有基于脑电的脑力负荷识别模型常将任务相关结构与被试个体差异和噪声纠缠，导致跨被试泛化性能差。为此提出ProtoGIB-Workload框架，通过显式正则化和对齐图结构，学习工作负荷特定的神经拓扑原型，实现与个体无关的负荷识别。实验表明该方法能有效缓解结构捷径，在跨被试场景下显著提升识别准确率，为自适应用户系统提供了可靠的脑电负荷评估方案。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.11656v1",
+      "source": "arxiv",
+      "title": "Continuous-Latent Predictive Modeling with Semantic Alignment for EEG-Language Foundation Models",
+      "abstract": "Recent advances in EEG foundation models have demonstrated the potential of large-scale pretraining to enable generalizable neural decoding across subjects, recording environments, and datasets. However, dominant pretraining paradigms face key challenges: masked autoencoding tends to prioritize low-level signal reconstruction over task-relevant semantics, while autoregressive modeling creates a mismatch between continuous neural dynamics and discrete token spaces. To address these challenges, new strategies are needed to effectively align continuous EEG representations with natural-language semantics and enable their integration with large language models. Accordingly, we propose Brain Latent Predictive Model (BLPM), an EEG-language foundation model that reformulates heterogeneous EEG decoding tasks as a continuous semantic embedding prediction problem. BLPM introduces a Continuous EEG Latent Predictive (CELP) encoder that learns transferable representations through latent target prediction. Building on these representations, a Multi-Query Semantic Decomposition (MQSD) module extracts task-relevant information and aligns continuous EEG representations with textual semantics within a shared latent space according to their semantic relationships. Experiments across multiple benchmarks demonstrate consistent generalization performance across diverse tasks, establishing continuous latent semantic prediction as an effective paradigm for EEG-language foundation models.",
+      "authors": [
+        "Myeong-Ju Cho",
+        "Hye-Bin Shin",
+        "Seo-Hyun Lee",
+        "Seong-Whan Lee"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-12T04:54:43+00:00",
+      "link": "https://arxiv.org/pdf/2608.11656v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Proposes BLPM, an EEG-language foundation model with continuous-latent predictive modeling and semantic alignment.",
+      "llm_evidence_cn": "提出BLPM脑电-语言基础模型，采用连续潜在预测建模与语义对齐。",
+      "llm_evidence": "提出BLPM脑电-语言基础模型，采用连续潜在预测建模与语义对齐。",
+      "canonical_evidence": "提出BLPM脑电-语言基础模型，采用连续潜在预测建模与语义对齐。",
+      "llm_tldr_en": "EEG foundation models struggle with semantic alignment and token mismatch. BLPM uses continuous-latent predictive modeling and semantic alignment to align EEG with language, enabling LLM integration and generalizable EEG decoding.",
+      "llm_tldr_cn": "现有EEG基础模型在预训练中常偏向底层重建或存在连续神经动态与离散词元不匹配的问题。该文提出脑电潜在预测模型BLPM，通过连续潜在预测建模和语义对齐，将EEG表示与自然语言语义对齐，并能与大型语言模型集成。方法旨在实现跨被试、跨环境的通用神经解码，为EEG基础模型研究提供新范式。",
+      "llm_tldr": "现有EEG基础模型在预训练中常偏向底层重建或存在连续神经动态与离散词元不匹配的问题。该文提出脑电潜在预测模型BLPM，通过连续潜在预测建模和语义对齐，将EEG表示与自然语言语义对齐，并能与大型语言模型集成。方法旨在实现跨被试、跨环境的通用神经解码，为EEG基础模型研究提供新范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.13072v1",
+      "source": "arxiv",
+      "title": "EEG-PRIME: Prototype-Aligned Representation Learning with Multi-Level Conditioning for EEG Decoding",
+      "abstract": "Electroencephalography (EEG) decoding models often generalize poorly across datasets and subjects due to domain shifts in acquisition protocols and individual neurophysiology. We propose EEG-PRIME, a two-stage EEG foundation model for cross-dataset multi-task decoding. EEG-PRIME combines masked pretraining with prototype-aligned instruction tuning to enable instruction-aware and subject-invariant decoding across diverse BCI paradigms. During pretraining, an EEG encoder learns transferable representations through masked reconstruction with frequency-cutoff spectral augmentation. During instruction tuning, EEG-PRIME incorporates task-semantic, dataset-specific, and subject-invariant conditioning. The resulting conditioning signal modulates the Q-Former through Layer-wise Query Modulation, while frozen text embeddings of class labels serve as prototypes for cosine-similarity-based prediction across heterogeneous label spaces. Experiments on sixteen datasets covering motor imagery, emotion recognition, ADHD detection, covert speech, and mental workload show consistent improvements over state-of-the-art baselines and prior EEG foundation models under cross-subject settings. On two additional held-out datasets, EEG-PRIME achieves balanced accuracy comparable to within-session calibration models without target-domain optimization, calibration, or linear probing, demonstrating promising zero-shot transfer capability.",
+      "authors": [
+        "Shuailei Zhang",
+        "Muyun Jiang",
+        "Wei Zhang",
+        "Jinbo Chen",
+        "Zhiwei Guo",
+        "Yong Li",
+        "Yi Ding",
+        "Cuntai Guan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-13T10:35:51+00:00",
+      "link": "https://arxiv.org/pdf/2608.13072v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "EEG foundation model using masked pretraining and instruction tuning for cross-dataset BCI decoding",
+      "llm_evidence_cn": "面向EEG解码的脑电基础模型，采用掩码预训练与指令微调支持跨数据集BCI",
+      "llm_evidence": "面向EEG解码的脑电基础模型，采用掩码预训练与指令微调支持跨数据集BCI",
+      "canonical_evidence": "面向EEG解码的脑电基础模型，采用掩码预训练与指令微调支持跨数据集BCI",
+      "llm_tldr_en": "EEG-PRIME is a two-stage EEG foundation model that combines masked pretraining and prototype-aligned instruction tuning for cross-dataset, subject-invariant EEG decoding across diverse BCI paradigms.",
+      "llm_tldr_cn": "脑电解码模型常因采集协议和个体神经生理差异而跨数据集泛化差。为此提出EEG-PRIME两阶段脑电基础模型：先用带频率截止频谱增强的掩码重建预训练学习可迁移表示，再通过原型对齐指令微调引入任务语义、数据集特定和受试者不变条件。实验表明该方法能实现跨数据集多任务解码和受试者不变解码，为BCI范式的通用解码提供了新思路。",
+      "llm_tldr": "脑电解码模型常因采集协议和个体神经生理差异而跨数据集泛化差。为此提出EEG-PRIME两阶段脑电基础模型：先用带频率截止频谱增强的掩码重建预训练学习可迁移表示，再通过原型对齐指令微调引入任务语义、数据集特定和受试者不变条件。实验表明该方法能实现跨数据集多任务解码和受试者不变解码，为BCI范式的通用解码提供了新思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.09088v1",
+      "source": "arxiv",
+      "title": "A Multi-Scale Temporal Framework with Dynamic Fusion for EEG-Based Emotion Recognition",
+      "abstract": "Mixed emotions represent a clinically relevant but still underexplored target for automatic emotion recognition. EEG provides millisecond-level access to neural activity, yet most EEG pipelines analyze the signal through a single temporal window, thereby fixing the temporal structure available to the model. This study introduces a multi-scale temporal framework for EEG-based emotion recognition. The EEG waveform is decomposed into windows of one or several durations, processed by a shared attention-based encoder, and integrated through a dynamic fusion module that assigns sample-specific weights across temporal scales. The framework is evaluated under a subject-independent protocol in binary and three-class settings, with the three-class task including the mixed affective category. The best results are 65.22% for the two-class task and 45.43% for the three-class task. Both are obtained with three-scale dynamic-fusion configurations and remain substantially above the full-signal baseline. The best-performing temporal scales differ between the two tasks. Dynamic fusion outperforms concatenation in the highest-scoring two-class configuration and slightly exceeds it in the highest-scoring three-class configuration, although these multi-scale settings require substantially more computation than the full-signal baseline.",
+      "authors": [
+        "Stefanos Gkikas",
+        "Yang Guo",
+        "Guangliang Li",
+        "Raul Fernandez Rojas",
+        "Giorgos Giannakakis",
+        "Randy Gomez"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG",
+        "cs.SD"
+      ],
+      "published": "2026-08-10T03:39:20+00:00",
+      "link": "https://arxiv.org/pdf/2608.09088v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG-based deep learning mental state decoding; directly transferable to cognitive load assessment",
+      "llm_evidence_cn": "基于EEG的深度学习精神状态解码，可直接迁移至认知负荷评估",
+      "llm_evidence": "基于EEG的深度学习精神状态解码，可直接迁移至认知负荷评估",
+      "canonical_evidence": "基于EEG的深度学习精神状态解码，可直接迁移至认知负荷评估",
+      "llm_tldr_en": "Presents a multi-scale temporal framework with dynamic fusion for EEG emotion recognition, overcoming fixed single-window limits and improving subject-independent classification in binary and three-class settings.",
+      "llm_tldr_cn": "针对EEG情绪识别多在单一时间窗内建模而限制时间结构利用的问题，该文提出多尺度时间框架。模型用多时长窗口分解脑电波形，通过共享注意力编码器提取特征，并由动态融合模块按样本自适应加权各尺度信息。在跨被试协议下的二分类与三分类任务上，该框架均优于现有基线。这一建模思路可迁移至认知负荷等EEG精神状态解码任务。",
+      "llm_tldr": "针对EEG情绪识别多在单一时间窗内建模而限制时间结构利用的问题，该文提出多尺度时间框架。模型用多时长窗口分解脑电波形，通过共享注意力编码器提取特征，并由动态融合模块按样本自适应加权各尺度信息。在跨被试协议下的二分类与三分类任务上，该框架均优于现有基线。这一建模思路可迁移至认知负荷等EEG精神状态解码任务。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.10170v1",
+      "source": "arxiv",
+      "title": "Motion Artifact-Aware Self-Supervised Representation Learning for 3D Brain MRI Motion Artifact Reduction",
+      "abstract": "Patient motion remains a source of image degradation in brain MRI, leading to signal loss, blurring, and geometric distortion that compromise quantitative analysis. Existing deep learning methods for motion correction typically rely on paired clean-corrupted data or k-space acquisitions, which are rarely available in clinical settings. We propose SSRL-MAR, a motion artifact-aware unpaired representation learning framework for motion artifact reduction that requires neither paired training data nor explicit motion labels. SSRL-MAR employed a three-stage training strategy: (1) contrastive learning on 3D patches to extract motion representations by contrasting clean and synthetically corrupted images, (2) a motion artifact-aware synthesis network to generate motion artifacts from clean scans, and (3) a motion artifact-aware generator to restore clean volumes using the learned degrader for self-supervised supervision. On in-silico dataset, SSRL-MAR achieved PSNR 23.81dB, SSIM 91.55%, and NMSE 0.79%. On in-vivo MR-ART dataset, the pretrained model reduced motion distortion, and unsupervised domain adaptation further improved anatomical fidelity. Against a source-only supervised model trained on the same simulated pairs, SSRL-MAR improved PSNR by up to 2.0 dB on MR-ART after unsupervised domain adaptation, and remained within 0.25-0.47 dB of an oracle supervised model that requires real paired data unavailable in practice. At the milder motion level, volumetric error in structures such as the corpus callosum and ventricular system decreased by more than 50%, confirming improved neuroanatomical consistency. These results indicate that SSRL-MAR provides a robust and scalable image-domain solution for 3D brain MRI motion correction, enabling reliable structural quantification in large-scale neuroimaging studies without requiring prospectively acquired pairs or acquisition-specific calibration.",
+      "authors": [
+        "Mojtaba Safari",
+        "Shansong Wang",
+        "Zach Eidex",
+        "Matthew Goette",
+        "Tonghe Wang",
+        "Zhen Tian",
+        "Xiaofeng Yang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "physics.med-ph"
+      ],
+      "published": "2026-08-10T19:37:31+00:00",
+      "link": "https://arxiv.org/pdf/2608.10170v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unpaired self-supervised artifact reduction for brain MRI, method transferable to EEG artifact removal",
+      "llm_evidence_cn": "无配对自监督脑MRI伪影抑制，方法可迁移至脑电伪影去除",
+      "llm_evidence": "无配对自监督脑MRI伪影抑制，方法可迁移至脑电伪影去除",
+      "canonical_evidence": "无配对自监督脑MRI伪影抑制，方法可迁移至脑电伪影去除",
+      "llm_tldr_en": "SSRL-MAR removes brain MRI motion artifacts without paired data or motion labels using contrastive learning and a three-stage self-supervised strategy, offering a robust framework transferable to EEG interference suppression.",
+      "llm_tldr_cn": "脑磁共振中患者运动导致的伪影会损害定量分析，现有深度学习方法通常需要配对干净-损坏数据或k空间采集，临床难以获取。本文提出SSRL-MAR，一种无需配对数据和显式运动标签的运动伪影感知自监督表示学习框架，通过三维patch上的对比学习、伪影感知预训练等三阶段策略进行伪影还原。该方法在无监督条件下有效抑制运动伪影，并为脑电等信号的人工伪影去除提供了可借鉴的鲁棒去噪框架。",
+      "llm_tldr": "脑磁共振中患者运动导致的伪影会损害定量分析，现有深度学习方法通常需要配对干净-损坏数据或k空间采集，临床难以获取。本文提出SSRL-MAR，一种无需配对数据和显式运动标签的运动伪影感知自监督表示学习框架，通过三维patch上的对比学习、伪影感知预训练等三阶段策略进行伪影还原。该方法在无监督条件下有效抑制运动伪影，并为脑电等信号的人工伪影去除提供了可借鉴的鲁棒去噪框架。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg artifact removal approaches",
+      "matched_requirement_id": "req-20",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.10394v1",
+      "source": "arxiv",
+      "title": "Improved cross-validated distances for multivariate pattern analysis",
+      "abstract": "Characterizing the dissimilarity of neural representations between experimental conditions, and tracking it across time, is a central goal of multivariate pattern analysis. Guggenmos et al. (2018) assessed the reliability of many of the measures that can be used for that purpose on MEG data and recommended the use of either the cross-validated Euclidean distance or the within-class-corrected Pearson distance. In this commentary, we show that we can improve upon these distances. First, we show that the cross-validated Euclidean distance is equivalent to a sum of between-partition distances and that this equivalence can be leveraged to obtain a generalized variant, with increased reliability and accuracy. Second, we use the relationship between Euclidean distance and Pearson correlation to define a cross-validated correlation distance in a similar way. The resulting distance is more accurate and interpretable than a formulation proposed by Guggenmos and colleagues. Finally, we discuss the relationship between our generalized cross-validation and within-class correction, another strategy often used to increase reliability, and we show that generalized cross-validation results in higher accuracy for the correlation distance.",
+      "authors": [
+        "Laurent Caplette",
+        "Sarah Lippé"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "stat.ML"
+      ],
+      "published": "2026-08-11T02:41:43+00:00",
+      "link": "https://arxiv.org/pdf/2608.10394v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Neural data pattern analysis method; transferable to EEG-based cognitive state decoding",
+      "llm_evidence_cn": "神经数据模式分析方法，可迁移至基于EEG的认知状态解码",
+      "llm_evidence": "神经数据模式分析方法，可迁移至基于EEG的认知状态解码",
+      "canonical_evidence": "神经数据模式分析方法，可迁移至基于EEG的认知状态解码",
+      "llm_tldr_en": "Proposes improved cross-validated distances for multivariate pattern analysis, increasing reliability and accuracy of neural representation comparisons, broadly applicable to EEG/MEG decoding.",
+      "llm_tldr_cn": "针对多元模式分析中神经表征距离度量可靠性不足的问题，该文提出一类改进的交叉验证距离。作者证明交叉验证欧氏距离等价于多个划分间距离之和，并据此推广得到更可靠准确的广义变体，同时利用欧氏距离与皮尔逊距离的关系进行修正。实验表明新方法能提升MEG上条件间神经表征不相似度估计的稳定性，为脑电与脑磁数据解码提供了更稳健的距离工具。",
+      "llm_tldr": "针对多元模式分析中神经表征距离度量可靠性不足的问题，该文提出一类改进的交叉验证距离。作者证明交叉验证欧氏距离等价于多个划分间距离之和，并据此推广得到更可靠准确的广义变体，同时利用欧氏距离与皮尔逊距离的关系进行修正。实验表明新方法能提升MEG上条件间神经表征不相似度估计的稳定性，为脑电与脑磁数据解码提供了更稳健的距离工具。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.11805v1",
+      "source": "arxiv",
+      "title": "Hybrid Gated Attention",
+      "abstract": "Gated attention is an effective approach to mitigate attention sinks and enhance the representational capacity of attention. To further extend its effectiveness-efficiency Pareto frontier, we propose a Hybrid Gated Attention (HyGA) framework that contains three types of gating strategies. Specifically, these gates leverage diverse information from multiple stages of attention, and collaboratively build element-wise/head-wise gating from multiple perspectives, capturing intra-head and cross-head information interactions. Through our hybrid gating components, HyGA could provide multi-source modulation signals, enabling more comprehensive control over information flow and improving the representational capacity of attention. We also introduce low-rank matrix decomposition and learnable attention sink to further enhance training efficiency and stability. In experiments, we evaluate HyGA on widely-used benchmarks based on different backbones. The experimental results show that our HyGA comprehensively improves both training loss and various downstream performances compared with Gated attention. HyGA has also been verified to achieve the best performance at different computation costs, with comprehensive model analyses for better understanding. The proposed HyGA sheds light on a more effective, efficient, and stable attention mechanism.",
+      "authors": [
+        "Zekun Zhou",
+        "Ruobing Xie",
+        "Lanrui Wang",
+        "Weixuan Sun"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-12T08:46:50+00:00",
+      "link": "https://arxiv.org/pdf/2608.11805v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Hybrid gated attention framework; transferable deep learning method for attention-based sequence models",
+      "llm_evidence_cn": "混合门控注意力框架；可迁移的深度学习方法，适用于基于注意力的序列模型",
+      "llm_evidence": "混合门控注意力框架；可迁移的深度学习方法，适用于基于注意力的序列模型",
+      "canonical_evidence": "混合门控注意力框架；可迁移的深度学习方法，适用于基于注意力的序列模型",
+      "llm_tldr_en": "Proposes Hybrid Gated Attention (HyGA) with three gating strategies that fuse multi-stage attention information to improve representational capacity and mitigate attention sinks, extending the efficiency-effectiveness frontier.",
+      "llm_tldr_cn": "针对门控注意力中注意力汇聚和表征能力有限的问题，提出混合门控注意力（HyGA）框架，通过三种门控策略从注意力多个阶段提取信息，实现元素级与头级的多视角门控，结合低秩分解和可学习注意力汇聚点，增强对信息流的控制，提升注意力表征能力。实验表明该方法在效率与效果上拓展了注意力机制的帕累托前沿，可作为通用序列建模组件，适用于脑电等时间序列的深度学习模型。",
+      "llm_tldr": "针对门控注意力中注意力汇聚和表征能力有限的问题，提出混合门控注意力（HyGA）框架，通过三种门控策略从注意力多个阶段提取信息，实现元素级与头级的多视角门控，结合低秩分解和可学习注意力汇聚点，增强对信息流的控制，提升注意力表征能力。实验表明该方法在效率与效果上拓展了注意力机制的帕累托前沿，可作为通用序列建模组件，适用于脑电等时间序列的深度学习模型。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

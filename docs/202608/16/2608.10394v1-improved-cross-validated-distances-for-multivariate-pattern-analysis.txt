@@ -1,0 +1,286 @@
+Title: Improved cross-validated distances for multivariate pattern analysis
+
+URL Source: https://arxiv.org/pdf/2608.10394v1
+
+Published Time: Wed, 12 Aug 2026 00:28:35 GMT
+
+Number of Pages: 12
+
+Markdown Content:
+# Improved cross-validated distances for multivariate pattern analysis 
+
+## Laurent Caplette 1,2 and Sarah Lipp´ e1,2 1Department of Psychology, Universit´ e de Montr´ eal 
+
+> 2
+
+## Azrieli Research Center of the CHU Sainte-Justine August 12, 2026 
+
+Abstract 
+
+Characterizing the dissimilarity of neural representations between experimental conditions, and track-ing it across time, is a central goal of multivariate pattern analysis. Guggenmos et al. (2018) assessed the reliability of many of the measures that can be used for that purpose on MEG data and recommended the use of either the cross-validated Euclidean distance or the within-class-corrected Pearson distance. In this commentary, we show that we can improve upon these distances. First, we show that the cross-validated Euclidean distance is equivalent to a sum of between-partition distances and that this equivalence can be leveraged to obtain a generalized variant, with increased reliability and accuracy. Second, we use the relationship between Euclidean distance and Pearson correlation to define a cross-validated correlation distance in a similar way. The resulting distance is more accurate and interpretable than a formulation proposed by Guggenmos and colleagues. Finally, we discuss the relationship between our generalized cross-validation and within-class correction, another strategy often used to increase reliability, and we show that generalized cross-validation results in higher accuracy for the correlation distance. 
+
+# 1 Introduction 
+
+Multivariate pattern analysis (MVPA) is a popular method for characterizing the discriminability of brain activity patterns across different experimental conditions and uncovering which information is encoded in different brain regions. It has been used extensively to study the neural mechanisms underlying various perceptual and cognitive processes [1–4]. One widely used approach for MVPA is representational similarity analysis (RSA), in which distances (most commonly Euclidean or correlation distances) between activity patterns of different conditions are estimated [5–9]. Matrices of pairwise distances can then be related to ones obtained from computational models or other data modalities. Applying RSA to MEG data is particularly useful, as it makes it possible to investigate the neural dynamics underlying cognitive functions with high temporal resolution. One important thing to keep in mind however, is that distances are susceptible to a noise bias, which can lead to less reliable estimates. Indeed, distances are non-negative and will typically increase with increasing noise, even when the true distance remains small. A potential strategy to mitigate this bias is cross-validation, in which brain activity pattern estimates from independent data partitions are used together to compensate for the noise. This strategy has been successful for the Euclidean distance: unlike its non-cross-validated counterpart, the cross-validated Euclidean distance is unbiased by noise. This enables performing additional analyses, including testing whether a measured distance is significantly different from 0. The cross-validated Euclidean distance (and the cross-validated Mahalanobis distance, which is its equivalent after multivariate noise normalization) has been used in multiple studies, to answer various scientific questions (e.g., [10–15]). Despite its success, we believe that, in most cases, small improvements can be made to the cross-validation equation. We detail these adjustments and how they improve reliability and accuracy in section 2. For the Pearson correlation distance, cross-validation cannot be used in the same way to eliminate noise bias but, if implemented correctly, it can be useful in other ways. In section 3, we build upon our previous adjustments and we define a new cross-validated Pearson correlation distance. We show that this new implementation eliminates the interpretability problem of the non-cross-validated correlation 1arXiv:2608.10394v1 [q-bio.NC] 11 Aug 2026 distance, where distances unexpectedly decrease after stimulus onset, rather than increase to reflect the greater discriminability between conditions. Moreover, compared to an alternative formulation proposed by Guggenmos et al. [13], our implementation does not require regularization and is more accurate. Similarly to cross-validation, within-class correction, whereby distances computed between trials of the same condition are subtracted from between-condition distances, is also used to reduce noise bias. In section 4, we show that this strategy is in fact mathematically related to our method of cross-validation, but that our method leads to more accurate estimates for the Pearson correlation distance. 
+
+# 2 A generalization of the cross-validated Euclidean distance 
+
+The squared Euclidean distance can be defined in the following way: 
+
+d2
+
+> Euclidean
+
+(x, y) = ( x − y)⊤(x − y). (1) Here, the vectors x and y can denote the brain activity patterns associated with two experimental conditions. A “cross-validated” variant of that distance (henceforth simply referred to as the cross-validated, or C.V., Euclidean distance) can be derived by projecting the pattern vectors of one data partition onto those of an independent data partition [15]: 
+
+d2 
+
+> Euclidean,CV
+
+(x, y) = ( xA − yA)⊤(xB − yB ), (2) where A and B denote the two data partitions. We can show that such cross-validation is actually equivalent to the mean of between-condition between-partition distances minus the mean of within-condition between-partition distances (full derivation in Ap-pendix A): 
+
+d2 
+
+> Euclidean,CV
+
+(x, y) = d2(xA, yB ) + d2(xB , yA)2 − d2(xA, xB ) + d2(yA, yB )2 . (3) Using random partitions (which is usually feasible in event-related designs), between-condition between-partition distances are equivalent to between-condition within-partition distances. Indeed, partitions are arbitrary here, and the noise from one condition in one partition is as orthogonal to the noise of a different condition in another partition as it is to the noise of a different condition in the same partition. There-fore, within-partition distances can be included in the equation and the previous equation can be further generalized, while remaining completely unbiased: 
+
+d2 
+
+> Euclidean,GCV
+
+(x, y) = d2(xA, yB ) + d2(xB , yA) + d2(xA, yA) + d2(xB , yB )4 − d2(xA, xB ) + d2(yA, yB )2 .
+
+(4) To clearly differentiate it from previous implementations of the cross-validated Euclidean distance, we define this distance as the Euclidean distance with generalized cross-validation (G.C.V.). Because it is defined from more individual distances, this formulation has the benefit of resulting in an estimator with reduced variance. Note also that this form of cross-validation is related to a different strategy of bias reduction: within-class correction (see section 4). We applied this distance on the same data from Cichy et al. [8] that was used by Guggenmos and colleagues [13]. We found that our G.C.V. Euclidean distance was slightly more reliable than the existing C.V. Euclidean distance, that is, distances between conditions were more similar across different recording sessions. When testing its accuracy on simulated data with known ground truth, we found that the G.C.V. distance was also more accurate (i.e. closer to the ground truth distance) than its standard C.V. counterpart (Figure 1; see Appendix C for estimation and simulation details). 
+
+# 3 An improved cross-validated correlation distance 
+
+The Pearson correlation distance is useful to get scale-insensitive estimates of dissimilarity. It can be defined as follows: 
+
+dP earson (x, y) = 1 − cov (x, y)
+
+pvar (x)var (y) . (5) 2Figure 1: Reliability and accuracy of cross-validated Euclidean distances. a) Time-resolved distance reliability (MEG data). b) Between-distances reliability differences (MEG data). For each subject and time point, the minimum between the reliability values of both distances is taken and the difference to that minimum is computed. The group average is shown; the error bars illustrate the standard error of the mean and the top horizontal line illustrates significance ( p < . 05, FWER-corrected, sign permutation test). c) Distance accuracy across different SNRs (simulated data). d) Accuracy differences between distances (simulated data). For each SNR and simulation iteration, the minimum between the accuracy values of both distances is taken and the difference to that minimum is computed. The group average is shown and the error bars illustrate the standard deviation. See Appendix C for methodological details. 
+
+3Guggenmos et al. [13] defined a cross-validated version of this distance by computing the covariance with vectors from two distinct data partitions, and generalizing the variances in the denominator to covariances between different data partitions: 
+
+dP earson,CV,Guggenmos (x, y) = 1 − 
+
+> 12
+
+(cov (xA, yB ) + cov (xB , yA)) 
+
+pcov (xA, xB )cov (yA, yB ) . (6) As they note, this definition creates a practical problem: the covariances in the denominator can be very small or negative, leading to extremely positive, extremely negative, or even imaginary distances. Therefore, regularization must be applied to enforce a positive denominator. Guggenmos and colleagues enforced lower bounds for the covariances in the denominator and for the overall denominator, in addition to forcing the distance to lie between 0 and 2 (i.e. the bounds of the non-cross-validated correlation distance). We argue that there is another way to define a cross-validated correlation distance that has more desirable properties. Indeed, the Pearson correlation distance is equivalent to a squared Euclidean distance between Z-transformed vectors, up to a scaling factor [16]. Therefore, we can cross-validate it in a similar way as is done for the squared Euclidean distance [15] (full derivation in Appendix B): 
+
+dP earson,CV,Ours (x, y) = (Z(xA) − Z(yA)) ⊤(Z(xB ) − Z(yB )) 2n , (7) where Z(x) and Z(y) are centered and scaled versions of the original vectors, and n is the number of elements in each vector (the number of sensors in the case of MEG patterns). Similarly to Eq.(3), this equation can be transformed to a sum of within-condition and between-condition correlations: 
+
+dP earson,CV,Ours (x, y) = r(xA, xB ) + r(yA, yB )2 − r(xA, yB ) + r(xB , yA)2 , (8) where r is the Pearson correlation coefficient. Similarly to Eq.(4), assuming that partitions are random, we can further generalize: 
+
+dP earson,GCV (x, y) = r(xA, xB ) + r(yA, yB )2 − r(xA, yB ) + r(xB , yA) + r(xA, yA) + r(xB , yB )4 . (9) Because there is no arbitrary regularization, this implementation is more accurate than the one described by Guggenmos et al. [13] (Figure 2e-f). Although their distance in its base form is slightly more reliable (significant difference at one time point; Figure 2a-b), this increased reliability is largely driven by the enforced regularization. At latencies where conditions are highly discriminable, the unregularized distance is more likely to go beyond the value of 2 and thus to be clipped at 2. Such clipping results in identical values across sessions, artificially increasing the distance’s reliability. When this clipping manipulation is removed (Figure 2c-d), reliability decreases sharply, and we can see in fact that the G.C.V. correlation distance is more reliable most of the time. Another benefit of the G.C.V. correlation distance is that it has a more interpretable time course, with a mean distance starting around 0 and increasing after stimulus presentation, similarly to the within-class corrected distance (Figure 2g-h; see section 4). 
+
+# 4 Cross-validation and within-class correction 
+
+Within-class correction (W.C.C.) is defined as taking the average of all distances computed between trials of different conditions and subtracting the average of all distances computed between trials of the same condition. 
+
+dW CC (x, y) = 1
+
+N 2
+
+> tNt
+
+X
+
+> i=1
+> Nt
+
+X
+
+> j=1
+
+d(xi, yj ) − 1
+
+Nt(Nt − 1) 
+
+> Nt
+
+X
+
+> i=1
+> Nt
+
+X
+
+> j=i+1
+
+[d(xi, xj ) + d(yi, yj )] , (10) where d is a given distance measure and Nt is the number of trials. 4Figure 2: Reliability, accuracy and interpretability of cross-validated correlation distances. a) Time-resolved distance reliability (MEG data). b) Between-distances reliability differences (MEG data). For each subject and time point, the minimum between the reliability values of both distances is taken and the difference to that minimum is computed. The group average is shown; the error bars illustrate the standard error of the mean and the top horizontal line illustrates significance ( p < . 05, FWER-corrected, sign permutation test). c) Same as panel a, but with Guggenmos’ distance altered by omitting clipping between 0 and 2. d) Same as panel b, but with Guggenmos’ distance altered by omitting clipping between 0 and 2. e) Distance accuracy across different SNRs (simulated data). Results for the unaltered Guggenmos’ distance are shown; results for the unclipped variation are identical (not shown). f ) Accuracy differences between distances (simulated data). For each SNR and simulation iteration, the minimum between the accuracy values of both distances is taken and the difference to that minimum is computed. The group average is shown and the error bars illustrate the standard deviation. g) Mean Guggenmos’ distance across time. Error bars illustrate the standard error of the mean. h) Mean G.C.V. correlation distance across time. Error bars illustrate the standard error of the mean. See Appendix C for methodological details. 
+
+5When the number of trials is 2, this is exactly equivalent to generalized cross-validation (G.C.V.): 
+
+dGCV (x, y) = d(xA, yB ) + d(xB , yA) + d(xA, yA) + d(xB , yB )4 − d(xA, xB ) + d(yA, yB )2 . (11) When there are more than 2 trials, the definitions of G.C.V. and W.C.C. diverge: while W.C.C. computes distances between all trials pairwise and averages the distances, G.C.V. averages trials into two partitions before computing distances. Importantly, both strategies eliminate the bias intrinsic to Euclidean distances in which distances increase with increasing noise (however, note that a random design is also necessary for W.C.C. to be unbiased). With either cross-validation or within-class correction, a true Euclidean distance of 0 will result in a measured distance distributed symmetrically around 0. Within-class correction may even be slightly more accurate at intermediate SNRs, as indicated by our simulations (Figure 3c-d). For correlation distance however, bias cannot be completely eliminated without proper modelling [17,18]. Nevertheless, G.C.V. and W.C.C. remain useful tools in that case as well. Indeed, raw correlation distances usually have a timecourse that is hard to interpret and very different from decoding accuracies and other distances, with values initially near 1 and decreasing after stimulus onset, rather than the opposite. As shown by Guggenmos et al. [13], this is prevented with W.C.C.: when this correction is applied, the scale is shifted and the overall time course becomes more interpretable. This led to a recommendation from the authors to use this correction, instead of their form of cross-validation, which has the same problem (Figure 2g). We showed that G.C.V. does the same thing (Figure 2h) and therefore that there is no need to rely on within-class correction. Generalized cross-validation is also much more accurate than within-class correction. Indeed, as men-tioned above, correlation coefficients are intrinsically biased: their value tends towards 0 with increasing noise. Hence, computing many noisy correlations and averaging them is not equivalent to averaging data before computing correlations. In the former case (within-class correction), the estimate’s variance is re-duced but the bias remains, while in the latter case (generalized cross-validation), both variance and bias are reduced. In our analyses, we observed much greater accuracy for the G.C.V. correlation distance than for the W.C.C. correlation distance (at intermediate and high SNRs; Figure 3g-h), confirming this reasoning. Although we observed increased reliability for the W.C.C. distance, we would argue that accuracy takes precedence over reliability, as “a confident but incorrect answer is of no use” (but the reverse is not true). Note that performing W.C.C. after averaging multiple trials into a smaller number of ”pseudo-trials” [13] is less biased than using raw trials and approaches the accuracy of G.C.V., but that G.C.V. reduces the bias maximally. 
+
+# 5 Conclusions 
+
+In summary, we showed that we can improve the existing formulations of cross-validated (and within-class-corrected) variants of Euclidean and Pearson distances. Our conclusions should also apply to the Mahalanobis and Spearman distances, which are simply the Euclidean distance with prior multivariate noise normalization and the Pearson distance with prior rank transform, respectively. Our formulations led to generally more reliable estimates on MEG data. While it remains to be tested, this increased reliability should also apply to other data modalities. We also hypothesized, backed by statistical reasoning, that our cross-validated correlation distance should be more accurate than both the cross-validated version of Guggenmos et al. [13] and the within-class-corrected variant, which was confirmed by our simulations. One small caveat to those results is that our generalization of cross-validation cannot be applied if the data partitions are fixed and not random. In such a case, noise may not be orthogonal from one trial to another and the equivalence of between-partition and within-partition distances cannot be assumed. This should not be a problem in the vast majority of studies however, given that conditions are usually presented in a random order. Even in the minority of non-random experimental designs, orthogonal partitions can often be created. Our work leads to a few recommendations for researchers hoping to use cross-validated distances in their future work. First (notwithstanding the small caveat above), we recommend discontinuing the use of the current form of the cross-validated Euclidean distance and either use its generalized cross-validation variant or the within-class-corrected variant, because they are both more reliable and accurate. If the amount of 6Figure 3: Reliability and accuracy of G.C.V. and W.C.C. distances a) Time-resolved reliability of Euclidean distances (MEG data). b) Between-distances reliability differences (MEG data). For each subject and time point, the minimum between the reliability values of both distances is taken and the difference to that minimum is computed. The group average is shown and the error bars illustrate the standard error of the mean. There were no significant differences ( p > . 05, FWER-corrected, sign permutation test). c) Accuracy of of Euclidean distances across different SNRs (simulated data). d) Between-distances reliability differences (simulated data). For each SNR and simulation iteration, the minimum between the accuracy values of both distances is taken and the difference to that minimum is computed. The group average is shown and the error bars illustrate the standard deviation. e) Time-resolved reliability of correlation distances (MEG data). f ) Between-distances reliability differences (MEG data). For each subject and time point, the minimum between the reliability values of both distances is taken and the difference to that minimum is computed. The group average is shown; the error bars illustrate the standard error of the mean and the top horizontal line illustrates significance ( p < . 05, FWER-corrected, sign permutation test). g) Accuracy of correlation distances across different SNRs (simulated data). h) Between-distances reliability differences (simulated data). For each SNR and simulation iteration, the minimum between the accuracy values of both distances is taken and the difference to that minimum is computed. The group average is shown and the error bars illustrate the standard deviation. See Appendix C for methodological details. 
+
+7computation is not a problem, the within-class-corrected Euclidean distance might even be preferable, as our simulations indicate that it’s usually more accurate. Furthermore, we recommend discontinuing the use of both Guggenmos et al.’s [13] implementation of the cross-validated correlation distance and the within-class-corrected correlation distance, in favor of the generalized cross-validated correlation distance, which is more accurate than both. In conclusion, we hope that these updated distance equations lead to increased statistical power and reproducibility of future studies applying distances on noisy data, for RSA or any other purpose. 8References 
+
+[1] Haxby, J. V., Gobbini, M. I., Furey, M. L., Ishai, A., Schouten, J. L., & Pietrini, P. (2001). Distributed and overlapping representations of faces and objects in ventral temporal cortex. Science , 293(5539), 2425–2430. [2] Haxby, J. V., Connolly, A. C., & Guntupalli, J. S. (2014). Decoding neural representational spaces using multivariate pattern analysis. Annual Review of Neuroscience , 37, 435–456. [3] Kamitani, Y., & Tong, F. (2005). Decoding the visual and subjective contents of the human brain. 
+
+Nature Neuroscience , 8(5), 679–685. [4] Kriegeskorte, N., Goebel, R., & Bandettini, P. (2006). Information-based functional brain mapping. 
+
+Proceedings of the National Academy of Sciences , 103(10), 3863–3868. [5] Kriegeskorte, N., Mur, M., & Bandettini, P. (2008). Representational similarity analysis — connecting the branches of systems neuroscience. Frontiers in Systems Neuroscience , 2, 4. [6] Kriegeskorte, N., & Kievit, R. A. (2013). Representational geometry: Integrating cognition, computa-tion, and the brain. Trends in Cognitive Sciences , 17(8), 401–412. [7] Caplette, L., & Turk-Browne, N. B. (2024). Computational reconstruction of mental representations using human behavior. Nature Communications , 15, 4183. [8] Cichy, R. M., Pantazis, D., & Oliva, A. (2014). Resolving human object recognition in space and time. 
+
+Nature Neuroscience , 17(3), 455–462. [9] Cichy, R. M., & Pantazis, D. (2017). Multivariate pattern analysis of MEG and EEG: A comparison of representational structure in time and space. NeuroImage , 158, 441–454. [10] Charest, I., Kriegeskorte, N., & Kay, K. N. (2018). GLMdenoise improves multivariate pattern analysis of fMRI data. NeuroImage , 183, 606–616. [11] Ejaz, N., Hamada, M., & Diedrichsen, J. (2015). Hand use predicts the structure of representations in sensorimotor cortex. Nature Neuroscience , 18(7), 1034–1040. [12] Flounders, M. W., Gonz´ alez-Garc´ ıa, C., Hardstone, R., & He, B. J. (2019). Neural dynamics of visual ambiguity resolution by perceptual prior. eLife , 8, e41861. [13] Guggenmos, M., Sterzer, P., & Cichy, R. M. (2018). Multivariate pattern analysis for MEG: A compar-ison of dissimilarity measures. NeuroImage , 173, 434–447. [14] Poncet, M., Batziou, P., & Chakravarthi, R. (2025). Neural representations of visual categories are dynamically tailored to the discrimination required by the task. Cerebral Cortex , 35(8), bhaf212. [15] Walther, A., Nili, H., Ejaz, N., Alink, A., Kriegeskorte, N., & Diedrichsen, J. (2016). Reliability of dissimilarity measures for multi-voxel pattern analysis. NeuroImage , 137, 188–200. [16] Berthold, M. R., & H¨ oppner, F. (2016). On clustering time series using Euclidean distance and Pearson correlation. arXiv preprint arXiv:1601.02213 .[17] Archer, K. J., Dumur, C. I., Taylor, G. S., Chaplin, M. D., Guiseppi-Elie, A., Grant, G., Ferreira-Gonzalez, A., & Garrett, C. T. (2008). A disattenuated correlation estimate when variables are measured with error: Illustration estimating cross-platform correlations. Statistics in Medicine , 27(7), 1026–1039. [18] Diedrichsen, J., Yokoi, A., & Arbuckle, S. A. (2018). Pattern component modeling: A flexible approach for understanding the representational structure of brain activity patterns. NeuroImage , 180(Pt A), 119–133. [19] Lin, L. I.-K. (1989). A concordance correlation coefficient to evaluate reproducibility. Biometrics , 45(1), 255–268. 9Appendix A Alternative formulation of the cross-validated Eu-clidean distance 
+
+It can be shown that the cross-validated squared Euclidean distance is equivalent to a sum of between-partition distances. Specifically, the cross-validated squared Euclidean distance is ordinarily defined as: 
+
+d2 
+
+> Euclidean,CV
+
+(x, y) = ( xA − yA)⊤(xB − yB ). (A.1) Expanding the product, we obtain: 
+
+d2 
+
+> Euclidean,CV
+
+(x, y) = x⊤ 
+
+> A
+
+xB − x⊤ 
+
+> A
+
+yB − y⊤ 
+
+> A
+
+xB + y⊤ 
+
+> A
+
+yB . (A.2) The squared Euclidean distance between different partitions of the same condition x is 
+
+d2(xA, xB ) = ( xA − xB )⊤(xA − xB ), (A.3) which can be expanded: 
+
+d2(xA, xB ) = x⊤ 
+
+> A
+
+xA + x⊤ 
+
+> B
+
+xB − 2x⊤ 
+
+> A
+
+xB . (A.4) Similarly for condition y:
+
+d2(yA, yB ) = y⊤ 
+
+> A
+
+yA + y⊤ 
+
+> B
+
+yB − 2y⊤ 
+
+> A
+
+yB . (A.5) The same can be done for the squared Euclidean distance between different partitions of different conditions: 
+
+d2(xA, yB ) = x⊤ 
+
+> A
+
+xA + y⊤ 
+
+> B
+
+yB − 2x⊤ 
+
+> A
+
+yB , (A.6) 
+
+d2(xB , yA) = x⊤ 
+
+> B
+
+xB + y⊤ 
+
+> A
+
+yA − 2x⊤ 
+
+> B
+
+yA. (A.7) When subtracting the mean within-condition distance from the mean between-condition distance, many of the expanded terms cancel out, such that we obtain: 12 (d2(xA, yB ) + d2(xB , yA)) − 12 (d2(xA, xB ) + d2(yA, yB )) = x⊤ 
+
+> A
+
+xB − x⊤ 
+
+> A
+
+yB − y⊤ 
+
+> A
+
+xB + y⊤ 
+
+> A
+
+yB . (A.8) The right side of equation A.8 is the same as the right side of equation A.2, so we can confirm that 
+
+d2 
+
+> Euclidean,CV
+
+(x, y) = d2(xA, yB ) + d2(xB , yA)2 − d2(xA, xB ) + d2(yA, yB )2 . (A.9) 10 Appendix B Alternative formulation of the cross-validated Pear-son distance 
+
+We made use of the mathematical relationship between the Pearson correlation and the Euclidean distance when vectors are Z-transformed [16] and derived an additional formulation of the cross-validated correlation distance that does not require regularization. We will first recall the definition of a Pearson correlation: 
+
+r(x, y) = cov (x, y)
+
+pvar (x)var (y) . (B.1) Since correlations are not affected by linear transformations of the variables such as z-scoring, and given that the variance of z-scores is 1, we can replace the variables on the right side of the equation with their Z transforms and the terms in the denominator cancel out: 
+
+r(x, y) = cov (Z(x), Z (y)) , (B.2) where Z(x) and Z(y) are centered and scaled versions of the original vectors. The covariance of z-scores can further be reduced to a scaled dot product, where n is the number of elements in each vector: 
+
+r(x, y) = Z(x) · Z(y)
+
+n (B.3) Now, let’s look at the squared Euclidean distance, which can be defined as: 
+
+d2(x, y) = ( x − y)⊤(x − y). (B.4) Following Berthold and H¨ oppner [16], the squared Euclidean distance between Z-transformed vectors reduces to: 
+
+d2(Z(x), Z (y)) = 2 n − 2( Z(x) · Z(y)) . (B.5) Substituting terms, based on Eq. B.3, 
+
+d2(Z(x), Z (y)) = 2 n(1 − r(x, y)) . (B.6) therefore: 
+
+dP earson (x, y) = d2(Z(x), Z (y)) 2n (B.7) Thus, based on Eq. B.4, we can define the Pearson correlation distance as such: 
+
+dP earson (x, y) = (Z(x) − Z(y)) ⊤(Z(x) − Z(y)) 2n (B.8) Finally, this equation lends itself easily to cross-validation: 
+
+dP earson,CV,ours (x, y) = (Z(xA) − Z(yA)) ⊤(Z(xB ) − Z(yB )) 2n , (B.9) where A and B are distinct data partitions. 11 Appendix C Methodological details 
+
+## C.1 Simulations 
+
+We adopted a similar approach as the one used by Guggenmos et al. [13] (see their Figure S5). Specifically, for each SNR level, we ran 500 simulations. Each time, ground truth activation patterns for 306 sensors and 92 conditions were generated by sampling from correlated standard normal distributions. We also added a strong condition-nonspecific pattern (accounting for 5 times the variance of condition-specific patterns). These patterns were replicated across 2 sessions and 20 trials per session. For each trial, zero-mean Gaussian random noise was added, in a proportion to ensure the desired SNR. 
+
+## C.2 Reliability and accuracy computation 
+
+Reliability was computed as Lin’s Concordance Correlation Coefficient ( ρc) between the MEG data from both recording sessions. This coefficient is defined as 
+
+ρc = 2r σ xσy
+
+σ2 
+
+> x
+
++ σ2 
+
+> y
+
++ ( μx − μy )2 , (C.1) where r is the Pearson correlation coefficient, μx and μy are the means of the variables, and σx and σy are their standard deviations. It measures how well two variables agree by how much the data deviates from a 45 degree line. We used this measure because it is sensitive to both pattern reliability and overall scale shift, as well as location shift [19]. Furthermore, its values lie between 0 and 1, and it does not require adjusting the scales of variables so that their expected values under the null distribution is always 0 (unlike SSQ reliability), which may require additional assumptions. Reliability was computed for every subject and time point, and was then averaged across subjects. Significant differences between distances were assessed with a sign permutation test across subjects for every time point, and the p-values were adjusted for the Familywise Error Rate across time points (from 50 ms after onset) using a Bonferroni correction [13]. Accuracy was computed as Lin’s Concordance Correlation Coefficient between measured distance and true distance for each simulation iteration and signal-to-noise ratio. This measure is sensitive to inaccuracies in both the structure of distances (i.e. the representational geometries) and their overall scales. 12
