@@ -6,41 +6,32 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-08-16
-- 运行时间：2026-08-16 20:43:51 UTC
+- 最新运行日期：2026-08-17
+- 运行时间：2026-08-17 20:57:43 UTC
 - 运行状态：成功
-- 本次总论文数：7
-- 精读区：4
+- 本次总论文数：4
+- 精读区：1
 - 速读区：3
 
 ### 今日简报（AI）
-今日精读聚焦EEG-语言基础模型与跨被试神经拓扑原型学习，并速读脑MRI伪影消除、多元模式分析及门控注意力等方向。最值得关注的是《ProtoGIB-Workload》与《Continuous-Latent Predictive Modeling》两篇9.0高分工作，分别探索工作负载特异的神经网络原型和语义对齐的连续潜在预测，为脑信号建模提供新思路。建议普通读者优先精读这两篇，结合自身数据验证拓扑原型与语义对齐方法的可迁移性。
-- 详情：[/202608/16/README](/202608/16/README)
+今日精读4篇脑电与心电AI论文，聚焦模型可解释性、跨被试情绪识别及临床推理。最值得关注EEG基础模型的可解释性工作（8分）与神经ODE对比学习情绪识别（7分）。建议优先精读首篇，其余速读了解CNN/LSTM解码与心电智能诊断进展即可。
+- 详情：[/202608/17/README](/202608/17/README)
 
 ### 精读区论文标签
-1. [ProtoGIB-Workload: Learning Workload-Specific Neural Topology Prototypes across Subjects](/202608/16/2608.10647v1-protogib-workload-learning-workload-specific-neural-topology-prototypes-across-subjects)  
-   标签：评分：9.0/10、query:pbci-load
-   evidence：基于脑电的脑力负荷识别与图原型学习
-2. [Continuous-Latent Predictive Modeling with Semantic Alignment for EEG-Language Foundation Models](/202608/16/2608.11656v1-continuous-latent-predictive-modeling-with-semantic-alignment-for-eeg-language-foundation-models)  
-   标签：评分：9.0/10、query:pbci-load
-   evidence：提出BLPM脑电-语言基础模型，采用连续潜在预测建模与语义对齐。
-3. [EEG-PRIME: Prototype-Aligned Representation Learning with Multi-Level Conditioning for EEG Decoding](/202608/16/2608.13072v1-eeg-prime-prototype-aligned-representation-learning-with-multi-level-conditioning-for-eeg-decoding)  
-   标签：评分：9.0/10、query:pbci-load
-   evidence：面向EEG解码的脑电基础模型，采用掩码预训练与指令微调支持跨数据集BCI
-4. [A Multi-Scale Temporal Framework with Dynamic Fusion for EEG-Based Emotion Recognition](/202608/16/2608.09088v1-a-multi-scale-temporal-framework-with-dynamic-fusion-for-eeg-based-emotion-recognition)  
+1. [EEG-PRISM: Physiologically-Grounded Interpretability of Predictions by EEG Foundation Models](/202608/17/2608.13676v1-eeg-prism-physiologically-grounded-interpretability-of-predictions-by-eeg-foundation-models)  
    标签：评分：8.0/10、query:pbci-load
-   evidence：基于EEG的深度学习精神状态解码，可直接迁移至认知负荷评估
+   evidence：EEG基础模型可解释性
 
 ### 速读区论文标签
-1. [Motion Artifact-Aware Self-Supervised Representation Learning for 3D Brain MRI Motion Artifact Reduction](/202608/16/2608.10170v1-motion-artifact-aware-self-supervised-representation-learning-for-3d-brain-mri-motion-artifact-reduction)  
-   标签：评分：6.0/10、query:robust-eeg
-   evidence：无配对自监督脑MRI伪影抑制，方法可迁移至脑电伪影去除
-2. [Improved cross-validated distances for multivariate pattern analysis](/202608/16/2608.10394v1-improved-cross-validated-distances-for-multivariate-pattern-analysis)  
+1. [MGMCL: Multi-Granularity Manifold Contrastive Learning With Neural ODEs for Cross-Subject EEG Emotion Recognition](/202608/17/2608.08440v1-mgmcl-multi-granularity-manifold-contrastive-learning-with-neural-odes-for-cross-subject-eeg-emotion-recognition)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：基于EEG情感识别的深度学习方法，属于被动脑机接口任务，可迁移至认知负荷评估
+2. [Diagnosing as Cardiologists Do: ECG Agents with Doctor-Grounded Priors for Clinical Reasoning Across Diseases and Populations](/202608/17/2608.09053v1-diagnosing-as-cardiologists-do-ecg-agents-with-doctor-grounded-priors-for-clinical-reasoning-across-diseases-and-populations)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：神经数据模式分析方法，可迁移至基于EEG的认知状态解码
-3. [Hybrid Gated Attention](/202608/16/2608.11805v1-hybrid-gated-attention)  
+   evidence：ECG临床推理智能体框架，方法可迁移至EEG信号处理基础模型
+3. [EEG Decoding Using CNN and LSTM Network](/202608/17/2608.13285v1-eeg-decoding-using-cnn-and-lstm-network)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：混合门控注意力框架；可迁移的深度学习方法，适用于基于注意力的序列模型
+   evidence：利用CNN与双向LSTM的深度学习脑电解码方法，可迁移至被动脑机接口认知负荷评估
 
 
 <div class="dpr-home-promo-card">

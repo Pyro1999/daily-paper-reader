@@ -1,0 +1,186 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-17T20:54:43.338413+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 3,
+    "quick_skim_target": 13,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2608.13676v1",
+      "source": "arxiv",
+      "title": "EEG-PRISM: Physiologically-Grounded Interpretability of Predictions by EEG Foundation Models",
+      "abstract": "Objective: Foundation models represent the next advancement in AI for EEG analysis; however current explainable AI techniques provide attribution scores in the time-channel input space, which is mismatched to clinical intuition about EEG. Thus, there is a critical need for a universal method that can extend the interpretability of any foundation model to alternative and physiologically relevant domains without modifying or retraining the underlying model. Methods: EEG-PRISM leverages linear transformations and established backpropagation rules to map time-channel attribution scores into alternative domains. We derive mappings to the frequency domain via an invertible DFT and to the source domain via an approximately invertible EEG generative model. We evaluate EEG-PRISM in simulated and real data, assessing recovery of ground-truth phenomena across domains with five foundation models and four AI explainers. Results: In simulation, EEG-PRISM achieves near-perfect spectral recovery and 69.2% spatial accuracy. In epilepsy, EEG-PRISM correctly determines that delta-theta activity is most salient and correctly localizes the seizure onset region with 50% accuracy. In autism, EEG-PRISM localizes the predictive delta-alpha biomarkers to frontal and temporal regions, consistent with prior work. Conclusion: EEG-PRISM is a theoretically-grounded post-hoc attribution method with accurate mapping into the spectral and spatial domains. It supports window-level analysis of transient events (e.g., seizures) and group-level identification of clinically relevant biomarkers (e.g., autism), thus advancing interpretable EEG foundation models. Significance: This work enables physiologically-grounded interpretation of EEG foundation models and supports clinically relevant insights such as event localization and biomarker identification.",
+      "authors": [
+        "Deeksha M Shama",
+        "Punnisa Amornsirikul",
+        "Archana Venkataraman"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-13T18:17:47+00:00",
+      "link": "https://arxiv.org/pdf/2608.13676v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG foundation model interpretability",
+      "llm_evidence_cn": "EEG基础模型可解释性",
+      "llm_evidence": "EEG基础模型可解释性",
+      "canonical_evidence": "EEG基础模型可解释性",
+      "llm_tldr_en": "EEG-PRISM maps time-channel attributions of any EEG foundation model to frequency and source domains via linear transforms, enabling physiology-grounded interpretability without retraining.",
+      "llm_tldr_cn": "针对EEG基础模型现有解释方法局限于时间-通道空间、与临床直觉不符的问题，提出EEG-PRISM框架，利用可逆DFT和近似可逆EEG正向模型等线性变换，将时间-通道归因分数映射到频率域和源域。该方法无需修改或重训基础模型即可应用于任意EEG基础模型，并能为认知负荷评估等下游任务提供生理学上可解释的预测依据。",
+      "llm_tldr": "针对EEG基础模型现有解释方法局限于时间-通道空间、与临床直觉不符的问题，提出EEG-PRISM框架，利用可逆DFT和近似可逆EEG正向模型等线性变换，将时间-通道归因分数映射到频率域和源域。该方法无需修改或重训基础模型即可应用于任意EEG基础模型，并能为认知负荷评估等下游任务提供生理学上可解释的预测依据。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.08440v1",
+      "source": "arxiv",
+      "title": "MGMCL: Multi-Granularity Manifold Contrastive Learning With Neural ODEs for Cross-Subject EEG Emotion Recognition",
+      "abstract": "Cross-subject electroencephalogram (EEG)-based emotion recognition remains challenging due to substantial inter-individual variability and discrete formulation that overlooks affective continuity. Existing methods operate in Euclidean space and focus on marginal distribution alignment, failing to preserve the semantic structure of emotions across subjects. This article proposes MGMCL, reconceptualizing emotion recognition as learning continuous representations on symmetric positive definite (SPD) Riemannian manifolds. The frame?work introduces multi-granularity manifold contrastive learning at instance, emotion, and trajectory levels while preserving semantic ordering. Neural ordinary differential equations on manifolds model continuous emotion dynamics. Cross-subject generalization employs Gromov-Wasserstein manifold alignment. Weakly-supervised learning enables continuous valence-arousal-dominance prediction from discrete labels. Extensive experiments on three public datasets demonstrate state-of-the-art performance: 91.23% accuracy on SEED, 73.82% on SEED-IV, and 76.38% on DEAP, achieving consistent improvements of 1.89%, 1.66%, and 1.28% over previous best methods, respectively.",
+      "authors": [
+        "Xiang Xie"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-09T03:13:51+00:00",
+      "link": "https://arxiv.org/pdf/2608.08440v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Deep learning method for EEG-based emotion recognition as a passive BCI task; transferable to cognitive load assessment",
+      "llm_evidence_cn": "基于EEG情感识别的深度学习方法，属于被动脑机接口任务，可迁移至认知负荷评估",
+      "llm_evidence": "基于EEG情感识别的深度学习方法，属于被动脑机接口任务，可迁移至认知负荷评估",
+      "canonical_evidence": "基于EEG情感识别的深度学习方法，属于被动脑机接口任务，可迁移至认知负荷评估",
+      "llm_tldr_en": "Proposes MGMCL, a multi-granularity manifold contrastive learning framework with neural ODEs for cross-subject EEG emotion recognition on SPD manifolds, addressing inter-subject variability and affective continuity.",
+      "llm_tldr_cn": "针对跨被试EEG情感识别中个体差异大、离散标签忽视情感连续性的问题，提出MGMCL框架。该方法将情感识别重构为SPD黎曼流形上的连续表示学习，引入实例级、情感级和轨迹级多粒度流形对比学习，并采用神经ODE保持情感语义排序。实验表明该方法在跨被试场景下显著优于现有方法，为被动脑机接口中的情感解码提供了新思路，亦可迁移至认知负荷评估等连续脑状态建模任务。",
+      "llm_tldr": "针对跨被试EEG情感识别中个体差异大、离散标签忽视情感连续性的问题，提出MGMCL框架。该方法将情感识别重构为SPD黎曼流形上的连续表示学习，引入实例级、情感级和轨迹级多粒度流形对比学习，并采用神经ODE保持情感语义排序。实验表明该方法在跨被试场景下显著优于现有方法，为被动脑机接口中的情感解码提供了新思路，亦可迁移至认知负荷评估等连续脑状态建模任务。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.09053v1",
+      "source": "arxiv",
+      "title": "Diagnosing as Cardiologists Do: ECG Agents with Doctor-Grounded Priors for Clinical Reasoning Across Diseases and Populations",
+      "abstract": "Cardiologists interpret electrocardiograms by localizing waveform components, measuring rhythm and interval patterns, and translating these structured observations into diagnostic evidence. Whether this expert reading process can serve as an effective prior for ECG agents remains unclear. To address this question, we introduce LuminaECG, a clinically structured ECG reasoning framework that reformulates ECG interpretation as measurement-grounded visual reading. ECG signals are rendered on standard electrocardiographic grid paper to preserve the spatial and scale cues used in clinical reading. P-wave, QRS-complex, and T-wave boundaries are explicitly delineated, and color-coded segmentation decomposes the waveform into discrete visual measurement primitives. A general 2B vision-language backbone is then trained with low-rank supervised fine-tuning to associate these primitives with diagnostic reasoning, without architectural modification. Across open, proprietary, and ECG-specialist zero-shot baselines, LuminaECG improves both waveform measurement and diagnostic recovery. It reaches a clinically meaningful reader tier on the CODE-test benchmark, transfers across geographically diverse ECG datasets without retraining, and generates reports whose structure contains an emergent prognostic signal. These findings suggest that effective ECG agents require not only larger models, but supervision that preserves the alignment between measurable waveform evidence and clinical knowledge.",
+      "authors": [
+        "Hongxiang Gao",
+        "He-yang Xu",
+        "Yuwen Li",
+        "Minghui Zhao",
+        "Zhipeng Cai",
+        "Xingyao Wang",
+        "Chenxi Yang",
+        "Jianqing Li",
+        "Chengyu Liu"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-08-10T03:00:35+00:00",
+      "link": "https://arxiv.org/pdf/2608.09053v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "ECG clinical reasoning framework with doctor-grounded priors, transferable to EEG signal processing foundation models",
+      "llm_evidence_cn": "ECG临床推理智能体框架，方法可迁移至EEG信号处理基础模型",
+      "llm_evidence": "ECG临床推理智能体框架，方法可迁移至EEG信号处理基础模型",
+      "canonical_evidence": "ECG临床推理智能体框架，方法可迁移至EEG信号处理基础模型",
+      "llm_tldr_en": "LuminaECG recasts ECG interpretation as measurement-grounded visual reading on standard grid paper with explicit P/QRS/T segmentation, enabling clinical reasoning across diseases and populations.",
+      "llm_tldr_cn": "为了弥补心电信号解读中缺乏医生式结构化推理的问题，LuminaECG将心电图解释重构为基于测量的视觉阅读：在标准心电图纸上渲染信号，显式划分P波、QRS波群和T波边界并进行彩色分割，再结合医生先验进行跨疾病和跨人群的临床推理。该框架展示了将专家阅读流程注入心电图智能体的可行性，其信号渲染与分割思路可迁移至脑电等其它生物电信号的基础模型构建。",
+      "llm_tldr": "为了弥补心电信号解读中缺乏医生式结构化推理的问题，LuminaECG将心电图解释重构为基于测量的视觉阅读：在标准心电图纸上渲染信号，显式划分P波、QRS波群和T波边界并进行彩色分割，再结合医生先验进行跨疾病和跨人群的临床推理。该框架展示了将专家阅读流程注入心电图智能体的可行性，其信号渲染与分割思路可迁移至脑电等其它生物电信号的基础模型构建。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.13285v1",
+      "source": "arxiv",
+      "title": "EEG Decoding Using CNN and LSTM Network",
+      "abstract": "Motor imagery (MI) brain--computer interfaces (BCIs) have emerged as a promising approach for establishing flexible communication pathways between the human brain and external devices , particularly for individuals affected by stroke or neurodegenerative disorders. Reliable decoding of motor-imagery electroencephalography (MI-EEG) remains challenging because EEG recordings contain substantial noise and exhibit complex, weakly informative relationships with the underlying brain activity. Although deep learning provides an effective means of learning representations directly from EEG signals, its application to MI-EEG feature learning remains comparatively limited. This study introduces a hybrid deep-learning architecture that integrates a convolutional neural network (CNN) with a bidirectional long short-term memory (bi-LSTM) network. The CNN is used to learn high-level spatial and temporal representations directly from raw MI-EEG recordings, whereas the bi-LSTM models temporal dependencies and relationships among the extracted features. The proposed approach is evaluated using both a publicly available dataset and a privately acquired dataset obtained with an EEG acquisition system. The experimental results indicate that the CNN\\&bi-LSTM architecture provides robust performance for both two- and three-class motor-imagery classification and demonstrates promising subject-independent decoding capability across the evaluated methods.",
+      "authors": [
+        "Athanasios Karagounis"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.HC"
+      ],
+      "published": "2026-08-13T14:20:51+00:00",
+      "link": "https://arxiv.org/pdf/2608.13285v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Deep learning EEG decoding with CNN-LSTM for BCI; architecture transferable to passive BCI workload estimation",
+      "llm_evidence_cn": "利用CNN与双向LSTM的深度学习脑电解码方法，可迁移至被动脑机接口认知负荷评估",
+      "llm_evidence": "利用CNN与双向LSTM的深度学习脑电解码方法，可迁移至被动脑机接口认知负荷评估",
+      "canonical_evidence": "利用CNN与双向LSTM的深度学习脑电解码方法，可迁移至被动脑机接口认知负荷评估",
+      "llm_tldr_en": "Proposes a hybrid CNN and bidirectional LSTM deep network for motor-imagery EEG decoding in BCI, showing deep feature learning from noisy EEG; methods transfer to cognitive workload classification.",
+      "llm_tldr_cn": "运动想象脑机接口的脑电信号包含噪声且与神经活动关系复杂，传统解码性能有限。本文提出结合卷积神经网络与双向长短期记忆网络的混合深度学习架构，直接从脑电信号中学习特征并解码运动想象意图。实验表明该混合网络能有效提升脑电解码准确率，为被动脑机接口中认知负荷等状态的深度评估提供了可迁移的建模思路。",
+      "llm_tldr": "运动想象脑机接口的脑电信号包含噪声且与神经活动关系复杂，传统解码性能有限。本文提出结合卷积神经网络与双向长短期记忆网络的混合深度学习架构，直接从脑电信号中学习特征并解码运动想象意图。实验表明该混合网络能有效提升脑电解码准确率，为被动脑机接口中认知负荷等状态的深度评估提供了可迁移的建模思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
