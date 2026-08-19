@@ -1,0 +1,276 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-19T20:00:20.867982+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 6,
+    "quick_skim_target": 13,
+    "quick_selected": 6
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2608.17231v1",
+      "source": "arxiv",
+      "title": "Delta2Gamma: Band-Wise Adaptive Contrastive Learning of EEG for Alzheimer's Disease Detection",
+      "abstract": "Low-cost, scalable screening for dementia remains an open problem. Imaging-based diagnosis is costly and hard to deploy widely. Electroencephalography (EEG) is portable and inexpensive, but its recordings are noisy, vary widely across subjects, and carry few clinical labels. We tackle this with Delta2Gamma, a self-supervised framework that learns EEG representations from unlabeled data by contrasting augmented views of each signal. Rather than treat EEG as a single stream, Delta2Gamma decomposes every recording into the five canonical neural rhythms (delta, theta, alpha, beta, gamma). Each band gets its own encoder and projection head. Each also gets a temperature that is predicted adaptively during contrastive training, so bands with different signal statistics are balanced automatically. On the ADFTD cohort under a strict leave-one-subject-out protocol, Delta2Gamma separates Alzheimer's disease from cognitively normal controls with 92.4\\% accuracy. This exceeds both supervised backbones and recent dedicated EEG methods.",
+      "authors": [
+        "Chanwoo Park",
+        "Chanwoo Kim"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-08-18T00:35:55+00:00",
+      "link": "https://arxiv.org/pdf/2608.17231v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "self-supervised EEG representation learning with band-wise adaptive contrastive learning, relevant to EEG foundation models",
+      "llm_evidence_cn": "面向脑电的频带自适应自监督对比学习，可用于脑电基础模型与下游脑电解码",
+      "llm_evidence": "面向脑电的频带自适应自监督对比学习，可用于脑电基础模型与下游脑电解码",
+      "canonical_evidence": "面向脑电的频带自适应自监督对比学习，可用于脑电基础模型与下游脑电解码",
+      "llm_tldr_en": "A self-supervised EEG contrastive framework decomposes each recording into neural rhythms, learns robust representations from unlabeled data, and uses band-wise adaptive temperatures to improve Alzheimer's disease detection.",
+      "llm_tldr_cn": "针对脑电信号噪声大、跨受试差异大且标签稀少的问题，该文提出Delta2Gamma自监督对比学习框架，将EEG分解为delta、theta、alpha、beta、gamma五个节律频带，为每个频带学习编码器并自适应预测温度系数。方法无需标签即可从原始脑电中学习通用表征，并在阿尔茨海默病检测任务中验证了其有效性，为后续下游脑电任务提供了可迁移的深度表征学习范式。",
+      "llm_tldr": "针对脑电信号噪声大、跨受试差异大且标签稀少的问题，该文提出Delta2Gamma自监督对比学习框架，将EEG分解为delta、theta、alpha、beta、gamma五个节律频带，为每个频带学习编码器并自适应预测温度系数。方法无需标签即可从原始脑电中学习通用表征，并在阿尔茨海默病检测任务中验证了其有效性，为后续下游脑电任务提供了可迁移的深度表征学习范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.12000v1",
+      "source": "arxiv",
+      "title": "Beyond Local Power: Functional Connectivity Analysis for Subject-Independent Learning Style Recognition",
+      "abstract": "Identifying individual learning styles optimizes pedagogical efficacy. While traditional questionnaires are structured, behavioral tracking methods require prolonged interaction log accumulation. To overcome these temporal constraints, this paper proposes an objective Electroencephalography (EEG) approach evaluating Phase Locking Value (PLV) connectivity against localized features across the Active-Reflective (AR) and Verbal-Visual (VV) Felder-Silverman dimensions. EEG signals were recorded from 28 participants during Raven's Advanced Progressive Matrices tasks. Support Vector Machine classification used Leave-One-Subject-Out Cross-Validation (LOSO-CV) alongside a 70:30 intra-subject split. The VV dimension achieved 70.00% subject-level accuracy driven by distinct fronto-occipital polarization. Conversely, the AR dimension yielded lower cross-subject generalizability (55.56%) due to overlapping executive networks and a \"Systematic Neural Inversion\" phenomenon, where stable individual connectivity signatures operated diametrically opposed to global boundaries (up to 20-0 voting margins). Ultimately, these outcomes demonstrate that rigid \"one-size-fits-all\" classifiers are bounded by biological diversity, emphasizing the need for future adaptive feature transformation techniques to bridge the cross-subject generalization gap.",
+      "authors": [
+        "Wiga Maulana Baihaqi",
+        "Indriana Hidayah",
+        "Sri Kusrohmaniah",
+        "Noor Akhmad Setiawan"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC",
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-08-12T12:35:51+00:00",
+      "link": "https://arxiv.org/pdf/2608.12000v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG functional connectivity and machine learning for mental-state classification, transferable to cognitive load estimation",
+      "llm_evidence_cn": "基于脑电功能连接与机器学习的心理状态分类，可迁移至认知负荷评估",
+      "llm_evidence": "基于脑电功能连接与机器学习的心理状态分类，可迁移至认知负荷评估",
+      "canonical_evidence": "基于脑电功能连接与机器学习的心理状态分类，可迁移至认知负荷评估",
+      "llm_tldr_en": "This paper uses EEG PLV connectivity features and SVM for subject-independent learning style recognition, demonstrating a transferable EEG-based mental state classification pipeline.",
+      "llm_tldr_cn": "针对传统问卷和行为追踪难以快速识别学习风格的问题，本文提出基于脑电相位锁定值功能连接特征的客观识别方法，利用支持向量机对主动-反思和言语-视觉维度进行分类，并采用跨被试交叉验证评估模型泛化性。实验表明言语-视觉维度取得70%以上的准确率，证明脑电功能连接特征可用于个体心理状态的自动识别。该方法为认知负荷等脑电驱动的人机交互研究提供了可迁移的分类流程。",
+      "llm_tldr": "针对传统问卷和行为追踪难以快速识别学习风格的问题，本文提出基于脑电相位锁定值功能连接特征的客观识别方法，利用支持向量机对主动-反思和言语-视觉维度进行分类，并采用跨被试交叉验证评估模型泛化性。实验表明言语-视觉维度取得70%以上的准确率，证明脑电功能连接特征可用于个体心理状态的自动识别。该方法为认知负荷等脑电驱动的人机交互研究提供了可迁移的分类流程。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.14847v1",
+      "source": "arxiv",
+      "title": "M-LINKX: Multiview Graph Learning for Brain Cognitive Disease Detection",
+      "abstract": "Electroencephalogram (EEG) is a non-invasive and relatively low-cost procedure that measures brain electricity for the detection of cognitive diseases. EEG-based classification of dementia-related conditions, including Alzheimer's disease (AD), mild cognitive impairment (MCI), and frontotemporal dementia (FTD), remains challenging because EEG signals are noisy, non-stationary, and vary across subjects. Segment-based learning provides a practical way to model long EEG recordings by converting them into fixed-length inputs. For each segment, discriminative information may be explored by using signals within each channel (i.e. electrode), as well as interactions between EEG channels. In this paper, we propose M-LINKX, a multi-view graph learning framework for EEG-based dementia classification. For each segment, we extract channel-level node features and construct multiple functional-connectivity (FC) graph views, where each view is defined by a specific combination of connectivity metric, frequency band, and topology filter, respectively. Instead of relying on message passing over the constructed graphs, M-LINKX follows a simple design in modeling node features and adjacency-based connectivity representations. The graph-view representations are fused using global trainable view weights, and subject-level prediction is obtained by averaging segment-level probabilities. Experiments on two three-class EEG datasets with different diagnostic groups, CAUEEG (HC/MCI/Dementia) and AHEAP (HC/AD/FTD), show that M-LINKX achieves the best subject-level performance under the main experimental settings. Our study suggests that multi-view functional connectivity can improve EEG-based dementia classification when integrated with an appropriate graph-learning architecture. Code and data are available at https://github.com/anphantt/MLINKX.",
+      "authors": [
+        "An Phan",
+        "Yufei Jin",
+        "Xingquan Zhu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-14T19:39:57+00:00",
+      "link": "https://arxiv.org/pdf/2608.14847v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Proposes a deep multiview graph learning framework for EEG-based classification, directly transferable to EEG-based cognitive load estimation.",
+      "llm_evidence_cn": "提出基于脑电的多视图图学习深度学习框架，可直接迁移用于基于脑电的认知负荷评估。",
+      "llm_evidence": "提出基于脑电的多视图图学习深度学习框架，可直接迁移用于基于脑电的认知负荷评估。",
+      "canonical_evidence": "提出基于脑电的多视图图学习深度学习框架，可直接迁移用于基于脑电的认知负荷评估。",
+      "llm_tldr_en": "M-LINKX proposes a multiview graph learning framework that models within-channel and inter-channel EEG information for robust classification of cognitive diseases from noisy EEG; the method is transferable to EEG-based cognitive load estimation.",
+      "llm_tldr_cn": "脑电信号因噪声、非平稳和个体差异使得认知疾病分类困难。本文提出M-LINKX多视图图学习框架，将长时脑电划分为段，同时刻画通道内信号特征和通道间交互信息，以提升痴呆相关疾病检测性能。该方法面向噪声脑电的分类建模思路，可直接迁移至基于脑电的认知负荷评估等任务中。",
+      "llm_tldr": "脑电信号因噪声、非平稳和个体差异使得认知疾病分类困难。本文提出M-LINKX多视图图学习框架，将长时脑电划分为段，同时刻画通道内信号特征和通道间交互信息，以提升痴呆相关疾病检测性能。该方法面向噪声脑电的分类建模思路，可直接迁移至基于脑电的认知负荷评估等任务中。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.15999v1",
+      "source": "arxiv",
+      "title": "MUPA$^{2}$E: Multimodal Unified Perception with Asymmetric Attention for Emotion Assessment",
+      "abstract": "Automatic emotion assessment can benefit from combining neural and behavioral signals, but many multimodal approaches rely on separate, modality-specific feature-extraction pipelines before fusion. This paper presents MUPA\\textsuperscript{2}E, a unified perception framework that processes facial video and electroencephalography (EEG) through a single shared asymmetric-attention backbone. Facial video is represented through axis-folded frame tokens, while EEG is processed either as a raw multichannel waveform or projected into the spatial domain for multimodal fusion. The framework is evaluated on the DMER dataset under a stratified subject-independent protocol, comparing unimodal video, unimodal EEG, and fused video--EEG configurations with per-channel and merged EEG projections. Using the original recordings, with shorter trials zero-padded to match the longest duration, merged fusion at stride~$30$ achieves the highest validation performance and a test accuracy of $70.07\\%$. Further analysis revealed that recording duration is unevenly distributed across the affective classes, making the padding pattern a potential classification cue. Controlling for this factor by cropping all recordings to a common duration of $20$ seconds yielded a test accuracy of $62.71\\%$, providing a stricter duration-controlled assessment of the framework in which differences in recording length are removed as a potential classification cue. These findings demonstrate the feasibility of processing structurally different neural and visual signals within a compact unified architecture while highlighting the importance of controlling duration-related cues in affective datasets.",
+      "authors": [
+        "Stefanos Gkikas",
+        "Eric Nichols",
+        "Christian Arzate Cruz",
+        "Randy Gomez"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-17T01:26:47+00:00",
+      "link": "https://arxiv.org/pdf/2608.15999v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Unified multimodal EEG-video framework for passive BCI emotion assessment",
+      "llm_evidence_cn": "用于被动脑机接口情绪评估的EEG-视频多模态统一框架",
+      "llm_evidence": "用于被动脑机接口情绪评估的EEG-视频多模态统一框架",
+      "canonical_evidence": "用于被动脑机接口情绪评估的EEG-视频多模态统一框架",
+      "llm_tldr_en": "Presents MUPA2E, a unified multimodal perception framework that processes facial video and EEG through a shared asymmetric-attention backbone for emotion assessment, showing subject-independent evaluation on DMER.",
+      "llm_tldr_cn": "针对情绪评估中多模态方法通常需要分离的特征提取流程的问题，本文提出MUPA2E统一感知框架，通过共享的非对称注意力骨干同时处理面部视频与脑电信号，支持原始多通道波形或空间域投影融合。该框架在DMER数据集上采用分层受试者独立协议进行评测，并比较了单模态视频、单模态脑电与融合配置，为多模态情绪识别提供了统一高效的新思路。",
+      "llm_tldr": "针对情绪评估中多模态方法通常需要分离的特征提取流程的问题，本文提出MUPA2E统一感知框架，通过共享的非对称注意力骨干同时处理面部视频与脑电信号，支持原始多通道波形或空间域投影融合。该框架在DMER数据集上采用分层受试者独立协议进行评测，并比较了单模态视频、单模态脑电与融合配置，为多模态情绪识别提供了统一高效的新思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.16134v1",
+      "source": "arxiv",
+      "title": "Multi-Feature Riemannian Hypergraph for Online Test-Time Adaptation of Motor Imagery Brain-Computer Interface",
+      "abstract": "In clinical motor imagery brain-computer interface (MI-BCI) decoding, cross-day transferability and online operation remain two critical challenges. Hypergraphs can improve transferability by capturing higher-order sample relationships, yet existing hypergraph-based methods for online emotion recognition neglect the cross-day benefits of Riemannian geometry widely adopted in EEG transfer learning. To bridge this gap, we propose the Multi-feature Riemannian Hypergraph (MRieHy), a framework tailored for online test-time adaptation in MI-BCI decoding that leverages Riemannian geometry to strengthen cross-day transferability. MRieHy first computes Riemannian means of covariance matrices from cross-day training data to align multi-day distributions. It then constructs a hypergraph over covariance matrices using Riemannian distance, complemented by a second hypergraph over deep features built with cosine similarity. The two hypergraphs are fused via adaptively learned combination weights, jointly optimized with the label projection matrices. During online testing, MRieHy maintains a first-in-first-out buffer of recent samples, performs Riemannian alignment on the buffered data, and decodes with the learned hypergraph. Extensive experiments on a private four-class ECoG dataset and two public four-class EEG datasets validate that MRieHy achieves notable performance gains over state-of-the-art baselines.",
+      "authors": [
+        "Siqi Li",
+        "Zhi Li",
+        "Tong Liu",
+        "Shuai Zhang",
+        "Yanfei Jia",
+        "Zhiqiang Yi",
+        "Jue Xie",
+        "Ni Ji"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.HC",
+        "eess.SP",
+        "q-bio.NC"
+      ],
+      "published": "2026-08-17T05:41:34+00:00",
+      "link": "https://arxiv.org/pdf/2608.16134v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Online test-time adaptation with Riemannian hypergraph for EEG-based BCI",
+      "llm_evidence_cn": "基于黎曼超图的BCI在线测试时自适应，可支撑被动BCI稳健解码",
+      "llm_evidence": "基于黎曼超图的BCI在线测试时自适应，可支撑被动BCI稳健解码",
+      "canonical_evidence": "基于黎曼超图的BCI在线测试时自适应，可支撑被动BCI稳健解码",
+      "llm_tldr_en": "Proposes MRieHy, a multi-feature Riemannian hypergraph for online test-time adaptation of motor-imagery BCIs, improving cross-day transferability for EEG decoding.",
+      "llm_tldr_cn": "论文面向临床运动想象脑机接口的跨日迁移和在线运行挑战，提出多特征黎曼超图框架。该方法利用黎曼几何从跨日训练数据中提取协方差均值，并构建超图捕获高阶样本关系，实现在线测试时自适应。实验结果表明该方法能有效提升跨日BCI解码性能，为脑机接口的稳健在线部署提供新思路，其自适应机制亦可适用于被动脑机接口的认知状态监测。",
+      "llm_tldr": "论文面向临床运动想象脑机接口的跨日迁移和在线运行挑战，提出多特征黎曼超图框架。该方法利用黎曼几何从跨日训练数据中提取协方差均值，并构建超图捕获高阶样本关系，实现在线测试时自适应。实验结果表明该方法能有效提升跨日BCI解码性能，为脑机接口的稳健在线部署提供新思路，其自适应机制亦可适用于被动脑机接口的认知状态监测。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.16360v1",
+      "source": "arxiv",
+      "title": "Contrastive Learning with Variational Regularization for Multi-Session EEG-to-Speech Decoding",
+      "abstract": "Reconstructing heard speech from non-invasive electroencephalography (EEG) is challenging due to a low signal-to-noise ratio (SNR) and inter-session variability. While trial averaging improves the SNR, it is difficult to apply to continuous speech. We instead use repeated EEG responses to the same stimulus across different sessions as positive pairs for contrastive learning, and introduce variational regularization that, combined with this contrastive objective, keeps the encoder representation space broad. Experiments on a Japanese EEG dataset show that combining the session-invariant strategy with variational regularization improves the character error rate (CER) while maintaining mel-spectrogram reconstruction fidelity. Session probing confirms that the encoder representations achieve session-invariance.",
+      "authors": [
+        "Tomoaki Mizuno",
+        "Toru Nakashika"
+      ],
+      "primary_category": "eess.AS",
+      "categories": [
+        "eess.AS",
+        "cs.SD",
+        "eess.SP"
+      ],
+      "published": "2026-08-17T10:11:11+00:00",
+      "link": "https://arxiv.org/pdf/2608.16360v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "session-invariant contrastive learning for robust EEG decoding",
+      "llm_evidence_cn": "面向鲁棒脑电解码的会话不变对比学习",
+      "llm_evidence": "面向鲁棒脑电解码的会话不变对比学习",
+      "canonical_evidence": "面向鲁棒脑电解码的会话不变对比学习",
+      "llm_tldr_en": "Proposes contrastive learning with variational regularization to handle low SNR and inter-session variability in EEG-to-speech decoding, improving character error rate on Japanese EEG data while preserving reconstruction quality.",
+      "llm_tldr_cn": "针对非侵入性脑电到语音解码中信噪比低与跨会话差异大的问题，本文提出结合变分正则化的对比学习方法，利用同一刺激的多次会话响应构造正样本对以学习会话不变表征，并保持编码器表示空间的广泛性。在日文脑电数据集上的实验表明，该方法能在保持语谱重建保真度的同时显著改善字符错误率，为鲁棒脑电解码提供了有效方案。",
+      "llm_tldr": "针对非侵入性脑电到语音解码中信噪比低与跨会话差异大的问题，本文提出结合变分正则化的对比学习方法，利用同一刺激的多次会话响应构造正样本对以学习会话不变表征，并保持编码器表示空间的广泛性。在日文脑电数据集上的实验表明，该方法能在保持语谱重建保真度的同时显著改善字符错误率，为鲁棒脑电解码提供了有效方案。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-21",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
