@@ -1,0 +1,271 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-22T20:39:10.211630+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 6,
+    "quick_skim_target": 13,
+    "quick_selected": 6
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2608.18571v1",
+      "source": "arxiv",
+      "title": "NanoSleep: A Parameter-Efficient Hybrid Temporal Convolutional Network for Single-Channel Sleep Stage Classification",
+      "abstract": "Sleep stage classification from single-channel electroencephalography (EEG) is essential for wearable and home-based sleep monitoring. However, many deep learning models achieve high accuracy at the cost of large model sizes, which limits their deployment on resource-constrained devices. In this work, we present NanoSleep, a compact hybrid temporal convolutional network for automatic sleep stage classification. NanoSleep combines a learnable Sinc-convolutional front end, a dual-branch feature extractor that fuses multi-scale temporal and spectral representations, a gated dilated temporal convolutional backbone with channel recalibration, and a conditional random field for sequence-level decoding. We further employ a weighted calibrated focal loss to address class imbalance. We evaluate NanoSleep on the Sleep-EDF and Sleep-EDF-Expanded datasets using subject-wise cross-validation. The proposed model consistently outperforms six representative baseline methods, and an ablation study confirms the contribution of each major component. These results demonstrate that NanoSleep provides an effective balance between accuracy and efficiency, making it well suited for wearable devices, home-based sleep monitoring, and resource-constrained clinical applications.",
+      "authors": [
+        "S M Asif Hossain",
+        "Shruti Kshirsagar"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-19T06:08:24+00:00",
+      "link": "https://arxiv.org/pdf/2608.18571v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG-based sleep staging with compact deep temporal convolutional network; transferable DL architecture for EEG-based passive BCI.",
+      "llm_evidence_cn": "基于脑电的睡眠分期采用紧凑深度时序卷积网络，为被动BCI提供了可迁移的深度学习架构。",
+      "llm_evidence": "基于脑电的睡眠分期采用紧凑深度时序卷积网络，为被动BCI提供了可迁移的深度学习架构。",
+      "canonical_evidence": "基于脑电的睡眠分期采用紧凑深度时序卷积网络，为被动BCI提供了可迁移的深度学习架构。",
+      "llm_tldr_en": "A compact hybrid temporal convolutional network for single-channel EEG sleep staging combining Sinc-conv front end, multi-scale spectral-temporal features, and CRF decoding via parameter-efficient design.",
+      "llm_tldr_cn": "单通道脑电睡眠分期对可穿戴监测很重要，但现有深度学习模型体积大、难以在资源受限设备部署。针对该问题，论文提出NanoSleep，一种参数高效的混合时序卷积网络，结合可学习Sinc卷积前端、多尺度时频双分支特征提取、门控膨胀时序卷积和条件随机场。在公开数据集上的实验表明，该模型在保持高分期精度的同时大幅减少参数量，便于在边缘设备部署。该工作为脑电深度模型的轻量化设计提供了可复用的方法，也可迁移到其他脑电分类任务。",
+      "llm_tldr": "单通道脑电睡眠分期对可穿戴监测很重要，但现有深度学习模型体积大、难以在资源受限设备部署。针对该问题，论文提出NanoSleep，一种参数高效的混合时序卷积网络，结合可学习Sinc卷积前端、多尺度时频双分支特征提取、门控膨胀时序卷积和条件随机场。在公开数据集上的实验表明，该模型在保持高分期精度的同时大幅减少参数量，便于在边缘设备部署。该工作为脑电深度模型的轻量化设计提供了可复用的方法，也可迁移到其他脑电分类任务。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.14754v1",
+      "source": "arxiv",
+      "title": "EEG2MOTION: Towards Open-Vocabulary Human Motion Synthesis from Non-invasive Brain Signals",
+      "abstract": "Human motion is governed by a hierarchical motor system where the brain provides high-level intentions and lower-level structures coordinate detailed dynamics. Existing brain-computer interfaces (BCIs) typically oversimplify this into constrained classification or low-dimensional control, failing to capture the richness of natural movement. Bridging this gap to achieve open-vocabulary, full-body motion synthesis remains challenging due to the substantial cross-modal divergence between sparse neural signals and high-dimensional kinematics, as well as the lack of large-scale paired EEG-motion datasets. To address this, we introduce EEG2MOTION, the first EEG-motion-text dataset for human motion synthesis, comprising nearly 20,000 paired samples across thousands of motions. Using this dataset, we first demonstrate via multimodal contrastive learning that non-invasive EEG embeddings can be effectively aligned with text, video, and motion representations to decode high-level semantics. We then propose EEG-conditioned Masked Motion Model (EMMM), a generative framework that unites an EEG encoder with a motion decoder to synthesize continuous, full-body human motions directly from brain activity. Experimental results show that EMMM generates coherent and realistic motion sequences from non-invasive brain signals. To the best of our knowledge, this is the first work to generate diverse full-body human motions from non-invasive brain signals, opening a new direction toward generative and open-vocabulary motor BCIs. See our project page: https://yulom.github.io/EEG2MOTIONdemopage/.",
+      "authors": [
+        "Yulong Peng",
+        "Yijian Pan",
+        "Yuqi Yang",
+        "Nenggan Zheng",
+        "Weidong Chen",
+        "Xiaoling Hu",
+        "Shaomin Zhang"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-08-14T04:40:01+00:00",
+      "link": "https://arxiv.org/pdf/2608.14754v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG-based BCI with deep learning for motion synthesis; transferable to passive BCI methods",
+      "llm_evidence_cn": "基于EEG的BCI与深度学习用于运动合成；可迁移至被动BCI方法",
+      "llm_evidence": "基于EEG的BCI与深度学习用于运动合成；可迁移至被动BCI方法",
+      "canonical_evidence": "基于EEG的BCI与深度学习用于运动合成；可迁移至被动BCI方法",
+      "llm_tldr_en": "Proposes EEG2MOTION, the first EEG-motion-text dataset and deep learning framework for open-vocabulary full-body motion synthesis from non-invasive EEG, addressing BCI limitations beyond constrained classification.",
+      "llm_tldr_cn": "现有脑机接口通常将EEG信号简化为受限分类或低维控制，难以生成自然运动。本文提出EEG2MOTION，构建了首个EEG-运动-文本数据集，并采用深度学习方法实现从非侵入性脑信号到开放词汇全身运动合成。实验表明该方法能有效跨越神经信号与高维运动学之间的模态鸿沟，为被动BCI中的EEG深层表征学习提供了可借鉴的框架。",
+      "llm_tldr": "现有脑机接口通常将EEG信号简化为受限分类或低维控制，难以生成自然运动。本文提出EEG2MOTION，构建了首个EEG-运动-文本数据集，并采用深度学习方法实现从非侵入性脑信号到开放词汇全身运动合成。实验表明该方法能有效跨越神经信号与高维运动学之间的模态鸿沟，为被动BCI中的EEG深层表征学习提供了可借鉴的框架。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.20186v1",
+      "source": "arxiv",
+      "title": "Decoding silent reading from non-invasive EEG",
+      "abstract": "Non-invasive decoding of inner speech faces a fundamental data problem: a corpus pairing brain activity with a person's spontaneous inner monologue cannot be collected, and the available proxy paradigms (cued repetitive and retrospectively reported generative inner speech) are slow to acquire, poorly time-locked, and subject compliance is unverifiable. We therefore treat silent reading as a scalable proxy task and ask how much lexical and semantic information a contrastive decoder can extract from it. We report an open-vocabulary analysis of approximately 240,000 word presentations recorded from a single densely-sampled participant across 393 runs (ca. 49 h) of 19-channel dry-electrode EEG. Words from continuous narrative text were presented in rapid serial visual presentation, with typography randomised on every trial to partially decorrelate word identity from low-level visual form. A convolutional EEG encoder, optionally followed by a causal transformer, was trained with a CLIP-style contrastive objective to align short EEG windows with hidden-state embeddings of the presented word taken from a large language model. Decoding, evaluated as word-grouped top-10 retrieval against permutation baselines, was reliably above chance, extended to mid-frequency and rare words, and scaled log-linearly with training-data volume with no sign of saturation. Removing occipital and posterior-temporal electrodes reduced the word-level gain by roughly one third but left context tracking unchanged. Control analyses separate word-level decoding from narrative context tracking and from a non-neural positional prior introduced by the transformer's positional embedding. These results establish that open-vocabulary word-level information is recoverable from EEG during silent reading, and that decoding is data-limited rather than saturated.",
+      "authors": [
+        "Ingo Marquardt",
+        "Anthilia Alchanat",
+        "Priyanka Jain"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "q-bio.NC"
+      ],
+      "published": "2026-08-20T15:41:05+00:00",
+      "link": "https://arxiv.org/pdf/2608.20186v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Non-invasive EEG decoding of lexical and semantic information during silent reading, a passive BCI paradigm",
+      "llm_evidence_cn": "利用非侵入性脑电在默读任务中解码词汇与语义信息，属于被动脑机接口范式",
+      "llm_evidence": "利用非侵入性脑电在默读任务中解码词汇与语义信息，属于被动脑机接口范式",
+      "canonical_evidence": "利用非侵入性脑电在默读任务中解码词汇与语义信息，属于被动脑机接口范式",
+      "llm_tldr_en": "A contrastive decoder extracts lexical and semantic information from 49h of 19-channel dry-EEG during rapid serial visual presentation of continuous text.",
+      "llm_tldr_cn": "针对非侵入式内心言语解码缺乏金标准数据的问题，本文将默读作为可扩展的替代任务，使用对比解码器从单被试约49小时19通道干电极脑电中大规模提取词汇和语义信息。在快速序列视觉呈现的连续文本上，开词表分析显示解码器能从EEG中获取显著的词汇与语义信息，为被动BCI中的语言解码与脑电深度学习提供新范式。",
+      "llm_tldr": "针对非侵入式内心言语解码缺乏金标准数据的问题，本文将默读作为可扩展的替代任务，使用对比解码器从单被试约49小时19通道干电极脑电中大规模提取词汇和语义信息。在快速序列视觉呈现的连续文本上，开词表分析显示解码器能从EEG中获取显著的词汇与语义信息，为被动BCI中的语言解码与脑电深度学习提供新范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.16541v1",
+      "source": "arxiv",
+      "title": "Automating Learner Assessment: Benchmarking Machine Learning and Deep Learning Models for EEG-Based Familiarity Prediction",
+      "abstract": "Objective assessment of learning remains a fundamental challenge in education. Electroencephalography (EEG) provides a direct, non-invasive window into the neural correlates of knowledge acquisition, including cognitive familiarity. This study benchmarks fifteen machine learning (ML) and deep learning (DL) models for EEG-based familiarity prediction across two cognitive domains: faces (factual knowledge) and mathematical equations (conceptual knowledge). Using continuous EEG data from 23 participants, we extract spectral features (Power Spectral Density) across six frequency bands. We show that while standard stratified cross-validation yields artificially high classification performance (up to 0.9853 F1-score using CNN) due to temporal leakage across neighboring epochs, a rigorous trial-independent validation (Group K-Fold) drops the peak performance to 0.6038 F1-score (using CNN), which is still statistically significant above the 25% chance level. This highlights the critical necessity of trial-independent evaluation to avoid overestimating model generalizability. Furthermore, feature importance and SHAP analysis reveal that temporal and frontal Gamma and Beta oscillations are the most critical biomarkers for familiarity. This work establishes a realistic benchmark for EEG-based cognitive monitoring in educational technologies.",
+      "authors": [
+        "Isuru Nanayakkara",
+        "Thilina Halloluwa"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP",
+        "cs.HC",
+        "cs.LG"
+      ],
+      "published": "2026-08-17T13:15:45+00:00",
+      "link": "https://arxiv.org/pdf/2608.16541v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Deep learning EEG cognitive state prediction benchmark",
+      "llm_evidence_cn": "基于深度学习EEG认知熟悉度预测基准",
+      "llm_evidence": "基于深度学习EEG认知熟悉度预测基准",
+      "canonical_evidence": "基于深度学习EEG认知熟悉度预测基准",
+      "llm_tldr_en": "This paper benchmarks fifteen machine learning and deep learning models for EEG-based familiarity prediction using spectral features, finding that standard cross-validation can inflate accuracy and thus providing a more sound evaluation protocol for EEG-based cognitive state assessment.",
+      "llm_tldr_cn": "针对教育场景中学习效果客观评估困难的问题，论文利用脑电信号对认知熟悉度进行预测，系统比较了十五种机器学习与深度学习模型，并提取六个频段的功率谱密度特征。研究发现标准分层交叉验证会高估模型性能，提示需要更严苛的评估协议；结果对客观化学习评估和脑电认知状态建模具有参考价值。",
+      "llm_tldr": "针对教育场景中学习效果客观评估困难的问题，论文利用脑电信号对认知熟悉度进行预测，系统比较了十五种机器学习与深度学习模型，并提取六个频段的功率谱密度特征。研究发现标准分层交叉验证会高估模型性能，提示需要更严苛的评估协议；结果对客观化学习评估和脑电认知状态建模具有参考价值。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.16541v2",
+      "source": "arxiv",
+      "title": "Automating Learner Assessment: Benchmarking Machine Learning and Deep Learning Models for EEG-Based Familiarity Prediction",
+      "abstract": "Objective assessment of learning remains a fundamental challenge in education. Electroencephalography (EEG) provides a direct, non-invasive window into the neural correlates of knowledge acquisition, including cognitive familiarity. This study benchmarks fifteen machine learning (ML) and deep learning (DL) models for EEG-based familiarity prediction across two cognitive domains: faces (factual knowledge) and mathematical equations (conceptual knowledge). Using continuous EEG data from 23 participants, we extract spectral features (Power Spectral Density) across six frequency bands. We show that while standard stratified cross-validation yields artificially high classification performance (up to 0.9853 F1-score using CNN) due to temporal leakage across neighboring epochs, a rigorous trial-independent validation (Group K-Fold) drops the peak performance to 0.6038 F1-score (using CNN), which is still statistically significant above the 25% chance level. This highlights the critical necessity of trial-independent evaluation to avoid overestimating model generalizability. Furthermore, feature importance and SHAP analysis reveal that temporal and frontal Gamma and Beta oscillations are the most critical biomarkers for familiarity. This work establishes a realistic benchmark for EEG-based cognitive monitoring in educational technologies.",
+      "authors": [
+        "Isuru Nanayakkara",
+        "Thilina Halloluwa"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP",
+        "cs.HC",
+        "cs.LG"
+      ],
+      "published": "2026-08-17T13:15:45+00:00",
+      "link": "https://arxiv.org/pdf/2608.16541v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG-based cognitive state classification with deep learning; transferable to cognitive load estimation",
+      "llm_evidence_cn": "基于脑电的认知状态深度学习分类，可迁移于认知负荷评估",
+      "llm_evidence": "基于脑电的认知状态深度学习分类，可迁移于认知负荷评估",
+      "canonical_evidence": "基于脑电的认知状态深度学习分类，可迁移于认知负荷评估",
+      "llm_tldr_en": "EEG-based familiarity prediction benchmarks 15 ML/DL models using PSD features; standard CV overestimates performance (0.9853), providing validated methodology for cognitive state assessment.",
+      "llm_tldr_cn": "学习者的客观评估长期以来是教育领域的难题。该研究以脑电信号为窗口，利用功率谱密度特征，系统比较了15种机器学习和深度学习模型对认知熟悉度的预测能力。结果发现标准分层交叉验证会带来虚高性能（最高达0.9853），提示必须谨慎设计评估流程。这项工作为基于脑电的认知状态评估提供了模型基准与方法学警示，对类似任务如认知负荷估计具有参考价值。",
+      "llm_tldr": "学习者的客观评估长期以来是教育领域的难题。该研究以脑电信号为窗口，利用功率谱密度特征，系统比较了15种机器学习和深度学习模型对认知熟悉度的预测能力。结果发现标准分层交叉验证会带来虚高性能（最高达0.9853），提示必须谨慎设计评估流程。这项工作为基于脑电的认知状态评估提供了模型基准与方法学警示，对类似任务如认知负荷估计具有参考价值。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "cognitive load assessment using deep learning",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.19134v1",
+      "source": "arxiv",
+      "title": "SCORE: Subject Coordinate Recovery for Label-Free Cross-Subject EEG-to-Image Retrieval",
+      "abstract": "Accurate visual decoding can reveal how the brain represents visual information and recover perceived content from neural signals such as electroencephalography (EEG), with potential for neural communication. However, current EEG-to-image retrieval methods perform far below their within-subject counterparts for new users without labeled calibration, limiting real-world deployment. To understand this gap, we analyze EEG features across subjects and find that different subjects preserve similar relationships among concepts but express them along different coordinate directions. We therefore propose Subject Coordinate Recovery (SCORE), a target label-free framework combining recovery-aware source training with coordinate alignment at deployment. During training, SCORE aligns source subject EEG with a common image space and simulates unseen-subject recovery through source-only episodes. At deployment, with both encoders frozen, SCORE selects reliable EEG-image landmarks through hubness-corrected matching and estimates an orthogonal transformation to recover target EEG coordinates without source data or target labels. In 200-way retrieval on two public benchmarks, SCORE outperforms the unadapted baseline for every target subject and achieves the best overall accuracy. It reaches 53.23%/83.55% and 12.01%/32.16% Top-1/Top-5 on THINGS-EEG2 and Alljoined-1.6M, respectively, surpassing the strongest baselines by 17.45/15.70 and 3.08/4.62 percentage points. Without target labels or encoder updates, SCORE brings brain-based visual decoding closer to robust, practical, low-latency deployment across users.",
+      "authors": [
+        "Zhenyao Cui",
+        "Siyuan Kan",
+        "Siyang Li",
+        "Ziwei Wang",
+        "Dongrui Wu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-19T17:27:29+00:00",
+      "link": "https://arxiv.org/pdf/2608.19134v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Cross-subject EEG deep learning framework with label-free alignment",
+      "llm_evidence_cn": "跨被试EEG深度学习框架，可服务于被动BCI",
+      "llm_evidence": "跨被试EEG深度学习框架，可服务于被动BCI",
+      "canonical_evidence": "跨被试EEG深度学习框架，可服务于被动BCI",
+      "llm_tldr_en": "SCORE combines recovery-aware source training and coordinate alignment to enable label-free cross-subject EEG-to-image retrieval, substantially improving new-user performance and supporting uncalibrated neural decoding for BCI.",
+      "llm_tldr_cn": "针对跨被试脑电解码需要大量标注校准的问题，论文提出Subject Coordinate Recovery框架，通过恢复感知源训练与部署时的坐标对齐，实现无标签的跨被试脑电到图像检索。实验显示该方法显著提升新用户上的检索性能，为无校准脑电解码和被动脑机接口应用提供了可行的通用方案。",
+      "llm_tldr": "针对跨被试脑电解码需要大量标注校准的问题，论文提出Subject Coordinate Recovery框架，通过恢复感知源训练与部署时的坐标对齐，实现无标签的跨被试脑电到图像检索。实验显示该方法显著提升新用户上的检索性能，为无校准脑电解码和被动脑机接口应用提供了可行的通用方案。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
