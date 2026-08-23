@@ -1,0 +1,102 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-23T20:33:54.216609+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 1,
+    "quick_skim_target": 13,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2608.20198v1",
+      "source": "arxiv",
+      "title": "A Resource-Efficient CNN-Based EEG Auditory Attention Decoding ASIC",
+      "abstract": "Following a target speaker in a noisy environment, commonly known as the cocktail party problem, remains particularly challenging for cochlear implant (CI) users. Recent studies have explored EEG-based auditory attention decoding (AAD) using neural networks to enhance hearing assistance. This paper presents a resource-efficient ASIC for real-time EEG-based auditory attention decoding by integrating a quantized CNN inference engine and a Pearson-correlation classifier. The proposed architecture employs streaming execution, on-chip buffering, and memory-efficient dataflow to reduce hardware cost while maintaining real-time performance.   The proposed ASIC has been fully implemented in GF22FDX 22-nm CMOS technology, occupying a total silicon area of 2.09 mm$^2$(1264$μ$m x 1654$μ$m), with the CNN inference engine and streaming classification engine requiring only 0.076 mm$^2$. Operating at a core voltage of 0.55 V, the design achieves a power consumption of 0.4941 mW and an inference latency of 7.34 ms, providing an energy-efficient hardware platform for EEG-based auditory attention decoding in hearing-assistance applications.",
+      "authors": [
+        "Qier Ma",
+        "Richard George",
+        "Stefan Scholze",
+        "Jehn Constantin",
+        "Tobias Reichenbach",
+        "Christian Mayr"
+      ],
+      "primary_category": "cs.AR",
+      "categories": [
+        "cs.AR",
+        "eess.SP"
+      ],
+      "published": "2026-08-20T15:54:35+00:00",
+      "link": "https://arxiv.org/pdf/2608.20198v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Deep learning CNN for real-time EEG decoding in a passive BCI task (auditory attention)",
+      "llm_evidence_cn": "用于被动BCI（听觉注意解码）的深度学习方法，采用量化CNN与相关分类器",
+      "llm_evidence": "用于被动BCI（听觉注意解码）的深度学习方法，采用量化CNN与相关分类器",
+      "canonical_evidence": "用于被动BCI（听觉注意解码）的深度学习方法，采用量化CNN与相关分类器",
+      "llm_tldr_en": "This paper presents a resource-efficient ASIC for real-time EEG-based auditory attention decoding using a quantized CNN and Pearson-correlation classifier, achieving compact hardware while maintaining real-time performance. Relevant as a deep learning method for passive BCI.",
+      "llm_tldr_cn": "本文面向被动脑机接口中的EEG听觉注意解码任务，提出了一种资源高效的ASIC实现，集成量化CNN推理引擎和Pearson相关分类器。通过流式执行、片上缓存与高效数据流设计，在保持实时性能的同时显著降低硬件成本。该工作展示了深度学习模型在嵌入式被动BCI中的落地路径，可作为认知负荷评估等实时EEG分类任务的参考。",
+      "llm_tldr": "本文面向被动脑机接口中的EEG听觉注意解码任务，提出了一种资源高效的ASIC实现，集成量化CNN推理引擎和Pearson相关分类器。通过流式执行、片上缓存与高效数据流设计，在保持实时性能的同时显著降低硬件成本。该工作展示了深度学习模型在嵌入式被动BCI中的落地路径，可作为认知负荷评估等实时EEG分类任务的参考。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.17620v1",
+      "source": "arxiv",
+      "title": "OOD Detection for EEG-based Machine Learning in High-Risk Environments",
+      "abstract": "Machine learning models for electroencephalography (EEG) analysis show great promise across a wide range of applications, but their deployment in high-risk domains is hindered by their vulnerability to distribution shifts. Encountering out-of-distribution (OOD) data can lead to catastrophic, overconfident predictive failures. While OOD detection methods can mitigate these risks, they remain heavily under-explored for EEG. Moreover, evaluations in the broader literature typically evaluate OOD detection performance in isolation, ignoring their practical impact on downstream applications. To bridge this gap, we introduce a benchmark for EEG OOD detection, evaluate a broad range of methods, and furthermore evaluate their value in two clinical downstream prediction task. Our results disentangle OOD detection and model uncertainty estimation capabilities, which are frequently conflated in the literature, provide actionable insights about the current state of the art for EEG OOD detection and model uncertainty estimation, and demonstrate how complementary methods for both aspects can be combined to form a robust safety net for the deployment of EEG-based machine learning models in real-world applications.",
+      "authors": [
+        "Philipp Bomatter",
+        "Henry Gouk"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-18T10:33:58+00:00",
+      "link": "https://arxiv.org/pdf/2608.17620v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG machine learning OOD benchmark, transferable to cognitive load estimation reliability",
+      "llm_evidence_cn": "脑电机器学习OOD检测基准，可提升认知负荷估计等应用的可靠性",
+      "llm_evidence": "脑电机器学习OOD检测基准，可提升认知负荷估计等应用的可靠性",
+      "canonical_evidence": "脑电机器学习OOD检测基准，可提升认知负荷估计等应用的可靠性",
+      "llm_tldr_en": "First benchmark for OOD detection in EEG machine learning; evaluates methods and downstream clinical impact, filling an under-explored gap for trustworthy deployment in high-risk environments such as cognitive load monitoring.",
+      "llm_tldr_cn": "脑电机器学习模型在部署中容易因数据分布变化产生过度自信的错误预测，而分布外检测方法在脑电领域鲜有研究。本文构建了脑电OOD检测基准，系统评估多种方法，并在两个临床下游任务中检验其实际价值。结果表明单纯评估OOD指标不够，还需关注下游应用影响。该基准为脑电认知负荷评估等高风险应用提供了可靠性保障的思路。",
+      "llm_tldr": "脑电机器学习模型在部署中容易因数据分布变化产生过度自信的错误预测，而分布外检测方法在脑电领域鲜有研究。本文构建了脑电OOD检测基准，系统评估多种方法，并在两个临床下游任务中检验其实际价值。结果表明单纯评估OOD指标不够，还需关注下游应用影响。该基准为脑电认知负荷评估等高风险应用提供了可靠性保障的思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

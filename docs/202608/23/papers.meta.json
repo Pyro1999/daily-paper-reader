@@ -1,0 +1,39 @@
+{
+  "label": "2026-08-23",
+  "date": "2026-08-23",
+  "generated_at": "2026-08-23T20:37:17",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202608/23/2608.20198v1-a-resource-efficient-cnn-based-eeg-auditory-attention-decoding-asic",
+      "section": "deep",
+      "title_en": "A Resource-Efficient CNN-Based EEG Auditory Attention Decoding ASIC",
+      "authors": "Qier Ma, Richard George, Stefan Scholze, Jehn Constantin, Tobias Reichenbach, Christian Mayr",
+      "date": "2026-08-20",
+      "pdf": "https://arxiv.org/pdf/2608.20198v1",
+      "score": "9.0",
+      "evidence": "用于被动BCI（听觉注意解码）的深度学习方法，采用量化CNN与相关分类器",
+      "tldr": "针对嘈杂环境中助听器用户难以跟踪目标说话人的鸡尾酒会问题，本文设计了一款资源高效的EEG听觉注意解码ASIC。该芯片集成了量化CNN推理引擎与Pearson相关分类器，并采用流式执行、片上缓冲和内存高效数据流降低硬件开销。在22nm CMOS工艺下，CNN引擎仅占0.076mm²面积，总芯片2.09mm²，功耗0.4941mW，延迟7.34ms。由此为实时听觉注意解码提供了高能效硬件平台。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Following a target speaker in a noisy environment, commonly known as the cocktail party problem, remains particularly challenging for cochlear implant (CI) users. Recent studies have explored EEG-based auditory attention decoding (AAD) using neural networks to enhance hearing assistance. This paper presents a resource-efficient ASIC for real-time EEG-based auditory attention decoding by integrating a quantized CNN inference engine and a Pearson-correlation classifier. The proposed architecture employs streaming execution, on-chip buffering, and memory-efficient dataflow to reduce hardware cost while maintaining real-time performance.   The proposed ASIC has been fully implemented in GF22FDX 22-nm CMOS technology, occupying a total silicon area of 2.09 mm$^2$(1264$μ$m x 1654$μ$m), with the CNN inference engine and streaming classification engine requiring only 0.076 mm$^2$. Operating at a core voltage of 0.55 V, the design achieves a power consumption of 0.4941 mW and an inference latency of 7.34 ms, providing an energy-efficient hardware platform for EEG-based auditory attention decoding in hearing-assistance applications.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/23/2608.17620v1-ood-detection-for-eeg-based-machine-learning-in-high-risk-environments",
+      "section": "quick",
+      "title_en": "OOD Detection for EEG-based Machine Learning in High-Risk Environments",
+      "authors": "Philipp Bomatter, Henry Gouk",
+      "date": "2026-08-18",
+      "pdf": "https://arxiv.org/pdf/2608.17620v1",
+      "score": "6.0",
+      "evidence": "脑电机器学习OOD检测基准，可提升认知负荷估计等应用的可靠性",
+      "tldr": "EEG机器学习在高风险场景中易受分布偏移影响，而OOD检测研究尚不充分，且以往评估忽略下游实际效用。作者构建EEG-OOD基准，系统评估多种检测与不确定性估计方法，并在两个临床下游任务中验证其价值。结果表明OOD检测与模型不确定性能力可分离，互补结合能形成可靠安全网，为实际部署提供可行洞见。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Machine learning models for electroencephalography (EEG) analysis show great promise across a wide range of applications, but their deployment in high-risk domains is hindered by their vulnerability to distribution shifts. Encountering out-of-distribution (OOD) data can lead to catastrophic, overconfident predictive failures. While OOD detection methods can mitigate these risks, they remain heavily under-explored for EEG. Moreover, evaluations in the broader literature typically evaluate OOD detection performance in isolation, ignoring their practical impact on downstream applications. To bridge this gap, we introduce a benchmark for EEG OOD detection, evaluate a broad range of methods, and furthermore evaluate their value in two clinical downstream prediction task. Our results disentangle OOD detection and model uncertainty estimation capabilities, which are frequently conflated in the literature, provide actionable insights about the current state of the art for EEG OOD detection and model uncertainty estimation, and demonstrate how complementary methods for both aspects can be combined to form a robust safety net for the deployment of EEG-based machine learning models in real-world applications.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
