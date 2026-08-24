@@ -1,0 +1,102 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-24T20:56:09.124093+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 2,
+    "quick_skim_target": 13,
+    "quick_selected": 2
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2608.20807v1",
+      "source": "arxiv",
+      "title": "Neuro-Geospatial Modelling of EEG Affective States Using Literature-Informed Environmental Context",
+      "abstract": "Environmental exposures such as air pollution and greenness have been associated with affective and cognitive outcomes, but EEG and environmental datasets are rarely jointly georeferenced. We investigate whether literature-informed environmental priors can serve as an auxiliary geospatial modality for EEG-based affective-state classification when individual-level exposure data are unavailable. We combine 30-channel EEG from the EAV benchmark (42 participants, aged 20-30 years) with environmental representations derived from OpenAQ, Sentinel-2, Sentinel-5P, and OpenStreetMap data for Astana. A dual-tower architecture combines EEG-Conformer representations with a graph-based environmental encoder. Because the datasets are not co-registered, environmental context is treated as a literature-informed prior rather than measured exposure. Subject-level repeated splits, permutation and label-shuffling controls, dose-response reversal, and domain-shift experiments distinguish architecture-level gains from prior-dependent gains. The multimodal model achieves 76.2% accuracy versus 67.4% for EEG alone. Controls disrupting environmental-label structure retain part of this gain, indicating that the improvement is not attributable solely to environmental information. Replacing the Astana environmental distribution with an independently modeled Singapore distribution reduces accuracy to 72.8%. These findings demonstrate technical feasibility but do not establish an observed or causal exposure-affect association. The study provides a framework for future jointly collected mobile EEG-environment studies. Implementation: https://github.com/r11up/geo-cog",
+      "authors": [
+        "Utsav Poudel",
+        "Jagannath Aryal",
+        "Subramaniyaswamy Vairavasundaram"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.HC",
+        "cs.LG"
+      ],
+      "published": "2026-08-21T07:25:53+00:00",
+      "link": "https://arxiv.org/pdf/2608.20807v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Deep learning (EEG-Conformer) for EEG-based passive BCI affective state classification",
+      "llm_evidence_cn": "使用EEG-Conformer深度学习模型进行EEG情感状态分类（被动BCI）",
+      "llm_evidence": "使用EEG-Conformer深度学习模型进行EEG情感状态分类（被动BCI）",
+      "canonical_evidence": "使用EEG-Conformer深度学习模型进行EEG情感状态分类（被动BCI）",
+      "llm_tldr_en": "Proposes a dual-tower architecture combining EEG-Conformer and graph-based environmental encoder for EEG affective state classification, demonstrating deep learning for passive BCI.",
+      "llm_tldr_cn": "该论文提出结合EEG-Conformer与图神经网络的神经-地理空间模型，用于缺乏个体暴露数据时的EEG情感状态分类。双塔架构融合30通道EEG与OpenAQ、哨兵卫星等环境数据，探索环境先验作为辅助模态的可行性。研究表明在个体级环境数据缺失时，文献引导的环境上下文可提升EEG情感分类性能，为被动脑机接口中的EEG深度学习提供了新思路。",
+      "llm_tldr": "该论文提出结合EEG-Conformer与图神经网络的神经-地理空间模型，用于缺乏个体暴露数据时的EEG情感状态分类。双塔架构融合30通道EEG与OpenAQ、哨兵卫星等环境数据，探索环境先验作为辅助模态的可行性。研究表明在个体级环境数据缺失时，文献引导的环境上下文可提升EEG情感分类性能，为被动脑机接口中的EEG深度学习提供了新思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.19128v1",
+      "source": "arxiv",
+      "title": "Beyond Trial Averaging: Anchoring Neural and Visual Representations for Few-Repetition Brain-to-Image Retrieval",
+      "abstract": "Decoding visual information from brain signals probes neural representations and enables neuro-rehabilitation and dream decoding. Recent brain-to-image retrieval approaches have achieved promising performance, typically by averaging many (up to 80) neural trials per image, requiring repeated stimulus presentation that increases latency, cost, and user burden. When only one or a few repetitions are available, the retrieval accuracy drops sharply. This drop is commonly attributed to query noise because averaging suppresses noise and increases signal stability. However, we find a non-transitive alignment pattern: the low-repetition query signal and the image representation each align with the high-repetition center, but not directly with each other. This pattern shows that query noise is only part of the problem and that gallery placement also affects retrieval. We therefore propose a neural-anchor-based retrieval (NEAR) framework that treats the high-repetition center as an anchor and approaches it from both sides: a denoiser pulls the noisy query toward the true anchor, and a small network predicts each candidate's pseudo anchor from its image and pulls the image toward it. Across four datasets spanning EEG, MEG and fMRI, NEAR consistently improved retrieval in the few-repetition regime. On THINGS-EEG2, it improved 200-way Top-1 accuracy by 5.7 and 9.3 percentage points respectively, when averaging one and four repetitions. By anchoring neural and visual representations, NEAR reduces reliance on repeated acquisition and brings neural retrieval closer to real-world deployment.",
+      "authors": [
+        "Zhenyao Cui",
+        "Siyuan Kan",
+        "Dingkun Liu",
+        "Dongrui Wu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-19T17:23:30+00:00",
+      "link": "https://arxiv.org/pdf/2608.19128v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "brain signal decoding with deep learning, addresses few-repetition noise; transferable to EEG-based cognitive load estimation",
+      "llm_evidence_cn": "基于脑信号的深度学习解码，解决少重复样本噪声问题，可迁移至EEG认知负荷评估",
+      "llm_evidence": "基于脑信号的深度学习解码，解决少重复样本噪声问题，可迁移至EEG认知负荷评估",
+      "canonical_evidence": "基于脑信号的深度学习解码，解决少重复样本噪声问题，可迁移至EEG认知负荷评估",
+      "llm_tldr_en": "This work tackles few-repetition brain-to-image retrieval by anchoring neural and visual representations, overcoming the need for extensive trial averaging and improving decoding robustness from scarce brain signals.",
+      "llm_tldr_cn": "该研究针对脑机图像检索中需要平均大量神经试次的问题，提出了一种锚定神经表征与视觉表征的方法，使得在只有单次或少量重复脑信号时也能保持较高的解码精度。他们发现低重复查询信号与图像表征分别与高重复中心对齐，并利用这一非传递性对齐模式设计了解码策略。实验表明该方法显著减少了试次需求，降低了延迟和用户负担。这种思路可迁移到EEG认知负荷评估等样本稀缺的脑电解码任务中。",
+      "llm_tldr": "该研究针对脑机图像检索中需要平均大量神经试次的问题，提出了一种锚定神经表征与视觉表征的方法，使得在只有单次或少量重复脑信号时也能保持较高的解码精度。他们发现低重复查询信号与图像表征分别与高重复中心对齐，并利用这一非传递性对齐模式设计了解码策略。实验表明该方法显著减少了试次需求，降低了延迟和用户负担。这种思路可迁移到EEG认知负荷评估等样本稀缺的脑电解码任务中。",
+      "llm_tags": [
+        "query:pbci-load:composite"
+      ],
+      "matched_query_tag": "query:pbci-load:composite",
+      "matched_query_text": "Papers central to 基于脑电（EEG）的被动脑机接口（pBCI）的认知负荷评估及相关前沿算法（包括深度学习算法和脑电基础模型算法）论文检索, especially work that connects or combines: cognitive load assessment using deep learning; passive brain-computer interface for cognitive load assessment; deep learning methods for passive BCI; electroencephalography based cognitive load estimation; foundation model for EEG signal processing; passive brain-computer interface with EEG; find recent papers on passive brain computer interface based cognitive load assessment using deep learning; cutting edge algorithms for mental workload estimation with passive BCI; deep learning methods for passive brain computer interface cognitive load assessment using EEG; EEG foundation model for cognitive load estimation in passive BCI.",
+      "matched_requirement_id": "req-composite-pbci-load",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

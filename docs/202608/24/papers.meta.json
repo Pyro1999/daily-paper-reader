@@ -1,0 +1,39 @@
+{
+  "label": "2026-08-24",
+  "date": "2026-08-24",
+  "generated_at": "2026-08-24T20:57:31",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202608/24/2608.20807v1-neuro-geospatial-modelling-of-eeg-affective-states-using-literature-informed-environmental-context",
+      "section": "quick",
+      "title_en": "Neuro-Geospatial Modelling of EEG Affective States Using Literature-Informed Environmental Context",
+      "authors": "Utsav Poudel, Jagannath Aryal, Subramaniyaswamy Vairavasundaram",
+      "date": "2026-08-21",
+      "pdf": "https://arxiv.org/pdf/2608.20807v1",
+      "score": "7.0",
+      "evidence": "使用EEG-Conformer深度学习模型进行EEG情感状态分类（被动BCI）",
+      "tldr": "环境暴露与情感相关，但EEG和环境数据很少联合地理参考。本研究提出双塔架构，结合EEG-Conformer与图环境编码器，将文献先验作为辅助模态进行情感分类。在EAV基准上多模态模型准确率达76.2%，优于仅EEG的67.4%，但对照实验表明提升并非完全来自环境信息，且更换环境分布后性能下降。研究证明技术可行性，为未来移动EEG-环境联合研究提供框架。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Environmental exposures such as air pollution and greenness have been associated with affective and cognitive outcomes, but EEG and environmental datasets are rarely jointly georeferenced. We investigate whether literature-informed environmental priors can serve as an auxiliary geospatial modality for EEG-based affective-state classification when individual-level exposure data are unavailable. We combine 30-channel EEG from the EAV benchmark (42 participants, aged 20-30 years) with environmental representations derived from OpenAQ, Sentinel-2, Sentinel-5P, and OpenStreetMap data for Astana. A dual-tower architecture combines EEG-Conformer representations with a graph-based environmental encoder. Because the datasets are not co-registered, environmental context is treated as a literature-informed prior rather than measured exposure. Subject-level repeated splits, permutation and label-shuffling controls, dose-response reversal, and domain-shift experiments distinguish architecture-level gains from prior-dependent gains. The multimodal model achieves 76.2% accuracy versus 67.4% for EEG alone. Controls disrupting environmental-label structure retain part of this gain, indicating that the improvement is not attributable solely to environmental information. Replacing the Astana environmental distribution with an independently modeled Singapore distribution reduces accuracy to 72.8%. These findings demonstrate technical feasibility but do not establish an observed or causal exposure-affect association. The study provides a framework for future jointly collected mobile EEG-environment studies. Implementation: https://github.com/r11up/geo-cog",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/24/2608.19128v1-beyond-trial-averaging-anchoring-neural-and-visual-representations-for-few-repetition-brain-to-image-retrieval",
+      "section": "quick",
+      "title_en": "Beyond Trial Averaging: Anchoring Neural and Visual Representations for Few-Repetition Brain-to-Image Retrieval",
+      "authors": "Zhenyao Cui, Siyuan Kan, Dingkun Liu, Dongrui Wu",
+      "date": "2026-08-19",
+      "pdf": "https://arxiv.org/pdf/2608.19128v1",
+      "score": "6.0",
+      "evidence": "基于脑信号的深度学习解码，解决少重复样本噪声问题，可迁移至EEG认知负荷评估",
+      "tldr": "脑到图像检索常依赖多次重复刺激平均，少重复时精度骤降。现有观点归因于查询噪声，但发现存在非传递对齐模式，图像表征放置同样关键。为此提出NEAR框架，以高重复中心为锚，从查询和图像两侧同时逼近：去噪器拉近噪声查询，网络预测候选图像的伪锚并拉近。在EEG、MEG、fMRI四个数据集上，少重复检索一致提升，THINGS-EEG2的200-way Top-1提升5.7和9.3个百分点。该工作降低重复采集负担，推动神经检索实际部署。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Decoding visual information from brain signals probes neural representations and enables neuro-rehabilitation and dream decoding. Recent brain-to-image retrieval approaches have achieved promising performance, typically by averaging many (up to 80) neural trials per image, requiring repeated stimulus presentation that increases latency, cost, and user burden. When only one or a few repetitions are available, the retrieval accuracy drops sharply. This drop is commonly attributed to query noise because averaging suppresses noise and increases signal stability. However, we find a non-transitive alignment pattern: the low-repetition query signal and the image representation each align with the high-repetition center, but not directly with each other. This pattern shows that query noise is only part of the problem and that gallery placement also affects retrieval. We therefore propose a neural-anchor-based retrieval (NEAR) framework that treats the high-repetition center as an anchor and approaches it from both sides: a denoiser pulls the noisy query toward the true anchor, and a small network predicts each candidate's pseudo anchor from its image and pulls the image toward it. Across four datasets spanning EEG, MEG and fMRI, NEAR consistently improved retrieval in the few-repetition regime. On THINGS-EEG2, it improved 200-way Top-1 accuracy by 5.7 and 9.3 percentage points respectively, when averaging one and four repetitions. By anchoring neural and visual representations, NEAR reduces reliance on repeated acquisition and brings neural retrieval closer to real-world deployment.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

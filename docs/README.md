@@ -6,26 +6,27 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-08-23
-- 运行时间：2026-08-23 20:37:11 UTC
+- 最新运行日期：2026-08-24
+- 运行时间：2026-08-24 20:57:26 UTC
 - 运行状态：成功
 - 本次总论文数：2
-- 精读区：1
-- 速读区：1
+- 精读区：0
+- 速读区：2
 
 ### 今日简报（AI）
-今日精读1篇高价值论文，聚焦CNN架构的EEG听觉注意解码ASIC芯片；另速读1篇面向高风险环境的EEG机器学习OOD检测。最值得关注的是资源高效ASIC方案，在听觉注意解码方向达到9.0分。建议后续可围绕该芯片的能效比与实时性作进一步追踪。
-- 详情：[/202608/23/README](/202608/23/README)
+今日速读2篇论文，聚焦脑电情感建模与脑-图像检索，暂无精读。最值得关注的是将文学环境背景融入EEG情感状态建模（7.0分），其次是非平均试次下的脑信号图像检索方法（6.0分）。建议下一步精读高分论文，并尝试结合多模态上下文提升脑电解码的实用性与稳定性。
+- 详情：[/202608/24/README](/202608/24/README)
 
 ### 精读区论文标签
-1. [A Resource-Efficient CNN-Based EEG Auditory Attention Decoding ASIC](/202608/23/2608.20198v1-a-resource-efficient-cnn-based-eeg-auditory-attention-decoding-asic)  
-   标签：评分：9.0/10、query:pbci-load
-   evidence：用于被动BCI（听觉注意解码）的深度学习方法，采用量化CNN与相关分类器
+- 本次无精读推荐。
 
 ### 速读区论文标签
-1. [OOD Detection for EEG-based Machine Learning in High-Risk Environments](/202608/23/2608.17620v1-ood-detection-for-eeg-based-machine-learning-in-high-risk-environments)  
+1. [Neuro-Geospatial Modelling of EEG Affective States Using Literature-Informed Environmental Context](/202608/24/2608.20807v1-neuro-geospatial-modelling-of-eeg-affective-states-using-literature-informed-environmental-context)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：使用EEG-Conformer深度学习模型进行EEG情感状态分类（被动BCI）
+2. [Beyond Trial Averaging: Anchoring Neural and Visual Representations for Few-Repetition Brain-to-Image Retrieval](/202608/24/2608.19128v1-beyond-trial-averaging-anchoring-neural-and-visual-representations-for-few-repetition-brain-to-image-retrieval)  
    标签：评分：6.0/10、query:pbci-load
-   evidence：脑电机器学习OOD检测基准，可提升认知负荷估计等应用的可靠性
+   evidence：基于脑信号的深度学习解码，解决少重复样本噪声问题，可迁移至EEG认知负荷评估
 
 
 <div class="dpr-home-promo-card">
