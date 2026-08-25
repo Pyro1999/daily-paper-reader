@@ -1,0 +1,107 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-25T19:50:57.971627+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 1,
+    "quick_skim_target": 13,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2608.22042v1",
+      "source": "arxiv",
+      "title": "ReMAP: Self-supervised learning to unveil brain representations and vulnerability",
+      "abstract": "General anesthesia offers a rare opportunity to observe the human brain under a standardized, controlled perturbation. Yet intraoperative electroencephalography (EEG) is almost always reduced to a single proprietary depth index, collapsing a rich trajectory into one number and discarding how a brain moves between states. Here we ask whether the geometry of that trajectory, not merely the depth it reaches, carries clinically meaningful information. Using similarity-based self-supervised learning on raw, two-electrode frontal EEG, with no labels, we place each recording within a low-dimensional space in which anesthetic depth becomes one readable axis while the shape of a patient's path encodes additional structure. We validate the representation across two cohorts and two acquisition systems totaling more than 1,000 patients. Depth of anesthesia is predicted accurately (BIS mean absolute error = 3.2, R2 = 0.82), and in the sparse-montage setting our compact ( 68k parameter) model remains competitive with EEG foundation models orders of magnitude larger (4M-157M parameters), indicating that matching the representation to the recording dominates raw scale. The learned space organizes age along its own gradient, independent from depth, without supervision. The same space also aligns with interpretable anesthetic signatures like frontal alpha, slow-delta, and burst suppression, linking this data-driven representation to established neurophysiology. On an independent cohort with longitudinal follow-up, the geometry of the early trajectory separates 30- month cognitive and mortality outcomes complementary to age (AUROC 0.86). These results suggest that the path a brain traces through anesthesia is a label-efficient correlate of latent vulnerability, motivating prospective validation.",
+      "authors": [
+        "Jade Perdereau",
+        "Virginie Loison",
+        "Kanssa El Ayeb",
+        "Louis Gervais",
+        "Melvin Berto Strouc",
+        "Fabrice Vallée",
+        "Thomas Moreau",
+        "Jérôme Cartailler"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-22T17:09:49+00:00",
+      "link": "https://arxiv.org/pdf/2608.22042v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Self-supervised EEG representation learning for brain state analysis",
+      "llm_evidence_cn": "脑电自监督表征学习用于脑状态分析",
+      "llm_evidence": "脑电自监督表征学习用于脑状态分析",
+      "canonical_evidence": "脑电自监督表征学习用于脑状态分析",
+      "llm_tldr_en": "ReMAP uses similarity-based self-supervised learning on raw two-electrode frontal EEG to build low-dimensional brain representations, showing that trajectory geometry captures clinical structure beyond a single anesthetic depth index.",
+      "llm_tldr_cn": "术中脑电通常被压缩为单一麻醉深度指数，丢失了脑状态轨迹的丰富信息。本文用基于相似性的自监督学习在无标签原始额叶双导联脑电上训练表征，使麻醉深度成为低维空间中的一个可读轴，同时轨迹形状编码额外结构。该工作为脑电基础模型与认知状态评估提供了通用自监督框架。",
+      "llm_tldr": "术中脑电通常被压缩为单一麻醉深度指数，丢失了脑状态轨迹的丰富信息。本文用基于相似性的自监督学习在无标签原始额叶双导联脑电上训练表征，使麻醉深度成为低维空间中的一个可读轴，同时轨迹形状编码额外结构。该工作为脑电基础模型与认知状态评估提供了通用自监督框架。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.22420v1",
+      "source": "arxiv",
+      "title": "Cross-Subject Generalization in Decoding Perceived Speech from Non-Invasive Brain Recordings",
+      "abstract": "Decoding perceived speech from non-invasive brain recordings has garnered significant attention in recent years due to its wide range of potential applications. However, existing methods face considerable challenges in cross-subject decoding, primarily due to limited generalizability and the absence of explicit mechanisms for extracting subject-consistent information. These limitations result in high training costs and suboptimal decoding performance. To address these challenges, we propose an innovative Cross-Subject Perceived Speech Decoding (CPSD) framework, which comprises two training stages: source model pre-training and personal specialization. In the source model pre-training stage, contrastive learning is employed to capture shared representations across multiple source subjects. Subsequently, personal specialization initializes the model for the target subject by extracting consistent components from the source model and fine-tuning it using target subject data. Additionally, we introduce the Positional Encoding-based Spatial Attention (PESA) module, which remaps MEG/EEG data into a standardized reference space, thereby enhancing cross-subject consistency and facilitating model training. We evaluate the proposed CPSD framework on three perceived speech neural datasets encompassing different modalities and languages. The results demonstrate that our framework outperforms baseline methods by more than 6.8%, 15.4%, and 15.8% in Top-10 accuracy on the Armeni 2022, PKUEEG 2025, and Broderick 2018 datasets, respectively. Further analyses confirm the effectiveness, efficiency, and robustness of the proposed approach.",
+      "authors": [
+        "Aoke Zhang",
+        "Bo Wang",
+        "Xihong Wu",
+        "Heping Cheng",
+        "Jing Chen"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.AI"
+      ],
+      "published": "2026-08-23T13:50:32+00:00",
+      "link": "https://arxiv.org/pdf/2608.22420v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "cross-subject generalization method for EEG speech decoding, transferable to cognitive load",
+      "llm_evidence_cn": "跨被试EEG语音解码的泛化方法，可迁移到认知负荷评估",
+      "llm_evidence": "跨被试EEG语音解码的泛化方法，可迁移到认知负荷评估",
+      "canonical_evidence": "跨被试EEG语音解码的泛化方法，可迁移到认知负荷评估",
+      "llm_tldr_en": "Proposes a cross-subject perceived speech decoding framework with source pretraining and personal specialization to improve generalization across subjects.",
+      "llm_tldr_cn": "针对跨被试非侵入性脑电语音解码泛化性差和训练成本高的问题，提出CPSD框架，包括源模型预训练和个人特化两个阶段。预训练阶段用对比学习提取被试一致的特征，特化阶段适配个体，从而在不增加额外校准成本的情况下提升新被试上的解码性能。该方法为脑电信号的跨被试深度学习提供了一种通用范式。",
+      "llm_tldr": "针对跨被试非侵入性脑电语音解码泛化性差和训练成本高的问题，提出CPSD框架，包括源模型预训练和个人特化两个阶段。预训练阶段用对比学习提取被试一致的特征，特化阶段适配个体，从而在不增加额外校准成本的情况下提升新被试上的解码性能。该方法为脑电信号的跨被试深度学习提供了一种通用范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
