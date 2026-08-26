@@ -6,26 +6,29 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-08-25
-- 运行时间：2026-08-25 19:52:45 UTC
+- 最新运行日期：2026-08-26
+- 运行时间：2026-08-26 22:13:29 UTC
 - 运行状态：成功
-- 本次总论文数：2
-- 精读区：1
+- 本次总论文数：3
+- 精读区：2
 - 速读区：1
 
 ### 今日简报（AI）
-今日精读1篇、速读1篇，聚焦脑表征与语音解码。最值得看的是精读论文《ReMAP》，其用自监督学习揭示大脑表征及脆弱性，评分8.0/10。若时间有限，建议优先精读该文，再顺带浏览跨被试语音解码的泛化研究。
-- 详情：[/202608/25/README](/202608/25/README)
+今日聚焦EEG基础模型：精读2篇高分论文，速读1篇可解释诊断研究。最值得关注的是满分论文提出的不变性预训练方法，可统一处理信号级、脑状态与脑健康任务；另一篇9分工作则探讨固定预算下的高效自适应。建议普通读者优先追踪这两个基础模型方向，后续可结合速读中的可解释证据瓶颈方法增强模型可信度。
+- 详情：[/202608/26/README](/202608/26/README)
 
 ### 精读区论文标签
-1. [ReMAP: Self-supervised learning to unveil brain representations and vulnerability](/202608/25/2608.22042v1-remap-self-supervised-learning-to-unveil-brain-representations-and-vulnerability)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：脑电自监督表征学习用于脑状态分析
+1. [Taming foundation model with invariance-oriented pre-training for broad-spectrum EEG analysis across signal-level, brain-state, and brain-health tasks](/202608/26/2608.24597v1-taming-foundation-model-with-invariance-oriented-pre-training-for-broad-spectrum-eeg-analysis-across-signal-level-brain-state-and-brain-health-tasks)  
+   标签：评分：10.0/10、query:pbci-load
+   evidence：基于不变性预训练的EEG基础模型，用于广谱EEG分析
+2. [Parameter-Efficient Self-Supervised Adaptation for EEG-FM under Fixed Computational Budgets](/202608/26/2608.24727v1-parameter-efficient-self-supervised-adaptation-for-eeg-fm-under-fixed-computational-budgets)  
+   标签：评分：9.0/10、query:pbci-load
+   evidence：EEG基础模型的参数高效自监督适应方法
 
 ### 速读区论文标签
-1. [Cross-Subject Generalization in Decoding Perceived Speech from Non-Invasive Brain Recordings](/202608/25/2608.22420v1-cross-subject-generalization-in-decoding-perceived-speech-from-non-invasive-brain-recordings)  
-   标签：评分：6.0/10、query:pbci-load
-   evidence：跨被试EEG语音解码的泛化方法，可迁移到认知负荷评估
+1. [Predicting Only from Selected Evidence: A Tempered Product-of-Experts Bottleneck for Auditable EEG Diagnosis](/202608/26/2608.24377v1-predicting-only-from-selected-evidence-a-tempered-product-of-experts-bottleneck-for-auditable-eeg-diagnosis)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：面向预训练EEG骨干网络的可审计证据瓶颈方法，与EEG基础模型适配相关
 
 
 <div class="dpr-home-promo-card">
