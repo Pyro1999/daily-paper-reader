@@ -1,0 +1,39 @@
+{
+  "label": "2026-08-28",
+  "date": "2026-08-28",
+  "generated_at": "2026-08-28T03:58:31",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202608/28/2608.22722v1-temporal-filling-in-reduces-attentional-fluctuations-in-sustained-visual-attention",
+      "section": "quick",
+      "title_en": "Temporal filling-in reduces attentional fluctuations in sustained visual attention",
+      "authors": "Yingyu Huang, Liying Zhan, Xiang Wu",
+      "date": "2026-08-24",
+      "pdf": "https://arxiv.org/pdf/2608.22722v1",
+      "score": "6.0",
+      "evidence": "利用EEG稳态诱发电位追踪时间填充任务中的注意力波动",
+      "tldr": "持续视觉注意中，注意状态在时间上呈现涨落，限制了个体维持任务目标的能力。temporal filling-in（时间填充）理论提出，填充目标刺激间的空白间隔可减少这种注意波动，但一直缺乏直接的行为证据。本研究将视觉时间任务与稳态视觉诱发电位（SSEP）记录相结合，实时追踪节律视觉序列所诱发的周期化注意波动，发现时间填充在改善持续注意行为的同时，显著减弱了SSEP振幅。结果从神经层面表明，temporal filling-in通过降低注意波动来稳定长时间视觉注意，为理解持续注意维持机制提供了关键证据。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Our capacity to maintain focus on task-relevant goals over time is constrained because attentional states wax and wane moment to moment. One theoretical account posits that temporal filling-in - filling temporal blank intervals between target stimuli - reduces attentional fluctuations to enhance sustained attention. This proposal, however, lacks direct empirical validation given the difficulty of tracking attentional fluctuations via behavioral measurements. To resolve this gap, we combined a visual timing task that assessed the behavioral benefit of temporal filling-in with electroencephalographic recordings of visual steady-state evoked potentials (SSEPs), which tracked neural responses associated with periodic attentional fluctuations entrained to the rhythmic visual sequence. Behavioral improvements in sustained attention via temporal filling-in were associated with reduced attentional fluctuations, as indexed by attenuated visual SSEP amplitudes. The findings highlight a fundamental neural mechanism whereby temporal filling-in reduces attentional fluctuations to stabilize sustained visual attention over extended periods.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/28/2608.23936v1-mnemodyn-learning-resting-state-dynamics-from-40k-fmri-sequences",
+      "section": "quick",
+      "title_en": "MnemoDyn: Learning Resting State Dynamics from 40K FMRI sequences",
+      "authors": "Sourav Pal, Viet Luong, Hoseok Lee, Tingting Dan, Guorong Wu, Richard Davidson, Won Hwa Kim, Vikas Singh",
+      "date": "2026-08-25",
+      "pdf": "https://arxiv.org/pdf/2608.23936v1",
+      "score": "6.0",
+      "evidence": "大规模预训练的脑信号动力学模型，与EEG基础模型高度相关",
+      "tldr": "静息态功能磁共振成像建模通常依赖变换器结构，训练成本高且跨数据集泛化不足。本文提出MnemoDyn，基于动力系统的多分辨率时间建模，在大规模公共与授权数据集上预训练约四万条序列。该方法计算高效，重建质量稳定优于现有最佳变换器方法，并在小样本研究中保持出色性能。这项工作为神经影像的大规模预训练和下游任务应用提供了高效、可复现的建模方案。",
+      "tags": "query:pbci-load",
+      "abstract_en": "We present a dynamical-systems based model for resting-state functional magnetic resonance imaging (rs-fMRI), trained on a dataset of roughly 40K rs-fMRI sequences covering a wide variety of public and available-by-permission datasets. While most existing proposals use transformer backbones, we utilize multi-resolution temporal modeling of the dynamics across parcellated brain regions. We show that MnemoDyn is compute efficient and generalizes very well across diverse populations and scanning protocols. When benchmarked against current state-of-the-art transformer-based approaches, MnemoDyn consistently delivers superior reconstruction quality. Overall, we find that with such large-scale pre-training on (non-proprietary) rs-fMRI datasets, we get a highly performant model for various downstream tasks. Our results also provide evidence of the efficacy of the model on small sample size studies which has implications for neuroimaging studies at large where resting state fMRI is a commonly acquired imaging modality.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

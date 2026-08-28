@@ -1,0 +1,104 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-28T03:56:21.963837+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 2,
+    "quick_skim_target": 13,
+    "quick_selected": 2
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2608.22722v1",
+      "source": "arxiv",
+      "title": "Temporal filling-in reduces attentional fluctuations in sustained visual attention",
+      "abstract": "Our capacity to maintain focus on task-relevant goals over time is constrained because attentional states wax and wane moment to moment. One theoretical account posits that temporal filling-in - filling temporal blank intervals between target stimuli - reduces attentional fluctuations to enhance sustained attention. This proposal, however, lacks direct empirical validation given the difficulty of tracking attentional fluctuations via behavioral measurements. To resolve this gap, we combined a visual timing task that assessed the behavioral benefit of temporal filling-in with electroencephalographic recordings of visual steady-state evoked potentials (SSEPs), which tracked neural responses associated with periodic attentional fluctuations entrained to the rhythmic visual sequence. Behavioral improvements in sustained attention via temporal filling-in were associated with reduced attentional fluctuations, as indexed by attenuated visual SSEP amplitudes. The findings highlight a fundamental neural mechanism whereby temporal filling-in reduces attentional fluctuations to stabilize sustained visual attention over extended periods.",
+      "authors": [
+        "Yingyu Huang",
+        "Liying Zhan",
+        "Xiang Wu"
+      ],
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC"
+      ],
+      "published": "2026-08-24T02:20:23+00:00",
+      "link": "https://arxiv.org/pdf/2608.22722v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "uses EEG steady-state evoked potentials to track attentional fluctuations in a temporal filling-in task",
+      "llm_evidence_cn": "利用EEG稳态诱发电位追踪时间填充任务中的注意力波动",
+      "llm_evidence": "利用EEG稳态诱发电位追踪时间填充任务中的注意力波动",
+      "canonical_evidence": "利用EEG稳态诱发电位追踪时间填充任务中的注意力波动",
+      "llm_tldr_en": "Combines a visual timing task with SSEP recordings to show that temporal filling-in reduces attentional fluctuations in sustained attention, providing an EEG-based index of cognitive states.",
+      "llm_tldr_cn": "持续注意任务中注意力状态随时波动，但难以直接追踪。本文将时间填充范式与脑电稳态诱发电位（SSEP）结合，通过周期性SSEP跟踪注意力波动。结果显示时间填充减少了注意力波动，表明SSEP可作为反映认知状态的连续监测指标。这一方法可推广到认知负荷等心理状态的被动BCI评估。",
+      "llm_tldr": "持续注意任务中注意力状态随时波动，但难以直接追踪。本文将时间填充范式与脑电稳态诱发电位（SSEP）结合，通过周期性SSEP跟踪注意力波动。结果显示时间填充减少了注意力波动，表明SSEP可作为反映认知状态的连续监测指标。这一方法可推广到认知负荷等心理状态的被动BCI评估。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.23936v1",
+      "source": "arxiv",
+      "title": "MnemoDyn: Learning Resting State Dynamics from 40K FMRI sequences",
+      "abstract": "We present a dynamical-systems based model for resting-state functional magnetic resonance imaging (rs-fMRI), trained on a dataset of roughly 40K rs-fMRI sequences covering a wide variety of public and available-by-permission datasets. While most existing proposals use transformer backbones, we utilize multi-resolution temporal modeling of the dynamics across parcellated brain regions. We show that MnemoDyn is compute efficient and generalizes very well across diverse populations and scanning protocols. When benchmarked against current state-of-the-art transformer-based approaches, MnemoDyn consistently delivers superior reconstruction quality. Overall, we find that with such large-scale pre-training on (non-proprietary) rs-fMRI datasets, we get a highly performant model for various downstream tasks. Our results also provide evidence of the efficacy of the model on small sample size studies which has implications for neuroimaging studies at large where resting state fMRI is a commonly acquired imaging modality.",
+      "authors": [
+        "Sourav Pal",
+        "Viet Luong",
+        "Hoseok Lee",
+        "Tingting Dan",
+        "Guorong Wu",
+        "Richard Davidson",
+        "Won Hwa Kim",
+        "Vikas Singh"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-25T00:52:46+00:00",
+      "link": "https://arxiv.org/pdf/2608.23936v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "large-scale pre-trained dynamical model for brain signals, relevant to EEG foundation model",
+      "llm_evidence_cn": "大规模预训练的脑信号动力学模型，与EEG基础模型高度相关",
+      "llm_evidence": "大规模预训练的脑信号动力学模型，与EEG基础模型高度相关",
+      "canonical_evidence": "大规模预训练的脑信号动力学模型，与EEG基础模型高度相关",
+      "llm_tldr_en": "A compute-efficient dynamical-systems model pre-trained on 40K rs-fMRI sequences, outperforming transformer baselines in reconstruction and generalization.",
+      "llm_tldr_cn": "针对基于Transformer的脑影像基础模型计算成本高、跨人群泛化不足的问题，本文提出MnemoDyn，利用多分辨率时间建模学习静息态fMRI脑区动态，并在约4万条数据上大规模预训练。模型在多种人群和扫描协议上均取得优于当前最优Transformer方法的重建质量，且计算效率更高。该工作为脑信号基础模型的构建提供了新范式，对EEG基础模型研究具有可迁移的方法价值。",
+      "llm_tldr": "针对基于Transformer的脑影像基础模型计算成本高、跨人群泛化不足的问题，本文提出MnemoDyn，利用多分辨率时间建模学习静息态fMRI脑区动态，并在约4万条数据上大规模预训练。模型在多种人群和扫描协议上均取得优于当前最优Transformer方法的重建质量，且计算效率更高。该工作为脑信号基础模型的构建提供了新范式，对EEG基础模型研究具有可迁移的方法价值。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
