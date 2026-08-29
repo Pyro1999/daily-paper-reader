@@ -1,0 +1,24 @@
+{
+  "label": "2026-08-29",
+  "date": "2026-08-29",
+  "generated_at": "2026-08-29T22:54:22",
+  "count": 1,
+  "papers": [
+    {
+      "paper_id": "202608/29/2608.27332v1-idsd-iterative-deep-learning-based-signal-decomposition",
+      "section": "quick",
+      "title_en": "IDSD: Iterative Deep-Learning-Based Signal Decomposition",
+      "authors": "Iris Huijben, Joël Karel, Ralf Peeters, Pietro Bonizzi",
+      "date": "2026-08-27",
+      "pdf": "https://arxiv.org/pdf/2608.27332v1",
+      "score": "6.0",
+      "evidence": "基于深度学习的迭代信号分解方法可迁移用于EEG伪迹去除",
+      "tldr": "单变量信号分解是病态问题，传统方法如变分模态分解依赖窄带先验且需预知分量数，限制实际应用。本文提出迭代深度学习信号分解（IDSD），用神经网络学习数据驱动先验替代固定先验，通过迭代自适应提取多种类型分量，不限制分量带宽。在合成数据、潮汐波和生理信号数据集上，IDSD均优于现有方法。该框架无需窄带假设，显著提升了分解的灵活性与通用性，为复杂信号分析提供新方案。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "Data-driven signal decomposition methods decompose a signal into its underlying components in a flexible and adaptive way, taking into account the signal characteristics. Here we focus on univariate signals, whose decomposition is ill-posed. Classical univariate approaches -- like variational mode decomposition -- constrain the solution space (e.g. through narrowband priors), and often require the number of components to be known in advance. These assumption, however, limit the algorithm's usage in certain real-life applications. Instead, we exploit the flexibility of neural networks to replace fixed (narrowband) priors with data-driven priors. Our model, called Iterative Deep-Learning-Based Signal Decomposition (IDSD), iteratively extracts an adaptive number of various types of components from a signal, with no restrictions on the bandwidth of a component. We show superior performance of IDSD both in a controlled setup with synthetic data, and on two real datasets concerning tidal waves and physiological measurements.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
