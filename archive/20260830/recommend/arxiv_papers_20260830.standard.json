@@ -1,0 +1,181 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-30T22:38:29.304477+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 4,
+    "quick_skim_target": 13,
+    "quick_selected": 4
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2608.23361v1",
+      "source": "arxiv",
+      "title": "Multisensor Measurement of Train Driver Mental Fatigue: From Simulation to Reality",
+      "abstract": "Increasing automation in rail transport shifts the train driver's role from active control to prolonged supervisory monitoring. This creates conditions for mental fatigue (MF) and reduced vigilance. Despite the safety relevance of this issue, evidence on the feasibility and robustness of physiological indicators of MF under operational rail conditions remains limited. Most prior work relies on simulators or lab studies. The present study investigated multiple subjective, physiological, and behavioral indicators of MF in professional train drivers across two complementary settings: a high-fidelity train simulator (n=14) and a real-world rail environment (n=6). To our knowledge, this is the first study to deploy a full multisensor battery under actual train operating conditions. In both settings, a standardized protocol was used comprising a baseline drive, a one-hour auditory n-back task as an MF induction procedure, and a second drive. Heart rate variability and breathing rate showed consistent and theoretically expected changes across both environments, suggesting reduced physiological arousal following the fatigue induction task. In contrast, EEG-based frontal theta power and parietal alpha and beta power, electrodermal activity, blink duration, and behavioral indicators did not show clear mental fatigue-related patterns. Real-world data collection revealed substantial technical challenges related to vibration, sensor connectivity, and concurrent high-frequency data acquisition. These findings suggest that autonomic indicators, particularly HRV and breathing rate, represent the most promising and ecologically robust measures for operational fatigue monitoring in train drivers. However, neurophysiological measures require further validation under realistic conditions before deployment in driver monitoring systems, and larger samples are needed to confirm these preliminary patterns.",
+      "authors": [
+        "Esther Bosch",
+        "Rebecca Kruschka",
+        "David Schackmann",
+        "Stephanie Hoyer",
+        "Wolfgang Kilian",
+        "Stefan Schwanitz",
+        "Anneke Hamann"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-08-24T15:11:15+00:00",
+      "link": "https://arxiv.org/pdf/2608.23361v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Multisensor physiological and behavioral measurement of train driver mental fatigue, transferable to cognitive workload measurement in operators",
+      "llm_evidence_cn": "通过多传感器测量列车司机心理疲劳，可迁移至操作员认知负荷测量",
+      "llm_evidence": "通过多传感器测量列车司机心理疲劳，可迁移至操作员认知负荷测量",
+      "canonical_evidence": "通过多传感器测量列车司机心理疲劳，可迁移至操作员认知负荷测量",
+      "llm_tldr_en": "Rail automation creates mental fatigue in train drivers. This study measures subjective, physiological, and behavioral indicators with a multisensor battery in a simulator (n=14) and real rail (n=6), demonstrating feasible and robust monitoring that transfers to cognitive workload assessment.",
+      "llm_tldr_cn": "列车自动化使司机工作转变为长时间监督监控，容易诱发心理疲劳和警觉下降。现有研究多在实验室或仿真环境进行，缺少真实运营条件下的证据。该研究招募14名职业司机在高铁仿真器、6名司机在真实线路场景中同步采集主观、生理和行为多模态指标，评估心理疲劳监测的可行性与鲁棒性。结果显示多传感器组合在真实环境中可行且与仿真结果存在差异，为铁路安全监控及类似操作员认知负荷评估提供了可迁移方法。",
+      "llm_tldr": "列车自动化使司机工作转变为长时间监督监控，容易诱发心理疲劳和警觉下降。现有研究多在实验室或仿真环境进行，缺少真实运营条件下的证据。该研究招募14名职业司机在高铁仿真器、6名司机在真实线路场景中同步采集主观、生理和行为多模态指标，评估心理疲劳监测的可行性与鲁棒性。结果显示多传感器组合在真实环境中可行且与仿真结果存在差异，为铁路安全监控及类似操作员认知负荷评估提供了可迁移方法。",
+      "llm_tags": [
+        "query:bci-pilot"
+      ],
+      "matched_query_tag": "query:bci-pilot",
+      "matched_query_text": "cognitive workload measurement BCI pilots",
+      "matched_requirement_id": "req-13",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.24443v1",
+      "source": "arxiv",
+      "title": "Time-Window Noise2Noise: A Self-Supervised Method for Blind Denoising of Vibration and Impact Signals in Mechanical Systems",
+      "abstract": "Vibration and impact measurements in mechanical systems are invariably corrupted by noise, which degrades every quantity derived from them, such as modal parameters and contact forces. Classical filters attenuate noise only when its statistics are known a priori and often fail at very low signal-to-noise ratio (SNR) or under spectrally coloured noise. This work presents Time-Window Noise2Noise (TWN2N), a self-supervised method for blind denoising of signals produced by deterministic mechanical systems. The method requires neither a clean reference signal nor paired noisy observations, nor any prior characterization of the noise: by reconstructing each time instant from its temporal neighbourhood while masking the instant itself, a compact autoencoder is forced to learn the underlying dynamics rather than the noise. The formulation is general for any deterministic dynamical system, is computationally lightweight (a single feed-forward pass per sample at inference), and is assessed on two benchmarks with exactly known ground truth: the impulse response of a linear 3-degree-of-freedom system and a nonlinear Hunt-Crossley impact. Across white, pink, brown and quantization noise, and over repeated realizations, TWN2N yields statistically significant SNR gains (p < 0.001) without any prior noise information, and it is benchmarked against optimally-tuned Savitzky-Golay and wavelet (VisuShrink) filters. The benefit propagates to identification: at 15 dB input SNR, modal parameters that are unidentifiable from the raw signal are recovered within 4% of their reference values after denoising.",
+      "authors": [
+        "Vinicius S. Vianna",
+        "Tiago H. Machado",
+        "Ilmar F. Santos"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-08-25T11:57:30+00:00",
+      "link": "https://arxiv.org/pdf/2608.24443v1",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Self-supervised blind denoising robust to colored noise; transferable methodology for EEG noise suppression",
+      "llm_evidence_cn": "自监督盲去噪，对彩色噪声鲁棒；可迁移至脑电干扰抑制",
+      "llm_evidence": "自监督盲去噪，对彩色噪声鲁棒；可迁移至脑电干扰抑制",
+      "canonical_evidence": "自监督盲去噪，对彩色噪声鲁棒；可迁移至脑电干扰抑制",
+      "llm_tldr_en": "TWN2N is a self-supervised blind denoising method that reconstructs each time point from its temporal neighbourhood without clean references or noise priors, enabling robust denoising at low SNR.",
+      "llm_tldr_cn": "针对机械振动与冲击信号在低信噪比和彩色噪声下的去噪难题，提出时间窗Noise2Noise（TWN2N）自监督盲去噪方法。该方法无需干净参考、成对噪声观测或噪声先验，通过利用时间邻域重建每个时刻以抑制噪声。结果表明其在复杂噪声条件下仍能有效恢复信号，为包括脑电在内的非平稳信号鲁棒去噪提供了可借鉴的通用方案。",
+      "llm_tldr": "针对机械振动与冲击信号在低信噪比和彩色噪声下的去噪难题，提出时间窗Noise2Noise（TWN2N）自监督盲去噪方法。该方法无需干净参考、成对噪声观测或噪声先验，通过利用时间邻域重建每个时刻以抑制噪声。结果表明其在复杂噪声条件下仍能有效恢复信号，为包括脑电在内的非平稳信号鲁棒去噪提供了可借鉴的通用方案。",
+      "llm_tags": [
+        "query:robust-eeg:composite"
+      ],
+      "matched_query_tag": "query:robust-eeg:composite",
+      "matched_query_text": "Papers central to 请帮我查找有关脑机接口（EEG）鲁棒抗扰去噪的论文, especially work that connects or combines: eeg signal denoising techniques; electroencephalogram noise removal algorithms; eeg artifact removal approaches; robust eeg processing framework; eeg interference suppression methods; eeg signal enhancement for bci; Find papers on robust denoising methods for EEG signals in brain computer interfaces; Search for EEG artifact removal techniques that are robust against interference; Retrieve articles about noise suppression in electroencephalogram for BCI applications.",
+      "matched_requirement_id": "req-composite-robust-eeg",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.25088v1",
+      "source": "arxiv",
+      "title": "The Von-Neumann State-Space Transformer for neural decoding",
+      "abstract": "Cortical computation is strikingly low-dimensional: a handful of latent variables, carried in a neural population's activity, steer the higher-dimensional responses of individual neurons. Our aim is sample efficiency-models that decode well from limited data and at small parameter budgets. In a standard Transformer layer, the feed-forward block applies the same operator to every token. We suggest a von-Neumann inspired hypothesis of efficient computation as an alternative for neural decoding: a controller decodes an instruction and then executes a token-specific operator; the usual realization-a soft mixture of experts-only blends their outputs, not operators. We introduce a von-Neumann State-Space Transformer (VN-SST), a memory-augmented Transformer whose feed-forward block is a low-rank instruction bank: a shared base operator plus a small set of learned low-rank instructions, from which a per-token code synthesizes the weight matrix actually used at that token. The code is read from a low- dimensional projection of a carried state-space memory, so a slow latent trajectory acts as an instruction pointer-mirroring how low-dimensional dynamics may route cortical computation. On three motor-cortex neural-decoding benchmarks, VN-SST is far more data-efficient than a modern Transformer, each jointly predicting spikes and decoding behavior. This model wins by a wide margin on the scarcest benchmark, leads on the other two, and turns longer context into rising rather than falling accuracy. We evaluated that the network compresses a large instruction bank to a few bits per token, so program capacity acts as a control channel, not an accuracy lever. The same model is also more parameter-efficient on two small text benchmarks used for language modeling (LLMs), suggesting a generic mechanism.",
+      "authors": [
+        "Morteza Sarafyazd"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "q-bio.NC"
+      ],
+      "published": "2026-08-25T19:28:33+00:00",
+      "link": "https://arxiv.org/pdf/2608.25088v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Novel transformer architecture for neural decoding with sample efficiency; methodological bridge for EEG-based deep learning models.",
+      "llm_evidence_cn": "新的状态空间Transformer神经解码架构，具有样本高效性，可为EEG深度学习模型提供方法桥梁。",
+      "llm_evidence": "新的状态空间Transformer神经解码架构，具有样本高效性，可为EEG深度学习模型提供方法桥梁。",
+      "canonical_evidence": "新的状态空间Transformer神经解码架构，具有样本高效性，可为EEG深度学习模型提供方法桥梁。",
+      "llm_tldr_en": "Introduces VN-SST, a memory-augmented transformer with instruction-driven token-specific operators, to decode neural activity efficiently from limited data and small parameter budgets.",
+      "llm_tldr_cn": "该论文提出冯·诺依曼状态空间Transformer（VN-SST），通过控制器解码指令并执行与token相关的算子，使神经解码在有限数据和较小参数预算下依然高效。受低维皮层计算的启发，该架构可提升样本效率，对EEG认知负荷评估中数据稀缺场景具有潜在适用价值，实验表明其在解码性能和参数效率之间取得了良好权衡，也为被动脑机接口的深度学习网络设计提供了新思路，为未来脑电基础模型构建提供重要参考。",
+      "llm_tldr": "该论文提出冯·诺依曼状态空间Transformer（VN-SST），通过控制器解码指令并执行与token相关的算子，使神经解码在有限数据和较小参数预算下依然高效。受低维皮层计算的启发，该架构可提升样本效率，对EEG认知负荷评估中数据稀缺场景具有潜在适用价值，实验表明其在解码性能和参数效率之间取得了良好权衡，也为被动脑机接口的深度学习网络设计提供了新思路，为未来脑电基础模型构建提供重要参考。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.26285v1",
+      "source": "arxiv",
+      "title": "Time-Varying Spiky Wave-Shape Functions for Non-Stationary Signal Decomposition",
+      "abstract": "We propose a novel framework for decomposing nonstationary spiky signals. Unlike classical adaptive non-harmonic models, which represent signals as amplitude- and frequency-modulated (AM--FM) oscillations, the proposed model is designed for signals whose dominant structures are highly localized, impulsive, or spike-like, and contains physiological variability, which is challenging to be modeled as AM--FM representations. Representative examples include electrocardiogram (ECG) complexes, epileptic electroencephalogram (EEG) transients, and other pulse-like physiological signals.   We first introduce a fixed-waveform model for repetitive spiky structures and then extend it to accommodate cycle-to-cycle waveform variability. The resulting algorithm, termed \\emph{Spiky Shape-adaptive Mode Decomposition} (SSAMD), estimates waveforms in the Fourier coefficient domain. Fourier coefficients are first estimated via local regression and then regularized by exploiting their low-dimensional manifold structure. Specifically, we combine a PCA-based parametrization with an entropy regularization acting on the singular-value spectrum of the coefficient matrix, promoting morphological consistency while preserving structured waveform variability.   The proposed framework is flexible and overcomes the limitations of existing models. We validate the method on synthetic and real biomedical signals, including ECG with atrial fibrillation, epileptic EEG, and trans-abdominal maternal ECG. Experimental results demonstrate effective denoising, waveform tracking, decomposition, and segmentation, while preserving physiologically meaningful morphological variations.",
+      "authors": [
+        "Marcelo A. Colominas",
+        "Hau-Tieng Wu"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-08-26T18:11:02+00:00",
+      "link": "https://arxiv.org/pdf/2608.26285v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Decomposes non-stationary spiky signals including EEG transients, transferable to EEG denoising",
+      "llm_evidence_cn": "提出非平稳尖峰信号分解方法，可处理EEG瞬态信号，可迁移用于EEG去噪",
+      "llm_evidence": "提出非平稳尖峰信号分解方法，可处理EEG瞬态信号，可迁移用于EEG去噪",
+      "canonical_evidence": "提出非平稳尖峰信号分解方法，可处理EEG瞬态信号，可迁移用于EEG去噪",
+      "llm_tldr_en": "Proposes time-varying spiky wave-shape functions to decompose non-stationary impulsive signals such as ECG and epileptic EEG transients, handling cycle-to-cycle variability.",
+      "llm_tldr_cn": "经典自适应非谐波模型难以刻画高度局部化、脉冲状且具有生理变异的信号，如心电图和癫痫脑电瞬态。该文提出时变尖峰波形函数框架，先建立固定波形模型用于重复尖峰结构，再扩展为允许周期间波形变化。算法能有效分解非平稳尖峰信号，并处理周期间的波形变异。该工作为EEG/ECG等生理信号的瞬态分析和去噪提供了新的分解工具。",
+      "llm_tldr": "经典自适应非谐波模型难以刻画高度局部化、脉冲状且具有生理变异的信号，如心电图和癫痫脑电瞬态。该文提出时变尖峰波形函数框架，先建立固定波形模型用于重复尖峰结构，再扩展为允许周期间波形变化。算法能有效分解非平稳尖峰信号，并处理周期间的波形变异。该工作为EEG/ECG等生理信号的瞬态分析和去噪提供了新的分解工具。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal denoising techniques",
+      "matched_requirement_id": "req-18",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "label": "2026-08-30",
+  "date": "2026-08-30",
+  "generated_at": "2026-08-30T22:42:05",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202608/30/2608.23361v1-multisensor-measurement-of-train-driver-mental-fatigue-from-simulation-to-reality",
+      "section": "quick",
+      "title_en": "Multisensor Measurement of Train Driver Mental Fatigue: From Simulation to Reality",
+      "authors": "Esther Bosch, Rebecca Kruschka, David Schackmann, Stephanie Hoyer, Wolfgang Kilian, Stefan Schwanitz, Anneke Hamann",
+      "date": "2026-08-24",
+      "pdf": "https://arxiv.org/pdf/2608.23361v1",
+      "score": "6.0",
+      "evidence": "通过多传感器测量列车司机心理疲劳，可迁移至操作员认知负荷测量",
+      "tldr": "铁路自动化使司机从主动操控转为持续监控，精神疲劳风险显著上升，然而真实运营条件下的多感官疲劳监测证据不足。本研究首次在模拟器（14人）和真实铁路环境（6人）中部署完整多传感器组合，采用基线驾驶、一小时n-back任务和二次驾驶的标准流程诱发疲劳。结果显示心率变异性和呼吸率在两种环境下均呈现理论预期的一致性变化，而脑电功率、皮肤电、眨眼时长等未出现清晰模式；真实环境存在振动、连接等技术挑战。综上，自主神经指标更具生态学鲁棒性，为运营疲劳监测提供了最有前景的方向，但神经生理指标仍需验证与更大样本支持。",
+      "tags": "query:bci-pilot",
+      "abstract_en": "Increasing automation in rail transport shifts the train driver's role from active control to prolonged supervisory monitoring. This creates conditions for mental fatigue (MF) and reduced vigilance. Despite the safety relevance of this issue, evidence on the feasibility and robustness of physiological indicators of MF under operational rail conditions remains limited. Most prior work relies on simulators or lab studies. The present study investigated multiple subjective, physiological, and behavioral indicators of MF in professional train drivers across two complementary settings: a high-fidelity train simulator (n=14) and a real-world rail environment (n=6). To our knowledge, this is the first study to deploy a full multisensor battery under actual train operating conditions. In both settings, a standardized protocol was used comprising a baseline drive, a one-hour auditory n-back task as an MF induction procedure, and a second drive. Heart rate variability and breathing rate showed consistent and theoretically expected changes across both environments, suggesting reduced physiological arousal following the fatigue induction task. In contrast, EEG-based frontal theta power and parietal alpha and beta power, electrodermal activity, blink duration, and behavioral indicators did not show clear mental fatigue-related patterns. Real-world data collection revealed substantial technical challenges related to vibration, sensor connectivity, and concurrent high-frequency data acquisition. These findings suggest that autonomic indicators, particularly HRV and breathing rate, represent the most promising and ecologically robust measures for operational fatigue monitoring in train drivers. However, neurophysiological measures require further validation under realistic conditions before deployment in driver monitoring systems, and larger samples are needed to confirm these preliminary patterns.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/30/2608.24443v1-time-window-noise2noise-a-self-supervised-method-for-blind-denoising-of-vibration-and-impact-signals-in-mechanical-systems",
+      "section": "quick",
+      "title_en": "Time-Window Noise2Noise: A Self-Supervised Method for Blind Denoising of Vibration and Impact Signals in Mechanical Systems",
+      "authors": "Vinicius S. Vianna, Tiago H. Machado, Ilmar F. Santos",
+      "date": "2026-08-25",
+      "pdf": "https://arxiv.org/pdf/2608.24443v1",
+      "score": "6.0",
+      "evidence": "自监督盲去噪，对彩色噪声鲁棒；可迁移至脑电干扰抑制",
+      "tldr": "机械系统振动与冲击信号常被噪声污染，传统滤波需已知噪声统计且低信噪比下失效。本文提出时间窗噪声到噪声（TWN2N）自监督盲去噪方法，无需干净参考或成对噪声观测，通过掩蔽当前时刻并重构其时间邻域，迫使紧凑自编码器学习确定性动力学而非噪声。在脉冲响应与Hunt-Crossley冲击基准上，跨白/粉/棕/量化噪声均获得显著SNR提升（p<0.001），并优于调优的Savitzky-Golay与小波滤波；去噪后模态参数识别误差小于4%。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "Vibration and impact measurements in mechanical systems are invariably corrupted by noise, which degrades every quantity derived from them, such as modal parameters and contact forces. Classical filters attenuate noise only when its statistics are known a priori and often fail at very low signal-to-noise ratio (SNR) or under spectrally coloured noise. This work presents Time-Window Noise2Noise (TWN2N), a self-supervised method for blind denoising of signals produced by deterministic mechanical systems. The method requires neither a clean reference signal nor paired noisy observations, nor any prior characterization of the noise: by reconstructing each time instant from its temporal neighbourhood while masking the instant itself, a compact autoencoder is forced to learn the underlying dynamics rather than the noise. The formulation is general for any deterministic dynamical system, is computationally lightweight (a single feed-forward pass per sample at inference), and is assessed on two benchmarks with exactly known ground truth: the impulse response of a linear 3-degree-of-freedom system and a nonlinear Hunt-Crossley impact. Across white, pink, brown and quantization noise, and over repeated realizations, TWN2N yields statistically significant SNR gains (p < 0.001) without any prior noise information, and it is benchmarked against optimally-tuned Savitzky-Golay and wavelet (VisuShrink) filters. The benefit propagates to identification: at 15 dB input SNR, modal parameters that are unidentifiable from the raw signal are recovered within 4% of their reference values after denoising.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/30/2608.25088v1-the-von-neumann-state-space-transformer-for-neural-decoding",
+      "section": "quick",
+      "title_en": "The Von-Neumann State-Space Transformer for neural decoding",
+      "authors": "Morteza Sarafyazd",
+      "date": "2026-08-25",
+      "pdf": "https://arxiv.org/pdf/2608.25088v1",
+      "score": "6.0",
+      "evidence": "新的状态空间Transformer神经解码架构，具有样本高效性，可为EEG深度学习模型提供方法桥梁。",
+      "tldr": "皮层计算由低维潜变量驱动，但标准Transformer前馈对所有token使用同一算子，样本效率不足。为此提出VN-SST，其前馈块为低秩指令库，通过每token代码合成权重矩阵，并由状态空间记忆中的慢变量充当指令指针。在三个运动皮层解码基准上，VN-SST相比现代Transformer更数据高效，最稀缺基准大幅领先，更长上下文还提升精度，并在小文本LLM基准上更参数高效。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Cortical computation is strikingly low-dimensional: a handful of latent variables, carried in a neural population's activity, steer the higher-dimensional responses of individual neurons. Our aim is sample efficiency-models that decode well from limited data and at small parameter budgets. In a standard Transformer layer, the feed-forward block applies the same operator to every token. We suggest a von-Neumann inspired hypothesis of efficient computation as an alternative for neural decoding: a controller decodes an instruction and then executes a token-specific operator; the usual realization-a soft mixture of experts-only blends their outputs, not operators. We introduce a von-Neumann State-Space Transformer (VN-SST), a memory-augmented Transformer whose feed-forward block is a low-rank instruction bank: a shared base operator plus a small set of learned low-rank instructions, from which a per-token code synthesizes the weight matrix actually used at that token. The code is read from a low- dimensional projection of a carried state-space memory, so a slow latent trajectory acts as an instruction pointer-mirroring how low-dimensional dynamics may route cortical computation. On three motor-cortex neural-decoding benchmarks, VN-SST is far more data-efficient than a modern Transformer, each jointly predicting spikes and decoding behavior. This model wins by a wide margin on the scarcest benchmark, leads on the other two, and turns longer context into rising rather than falling accuracy. We evaluated that the network compresses a large instruction bank to a few bits per token, so program capacity acts as a control channel, not an accuracy lever. The same model is also more parameter-efficient on two small text benchmarks used for language modeling (LLMs), suggesting a generic mechanism.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/30/2608.26285v1-time-varying-spiky-wave-shape-functions-for-non-stationary-signal-decomposition",
+      "section": "quick",
+      "title_en": "Time-Varying Spiky Wave-Shape Functions for Non-Stationary Signal Decomposition",
+      "authors": "Marcelo A. Colominas, Hau-Tieng Wu",
+      "date": "2026-08-26",
+      "pdf": "https://arxiv.org/pdf/2608.26285v1",
+      "score": "6.0",
+      "evidence": "提出非平稳尖峰信号分解方法，可处理EEG瞬态信号，可迁移用于EEG去噪",
+      "tldr": "针对ECG、癫痫EEG等具有强局部脉冲结构的非平稳信号，经典AM-FM谐波模型难以刻画其尖峰形态与逐周期变异。为此提出Spiky Shape-adaptive Mode Decomposition（SSAMD）框架：先建立固定波形模型，再扩展至时变波形。算法在傅里叶系数域通过局部回归估计系数，并利用PCA参数化与熵正则化约束奇异值谱，在保持波形形态一致性的同时允许生理性变异。在合成信号及房颤ECG、癫痫EEG、经腹母胎ECG等真实数据上验证，有效实现去噪、波形跟踪、分解与分割，克服现有模型局限并保留有生理意义的形态变化。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "We propose a novel framework for decomposing nonstationary spiky signals. Unlike classical adaptive non-harmonic models, which represent signals as amplitude- and frequency-modulated (AM--FM) oscillations, the proposed model is designed for signals whose dominant structures are highly localized, impulsive, or spike-like, and contains physiological variability, which is challenging to be modeled as AM--FM representations. Representative examples include electrocardiogram (ECG) complexes, epileptic electroencephalogram (EEG) transients, and other pulse-like physiological signals.   We first introduce a fixed-waveform model for repetitive spiky structures and then extend it to accommodate cycle-to-cycle waveform variability. The resulting algorithm, termed \\emph{Spiky Shape-adaptive Mode Decomposition} (SSAMD), estimates waveforms in the Fourier coefficient domain. Fourier coefficients are first estimated via local regression and then regularized by exploiting their low-dimensional manifold structure. Specifically, we combine a PCA-based parametrization with an entropy regularization acting on the singular-value spectrum of the coefficient matrix, promoting morphological consistency while preserving structured waveform variability.   The proposed framework is flexible and overcomes the limitations of existing models. We validate the method on synthetic and real biomedical signals, including ECG with atrial fibrillation, epileptic EEG, and trans-abdominal maternal ECG. Experimental results demonstrate effective denoising, waveform tracking, decomposition, and segmentation, while preserving physiologically meaningful morphological variations.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
