@@ -1,0 +1,54 @@
+{
+  "label": "2026-08-31",
+  "date": "2026-08-31",
+  "generated_at": "2026-09-01T00:47:27",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202608/31/2608.27719v1-leveraging-a-foundation-model-for-the-eeg-based-diagnosis-of-alzheimers-disease",
+      "section": "deep",
+      "title_en": "Leveraging a Foundation Model for the EEG-Based Diagnosis of Alzheimer's Disease",
+      "authors": "Maggie Lin, Chung-Lin Hou, Tzyy-Ping Jung",
+      "date": "2026-08-27",
+      "pdf": "https://arxiv.org/pdf/2608.27719v1",
+      "score": "9.0",
+      "evidence": "利用在2500多小时EEG上预训练的LaBraM基础模型进行脑电分类",
+      "tldr": "针对阿尔茨海默病(AD)诊断中生物异质性与非线性神经动力学难以建模的问题，本文提出利用预训练大模型LaBraM提取EEG高维潜在嵌入，并结合非线性随机森林分类器进行疾病识别。在严格的受试者独立交叉验证下，仅用8秒EEG片段即达到89.36%的ROC-AUC，优于传统频谱基线。消融与相关性分析证实模型捕获了枕-额Alpha/Theta节律退化等临床有效生物标志物，且预测概率与认知损伤及临床严重程度显著相关。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Biological heterogeneity in Alzheimer's Disease (AD) poses a critical diagnostic challenge, particularly for traditional linear methods that fail to capture non-linear neural dynamics. To address this, we propose a diagnostic framework utilizing the Large Brain Model (LaBraM), pretrained on over 2,500 hours of EEG data. By integrating these high-dimensional latent embeddings with a non-linear Random Forest classifier, our approach effectively isolates robust disease markers. Under a rigorous subject-independent 5-fold cross-validation protocol, the method achieves an ROC-AUC of 89.36% +/- 3.49%, PR AUC of 81.45% +/- 4.43%, and Balanced Accuracy of 82.44% +/- 4.34% in distinguishing dementia patients from healthy controls. Notably, this performance uses only 8-second EEG segments, surpassing traditional spectral baselines, including band-power and parameterized oscillatory features (FOOOF). Post-hoc occlusion analysis confirms the model captures clinically validated biomarkers, specifically occipital-frontal Alpha and Theta rhythm degradation. Additional neurophysiological alignment analysis demonstrated that higher LaBraM-predicted dementia probability significantly correlated with worse cognitive performance, greater clinical severity, increased theta and alpha relative power, and higher aperiodic exponent. These findings demonstrate that deep latent representations extract clinically relevant signatures from noisy signals, enabling precise, rapid, and data-efficient diagnosis.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/31/2608.24443v1-time-window-noise2noise-a-self-supervised-method-for-blind-denoising-of-vibration-and-impact-signals-in-mechanical-systems",
+      "section": "quick",
+      "title_en": "Time-Window Noise2Noise: A Self-Supervised Method for Blind Denoising of Vibration and Impact Signals in Mechanical Systems",
+      "authors": "Vinicius S. Vianna, Tiago H. Machado, Ilmar F. Santos",
+      "date": "2026-08-25",
+      "pdf": "https://arxiv.org/pdf/2608.24443v1",
+      "score": "6.0",
+      "evidence": "自监督盲去噪方法可迁移至EEG去噪，但验证于机械信号",
+      "tldr": "机械振动冲击信号常被噪声污染，经典滤波依赖先验且在低SNR或有色噪声下失效。TWN2N通过掩蔽当前时刻并用时间邻域重建，让紧凑自编码器学习系统动力学，实现盲去噪。在多种基准与噪声类型下，其SNR增益显著优于优化调参的Savitzky-Golay与VisuShrink。去噪后15dB输入SNR下原本不可识别的模态参数恢复至4%误差内，且计算轻量。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "Vibration and impact measurements in mechanical systems are invariably corrupted by noise, which degrades every quantity derived from them, such as modal parameters and contact forces. Classical filters attenuate noise only when its statistics are known a priori and often fail at very low signal-to-noise ratio (SNR) or under spectrally coloured noise. This work presents Time-Window Noise2Noise (TWN2N), a self-supervised method for blind denoising of signals produced by deterministic mechanical systems. The method requires neither a clean reference signal nor paired noisy observations, nor any prior characterization of the noise: by reconstructing each time instant from its temporal neighbourhood while masking the instant itself, a compact autoencoder is forced to learn the underlying dynamics rather than the noise. The formulation is general for any deterministic dynamical system, is computationally lightweight (a single feed-forward pass per sample at inference), and is assessed on two benchmarks with exactly known ground truth: the impulse response of a linear 3-degree-of-freedom system and a nonlinear Hunt-Crossley impact. Across white, pink, brown and quantization noise, and over repeated realizations, TWN2N yields statistically significant SNR gains (p < 0.001) without any prior noise information, and it is benchmarked against optimally-tuned Savitzky-Golay and wavelet (VisuShrink) filters. The benefit propagates to identification: at 15 dB input SNR, modal parameters that are unidentifiable from the raw signal are recovered within 4% of their reference values after denoising.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/31/2608.26998v1-virtual-ieeg-from-scalp-eeg-charting-the-landscape-of-source-imaging-intracranial-inference-and-reconstruction",
+      "section": "quick",
+      "title_en": "Virtual iEEG from Scalp EEG: Charting the Landscape of Source Imaging, Intracranial Inference and Reconstruction",
+      "authors": "Dongyi He, Xiangkai Wang, Hongjie Yan, Luping Song, Wai Ting Siok, Nizhuan Wang",
+      "date": "2026-08-27",
+      "pdf": "https://arxiv.org/pdf/2608.26998v1",
+      "score": "6.0",
+      "evidence": "头皮EEG到颅内推断的综述，与EEG-BCI相关但不涉及认知负荷",
+      "tldr": "颅内脑电（iEEG）时空精度高，但侵入性和覆盖范围限制其常规应用，因此出现从头皮脑电推断颅内信号的虚拟iEEG。本文提出以目标为中心的框架，将任务分为事件推断、特征翻译和波形重建，并区分可预测性、可观测性、可辨识性、保真度和实用性。现有证据支持特定颅内事件、低频成分和任务相关表征的推断，但无法唯一恢复任意触点级活动。未来需独立配对数据集和前瞻性验证以证明其增量价值。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Intracranial electroencephalography (iEEG) provides temporally precise and spatially specific access to neural activity from focal and deep brain regions, but its invasiveness and restricted anatomical coverage limit routine use. These constraints have motivated scalp-to-intracranial inference, termed virtual iEEG when model outputs carry iEEG-defined event, feature, representation, or contact-level waveform semantics. This review presents a target-centred framework distinguishing event inference, feature translation, and waveform reconstruction, while separating predictability from observability, identifiability, fidelity, and utility. Evidence is evaluated according to cohort independence, anatomical and spectral coverage, train--test separation, and target-patient adaptation. Current studies support inference of selected intracranial events, low-frequency components, and task-related representations, but not unique recovery of arbitrary contact-level activity. Stronger validation requires appropriate controls, source-imaging baselines, uncertainty assessment, and incremental-utility testing. Future progress depends on independent paired datasets and prospective evidence that virtual iEEG adds value beyond scalp EEG and EEG source imaging.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

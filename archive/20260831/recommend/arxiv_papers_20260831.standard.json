@@ -1,0 +1,141 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-01T00:45:10.439679+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 2,
+    "quick_skim_target": 13,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2608.27719v1",
+      "source": "arxiv",
+      "title": "Leveraging a Foundation Model for the EEG-Based Diagnosis of Alzheimer's Disease",
+      "abstract": "Biological heterogeneity in Alzheimer's Disease (AD) poses a critical diagnostic challenge, particularly for traditional linear methods that fail to capture non-linear neural dynamics. To address this, we propose a diagnostic framework utilizing the Large Brain Model (LaBraM), pretrained on over 2,500 hours of EEG data. By integrating these high-dimensional latent embeddings with a non-linear Random Forest classifier, our approach effectively isolates robust disease markers. Under a rigorous subject-independent 5-fold cross-validation protocol, the method achieves an ROC-AUC of 89.36% +/- 3.49%, PR AUC of 81.45% +/- 4.43%, and Balanced Accuracy of 82.44% +/- 4.34% in distinguishing dementia patients from healthy controls. Notably, this performance uses only 8-second EEG segments, surpassing traditional spectral baselines, including band-power and parameterized oscillatory features (FOOOF). Post-hoc occlusion analysis confirms the model captures clinically validated biomarkers, specifically occipital-frontal Alpha and Theta rhythm degradation. Additional neurophysiological alignment analysis demonstrated that higher LaBraM-predicted dementia probability significantly correlated with worse cognitive performance, greater clinical severity, increased theta and alpha relative power, and higher aperiodic exponent. These findings demonstrate that deep latent representations extract clinically relevant signatures from noisy signals, enabling precise, rapid, and data-efficient diagnosis.",
+      "authors": [
+        "Maggie Lin",
+        "Chung-Lin Hou",
+        "Tzyy-Ping Jung"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "q-bio.NC"
+      ],
+      "published": "2026-08-27T21:19:26+00:00",
+      "link": "https://arxiv.org/pdf/2608.27719v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Leverages LaBraM foundation model pretrained on 2500+ hours of EEG for classification",
+      "llm_evidence_cn": "利用在2500多小时EEG上预训练的LaBraM基础模型进行脑电分类",
+      "llm_evidence": "利用在2500多小时EEG上预训练的LaBraM基础模型进行脑电分类",
+      "canonical_evidence": "利用在2500多小时EEG上预训练的LaBraM基础模型进行脑电分类",
+      "llm_tldr_en": "Proposes EEG-based Alzheimer's diagnosis using LaBraM foundation model embeddings with Random Forest, achieving 89.36% ROC-AUC and 82.44% balanced accuracy under subject-independent 5-fold cross-validation, demonstrating robust disease markers.",
+      "llm_tldr_cn": "针对阿尔茨海默病诊断中传统线性方法难以刻画非线性神经动力学的问题，提出基于LaBraM基础模型的诊断框架，该模型在2500多小时EEG上预训练，并结合随机森林分类器提取稳健疾病标记。在受试者独立五折交叉验证下，ROC-AUC达89.36%，优于传统方法，为EEG基础模型在临床诊断中的应用提供了有力证据。",
+      "llm_tldr": "针对阿尔茨海默病诊断中传统线性方法难以刻画非线性神经动力学的问题，提出基于LaBraM基础模型的诊断框架，该模型在2500多小时EEG上预训练，并结合随机森林分类器提取稳健疾病标记。在受试者独立五折交叉验证下，ROC-AUC达89.36%，优于传统方法，为EEG基础模型在临床诊断中的应用提供了有力证据。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.24443v1",
+      "source": "arxiv",
+      "title": "Time-Window Noise2Noise: A Self-Supervised Method for Blind Denoising of Vibration and Impact Signals in Mechanical Systems",
+      "abstract": "Vibration and impact measurements in mechanical systems are invariably corrupted by noise, which degrades every quantity derived from them, such as modal parameters and contact forces. Classical filters attenuate noise only when its statistics are known a priori and often fail at very low signal-to-noise ratio (SNR) or under spectrally coloured noise. This work presents Time-Window Noise2Noise (TWN2N), a self-supervised method for blind denoising of signals produced by deterministic mechanical systems. The method requires neither a clean reference signal nor paired noisy observations, nor any prior characterization of the noise: by reconstructing each time instant from its temporal neighbourhood while masking the instant itself, a compact autoencoder is forced to learn the underlying dynamics rather than the noise. The formulation is general for any deterministic dynamical system, is computationally lightweight (a single feed-forward pass per sample at inference), and is assessed on two benchmarks with exactly known ground truth: the impulse response of a linear 3-degree-of-freedom system and a nonlinear Hunt-Crossley impact. Across white, pink, brown and quantization noise, and over repeated realizations, TWN2N yields statistically significant SNR gains (p < 0.001) without any prior noise information, and it is benchmarked against optimally-tuned Savitzky-Golay and wavelet (VisuShrink) filters. The benefit propagates to identification: at 15 dB input SNR, modal parameters that are unidentifiable from the raw signal are recovered within 4% of their reference values after denoising.",
+      "authors": [
+        "Vinicius S. Vianna",
+        "Tiago H. Machado",
+        "Ilmar F. Santos"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-08-25T11:57:30+00:00",
+      "link": "https://arxiv.org/pdf/2608.24443v1",
+      "tags": [
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "self-supervised blind denoising transferable to EEG denoising, but tested on mechanical signals",
+      "llm_evidence_cn": "自监督盲去噪方法可迁移至EEG去噪，但验证于机械信号",
+      "llm_evidence": "自监督盲去噪方法可迁移至EEG去噪，但验证于机械信号",
+      "canonical_evidence": "自监督盲去噪方法可迁移至EEG去噪，但验证于机械信号",
+      "llm_tldr_en": "Proposes Time-Window Noise2Noise, a self-supervised blind denoising method for mechanical vibration signals that needs no clean reference or noise statistics; its denoising principle may transfer to EEG artifact suppression in BCI.",
+      "llm_tldr_cn": "针对振动冲击信号在低信噪比和彩色噪声下传统滤波失效的问题，本文提出时窗噪声到噪声的自监督盲去噪方法，无需干净参考、成对噪声观测或噪声先验，通过从时间邻域重建每个时刻实现去噪。该方法在机械系统信号上有效，其盲去噪思想对EEG运动伪影和干扰抑制具有方法学参考价值。",
+      "llm_tldr": "针对振动冲击信号在低信噪比和彩色噪声下传统滤波失效的问题，本文提出时窗噪声到噪声的自监督盲去噪方法，无需干净参考、成对噪声观测或噪声先验，通过从时间邻域重建每个时刻实现去噪。该方法在机械系统信号上有效，其盲去噪思想对EEG运动伪影和干扰抑制具有方法学参考价值。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal denoising techniques",
+      "matched_requirement_id": "req-18",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.26998v1",
+      "source": "arxiv",
+      "title": "Virtual iEEG from Scalp EEG: Charting the Landscape of Source Imaging, Intracranial Inference and Reconstruction",
+      "abstract": "Intracranial electroencephalography (iEEG) provides temporally precise and spatially specific access to neural activity from focal and deep brain regions, but its invasiveness and restricted anatomical coverage limit routine use. These constraints have motivated scalp-to-intracranial inference, termed virtual iEEG when model outputs carry iEEG-defined event, feature, representation, or contact-level waveform semantics. This review presents a target-centred framework distinguishing event inference, feature translation, and waveform reconstruction, while separating predictability from observability, identifiability, fidelity, and utility. Evidence is evaluated according to cohort independence, anatomical and spectral coverage, train--test separation, and target-patient adaptation. Current studies support inference of selected intracranial events, low-frequency components, and task-related representations, but not unique recovery of arbitrary contact-level activity. Stronger validation requires appropriate controls, source-imaging baselines, uncertainty assessment, and incremental-utility testing. Future progress depends on independent paired datasets and prospective evidence that virtual iEEG adds value beyond scalp EEG and EEG source imaging.",
+      "authors": [
+        "Dongyi He",
+        "Xiangkai Wang",
+        "Hongjie Yan",
+        "Luping Song",
+        "Wai Ting Siok",
+        "Nizhuan Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-27T11:44:05+00:00",
+      "link": "https://arxiv.org/pdf/2608.26998v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "review of scalp EEG to intracranial inference, relevant to EEG-based BCI but not cognitive load",
+      "llm_evidence_cn": "头皮EEG到颅内推断的综述，与EEG-BCI相关但不涉及认知负荷",
+      "llm_evidence": "头皮EEG到颅内推断的综述，与EEG-BCI相关但不涉及认知负荷",
+      "canonical_evidence": "头皮EEG到颅内推断的综述，与EEG-BCI相关但不涉及认知负荷",
+      "llm_tldr_en": "A review framework maps scalp EEG to virtual iEEG via source imaging and intracranial inference, distinguishing event inference, feature translation, and waveform reconstruction; provides a methodological landscape for EEG-based BCI signal analysis.",
+      "llm_tldr_cn": "针对颅内脑电（iEEG）侵入性限制，本文系统梳理从头皮EEG推断颅内信号（即虚拟iEEG）的研究版图，提出以目标为中心的框架，区分事件推断、特征迁移与波形重建，并区分可预测性、可观测性、保真度与实用性。该综述按队列独立性和解剖特性评估证据，为EEG源成像和BCI信号分析提供标准化视角。",
+      "llm_tldr": "针对颅内脑电（iEEG）侵入性限制，本文系统梳理从头皮EEG推断颅内信号（即虚拟iEEG）的研究版图，提出以目标为中心的框架，区分事件推断、特征迁移与波形重建，并区分可预测性、可观测性、保真度与实用性。该综述按队列独立性和解剖特性评估证据，为EEG源成像和BCI信号分析提供标准化视角。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
