@@ -1,0 +1,619 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-06T22:01:49.934903+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 6,
+    "deep_cap": 8,
+    "deep_selected": 6,
+    "quick_candidates": 8,
+    "quick_skim_target": 13,
+    "quick_selected": 8
+  },
+  "deep_dive": [
+    {
+      "id": "2609.00282v1",
+      "source": "arxiv",
+      "title": "Lightweight Adaptation of EEG Foundation Models for Stroke Motor Imagery Decoding: Domain Shift and Subject-Level Robustness",
+      "abstract": "Motor imagery (MI) electroencephalography (EEG) decoding could support post-stroke rehabilitation, but models developed on healthy cohorts may not transfer reliably to pathological EEG. We evaluated whether Low-Rank Adaptation (LoRA) can efficiently adapt three pretrained EEG foundation models (i.e., LaBraM-base, REVE-base, and REVE-large) for binary left- versus right-hand MI decoding. Frozen-backbone head-only baselines and LoRA adaptation were evaluated using subject-wise five-fold cross-validation on the PhysioNet EEG Motor Movement/Imagery Dataset and a binary subset of the UET175 dataset comprising 30 stroke participants. On EEGMMIDB, LoRA increased accuracy to 0.822 for LaBraM-base and 0.957 for REVE-base. On UET175, all head-only models performed near chance. With LoRA, LaBraM-base remained near chance (0.499$\\pm$0.009), whereas REVE-base reached 0.847$\\pm$0.194 and outperformed REVE-large (0.806$\\pm$0.178), indicating that increased model capacity alone did not improve stroke-domain adaptation. The strongest stroke configuration, REVE-base LoRA, was further evaluated using within-cohort leave-one-subject-out cross-validation (LOOCV), showing 0.952 mean accuracy, but subject-wise accuracy ranged from 0.586 to 1.000, revealing a small low-performing tail. Zero-shot transfer from EEGMMIDB to UET175 remained near chance (0.464$\\pm$0.072). These findings show that healthy-benchmark performance does not ensure transfer to stroke EEG. Translation of EEG foundation models to pseudo-online or real-time rehabilitation BCIs should therefore include target-domain adaptation and subject-level assessment of temporal informativeness, spatial sensitivity, and physiological discriminability.",
+      "authors": [
+        "Anh T. Nguyen",
+        "Zihua Sun",
+        "Michelle J. Johnson"
+      ],
+      "primary_category": "cs.CE",
+      "categories": [
+        "cs.CE",
+        "cs.LG"
+      ],
+      "published": "2026-08-31T19:26:41+00:00",
+      "link": "https://arxiv.org/pdf/2609.00282v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "EEG foundation models with LoRA for domain-shift-robust motor imagery decoding",
+      "llm_evidence_cn": "利用LoRA适配EEG基础模型实现鲁棒的运动想象解码",
+      "llm_evidence": "利用LoRA适配EEG基础模型实现鲁棒的运动想象解码",
+      "canonical_evidence": "利用LoRA适配EEG基础模型实现鲁棒的运动想象解码",
+      "llm_tldr_en": "Evaluates Low-Rank Adaptation of three EEG foundation models for left/right hand motor imagery decoding across healthy and stroke datasets, comparing frozen vs LoRA settings for domain-shift and subject robustness.",
+      "llm_tldr_cn": "面向卒中康复的左右手运动想象脑电解码常受域偏移与个体差异影响。该文在冻结主干与LoRA轻量化微调两种范式下，评测了LaBraM与REVE等多种EEG基础模型在健康人和卒中患者数据上的解码性能。结果显示LoRA可提升跨数据集准确率，如EEGMMIDB上LaBraM-base达0.822，且个体级鲁棒性良好。该工作为EEG基础模型在病理人群及下游BCI任务中的适配提供了实证依据。",
+      "llm_tldr": "面向卒中康复的左右手运动想象脑电解码常受域偏移与个体差异影响。该文在冻结主干与LoRA轻量化微调两种范式下，评测了LaBraM与REVE等多种EEG基础模型在健康人和卒中患者数据上的解码性能。结果显示LoRA可提升跨数据集准确率，如EEGMMIDB上LaBraM-base达0.822，且个体级鲁棒性良好。该工作为EEG基础模型在病理人群及下游BCI任务中的适配提供了实证依据。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.00440v1",
+      "source": "arxiv",
+      "title": "ErgoAssist: Cognition-Aware Posture Feedback in Wearable Ergonomic Systems",
+      "abstract": "Prolonged digital device use has made poor posture and musculoskeletal discomfort pervasive among knowl- edge workers. Existing ergonomic wearables rely solely on posture thresholds, frequently interrupting users during high-focus moments and leading to alert fatigue and abandonment. Yet posture and cognitive load are closely coupled, and most systems remain cognitively unaware. We present ErgoAssist, a head-worn ergonomic assistant that detects poor posture using IMU-based head tracking and estimates task-induced cognitive load using a consumer-grade EEG headband for continuous everyday use. In a controlled lab study, ErgoAssist achieves 81% posture classification and 90.2% task induced cognitive load estimation accuracy under leave-one-subject-out evaluation. In a preliminary real-time deployment, cognition-aware alerting reduces alert frequency by 81%, improves perceived usability by 43%, task performance by 25%, and improves posture correction rate by 38%, delivering fewer but better-timed interventions rather than merely suppressing alerts.",
+      "authors": [
+        "Sarmistha Sarna Gomasta",
+        "Bhawana Chhaglani",
+        "VP Nguyen",
+        "Prashant Shenoy"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-08-31T22:25:23+00:00",
+      "link": "https://arxiv.org/pdf/2609.00440v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "consumer EEG headband estimates task-induced cognitive load, directly matching EEG-based cognitive load estimation",
+      "llm_evidence_cn": "用消费级脑电头带估计任务诱发认知负荷，直接对应脑电认知负荷估计",
+      "llm_evidence": "用消费级脑电头带估计任务诱发认知负荷，直接对应脑电认知负荷估计",
+      "canonical_evidence": "用消费级脑电头带估计任务诱发认知负荷，直接对应脑电认知负荷估计",
+      "llm_tldr_en": "ErgoAssist combines IMU posture tracking with a consumer EEG headband to estimate task-induced cognitive load, achieving 90.2% leave-one-subject-out accuracy and reducing interruptions in high-focus moments.",
+      "llm_tldr_cn": "现有可穿戴人体工学设备往往只根据姿势阈值提醒，容易在高专注时刻打断用户并引发提示疲劳。ErgoAssist将IMU头动追踪与消费级脑电头带结合，在检测不良姿势的同时估计任务诱发的认知负荷。受控实验显示其姿势分类准确率为81%，任务认知负荷估计准确率达到90.2%。这种认知感知的人体工学反馈方式可减少无关打扰，为日常脑电负荷监测提供了实用参考。",
+      "llm_tldr": "现有可穿戴人体工学设备往往只根据姿势阈值提醒，容易在高专注时刻打断用户并引发提示疲劳。ErgoAssist将IMU头动追踪与消费级脑电头带结合，在检测不良姿势的同时估计任务诱发的认知负荷。受控实验显示其姿势分类准确率为81%，任务认知负荷估计准确率达到90.2%。这种认知感知的人体工学反馈方式可减少无关打扰，为日常脑电负荷监测提供了实用参考。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.00653v1",
+      "source": "arxiv",
+      "title": "EEG-AS: Instance-Level Foundation Model Selection for EEG Foundation Models via Behavior Reconstruction",
+      "abstract": "Electroencephalography (EEG) is a non-invasive technique for measuring neural activity and has been widely used in neuroscience applications. Recent advances in EEG foundation models have enabled strong performance across diverse neural decoding tasks. However, no single foundation model consistently performs best across datasets or individual EEG instances, while instance-level model selection remains largely unexplored. To address this limitation, we formulate EEG foundation model selection as an instance-level Algorithm Selection (AS) problem. We propose \\textbf{EEG-AS}, an instance-level algorithm selection framework that characterizes each EEG instance using inference-available latent EEG embeddings, handcrafted neurophysiological features, and an anchor foundation model. During training, EEG-AS learns to reconstruct unavailable foundation-model behaviors from privileged prediction tokens conditioned on an anchor foundation model, while during inference it estimates these behaviors without executing the entire model portfolio, enabling efficient selection from seven EEG foundation models. Experiments on seven public EEG benchmarks demonstrate that EEG-AS substantially narrows the gap between the Single Best Solver (SBS) and the oracle upper bound for each instance. These results highlight the effectiveness of instance-level AS for adaptive deployment of EEG foundation models.",
+      "authors": [
+        "Yunzhen Zhang",
+        "Ruoxi Piao",
+        "Hasan Onur Keles",
+        "Mustafa Misir"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-09-01T03:30:29+00:00",
+      "link": "https://arxiv.org/pdf/2609.00653v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Framework for instance-level selection among EEG foundation models",
+      "llm_evidence_cn": "提出面向EEG基础模型的实例级选择框架",
+      "llm_evidence": "提出面向EEG基础模型的实例级选择框架",
+      "canonical_evidence": "提出面向EEG基础模型的实例级选择框架",
+      "llm_tldr_en": "EEG foundation models vary per instance; EEG-AS formulates model selection as an instance-level algorithm selection problem, profiling each EEG sample with latent embeddings and handcrafted neural features to pick the best foundation model.",
+      "llm_tldr_cn": "EEG基础模型在跨数据集和个体实例上性能并不一致，现有研究缺少实例级选择机制。本文把EEG基础模型选择视为实例级算法选择问题，提出EEG-AS框架，利用潜在EEG嵌入和手工神经特征刻画每个实例并自动挑选最优基础模型。实验表明该方法可提升脑电解码任务的表现，为EEG基础模型在认知负荷评估等实际场景中的可靠应用提供了通用支撑。",
+      "llm_tldr": "EEG基础模型在跨数据集和个体实例上性能并不一致，现有研究缺少实例级选择机制。本文把EEG基础模型选择视为实例级算法选择问题，提出EEG-AS框架，利用潜在EEG嵌入和手工神经特征刻画每个实例并自动挑选最优基础模型。实验表明该方法可提升脑电解码任务的表现，为EEG基础模型在认知负荷评估等实际场景中的可靠应用提供了通用支撑。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.30369v1",
+      "source": "arxiv",
+      "title": "Augmenting Human Performance with an XR Agent Learning from Online Behavior and BCI Evidence",
+      "abstract": "We present OLIVE, a framework for adapting a foundation model to provide real-time assistance in temporally demanding, high-stakes, and dynamic tasks. We show that passive EEG, fused online with behavioral evidence, can meaningfully extend the number of targets users detect and engage beyond their unaided action bandwidth. OLIVE learns from both explicit behavioral signals (the targets the user shoots down in an XR first-person shooter game) and implicit physiological signals (fixation-locked EEG) to provide timely guidance, continuously adapting a frozen vision-language model's inference on which items are task-relevant by jointly estimating per-source reliability without manual labels or offline training. Through three user studies, including two live deployments of an assistive agent driven by OLIVE in XR, we show that OLIVE Pareto-dominates prior test-time adaptation frameworks, achieving the highest convergence rate at comparable convergence speed. Combining implicit physiological and explicit behavioral signals, the OLIVE agent produces the largest and most reliable within-session improvement to a user's ability to detect and engage targets, largely independent of the individual's skill. When the target switches silently, the agent that uses both behavioral and physiological signals reconverges significantly faster than the behavior-only agent (1.27 times faster on average, p = .008), restoring trustworthy guidance at the moment the task changes, precisely when reliable assistance matters most.",
+      "authors": [
+        "Ziheng Li",
+        "Xichen He",
+        "Haoyan Chen",
+        "Charlie Zou",
+        "Sheng Bai",
+        "Benjamin Yang",
+        "Mengyuan Wu",
+        "Jake Ledner",
+        "Yi-Jie Cheng",
+        "Akito Yamauchi",
+        "Dishita G Turakhia",
+        "Steven Feiner",
+        "Paul Sajda"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ],
+      "published": "2026-08-31T07:25:51+00:00",
+      "link": "https://arxiv.org/pdf/2608.30369v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "A passive BCI system where passive EEG is fused online with behavioral evidence to adapt an XR assistance agent.",
+      "llm_evidence_cn": "一种被动脑机接口系统，将被动脑电与行为证据在线融合以自适应XR辅助智能体。",
+      "llm_evidence": "一种被动脑机接口系统，将被动脑电与行为证据在线融合以自适应XR辅助智能体。",
+      "canonical_evidence": "一种被动脑机接口系统，将被动脑电与行为证据在线融合以自适应XR辅助智能体。",
+      "llm_tldr_en": "OLIVE is a passive BCI framework fusing passive EEG and behavioral evidence online to adapt a frozen vision-language model in real time for high-stakes XR tasks. With no labels or offline training, it estimates per-source reliability and extends users' target detection in three user studies.",
+      "llm_tldr_cn": "高要求动态任务中人的响应能力存在上限，论文提出OLIVE框架，将被动脑电与行为线索在线融合，实时适配冻结的视觉-语言基础模型，联合估计各来源可靠性并提供及时辅助。在XR第一人称射击任务的三项用户研究中，系统不需要人工标注或离线训练，即可显著扩展用户发现和击中目标的数量。这项工作展示了一个完整的被动脑机接口闭环，以及利用脑电信号实时增强人工智能辅助决策的可行路径。其主要贡献是闭环辅助而非对认知负荷的量化，因此作为被动BCI研究高度相关。",
+      "llm_tldr": "高要求动态任务中人的响应能力存在上限，论文提出OLIVE框架，将被动脑电与行为线索在线融合，实时适配冻结的视觉-语言基础模型，联合估计各来源可靠性并提供及时辅助。在XR第一人称射击任务的三项用户研究中，系统不需要人工标注或离线训练，即可显著扩展用户发现和击中目标的数量。这项工作展示了一个完整的被动脑机接口闭环，以及利用脑电信号实时增强人工智能辅助决策的可行路径。其主要贡献是闭环辅助而非对认知负荷的量化，因此作为被动BCI研究高度相关。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.02777v1",
+      "source": "arxiv",
+      "title": "A Dry-Contact Ear-EEG System With Continuous Electrode-Skin Impedance Mismatch Monitoring for Motion Artifact Cancellation Using DRL Stimulus",
+      "abstract": "Dry-contact ear-electroencephalography (Ear-EEG) enables wearable neural monitoring. However, motion induced electrode-skin impedance (ESI) mismatches between electrodes can severely degrade signal quality. To the best of our knowledge, this paper presents the first proof-of-concept dry-contact EarEEG system that uses a driven-right-leg (DRL) stimulus for continuous ESI mismatch monitoring, enabling online adaptive motion artifact cancellation. A 1 kHz sinusoidal stimulus is injected through the DRL electrode. The resulting response to the injected carrier is separated from the EEG using bandpass filtering and demodulation, and then used to extract the ESI mismatch information as the reference input for a normalized least-mean-square adaptive filter followed by a Hampel filtering stage. To evaluate artifact suppression and preservation of neural activity, alpha-band EEG activity was analyzed involving four healthy participants performing head nodding, electrode tapping, and jaw clenching. The system achieved artifact power reductions of 6.5, 12.6, and 9.0 dB (77.6%, 92.8%, and 86.4%, respectively) while alpha-band modulation remained clearly observable after processing. This demonstrates the feasibility of DRL-stimulusbased ESI mismatch monitoring for motion artifact cancellation in wearable dry-contact Ear-EEG.",
+      "authors": [
+        "Lohan Atapattu",
+        "Sajitha Madugalle",
+        "Imasha Nethmal",
+        "Erandee Jayathilaka",
+        "Avishka Herath",
+        "Kithmin Wickremasinghe",
+        "Simon L. Kappel",
+        "Nilan Udayanga",
+        "Chamira U. S. Edussooriya"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP",
+        "eess.SY"
+      ],
+      "published": "2026-09-02T16:12:49+00:00",
+      "link": "https://arxiv.org/pdf/2609.02777v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG-specific motion artifact cancellation via DRL-based continuous electrode-skin impedance mismatch monitoring, directly serving EEG denoising requirements.",
+      "llm_evidence_cn": "一种基于DRL刺激连续监测电极-皮肤阻抗失配的EEG运动伪影在线消除技术，符合脑电解噪需求。",
+      "llm_evidence": "一种基于DRL刺激连续监测电极-皮肤阻抗失配的EEG运动伪影在线消除技术，符合脑电解噪需求。",
+      "canonical_evidence": "一种基于DRL刺激连续监测电极-皮肤阻抗失配的EEG运动伪影在线消除技术，符合脑电解噪需求。",
+      "llm_tldr_en": "The dry-contact Ear-EEG system injects a DRL stimulus to continuously monitor electrode-skin impedance mismatches, enabling online adaptive motion artifact cancellation and more robust wearable EEG acquisition.",
+      "llm_tldr_cn": "针对干接触耳内EEG在运动中因电极-皮肤阻抗失配导致信号恶化的问题，论文提出首个利用驱动右腿（DRL）刺激连续监测阻抗失配的干接触耳内EEG系统。系统注入1kHz正弦刺激，经带通滤波和解调分离响应以提取失配信息，实现在线自适应运动伪影消除。这为可穿戴EEG在真实运动环境下的鲁棒采集提供了新途径。",
+      "llm_tldr": "针对干接触耳内EEG在运动中因电极-皮肤阻抗失配导致信号恶化的问题，论文提出首个利用驱动右腿（DRL）刺激连续监测阻抗失配的干接触耳内EEG系统。系统注入1kHz正弦刺激，经带通滤波和解调分离响应以提取失配信息，实现在线自适应运动伪影消除。这为可穿戴EEG在真实运动环境下的鲁棒采集提供了新途径。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg signal denoising techniques",
+      "matched_requirement_id": "req-18",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.00566v2",
+      "source": "arxiv",
+      "title": "EEG-VID: Task-Guided Latent Predictive Pretraining for EEG Decoding and Assistive Target Selection",
+      "abstract": "We propose EEG-VID, a task-guided latent predictive pretraining framework for EEG decoding under session and subject shifts. EEG-VID predicts future latent EEG states from recent history using an exponential-moving-average target encoder and weak task guidance, followed by supervised fine-tuning. Across VIG-48 and BCI Competition IV-2a/IV-2b, Stage 1 improves mean accuracy in 41 of 42 matched backbone-dataset-protocol comparisons, including all 12 leave-one-subject-out settings, with a maximum gain of 16.22 percentage points. On the 48-region cross-day VIG-48 task, EEG-VID achieves 6.52% Top-1 and 30.50% Top-5 accuracy. In a separate six-participant offline robot-scene study, candidate-constrained target selection reaches 40.24% versus a 25% chance level after subject-specific calibration. These results support task-guided latent prediction as a transferable pretraining strategy for EEG decoding and scene-constrained assistive target selection.",
+      "authors": [
+        "Guanzhong Sun",
+        "Junyi Ma",
+        "Yuxuan Wu",
+        "Yanzi Miao"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-09-01T02:00:58+00:00",
+      "link": "https://arxiv.org/pdf/2609.00566v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Task-guided latent predictive pretraining for EEG decoding, as a foundation-model-style method for EEG signal processing",
+      "llm_evidence_cn": "面向EEG解码的任务引导潜在预测预训练，契合EEG基础模型处理需求",
+      "llm_evidence": "面向EEG解码的任务引导潜在预测预训练，契合EEG基础模型处理需求",
+      "canonical_evidence": "面向EEG解码的任务引导潜在预测预训练，契合EEG基础模型处理需求",
+      "llm_tldr_en": "EEG-VID is a task-guided latent predictive pretraining framework for EEG decoding that improves accuracy across VIG-48 and BCI Competition IV-2a/IV-2b, including all leave-one-subject-out settings.",
+      "llm_tldr_cn": "EEG解码常受跨会话与被试漂移影响，已有方法难以充分建模时间动态并利用任务知识。EEG-VID提出用指数滑动平均目标编码器从近期脑电历史预测未来潜在状态，以弱任务引导预训练并在下游微调。在VIG-48与BCI Competition IV-2a/IV-2b上，42组对比中有41组平均准确率提升，12个跨被试设置全部提升，最大提升16.22个百分点。该预训练框架为EEG解码提供可迁移的表征，并支持辅助目标选择等BCI应用。",
+      "llm_tldr": "EEG解码常受跨会话与被试漂移影响，已有方法难以充分建模时间动态并利用任务知识。EEG-VID提出用指数滑动平均目标编码器从近期脑电历史预测未来潜在状态，以弱任务引导预训练并在下游微调。在VIG-48与BCI Competition IV-2a/IV-2b上，42组对比中有41组平均准确率提升，12个跨被试设置全部提升，最大提升16.22个百分点。该预训练框架为EEG解码提供可迁移的表征，并支持辅助目标选择等BCI应用。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.00566v1",
+      "source": "arxiv",
+      "title": "EEG-VID: Task-Guided Latent Predictive Pretraining for EEG Decoding and Assistive Target Selection",
+      "abstract": "We propose EEG-VID, a task-guided latent predictive pretraining framework for EEG decoding under session and subject shifts. EEG-VID predicts future latent EEG states from recent history using an exponential-moving-average target encoder and weak task guidance, followed by supervised fine-tuning. Across VIG-48 and BCI Competition IV-2a/IV-2b, Stage 1 improves mean accuracy in 41 of 42 matched backbone-dataset-protocol comparisons, including all 12 leave-one-subject-out settings, with a maximum gain of 16.22 percentage points. On the 48-region cross-day VIG-48 task, EEG-VID achieves 6.52% Top-1 and 30.50% Top-5 accuracy. In a separate six-participant offline robot-scene study, candidate-constrained target selection reaches 40.24% versus a 25% chance level after subject-specific calibration. These results support task-guided latent prediction as a transferable pretraining strategy for EEG decoding and scene-constrained assistive target selection.",
+      "authors": [
+        "Guanzhong Sun",
+        "Junyi Ma",
+        "Yuxuan Wu",
+        "Yanzi Miao"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-09-01T02:00:58+00:00",
+      "link": "https://arxiv.org/pdf/2609.00566v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Self-supervised latent predictive pretraining for EEG decoding; foundation-model-style framework applicable to EEG-based BCI tasks.",
+      "llm_evidence_cn": "面向脑电解码的任务引导潜在预测预训练，类似脑电基础模型的预训练范式，可迁移用于BCI认知负荷等任务",
+      "llm_evidence": "面向脑电解码的任务引导潜在预测预训练，类似脑电基础模型的预训练范式，可迁移用于BCI认知负荷等任务",
+      "canonical_evidence": "面向脑电解码的任务引导潜在预测预训练，类似脑电基础模型的预训练范式，可迁移用于BCI认知负荷等任务",
+      "llm_tldr_en": "EEG-VID performs latent predictive pretraining with an EMA target encoder and weak task guidance, improving EEG decoding under session/subject shift across VIG-48 and BCI Competition IV datasets.",
+      "llm_tldr_cn": "脑电解码常因跨时段与跨被试信号漂移而性能下降。EEG-VID提出任务引导的潜在预测预训练框架，通过EMA目标编码器预测近期历史之后的潜在脑电状态，并以弱任务监督促进表征学习，再进行有监督微调。在VIG-48和BCI Competition IV-2a/2b等数据集上，预训练使42个对比中41个平均准确率提升，包含全部12个留一被试设置，最高提升16.22个百分点；48区跨天任务上取得6.52% Top-1和30.50% Top-5准确率。该预训练范式可作为脑电基础模型的构建思路，迁移到认知负荷评估等被动脑机接口任务。",
+      "llm_tldr": "脑电解码常因跨时段与跨被试信号漂移而性能下降。EEG-VID提出任务引导的潜在预测预训练框架，通过EMA目标编码器预测近期历史之后的潜在脑电状态，并以弱任务监督促进表征学习，再进行有监督微调。在VIG-48和BCI Competition IV-2a/2b等数据集上，预训练使42个对比中41个平均准确率提升，包含全部12个留一被试设置，最高提升16.22个百分点；48区跨天任务上取得6.52% Top-1和30.50% Top-5准确率。该预训练范式可作为脑电基础模型的构建思路，迁移到认知负荷评估等被动脑机接口任务。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.29012v1",
+      "source": "arxiv",
+      "title": "Frequency Selective Neural Networks as a Foundation Architecture for Time Series Learning",
+      "abstract": "Time-series data across physical and biological domains are fundamentally driven by complex, non-stationary oscillatory modes. While deep learning models, such as Convolutional Neural Networks (CNNs), Recurrent Neural Networks, and Transformers, have dominated sequential analysis, they remain fundamentally \"spectral-blind\". By mapping continuous physical waves into unconstrained spatial or discrete token spaces, these architectures suffer from severe spectral entanglement, acting as opaque black boxes that decouple predictive accuracy from physical reality. In this paper, we introduce the Frequency Selective Neural Network (FSNN), pioneering a foundation architecture guaranteeing physical interpretability without sacrificing expressive power of deep learning. FSNN addresses spectral entanglement by explicitly embedding the rigorous mathematics of advanced signal processing into its neural topology. Through a fully differentiable Wiener-like filter bank optimized via complex-domain backpropagation, FSNN autonomously discovers and isolates the precise physical modes of a given task. Extensive evaluations demonstrate that FSNN establishes state-of-the-art predictive performance, achieving $77.0\\%$ average accuracy on the standard 10 multivariate UEA datasets and leading across all major metrics on the highly imbalanced PTB-XL clinical ECG benchmark. Crucially, in contrast to yielding abstract feature maps, FSNN converges directly on physically meaningful frequency bands, such as isolating the cardiac QRS complex, providing a highly scalable, interpretable paradigm for robust pattern recognition in complex temporal domains. Our code is available at: https://github.com/ad6174hhhh/FSNN.",
+      "authors": [
+        "Hui Huang",
+        "Ye Sun",
+        "Shiyan Hu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-29T02:51:29+00:00",
+      "link": "https://arxiv.org/pdf/2608.29012v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "A frequency-selective foundation architecture for time series learning; potentially transferable to EEG spectral modeling for cognitive load tasks.",
+      "llm_evidence_cn": "频率选择的时间序列基础架构，可能迁移至脑电频谱建模与认知负荷任务。",
+      "llm_evidence": "频率选择的时间序列基础架构，可能迁移至脑电频谱建模与认知负荷任务。",
+      "canonical_evidence": "频率选择的时间序列基础架构，可能迁移至脑电频谱建模与认知负荷任务。",
+      "llm_tldr_en": "FSNN introduces a frequency-selective neural network foundation architecture for time-series learning built around physical oscillatory modes, overcoming the spectral blindness of CNN/RNN/Transformer models. Although not applied to EEG in this paper, its design can transfer to EEG processing and passive-BCI workload estimation.",
+      "llm_tldr_cn": "针对主流模型在非平稳振荡时间序列学习中的谱盲与黑箱问题，论文提出频率选择神经网络FSNN，以物理振荡频率作为基本单元构造基础架构，从而在保持强大表达能力的同时实现物理可解释。作者在时间序列任务上验证了架构性能。此类频率可解释基础架构可作为脑电等生理信号的通用骨干，为认知负荷估计和被动脑机接口提供新的前端建模思路，但论文尚未给出脑电实验，属方法桥梁型文献。",
+      "llm_tldr": "针对主流模型在非平稳振荡时间序列学习中的谱盲与黑箱问题，论文提出频率选择神经网络FSNN，以物理振荡频率作为基本单元构造基础架构，从而在保持强大表达能力的同时实现物理可解释。作者在时间序列任务上验证了架构性能。此类频率可解释基础架构可作为脑电等生理信号的通用骨干，为认知负荷估计和被动脑机接口提供新的前端建模思路，但论文尚未给出脑电实验，属方法桥梁型文献。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.00584v1",
+      "source": "arxiv",
+      "title": "Socrates went Nuclear: Comparing Interaction Strategies for AI systems in a Learning Context using Brain Sensing",
+      "abstract": "Does unrestricted AI access bypass the cognitive effort required for learning, or does it streamline knowledge acquisition? This paper reports on a study where we compare three designs for user-AI interaction in a learning context: (1) an unrestricted conversational bot like ChatGPT, (2) a pedagogically constrained bot that guides through hints without giving final answers, which we refer to as the Socratic mode; and (3) a non-conversational adaptive tutoring system that adjusts difficulty in real-time based on the user's cognitive engagement derived from the brain signals. Fifty study participants were tasked with learning about nuclear safety protocols, a domain chosen for its zero-prior knowledge baseline. The participants progressed through an instructional video, a pre-test, an AI-driven assessment phase, which varied in the three conditions, and an immediate post-test. The nature of the questions centered primarily on factual knowledge acquisition, but it still required participants to have a global understanding of the concepts in order to answer the questions correctly. A Muse headband was used to derive the cognitive engagement of all users in all conditions. The unrestricted chatbot produced higher learning gains (delta) than both constrained modes (p < .03, d > 0.80), while the adaptive condition generated significantly higher EEG engagement (p = .018). The cluster analysis of chatbot usage and discussion patterns by users showed that most participants in the unrestricted-mode adopted a direct answer-retrieval strategy, while participants in the Socratic-mode initially attempted to reason through the hints before progressively disengaging. Consequently, this also suggests that the success of the unrestricted AI is not an evidence of deeper learning, but rather a result of the immediate post-test evaluation after the training phase.",
+      "authors": [
+        "Alexandre Clin Deffarges",
+        "Nataliya Kosmyna",
+        "Pattie Maes"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ],
+      "published": "2026-09-01T02:24:35+00:00",
+      "link": "https://arxiv.org/pdf/2609.00584v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Brain-derived cognitive engagement used for real-time difficulty adaptation in AI tutoring; aligns with passive BCI cognitive-load assessment",
+      "llm_evidence_cn": "利用脑信号推断认知投入并实时调节AI辅导难度，属于被动BCI负荷与投入评估的应用",
+      "llm_evidence": "利用脑信号推断认知投入并实时调节AI辅导难度，属于被动BCI负荷与投入评估的应用",
+      "canonical_evidence": "利用脑信号推断认知投入并实时调节AI辅导难度，属于被动BCI负荷与投入评估的应用",
+      "llm_tldr_en": "50-participant study compares chatbot, Socratic bot, and brain-signal-adaptive tutor; cognitive engagement from brain signals drives real-time difficulty, probing whether AI bypasses or supports effortful learning.",
+      "llm_tldr_cn": "围绕AI是否绕过学习中的认知努力这一问题，研究让50名受试学习核安全知识，比较自由对话AI、苏格拉底式引导AI和基于脑信号认知投入调节难度的自适应系统。后者从脑信号估计用户的认知投入，并据此实时调整学习难度。实验将认知状态感知嵌入AI交互，展示了被动BCI式负荷评估在真实教育场景中的应用潜力。",
+      "llm_tldr": "围绕AI是否绕过学习中的认知努力这一问题，研究让50名受试学习核安全知识，比较自由对话AI、苏格拉底式引导AI和基于脑信号认知投入调节难度的自适应系统。后者从脑信号估计用户的认知投入，并据此实时调整学习难度。实验将认知状态感知嵌入AI交互，展示了被动BCI式负荷评估在真实教育场景中的应用潜力。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface for cognitive load assessment",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.29304v1",
+      "source": "arxiv",
+      "title": "MEL: Coordinate-Preserving EEG Tokenization for fMRI Translation",
+      "abstract": "Translating electroencephalography (EEG) into functional magnetic resonance imaging (fMRI) is important for medical neuroimaging, clinical brain-state monitoring, and multimodal neural decoding, because it aims to infer spatially organized hemodynamic activity from fast and accessible electrophysiological recordings. Existing EEG-to-fMRI studies mainly pursue stronger decoders, but the problem is also constrained by a representation-interface mismatch: fMRI responses are delayed, temporally integrated, and spatially distributed, whereas generic EEG encodings often entangle temporal lag, channel identity, and frequency-band structure. We propose Multi-band EEG Latent-state Tokenization (MEL), a coordinate-preserving EEG representation framework that anchors each target fMRI response to its preceding EEG history and organizes it into lag-channel-frequency neural-state tokens. By explicitly capturing hemodynamic latency and spectral-spatial dynamics, MEL aligns fMRI-pertinent EEG representations with capacity-controlled readouts without depending entirely on model scaling. Experiments on VU EEG-fMRI benchmarks and external Oddball data show that MEL improves prediction over strong NeuroBOLT baselines. Ablations and controls further indicate that the gains come from structured EEG representation rather than leakage, shortcut statistics, or decoder capacity.",
+      "authors": [
+        "Xiangyu Liu",
+        "Zeting Yan",
+        "Zhitong Yin",
+        "Boyang Li",
+        "Xi Zhang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-29T14:43:51+00:00",
+      "link": "https://arxiv.org/pdf/2608.29304v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "coordinate-preserving EEG tokenization framework relevant to EEG signal processing and foundation model tokens",
+      "llm_evidence_cn": "面向fMRI转换的保坐标脑电标记化框架，可服务于脑电信号处理建模",
+      "llm_evidence": "面向fMRI转换的保坐标脑电标记化框架，可服务于脑电信号处理建模",
+      "canonical_evidence": "面向fMRI转换的保坐标脑电标记化框架，可服务于脑电信号处理建模",
+      "llm_tldr_en": "Coordinate-preserving multi-band EEG tokenization fixes EEG-fMRI representation mismatch, preserving channel and frequency structure and improving translation, making it reusable for downstream EEG modeling.",
+      "llm_tldr_cn": "现有脑电到功能磁共振转换研究主要优化解码器，忽略了脑电时延、通道位置和频带结构方面的表征错配。针对该问题，MEL提出一种保坐标的多频带脑电潜在状态标记化框架，对片段信息进行时空与频带感知的组织，以匹配延迟、积分化且空间分布的fMRI活动。实验表明该框架改善了跨模态转换中的空间与结构一致性。这样的脑电标记化表示可为后续脑电基础模型及相关神经解码任务提供可复用的构建模块。",
+      "llm_tldr": "现有脑电到功能磁共振转换研究主要优化解码器，忽略了脑电时延、通道位置和频带结构方面的表征错配。针对该问题，MEL提出一种保坐标的多频带脑电潜在状态标记化框架，对片段信息进行时空与频带感知的组织，以匹配延迟、积分化且空间分布的fMRI活动。实验表明该框架改善了跨模态转换中的空间与结构一致性。这样的脑电标记化表示可为后续脑电基础模型及相关神经解码任务提供可复用的构建模块。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.04007v1",
+      "source": "arxiv",
+      "title": "RobustSeiz: An Open-Source Framework for Benchmarking the Robustness of EEG Seizure Detection Models",
+      "abstract": "Despite strong performance on held-out electroencephalography (EEG) data, seizure detectors may fail under real-world acquisition variability, artifacts, and adversarial inputs. We introduce RobustSeiz, an open-source, model-agnostic framework that provides a standardized, reproducible protocol for stress-testing and comparing seizure detectors under controlled, clinically motivated distribution shifts before deployment. We standardize four public scalp-EEG corpora (CHB-MIT, TUSZ, Siena, and SeizeIT1) into BIDS-EEG trees and evaluate subject-independent detectors on held-out splits. Environment, noise, and adversarial transforms are swept over predefined hyperparameter grids. Each run reports sample- and event-level sensitivity, precision, F1, false positives per 24 h, Lead and Lag onset timing, and Monte Carlo dropout predictive agreement. RobustSeiz includes a Dockerized GPU pipeline, experiment registry, and full-evaluation and research-subset modes. We demonstrate the framework with a contemporary seizure detector on TUSZ across the complete implemented shift grid; an AWGN analysis illustrates how perturbation severity changes detection quality, onset timing, and predictive agreement. RobustSeiz provides a shared benchmarking standard for evaluating seizure-detector robustness under realistic clinical stressors, extending pre-deployment assessment beyond clean-data accuracy.",
+      "authors": [
+        "Mohammad Mohammadi",
+        "Alireza Zarei"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-09-03T15:45:52+00:00",
+      "link": "https://arxiv.org/pdf/2609.04007v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Open-source model-agnostic framework for robustness benchmarking of EEG models under artifacts, noise, and adversarial transforms",
+      "llm_evidence_cn": "面向EEG模型的鲁棒性开源基准框架，涵盖伪迹、噪声与对抗扰动评估",
+      "llm_evidence": "面向EEG模型的鲁棒性开源基准框架，涵盖伪迹、噪声与对抗扰动评估",
+      "canonical_evidence": "面向EEG模型的鲁棒性开源基准框架，涵盖伪迹、噪声与对抗扰动评估",
+      "llm_tldr_en": "RobustSeiz is an open-source framework that stress-tests EEG seizure detectors under realistic acquisition variability, artifacts, and adversarial transforms, with four public scalp-EEG corpora standardized for reproducible benchmarking.",
+      "llm_tldr_cn": "现实环境中EEG获取变异、伪迹和对抗扰动会令癫痫检测器失效，但现有测试缺乏统一流程。RobustSeiz提出开源、模型无关的鲁棒性基准框架，将四个公开头皮EEG语料库标准化为BIDS-EEG，并在受控分布偏移下扫描环境、噪声与对抗变换，输出样本级和事件级敏感性指标。该框架为评估EEG模型的抗噪与抗扰动能力提供了复现基准，也可迁移到脑机接口等EEG处理任务。",
+      "llm_tldr": "现实环境中EEG获取变异、伪迹和对抗扰动会令癫痫检测器失效，但现有测试缺乏统一流程。RobustSeiz提出开源、模型无关的鲁棒性基准框架，将四个公开头皮EEG语料库标准化为BIDS-EEG，并在受控分布偏移下扫描环境、噪声与对抗变换，输出样本级和事件级敏感性指标。该框架为评估EEG模型的抗噪与抗扰动能力提供了复现基准，也可迁移到脑机接口等EEG处理任务。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-21",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.31013v1",
+      "source": "arxiv",
+      "title": "TSPFN: A Temporal Tabular Foundation Model for Physiological Time Series Classification",
+      "abstract": "Designing models that generalize effectively in low- to medium-data regimes remains a primary challenge in medical machine learning, particularly for physiological time-series classification. While tabular foundation models such as TabPFN offer an attractive alternative to conventional fine-tuning through in-context learning, they are not designed to capture the temporal dependencies inherent to physiological signals. ~In this paper, we introduce TSPFN, a foundation model that redesigns TabPFN's architecture for time series data. TSPFN integrates structured temporal representations and positional embeddings to capture intra-sample temporal and channel dependencies. To fully leverage its spatio-temporal design, the model is pretrained on 140,000 real-world physiological time series across multiple medical domains. This yields a unified, generalizable framework capable of learning the specificities of medical time series. Experiments across diverse physiological benchmarks demonstrate that TSPFN consistently outperforms standard tabular baselines and TabPFN, and achieves superior cross-domain generalization compared to specialized deep time-series models. All our experiments, ablation studies, and pre-processing scheme are publicly available at https://github.com/Jeremstym/TSPFN",
+      "authors": [
+        "Jérémie Stym-Popper",
+        "Clément Rambour",
+        "Federica Granese",
+        "Nicolas Thome",
+        "Olivier Bernard"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.CV"
+      ],
+      "published": "2026-08-31T15:58:22+00:00",
+      "link": "https://arxiv.org/pdf/2608.31013v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Temporal tabular foundation model for physiological time series, transferable to EEG foundation model processing",
+      "llm_evidence_cn": "面向生理时间序列的时间基础模型，其时间与通道建模可迁移到EEG信号处理",
+      "llm_evidence": "面向生理时间序列的时间基础模型，其时间与通道建模可迁移到EEG信号处理",
+      "canonical_evidence": "面向生理时间序列的时间基础模型，其时间与通道建模可迁移到EEG信号处理",
+      "llm_tldr_en": "TSPFN adapts the TabPFN tabular foundation model to time series by integrating temporal positional embeddings and channel structure, aiming to classify physiological signals well in low-to-medium data regimes.",
+      "llm_tldr_cn": "生理时间序列分类在低中数据场景下泛化困难，通用表格基础模型又缺少时间建模。TSPFN将TabPFN改造为时间序列基础模型，通过结构化时间表示与位置编码捕获样本内时间与通道依赖，并采用适应时空结构的预训练策略。该模型面向小样本到中等样本生理信号分类进行设计，为后续在EEG等信号上构建基础模型提供了迁移思路。",
+      "llm_tldr": "生理时间序列分类在低中数据场景下泛化困难，通用表格基础模型又缺少时间建模。TSPFN将TabPFN改造为时间序列基础模型，通过结构化时间表示与位置编码捕获样本内时间与通道依赖，并采用适应时空结构的预训练策略。该模型面向小样本到中等样本生理信号分类进行设计，为后续在EEG等信号上构建基础模型提供了迁移思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.02436v1",
+      "source": "arxiv",
+      "title": "Decoding Decision Correctness from EEG Under High Cognitive Workload in Virtual Reality: Implications for Collaborative Brain-Computer Interface Teams",
+      "abstract": "Collaborative Brain-Computer Interfaces (cBCIs) offer a promising mechanism to augment team decision-making, but existing approaches rely exclusively on evidence available only after a decision has been made and reported, such as reaction time or stated confidence. This limits their use to explaining or discounting a decision after the fact, rather than informing a team's response before it is finalised. We tested whether spatial-covariance EEG features could instead provide a genuinely pre-emptive signal of an operator's decision correctness, available within the response window itself, and whether such a signal depends on cognitive workload. Using a continuous virtual reality target-detection task, participants (N = 23) completed a within-subject workload manipulation (High vs. Low). At the team level, weighting votes by this pre-emptive neural signal, available before a response is committed, produced substantial accuracy gains on contested (evenly-split) trials under High Workload (57% to 88% as team size increased from 2 to 16), but was actively detrimental under Low Workload. Critically, this advantage held even against post-hoc behavioural signals: confidence was the strongest single team-level signal overall, but by definition cannot inform a decision still in progress, whereas the neural signal can. These findings indicate that EEG-based decision-reliability signals are not a general-purpose team augmentation tool, but a workload-conditional one, with clear implications for when and how cBCI systems should be deployed in operational teams.",
+      "authors": [
+        "Christopher Baker",
+        "Stephen Hinton",
+        "Tom Reed",
+        "Stephen Fairclough"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-09-02T10:59:58+00:00",
+      "link": "https://arxiv.org/pdf/2609.02436v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG-based collaborative BCI under high cognitive workload, related to passive BCI operator state decoding",
+      "llm_evidence_cn": "高认知负荷VR场景下的EEG协作BCI研究，与被动BCI操作者状态解码相关",
+      "llm_evidence": "高认知负荷VR场景下的EEG协作BCI研究，与被动BCI操作者状态解码相关",
+      "canonical_evidence": "高认知负荷VR场景下的EEG协作BCI研究，与被动BCI操作者状态解码相关",
+      "llm_tldr_en": "Using EEG in a collaborative BCI, this work investigates whether spatial-covariance features can decode decision correctness during the response window under high cognitive workload.",
+      "llm_tldr_cn": "协作脑机接口目前多依赖决策报告后的反应时或置信度，难以提前辅助团队。该研究在连续VR任务中考察空间协方差EEG特征能否在响应窗口内解码操作者的决策正确性，并分析该信号是否依赖于认知负荷水平。结果表明这类脑电特征可在决策定稿前提供预判线索，使协作BCI有机会在决策最终化前介入。该思路对被动BCI在高认知负荷场景下的解码应用具有参考价值。",
+      "llm_tldr": "协作脑机接口目前多依赖决策报告后的反应时或置信度，难以提前辅助团队。该研究在连续VR任务中考察空间协方差EEG特征能否在响应窗口内解码操作者的决策正确性，并分析该信号是否依赖于认知负荷水平。结果表明这类脑电特征可在决策定稿前提供预判线索，使协作BCI有机会在决策最终化前介入。该思路对被动BCI在高认知负荷场景下的解码应用具有参考价值。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.03404v1",
+      "source": "arxiv",
+      "title": "Detecting Interbrain Synchronization in EEG Hyperscanning with MUSE-S EEG headban",
+      "abstract": "In this study preliminary results on the classification of EEG hyperscanning data acquired using MUSE-S consumer-level EEG headband are presented. Five pairs of subjects were involved and the recording protocol contained three two-person tetris game sessions alternating with relaxation periods. The data were segmented and ten spectral and cross-coherence features were calculated. The features were arranged into feature matrices and Convolutional Neural Network model was trained to discriminate between the relaxation and gaming. Two different feature sets - the full set and a set containing only inter subject cross-coherence features were tested. The results indicate that using the full feature set, relaxation and gaming periods were perfectly discriminated. Using only inter-subject cross-coherence features 94 % and 79 % classification accuracy for training and testing data was obtained, respectively.",
+      "authors": [
+        "Tarmo Lipping",
+        "Ahmad Sharif",
+        "Matin Beiramvand",
+        "Jari Turunen"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-09-03T06:03:40+00:00",
+      "link": "https://arxiv.org/pdf/2609.03404v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG state classification with CNN for relaxation vs gaming; deep-learning decoding useful for passive BCI workload monitoring",
+      "llm_evidence_cn": "用CNN对脑电放松与游戏状态进行分类，深度学习解码方法可服务于被动脑机接口状态监测",
+      "llm_evidence": "用CNN对脑电放松与游戏状态进行分类，深度学习解码方法可服务于被动脑机接口状态监测",
+      "canonical_evidence": "用CNN对脑电放松与游戏状态进行分类，深度学习解码方法可服务于被动脑机接口状态监测",
+      "llm_tldr_en": "Using MUSE-S EEG headsets, this study records five dyads during Tetris game and relaxation, extracts spectral and cross-coherence features, and trains a CNN to classify gaming vs relaxation; the full feature set yields high discrimination, showing portable EEG deep classifiers for interactive states.",
+      "llm_tldr_cn": "双人互动中的EEG状态识别仍待验证。本研究用消费级MUSE-S头带记录五对受试在双人俄罗斯方块游戏和放松状态下的超扫描数据，提取10种频谱与跨脑相干特征并构建CNN分类器。结果显示，使用完整特征集可完美区分放松与游戏段，仅用跨脑相干特征时区分能力有限。这说明便携式EEG加深度学习可以在社交互动状态解码中发挥作用，也为被动BCI的负荷评估提供了可借鉴的实验范式。",
+      "llm_tldr": "双人互动中的EEG状态识别仍待验证。本研究用消费级MUSE-S头带记录五对受试在双人俄罗斯方块游戏和放松状态下的超扫描数据，提取10种频谱与跨脑相干特征并构建CNN分类器。结果显示，使用完整特征集可完美区分放松与游戏段，仅用跨脑相干特征时区分能力有限。这说明便携式EEG加深度学习可以在社交互动状态解码中发挥作用，也为被动BCI的负荷评估提供了可借鉴的实验范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

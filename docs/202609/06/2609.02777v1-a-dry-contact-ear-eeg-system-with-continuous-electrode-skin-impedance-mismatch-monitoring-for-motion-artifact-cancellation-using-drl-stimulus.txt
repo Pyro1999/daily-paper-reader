@@ -1,0 +1,268 @@
+Title: A Dry-Contact Ear-EEG System With Continuous Electrode-Skin Impedance Mismatch Monitoring for Motion Artifact Cancellation Using DRL Stimulus
+
+URL Source: https://arxiv.org/pdf/2609.02777v1
+
+Published Time: Thu, 03 Sep 2026 01:31:00 GMT
+
+Number of Pages: 5
+
+Markdown Content:
+# A Dry-Contact Ear-EEG System With Continuous Electrode-Skin Impedance Mismatch Monitoring for Motion Artifact Cancellation Using DRL Stimulus 
+
+Lohan Atapattu †1 , Sajitha Madugalle †1 , Imasha Nethmal †1 , Erandee Jayathilaka †1 ,Avishka Herath 1, Kithmin Wickremasinghe 2, Simon L. Kappel 3, Nilan Udayanga 4, Chamira U. S. Edussooriya 1
+
+> 1
+
+Department of Electronic and Telecommunication Engineering, University of Moratuwa, Sri Lanka. 
+
+> 2
+
+Department of Electrical and Computer Engineering, University of British Columbia, Vancouver, Canada. 
+
+> 3
+
+Department of Electrical and Computer Engineering, Aarhus University, Denmark. 
+
+> 4
+
+Cirtec Medical Corporation, USA. 
+
+> †
+
+These authors contributed equally to the work. 
+
+Abstract —Dry-contact ear-electroencephalography (Ear-EEG) enables wearable neural monitoring. However, motion induced electrode-skin impedance (ESI) mismatches between electrodes can severely degrade signal quality. To the best of our knowledge, this paper presents the first proof-of-concept dry-contact Ear-EEG system that uses a driven-right-leg (DRL) stimulus for continuous ESI mismatch monitoring, enabling online adaptive motion artifact cancellation. A 1 kHz sinusoidal stimulus is injected through the DRL electrode. The resulting response to the injected carrier is separated from the EEG using bandpass filtering and demodulation, and then used to extract the ESI mismatch information as the reference input for a normalized least-mean-square adaptive filter followed by a Hampel filtering stage. To evaluate artifact suppression and preservation of neural activity, alpha-band EEG activity was analyzed involving four healthy participants performing head nodding, electrode tapping, and jaw clenching. The system achieved artifact power reductions of 6.5, 12.6, and 9.0 dB (77.6%, 92.8%, and 86.4%, respectively) while alpha-band modulation remained clearly observable after processing. This demonstrates the feasibility of DRL-stimulus-based ESI mismatch monitoring for motion artifact cancellation in wearable dry-contact Ear-EEG. 
+
+Index Terms —DRL stimulus, Ear-EEG, electrode-skin impedance, mismatch monitoring, motion artifact cancellation, NLMS. 
+
+I. I NTRODUCTION 
+
+Dry-contact ear-electroencephalography (Ear-EEG) enables unobtrusive neural monitoring in daily life through compact ear-worn or hearing-aid-like devices suitable for long-term recording [1]. This form factor supports applications in sleep monitoring, cognitive-state assessment, neurofeedback, and brain computer interfaces [2], [3]. However, reliable acqui-sition during natural movement remains challenging because motion induced changes at the electrode-skin interface can severely degrade EEG signal quality. These artifacts arise 
+
+This is the author’s version of the article that has been accepted for presentation at the 2026 IEEE Biomedical Circuits and Systems Conference (BioCAS 2026). © 2026 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works. 
+
+primarily from head movement, jaw motion, and contact-pressure variations [4], and their spectra overlap with key EEG bands, including delta, theta, alpha, and beta. Consequently, frequency domain filtering may remove neural information together with artifacts [5]. Although signal decomposition, wavelet-based methods, and deep learning have shown promis-ing artifact removal performance [6]–[9], many require high computational cost, multiple channels [10], large datasets, or offline processing, limiting their applicability to low power wearable Ear-EEG systems. To address these limitations, adaptive filtering has been used for artifact reduction in wearable EEG systems [11], [12]. In dry-contact Ear-EEG, electrode-skin impedance (ESI) variations are well suited as a reference for motion artifact reduction because they directly reflect motion induced changes at the electrode-skin interface. However, most existing ESI monitoring methods inject the measurement current through the sensing electrodes, which requires high-input-impedance, low-noise driver circuits under high contact impedance condi-tions and can potentially degrade the common-mode rejection performance of the analog front-end (AFE) [13]. In contrast, Degen et al. demonstrated continuous ESI mismatch monitor-ing for electrocardiogram (ECG) acquisition by injecting a low amplitude, high frequency excitation signal through the driven-right-leg (DRL) path and extracting the impedance related response during biosignal acquisition [14]. To the best of our knowledge, this work presents the first proof-of-concept dry-contact Ear-EEG platform that extends the DRL based ESI monitoring approach of Degen et al. to EEG acquisition and enables online motion artifact cancella-tion (MAC) on an embedded microcontroller. A low ampli-tude 1 kHz sinusoidal stimulus is injected through the DRL electrode, and the carrier response is demodulated to derive an ESI mismatch correlated artifact reference. This reference drives a normalized least-mean-square (NLMS) adaptive filter with threshold based step size control, and a Hampel stage is subsequently applied on the host PC for residual spike suppression. We characterize alpha-band modulation during arXiv:2609.02777v1 [eess.SP] 2 Sep 2026 fadd          
+
+> Stimulus Signal Generation
+> BPF
+> Qi(t)
+> Ii(t)
+> Qi+1 (t)
+> Ii+1 (t)
+> 1Vp1kHz
+> 0.01
+> ZDRL
+> Zref
+> Zi
+> Zi+1
+> 500SPS/channel
+> LPF
+> DCLK DRDY MOSI
+> Filtered ear-EEG Signal +Reference Signal Generation
+> ESI Extraction
+> LPF
+> Vi+1
+> Body (Ear Canal) Buffer Buffer Buffer
+> IN A IN A
+> −
+> +
+> −
+> +
+> −
+> +
+> −
+> +
+> −
+> +
+> −
+> +
+> −
+> +
+> IQ
+> 90 000
+> −
+> +
+> Vi
+> Vref
+> ith xi(t)
+> 10 mV p
+> AFE
+> DRL
+> Electrode-Skin Interface Ear Piece Hardware
+> Analog-to-Digital Converter
+> xi+1 (t)
+> BPF Adaptive FIR Filter
+> MCU
+> I[n]
+> Q[n]
+> x[n]
+> BLE Module i+ 1 th
+> SPI
+> ELE embedded Ear Piece Design Electrode Placement
+> 24-bit Σ-∆ADC
+> LPF LPF LPF
+> Raw Bio-Signal Raw Bio-Signal
+> 1kHz
+> CD
+> VCM
+> FEGHIJMLK
+> Vadd
+> VBP,i
+> A
+> B
+
+Fig. 1. Overview of the proposed system architecture. (A) Placement of the DRL, reference electrode, and superiorly positioned left in-ear electrode (ELE) 
+
+Zi, (B) ELE electrode embedded within the earpiece, (C) ESI interface [15], (D) AFE with input buffers and fully differential instrumentation amplifiers, (E) DRL loop with stimulus injection, (F) stimulus signal scaling for safe body injection, (G) ESI extraction stage with filtering and multiplication-based I/Q demodulation, (H) anti-aliasing filters, (I) analog-to-digital converter (ADC), (J) microcontroller unit (MCU) with adaptive filtering, (K) Bluetooth Low Energy (BLE) module for wireless transmission, (L) reference signal estimation, and (M) stimulus generation with in-phase and quadrature phase signals. 
+
+stimulation and evaluate MAC in four healthy participants dur-ing head nodding, electrode tapping, and jaw clenching. The results support the feasibility of DRL stimulus based relative ESI mismatch monitoring for MAC in Ear-EEG devices. II. S YSTEM OVERVIEW AND METHODOLOGY 
+
+A. Overall System Architecture 
+
+Fig. 1 shows the overall architecture of the proposed system, which integrates both biosignal acquisition and ESI reference signal measurement. The setup uses one in-ear sensing elec-trode referenced to an external forehead electrode placed at Fp1, together with a DRL electrode. The same architecture can be extended to multichannel bipolar EEG acquisition. The DRL feeds back the inverted common-mode estimate from the channels. It also injects a 1 kHz sinusoidal signal, 
+
+Vadd . This signal appears in the common-mode voltage Vcm 
+
+at the input of the differential amplifier [16]. The injected frequency is selected so that it does not overlap with the EEG frequency range of interest (0.5-40 Hz). Here, the common-mode and differential-mode outputs of the differential ampli-fier are given by: 
+
+Vout = GDM (Vcm )
+
+ Zi − Zref 
+
+Zin 
+
+| {z }
+
+> Common Mode Signal
+
++ GDM (Vi − Vref )
+
+| {z }
+
+> Differential Mode Signal
+
+(1) 
+
+The combined output contains both the EEG signal and the ESI related signal, whereas the differential output contains the EEG signal. However when there is a mismatch between the electrode-skin impedance interfaces, i.e., Zi − Zref ̸ = 0 , part of the common-mode signal appears together with the EEG signal [16]. Since the EEG and ESI signals occupy different frequency bands, a 0-100 Hz lowpass filter (LPF) is used to extract the EEG signal, while a narrow bandpass filter (BPF) of 900-1200 Hz is used to extract the ESI signal. 
+
+B. Analog Multiplication and I/Q Demodulation 
+
+The extracted ESI signal ( VBP ) was synchronously multi-plied by the in-phase ( I) and quadrature-phase ( Q) stimulus signals and then low-pass filtered to remove double-frequency components. The resulting baseband components were sam-pled and used to estimate the amplitude and phase changes associated with the ESI mismatch (Zi − Zref ) due to motion artifacts [14], [17]. This extracted in-phase component is used as a relative ESI-mismatch-correlated reference rather than an absolute impedance estimate in ohms to evaluate the impact of motion artifacts on the Ear-EEG signal. 
+
+C. Hardware Implementation 
+
+Fig. 2 shows the implementation of the system using commercially available off-the-shelf components. The AFE consists of input buffers, fully differential instrumentation am-plifiers (INAs), and a DRL circuit. The design also includes a fourth-order fully differential bandpass filter for ESI extraction and fully differential multipliers for I/Q demodulation. Finally, both the Ear-EEG signals and the demodulated ESI signals are sampled using a 24-bit ADC and processed online on an STM32 TM microcontroller. 
+
+Fig. 2. Hardware implementation of the proposed system. (a) Top-view of the acquisition circuit board. (b) Bottom-view of the acquisition circuit board. (c) BLE module for signal transmission and (d) power converters providing 5 V, 2.5 V, 3.3 V, and −5 V supply levels. D. Online Processing Algorithm Implementation 
+
+A BLE module is used to wirelessly transmit the processed data to the graphical user interface with the real-time signal processing architecture. The real-time processing pipeline was designed to suppress motion-induced artifacts while preserving the EEG signal by taking into consideration that Rosanne et al. [11] had shown that motion artifacts may span 0.11-20 Hz, overlapping with EEG bands of interest. The raw EEG was bandpass filtered (0.5-40 Hz), and the impedance signal was low-pass filtered at 10 Hz. Both filters were implemented as 4th-order Butterworth infinite impulse response (IIR) filters. The ESI reference signal was low-pass filtered to capture slow variations in electrode-skin impedance mismatch caused by motion artifacts [13]. The filtered signal was then used as the reference input to an adaptive finite impulse response (FIR) filter, while the filtered EEG signal served as the primary input. The adaptive filter coefficients were updated using the NLMS rule [18], because the amplitude of the impedance ref-erence can vary significantly during electrode-contact changes. The 64-tap NLMS filter used a base step size of μ0 = 0 .06 
+
+and ϵ = 10 −3. In order to avoid over-adaptation during stable EEG periods and increase MAC only when electrode-contact variation was detected, the base NLMS step size was updated using a threshold-based approach. The step size was scaled by factors of 2, 3, 10, and 15 when the peak-to-peak ESI-reference variation, evaluated over a 64-sample window, exceeded 0.004, 0.008, 0.010, and 0.040 V, respectively. Adaptation was frozen when the variation exceeded 0.08 V and resumed when it fell to the normal range. These parameters were heuristically tuned using pilot recordings. A post-NLMS Hampel filter was used as in [19] with a local window of 0.5 s and a threshold of 3.0 scaled median absolute deviations. 
+
+E. Data Collection Protocol 
+
+The study was approved by the University of Moratuwa Ethics Review Committee under Ethics Declaration No. ERN/2026/003, with written consent obtained from all par-ticipants. Ear-EEG data were collected from four healthy participants, including one female and three males aged 25 ±1
+
+years, using a custom-designed earpiece with an Ag/AgCl sintered pellet electrode. The DRL and reference electrodes were placed at Fpz and Fp1 , respectively, as shown in Fig. 1. A 240 s alpha-wave protocol following [4] was first used to characterize Ear-EEG acquisition and alpha-band (8-12 Hz) modulation after processing, as shown in Fig. 3. The 300 s artifact trials then evaluated head nodding, earpiece tapping, and jaw clenching. As shown in Fig. 4, each trial included five segments: eyes open without artifact from 0-50 s, eyes closed without artifact from 50-100 s, eyes closed with intentional artifact from 100-200 s, eyes closed without artifact from 200-250 s, and eyes open without artifact from 250-300 s. III. R ESULTS AND DISCUSSION 
+
+The experimental validation focused on evaluating the effect of sinusoidal impedance stimulation on Ear-EEG quality, alpha                     
+
+> TABLE I INDIVIDUAL AND GRAND AVERAGE ALPHA MODULATION RATIOS
+> Ear EEG (V 2/V2)
+> Subject 1 1.97 ±0.89
+> Subject 2 2.03 ±0.08
+> Subject 3 1.84 ±0.80
+> Subject 4 1.29 ±0.28
+> Average 1.78 ±0.33
+
+wave modulation performance, and assessing the proposed impedance-aware digital signal processing pipeline for MAC. 
+
+A. Effect of Sinusoidal Stimulation 
+
+The effect of sinusoidal DRL stimulation on Ear-EEG qual-ity was evaluated by comparing eyes-closed recordings with and without 1 kHz stimulation, where alpha-band activity is expected to be prominent. Effect on alpha-band was quantified using relative alpha power ( RAP dB ), as described in [20]: 
+
+RAP dB = 10 log 10 
+
+ P8 to 12 
+
+P0.5 to 40 − P7 to 13 
+
+
+
+(2) where P8 to 12 is the alpha-band power, P0.5 to 40 is the total EEG power, and P7 to 13 is the excluded alpha-surrounding band. The average RAP values were -2.15 dB without stimu-lation and -2.21 dB with stimulation, corresponding to only a 0.06 dB difference. This indicates that the 1 kHz DRL stimulus supported impedance monitoring without noticeably degrading alpha-band activity. 
+
+B. Alpha Wave Modulation 
+
+The alpha modulation ratio (AMR) was calculated as fol-lows [21]: 
+
+AMR = mean alpha band power (eyes closed) mean alpha band power (eyes opened) (3) As shown in Fig. 3 and Table I, the recordings achieved a grand average ratio of 1.78 ± 0.33 , confirming detectable alpha modulation across the four participants. This was slightly lower than the reported 2.17 ± 0.69 [21], likely due to dry electrode contact quality and the limited cohort size. 10 20 30 40 Frequency (Hz)  Preprocessed EEG Open + EBA Closed Open + EBA Closed                  
+
+> 060 120 180 240 Time (s) 10
+> 010 Power (dB)  Mean α-band power
+> 8
+> 4
+> 048Power (dB)
+> Fig. 3. Time-frequency spectrogram of alpha modulation (top) using 4 s segments with 3 s overlap and grand average alpha power plot (bottom) for 12 recordings. EBA - Eye Blink Artifacts. 10 20 30 40 Frequency (Hz)  Before filtering Open + EBA Closed Closed + MA Closed Open + EBA
+> 10 20 30 40 Frequency (Hz)  After filtering
+> 70
+> 070 Voltage ( μV) Before filtering After filtering 050 100 150 200 250 300 Time (s) 20
+> 15
+> 10
+> 5
+> RAP (dB)
+> 5
+> 0510 Power (dB)
+> 5
+> 0510 Power (dB)
+
+(a) Electrode tapping condition 10 20 30 40 Frequency (Hz)  Before filtering Open + EBA Closed Closed + MA Closed Open + EBA         
+
+> 10 20 30 40 Frequency (Hz)  After filtering
+> 70
+> 070 Voltage ( μV) Before filtering After filtering 050 100 150 200 250 300 Time (s) 20
+> 15
+> 10
+> 5
+> RAP (dB)
+> 5
+> 0510 Power (dB)
+> 5
+> 0510 Power (dB)
+
+(b) Head nodding condition 
+
+Fig. 4. Evaluation of the proposed impedance-aware motion artifact reduction method under two motion conditions. (a) Measurement results for the electrode tapping condition. (b) Measurement results for the head nodding condition. Each result includes spectrograms before and after filtering, the time-domain comparison before and after filtering, and the relative alpha-band power comparison across experimental segments for two recordings from subject 2. The dashed vertical lines indicate the experimental segment boundaries, while the white horizontal lines in the spectrograms mark the alpha band. MA -Motion Artifacts. 
+
+C. Motion Artifact Cancellation 
+
+MAC was evaluated for head nodding, electrode tapping, and jaw clenching using 12 recordings per condition from four participants. Artifact reduction was assessed using spec-trogram inspection, average artifact band power reduction, and relative alpha band power improvement as shown in Table II. The power spectral density (PSD) of the Ear-EEG signal was estimated using Welch’s method [22] with a segment size of 4 s and an overlap between segments of 3 s, and the artifact power was represented by the mean PSD within the 2 to 7 Hz artifact-dominated band. For artifacts, this metric quantifies only the low-frequency contact-related component, not the broadband myogenic EMG contamination [4]. The artifact power reduction in decibels ( RdB ) and the corresponding percentage artifact power reduction ( R%) was calculated using the mean PSD values. RdB and R% were computed separately for each recording, averaged within each participant, and then averaged across the four participant-level values. 
+
+RdB = P2–7,before ,dB − P2–7,after ,dB (4) 
+
+R% =
+
+ P2–7,before − P2–7,after 
+
+P2–7,before 
+
+
+
+× 100% (5) RAP was computed from the mean PSD in the 8-12 Hz alpha band relative to the surrounding non-alpha EEG content, with RAP change defined as the difference between the values after and before the motion artifact cancellation pipeline, as summarized in Table II. Fig. 4 shows reduced low-frequency artifacts and time-domain variations while preserving ob-servable alpha-band modulation. The Hampel stage replaced 
+
+< 1% of samples on average, indicating only sparse residual spike correction. The strongest artifact reduction occurred during electrode tapping, likely because it directly affects the electrode-skin interface and is well captured by the ESI reference, whereas head nodding and jaw clenching also introduce EMG components not directly represented by this reference. Overall, the results support effective impedance-referenced artifact attenuation, although ground-truth valida-tion is still needed to rigorously assess broadband neural-signal preservation. 
+
+TABLE II MOTION ARTIFACT CANCELLATION RESULTS 
+
+Motion condition 
+
+RdB R% RAP change 
+
+Head nodding 6.52 dB 77.6% 2.3 dB Tapping 12.56 dB 92.8% 6 dB Jaw clenching 9.03 dB 86.4% 2.5 dB IV. C ONCLUSION AND FUTURE WORK 
+
+This study demonstrates the feasibility of a wireless dry contact Ear-EEG system using a DRL based sinusoidal stimu-lus for continuous relative electrode-skin impedance mismatch monitoring. The derived impedance variations served as an adaptive reference for motion artifact cancellation, achieving artifact power reductions of 77.6%, 92.8%, and 86.4% during head nodding, electrode tapping, and jaw clenching, respec-tively, while alpha band modulation remained observable. These results support impedance aware processing for wear-able Ear-EEG during motion. Future work will include larger cohorts, ground truth validation, phantom based electrical validation, integration of a more compact earpiece with a fully in-ear electrode configuration, and extension to motion artifact suppression in other wearable biosensing modalities. REFERENCES [1] K. B. Mikkelsen, S. L. Kappel, D. P. Mandic, and P. Kidmose, “EEG recorded from the ear: Characterizing the Ear-EEG method,” Frontiers in Neuroscience , vol. 9, p. 438, 2015. [2] K. B. Mikkelsen, Y. R. Tabar, S. L. Kappel, C. B. Christensen, H. O. Toft, M. C. Hemmsen, M. L. Rank, M. Otto, and P. Kidmose, “Accurate whole-night sleep monitoring with dry-contact Ear-EEG,” Scientific Reports , vol. 9, no. 1, p. 16824, Nov. 2019. [3] I. Zibrandtsen, P. Kidmose, C. Christensen, and T. Kjaer, “Ear-EEG detects ictal and interictal abnormalities in focal and generalized epilepsy – a comparison with scalp EEG monitoring,” Clinical Neurophysiology ,vol. 128, no. 12, pp. 2454–2461, 2017. [4] S. L. Kappel, D. Looney, D. P. Mandic, and P. Kidmose, “Physiological artifacts in scalp EEG and Ear-EEG,” Biomedical Engineering Online ,vol. 16, no. 1, p. 103, 2017. [5] A. Giangrande, A. Botter, H. Piitulainen, and G. L. Cerone, “Motion artifacts in dynamic EEG recordings: Experimental observations, elec-trical modelling, and design considerations,” Sensors , vol. 24, no. 19, p. 6363, 2024. [6] J. Nan, “Comparative study of motion artifact removal algorithms,” in 
+
+IEEE 2nd International Conference on Image Processing and Computer Applications , 2024, pp. 1178–1187. [7] S. Phadikar, N. Sinha, R. Ghosh, and E. Ghaderpour, “Automatic muscle artifacts identification and removal from single-channel EEG using wavelet transform with meta-heuristically optimized non-local means filter,” Sensors , vol. 22, no. 8, 2022. [8] S. Stalin, V. Roy, P. K. Shukla, A. Zaguia, M. M. Khan, P. K. Shukla, and A. Jain, “A machine learning-based big EEG data artifact detection and wavelet-based removal: An empirical approach,” Mathematical Problems in Engineering , vol. 2021, no. 1, 2021. [9] M. S. Hossain, S. Mahmud, and A. Khandakar, “Deep learning technique to denoise electromyogram artifacts from single-channel electroen-cephalogram signals,” in Proceedings of the International Conference on Computer Science and Information Technology , 2022, pp. 85–98. [10] E. Azemi, A. Moin, A. Pragada, J. H.-C. Lu, V. M. Powell, J. Minxha, and S. P. Hotelling, “Biosignal sensing device using dynamic selection of electrodes,” Patent Application Publication US20 230 225 659A1, Jul. 20, 2023. [11] O. Rosanne, I. Albuquerque, R. Cassani, J.-F. Gagnon, S. Tremblay, and T. H. Falk, “Adaptive filtering for improved EEG-based mental workload assessment of ambulant users,” Frontiers in Neuroscience , vol. 15, 2021. [12] S. Yadav, S. K. Saha, and R. Kar, “Evolutionary algorithm-based optimal wiener-adaptive filter design: An application on EEG noise mitigation,” 
+
+IEEE Transactions on Instrumentation and Measurement , vol. 72, pp. 1–12, 2023. [13] A. Pandey, S. F. Alamouti, J. Doong, R. Kaveh, C. Yalcin, M. M. Ghanbari, and R. Muller, “A 6.8μw AFE for Ear EEG recording with simultaneous impedance measurement for motion artifact cancellation,” in IEEE Custom Integrated Circuits Conference , 2022, pp. 1–2. [14] T. Degen and H. J¨ ackel, “Continuous monitoring of electrode–skin impedance mismatch during bioelectric recordings,” IEEE Transactions on Biomedical Engineering , vol. 55, no. 6, pp. 1711–1715, 2008. [15] Y. M. Chi, T.-P. Jung, and G. Cauwenberghs, “Dry-contact and noncon-tact biopotential electrodes: Methodological review,” IEEE Reviews in Biomedical Engineering , vol. 3, pp. 106–119, 2010. [16] T. Degen and T. Loeliger, “An improved method to continuously monitor the electrode-skin impedance during bioelectric measurements,” in 29th Annual International Conference of the IEEE Engineering in Medicine and Biology Society . IEEE, 2007, pp. 6294–6297. [17] S.-I. Cheon, H. Choi, H. Kang, J.-H. Suh, S. Park, S.-J. Kweon, M. Je, and S. Ha, “Impedance-readout integrated circuits for electrical impedance spectroscopy: Methodological review,” IEEE Transactions on Biomedical Circuits and Systems , vol. 18, no. 1, pp. 215–232, 2024. [18] P. S. R. Diniz, Adaptive Filtering: Algorithms and Practical Implemen-tation . New York, NY, USA: Springer, 2008. [19] F. A. Ghaleb, M. B. Kamat, M. Salleh, M. F. Rohani, and S. A. Razak, “Two-stage motion artefact reduction algorithm for electrocardiogram using weighted adaptive noise cancelling and recursive Hampel filter,” 
+
+PLOS ONE , vol. 13, no. 11, Nov. 2018. [20] H. Moumane, J. Pazuelo, M. Nassar, J. Y. Juez, M. Valderrama, and M. Le Van Quyen, “Signal quality evaluation of an in-ear EEG device in comparison to a conventional cap system,” Frontiers in Neuroscience ,vol. 18, 2024. [21] R. Kaveh, “Ear EEG: Sensors and systems for user-generic neural hear-ables,” Ph.D. dissertation, EECS Department, University of California, Berkeley, May 2023. [22] P. Welch, “The use of fast fourier transform for the estimation of power spectra: A method based on time averaging over short, modified peri-odograms,” IEEE Transactions on Audio and Electroacoustics , vol. 15, no. 2, pp. 70–73, 1967.
