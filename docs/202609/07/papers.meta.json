@@ -1,0 +1,39 @@
+{
+  "label": "2026-09-07",
+  "date": "2026-09-07",
+  "generated_at": "2026-09-07T23:32:32",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202609/07/2609.04461v1-a-roadmap-for-meg-foundation-models",
+      "section": "quick",
+      "title_en": "A Roadmap for MEG Foundation Models",
+      "authors": "Philipp Thölke, Hamza Abdelhedi, Yorguin Mantilla-Ramos, Fouad Lbakali, Oumayma Gharbi, Catherine Duclos, Annalisa Pascarella, Vanessa Hadid, Oiwi Parker Jones, Karim Jerbi",
+      "date": "2026-09-03",
+      "pdf": "https://arxiv.org/pdf/2609.04461v1",
+      "score": "6.0",
+      "evidence": "围绕脑信号基础模型的路线图，其概念与MEG/EEG对比可直接为EEG基础模型提供参考。",
+      "tldr": "脑信号分析正从任务专用解码迈向基础模型，但MEG因高时空分辨率和空间可解释性尚未充分发展。本文梳理MEG基础模型的关键设计选择，如分词、传感器/源空间、几何编码、骨干架构、自监督目标和预训练数据，并提出以原生MEG预训练、EEG适配、通用时间序列迁移和多模态整合为核心的路线图，强调构建多样化数据集、严格评测与负责任共享的基础设施。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Foundation models are beginning to reshape brain-signal analysis by moving the field beyond task-specific decoding pipelines toward reusable models pretrained on broad neural datasets. Magnetoencephalography (MEG) is a compelling but still underdeveloped target for this shift: it captures human cortical dynamics at millisecond resolution while offering stronger spatial interpretability than EEG, making it especially valuable for source-resolved studies of perception, language, cognition, and clinical brain function. Yet MEG foundation models remain at an early stage, with only a small number of MEG-specific and MEG-inclusive multi-modal models, modest pretraining corpora, and emerging but still limited benchmarks. This perspective lays down the basic concepts needed to understand MEG foundation models and provides a didactic overview of the field's key design choices, including tokenization, sensor- versus source-space representations, sensor-geometry encoding, backbone architectures, self-supervised objectives, and pretraining data. We then offer a roadmap for future development, organized around native MEG pretraining, adaptation of EEG foundation models, transfer from generic time-series models, and multi-modal integration with EEG, fMRI, MRI, behaviour, and stimulus features. We highlight the need for coordinated infrastructure, including diverse and reusable MEG datasets, rigorous evaluation across subjects, sites, tasks, and clinical settings, and responsible data-sharing practices that address consent, privacy, access, and governance.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/07/2609.05094v1-proca-progressive-contrastive-alignment-for-robust-eeg-visual-decoding",
+      "section": "quick",
+      "title_en": "ProCA: Progressive Contrastive Alignment for Robust EEG Visual Decoding",
+      "authors": "Kanglei Zhou, Chunyan Lan, Dongyang Li, Jun Zhu, Liyuan Wang",
+      "date": "2026-09-04",
+      "pdf": "https://arxiv.org/pdf/2609.05094v1",
+      "score": "6.0",
+      "evidence": "面向鲁棒脑电解码的深度对比学习方法，可直接支撑BCI中噪声信号的语义对齐",
+      "tldr": "EEG视觉解码需将噪声神经信号与稳定语义对齐，但固定视觉/文本锚点难以适应跨试验、被试与学习阶段的表征漂移。本文提出渐进式对比对齐（ProCA），从冻结视觉-语言先验逐步过渡到EEG感知的类别语义，并采用结构一致性插值保留通道与时序重要性。在四大评测协议下平均Top-1/Top-5相对提升达7.4%/3.9%至28.1%/17.8%，为鲁棒解码提供了统一且模型无关的框架。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Electroencephalogram (EEG) visual decoding aims to recover visual semantics from non-invasive neural time-series signals, for which robust alignment between noisy neural responses and stable semantic representations is key to achieving high-performance decoding. Despite recent advances in contrastive learning, robust EEG decoding remains challenging because existing methods rely on fixed visual or textual anchors whose semantic relations may become misaligned with EEG representations that vary across trials, subjects, and learning stages. Our empirical evidence shows that this instability appears across both standard EEG decoding protocols and more challenging robustness settings, including strict cross-subject transfer and realistic personalized continual adaptation. We provide a formal analysis showing that fixed semantic supervision can bias optimization when EEG-specific relations evolve, and that structure-agnostic perturbations may distort semantically important EEG components. To address these issues, we propose Progressive Contrastive Alignment (ProCA), a unified and model-agnostic framework for adaptive neural-semantic alignment. ProCA progressively refines class-level contrastive supervision from frozen vision-language priors to EEG-aware semantic relations, and introduces structure-consistent interpolation to constrain feature mixing according to channel-wise and temporal importance. Across subject-dependent, subject-independent, strict cross-subject transfer, and continual adaptation settings, ProCA achieves average relative Top-1/Top-5 gains of 7.4%/3.9%, 10.0%/4.6%, 28.1%/17.8%, and 16.8%/11.6%, respectively.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
