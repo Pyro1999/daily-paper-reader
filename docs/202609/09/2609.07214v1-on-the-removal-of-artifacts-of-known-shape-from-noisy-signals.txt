@@ -1,0 +1,285 @@
+Title: On the Removal of Artifacts of Known-Shape from Noisy Signals
+
+URL Source: https://arxiv.org/pdf/2609.07214v1
+
+Published Time: Wed, 09 Sep 2026 02:01:41 GMT
+
+Number of Pages: 18
+
+Markdown Content:
+# On the Removal of Artifacts of Known-Shape from Noisy Signals 
+
+## Alessandro Schaer ∗ Henrik Maurenbrecher ∗
+
+## George Chatzipirpiridis ∗ Hamdi Torun †
+
+## September 9, 2026 
+
+Abstract — A general method for the estimation and removal of quasi-periodic, artifact-like disturbances from single channel mea-surements is presented. The method is based on a wavelet template and data-driven template extraction from single channel, noisy sig-nals. The method is tested on an example application in modern neurology. The method is compared to an autoencoder, trained and deployed under idealized conditions, thus acting as reference system. It is found that the proposed method yields signal estimates with median root mean squared error improvement of 33% compared to the baseline, which is 4% more than the autoencoder, while relying on fewer assumptions and parameters, and without the need for any training data. Keywords: signal processing; filtering; artifact removal; signal synthesis; autoencoder. 
+
+# 1 Introduction 
+
+In all practical cases, measurements are an imperfect representation of what one is really interested in. Generally, if one is interested in some signal x,only some distorted version of it z = g(x) is obtainable in practice. Here z
+
+represents the actual measurement, which is some mapping g(·) applied to the true state x. Several sources of uncertainty can corrupt any measurement that is performed in real-life, one of the simplest being additive noise, in which case one has z = g(x) = x + n, where n is the noise. The sources of uncertainty may or may not be silenced at the time of measurement, and when they cannot be removed before measuring there may be the need for separating them from the signal of interest using signal-processing techniques prior to performing any further analysis on the cleaned signal. Mathematically, this corresponds to                          
+
+> ∗Magnes AG, Hardturmstrasse 253, 8005 Zurich, Switzerland. AS:
+> https://orcid.org/0000-0001-9865-9185 ,GC: https://orcid.org/0009-0001-0728-5286 ,HM: https://orcid.org/0009-0000-9231-0919
+> †School of Engineering, Physics and Mathematics, Northumbria University, New-castle upon Tyne, NE1 8ST, UK. Correspondence: hamdi.torun@northumbria.ac.uk ,
+> https://orcid.org/0000-0002-7882-286X .
+
+1arXiv:2609.07214v1 [eess.SP] 7 Sep 2026 applying some mapping h(·) to the measurement z to obtain an estimate of x,which we denote as ˆx, or ˆx = h(z). Linear filtering (band-pass/stop) techniques are one example of such mappings h(·). These filters can be used when the disturbances and signal of interest are spectrally separated, for example the removal of Mains-Hum in signals with spectral content far away from the mains frequency (typically 50 Hz or 60 Hz) using a notch filter. Unfortunately, the signal and disturbance often times overlap spectrally, hence additional, more advanced techniques for disturbance rejection are required. Several techniques have been developed, tackling the blind-source separation problem, with some techniques being better suited for specific types of signals than others. An overview for physiological signals is given in [1]. These methods enable the identification and separation of the “source of truth” from background noise and disturbances, which can then processed further. Many of them, such as independent component analysis (ICA), rely on having multiple measurements at hand, which is not always a satisfiable constraint. For the problem of artifact identification and removal, template matching techniques have long been known, in particular in computer vision [2]. In the analysis of local field potentials (LFP) of the brain, template removal for cleaning LFP signals from heart artifacts has been used [3, 4, 5], though with somewhat unclear implementations and performance analyses. Furthermore, it seems that templates are subtracted without any considerations in terms of local-matching – the template is usually extracted as an averaged kernel, which is subtracted from each identified artifact, without considerations w.r.t. the specific artifact instance amplitude. Recently, autoencoders [6] and other deep-learning models have raised to prominence, arguably becoming the de facto gold standard for denoising, arti-fact removal, and fault detection [7, 8, 9, 10, 11, 12]. Machine-learning tech-niques, such as autoencoders require good training data as their performance degrades due to inadequate generalizations Proper care and infrastructure is needed for their application. In the case where ground-truth data is difficult (or even impossible) to gather, synthetic data can be used for training, but this only postpones the verification of the performance in real-world deployments. Should the synthetic data be insufficiently representative of the real-world con-ditions, there is no easy and fast way of fixing a model, as the bad-data is what defined the model in the first place. Hence, more flexible models can be better alternatives to autoencoders in some scenarios. An interesting problem from a signal-analysis perspective thus remains the removal of artifacts from noisy signals, when only one measurement is available, the disturbance spectrum and the signal spectrum overlap significantly, and no reference measurement for the disturbance is available. In these cases, methods such as ICA are not applicable, reference correlation is not an option, and multiple sources of distortion have to be coped with simultaneously. We propose a method to tackle this problem for cases in which a signal is contaminated by both noise and strong artifacts based on data-driven template matching. Our contribution is threefold: 1. We illustrate a method for the removal of artifacts of known shape from noisy signals; 2. We provide open-source Python implementations of the methods described 2herein including a signal generation package and an artifact removal pack-age; and 3. We showcase the performance of the proposed method on a sample use-case including a comparison to a machine-learning approach placed within an idealized context – specifically a common problem in modern neurology, using synthetic data. To aid the reciprocal understanding, we will be using the following notation and terms throughout this manuscript. We denote the true signal as x, noise with n, and disturbance (artifacts) with d. The measurement is denoted by z
+
+which is a function of signal, noise, and disturbance z = g(x, n, d ). The goal is to manipulate the measurement z in order to obtain an accurate estimate ˆx of the underlying signal x using some mapping h: ˆx = h(z) = h(g(x, n, d )) .
+
+# 2 Methods 
+
+The whole analysis has been implemented in Python 3, leveraging the numeri-cal, scientific, machine-learning and visualization libraries Numpy, SciPy, SciKit Learn, and Matplotlib [13, 14, 15, 16]. The signal generation and artifact re-moval codebases are released as open-source code. 
+
+## 2.1 Formalized Problem Statement 
+
+We are interested in estimating the damping of some disturbance d[k] affecting the sampled signal x[k] for a set of measurement points 0 ≤ k < N − 1, which is additionally corrupted by noise n[k]. We focus on the case where g(·) is a linear mixing function. In other terms, we want to reduce the effects of d[k] in the measurement 
+
+z[k] = x[k] + γ · d[k] + σ · n[k], γ, σ > 0. (1) It is assumed that: only z[k] for 0 ≤ k < N − 1 is available as a measurement; 
+
+x[k] and d[k] have (partially) overlapping spectra; the disturbance d[k] manifests as a recurring “pulse” of known shape ψ[k]; and an estimate for the upper-bound of the frequency fd lim of the disturbance pulses is known. This last assumption can also be interpreted as knowing the minimum distance in time Dmin of artifact recurrence. Let ˆd[k] be the estimate of the disturbance signal. We then define 
+
+ˆx[k] = z[k] − ˆd[k] = h(z[k]; p) (2) to be the estimated signal. Here h(·) denotes the filtering function applied to the measurement z[k], given the cleaning parameters p. The parameters p depend on the specific algorithm used. 
+
+## 2.2 Formal Process Description 
+
+We now proceed with outlining the disturbance estimation and removal method. Let z[k] be the noisy measurement of x[k], corrupted by additive disturbance 
+
+d[k] and noise n[k]. Let ψ[k] be a reasonable approximation of the dominant 3artifact introduced by the disturbance d[k], i.e. assume d[k] to be reasonably approximated by the concatenation (with “pauses”) of scaled versions of ψ[k]:
+
+d[k] ≈ X
+
+> m
+
+cm · ψ[k − km]. (3) Let Dmin be the minimum number of samples in-between dominant artifacts in 
+
+d[k]. Then, the proposed algorithm operates by performing the following steps: 
+
+Optional The measurement z[k] is band-pass filtered to only contain frequencies of interest to the analysis, e.g. removal of DC component/slow drifts with high-pass filtering, and/or removal of high frequency noise using a low-pass filter. 1. Compute the cross-correlation rψz [k] of z[k] and ψ[k].2. Find the indices of the cross-correlation peaks kpr,i such that 
+
+rψz [kpr,i ] > r min ∧ Dmin < k pr,i +1 − kpr,i , (4) with rmin > 0 being the correlation peak threshold, i.e. we look for cor-relation peaks above a certain value rmin and having a given minimum distance Dmin in-between each other. 3. Extract the artifact template τ [k], by averaging the measurement signal windows around the cross-correlation peaks, i.e. average all slices z[kpr,i −
+
+K/ 2 : kpr,i + K/ 2] , with K being the template size. Shift, and scale τ to start and end at 0, and to have unit energy. 4. Build the artifact signal ˆd[k] by concatenating scaled version of the tem-plate at the locations of the cross-correlation peaks: 
+
+ˆd[k] = X
+
+> m
+
+rτ z [kpr,m ] · τ [k − kpr,m ]. (5) 5. Estimate the clean signal as the difference of the measurement and the artifact signal (disturbance estimate): 
+
+ˆx[k] = z[k] − ˆd[k]. (6) Figure 1 illustrates this procedure conceptually on sample data. The pre-sented cleaning algorithm h(·; p) draws inspiration from the wavelet [17] and shapelet [18] analyses, hence we refer to it as the wavelet template (WT) method from hereon. The algorithm relies on the shape of the recurring disturbance pulse to “resemble” a (real-valued, sampled) wavelet ψ[k]. An open-source im-plementation is made available as the magnes-artifact-removal package at 
+
+https://github.com/magnesag/artrem .
+
+## 2.3 Example Application 
+
+We focus on the application of the presented formalization on a practical case: the removal of heart artifacts from local-field potential (LFP) signals, corrupted by additive pink-noise. The rationale behind this choice is of historic origin: 4Template extraction Disturbance estimation and removal 1s Scale and concatenate Subtract Correlate Find peaks Slice Overlap 
+
+AB CFigure 1: Algorithm overview. A The algorithm can be seen as a two-step solution. First, the template τ is extracted from the measurement z, based on the cross-correlation peaks rzψ of z and the search template ψ. Second, the template is concatenated and scaled to generate the disturbance estimate signal 
+
+ˆd which is subtracted from z to yield the estimate ˆx. B The template extraction step involves the correlation of the search template with the measurement, then the peaks (red marks) are extracted, and the measurement is sliced around the cross-correlation peaks (gray areas). The slices are overlapped and averaged. 
+
+C The template is scaled in correspondence of the cross-correlation peaks to reflect the local artifact strength. The scaled templates are then concatenated to form ˆd and this is then subtracted from the measurement to obtain ˆx.5the work presented herein is the formalization of work done on the analysis of LFPs in subjects with (adaptive) deep-brain stimulation (DBS) implants. In this domain, the removal of ECG artifacts can be essential for meaningful data analysis results [3]. This use-case falls into the outlined framework, as the analysis of LFPs can be focused on the β-waves spectrum of LFPs (frequency range 10–30 Hz), the heart-beat can induce artifacts in the LFP recording [3, 19], dominating in the frequency range 5–15 Hz [20], and only one measurement channel can be available in some cases [21]. It is important to mention that this work focuses on the identification of ECG as artifact in LFP signals, and is not intended as a novel method for ECG analysis itself, although some concepts may be transferred to this other domain. 
+
+2.3.1 Ground-Truth Synthesis 
+
+Given a unit-variance, ground-truth signal x[k], a comparable 1 disturbance sig-nal d[k], and some, zero mean, unit-variance generated noise n[k], Var( n) = 1 ,we define the measurement z[k] as in equation (1). The gain parameters γ, σ > 0
+
+can be interpreted as the z-score-gain for the respective addend. Also, note that no gain for the ground-truth signal is used, as the relative gains between x, d,and n are relevant for the following analysis, and not their absolute values. This means that σ can be linked to the noisy signal x + σ · n signal-to-noise ratio (SNR) as 
+
+SNR = Var( x)Var( n) = 1
+
+σ2 . (7) One can come up with various methods for generating ground-truth signals. We use the superposition of frequency-domain windowed white noise: white noise time series are generated, transformed into frequency domain, where a Gaussian window at a given center frequency and width is applied, the signal is then transformed back into time-domain. This method is aligned with the analysis performed in [22] and the source code is made freely available as open-source Python module magnes-signal-generation-utility available at http s://github.com/magnesag/siggen .
+
+2.3.2 ECG as Disturbance 
+
+The signal synthesis module is set up to generate disturbance signals from ECG signals. The signals are generated as a concatenation of plausible ECG pulses constructed from pseudo-randomly sampled parameters. Each pulse is generated to feature reasonable temporal properties and peak amplitudes, for more infor-mation see the cardio submodule of magnes-signal-generation-utility at 
+
+https://github.com/magnesag/siggen .In the investigated scenario, where heart-rate artifacts are to be removed from the measurement z[k], the disturbance signal d[k] is assumed to be dom-inated by the ECG QRS-complexes. The QRS-complex has a typical shape as depicted in Figure 2, and it has received extensive attention by cardiologists and engineers for its detection and characterization [20, 23, 24]. For the following    
+
+> 1Meaning that the peaks of d[k]have amplitude in the same range as the standard deviation of x[k], which for zero-mean signals corresponds to the root-mean-square of the signal.
+
+6RQ SFigure 2: Example heart-beat signal d and comparison to a Ricker wavelet instance ψ. The main origin of artifacts is the QRS complex (shaded gray area) with its characteristic shape. The resemblance between the two is apparent. analysis, it is noted that, typically, the QRS-complex has a duration between 80 and 100 milliseconds. 
+
+Picking a Search Template ψ It is evident from Figure 2, that the QRS-complex resembles a piecewise linear version of the Ricker wavelet (also known as Mexican hat wavelet). In continuous time terms, this wavelet is the negative second derivative of the Gaussian bell: 
+
+ψ(t) = − d2
+
+dt 2
+
+ exp  −at 2 = 2 a  1 − 2at 2 exp  −at 2 (8) with a = 1 /2σ2 > 0, σ > 0. We then define our artifact search-template ψ[k],for σ = 1 ⇐⇒ a = 0 .5 to be 
+
+ψ[k] = (1 − (k · Ts)2) · exp  −(k · Ts)2 , k · Ts = −3, ..., 3. (9) That is, we generate the search-template from a unit-variance Gaussian and evaluate it over the range [-3, 3], at the required sampling time Ts. One can tune the search-template’s number of samples K for a given sampling time Ts
+
+to obtain a search-template of a given (real) duration T . Specifically, one can use the relations 
+
+T = ( K + 1) · Ts ⇐⇒ K = TTs
+
++ 1 (10) to determine the duration T or the number of samples N , given the other and the sampling time Ts. It shall be noted that ψ[k] as defined in (9) is shifted and scaled after generation to meet the following constraints: 
+
+ψ[−K/ 2] = ψ[K/ 2] = 0 ,Ts · X
+
+> k
+
+ψ2[k] = 1 .
+
+Frequency Domain Considerations for ψ It can be shown 2 that for the    
+
+> 2By evaluation of the Fourier transform S(ω)of equation (8) and subsequently solving
+> dS/dω = 0 .
+
+7chosen ψ, the peak frequency ωp is at 
+
+ωp = ± 6√2
+
+T , (11) which, for a search-template duration of T = 0 .1 s , which is a within the plau-sible QRS-complex duration range, this corresponds to a peak frequency of 
+
+84 .85 rad /s ≈ 13 .50 Hz . While just outside the Pan-Tompkins band 5–12 Hz [20], this peak frequency falls within the range of interest of the underlying ground-truth signal, for the LFP use-case, in particular the so-called β-band, which spans the range 10–30 Hz, thus satisfying the problem requirement of x and d
+
+overlapping spectrally. It shall be noted, that the β-band is of particular interest in the field of adaptive DBS, see for example [25]. 
+
+2.3.3 Machine-Learning Baseline 
+
+We evaluate the performance of the proposed algorithm by comparing it with a machine-learning (ML) approach. In particular, we train an autoencoder (AE) on synthetic data generated as previously described and run both approaches on the same testing dataset, which is purpose-generated and not part of the training set of the AE. This problem setting represents the ideal scenario for a data-driven approach – the training data is well representative of the test/deployment data, by definition. Hence, the ML approach can provide a suitable benchmark against which the proposed method can be compared to. We use a narrow AE, with input-output window size of M = 125 samples (0.5 s at 250 Hz sampling) and a single bottleneck, hidden layer of size 62 (com-pression factor of 2, total number of parameters 15687), which is trained to estimate the artifact signal from the measurement, i.e. the input of the AE is 
+
+z[k] and the output is ˆd[k]. Formally, the AE can be expressed as a mapping A
+
+such that: 
+
+A : RM → RM , z 7 → d = A(z; θ).
+
+The AE depends on a set of parameters θ over which optimization is performed during training: 
+
+θ∗ = arg min  
+
+> θ
+
+L (d, A(z; θ)) ,
+
+with L being the loss function. So we use 
+
+ˆd[k − M/ 2 : k + M/ 2] = A (z[k − M/ 2 : k + M/ 2]; θ∗)
+
+as benchmark estimate, against which to evaluate the proposed template method. The AE is defined and trained using Scikit-learn [15], as fully connected, multi-layer perceptron with ReLU activation. Specifically, the AE is trained with mean square loss, Adam optimizer, adaptive learning rate (initial rate 0.001) using early stopping (validation fraction 0.1), auto batch size and at most 200 epochs [15], feeding synthetic data with 1–10 random peak frequencies f
+
+and widths w, for noise and disturbance gains σ ∈ { 0.0, 0.4, 0.8, 0.8, 1.2, 1.6, 2.0}
+
+γ ∈ { 8.0, 6.6, 5.2, 3.8, 2.4, 1.0} respectively. For each (f , w, γ, σ ) tuple, a 50-beats (artifacts) random time series 3 sampled at 250 Hz is generated, out of 
+
+> 3At a maximum heart-rate of 180 BPM, this corresponds to 16.7 seconds of data.
+
+8which 50% overlapping slices of T = 0 .5 s are extracted to build the training dataset, resulting in approximately 83k training samples. It shall be noted that this definition of signals, i.e. starting from the contained number of artifacts, ensures that the data is balanced in terms of disturbances, which is a desirable trait in the training data. Testing of the trained AE is performed on ad hoc 
+
+generated data during the performance evaluation and comparison to the WT estimator. It shall be noted that, the training data is fed starting from high to low γ/σ ratio to incentivize learning of artifact recognition first, and noise rejection later (targeted local minimum biasing). This is achieved as follows. The peak frequencies and peak widths f and w are varied jointly (only one width is considered for each peak frequency) and thus can be seen as a single hyperparameter ϕ = ( f , w). In terms of signal generation, we thus have the hyperparameters (ϕ, γ, σ ). The training data is shuffled along the ϕ hyperpa-rameter in order to remove temporal and signal frequency dependency, but to keep order in disturbance gain ( γ, learning is started with high gains, which are easier to learn) and noise gain ( σ, learning begins without any additional noise, and noise is gradually added as the model learns - as a sort of parameter fine-tuning for increased robustness against noise as training advances). 
+
+## 2.4 Performance Evaluation 
+
+Given the synthetic data generation approach, we can evaluate the performance of the artifact removal strategy proposed herein precisely. We are in the position of being able to compare the estimate ˆx[k] to the ground truth x[k] as well as the estimate of the disturbance ˆd[k] to the ground truth d[k].We evaluate the performance of the method both in time- and frequency-domain. Given the (partially) overlapping spectra for the disturbance and ground-truth, it is important to be able to estimate the performance in frequency-domain. As time-domain performance metric, we report the root mean squared error (RMSE) between the estimate ˆx[k] and the ground truth x[k]:
+
+RMSE( x, ˆx) = pEk ((ˆ x[k] − x[k]) 2), (12) with E() being the expected value operator, which reduces to the sample mean for the numerical implementation. We also evaluate the RMSE for ˆd[k] with respect to γ · d[k]. In frequency-domain, we use the root mean square log error (RMSLE) as defined in [4] 
+
+RMSLE( x, ˆx) = 
+
+s
+
+Ef
+
+
+
+10 · log 10 
+
+ Px(f )
+
+Pˆx(f )
+
+ 
+
+, (13) where Px and Pˆx are the estimated power-spectra of x and ˆx, i.e. the squared magnitude of the Fourier transforms of x and ˆx. We also evaluate the RMSLE for ˆd with respect to γ · d[k] The RMSLE can be interpreted as the RMSE of the log-power over the entire spectrum (integration along the frequency-dimension). For the estimation of the power-spectra, Welch’s method [26] is used ( scipy.signal.welch() ). When considering the underlying signal x and its estimate ˆx, the approach illustrated herein also enables us to evaluate the performance of the cleaning with respect to the baseline of not-applying any filtering. As described in [3], 9there are scenarios for which the same type of measurement can or cannot be affected significantly by a disturbance. Given the desire to automate the data analysis pipeline in order to be able to perform large-scale studies, it is therefore important to gauge how the WT (and AE) perform compared to no filtering at all. While this may sound trivial at first, it shall be noticed that in a scarcely affected measurement, it could be that cleaning introduces distortions instead of removing them, as it is wrongly assumed that disturbances are affecting the measurement. The performance of the presented algorithm in this sense, with respect to its mixing parameters γ and σ is evaluated by comparing the RMSE and RMSLE of the clean signal ˆx[k] to the RMSE and RMSLE of the raw measurement z[k], both with respect to the ground-truth x[k]. We denote the difference of performance metric with respect to the baseline with a ∆,i.e. ∆ RMSE = RMSE( x, ˆx) − RMSE( x, z ) and ∆ RMSLE = RMSLE( x, ˆx) −
+
+RMSLE( x, z ). Hence, negative delta-metrics denote an improvement of the estimate with respect to the raw measurement, which should be the objective of any algorithm of this sort. The other performance metrics we use to evaluate the filtering strategy, are the fraction of disturbance signal peaks detected as true-positives (correctly removed artifacts) and false-positives (misfirings). We define the number of positives to be the number of peaks in the artifact estimate ˆd, which we denote as ˆN , while the ground truth positives is the number of peaks in d, which we denote as N . The true positives ˆNT P is then defined as the number of matching peaks – a matching peak is defined as a peak at the same index being detected in both d and ˆd. The false positives ˆNF P are then defined to be the difference between all detected peaks and the true positives ˆNF P = ˆN − ˆNT P . The true positive rate (TPR) and the false positive rate (FPR) are then evaluated as the fraction of true and false positives over the number of true positives and total positives TPR = ˆNT P /N and FPR = ˆNF P / ˆN . This adaptation of the TPS and FPR is necessary for the context, as the algorithm does not provide actual negative estimates, but only absence of positives (detections). 
+
+## 2.5 Parametric Sweep 
+
+The proposed synthetic data generation approach gives us full control and knowledge over the signal components. At the same time though, two mix-ing parameters γ and σ have been introduced. We assess the influence of the choice of the values of these parameters evaluating the cleaning algorithm over a grid of (γ, σ ) ∈ Γ × Σ values, while keeping the other values constant. Γ
+
+and Σ are the sets of all γ and all σ values considered in the search. It is ex-pected that larger mixing gains cause larger deviations from the ground-truth, but that overall the cleaning algorithm yields lower deviations from the ground-truth compared to the baseline. It is to be expected that larger values of γ ease the artifact detection, while larger values of σ lower the accuracy. In order to take into account the random nature of the synthetic data, we evaluate the full parameter grid (γ, σ ) ∈ Γ × Σ for N randomly generated datasets. For each dataset, we randomly set the number and location of the peak frequencies, as well as the width of the peaks. 10 Table 1: Artifact estimation and removal performance for N = 100 simulations carried out with the same configuration. Values are reported as median m and 95th percentile P95 .WT AE 
+
+x d x dm P95 m P95 m P95 m P95 
+
+RMSE 0.59 0.83 0.35 0.38 0.63 0.64 0.39 0.41 ∆RMSE −0.29 −0.10 – −0.26 −0.24 –RMSLE 70 .16 70 .90 5.78 7.69 70 .27 70 .94 4.33 4.80 
+
+∆RMSLE −0.70 −0.49 – −0.66 −0.55 –TPR – 0.76 0.86 – 0.82 0.92 
+
+FPR – 0.33 0.43 – 0.44 0.54 
+
+# 3 Results 
+
+Single Synthesis Configuration We generate 100 synthetic signals with the following configuration: f = (13 .0, 37 .0) Hz, w = (2 .0, 4.2) Hz, σ = 0 .5, γ = 8 .0.The rationale for this choice is as follows: the selected frequency parameters f
+
+and w create the desired spectral overlap with d (peak at around 13.5 Hz), while the chosen values for σ and γ ensure the presence of significant noise (SNR = 4 ), but also clear artifacts. We then run the WT and AE on all datasets and evaluate the performance in terms of RMSE, RMSLE, TPR and FPR. A frequency-domain visualization of the results is shown in Figure 3. The comparative results are reported in Table 1. It shall be noted that the RMSLE is evaluated over the entire frequency range, and is thus dominated by the difference due to noise, i.e. even a small change in RMSLE is an important step forward. By comparing the proposed WT method to the AE approach, the proposed method represents a valid alternative to the AE. In particular, the proposed method yields a 1 − 0.59 /(0 .59 + 0 .29) = 33% median improvement in signal estimate RMSE compared to the 1 − 0.63 /(0 .63 + 0 .26) = 29% median improve-ment brought by the AE. One can clearly see in Figure 3 how the both methods closely approximate the disturbance spectrum around its peak, i.e. where its effect is the greatest. The AE tends to show smaller differences between its median m and its 95th percentile P95 scores, hinting towards a greater consistency with respect to the WT (Table 1). Nevertheless, for the particular set of parameters, the WT actually performs better than the AE on average for almost all metrics, exception be made for the TPR. 
+
+Parametric Sweep We ran the parametric sweep for Σ = {0.1, 0.5, 1.0, 1.5, 2.0}
+
+and Γ = {2.0, 3.0, 4.0, . . . , 8.0}. N = 100 experiments have been run and the results aggregated. In each experiment, a random frequency f and width w
+
+sets were generated to define the ground truth signal x, alongside random base disturbance d and noise n. The parameter grid Γ × Σ was then swept (in a grid-search-like manner) to generate the measurement signals z = x + γ · d + σ · n.11 BACSynth config Signal Generator Performance evaluation AE WT 
+
+Repeat N times 
+
+Aggregate performance 
+
+> Ground truth signals zWT estimates AE estimates
+
+Figure 3: Frequency-domain results on synthetic data. The algorithm is able to detect and remove the artifacts from the measurement z, even in the presence of (strong) noise. The median spectra over N = 100 evaluations of simulated signals at constant configuration parameters are shown. 12 Hence, for each (γ, σ ) ∈ Γ × Σ, N measurements and performance evaluations have been performed. The performance scores across the experiments are vi-sualized in Figure 4. The sweep confirms the fact that the AE shows greater consistency when compared to the WT. Nonetheless, in terms of metrics and individual runs, it can be seen (Figure 4) that the proposed WT method can yield better results than the AE. 
+
+# 4 Discussion 
+
+The presented algorithm has shown to effectively remove artifacts from dis-turbed signals. In particular its performance has been proven to be satisfactory for cases in which the artifacts are dominant. As expected, the both methods, wavelet template (WT) and autoencoder (AE), perform best when the distur-bance dominates the measurement, i.e. γ > 1 ∧ γ > σ .The WT method has been proven to yield results that can even be better than what can be obtained using an AE. Despite the AE being used in an idealized context, the WT outperforms the AE in some regards. The WT RMSE gains compared to the baseline are greater for the WT than the AE and the FPR can be better for the WT in some cases. Overall, the AE does yield improved consistency over the proposed method, but is must be remembered that the AE is deployed in an ideal scenario: the data it is being tested with is generated with the same methods as the data it was trained on, hindering the possibility of generalizability. This of course is rarely if ever the case in real-world applications. Therefore, being the WT able to yield such relatively good results in comparison to the AE is quite remarkable. While the biggest limitation for the AE approach is its generalizability, i.e. the need for good training data to achieve useful results and applications in real-world scenarios, it has to be remembered that the proposed algorithm also features some a priori knowledge of the disturbance. Though, the need for an initial shape for the disturbance is regarded as a minor hurdle – a reasonable guess has been proven to yield satisfactory results, and it shall be noted that the actual template is extracted by the algorithm from the measurement itself, thus partially decoupling the choice from the performance. The main limitation of the algorithm, remains that artifacts will always be removed, regardless of their actual presence. When artifacts are comparatively small, i.e. γ → 1+, the methods tend to perform worse, albeit potentially still yielding improvements over the baseline at least in spectral terms (see Figure 3). This means that one needs to first evaluate whether there is the need for artifact removal, before using its results. Similar conclusions have been drawn in previous works [19], with the choice on whether to apply artifact removal is left to human judgement on a case-by-case basis. Future efforts should therefore consider focusing on the automatic decision-making in this sense. This would bring the benefit of easing the data-analysis process enabling larger studies to be carried out. Also, the clinical use could be accelerated, as fully automated pipelines could be implemented enabling clinicians to only focus on the interpretation of measurements and not worry about the data acquisition. 13 WT AE    
+
+> Performance evaluation AE WT
+> Sweep ΓxΣ
+> Aggregate performance
+> Ground truth signals zWT estimates AE estimates
+> Synth config Signal Generator
+> Repeat N times
+
+A BWT AE 
+
+C Median  
+
+> WT AE
+
+D 95th percentile Figure 4: Parametric sweep results. A Sweep process graphical visualization: notice that the signal synthesis configurations are generated N times, creating 
+
+N different (f , w, d, n ) instances, for each of which the entire Γ × Σ space is evaluated. B ∆ RMSE and ∆ RMSLE for the true signal x for 100 synthetic signals and parametric sweep on Γ × Σ. This plot show higher consistency for the AE, but also how the WT can actually outperform the AE under certain conditions and metrics, e.g. in terms of RMSE for larger values of σ. The thin lines show the results for each experiment, while the thick lines represent the median. The arrows indicate increasing σ directions and are meant to ease reading of the plot. C and D show the TPR and FPR for the two methods as median values and 95th percentile values respectively. The minimum and the maximum value are reported for each metric and method. These plots show how the AE performs better than the WT in terms of artifact detection in a pure on-off sense. 14 5 Conclusions 
+
+A formalized method for the removal of artifact-like disturbances from signals, based on a data-augmented wavelet template (WT) has been introduced. The WT method has been compared to the de facto standard for the task under consideration, i.e. the autoencoder. The two methods have been compared extensively, including a parametric sweep on the measurement parameters. It has been shown that the proposed WT method can be a valid alternative to an AE. The WT also features important advantages compared to the AE: 1) the WT does not suffer from generalization uncertainty; and 2) the WT can easily be adapted to various scenarios without expensive retraining. The WT does require an initial guess on the shape of the artifact, but this is in no way comparable to designing and (re)training of an AE for a specific task. The proposed method, as well as the methods to generate the signals to evaluate and test algorithms on have been released into the public domain. The source code is freely available. The authors hope that this will trigger further developments and investigations in the field. 
+
+# Author Contributions (CRediT) 
+
+AS: conceptualization, software, formal analysis, investigation, methodology, visualization, writing – original draft; HM: conceptualization, software, formal analysis, methodology, writing – review & editing; GC: funding acquisition, project administration, writing – review & editing; HT: writing – review & editing. All authors have read and agreed to the submitted version of the manuscript. 
+
+# Acknowledgements 
+
+The authors would like to thank Carlo Mangiante from Magnes AG, Switzerland, for the valuable comments and inputs on the manuscript and Olgac Ergeneman from Magnes AG, Switzerland, for the additional administrative coordination. 
+
+# Data and Code Availability 
+
+All data was synthetically generated using the open-source code found at: ht tps://github.com/magnesag/siggen . The analysis SW is available at: 
+
+https://github.com/magnesag/artrem .
+
+# Conflicts of Interest 
+
+The authors declare no conflicts of interest. 15 References 
+
+[1] Kevin T Sweeney, Tomás E Ward, and Seán F McLoone. Artifact removal in physiological signals – Practices and possibilities. IEEE transactions on information technology in biomedicine , 16(3):488–500, 2012. [2] Roberto Brunelli and T Poggiot. Template matching: Matched spatial filters and beyond. Pattern recognition , 30(5):751–768, 1997. [3] Wolf-Julian Neumann, Majid Memarian Sorkhabi, Moaad Benjaber, Lu-cia K Feldmann, Assel Saryyeva, Joachim K Krauss, Maria Fiorella Con-tarino, Tomas Sieger, Robert Jech, Gerd Tinkhauser, et al. The sensitivity of ECG contamination to surgical implantation site in brain computer in-terfaces. Brain Stimulation , 14(5):1301–1306, 2021. [4] Yue Chen, Bozhi Ma, Hongwei Hao, and Luming Li. Removal of electro-cardiogram artifacts from local field potentials recorded by sensing-enabled neurostimulator. Frontiers in Neuroscience , Volume 15 - 2021, 2021. [5] Lauren H Hammer, Ryan B Kochanski, Philip A Starr, and Simon Little. Artifact characterization and a multipurpose template-based offline removal solution for a sensing-enabled deep brain stimulation device. Stereotactic and functional neurosurgery , 100(3):168–183, 2022. [6] Mark A Kramer. Autoassociative neural networks. Computers & chemical engineering , 16(4):313–328, 1992. [7] Peng Xiong, Hongrui Wang, Ming Liu, and Xiuling Liu. Denoising autoen-coder for eletrocardiogram signal enhancement. Journal of Medical Imaging and Health Informatics , 5(8):1804–1810, 2015. [8] Chong Zhou and Randy C Paffenroth. Anomaly detection with robust deep autoencoders. In Proceedings of the 23rd ACM SIGKDD international conference on knowledge discovery and data mining , pages 665–674, 2017. [9] Ebtesam Almazrouei, Gabriele Gianini, Corrado Mio, Nawaf Almoosa, and Ernesto Damiani. Using autoencoders for radio signal denoising. In Pro-ceedings of the 15th ACM International Symposium on QoS and Security for Wireless and Mobile Networks , pages 11–17, 2019. [10] Zhen Cheng, Siwei Wang, Pei Zhang, Siqi Wang, Xinwang Liu, and En Zhu. Improved autoencoder for unsupervised anomaly detection. International Journal of Intelligent Systems , 36(12):7103–7125, 2021. [11] Sari Saba-Sadiya, Eric Chantland, Tuka Alhanai, Taosheng Liu, and Mo-hammad M Ghassemi. Unsupervised EEG artifact detection and correction. 
+
+Frontiers in digital health , 2:608920, 2021. [12] Md-Billal Hossain, Hugo F Posada-Quintero, and Ki H Chon. A deep convo-lutional autoencoder for automatic motion artifact removal in electrodermal activity. IEEE Transactions on Biomedical Engineering , 69(12):3601–3611, 2022. 16 [13] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Tay-lor, Sebastian Berg, Nathaniel J. Smith, Robert Kern, Matti Picus, Stephan Hoyer, Marten H. van Kerkwijk, Matthew Brett, Allan Haldane, Jaime Fernández del Río, Mark Wiebe, Pearu Peterson, Pierre Gérard-Marchant, Kevin Sheppard, Tyler Reddy, Warren Weckesser, Hameer Ab-basi, Christoph Gohlke, and Travis E. Oliphant. Array programming with NumPy. Nature , 585(7825):357–362, September 2020. [14] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, War-ren Weckesser, Jonathan Bright, Stéfan J. van der Walt, Matthew Brett, Joshua Wilson, K. Jarrod Millman, Nikolay Mayorov, Andrew R. J. Nelson, Eric Jones, Robert Kern, Eric Larson, C J Carey, İlhan Polat, Yu Feng, Eric W. Moore, Jake VanderPlas, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen, E. A. Quintero, Charles R. Harris, Anne M. Archibald, Antônio H. Ribeiro, Fabian Pedregosa, Paul van Mulbregt, and SciPy 1.0 Contributors. SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python. Nature Methods , 17:261–272, 2020. [15] F. Pedregosa, G. Varoquaux, A. Gramfort, V. Michel, B. Thirion, O. Grisel, M. Blondel, P. Prettenhofer, R. Weiss, V. Dubourg, J. Vanderplas, A. Pas-sos, D. Cournapeau, M. Brucher, M. Perrot, and E. Duchesnay. Scikit-learn: Machine learning in Python. Journal of Machine Learning Research ,12:2825–2830, 2011. [16] J. D. Hunter. Matplotlib: A 2D graphics environment. Computing in Science & Engineering , 9(3):90–95, 2007. [17] Stéphane Mallat. A wavelet tour of signal processing . Elsevier, 1999. [18] Lexiang Ye and Eamonn Keogh. Time series shapelets: a new primitive for data mining. In Proceedings of the 15th ACM SIGKDD international conference on Knowledge discovery and data mining , pages 947–956, 2009. [19] MJ Stam, BCM van Wijk, P Sharma, Martijn Beudel, DA Piña-Fuentes, RMA de Bie, PR Schuurman, W-J Neumann, and AWG Buijink. A com-parison of methods to suppress electrocardiographic artifacts in local field potential recordings. Clinical Neurophysiology , 146:147–161, 2023. [20] Jiapu Pan and Willis J Tompkins. A real-time QRS detection algorithm. 
+
+IEEE transactions on biomedical engineering , BME-32(3):230–236, 1985. [21] Jay L Alberts, Christopher J Hass, Jerrold L Vitek, and Michael S Okun. Are two leads always better than one: an emerging case for unilateral subthalamic deep brain stimulation in Parkinson’s disease. Experimental neurology , 214(1):1–5, 2008. [22] Thomas Donoghue, Matar Haller, Erik J Peterson, Paroma Varma, Priyadarshini Sebastian, Richard Gao, Torben Noto, Antonio H Lara, Joni D Wallis, Robert T Knight, et al. Parameterizing neural power spectra into periodic and aperiodic components. Nature neuroscience , 23(12):1655– 1665, 2020. 17 [23] B.-U. Kohler, C. Hennig, and R. Orglmeister. The principles of software QRS detection. IEEE Engineering in Medicine and Biology Magazine ,21(1):42–57, 2002. [24] Andrés Ricardo Pérez-Riera, Luiz Carlos de Abreu, Raimundo Barbosa-Barros, Kjell C Nikus, and Adrian Baranchuk. R-peak time: An elec-trocardiographic parameter with multiple clinical applications. Annals of Noninvasive Electrocardiology , 21(1):10–19, 2016. [25] Yohann Thenaisie, Chiara Palmisano, Andrea Canessa, Bart J Keulen, Philipp Capetian, Mayte Castro Jiménez, Julien F Bally, Elena Manfer-lotti, Laura Beccaria, Rodi Zutt, et al. Towards adaptive deep brain stimu-lation: clinical and technical notes on a novel commercial device for chronic brain sensing. Journal of neural engineering , 18(4):042002, 2021. [26] P. Welch. The use of fast Fourier transform for the estimation of power spectra: A method based on time averaging over short, modified peri-odograms. IEEE Transactions on Audio and Electroacoustics , 15(2):70–73, 1967. 18

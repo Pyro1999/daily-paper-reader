@@ -1,0 +1,337 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-09T21:39:23.994816+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 3,
+    "deep_cap": 8,
+    "deep_selected": 3,
+    "quick_candidates": 4,
+    "quick_skim_target": 13,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2609.00566v3",
+      "source": "arxiv",
+      "title": "EEG-VID: Task-Guided Latent Predictive Pretraining for EEG Decoding and Assistive Target Selection",
+      "abstract": "We propose EEG-VID, a task-guided latent predictive pretraining framework for EEG decoding under session and subject shifts. EEG-VID predicts future latent EEG states from recent history using an exponential-moving-average target encoder and weak task guidance, followed by supervised fine-tuning. Across VIG-48 and BCI Competition IV-2a/IV-2b, Stage 1 improves mean accuracy in 41 of 42 matched backbone-dataset-protocol comparisons, including all 12 leave-one-subject-out settings, with a maximum gain of 16.22 percentage points. On the 48-region cross-day VIG-48 task, EEG-VID achieves 6.52% Top-1 and 30.50% Top-5 accuracy. In a separate six-participant offline robot-scene study, candidate-constrained target selection reaches 40.24% versus a 25% chance level after subject-specific calibration. These results support task-guided latent prediction as a transferable pretraining strategy for EEG decoding and scene-constrained assistive target selection.",
+      "authors": [
+        "Guanzhong Sun",
+        "Junyi Ma",
+        "Yuxuan Wu",
+        "Wei Tang",
+        "Yanzi Miao"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-09-01T02:00:58+00:00",
+      "link": "https://arxiv.org/pdf/2609.00566v3",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "task-guided latent predictive pretraining framework for EEG decoding on BCI datasets, close to foundation-model style pretraining for EEG signal processing",
+      "llm_evidence_cn": "提出EEG-VID任务引导潜在预测预训练框架，接近EEG信号处理的基础模型式预训练范式",
+      "llm_evidence": "提出EEG-VID任务引导潜在预测预训练框架，接近EEG信号处理的基础模型式预训练范式",
+      "canonical_evidence": "提出EEG-VID任务引导潜在预测预训练框架，接近EEG信号处理的基础模型式预训练范式",
+      "llm_tldr_en": "Task-guided latent predictive pretraining framework for EEG decoding; improves mean accuracy in 41 of 42 comparisons on VIG-48 and BCI Competition IV datasets under session/subject shifts, and aids assistive target selection.",
+      "llm_tldr_cn": "EEG解码在跨天、跨受试者场景下易受分布漂移影响。作者提出EEG-VID框架，通过EMA目标编码器预测未来潜在脑电状态并加入弱任务引导，再以监督微调提升判别性。在VIG-48与BCI Competition IV-2a/2b等基准中，第一阶段在41/42个匹配对比中提升平均准确率并覆盖全部留一受试者实验，最高增益16.22个百分点。这验证了任务引导潜在预测预训练可增强EEG解码的跨会话迁移能力，为EEG基础模型构建提供了可行范式。",
+      "llm_tldr": "EEG解码在跨天、跨受试者场景下易受分布漂移影响。作者提出EEG-VID框架，通过EMA目标编码器预测未来潜在脑电状态并加入弱任务引导，再以监督微调提升判别性。在VIG-48与BCI Competition IV-2a/2b等基准中，第一阶段在41/42个匹配对比中提升平均准确率并覆盖全部留一受试者实验，最高增益16.22个百分点。这验证了任务引导潜在预测预训练可增强EEG解码的跨会话迁移能力，为EEG基础模型构建提供了可行范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.07214v1",
+      "source": "arxiv",
+      "title": "On the Removal of Artifacts of Known-Shape from Noisy Signals",
+      "abstract": "A general method for the estimation and removal of quasi-periodic, artifact-like disturbances from single channel measurements is presented. The method is based on a wavelet template and data-driven template extraction from single channel, noisy signals. The method is tested on an example application in modern neurology. The method is compared to an autoencoder, trained and deployed under idealized conditions, thus acting as reference system. It is found that the proposed method yields signal estimates with median root mean squared error improvement of 33% compared to the baseline, which is 4% more than the autoencoder, while relying on fewer assumptions and parameters, and without the need for any training data.",
+      "authors": [
+        "Alessandro Schaer",
+        "Henrik Maurenbrecher",
+        "George Chatzipirpiridis",
+        "Hamdi Torun"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-09-07T08:31:42+00:00",
+      "link": "https://arxiv.org/pdf/2609.07214v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "artifact removal from noisy single-channel neurology signals; applicable to EEG artifact suppression",
+      "llm_evidence_cn": "面向含噪神经信号的伪迹去除方法，适用于脑电伪迹抑制",
+      "llm_evidence": "面向含噪神经信号的伪迹去除方法，适用于脑电伪迹抑制",
+      "canonical_evidence": "面向含噪神经信号的伪迹去除方法，适用于脑电伪迹抑制",
+      "llm_tldr_en": "Wavelet-template method estimates and removes quasi-periodic artifacts from single-channel noisy neurology signals without training data; 33% median RMSE improvement over baseline and 4% over autoencoder.",
+      "llm_tldr_cn": "针对单通道生理信号中混入的准周期性伪迹，提出一种基于小波模板和数据驱动模板提取的通用去除方法。该方法不依赖训练数据，仅用较少的假设和参数即可估计并移除伪迹。在神经内科示例数据上，与基线相比中位均方根误差改进33%，比理想条件下训练的自动编码器高出4%。结果表明该方法可为无标注场景下的EEG类信号伪迹抑制提供轻量可靠方案。",
+      "llm_tldr": "针对单通道生理信号中混入的准周期性伪迹，提出一种基于小波模板和数据驱动模板提取的通用去除方法。该方法不依赖训练数据，仅用较少的假设和参数即可估计并移除伪迹。在神经内科示例数据上，与基线相比中位均方根误差改进33%，比理想条件下训练的自动编码器高出4%。结果表明该方法可为无标注场景下的EEG类信号伪迹抑制提供轻量可靠方案。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg artifact removal approaches",
+      "matched_requirement_id": "req-20",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.07128v1",
+      "source": "arxiv",
+      "title": "EEG-Driven Decoding Framework for Passenger Hazard Perception in Highly Automated Vehicles",
+      "abstract": "Reliable risk assessment remains a central challenge for Autonomous Vehicles (AVs). Despite advances in automation, passenger cognition provides a non-intrusive auxiliary signal that improves both objective and perceived safety without requiring active human intervention. We introduce an Electroencephalogram (EEG)-based Brain-Computer Interface (BCI) that decodes passenger neural responses for both Risk Prediction (RP) and Danger Identification (DI), explicitly modeling humans as passengers to match real-world AV use. To achieve this, we propose the Passenger Cognitive Model (PCM), Risk-aware Sequential Labeling (RSL), and the Passenger EEG Decoding Strategy (PEDS), which integrates a 3D Convolutional Recurrent Neural Network (3D-CRNN) model for joint EEG decoding. Experimental results show that 3D-CRNN achieves a Balanced Accuracy (BA) of $95.3\\% \\pm 2.7\\%$ in RP and improves single-subject DI from $80.9\\% \\pm 3.9\\%$ to $85.0\\% \\pm 3.2\\%$ with RSL. Event-wise analyses further show that 3D-CRNN consistently outperforms other models across different event types in RP and DI. In generalization experiments, 3D-CRNN achieves $77.0\\% \\pm 5.3\\%$ BA in cross-session DI and $77.4\\% \\pm 1.1\\%$ BA on seen subjects in cross-subject evaluation, while maintaining a $64.9\\% \\pm 8.5\\%$ BA on unseen subjects, demonstrating promising generalizability and transferability across both intra-subject and inter-subject variability. These findings establish an Electroencephalogram (EEG) decoding framework for AV passenger hazard perception and suggest that passenger cognitive signals can provide auxiliary supervision for future AV decision-making and Safety of the Intended Functionality (SOTIF) support.",
+      "authors": [
+        "Yingkai Yang",
+        "Ashton Yu Xuan Tan",
+        "Bowen Li",
+        "Xiaorong Gao",
+        "Sifa Zheng",
+        "Jianqiang Wang",
+        "Xinyu Gu",
+        "Yang Zhao",
+        "Yuxin Zhang",
+        "Sharon X. Huang",
+        "Tania Stathaki",
+        "Jun Li",
+        "Hong Wang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-09-07T07:22:04+00:00",
+      "link": "https://arxiv.org/pdf/2609.07128v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG-based passive brain-computer interface decoding cognitive states with deep learning",
+      "llm_evidence_cn": "基于EEG的被动脑机接口，融合深度学习解码乘客认知状态",
+      "llm_evidence": "基于EEG的被动脑机接口，融合深度学习解码乘客认知状态",
+      "canonical_evidence": "基于EEG的被动脑机接口，融合深度学习解码乘客认知状态",
+      "llm_tldr_en": "Proposes an EEG-based passive brain-computer interface with Passenger Cognitive Model, Risk-aware Sequential Labeling, and a 3D Convolutional Recurrent Neural Network to decode passenger risk prediction and danger identification in highly automated vehicles.",
+      "llm_tldr_cn": "自动驾驶风险评估可借助乘客本身的神经活动作为非侵入式辅助信号。该文提出一种基于脑电的被动脑机接口解码框架，包含乘客认知模型、风险感知序列标注与乘客脑电解码策略，并整合三维卷积循环神经网络来同时完成风险预测和危险识别。实验结果表明，该框架能够在真实乘坐场景中利用乘客脑电响应提升风险判断质量，为被动脑机接口与乘客神经监测提供了一种深度学习实现范式。",
+      "llm_tldr": "自动驾驶风险评估可借助乘客本身的神经活动作为非侵入式辅助信号。该文提出一种基于脑电的被动脑机接口解码框架，包含乘客认知模型、风险感知序列标注与乘客脑电解码策略，并整合三维卷积循环神经网络来同时完成风险预测和危险识别。实验结果表明，该框架能够在真实乘坐场景中利用乘客脑电响应提升风险判断质量，为被动脑机接口与乘客神经监测提供了一种深度学习实现范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.08788v1",
+      "source": "arxiv",
+      "title": "Adaptive Anisotropic Attention for Axis-Structured Signals",
+      "abstract": "Dense self-attention treats all token pairs as equally plausible before learning, an interaction-isotropic prior that can be mismatched to structured signals. For structured, low signal-to-noise ratio (SNR) signals such as EEG, dependencies are organized along the electrode and time axes, and this uniform prior exposes each token to many irrelevant interactions. We introduce Adaptive Anisotropic Attention (AAA), which splits attention into two paths: a temporal path, where each token attends to the tokens of its own electrode across time, and a spatial path, where it attends to the tokens of the other electrodes at the same time step. A small gate predicts, for every token, a convex combination of the two path outputs: two non-negative weights that sum to one. On six EEG downstream tasks, the resulting model, AXON (AXis-factorized Operator Network), improves mean balanced accuracy over a dense baseline under both linear probing and full fine-tuning. We show that both paths (temporal and spatial) are necessary and that the weighted sum beats a hard choice of one path; most of the benefit comes from the gate learning a different temporal/spatial balance at each layer of the network. Controlled audio spectrogram experiments show that axis factorization transfers beyond EEG. These results suggest that aligning attention with the natural axes of structured signals provides a useful inductive bias.",
+      "authors": [
+        "Mahir Jain",
+        "Parshva Runwal",
+        "Aditya Ray Mishra",
+        "Arvasu Kulkarni",
+        "Sandeep Singh",
+        "Siddharth Panwar"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-09-08T14:19:33+00:00",
+      "link": "https://arxiv.org/pdf/2609.08788v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Anisotropic attention mechanism designed for low-SNR EEG electrode and time axes, applicable to deep-learning methods in passive BCI.",
+      "llm_evidence_cn": "针对低信噪比EEG沿电极与时间轴结构的自适应各向异性注意力，可直接用于被动脑机接口的深度学习方法。",
+      "llm_evidence": "针对低信噪比EEG沿电极与时间轴结构的自适应各向异性注意力，可直接用于被动脑机接口的深度学习方法。",
+      "canonical_evidence": "针对低信噪比EEG沿电极与时间轴结构的自适应各向异性注意力，可直接用于被动脑机接口的深度学习方法。",
+      "llm_tldr_en": "Proposes Adaptive Anisotropic Attention for low-SNR axis-structured signals such as EEG; it splits attention into temporal and spatial electrode paths and uses a per-token gate to fuse the paths, reducing irrelevant token interactions and improving deep EEG modeling.",
+      "llm_tldr_cn": "现有的稠密自注意力默认所有词元对都可能交互，这与低信噪比、沿电极和时间轴组织的脑电信号并不匹配。该文提出自适应各向异性注意力，将注意力分为同一电极跨时间的时间路径和同一时刻跨电极的空间路径，并用门控为每个词元动态融合两条路径。这样做可减少无关交互带来的干扰，克服各向同性先验的局限。在轴结构低信噪比信号上验证了有效性，为EEG深度学习以及被动脑机接口认知负荷评估提供了更合适的注意力组件。",
+      "llm_tldr": "现有的稠密自注意力默认所有词元对都可能交互，这与低信噪比、沿电极和时间轴组织的脑电信号并不匹配。该文提出自适应各向异性注意力，将注意力分为同一电极跨时间的时间路径和同一时刻跨电极的空间路径，并用门控为每个词元动态融合两条路径。这样做可减少无关交互带来的干扰，克服各向同性先验的局限。在轴结构低信噪比信号上验证了有效性，为EEG深度学习以及被动脑机接口认知负荷评估提供了更合适的注意力组件。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "deep learning methods for passive BCI",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.03404v2",
+      "source": "arxiv",
+      "title": "Detecting Interbrain Synchronization in EEG Hyperscanning with MUSE-S EEG headband",
+      "abstract": "In this study preliminary results on the classification of EEG hyperscanning data acquired using MUSE-S consumer-level EEG headband are presented. Five pairs of subjects were involved and the recording protocol contained three two-person tetris game sessions alternating with relaxation periods. The data were segmented and ten spectral and cross-coherence features were calculated. The features were arranged into feature matrices and Convolutional Neural Network model was trained to discriminate between the relaxation and gaming. Two different feature sets - the full set and a set containing only inter subject cross-coherence features were tested. The results indicate that using the full feature set, relaxation and gaming periods were perfectly discriminated. Using only inter-subject cross-coherence features 94 % and 79 % classification accuracy for training and testing data was obtained, respectively.",
+      "authors": [
+        "Tarmo Lipping",
+        "Ahmad Sharif",
+        "Matin Beiramvand",
+        "Jari Turunen"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-09-03T06:03:40+00:00",
+      "link": "https://arxiv.org/pdf/2609.03404v2",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG deep learning classification between relaxation and gaming with CNN; a transferable pipeline for cognitive/task load assessment",
+      "llm_evidence_cn": "基于CNN的EEG放松与游戏状态分类，其深度学习流程可迁移至认知负荷评估",
+      "llm_evidence": "基于CNN的EEG放松与游戏状态分类，其深度学习流程可迁移至认知负荷评估",
+      "canonical_evidence": "基于CNN的EEG放松与游戏状态分类，其深度学习流程可迁移至认知负荷评估",
+      "llm_tldr_en": "Recording dyads with consumer EEG during Tetris or relaxation, this study computes spectral and cross-coherence features and trains a CNN; full features perfectly separate gaming from relaxation, providing a transferable deep-learning EEG workflow.",
+      "llm_tldr_cn": "现有基于EEG的多人交互状态判别研究不足，尤其缺乏消费级设备验证。本文用MUSE-S头环采集五对受试者在双人俄罗斯方块和放松状态下的脑电，提取频谱和跨受试者相干特征，并用CNN学习区分两类状态。结果表明使用完整特征时分类完全正确。该特征加CNN的流程为低成本被动脑机接口中的认知负荷评估与多人认知状态分析提供了可参考的方法范本。",
+      "llm_tldr": "现有基于EEG的多人交互状态判别研究不足，尤其缺乏消费级设备验证。本文用MUSE-S头环采集五对受试者在双人俄罗斯方块和放松状态下的脑电，提取频谱和跨受试者相干特征，并用CNN学习区分两类状态。结果表明使用完整特征时分类完全正确。该特征加CNN的流程为低成本被动脑机接口中的认知负荷评估与多人认知状态分析提供了可参考的方法范本。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "electroencephalography based cognitive load estimation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.06849v1",
+      "source": "arxiv",
+      "title": "Learning transferable human physiology from two million hours of sleep with SleepFM-2",
+      "abstract": "Sleep provides a nightly window into health by capturing coordinated activity across the brain, heart, muscles and respiratory system. We introduce SleepFM-2, a sleep foundation model developed and evaluated on 282,511 polysomnography recordings from 26 cohorts, including 235,865 used for pretraining. These data span more than two million hours of multimodal physiology. Compared with SleepFM, SleepFM-2 improves disease prediction and sleep scoring, supports arousal, limb movement and respiratory event detection, and transfers to wearable sensing and subjective sleep phenotypes. A model combining its PSG representation with age, sex and BMI met a prespecified discrimination and significance criterion for 215 subsequently recorded EHR phenotypes in two held-out cohorts, including one health system unseen during pretraining. For 155 phenotypes, the PSG representation added reproducible information beyond demographics. SleepFM-2 also outperformed a 480-feature baseline derived from the same recordings. Its disease scores revealed a reproducible principal component associated with reduced sigma-band spatial coupling and increased hypnodensity entropy. The frozen encoder performed within the observed range of expert scorers for sleep events and transferred to wakeful EEG, headband and in-ear EEG, wrist PPG and wrist accelerometry. It improved sleep staging across six accelerometry cohorts and achieved disease-prediction performance in UK Biobank similar to models pretrained directly on accelerometry. Finally, SleepFM-2 captured aspects of subjective sleep not recovered by conventional PSG summaries, particularly reports of the recorded night. These results show that multimodal sleep physiology can provide a transferable representation of human health across diseases, clinical tasks, sensors and subjective experience.",
+      "authors": [
+        "Rahul Thapa",
+        "Christopher Sun",
+        "William Theodor Lehn-Schioler",
+        "Sophia Claire Kivelson",
+        "Umaer Hanif",
+        "Hyatt Moore",
+        "Harrison G. Zhang",
+        "Hafsa Ahmed",
+        "Marcus Dige",
+        "Niels R. Lorenzen",
+        "Elisabeth Roxane M. Heremans",
+        "Adrien Specht",
+        "Ulysse Gimenez",
+        "Robin Guillard",
+        "Andreas Brink-Kjaer",
+        "James Zou",
+        "Emmanuel Mignot"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-06T21:47:56+00:00",
+      "link": "https://arxiv.org/pdf/2609.06849v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "large-scale sleep foundation model pretrained on multimodal physiology including brain EEG signals",
+      "llm_evidence_cn": "大规模睡眠基础模型在包含脑电的多模态生理信号上预训练，提供可迁移的脑电相关表征",
+      "llm_evidence": "大规模睡眠基础模型在包含脑电的多模态生理信号上预训练，提供可迁移的脑电相关表征",
+      "canonical_evidence": "大规模睡眠基础模型在包含脑电的多模态生理信号上预训练，提供可迁移的脑电相关表征",
+      "llm_tldr_en": "SleepFM-2 is pretrained on 282,511 polysomnography recordings (2M+ hours) across 26 cohorts. It improves disease prediction, sleep scoring, and event detection, and transfers to wearable sensing. Its multimodal brain-signal pretraining offers transferable representations relevant to EEG foundation modeling.",
+      "llm_tldr_cn": "睡眠提供了跨脑、心、肌肉和呼吸的协调生理窗口，但已有基础模型规模和覆盖不足。作者利用26个队列共282,511例多导睡眠图、超过两百万小时数据预训练SleepFM-2。相比SleepFM，新模型在疾病预测、睡眠分期、觉醒/肢体运动/呼吸事件检测上均有提升，并可迁移至可穿戴与主观睡眠表型。该工作表明大规模含脑电的生理预训练可提供可迁移的基础表征，为脑电信号基础模型研究提供借鉴。",
+      "llm_tldr": "睡眠提供了跨脑、心、肌肉和呼吸的协调生理窗口，但已有基础模型规模和覆盖不足。作者利用26个队列共282,511例多导睡眠图、超过两百万小时数据预训练SleepFM-2。相比SleepFM，新模型在疾病预测、睡眠分期、觉醒/肢体运动/呼吸事件检测上均有提升，并可迁移至可穿戴与主观睡眠表型。该工作表明大规模含脑电的生理预训练可提供可迁移的基础表征，为脑电信号基础模型研究提供借鉴。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.06960v1",
+      "source": "arxiv",
+      "title": "iBrain: A Unified Foundation Model Reading the Brain from Surface to Spikes",
+      "abstract": "Invasive neural recordings provide high-fidelity measurements of brain activity, with signals such as intracranial EEG (iEEG) and intracortical spiking activity capturing neural dynamics at different spatial and temporal scales. Yet existing neural foundation models have largely been developed independently for different invasive recording paradigms, leaving joint pretraining across heterogeneous invasive signals underexplored. In this work, we introduce iBrain, a unified foundation model that jointly learns from iEEG and spiking activity. iBrain employs signal-specific encoders to accommodate their distinct signal characteristics and a shared spatiotemporal Transformer backbone to model dependencies across recording channels and time. We pretrain iBrain on over 7,000 hours of heterogeneous neural recordings using masked signal reconstruction and channel-view alignment, promoting contextual modeling of neural dynamics and robustness across different channels. iBrain consistently outperforms single-signal pretraining baselines and achieves state-of-the-art performance on multiple benchmarks. Further experiments demonstrate that iBrain exhibits transferability and data efficiency across diverse recording settings. These results highlight the potential of joint pretraining on heterogeneous invasive neural recordings to support scalable neural modeling and transferable representations across recording settings and downstream tasks.",
+      "authors": [
+        "Ying Chen",
+        "Tiou Wang",
+        "Zhifeng Yue"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-07T02:56:42+00:00",
+      "link": "https://arxiv.org/pdf/2609.06960v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified foundation model for invasive EEG and spiking signals, relevant to brain-signal foundation models",
+      "llm_evidence_cn": "面向iEEG与尖峰活动的统一基础模型，对脑电基础模型研究有方法借鉴",
+      "llm_evidence": "面向iEEG与尖峰活动的统一基础模型，对脑电基础模型研究有方法借鉴",
+      "canonical_evidence": "面向iEEG与尖峰活动的统一基础模型，对脑电基础模型研究有方法借鉴",
+      "llm_tldr_en": "iBrain joins iEEG and spiking activity in one foundation model with signal-specific encoders and a shared spatiotemporal transformer, addressing isolated pretraining across invasive neural recording paradigms.",
+      "llm_tldr_cn": "现有侵入式神经信号基础模型多针对单一记录范式，缺乏对颅内脑电和尖峰活动的联合预训练。iBrain提出统一基础模型，用信号专用编码器保留各自特性，再用共享时空Transformer建模跨通道与时序依赖。联合预训练后可同时处理不同时空尺度的神经信号，为脑读取与解码提供可复用的基础模型。该工作有望推动脑机接口与神经科学中的通用表征学习。",
+      "llm_tldr": "现有侵入式神经信号基础模型多针对单一记录范式，缺乏对颅内脑电和尖峰活动的联合预训练。iBrain提出统一基础模型，用信号专用编码器保留各自特性，再用共享时空Transformer建模跨通道与时序依赖。联合预训练后可同时处理不同时空尺度的神经信号，为脑读取与解码提供可复用的基础模型。该工作有望推动脑机接口与神经科学中的通用表征学习。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
