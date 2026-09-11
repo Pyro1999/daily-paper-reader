@@ -1,0 +1,24 @@
+{
+  "label": "2026-09-11",
+  "date": "2026-09-11",
+  "generated_at": "2026-09-11T22:01:51",
+  "count": 1,
+  "papers": [
+    {
+      "paper_id": "202609/11/2609.11663v1-ssemg-net-a-spectrogram-based-mamba-network-for-surface-electromyography-denoising",
+      "section": "quick",
+      "title_en": "SSEMG-Net: A Spectrogram-Based Mamba Network for Surface Electromyography Denoising",
+      "authors": "Cheng-Han Shih, Kuan-Chen Wang, Kai-Chun Liu, Ping-Cheng Yeh, Yu Tsao",
+      "date": "2026-09-10",
+      "pdf": "https://arxiv.org/pdf/2609.11663v1",
+      "score": "6.0",
+      "evidence": "频谱域生物电信号去噪与伪迹去除，可迁移至EEG",
+      "tldr": "表面肌电(sEMG)在靠近心脏的肌肉记录中常受心电图(ECG)伪影污染。现有基于神经网络的波形级端到端去噪方法使用逐点损失，难以保留sEMG的频谱结构，且未利用ECG主要干扰低频段的先验知识。为此，本文提出SSEMG-Net，一种基于频谱图的Mamba网络，采用双向Mamba骨干和双头解码器分别进行幅度掩蔽和缠绕相位估计，并利用生理感知的幅度掩蔽将去噪限制在ECG主导的低频子带。实验表明，SSEMG-Net在信号质量和特征提取误差上优于先前方法，有望用于需要保留sEMG频谱特征的临床应用。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "Electrocardiogram (ECG) artifact contamination frequently occurs in surface electromyography (sEMG) when muscles are recorded near the heart. Existing neural network (NN)-based approaches typically perform waveform-level end-to-end denoising with pointwise losses, but often fail to preserve the spectral structures of sEMG. In addition, these models do not exploit the prior knowledge that ECG mainly distorts the low-frequency band of sEMG. We propose SSEMG-Net, a spectrogram-domain model that explicitly captures sEMG-ECG interactions using a bidirectional Mamba backbone and a dual-head decoder for magnitude masking and wrapped-phase estimation. The magnitude masking module is physiologically aware, restricting denoising to the low-frequency sub-band where ECG activity predominates. Experimental results demonstrate that SSEMG-Net achieves superior signal quality and lower feature-extraction error compared to prior methods, underscoring its potential for clinical applications where preserving sEMG spectral features is essential.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

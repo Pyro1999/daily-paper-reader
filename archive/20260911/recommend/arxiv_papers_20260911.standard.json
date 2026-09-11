@@ -1,0 +1,60 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-11T22:01:10.225205+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 1,
+    "quick_skim_target": 13,
+    "quick_selected": 1
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2609.11663v1",
+      "source": "arxiv",
+      "title": "SSEMG-Net: A Spectrogram-Based Mamba Network for Surface Electromyography Denoising",
+      "abstract": "Electrocardiogram (ECG) artifact contamination frequently occurs in surface electromyography (sEMG) when muscles are recorded near the heart. Existing neural network (NN)-based approaches typically perform waveform-level end-to-end denoising with pointwise losses, but often fail to preserve the spectral structures of sEMG. In addition, these models do not exploit the prior knowledge that ECG mainly distorts the low-frequency band of sEMG. We propose SSEMG-Net, a spectrogram-domain model that explicitly captures sEMG-ECG interactions using a bidirectional Mamba backbone and a dual-head decoder for magnitude masking and wrapped-phase estimation. The magnitude masking module is physiologically aware, restricting denoising to the low-frequency sub-band where ECG activity predominates. Experimental results demonstrate that SSEMG-Net achieves superior signal quality and lower feature-extraction error compared to prior methods, underscoring its potential for clinical applications where preserving sEMG spectral features is essential.",
+      "authors": [
+        "Cheng-Han Shih",
+        "Kuan-Chen Wang",
+        "Kai-Chun Liu",
+        "Ping-Cheng Yeh",
+        "Yu Tsao"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-09-10T15:04:24+00:00",
+      "link": "https://arxiv.org/pdf/2609.11663v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "spectrogram-domain biosignal denoising and artifact removal, transferable to EEG",
+      "llm_evidence_cn": "频谱域生物电信号去噪与伪迹去除，可迁移至EEG",
+      "llm_evidence": "频谱域生物电信号去噪与伪迹去除，可迁移至EEG",
+      "canonical_evidence": "频谱域生物电信号去噪与伪迹去除，可迁移至EEG",
+      "llm_tldr_en": "Existing waveform-level neural denoisers for sEMG lose spectral structure under ECG artifacts. SSEMG-Net uses a spectrogram-domain bidirectional Mamba backbone with dual-head magnitude masking and phase estimation, and transfers well to robust EEG artifact removal.",
+      "llm_tldr_cn": "表面肌电（sEMG）常受心电（ECG）伪迹污染，现有神经网络去噪多在波形层面用逐点损失，难以保留sEMG的频谱结构。本文提出SSEMG-Net，在频谱域用双向Mamba骨干与双头解码器分别进行幅度掩蔽和包裹相位估计，并依据先验把去噪限制在低频带。实验表明该方法在抑制ECG伪迹的同时能保留sEMG频谱结构。其频谱域建模范式对EEG等生物电信号的鲁棒去噪具有迁移价值。",
+      "llm_tldr": "表面肌电（sEMG）常受心电（ECG）伪迹污染，现有神经网络去噪多在波形层面用逐点损失，难以保留sEMG的频谱结构。本文提出SSEMG-Net，在频谱域用双向Mamba骨干与双头解码器分别进行幅度掩蔽和包裹相位估计，并依据先验把去噪限制在低频带。实验表明该方法在抑制ECG伪迹的同时能保留sEMG频谱结构。其频谱域建模范式对EEG等生物电信号的鲁棒去噪具有迁移价值。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "eeg artifact removal approaches",
+      "matched_requirement_id": "req-20",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

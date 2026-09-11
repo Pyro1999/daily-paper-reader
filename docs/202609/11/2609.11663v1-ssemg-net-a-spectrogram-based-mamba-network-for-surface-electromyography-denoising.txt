@@ -1,0 +1,180 @@
+Title: SSEMG-Net: A Spectrogram-Based Mamba Network for Surface Electromyography Denoising
+
+URL Source: https://arxiv.org/pdf/2609.11663v1
+
+Published Time: Fri, 11 Sep 2026 01:18:49 GMT
+
+Number of Pages: 6
+
+Markdown Content:
+# SSEMG-NET: A Spectrogram-Based Mamba Network for Surface Electromyography Denoising 
+
+Cheng-Han Shih 1,3* , Kuan-Chen Wang 2,3* , Kai-Chun Liu 4,5 , Ping-Cheng Yeh 2, and Yu Tsao 3
+
+> 1
+
+Department of Biomedical Engineering, National Taiwan University, Taiwan 
+
+> 2
+
+Graduate Institute of Communication Engineering, National Taiwan University, Taiwan 
+
+> 3
+
+Research Center for Information Technology Innovation, Academia Sinica, Taiwan 
+
+> 4
+
+Department of Mechanical Engineering, Stevens Institute of Technology, USA 
+
+> 5
+
+Dept. of Rehab. and Regenerative Medicine, Columbia University Irving Medical Center, USA Email: b12508006@ntu.edu.tw, d12942016@ntu.edu.tw, kliu33@stevens.edu, pcyeh@ntu.edu.tw, yu.tsao@citi.sinica.edu.tw 
+
+Abstract —Electrocardiogram (ECG) artifact contamination frequently occurs in surface electromyography (sEMG) when muscles are recorded near the heart. Existing neural network (NN)-based approaches typically perform waveform-level end-to-end denoising with pointwise losses, but often fail to preserve the spectral structures of sEMG. In addition, these models do not exploit the prior knowledge that ECG mainly distorts the low-frequency band of sEMG. We propose SSEMG-Net, a spectrogram-domain model that explicitly captures sEMG–ECG interactions using a bidirectional Mamba backbone and a dual-head decoder for magnitude masking and wrapped-phase esti-mation. The magnitude masking module is physiologically aware, restricting denoising to the low-frequency sub-band where ECG activity predominates. Experimental results demonstrate that SSEMG-Net achieves superior signal quality and lower feature-extraction error compared to prior methods, underscoring its potential for clinical applications where preserving sEMG spec-tral features is essential. 
+
+Index Terms —Surface electromyography(sEMG), ECG artifact removal, Spectrogram, Mamba, Deep neural networks 
+
+I. I NTRODUCTION 
+
+Surface electromyography (sEMG) provides a non-invasive measure of neuromuscular activity by recording the electri-cal potentials generated during muscle contractions. It has been widely applied in neuromuscular research [1], rehabilita-tion [2], stress and fatigue monitoring [3], clinical evaluation of neuromuscular and respiratory disorders [4], prosthesis control [5], and gesture recognition in virtual reality [6]. However, when the measured muscles are in the proximity of the heart, sEMG signals can be contaminated by electrocar-diogram (ECG) activity [7]. Such contamination distorts both amplitude and spectral features, which in turn compromises physiological analyses and degrades the performance of down-stream applications. Hence, effective ECG artifact removal is essential. Removing ECG artifacts is challenging because the main frequency bands of ECG (about 0–150 Hz) and sEMG (about 10–500 Hz) overlap [8]. Conventional single-channel ap-proaches, such as high-pass (HP) filters and template subtrac-tion (TS), can reduce ECG interference but suffer from clear 
+
+> *These authors contributed equally to this work.
+
+drawbacks. HP filters remove low-frequency ECG but also eliminate important sEMG components, while TS assumes quasi-periodic ECG patterns and zero-mean Gaussian sEMG, which are rarely satisfied in practice [7]. Neural networks (NNs) have recently shown promise in sEMG denoising due to their nonlinear modeling capabilities. For example, fully convolutional networks (FCNs) outperform HP and TS approaches across a broad range of SNRs [9]. SDEMG, a score-based diffusion model, further improves signal fidelity by modeling underlying data distributions, but with high computational cost [10]. More recently, MSEMG combined convolutional encoders with the Mamba state-space model, effectively capturing long-range dependencies while maintaining efficiency [11]. Despite recent advances, NN-based sEMG denoising meth-ods still face challenges preserving spectral fidelity. A key limitation stems from the end-to-end waveform mapping paradigm: with limited training data and complex wave-form structures, models can have difficulty suppressing low-frequency ECG artifacts while retaining high-frequency sEMG information. Moreover, most approaches rely solely on point-wise loss functions (e.g., L1 or L2), which enforce sample-level accuracy but do not explicitly constrain spectral struc-ture [12], [13]. These shortcomings are problematic for appli-cations that depend on frequency fidelity, such as muscle fa-tigue assessment [14]. This underscores the need for an sEMG denoising framework that jointly preserves both temporal and spectral fidelity. In this study, we propose SSEMG-Net, a spectrogram-based framework for ECG artifact removal in sEMG. The model operates in the time–frequency (TF) domain, explicitly reconstructing both magnitude and phase. For magnitude, it employs a physiologically aware sub-band mask that targets 0–150 Hz, where ECG contamination is prominent, while preserving mid- to high-frequency sEMG content. To fur-ther enhance reconstruction, we adopt composite time- and frequency-domain objectives, including multi-resolution short-time Fourier transform (STFT) loss. Experimental results show that SSEMG-Net consistently outperforms prior methods, achieving robust denoising across SNR levels and superior arXiv:2609.11663v1 [eess.SP] 10 Sep 2026 preservation of spectral features. To our knowledge, this is the first NN-based sEMG enhancement framework to explicitly perform denoising in the TF domain. II. R ELATED WORK 
+
+A. ECG interference removal methods 
+
+Conventional ECG removal methods, such as HP filters and TS, eliminate ECG artifacts from sEMG signals using spectral- and temporal-domain processing, respectively. HP filters suppress ECG interference by discarding the low-frequency portion of the signal, but they inevitably remove low-frequency sEMG components as well. TS, on the other hand, identifies ECG waveforms and subtracts averaged or filtered ECG templates. While effective under controlled con-ditions, TS relies on assumptions of quasi-periodic ECG morphology and zero-mean Gaussian sEMG, which often do not hold in real-world recordings. Recently, NN–based methods have emerged as powerful alternatives. Wang et al. [9] introduced an FCN denoising autoencoder for ECG artifact removal from sEMG waveforms, which consistently outperformed HP and TS across different noise levels. Liu et al. [10] developed SDEMG, a score-based diffusion model that enhanced sEMG signal fidelity by capturing the underlying distribution of clean sEMG at considerable computational cost. Liu et al. [11] further in-troduced MSEMG by incorporating the Mamba state-space model into a convolutional architecture to better capture long-range dependencies, achieving higher denoising performance with fewer parameters. Despite their differences, these NN-based approaches share a common design: waveform-based end-to-end denoising with a pointwise objective function. While effective in suppressing ECG artifacts, this framework is often limited in preserving fine-grained sEMG characteristics, particularly in the spectral domain. 
+
+B. Spectrogram-based denoising neural networks 
+
+Spectrogram-based denoising NNs have recently been ex-plored for bio-signal denoising [15]–[17]. By operating in the TF-domain, these approaches can leverage both tempo-ral dynamics and spectral patterns, providing more precise noise suppression and better preservation of frequency con-tent compared to end-to-end waveform methods. A repre-sentative work in this direction is MECG-E [15], developed for ECG denoising and baseline wander removal. MECG-E adopts the Mamba state-space model as its backbone and processes STFT representations of ECG signals. To improve robustness and ensure spectral consistency, it incorporates a composite training objective that combines time-domain loss with spectral-domain losses. MECG-E achieves state-of-the-art performance in ECG denoising and demonstrates efficient inference compared to diffusion-based approaches, highlighting the potential of spectrogram-domain modeling for bio-signals. This motivates our proposed SSEMG-Net, which extends the spectrogram-based denoising framework to ECG removal from sEMG. III. M ETHODOLOGY 
+
+Fig. 1 shows the structure of SSEMG-Net. A noisy sEMG segment y ∈ R1×L is first converted by STFT into a complex time-frequency (TF) representation Y ∈ RT ×F ×2, where L,
+
+T , and F denote the length of the sEMG signal, the number of time frames, and the number of frequency bins, respectively. To stabilize optimization and compress dynamic range, we apply a power-law to the magnitude while preserving the phase: 
+
+Y c = |Y | cejY p = Y cmejY p , (1) where c is the magnitude compression exponent, and Y cm, Y p ∈
+
+RT ×F denote the compressed magnitude and wrapped phase, respectively. 
+
+A. Model architecture 1) Encoder: The encoder comprises two convolutional blocks separated by a dilated DenseNet [18]. The first block expands channel capacity with group normalization [19] and PReLU activation [20], while the DenseNet enlarges the tem-poral receptive field and preserves temporal–spectral details. The second block downsamples along frequency to reduce computational cost, yielding a TF-domain representation with extended temporal context and compact frequency resolution. 
+
+2) Time–Frequency bidirectional mamba: As shown in Fig. 1 (b), the TF-Bi-Mamba consists of a Time bidirec-tional Mamba (Bi-Mamba) that models bidirectional dynamics along the temporal axis and a Frequency Bi-Mamba that captures cross-frequency relations, jointly modeling temporal and spectral structure [15]. Each block processes sequences bidirectionally, with forward and reversed inputs fused through residual and transposed convolution layers to capture past– future context, as shown in Fig. 1 (c). Mamba layers are implemented as state-space models augmented with depthwise convolutions and RMS normalization, enabling efficient mod-eling of long-range dynamics and localized spectral structure. This configuration enables the model to jointly capture long-range temporal dynamics and localized spectral structure, yielding TF-domain representations well suited for magnitude masking and phase estimation. 
+
+3) Decoder: SSEMG-Net employs two decoders, a Sub-band Magnitude Mask Decoder and a Phase Decoder, inspired by [21]. The Sub-band Magnitude Mask Decoder consists of a dilated DenseBlock, an upsampling transposed convolution, and a 1×1 projection with InstanceNorm and PReLU. It generates a mask cM ∈ RT ×F with the same dimension as the magnitude Y cm, from which the enhanced magnitude bXcm
+
+is obtained as 
+
+bXcm = Y cm ⊙ cM , (2) where ⊙ denotes the Hadamard product. To preserve high-frequency sEMG components, the mask cM is fixed to one above a cutoff frequency fcut , and learned parametrically Fig. 1. The architectures of (a) the proposed SSEMG-Net, (b) TF-Bi-Mamba module, and (c) Bi-Mamba block. 
+
+below fcut to conduct denoising in the sub-band where ECG overlaps and dominates with sEMG. 
+
+cM (t, f ) = 
+
+(σ Z(t, f ), f < f cut ,
+
+1, f ≥ fcut , (3) where Z(t, f ) is the scalar pre-activation at TF coordinate 
+
+(t, f ), and σ(·) is a learnable sigmoid function [22]. The Phase Decoder consists of a dilated DenseNet, a decon-volutional block, and a parallel phase estimation architecture. The dilated DenseNet refines the TF features from the TF-Bi-Mamba, enlarging the receptive field while preserving detailed temporal and spectral information. This is followed by a transposed convolutional layer that restores the original frequency resolution. The parallel architecture then employs two 1 × 1 convolutional layers to generate the pseudo-real bR
+
+and pseudo-imaginary bI components, which represent the un-normalized Cartesian coordinates of a unit phasor encoding the phase direction. The wrapped phase spectrum is subsequently estimated using the two-argument arctangent function: 
+
+bXp = atan2  bI, bR. (4) Combining the enhanced magnitude bXm (restored by the inverse power-law) with the wrapped phase bXp, the final enhanced complex spectrogram can be expressed as: 
+
+bX =   bXcm
+
+1/c ej bXp = bXm ej bXp . (5) 
+
+B. Loss function 
+
+The loss function consists of four terms: a time-domain loss 
+
+Ltime , a complex-domain loss Lcpx , a consistency loss Lcon ,and a multi-resolution STFT (MR-STFT) loss Lmr . The first three terms follow MECG-E [15]: Ltime enforces waveform fidelity, Lcpx constrains reconstruction in the complex spec-trogram domain, and Lcon mitigates STFT and inverse STFT inconsistencies. These terms are calculated as: 
+
+Ltime = ∥x − ˆx∥1, (6) 
+
+Lcpx = ∥X − ˆX∥22, (7) 
+
+Lcon = ˆX − Sθ0 (ˆ x) 22, (8) where x, ˆx, X, and ˆX denote the clean waveform, enhanced waveform, clean complex spectra, and enhanced complex spectra, respectively. Sθ0 (·) denotes the STFT with analysis parameters θ0, including (Nfft , Hop , Window size ).Building on this, we introduce Lmr to provide supervision across multiple analysis resolutions of the spectrogram [23]. 
+
+Lmr = 1
+
+R
+
+> R
+
+X
+
+> r=1
+
+
+
+|Sθr (x)| − | Sθr (ˆ x)| 1
+
++ Sθr (x) − Sθr (ˆ x) 22
+
+
+
+, (9) where R is the number of STFTs with different analysis parameters θr . By using MR-STFT losses, the model can learn the time-frequency characteristics of sEMG and avoid overfitting to a fixed STFT representation, which can lead to suboptimal results in waveform reconstruction. The total loss function is expressed as: 
+
+Lall = γ1Ltime + γ2Lcpx + γ3Lcon + γ4Lmr , (10) where γ1, γ2, γ3, and γ4 are the weights for the losses. IV. E XPERIMENTS 
+
+A. Dataset preprocessing and preparation 
+
+This study utilized sEMG data from the DB2 subset of Non-Invasive Adaptive Prosthetics (NINAPro) database [24], comprising 12-channel sEMG recordings from 40 subjects performing hand movement across three sessions (Exercises 1–3, with 17, 22, and 10 movement classes, respectively). Each movement was repeated six times consecutively for 5 s and then followed by a 3-s rest. This database has served as a clean sEMG source after proper filtering in previous studies [25]. sEMG signals were preprocessed with a fourth-order Butterworth bandpass filter (20–500 Hz), downsampled to 1 kHz, normalized, and segmented into 10-s segments. For ECG interference, we adopted the MIT-BIH Normal Sinus Rhythm Database (NSRD) [26], providing 2-channel ECG recordings collected from 18 healthy subjects at asampling rate of 128 Hz. The Channel 1 recordings were preprocessed using third-order Butterworth high-pass (10 Hz) and low-pass filters (200 Hz) to suppress potential noise. This database has been employed in prior work for modeling ECG contamination in sEMG [9]–[11]. We used sEMG data from Channel 2, Exercises 1 and 3, 30 subjects, for training and validation. For each training sample, 10 ECG signals were randomly chosen from 12 NSRD subjects and superimposed onto the sEMG as interference at six SNR levels ranging from –15 to –5 dB in 2 dB steps. The validation set used ECG data from three other subjects with the same SNRs. To assess generalization, testing was performed on different subjects, movements, channels, and SNRs. Specifically, sEMG data were from Channels 9–12 of Exercise 2, 10 subjects, while ECG signals from three remaining NSRD subjects (record IDs 16420, 16539, and 16786) were superimposed at SNR levels from –14 to 0 dB in 2 dB steps. 
+
+B. Implementation details 
+
+SSEMG-Net was trained for 30 epochs with AdamW (learn-ing rate 3 × 10 −4), mini-batch size 4, and gradient accumula-tion of 4 (effective batch size 16). The STFT front end used a Hann window of 512 samples and a hop of 128 at 1 kHz; the magnitude compression exponent was c=0 .5. The encoder em-ployed 64 channels with GroupNorm (8 groups) and PReLU; its dilated DenseNet had depth 4 with dilations {1, 2, 4, 8}.The mask decoder applied a learnable per-frequency sigmoid with scaling αf . Each αf was parameterized via a trainable raw variable with a softplus transformation and a 0.05 offset to ensure strictly positive slopes and stable training. We set 
+
+β = 1.0 and enforced a deterministic pass-through above the cutoff frequency fcut = 150 Hz. The weights γ1, γ2, γ3,and γ4, in eq. 10 are set to (0 .25 , 0.40 , 0.25 , 0.08) ; Lmr 
+
+was computed at three sets of parameters: (256 , 64 , 256) ,
+
+(512 , 128 , 512) , and (1024 , 256 , 1024) .We set the masking cutoff frequency to fcut = 150 Hz by default. 
+
+C. Evaluation metrics 
+
+Performance was evaluated based on signal reconstruction quality and feature extraction accuracy [10], [11], [27], [28]. For signal reconstruction quality, we report SNR improve-ment (SNR imp ) and root-mean-square error (RMSE), which quantify the gain in SNR relative to the contaminated in-put and the deviation of the denoised waveform from the clean reference, respectively. For feature extraction error, we compute the RMSE of the average rectified value (ARV) and the mean frequency (MF) feature vectors. Notably, MF                                  
+
+> TABLE I OVERALL PERFORMANCE COMPARISON OF PREVIOUS METHODS AND
+> SSEMG-N ET .
+> SNR imp (dB) ↑RMSE ↓RMSE ARV ↓RMSE M F (Hz) ↓
+> HP [27] 13.885 1.735e −23.064e −319.471 TS [28] 14.279 1.626e −23.859e −323.149 FCN [9] 17.758 1.178e −23.864e −318.038 SDEMG [10] 18.467 1.138e −22.809e −314.435 MSEMG [11] 20.317 8.603e −32.382e −311.379
+> SSEMG-Net (proposed) 22.138 7.565e −31.004e −38.003
+> *Bold font indicates the best value for each metric.
+
+denotes the centroid of the spectrum, which can represent spectral fidelity. All metrics follow established protocols in prior work [9], [10], [27]. Higher SNR imp values, together with lower RMSE, RMSE ARV , and RMSE M F , indicate more effective ECG artifact suppression and better preservation of sEMG characteristics. V. R ESULTS AND DISCUSSION 
+
+A. Overall comparison with prior methods 
+
+Table I compares SSEMG-Net with representative single-channel baselines and recent neural network methods for ECG artifact removal in sEMG. The baselines include clas-sical single-channel preprocessing methods such as high-pass filtering and template subtraction. These methods can sup-press ECG artifacts but they can also remove low-frequency neuromuscular information [7]. The baselines also include data-driven waveform models that learn nonlinear denoising under ECG and sEMG spectral overlap [9]–[11]. SSEMG-Net achieves the strongest performance across all reported metrics. This result indicates that TF-domain modeling im-proves reconstruction quality and feature integrity under ECG contamination. A key outcome is the consistent reduction in feature-level errors, especially RMSE M F . Mean frequency is a common frequency-domain biomarker in neuromuscular assessment. It is widely used for fatigue-related analysis [14]. Small spectral biases can propagate into downstream estimation errors. They can also change the physiological interpretation [7], [14]. The improvement in RMSE M F supports the claim that SSEMG-Net preserves the spectral distribution of sEMG. This preser-vation is important because downstream feature extractors depend on spectral fidelity. Fig. 2 shows that SSEMG-Net outperforms competing ap-proaches across a wide range of input SNRs. This pattern indicates robust denoising under both severe and mild contam-ination. Fig. 3 provides qualitative evidence from spectrogram comparisons. SSEMG-Net reconstructs TF structures more faithfully than a strong waveform baseline. It reduces resid-ual low-frequency interference. It does not introduce visible broadband spectral warping. 
+
+B. Ablation studies 
+
+The ablation results are intended to justify the main design choices in SSEMG-Net. All experiments use the same data Fig. 2. Comparison of SNR imp performance under different SNR inputs.  
+
+> Fig. 3. Comparison of enhanced sEMG spectrograms by SSEMG-Net and MSEMG. The blue rectangle marks the region where SSEMG-Net more closely reconstructs the clean reference compared to MSEMG.
+
+construction, training schedule, and evaluation pipeline. Each row in Table II changes one element of the system while keep-ing the rest fixed. This setup makes the observed differences attributable to the targeted factor rather than to confounded training effects. Table II shows that both TF reconstruction constraints and the physiologically guided sub-band design contribute to feature-faithful denoising. Removing MR-STFT loss reduces performance across metrics. This indicates that pointwise or single-resolution supervision alone does not sufficiently constrain spectral structure. Multi-resolution STFT supervi-sion encourages agreement across analysis scales and reduces resolution-specific fitting that can bias frequency-domain fea-tures [23]. In this task, spectral bias is reflected by MF-related error because MF shifts when residual low-frequency energy remains or when the spectrum is reshaped. Removing explicit phase estimation causes the largest degradation. This result is important because ECG and sEMG overlap in the TF domain. Magnitude suppression alone can still yield inconsistent reconstruction after inverse STFT. Phase errors can distort the waveform and redistribute spectral en-ergy, which leads to MF drift and larger feature error. This matters in biomedical applications because MF and related spectral descriptors are used to quantify neuromuscular state,                               
+
+> TABLE II ABLATION ANALYSIS OF LOSS FUNCTIONS ,PHASE ESTIMATION ,AND MASKING STRATEGY .
+> SNR imp (dB) ↑RMSE ↓RMSE ARV ↓RMSE M F (Hz) ↓
+> SSEMG-Net (proposed) 22.138 7.565e −31.004e −38.003
+> – w/o MR-STFT loss 21.164 8.295e −31.794e −314.303
+> – w/o phase estimation 19.696 9.878e −31.422e −317.673
+> – w/o sub-band mask 22.203 7.472e −31.028e −39.698 *Bold font indicates the best value for each metric.
+
+including fatigue-related changes [14]. The ablation supports phase estimation as a necessary component for feature-faithful denoising. The comparison between the proposed sub-band mask and the w/o sub-band variant further supports the physiological inductive bias. The sub-band mask restricts learnable sup-pression to the low-frequency region where ECG interference dominates and keeps the remaining band unchanged. This design directly matches the clinical objective of ECG arti-fact removal in sEMG. It protects mid and high frequencies that carry neuromuscular information. It also limits avoidable spectral reshaping that can compromise interpretability [7]. The w/o sub-band variant allows the model to modify the entire spectrum. This added freedom can slightly improve pointwise reconstruction metrics. However, it can also at-tenuate or reshape sEMG-dominant frequencies that should be preserved. This mechanism explains why waveform-level gains do not necessarily translate into better MF fidelity. For this task, preserving biomarker validity is more important than optimizing pointwise error. VI. C ONCLUSION 
+
+This study introduced SSEMG-Net, a spectrogram-based denoising model for removing ECG artifact from sEMG. By integrating a physiologically aware sub-band masking strategy with a bidirectional Mamba backbone and dual-head decod-ing, SSEMG-Net effectively suppresses low-frequency ECG artifacts while preserving mid- and high-frequency sEMG content. Experimental results demonstrate that SSEMG-Net exhibits consistent improvements over existing waveform-based denoising approaches, achieving higher signal quality and more accurate feature preservation. These findings con-firm that spectrogram-domain modeling, when combined with physiological priors, provides a powerful framework for sEMG enhancement. Future work will explore extending SSEMG-Net to address other types of sEMG contaminants and adapt it for streaming inference to enable real-time applications. REFERENCES [1] X. Tang, X. Zhang, X. Gao, X. Chen, and P. Zhou, “A novel inter-pretation of sample entropy in surface electromyographic examination of complex neuromuscular alternations in subacute and chronic stroke,”    
+
+> IEEE Transactions on Neural Systems and Rehabilitation Engineering ,vol. 26, no. 9, pp. 1878–1888, 2018. [2] S. M. Engdahl, B. P. Christie et al. , “Surveying the interest of individuals with upper limb loss in novel prosthetic control techniques,” Journal of Neuroengineering and Rehabilitation , vol. 12, no. 1, pp. 1–11, 2015.
+
+[3] J. Wijsman, B. Grundlehner, H. Liu, J. Penders, and H. Hermens, “Wearable physiological sensors reflect mental stress state in office-like situations,” in Proc. ACII , 2013. [4] N. J. Domnik, E. S. Walsted, and D. Langer, “Clinical utility of measuring inspiratory neural drive during cardiopulmonary exercise testing (cpet),” Frontiers in Medicine , vol. 7, p. 483, 2020. [5] J. Ma, N. V. Thakor, and F. Matsuno, “Hand and wrist movement control of myoelectric prosthesis based on synergy,” IEEE Transactions on Human-Machine Systems , vol. 45, no. 1, pp. 74–83, 2015. [6] U. Cˆ ot´ e-Allard, G. Gagnon-Turcotte, A. Phinyomark, K. Glette, E. Scheme, F. Laviolette, and B. Gosselin, “A transferable adaptive domain adversarial neural network for virtual reality augmented emg-based gesture recognition,” IEEE Transactions on Neural Systems and Rehabilitation Engineering , vol. 29, pp. 546–555, 2021. [7] R. Merletti and G. L. Cerone, “Tutorial. surface emg detection, condi-tioning and pre-processing: Best practices,” Journal of Electromyogra-phy and Kinesiology , vol. 54, p. 102440, 2020. [8] D. A. Winter, Biomechanics and motor control of human movement .John Wiley & Sons, 2009. [9] K.-C. Wang, K.-C. Liu, S.-Y. Peng, and Y. Tsao, “Ecg artifact removal from single-channel surface emg using fully convolutional networks,” in 
+
+Proc. ICASSP , 2023. [10] Y.-T. Liu, K.-C. Wang, K.-C. Liu, S.-Y. Peng, and Y. Tsao, “SDEMG: Score-based diffusion model for surface electromyographic signal de-noising,” in Proc. ICASSP , 2024. [11] Y.-T. Liu, K.-C. Wang, R. Chao, S. M. Siniscalchi, P.-C. Yeh, and Y. Tsao, “MSEMG: Surface electromyography denoising with a mamba-based efficient network,” in Proc. ICASSP , 2025. [12] F. G. Germain, Q. Chen, and V. Koltun, “Speech denoising with deep feature losses,” in Proc. Interspeech , 2019. [13] K.-C. Wang, K.-C. Liu, P.-C. Yeh, S.-Y. Peng, and Y. Tsao, “TrustEMG-Net: Using representation-masking transformer with u-net for surface electromyography enhancement,” IEEE Journal of Biomedical and Health Informatics , vol. 29, no. 4, pp. 2506–2520, 2025. [14] M. Cifrek, V. Medved, S. Tonkovi´ c, and S. Ostoji´ c, “Surface emg based muscle fatigue evaluation in biomechanics,” Clinical Biomechanics ,vol. 24, no. 4, pp. 327–340, 2009. [15] K.-H. Hung, K.-C. Wang, K.-C. Liu, W.-L. Chen, X. Lu, Y. Tsao, and C.-W. Lin, “MECG-E: Mamba-based ecg enhancer for baseline wander removal,” in Proc. BigData , 2024. [16] Y. Pei, J. Xu, Q. Chen, C. Wang, F. Yu, L. Zhang, and W. Luo, “DTP-Net: learning to reconstruct eeg signals in time-frequency domain by multi-scale feature reuse,” IEEE Journal of Biomedical and Health Informatics , vol. 28, no. 5, pp. 2662–2673, 2024. [17] J. Lim, S. Hajeb, Y. Kong, and K. H. Chon, “Deep learning for suppressing emg and motion artifacts in armband ecg r-peak detection,” 
+
+Biomedical Engineering Letters , pp. 1–12, 2025. [18] Y. Mao, J. Kim, L. Podina, and M. Kohandel, “Dilated SE-DenseNet for brain tumor MRI classification,” Scientific Reports , vol. 15, 01 2025. [19] Y. Wu and K. He, “Group normalization,” in Proc. ECCV , 2018. [20] L. B. Godfrey, “An evaluation of parametric activation functions for deep learning,” in Proc. SMC , 2019. [21] Y. Lu, Y. Ai, and Z. Ling, “MP-SENet: A speech enhancement model with parallel denoising of magnitude and phase spectra,” in Proc. Interspeech , 2023. [22] S.-W. Fu, C.-F. Yu, T.-A. Hsieh, P. Plantinga, M. Ravanelli, X. Lu, and Y. Tsao, “MetricGAN+: An improved version of metricGAN for speech enhancement,” in Proc. Interspeech , 2021. [23] R. Yamamoto, E. Song, and J.-M. Kim, “Parallel WaveGAN: A fast waveform generation model based on generative adversarial networks with multi-resolution spectrogram,” in Proc. ICASSP , 2020. [24] M. Atzori, A. Gijsberts, C. Castellini et al. , “Electromyography data for non-invasive naturally-controlled robotic hand prostheses,” Scientific data , vol. 1, no. 1, pp. 1–13, 2014. [25] J. Machado, A. Machado, and A. Balbinot, “Deep learning for surface electromyography artifact contamination type detection,” Biomedical Signal Processing and Control , vol. 68, p. 102752, 2021. [26] A. L. Goldberger, L. A. Amaral, L. Glass et al. , “Physiobank, phys-iotoolkit, and physionet: components of a new research resource for complex physiologic signals,” Circulation , vol. 101, no. 23, pp. e215– e220, 2000. [27] L. Xu, E. Peri, R. Vullings, C. Rabotti, J. P. Van Dijk, and M. Mischi, “Comparative review of the algorithms for removal of electrocardio-graphic interference from trunk electromyography,” Sensors , vol. 20, no. 17, p. 4890, 2020. [28] J. D. Drake and J. P. Callaghan, “Elimination of electrocardiogram contamination from electromyogram signals: An evaluation of currently used removal techniques,” Journal of Electromyography and Kinesiol-ogy , vol. 16, no. 2, pp. 175–187, 2006.
