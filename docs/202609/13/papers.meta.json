@@ -1,0 +1,39 @@
+{
+  "label": "2026-09-13",
+  "date": "2026-09-13",
+  "generated_at": "2026-09-13T21:19:41",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202609/13/2609.10518v1-braintaskonomy-learning-how-to-pretrain-and-what-to-transfer-in-fmri-foundation-models",
+      "section": "quick",
+      "title_en": "BrainTaskonomy: Learning How to Pretrain and What to Transfer in fMRI Foundation Models",
+      "authors": "Junfeng Xia, Wenhao Ye, Junxiang Zhang, Jiayu Zuo, Mo Wang, Quanying Liu",
+      "date": "2026-09-09",
+      "pdf": "https://arxiv.org/pdf/2609.10518v1",
+      "score": "6.0",
+      "evidence": "脑信号基础模型的预训练与迁移学习",
+      "tldr": "fMRI基础模型常把异质预训练域视为扁平混合、下游任务独立适配。本文提出BrainTaskonomy，用Brain-DiT代理度量十个域的学习关系，构建优先级累积域课程并结合高到低噪声时间步调度；适配阶段用十五项任务的一/高阶迁移构建有向taskonomy，并以预算整数规划选择源任务与路径。联合课程在v-NMSE、PSD-NMSE、FC-MSE上分别降低6.5%、16.3%、10.5%，且迁移呈非对称、目标依赖。",
+      "tags": "query:pbci-load",
+      "abstract_en": "fMRI foundation models increasingly aggregate heterogeneous data across brain states, cohorts, and acquisition settings, yet pretraining domains are commonly treated as a flat mixture and downstream tasks are adapted independently. We study whether measured learning relations can organize both stages without modifying the backbone. During pretraining, a lightweight Brain-DiT proxy estimates difficulty and directed facilitation across ten fMRI domains, yielding a priority-guided cumulative domain curriculum combined with high-to-low-noise timestep scheduling and joint consolidation. During adaptation, controlled first- and higher-order transfer across fifteen tasks constructs a directed taskonomy, from which budgeted integer programming (BIP) selects directly supervised source tasks and target-specific routes. The joint priority-domain and high-to-low-timestep curriculum reduces v-NMSE, PSD-NMSE, and FC-MSE by 6.5%, 16.3%, and 10.5%, respectively, relative to uniform sampling over both dimensions, and shows strong downstream performance across six in- and out-of-domain tasks. The taskonomy reveals asymmetric, target-dependent transfer, while exploratory sealed-test evaluation shows larger descriptive gains for BIP policies when higher-order route spaces are available than for matched random controls. Together, these findings support organizing fMRI pretraining and adaptation by measured learning relations rather than treating domains and tasks as independent flat sets.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/13/2609.11372v1-ramamba-net-a-reliability-aware-and-mamba-based-multimodal-fusion-network-for-auditory-attention-detection",
+      "section": "quick",
+      "title_en": "RAMamba-Net: A Reliability-Aware and Mamba-Based Multimodal Fusion Network for Auditory Attention Detection",
+      "authors": "Xingyi He, Ziwei Wang, Dongrui Wu",
+      "date": "2026-09-10",
+      "pdf": "https://arxiv.org/pdf/2609.11372v1",
+      "score": "6.0",
+      "evidence": "面向EEG-BCI的深度学习模型，强调对样本变化的鲁棒性",
+      "tldr": "听觉注意力解码（AAD）常依赖EEG，但在自然视听场景中证据不完整，EEG-EOG融合又受跨模态交互弱、时序建模低效和样本鲁棒性差制约。RAMamba-Net以Mamba增强的频带感知卷积Transformer提取EEG节律与长时动态，并用双分支时空编码器和跨模态注意力融合EOG。可靠性感知模块按样本估计模态权重，提升特征与预测一致性。在两个AAD基准上，准确率较单模态基线提升5.76%，且解码更稳健、表征更具判别性。",
+      "tags": "query:pbci-load",
+      "abstract_en": "Auditory attention decoding (AAD) identifies the attended speaker from physiological signals, supporting neuro-steered hearing devices and natural human-machine interaction. Electroencephalography (EEG) is the dominant modality for AAD but provides incomplete evidence in naturalistic audio-visual scenes, motivating EEG and electrooculography (EOG) fusion. Existing approaches remain limited by weak cross-modal interaction, inefficient temporal modeling, and low robustness to sample variations. To address the limitations, we propose RAMamba-Net, a reliability-aware Mamba-based multimodal fusion network for AAD. RAMamba-Net employs a Mamba-enhanced band-aware convolutional Transformer to capture band-specific EEG patterns and long-range temporal dynamics. A dual-branch temporal-spatial encoder models EOG temporal and inter-channel dependencies. Cross-modal attention enables explicit modality interaction. Then, a reliability-aware module is introduced to estimate sample-wise modality weights for feature and prediction consistency, thereby enhancing multimodal fusion. Experiments on two AAD benchmarks demonstrate that RAMamba-Net effectively exploits complementary EEG-EOG information, yielding accuracy gains of 5.76% over unimodal baselines, together with more robust decoding and discriminative representations. Further analyses show that explicit cross-modal interaction improves multimodal alignment, while the reliability-aware module suppresses unreliable modality evidence and is robust to signal perturbation and parameter variation.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

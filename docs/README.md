@@ -6,22 +6,27 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-09-12
-- 运行时间：2026-09-12 21:27:58 UTC
+- 最新运行日期：2026-09-13
+- 运行时间：2026-09-13 21:19:39 UTC
 - 运行状态：成功
-- 本次总论文数：0
+- 本次总论文数：2
 - 精读区：0
-- 速读区：0
+- 速读区：2
 
 ### 今日简报（AI）
-> 今日无新推荐，系统未产出可展示论文。
-- 详情：[/202609/12/README](/202609/12/README)
+2026-09-13 日报速读 2 篇 fMRI 与听觉注意检测论文，精读 0 篇。两篇均得 6.0 分，可关注《BrainTaskonomy》探讨 fMRI 基础模型的预训练与迁移策略，以及《RAMamba-Net》用 Mamba 做可靠性感知的多模态听觉注意检测。普通读者可先扫这两篇的摘要与方法，判断是否与自身研究方向相关。
+- 详情：[/202609/13/README](/202609/13/README)
 
 ### 精读区论文标签
 - 本次无精读推荐。
 
 ### 速读区论文标签
-- 本次无速读推荐。
+1. [BrainTaskonomy: Learning How to Pretrain and What to Transfer in fMRI Foundation Models](/202609/13/2609.10518v1-braintaskonomy-learning-how-to-pretrain-and-what-to-transfer-in-fmri-foundation-models)  
+   标签：评分：6.0/10、query:pbci-load
+   evidence：脑信号基础模型的预训练与迁移学习
+2. [RAMamba-Net: A Reliability-Aware and Mamba-Based Multimodal Fusion Network for Auditory Attention Detection](/202609/13/2609.11372v1-ramamba-net-a-reliability-aware-and-mamba-based-multimodal-fusion-network-for-auditory-attention-detection)  
+   标签：评分：6.0/10、query:pbci-load
+   evidence：面向EEG-BCI的深度学习模型，强调对样本变化的鲁棒性
 
 
 <div class="dpr-home-promo-card">
