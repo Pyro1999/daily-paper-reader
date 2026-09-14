@@ -1,0 +1,39 @@
+{
+  "label": "2026-09-14",
+  "date": "2026-09-14",
+  "generated_at": "2026-09-14T23:00:06",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202609/14/2609.12218v1-bridge-eeg-bridging-self-supervised-pretraining-and-efficient-deployment-for-cross-dataset-eeg-classification",
+      "section": "deep",
+      "title_en": "BRIDGE-EEG: Bridging Self-Supervised Pretraining and Efficient Deployment for Cross-Dataset EEG Classification",
+      "authors": "Meghna Roy Chowdhury, Chengwei Zhou, Haotian Yu, Gourav Datta, Shreyas Sen",
+      "date": "2026-09-10",
+      "pdf": "https://arxiv.org/pdf/2609.12218v1",
+      "score": "8.0",
+      "evidence": "脑电基础模型预训练与高效部署",
+      "tldr": "针对EEG基础模型参数量大、难以部署到边缘与可穿戴设备的问题，BRIDGE-EEG提出统一预处理，将异构记录映射为设备无关的62通道时频表示，并用SimCLR预训练SE-ResNet18教师模型，再通过任务无关与任务特定蒸馏压缩为SE-ResNet8/4学生模型。在异常检测、运动想象和情绪识别六个基准上，学生模型在异常检测与情绪识别中达到或超过参数量多10–1000倍的基础模型，运动想象仍存差距。边缘推理能耗最高降低3.0倍（15.64 mJ对46.67 mJ），为MCU级可穿戴部署提供可能。",
+      "tags": "query:pbci-load",
+      "abstract_en": "The growing use of electroencephalography (EEG) motivates automated analysis that is accurate, transferable, and deployable on constrained hardware. Recent EEG foundation models learn general representations from large-scale pretraining, but their size and computational cost limit edge and wearable deployment. We introduce BRIDGE-EEG, an efficient multi-task EEG classification pipeline that preserves the benefits of pretraining while reducing model size. A unified preprocessing scheme maps heterogeneous recordings with different channel counts, montages, and sampling rates to a device-agnostic 62-channel time--frequency representation. We pretrain an SE-ResNet18 teacher (11.84 M parameters) with SimCLR on unlabeled EEG from five heterogeneous datasets, then compress it into SE-ResNet8 (1.56 M) and SE-ResNet4 (0.48 M) students using task-agnostic and task-specific distillation. We evaluate six benchmarks spanning abnormality detection, motor imagery, and emotion recognition. For abnormality detection and emotion recognition, the students achieve accuracy comparable to or better than several recent EEG foundation models with 10--1,000$\\times$ more parameters. Motor imagery shows a remaining representation gap, highlighting the importance of pretraining diversity. Inference profiling on a server GPU, desktop CPU, and NVIDIA Jetson Orin Nano shows up to 3.0$\\times$ lower edge energy per inference (15.64 mJ vs. 46.67 mJ). The compact models further support future deployment on MCU-class wearables.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/14/2609.11997v1-dcra-diffusion-conditioned-representation-alignment-for-robust-time-series-learning",
+      "section": "quick",
+      "title_en": "DCRA: Diffusion-Conditioned Representation Alignment for Robust Time-Series Learning",
+      "authors": "Wenrui Xu, Anas Enanaa, Keshab K. Parhi",
+      "date": "2026-09-09",
+      "pdf": "https://arxiv.org/pdf/2609.11997v1",
+      "score": "6.0",
+      "evidence": "面向脑电等时序信号的抗噪鲁棒表征学习框架",
+      "tldr": "问题背景：噪声与分布偏移下时间序列（尤其EEG/ECG）的鲁棒表征学习仍困难。核心方法：DCRA把扩散前向过程当作结构化腐蚀调度器，在多个噪声水平间对齐特征并保留类别判别结构。关键结果：在CHB-MIT癫痫检测中，多噪声条件下性能稳定提升，低假阳性率下灵敏度更高。贡献意义：表明结构化腐蚀与表征对齐结合可提升鲁棒时间序列学习，且与状态空间模型、Transformer兼容。",
+      "tags": "query:robust-eeg",
+      "abstract_en": "Learning robust representations for time-series signals under noise and distribution shifts remains challenging, especially in clinical applications such as electroencephalogram (EEG) and electrocardiogram (ECG) analysis. We propose Diffusion-Conditioned Representation Alignment (DCRA), a training framework that repurposes the forward diffusion process as a structured corruption scheduler for representation learning. Different from conventional augmentation and consistency-based methods that rely on independently sampled perturbations, DCRA introduces a structured corruption trajectory via the diffusion forward process, which enables continuous and controlled representation evolution across noise levels. We introduce a feature-level consistency objective that aligns representations across noise levels while preserving class-discriminative structure. This mechanism promotes structure-preserving consistency, which enables smooth and semantically coherent feature trajectories in latent space. The proposed framework is encoder-agnostic and can be integrated with state space models and Transformer architectures. The seizure detection experiments on the CHB-MIT EEG dataset show that DCRA consistently improves performance under multiple noise conditions and achieves higher sensitivity at low false-positive rates. Analysis reveals that DCRA produces more balanced and structured representations compared to baseline and diffusion-only models. These findings highlight the benefit of combining structured corruption with representation alignment for robust time-series learning.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

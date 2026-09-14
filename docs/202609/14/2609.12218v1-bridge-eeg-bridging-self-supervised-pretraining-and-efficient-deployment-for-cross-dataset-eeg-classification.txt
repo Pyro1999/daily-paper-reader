@@ -1,0 +1,422 @@
+Title: BRIDGE-EEG: Bridging Self-Supervised Pretraining and Efficient Deployment for Cross-Dataset EEG Classification
+
+URL Source: https://arxiv.org/pdf/2609.12218v1
+
+Published Time: Mon, 14 Sep 2026 00:16:41 GMT
+
+Number of Pages: 11
+
+Markdown Content:
+> IEEE JOURNAL OF BIOMEDICAL AND HEALTH INFORMATICS, VOL. XX, NO. XX, 2025 1
+
+# BRIDGE-EEG: Bridging Self-Supervised Pretraining and Efficient Deployment for Cross-Dataset EEG Classification 
+
+Meghna Roy Chowdhury, Student Member, IEEE, Chengwei Zhou, Student Member, IEEE, Haotian Yu, Gourav Datta, Senior Member, IEEE and Shreyas Sen, Senior Member, IEEE 
+
+Abstract — The growing use of electroencephalography (EEG) has created a need for automated analysis that is accurate and robust across diverse patients, tasks, and recording setups. Recent EEG foundation models learn transferable features from large-scale pretraining, but their size and computational cost make them difficult to deploy on edge and wearable hardware. Conversely, compact EEG models are easier to deploy but are usually trained from scratch for a single task, limiting generalization across datasets. We address this trade-off with BRIDGE-EEG, a pipeline for efficient multi-task EEG classification that pre-serves the benefits of pretraining while enabling deploy-ment on constrained hardware. First, we introduce a unified preprocessing that maps heterogeneous EEG recordings with varying channel counts, montages, and sampling rates to a device-agnostic 62-channel time–frequency represen-tation. Next, we pretrain an SE-ResNet18 teacher (11.84 M parameters) using SimCLR on unlabeled EEG from five heterogeneous datasets, then compress it into SE-ResNet8 (1.56 M) and SE-ResNet4 (0.48 M) students through task-agnostic and task-specific distillation strategies, respec-tively. We validate across six benchmarks spanning abnor-mality detection, motor imagery, and emotion recognition. On abnormality detection and emotion recognition, the students achieve accuracy comparable to or above several recent EEG foundation models with 10–1,000 × more pa-rameters. On motor imagery, a representation gap remains, pointing to pretraining diversity as a key factor. Finally, we profile inference on a server GPU, a desktop CPU, and an edge device (NVIDIA Jetson Orin Nano). where compres-sion yields up to 3.0× lower energy per inference on edge hardware (15.64 mJ vs. 46.67 mJ). The resulting models’ compact footprint further motivates deployment on MCU-class wearables. 
+
+Index Terms — Brain-computer interface, EEG classifi-cation, knowledge distillation, self-supervised learning, squeeze-and-excitation network, edge deployment. 
+
+I. I NTRODUCTION 
+
+Electroencephalography (EEG) is one of the most widely used modalities for non-invasive brain monitoring. It has a broad range of applications, such as seizure detection, neuro-logical screening, and brain-computer interfaces [1]. As these applications move from controlled laboratory studies toward continuous, real-world monitoring, there is a growing need for automated EEG analysis that is not only accurate but also robust across subjects, recording setups, and tasks, and ultimately feasible on resource-constrained devices. EEG is 
+
+M. Roy Chowdhury and S. Sen are with Purdue University, Indiana, USA (e-mail: mroycho@purdue.edu, shreyas@purdue.edu) Chengwei,Haotian and Gourav are with Case Western Univer-sity, Ohio, USA (e-mail: cxz760@case.edu, haotian.yu@case.edu, gxd234@case.edu) Industry trend: 
+
+Towards low-energy 
+
+wearable EEG 
+
+EEG FM Trend: Scale up for better accuracy   
+
+> EEGConformer
+> EEGNet
+> ContraWR
+> SparcNet FFCL
+> ST CNN-Based
+> SE-ResNet8
+> SE-ResNet18
+> Teacher
+> SE-ResNet4
+
+Fig. 1 : EEG model landscape: accuracy vs. parameter count. Our framework (stars) targets compact models profiled across three hardware tiers. also difficult to model consistently at scale as recordings are often noisy, channel quality varies across sessions, electrode layouts differ across devices, and datasets are typically col-lected under isolated protocols. These challenges become more severe in real-world settings, where motion artifacts, missing electrodes, low-density montages, and hardware variability are common. As a result, many EEG learning pipelines remain tied to a single dataset, montage, or task, limiting their ability to generalize across realistic deployment conditions. This motivates the use of foundation models (FM). Rather than training a separate network from scratch for each down-stream dataset, FMs aim to learn reusable neural represen-tations from large, diverse EEG corpora. This paradigm is especially helpful for EEG because the signal is information-rich but diverse across subjects and measurement hardware. In particular, EEG FMs [2]–[8] and MAMBA-based mod-els [9]–[11] aim to learn transferable representations from diverse EEG corpora and adapt them to multiple downstream applications. However, these models are primarily evaluated in terms of downstream accuracy, whereas their energy cost arXiv:2609.12218v1 [cs.HC] 10 Sep 2026 2 IEEE JOURNAL OF BIOMEDICAL AND HEALTH INFORMATICS, VOL. XX, NO. XX, 2025 
+
+on resource-constrained hardware remains largely uncharac-terized. In parallel, compact task-specific EEG models have also been investigated. Although these models are often easier to deploy, they are typically designed for a single dataset and task rather than derived from a shared pretrained backbone. This creates a gap between generalization and deployability. On one side, large pretrained models offer broader general-ization across heterogeneous EEG data. On the other hand, compact embedded models are more practical for deployment but usually remain task-specific. Fig. 1 illustrates this. This raises a key question: can the benefits of EEG foundation models be retained in a form that is sufficiently compact and efficient for deployment? This work therefore investigates whether smaller models can retain accuracy comparable to that of EEG FMs, and characterizes the associated accuracy– energy trade-offs across three hardware tiers: a server-class GPU, a desktop CPU, and an edge device. This problem is nontrivial for several reasons. First, although large-scale EEG pretraining can improve transfer across datasets and tasks, it remains unclear how much of this transfer advantage can be retained after compression. Second, model size alone is not a sufficient measure of practical efficiency, as deployment ultimately depends on power consumption and energy. Third, the heterogeneity in EEG acquisition, including variations in channel count and sampling rate, makes it challenging for a single model to support diverse downstream tasks. To address these challenges, we propose BRIDGE-EEG, a three-stage pipeline for efficient multi-task EEG classification (Fig. 2) that, to our knowledge, is the first EEG framework to combine self-supervised multi-dataset pretraining, post-pretraining knowledge distillation, and measured cross-tier inference profiling within a single pipeline. In the first stage, a unified preprocessing method maps heterogeneous EEG recordings into a device-agnostic 62-channel time–frequency representation, enabling a single shared backbone across fun-damentally different acquisition setups. In the second stage, an SE-ResNet18 encoder is pretrained with SimCLR [12] using NT-Xent contrastive loss on pooled, unlabeled multi-dataset EEG, yielding a transferable teacher representation. In the third stage, the teacher is compressed via two KD strategies: task-agnostic distillation produces an SE-ResNet8 (1.56 M) backbone that serves as a shared initialization across tasks, while task-specific distillation yields per-task SE-ResNet8 and SE-ResNet4 (0.48 M) students that maximize individual task accuracy. The resulting model family achieves accuracy comparable to or above several recent EEG FMs on multiple benchmarks spanning three EEG application categories, with up to three orders of magnitude fewer parameters, while being measured systematically for latency and energy across server, desktop, and edge hardware tiers. This work extends our prior conference paper, SSL-SE-EEG [13], which introduced SimCLR pretraining with asqueeze-and-excitation encoder with 2D EEG image represen-tations. The present study extends that foundation in scope, methodology, and evaluation. We move from a single SSL architecture study to a full SSL-to-KD pipeline, from limited downstream analysis to a multi-task evaluation, and from GPU-only latency and power profiling to measured energy-per-
+
+TABLE I : SOTA EEG FMs.                                     
+
+> Model Params Hrs SSL strategy
+> BENDR [4] >1 B 21,000 wav2vec SSL BrainBERT [14] ––masked pred. Brant [15] 505.69 M 2,528 temporal-spatial BIOT [6] 3.2 M 55,000 contrastive loss LaBraM [8] 5.8–369 M 2,500 VQ spectrum pred. NeuroGPT [16] 79.53 M 5,656 autoregressive EEGPT [17] 4.7–25 M –electrode-wise SSL NeuroLM [3] 254–1,696 M 25,000 EEG tokens + GPT CBraMod [7] 4.0 M 27,062 masked recon. CSBrain [5] –∼9,000 masked autoencoding (MAE) REVE [2] 69–400 M ∼60,000 modified MAE
+
+inference across three hardware tiers. The main contributions of this work are as follows: 1) An SSL-to-KD pipeline for efficient multi-task EEG classification , in which an SE-ResNet18 teacher pre-trained via SimCLR is compressed into SE-ResNet8 and SE-ResNet4 students using two distillation strategies. 2) A unified 62-channel spectrogram preprocessing pipeline that maps heterogeneous EEG recordings to a common input representation, enabling a shared back-bone across datasets acquired with different channel counts, montages, and sampling rates. 3) A systematic evaluation of accuracy and efficiency across six downstream EEG applications and three hardware tiers (server-class GPU, desktop CPU, and NVIDIA Jetson Orin Nano edge device). The compressed students’ accuracy remains comparable to larger EEG FMs, while having edge-device efficiency. These results provide an empirical step toward future wearable EEG deployment. The remainder of this paper is organized as follows. Sec-tion II reviews EEG FMs, self-supervised EEG pretraining, and knowledge distillation for efficient biosignal inference. Section III presents the proposed pipeline. Section IV de-scribes the datasets, training protocol, and hardware profiling setup. Section V reports the empirical results across all down-stream benchmarks and hardware tiers. Section VI discusses the implications for efficient and transferable EEG modeling, and Section VII concludes the paper. 
+
+II. R ELATED WORK 
+
+A. EEG Learning Models: From Task-Specific to FMs 
+
+EEG modeling has evolved from task-specific supervised networks toward large-scale pretrained models that aim to learn transferable neural representations. Earlier task-specific approaches, such as EEGNet [18], ShallowConvNet, and DeepConvNet [19], as well as later attention-augmented and temporal-convolutional variants [20]–[25], remain effective within individual applications, but they are typically trained from scratch on a single dataset and do not explicitly target cross-dataset generalization. Self-supervised and other pre-training objectives on large unlabeled EEG corpora have en-abled a different paradigm in which reusable neural represen-tations are learned before downstream fine-tuning. BENDR [4] was one of the earliest prominent examples of this direction, showing that large-scale pretraining could support transfer AUTHOR et al. : 3EEG Raw Data (x channels) 
+
+STEP 1: UNIFIED DATA PROCESSING 
+
+> →
+> Time
+> 128
+
+Bandpass filter 
+
+Notch filter 
+
+Sliding window 
+
+Normalization 
+
+> Ch1
+> Ch x
+> .
+> .
+
+Baseline Correction 
+
+> →
+
+Signal Processing 
+
+Extract 4 s chunks 
+
+Channel Alignment + Spectrogram 
+
+> →
+
+STEP 2: SSL PRETRAIN 
+
+STEP 3: KNOWLEDGE DISTILLATION 
+
+Modified Resnet 18 Base Encoder 
+
+Unlabeled Spectrogram 
+
+Projection Head (Embedding) 
+
+Learned Features 
+
+NT-Xent Contrastive Loss (Eq. 1) 
+
+Augmentations 
+
+Channel dropout 
+
+Time Masking 
+
+Freq. 
+
+Masking 
+
+Noise Addition 
+
+SimCLR 
+
+View 1  View 2 
+
+Modified Resnet 18 Base Encoder 
+
+Projection Head (Embedding) 
+
+SimCLR 
+
+Modified Resnet 18 
+
+Base Encoder 
+
+> →
+> →
+> →
+> →
+
+Unlabeled Spectrogram 
+
+Modified Resnet 8 Base Encoder 
+
+(Frozen) 
+
+Teacher  Student 1 
+
+(Trainable) 
+
+Augmentations 
+
+> →
+
+1)  NT-Xent Contrastive Loss 
+
+2)  MSE Loss 
+
+Learned Features from Student 
+
+> →
+
+Projection Head (Embedding) 
+
+Projection Head (Embedding) 
+
+( −log 𝑝𝑜𝑠𝑖𝑡𝑖𝑣𝑒 𝑝𝑎𝑖𝑟 𝑠𝑖𝑚𝑖𝑙𝑎𝑟𝑖𝑡𝑦  
+
+> 𝑎𝑙𝑙 𝑝𝑎𝑖𝑟 𝑠𝑖𝑚𝑖𝑙𝑎𝑟𝑖𝑡𝑖𝑒𝑠
+
+)
+
+> 62 ch
+> Align to 62 channels
+> from 10-10 EEG montage
+> Freq
+> 128
+
+Fig. 2 : BRIDGE-EEG pipeline. (1) Unified preprocessing to device-agnostic 62-channel STFT spectrograms. (2) SimCLR pretraining of SE-ResNet18 teacher. (3) Knowledge distillation into compact students. across multiple EEG tasks. Since then, a growing family of EEG FMs has emerged, including BrainBERT [14], Brant [15], BIOT [6], LaBraM [8], NeuroGPT [16], EEGPT [17], Neu-roLM [3], and CBraMod [7]. These models differ in archi-tecture, tokenization strategy, and pretraining objective, but collectively reflect a shift toward large-scale EEG pretraining. More recently, state-space and Mamba-based EEG models have emerged as an efficient alternative to Transformer back-bones [9]–[11]. In particular, FEMBA [11] extends large-scale self-supervised EEG pretraining to a bidirectional Mamba encoder trained on approximately 21,000 hours of TUEG, reporting competitive performance with reduced FLOPs and memory. In parallel, SSL methods tailored specifically to EEG have continued to mature outside the foundation-model label. Prior work explored temporal contrastive learning for clinical EEG [26], SimCLR-style augmentations for EEG [27], masked reconstruction objectives [28], [29], and task-specific SSL for seizure detection and motor imagery [30], [31]. In our prior work [13], we combined SimCLR with squeeze-and-excitation encoders on EEG image representations and showed that SE attention improved performance with only modest power overhead. However, across most EEG FMs and SSL-based EEG pretraining studies, deployment efficiency remains less characterized, with existing work reporting theoretical FLOPs rather than measured on-device energy. 
+
+B. Knowledge Distillation for Efficient Biosignal Inference 
+
+Knowledge distillation [32], [33] is a standard approach for compressing large models into smaller deployable ones, but its use in EEG has so far been narrow and mostly task-specific. Existing EEG distillation studies focus on channel reduction [34], sleep staging [35]–[37], and emotion recog-nition [38], [39]. These works show that compact students can preserve useful task performance, but they do not begin from large self-supervised EEG backbones and generally do not report measured hardware efficiency. Related biosignal research has explored adjacent compression settings. Bagher-salimi et al. [40] used distillation to obtain a lower-power wearable seizure detector, Sepahvand et al. [41] compressed 12-lead to single-lead ECG, and Abbaspourazad et al. [42] demonstrated SSL-to-accelerometer distillation for wearable sensing. These studies highlight the promise of distillation for resource-constrained biosignal systems, but they do not address multi-task EEG compression from a shared pretrained backbone. A separate line of work focuses directly on efficient EEG inference on embedded hardware. For instance, Brain-FuseNet [43] and EpiDeNet [44] report low-energy inference on constrained processors, while MCU and FPGA/ASIC im-plementations [45]–[47] push further toward ultra-low-power operation. Yet these systems are generally supervised, single-4 IEEE JOURNAL OF BIOMEDICAL AND HEALTH INFORMATICS, VOL. XX, NO. XX, 2025 175 seconds  4 seconds  
+
+> Sample raw EEG waveform from SEED-IV (25 channels)
+> After signal processing Spectrograms for the 25 channels
+
+Fig. 3 : Preprocessing example from SEED-IV (25 channels shown here). Left: raw EEG (175 s). Middle: after filtering, baseline correction, and z-normalization (4 s window). Right: per-channel STFT spectrograms (128×128, 1–50 Hz). task, and designed directly for deployment, rather than distilled from a larger pretrained model. 
+
+III. P ROPOSED FRAMEWORK 
+
+Large-scale EEG pretraining improves cross-dataset trans-ferability, while compact architectures and knowledge distilla-tion enable resource-constrained deployment. However, these directions are typically examined in isolation, and their interac-tions across hardware tiers remain underexplored in multi-task EEG models. BRIDGE-EEG bridges this gap by combining self-supervised multi-dataset pretraining, knowledge distilla-tion, and systematic inference profiling across three hardware tiers: a server-class GPU, a desktop CPU, and an NVIDIA Jet-son Orin Nano edge device, achieving accuracy comparable to or above several recent EEG foundation models on abnormal-ity detection and emotion recognition, while maintaining edge-class efficiency. This outlines a practical pathway from high-performance foundation models to low-power wearable EEG systems. To this end, BRIDGE-EEG operates in three stages, as illustrated in Fig. 2: (A) unified preprocessing method which is device-agnostic, (B) self-supervised representation learning, and (C) knowledge distillation with two strategies. 
+
+A. Unified Preprocessing 
+
+EEG datasets are recorded using different devices, with varying numbers of channels and sampling rates, making cross-dataset learning challenging. To handle this, we align all recordings to a standard 62-channel layout based on the international 10–10 system [48]. Channels present in the source dataset are mapped to their corresponding standard positions, and channels absent in a given dataset are zero-filled rather than interpolated, to avoid introducing synthetic spatial correlations. The SE blocks are expected to learn to down-weight these uninformative channels. Next, as shown in Step 1 of Fig. 2, each aligned recording is segmented into non-overlapping 4-second windows, long enough to capture slow delta-band activity ( ∼1 Hz) while remaining short enough for practical processing. We then apply standard preprocessing techniques such as bandpass filtering at 1–50 Hz (4th-order Butterworth), notch filtering at 50 or 60 Hz depending on the recording country ( Q=30 ), baseline correction, and per-channel z-score normalization. The z-normalization step is particularly important in a multi-dataset setting, as it removes amplitude differences caused by varying electrode impedances and hardware gain settings across devices. Each window is then converted into a time-frequency representation via the Short-Time Fourier Transform. A Hann window is used to minimize spectral leakage between adjacent EEG frequency bands, such as alpha (8–13 Hz) and beta (13–30 Hz), whose relative power carries diagnostic meaning [49]. The resulting power spectrogram is cropped to 1–50 Hz, log-scaled as ˆSc =log 10 (Sc + 10 −10 ) to compress EEG’s characteristically large dynamic range, and resized to 128 ×128 . The final output per window is a tensor of shape (62 , 128 , 128) , one time-frequency image per channel, providing a uniform input format for the model regardless of the originating dataset. Fig. 3 visualizes example signals before and after preprocessing. 
+
+B. Self-Supervised Pretraining with SE-ResNet18 
+
+The next stage trains a single encoder that generalizes across EEG tasks without relying on task labels. Self-supervised pre-training is well-suited for this goal, as it learns representations from the statistical structure of the data, producing embeddings that capture general neural dynamics transferable across down-stream tasks. We adopt SimCLR [12] for its simplicity and strong performance: it uses a shared encoder, a lightweight projection head, and a contrastive loss on augmented view pairs, without requiring memory banks, momentum encoders, or auxiliary networks. This simplicity is beneficial in our setting for two reasons. First, it reduces hyperparameter sensi-tivity when training on heterogeneous, multi-dataset EEG data, where batch composition and augmentation statistics vary. Second, the absence of auxiliary components reduces memory overhead for 62-channel spectrogram inputs and simplifies the subsequent distillation stage, since only a single encoder needs to be compressed. We pretrain an SE-ResNet18 encoder on pooled multi-dataset EEG with all task labels removed, enabling the model to learn shared spectro-temporal structure across populations, devices, and cognitive conditions. The backbone is a ResNet18 modified with squeeze-and-excitation AUTHOR et al. : 5Input      
+
+> Conv2D
+> BN
+> Relu
+> MaxPool
+> Conv Block
+> Pooling
+> FC
+> Stage 1 Stage i ………… Stage n
+> …
+> Conv Block
+> Conv Block
+> …
+> Conv Block
+> Conv Block
+> …
+> Conv Block
+> Conv Block
+> …
+> Conv Block
+> Block #1
+> MaxPool
+> Conv2D
+> Conv2D
+> BN
+> Relu Block #2
+> Block #3 BN
+> Block #4
+> SE-Block
+> Relu
+> Global Avg Pool
+> Relu
+> FC
+> Relu
+> FC
+> Sigmoid
+> Block #i
+> Conv Block #i
+> SE- Block
+> BN: Batch Normalization ; FC: Fully Connected Layer ; Conv: Convolution
+> Output of Conv Block #i
+
+Fig. 4 : SE-ResNet encoder architecture. SE blocks recalibrate channel-wise features after each residual stage. (SE) blocks after each of four residual stages (Fig. 4). SE blocks dynamically recalibrate channel-wise feature responses via global average pooling and a learned gating mechanism, allowing the network to emphasize informative channels and suppress noisy or interpolated ones [20]. In our prior confer-ence paper [13], we showed that integrating SE blocks with SSL consistently improves EEG classification accuracy while adding a power overhead of ≤0.4%. This makes SE attention especially worthwhile in our 62-channel setting, where channel quality is inherently uneven due to interpolation. The encoder maps (62 , 128 , 128) spectrograms to 512-d embeddings. For contrastive pretraining, we use spectrograms from all pretraining datasets, discarding labels. Two augmented views of each spectrogram are generated through channel dropout (p=0 .1, simulating electrode detachment), time-bin masking (15% of bins, p=0 .3, simulating motion artifacts), frequency-bin masking (15% of bins, p=0 .3), and additive Gaussian noise ( σ=0 .02 , simulating environmental interference). This pipeline is applied twice per sample, so the two views of the same sample will almost always differ, which is the core mechanism driving contrastive learning. Both views then pass through the shared encoder and a projection MLP. The pro-jection head is discarded after pretraining, and the encoder’s 512-d output is used for downstream tasks, following the finding in [12] that the projection head absorbs task-irrelevant information loss. We use the normalized temperature-scaled cross-entropy (NT-Xent) contrastive loss (Eq. 1) to maximize agreement between views of the same spectrogram. 
+
+Li,j = − log exp(sim( zi, zj )/τ )
+
+P2Nk=1 1[k̸ =i] exp(sim( zi, zk)/τ ) (1) Here, zi and zj denote the projected embeddings of two augmented views, sim( ·, ·) is cosine similarity, and τ is a tem-perature parameter controlling the sharpness of the similarity distribution. The denominator sums over all 2N embeddings in the minibatch, excluding zi. The temperature τ plays a critical Strategy A : Task Agnostic KD  
+
+> SE-ResNet18 Teacher
+> Pretrain Stage
+> SE-ResNet8 Student KD
+> Strategy B: Task Specific KD Finetune Stage
+> Fine-tuned
+> SE-ResNet18 Teacher for Task i
+> SE-ResNet8 & SE-
+> ResNet4 Students for Task i
+> Single KD step, then fine-tuned per task
+> KD
+> Per-task KD from fine-tuned teachers
+
+Fig. 5 : Two KD strategies: Strategy A distills once from the SSL-pretrained teacher; Strategy B distills separately from each fine-tuned teacher. role in our multi-dataset setting: lower values sharpen the distribution, encouraging finer-grained distinctions between spectrograms. This helps separate semantically similar yet diagnostically distinct patterns (e.g., healthy alpha activity vs. pathological slowing) that might otherwise collapse in the em-bedding space. The use of cosine similarity further improves robustness to residual amplitude variations across datasets, which may persist after normalization. Additionally, since all samples in the minibatch act as negatives regardless of their dataset of origin, the loss implicitly enforces discrimination across recording conditions, devices, and populations. This cross-dataset contrastive pressure enables the encoder to learn transferable representations that generalize to unseen tasks and acquisition settings. 
+
+C. Knowledge Distillation (KD) 
+
+The final stage in our pipeline is knowledge distillation. We do this because the pretrained model is too large for efficient deployment at 11.84 M parameters ( ∼44 MB). To this end, we compress the teacher into smaller students, SE-ResNet8 (1.56 M) and SE-ResNet4 (0.48 M), produced through different distillation strategies. Both students retain SE blocks, given the favorable accuracy-to-overhead tradeoff established in [13]. We investigate two distillation strategies as shown in Fig. 5. Strategy A compresses the SSL-pretrained teacher through one round of task-agnostic distillation into a shared backbone, which is then fine-tuned per downstream task. Strategy B instead first fine-tunes the teacher per task, then distills each fine-tuned teacher into a separate student, requiring per-task KD but allowing the student to benefit from task-specific knowledge. Together, these strategies span differ-ent points on the accuracy–efficiency tradeoff, characterized across hardware tiers in Section V. 
+
+Strategy A (Task-agnostic). We distill the SSL-pretrained SE-ResNet18 into an SE-ResNet8 student (256-d embeddings) on the same unlabeled pretraining data. Since the student and teacher have different embedding dimensions, the stu-dent is augmented with a linear projection (256-d → 512-d) during distillation; this layer is discarded afterwards. The loss combines NT-Xent and MSE, LA = LNT -Xent (zS , z ′ 
+
+> S
+
+) + 
+
+λ MSE( pS , f T (x)) , where zS and z′ 
+
+> S
+
+are the student’s pro-jected embeddings of two augmented views, pS is the student’s projection into teacher space, and fT (x) is the frozen teacher’s embedding. The NT-Xent term preserves view-invariant learn-ing, while the MSE term anchors the student to the teacher’s 6 IEEE JOURNAL OF BIOMEDICAL AND HEALTH INFORMATICS, VOL. XX, NO. XX, 2025 
+
+TABLE II : Overview of datasets used in this work.                                                  
+
+> Category Dataset # Classes # Channels fs(Hz)
+> SSL Pretraining Pool (labels discarded)
+> Emotion SEED-IV 462 200 Emotion DEAP 232 128 Motor Im. PhysioNet MI 464 160 Abnormality TUH-Sz 219–128 250–512 Abnormality CHB-MIT 223 256
+> Evaluation Datasets (fine-tuned with labels)
+> Abnormality TUAB 221 var Abnormality SIENA 229 512 Motor Im. BCI-IV-2a 422 250 Motor Im. BCI-IV-2b 23250 Emotion SEED 362 200 Emotion EmoEEG 728 250
+
+embedding space; both terms are computed over both aug-mented views and averaged. The resulting backbone serves as a shared initialization for downstream fine-tuning. 
+
+Strategy B (Task-specific). The teacher is first fine-tuned per downstream task, then each task-specific teacher (frozen) distills into an SE-ResNet8 and an SE-ResNet4 student using the standard Hinton KD loss [32], LB = α · L CE + (1 − α) ·
+
+T 2 · KL( σ(zS /T )∥σ(zT /T )) , where T controls distribution softening and α balances the two terms. Since the teacher has been fine-tuned on task labels, the student benefits from both soft distributional knowledge and direct supervision, helping it learn more calibrated decision boundaries than hard-label training alone. However, Strategy B relies on the quality of the teacher’s soft labels, so it is most effective when the downstream dataset is sufficiently large to yield reliable class boundaries. When labeled data is scarce, the teacher’s outputs may be noisy, in which case Strategy A’s task-agnostic initialization can serve as a better starting point. 
+
+IV. E XPERIMENTAL SETUP 
+
+Having described the framework, we now present the datasets, training protocol, and hardware profiling setup used to evaluate the proposed approach. 
+
+Datasets : For this work, we used open source EEG datasets for three common BCI applications, namely emotion recognition, motor imagery and abnormality detection. Table II lists the dataset details. The pretraining pool and evaluation sets share no datasets in common. The pretraining pool spans five datasets with 3–64 channels and 128–512 Hz sampling rates. Six separate datasets, two from each application category, are used for downstream evaluation. 
+
+SSL pretraining : The teacher model is pretrained for 50 epochs on 4 NVIDIA L40S GPUs with a total batch size of 1024. We adopt SGD with a base learning rate of 3 × 10 −2,scaled from a reference batch size of 256. This choice lever-ages the implicit gradient noise of SGD, which helps mitigate representational collapse in contrastive learning. Training em-ploys a 2-epoch linear warmup followed by cosine annealing. We set the weight decay to 10 −4 and the momentum to 0.9, and use FP16 mixed-precision to improve training efficiency. The projection MLP maps the 512-d encoder output to a 128-d embedding space, following SimCLR, where the projection head helps absorb task-irrelevant information. During fine-tuning, the projection head is discarded, and only the encoder backbone is retained. 
+
+Fine-tuning : The SSL-pretrained teacher is fine-tuned end-to-end on each downstream dataset for 50 epochs with a three-tier layer-wise learning-rate schedule: 10 −5 for the lower layers, 10 −4 for the upper convolutional layers, and 10 −3 for the classification head, preserving transferable low-level rep-resentations while allowing task-specific adaptation in higher layers [50]. A linear classification head maps the encoder output (512-d for the teacher, 256-d for SE-ResNet8, 128-d for SE-ResNet4) to the number of downstream classes. We use class-weighted cross-entropy with inverse-frequency weighting to address class imbalance, and early stopping with patience of 10 epochs to reduce overfitting. The student models follow the same training protocol in both distillation strategies. 
+
+Baseline models : We compare against two groups of models. 
+
+Internal baselines include our teacher and student models trained under different settings, such as SSL and KD-based fine-tuning. External baselines include both EEG FMs and task-specific architectures drawn from prior work. The exact set of external baselines varies by dataset and includes state-of-the-art EEG FMs such as LaBraM [8], BIOT [6], and CBraMod [7], as well as task-specific methods like EEG-Net [18] and EEGConformer [24] when available. External numbers are taken from the corresponding published papers. 
+
+Inference Profiling : We profile inference on three platforms using batch size 1 to reflect single-sample, real-time inference. The evaluated hardware consists of: (1) Server-grade GPU :an NVIDIA L4, with power sampled via NVML ( pynvml ); (2) CPU : an Intel i7-8700 (3.20 GHz, 65 W TDP), for which power is estimated using a utilization-scaled TDP proxy derived from psutil ; and (3) Edge Device : an NVIDIA Jetson Orin Nano edge platform (Ampere architecture GPU with ARM Cortex-A78AE CPU cores, configurable low-power modes in the 7–15 W range), with power monitored via jtop 
+
+and onboard INA telemetry. 
+
+V. R ESULTS 
+
+With the experimental setup established, we now present results across all six downstream benchmarks, both KD strate-gies, and three deployment-oriented hardware tiers. We begin by comparing our models with state-of-the-art FMs, then examine how well performance is retained under compres-sion, and finally assess whether the resulting compact models deliver meaningful efficiency gains on real hardware. 
+
+A. EEG-FM like accuracy 
+
+Tables III, IV, and V present the comparison of BRIDGE-EEG with state-of-the-art EEG FMs and, where FM baselines are unavailable, with task-specific architectures. 
+
+Abnormality detection. The results of abnormality detec-tion are presented in Table III. On TUAB, the Strategy B SE-ResNet8 student achieves 90% accuracy with 1.56 M param-eters, which is above all benchmarked EEG FMs, including REVE (83%, 69 M) and LaBraM-Huge (83%, 369 M), while using approximately 44 × and 237 × fewer parameters, re-spectively. Both SE-ResNet8 students outperform the teacher AUTHOR et al. : 7
+
+TABLE III : SOTA comparison on abnormality detection.                                                                      
+
+> Dataset Method Params Acc (%)
+> TUAB EEGNet [18] a0.003 M 76.42 EEGConformer [5], [24] a0.55 M 77.58 SPaRCNet [51] a0.79 M 78.96 ContraWR [52] a1.6 M 77.46 CNN-Transformer [53] a3.2 M 77.77 FFCL [54] a2.4 M 78.48 BIOT [6] 3.2 M 79.59 CBraMod [7] 4.0 M 82.89 CSBrain [5] 4.9 M 81.72 LaBraM-Base [8] 5.8 M 81.40 LaBraM-Large [8] 46 M 82.26 REVE [2] 69 M 83.15 NeuroLM-B [3] 254 M 78.26 LaBraM-Huge [8] 369 M 82.58 NeuroLM-L [3] 508 M 78.68 NeuroLM-XL [3] 1,696 M 79.69 (BRIDGE-EEG) Teacher 11.84 M 86.94 (BRIDGE-EEG) SE-ResNet8 (A) 1.56 M 89.75 (BRIDGE-EEG) SE-ResNet8 (B) 1.56 M 90.35
+> (BRIDGE-EEG) SE-ResNet4 (B) 0.48 M 88.00 SIENA BIOT [6] 3.2 M 73.52 CBraMod [7] 4.0 M 73.17 CSBrain [5] 4.9 M 76.62 LaBraM-Base [8] 5.8 M 70.82 Phase Amplitude Coupling + Rs [55] a–85.71 GoogLeNet [56] a–96.42 Bi-LSTM + 1D-CNN [57] a–99.70
+> (BRIDGE-EEG) Teacher 11.84 M 98.40 (BRIDGE-EEG) SE-ResNet8 (A) 1.56 M 99.50 (BRIDGE-EEG) SE-ResNet8 (B) 1.56 M 99.54 (BRIDGE-EEG) SE-ResNet4 (B) 0.48 M 99.08 (A) = KD on pretrained. (B) = KD on fine-tuned. aTask-specific model.
+
+(87%) on this binary task, consistent with the known reg-ularizing effect of knowledge distillation observed in prior work [32]. SE-ResNet4, with only 0.48 M parameters, achieves 88%, still above all benchmarked FMs. The task-specific baselines (e.g., EEGNet, EEGConformer, SPaRCNet), which are trained from scratch without pretraining, all fall below 79% on TUAB. On SIENA, the SE-ResNet8 (B) student reaches 99%, within 0.16 percentage points of the best reported task-specific result (Bi-LSTM + CWT, 99%) and above all FM baselines. The strong abnormality-detection results may reflect both the pretraining corpus composition (Table II), which includes two abnormality datasets (TUH-Sz, CHB-MIT), and the fact that dataset-specific spectral patterns are likely well preserved in the unified 62-channel representation. 
+
+Emotion recognition. Emotion recognition results are pre-sented in Table IV. On SEED, the teacher achieves ∼88%, and the distilled SE-ResNet8 students score 80% (Strategy B) and 78% (Strategy A). While both show a moderate drop from the teacher, they remain above all benchmarked FMs, including LaBraM-Base (73%, 6 M) and NeuroLM-XL (60%, 1,696 M). Task-specific baselines on SEED such as FFCL and CNN-Transformer remain below 62%, well behind both FMs and our compressed students. On EmoEEG, Strategy A (77%) scores higher than both Strategy B (60%) and the teacher (76%), while SE-ResNet4 drops to 35% on this 7-class task. We attribute the advantage of Strategy A to the limited scale of EmoEEG (eight subjects). Under such data-scarce conditions, representation-level transfer appears to act as an implicit regularizer, whereas task-specific distillation 
+
+TABLE IV : SOTA comparison on emotion detection.                                            
+
+> Dataset Method Params Acc (%)
+> SEED SPaRCNet [51] a0.79 M 55.96 ContraWR [52] a1.6 M 61.06 CNN-Transformer [53] a3.2 M 61.61 FFCL [54] a2.4 M 58.08 ST-Transformer a3.5 M 54.79 BIOT [6] 3.2 M 70.97 LaBraM-Base [8] 5.8 M 73.18 NeuroLM-B [3] 254 M 55.54 NeuroLM-L [3] 508 M 60.06 NeuroLM-XL [3] 1,696 M 60.34 (BRIDGE-EEG) Teacher 11.84 M 87.68
+> (BRIDGE-EEG) SE-ResNet8 (A) 1.56 M 78.10 (BRIDGE-EEG) SE-ResNet8 (B) 1.56 M 80.00 (BRIDGE-EEG) SE-ResNet4 (B) 0.48 M 70.00 EmoEEG (BRIDGE-EEG) Teacher 11.84 M 75.89 (BRIDGE-EEG) SE-ResNet8 (A) 1.56 M 77.32
+> (BRIDGE-EEG) SE-ResNet8 (B) 1.56 M 60.29 (BRIDGE-EEG) SE-ResNet4 (B) 0.48 M 35.10 (A) = KD on pretrained. (B) = KD on fine-tuned. aTask-specific model.
+
+TABLE V : SOTA comparison on motor imagery.                                              
+
+> Dataset Method Params Acc (%)
+> BCI-IV-2a CNN-Transformer [53] a3.2 M 47.70 CBraMod [7] 4.0 M 51.38 EEGPT [17] 4.7–25 M 58.46 LaBraM [8] 5.8 M 56.13 REVE [2] 69 M 63.96
+> NeuroGPT [16] 79.53 M 58.60 BENDR [4], [17] >1 B 48.99 (BRIDGE-EEG) Teacher 11.84 M 40.71 (BRIDGE-EEG) SE-ResNet8 (A) 1.56 M 38.51 (BRIDGE-EEG) SE-ResNet8 (B) 1.56 M 38.66 (BRIDGE-EEG) SE-ResNet4 (B) 0.48 M 35.13 BCI-IV-2b BIOT [6] 3.2 M 64.09 LaBraM [8] 5.8 M 68.51 EEGPT [17] 25 M 72.12
+> BENDR [4], [17] >1 B 70.67 (BRIDGE-EEG) Teacher 11.84 M 70.86 (BRIDGE-EEG) SE-ResNet8 (A) 1.56 M 69.00 (BRIDGE-EEG) SE-ResNet8 (B) 1.56 M 68.05 (BRIDGE-EEG) SE-ResNet4 (B) 0.48 M 66.89 (A) = KD on pretrained. (B) = KD on fine-tuned. aTask-specific model.
+
+(Strategy B) tends to inherit the fine-tuned teacher’s biases, and the smallest student likely lacks sufficient capacity for fine-grained emotion discrimination. The fact that Strategy B still outperforms Strategy A on SEED, despite SEED also being a relatively small dataset (15 subjects), suggests that dataset size alone does not explain the reversal. Rather, EmoEEG’s 7-class structure combined with only eight subjects yields far fewer samples per class, likely making the fine-tuned teacher’s soft labels unreliable and favoring the task-agnostic approach. 
+
+Motor imagery. The results of motor imagery classification are presented in Table V. Although some dataset-specific evaluations, such as [24], have fewer parameters, they use per-subject evaluations(78.66% accuracy on BCI-IV-2a), but re-evaluation under generalized protocols yields ∼47% [5]. Under generalized conditions on BCI-IV-2a, our best model, SE-ResNet8 (B), achieves 39% (chance level: 25%), which is below several benchmarked FMs, such as REVE (64%, 69 M) and NeuroGPT (59%, 80 M). We hypothesize that this gap arises from two factors. First, the pretraining corpus 8 IEEE JOURNAL OF BIOMEDICAL AND HEALTH INFORMATICS, VOL. XX, NO. XX, 2025 
+
+Fig. 6 : Accuracy retention under compression across all six benchmarks. Students match or exceed the teacher on binary clinical tasks, maintain moderate performance in emotion recognition, and show the largest declines in motor imagery. includes only a single motor imagery dataset (PhysioNet MI), whereas the abnormality and emotion categories each benefit from two (Table II); and secondly, MI datasets use far fewer channels than our 62-channel representation (22 for BCI-IV-2a, 3 for BCI-IV-2b), so the majority of input channels are zero-filled, which may hinder the model from learning the fine-grained spatial patterns that MI classification requires. The gap narrows on BCI-IV-2b, where our teacher achieves 71%, comparable to EEGPT (72%, 25 M), and the SE-ResNet8 (A) student reaches 69% with 1.56 M parameters, likely because the simpler binary task places less demand on spatial resolution. Notably, across both MI datasets the students remain close to the teacher (38% vs. 41% on BCI-IV-2a; 69% vs. 71% on BCI-IV-2b), indicating that the distillation pipeline preserves the teacher’s learned representations even when the teacher itself underperforms. This suggests that the bottleneck lies in the pretrained representation rather than in the compression, motivating future work to expand MI pre-training diversity and to explore spatial-resolution-preserving input representations. Overall, these results suggest that structured knowledge distillation can yield edge-device-scale models that perform comparably to, and in some cases above, FMs with 10–1,000 ×
+
+more parameters on abnormality detection and emotion recog-nition tasks. On motor imagery, a gap remains, likely due to limited pretraining diversity for this task category. These observations point to a practical accuracy-efficiency trade-off for deployment on resource-constrained hardware. 
+
+B. Accuracy Retention Under Compression 
+
+Having compared our models with existing FMs and task-specific baselines, we now examine how much performance is retained after compression, and whether accuracy alone is sufficient to assess compression quality. Fig. 6 summarizes results across all six benchmarks. We report macro-averaged F1 to assess per-class balance. The 1.56 M-parameter SE-ResNet8 reduces model size by 7.6× while preserving useful performance across all three task categories, and the 0.48 M SE-ResNet4 remains competitive on binary clinical tasks de-spite much stronger compression. F1 scores reveal patterns that accuracy alone does not. On TUAB, the students achieve higher accuracy than the teacher (90% vs. 87%) but lower F1 (0.83 vs. 0.87), suggesting the compressed models favor the majority class more heavily, an important consideration for clinical deployment where missing abnormal recordings is costly. On SEED, Strategy A shows much closer accuracy with F1 agreement (78% accuracy, 0.77 F1) than Strategy B (80% accuracy, 0.60 F1), indicating that Strategy A produces more balanced predictions across emotion classes even when its accuracy is slightly lower. On EmoEEG, macro F1 exceeds accuracy for the smallest student, reflecting the sensitivity of macro averaging to per-class fluctuations on this small 7-class dataset. Motor imagery remains the most difficult category, with students below the teacher in both metrics, though the gap is smaller than the 7.6× compression might suggest. Overall, compression is most successful on binary clinical tasks, remains viable on emotion recognition, and is less effective on motor imagery. The F1 analysis shows that accuracy alone can overstate the success of compression on imbalanced tasks, and that Strategy A tends to yield more class-balanced predictions than Strategy B. 
+
+C. Inference Efficiency Across Deployment Hardware 
+
+To evaluate deployment practicality, we benchmark infer-ence energy across three hardware tiers: a server-class GPU, a desktop CPU, and an edge device, all at batch size 1 to reflect single-sample, real-time inference. We use 50 warmup inferences followed by 200 runs for latency and 500 runs for power estimation. For each platform, we measure idle power Pidle (mean draw before benchmarking) and average inference power Pavg (mean draw during benchmarking), then compute dynamic power as Pdyn = Pavg − Pidle and energy per inference as Edyn = Pdyn × T , where T is the latency. 
+
+GPU Tier: For the GPU Tier, we perform experiments on the NVIDIA L4. As shown in Table VI, the SE-ResNet8 student reduces latency from 4.61 ms to 2.19 ms and dynamic energy from 24.43 mJ to 3.11 mJ relative to the SE-ResNet18 teacher, corresponding to a 7.9× reduction in energy per inference. This shows that the student is not only smaller in parameter count, but also much cheaper to run, which is critical for real-time EEG inference. Comparing SE and non-SE variants, the power gap is negligible but the latency gap is larger, similar to our previous study [13]. ResNet8 and SE-ResNet8 have similar dynamic power, 1.32 W versus 1.42 W, but their latencies differ more clearly, 1.47 ms versus 2.19 ms, increasing dynamic energy per inference from 1.94 mJ to 3.11 mJ. The same pattern holds at the larger-model scale, AUTHOR et al. : 9
+
+TABLE VI : Inference efficiency at batch size 1. Dynamic energy = (avg. power − idle power) × latency. 
+
+GPU (NVIDIA L4) CPU (i7-8700) NVIDIA Jetson Orin Nano Model Params Compr. Lat. (ms) Dyn. Pwr (W) Dyn. Energy (mJ) Lat. (ms) Dyn. Pwr (W) †
+
+Dyn. Energy (mJ) †
+
+Lat. (ms) Dyn. Pwr (W) Dyn. Energy (mJ) SE-ResNet18 11.84 M 1× 4.61 5.30 24.43 19.19 17.56 337.03 12.93 3.61 46.67 ResNet18 11.75 M – 2.82 4.79 13.53 17.64 18.91 333.48 9.5 4.92 46.74 SE-ResNet8 1.56 M 7.6 × 2.19 1.42 3.11 12.22 18.86 230.45 5.73 2.73 15.64 ResNet8 1.51 M 7.8 × 1.47 1.32 1.94 26.35 20.54 541.25 4.13 3.45 14.25           
+
+> †CPU power and energy are proxy estimates derived from a utilization-scaled TDP model rather than direct device-level telemetry. SSL Pretrained (Teacher) SSL Pretrained (Student) Finetuned (Teacher) Finetuned (Student 1) Finetuned (Student 2)
+> SSL Pretrained (Teacher) SSL Pretrained (Student) Finetuned (Teacher) Finetuned (Student 1) Finetuned (Student 2)
+> Datasets: Row1 →TUAB (binary) ; Row 2 →EmoEEG (multi)
+
+Fig. 7 : t-SNE visualization of BRIDGE-EEG representations on TUAB (Row 1) and EmoEEG (Row 2), comparing SSL-pretrained teacher and KD student models. where ResNet18 and SE-ResNet18 differ modestly in dynamic power (4.79 W vs. 5.30 W) but latency increases from 2.82 ms to 4.61 ms, raising energy from 13.53 mJ to 24.43 mJ. This means the hardware cost of SE is seen more clearly in energy per sample than in power alone. The accuracy benefit of SE blocks over their non-SE counterparts was established in our prior study [13], where SE variants consistently improved classification accuracy with negligible power overhead; the present profiling extends that analysis to measured latency and energy across deployment tiers. 
+
+CPU Tier: On the desktop CPU tier (i7-8700), we estimate CPU power using the rated TDP of 65 W as a baseline. As shown in Table VI, the SE-ResNet8 student reduces latency from 19.19 ms for the SE-ResNet18 teacher to 12.22 ms, indicating that compression improves inference practicality in a desktop setting. Interestingly, the non-SE ResNet8 reaches 26.35 ms, which is slower than both SE-ResNet8 and the larger ResNet18 at 17.64 ms. This suggests that realized latency cannot be inferred from parameter count alone, and instead depends on how each architecture maps to the target hardware. As noted in Table VI, CPU power figures are proxy estimates and may overestimate dynamic power. 
+
+Edge Tier: For the edge device tier, we profile the NVIDIA Jetson Orin Nano, which operates under tighter power and memory constraints compared to server and desktop platforms. As shown in Table VI, the SE-ResNet8 student achieves a latency of 5.73 ms, dynamic power of 2.73 W, and dynamic energy of 15.64 mJ per inference. In comparison, the non-SE ResNet8 achieves a lower latency of 4.13 ms but higher dynamic power of 3.45 W, resulting in a comparable dynamic energy of 14.25 mJ. The SE-ResNet18 teacher incurs signif-icantly higher cost, with 12.93 ms latency, 3.61 W dynamic power, and 46.67 mJ dynamic energy per inference. These results show that model compression leads to substantial improvements in both latency and energy efficiency on edge hardware. While SE blocks introduce a modest latency over-head relative to non-SE variants, they reduce dynamic power and maintain competitive energy consumption. Overall, among the models profiled, SE-ResNet8 offers a favorable accuracy-to-energy tradeoff for edge deployment. In summary, these results support a deployment pathway in which the teacher is best suited to server-class inference, while SE-ResNet8 provides a stronger accuracy–efficiency tradeoff for desktop and edge deployment. 
+
+VI. D ISCUSSION 
+
+Here, we examine how the learned representations transfer from teacher to student, and how the resulting compact models relate to a practical pathway toward wearable deployment. 
+
+A. Knowledge Transfer from Teacher to Student 
+
+To characterize the transfer of learning from pretraining to compact students, we compare the representation spaces of the SSL teacher, KD-pretrained students, and fine-tuned models using Centered Kernel Alignment (CKA) (Table VII) and t-SNE visualizations (Fig. 7) on TUAB and EmoEEG datasets. Across both datasets, the SSL-pretrained student starts extremely close to the SSL-teacher (CKA ≈ 0.85–0.92), indicating that KD Strategy A successfully places the student in almost the same representation regime as the full teacher be-fore any labels are used. Downstream fine-tuning then reshapes these SSL-like embeddings in a task-dependent manner. For the teacher, CKA between SSL and fine-tuned representations is low ( ≈ 0.19–0.25), showing that task supervision induces a 10 IEEE JOURNAL OF BIOMEDICAL AND HEALTH INFORMATICS, VOL. XX, NO. XX, 2025 
+
+TABLE VII : Linear CKA similarity between model variants           
+
+> Model pair EmoEEG TUAB
+> SSL SE-ResNet18 vs FT SE-ResNet18 0.1946 0.2510 SSL SE-ResNet18 vs KD-pretrained SE-ResNet8 0.9166 0.8467 FT SE-ResNet18 vs KD SE-ResNet8 FT 0.2410 0.4786 FT SE-ResNet18 vs KD SE-ResNet4 FT 0.2215 0.3662
+
+substantial reorganization of the feature space. Students also move away from their KD-pretrained geometry, but to a lesser extent, and the resulting alignment with the fine-tuned teacher is moderate on TUAB (CKA ≈ 0.48 for SE-ResNet8, 0.37 for SE-ResNet4) and weak on EmoEEG ( ≈ 0.22–0.24). Together with the t-SNE plots in Fig. 7, which show clearer nor-mal/abnormal clusters on TUAB and more entangled emotion classes on EmoEEG, these results suggest a common pattern wherein KD Strategy A first makes the student mimic the SSL teacher’s generic EEG representation, and downstream fine-tuning with KD Strategy B then pulls both teacher and student toward task-specific solutions, with small students only partially following the teacher and diverging more on the harder, data-scarce settings. 
+
+B. Towards Wearable Deployment 
+
+Building on this representational view, we next discuss how these compact students can plausibly be deployed on actual wearable-class hardware. To connect BRIDGE-EEG to various hardware targets, we relate their parameter footprints to the deployment tiers summarized in Table VIII. At the server and desktop tiers, memory is abundant (16+ GB), so the 11.84 M-parameter SE-ResNet18 teacher and 1.56 M-parameter SE-ResNet8 student can be stored and executed without constraint. In contrast, the MCU tier is limited to roughly 256 kB–1 MB of on-chip memory, which motivates the 0.48 M-parameter SE-ResNet4 student as our candidate for the wearable. For context, the most compact variant of FEMBA, a recent Mamba-based EEG FM that explicitly targets edge deployment, has its Tiny model at 7.8 M parameters ( ≈30 MB at fp32), an order of magnitude larger than SE-ResNet4 and well outside the MCU memory envelope [11], though the two architectures differ in input representation and are not directly comparable in accuracy. Furthermore, FEMBA reports efficiency in FLOPs rather than measured on-device latency or energy, whereas our Jetson Orin Nano profiling (5.73 ms, 15.64 mJ per inference for SE-ResNet8) provides the kind of concrete hardware benchmark that theoretical FLOPs counts cannot substitute. With 32-bit weights, SE-ResNet4 requires about 0.48 × 10 6 × 4 ≈ 1.9 MB of storage, whereas SE-ResNet8 and SE-ResNet18 require approximately 6.2 MB and 47 MB, respectively. Cortex-M-class ultra-low-power micro-controllers (e.g., STM32U5 [58]) offer up to 2–4 MB of on-chip flash and hundreds of kilobytes of SRAM and optional external Quad Serial Peripheral Interface (QSPI) flash, plac-ing SE-ResNet4 within reach for a single-chip or chip-plus-QSPI design, while the larger models would require more aggressive compression. This estimate covers weight storage only. Fitting runtime activations and the input tensor within MCU SRAM would require additional strategies such as 
+
+TABLE VIII : Model family and target deployment tiers.                      
+
+> Tier Platform Power Memory Model
+> Server NVIDIA L4 50–300 W 16+ GB Teacher (11.84 M) Desktop i7-8700 CPU 65 W TDP 16+ GB SE-ResNet8 (1.56 M) Edge NVIDIA Jetson Orin Nano 7–15 W 2–8 GB SE-ResNet8 (1.56 M) MCU Cortex-M-class MCU 10–100 mW 256 KB– 1 MB SE-ResNet4 (0.48 M)
+
+layer-wise execution or reduced-precision tiling. With standard 16-bit or 8-bit quantization, the SE-ResNet4 weights would shrink to roughly 0.96 MB or 0.48 MB, respectively, leaving headroom for signal-processing code and buffers on a Cortex-M-class wearable node. Furthermore, unlike hybrid convolu-tional–attention architectures such as EEG Conformer [24], the purely convolutional design of SE-ResNet exhibits regular memory access patterns that are better suited to standard MCU quantization toolchains and fixed-point execution. Future work will focus on hardware-aware quantization and MCU-class deployment, channel-count reduction for realistic wearable montages, and subject-adaptive training strategies that support practical on-device personalization. 
+
+VII. C ONCLUSION 
+
+This work presents an SSL-to-KD pipeline for compressing a pretrained SE-ResNet18 teacher into compact multi-task EEG models that better balance accuracy and efficiency. Across six downstream benchmarks, the student models re-tained useful performance after substantial compression on tasks where the teacher’s pretrained representation was strong, while on motor imagery the bottleneck was traced to pre-training diversity rather than compression itself. The two distillation strategies served different purposes. Strategy A produced a shared initialization across tasks, while Strategy B gave stronger task-specific accuracy, especially for abnormal-ity detection. F1 analysis further revealed that accuracy alone can overstate compression success on class-imbalanced tasks, and that Strategy A tends to produce more balanced per-class predictions. Inference profiling on server GPU, desktop CPU, and an NVIDIA Jetson Orin Nano edge device showed that compression also reduced latency and energy per inference in practice. Overall, this work provides measured efficiency benchmarks that motivate further compression and MCU-class deployment for wearables. 
+
+REFERENCES                   
+
+> [1] C. He et al. , “Diversity and suitability of the state-of-the-art wearable and wireless EEG systems review,” IEEE J. Biomed. Health Inform. ,vol. 27, no. 8, pp. 3830–3843, 2023. [2] Y. E. Ouahidi et al. , “REVE: A foundation model for EEG–adapting to any setup with large-scale pretraining on 25,000 subjects,” arXiv preprint arXiv:2510.21585 , 2025. [3] W. Wei et al. , “NeuroLM: A universal multi-task foundation model for bridging the gap between language and EEG signals,” in Proc. ICLR ,2025. [4] D. Kostas et al. , “BENDR: Using transformers and a contrastive self-supervised learning task to learn from massive amounts of EEG data,”
+> Front. Hum. Neurosci. , vol. 15, p. 653659, 2021. [5] Y. Zhou et al. , “CSBrain: A cross-scale spatiotemporal brain foundation model for EEG decoding,” arXiv preprint arXiv:2506.23075 , 2025. [6] C. Yang et al. , “BIOT: Cross-data biosignal learning in the wild,” in
+> Proc. NeurIPS , 2023. AUTHOR et al. :11
+
+[7] J. Wang et al. , “CBraMod: A criss-cross brain foundation model for EEG decoding,” in Proc. ICLR , 2025. [8] W. Jiang et al. , “Large brain model for learning generic representations with tremendous EEG data in BCI,” in Proc. ICLR , 2024, spotlight. [9] S. Panchavati et al. , “Mentality: A Mamba-based approach towards foundation models for EEG,” arXiv preprint arXiv:2509.02746 , 2025. [10] J. Wang et al. , “EEGMamba: An EEG foundation model with Mamba,” 
+
+Neural Networks , p. 107816, 2025. [11] A. Tegon et al. , “FEMBA: Efficient and scalable EEG analysis with a bidirectional Mamba foundation model,” in 2025 47th Annual Interna-tional Conference of the IEEE Engineering in Medicine and Biology Society (EMBC) . IEEE, 2025, pp. 1–7. [12] T. Chen et al. , “A simple framework for contrastive learning of visual representations,” in Proc. ICML , 2020. [13] M. R. Chowdhury et al. , “SSL-SE-EEG: A framework for robust learn-ing from unlabeled EEG data with self-supervised learning and squeeze-excitation networks,” in Proc. IEEE EMBC , 2025, arXiv:2510.19829. [14] C. Wang et al. , “BrainBERT: Self-supervised representation learning for intracranial recordings,” in Proc. ICLR , 2023. [15] Z. Zhang et al. , “Brant: Foundation model for intracranial neural signal,” in Proc. NeurIPS , 2023. [16] W. Cui et al. , “NeuroGPT: Towards a foundation model for EEG,” in 
+
+Proc. IEEE ISBI , 2024. [17] G. Wang et al. , “EEGPT: Pretrained transformer for universal and reliable representation of EEG signals,” Advances in Neural Information Processing Systems , vol. 37, pp. 39 249–39 280, 2024. [18] V. J. Lawhern et al. , “EEGNet: A compact convolutional neural network for EEG-based brain-computer interfaces,” J. Neural Eng. , vol. 15, no. 5, p. 056013, 2018. [19] R. T. Schirrmeister et al. , “Deep learning with convolutional neural networks for EEG decoding and visualization,” Hum. Brain Mapp. ,vol. 38, no. 11, pp. 5391–5420, 2017. [20] J. Hu et al. , “Squeeze-and-excitation networks,” in Proc. IEEE CVPR ,2018, pp. 7132–7141. [21] Y. Li et al. , “Epileptic seizure detection in EEG signals using a unified temporal-spectral squeeze-and-excitation network,” IEEE Trans. Neural Syst. Rehabil. Eng. , vol. 28, no. 4, pp. 782–794, 2020. [22] G. A. Altuwaijri et al. , “A multi-branch convolutional neural network with squeeze-and-excitation attention blocks for EEG-based motor im-agery signals classification,” Diagnostics , vol. 12, no. 4, p. 995, 2022. [23] T. M. Ingolfsson et al. , “EEG-TCNet: An accurate temporal convolu-tional network for embedded motor-imagery brain-machine interfaces,” in Proc. IEEE SMC , 2020, pp. 2958–2965. [24] Y. Song et al. , “EEG Conformer: Convolutional transformer for EEG decoding and visualization,” IEEE Trans. Neural Syst. Rehabil. Eng. ,vol. 31, pp. 710–719, 2023. [25] H. Altaheri et al. , “Physics-informed attention temporal convolutional network for EEG-based motor imagery classification,” IEEE Trans. Ind. Inform. , vol. 19, no. 2, pp. 2249–2258, 2023. [26] H. Banville et al. , “Uncovering the structure of clinical EEG signals with self-supervised learning,” J. Neural Eng. , vol. 18, no. 4, p. 046003, 2021. [27] M. N. Mohsenvand et al. , “Contrastive representation learning for elec-troencephalogram classification,” in ML4H Workshop, NeurIPS (PMLR vol. 136) , 2020, pp. 238–253. [28] H.-Y. S. Chien et al. , “MAEEG: Masked auto-encoder for EEG repre-sentation learning,” arXiv:2211.02625 , 2022. [29] N. M. Foumani et al. , “EEG2Rep: Enhancing self-supervised EEG representation through informative masked inputs,” in Proc. KDD , 2024, pp. 5544–5555. [30] T. Xiao et al. , “Self-supervised learning with attention mechanism for EEG-based seizure detection,” Biomed. Signal Process. Control , 2024. [31] W. Li et al. , “Self-supervised contrastive learning for EEG-based cross-subject motor imagery recognition,” J. Neural Eng. , vol. 21, no. 2, 2024. [32] G. Hinton et al. , “Distilling the knowledge in a neural network,” 
+
+arXiv:1503.02531 , 2015. [33] A. Romero et al. , “FitNets: Hints for thin deep nets,” in Proc. ICLR ,2015. [34] X.-Y. Huang et al. , “Enhancing low-density EEG-based brain-computer interfaces with similarity-keeping knowledge distillation,” IEEE Trans. Emerg. Topics Comput. Intell. , vol. 8, no. 2, pp. 1156–1166, 2023. [35] H. Liang et al. , “Teacher assistant-based knowledge distillation extract-ing multi-level features on single channel sleep EEG,” in Proc. IJCAI ,2023, pp. 3948–3956. [36] Z. Jia et al. , “DistillSleepNet: Heterogeneous multi-level knowledge distillation via teacher assistant for sleep staging,” IEEE Trans. Big Data ,vol. 11, pp. 1273–1284, 2024. [37] C. Zhang et al. , “Multi-channel multi-domain based knowledge distilla-tion algorithm for sleep staging with single-channel EEG,” IEEE TCAS-II , vol. 69, no. 11, pp. 4608–4612, 2022. [38] Y. Zhang et al. , “LLM-enhanced multi-teacher knowledge distillation for modality-incomplete emotion recognition in daily healthcare,” IEEE J. Biomed. Health Inform. , vol. 29, no. 9, pp. 6406–6416, 2024. [39] S. Zhang et al. , “Visual-to-EEG cross-modal knowledge distillation for continuous emotion recognition,” Pattern Recognit. , vol. 130, p. 108833, 2022. [40] S. Baghersalimi et al. , “M2SKD: Multi-to-single knowledge distillation of real-time epileptic seizure detection for low-power wearable systems,” 
+
+ACM Trans. Intell. Syst. Technol. , vol. 15, no. 5, pp. 1–31, 2024. [41] M. Sepahvand and F. Abdali-Mohammadi, “A novel method for reduc-ing arrhythmia classification from 12-lead ECG signals to single-lead ECG with minimal loss of accuracy through teacher-student knowledge distillation,” Inf. Sci. , vol. 593, pp. 64–77, 2022. [42] S. Abbaspourazad et al. , “Wearable accelerometer foundation models for health via knowledge distillation,” arXiv:2412.11276 , 2024. [43] T. M. Ingolfsson et al. , “BrainFuseNet: Enhancing wearable seizure detection through EEG-PPG-accelerometer sensor fusion and efficient edge deployment,” IEEE Trans. Biomed. Circuits Syst. , vol. 18, no. 4, pp. 720–733, 2024. [44] ——, “EpiDeNet: An energy-efficient approach to seizure detection for embedded systems,” in 2023 IEEE Biomedical Circuits and Systems Conference (BioCAS) . IEEE, 2023, pp. 1–5. [45] R. Zanetti et al. , “Robust epileptic seizure detection on wearable systems with reduced false-alarm rate,” in Proc. IEEE EMBC , 2020, pp. 4248– 4251. [46] R. Sari´ c et al. , “FPGA-based real-time epileptic seizure classification us-ing artificial neural network,” Biomed. Signal Process. Control , vol. 62, p. 102106, 2020. [47] H. Li et al. , “A 65nm/0.448 mW EEG processor with parallel archi-tecture SVM and lifting wavelet transform for high-performance and low-power epilepsy detection,” Comput. Biol. Med. , 2022. [48] V. Jurcak et al. , “10/20, 10/10, and 10/5 systems revisited: their va-lidity as relative head-surface-based positioning systems,” Neuroimage ,vol. 34, no. 4, pp. 1600–1611, 2007. [49] F. J. Harris, “On the use of windows for harmonic analysis with the discrete Fourier transform,” Proceedings of the IEEE , vol. 66, no. 1, pp. 51–83, 1978. [50] J. Howard and S. Ruder, “Universal language model fine-tuning for text classification,” in Proceedings of ACL , 2018, pp. 328–339. [51] J. Jing et al. , “Development of expert-level classification of seizures and rhythmic and periodic patterns during EEG interpretation,” Neurology ,vol. 100, no. 17, pp. e1750–e1762, 2023. [52] C. Yang et al. , “Self-supervised electroencephalogram representation learning for automatic sleep staging: model development and evaluation study,” JMIR AI , vol. 2, no. 1, p. e46769, 2023. [53] W. Y. Peh et al. , “Transformer convolutional neural networks for automated artifact detection in scalp EEG,” in 2022 44th Annual In-ternational Conference of the IEEE Engineering in Medicine & Biology Society (EMBC) . IEEE, 2022, pp. 3599–3602. [54] H. Li et al. , “Motor imagery EEG classification algorithm based on CNN-LSTM feature fusion network,” Biomedical signal processing and control , vol. 72, p. 103342, 2022. [55] X. Jiang et al. , “Epileptic seizures detection and the analysis of optimal seizure prediction horizon based on frequency and phase analysis,” 
+
+Frontiers in Neuroscience , vol. 17, p. 1191683, 2023. [56] Z. Wang et al. , “Automatic epileptic seizure detection based on persistent homology,” Frontiers in physiology , vol. 14, p. 1227952, 2023. [57] Y. Yang et al. , “Patient-specific approach using data fusion and adversar-ial training for epileptic seizure prediction,” Frontiers in Computational Neuroscience , vol. 17, p. 1172987, 2023. [58] “STM32U5 series of ultra-low-power MCUs enhanced security for IoT and embedded applications - STMicroelectronics,” [Online; accessed 2026-03-27]. [Online]. Available: https://www.st.com/en/ microcontrollers-microprocessors/stm32u5-series.html

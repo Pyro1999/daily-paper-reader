@@ -1,0 +1,104 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-14T22:57:28.349286+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 1,
+    "deep_cap": 8,
+    "deep_selected": 1,
+    "quick_candidates": 1,
+    "quick_skim_target": 13,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2609.12218v1",
+      "source": "arxiv",
+      "title": "BRIDGE-EEG: Bridging Self-Supervised Pretraining and Efficient Deployment for Cross-Dataset EEG Classification",
+      "abstract": "The growing use of electroencephalography (EEG) motivates automated analysis that is accurate, transferable, and deployable on constrained hardware. Recent EEG foundation models learn general representations from large-scale pretraining, but their size and computational cost limit edge and wearable deployment. We introduce BRIDGE-EEG, an efficient multi-task EEG classification pipeline that preserves the benefits of pretraining while reducing model size. A unified preprocessing scheme maps heterogeneous recordings with different channel counts, montages, and sampling rates to a device-agnostic 62-channel time--frequency representation. We pretrain an SE-ResNet18 teacher (11.84 M parameters) with SimCLR on unlabeled EEG from five heterogeneous datasets, then compress it into SE-ResNet8 (1.56 M) and SE-ResNet4 (0.48 M) students using task-agnostic and task-specific distillation. We evaluate six benchmarks spanning abnormality detection, motor imagery, and emotion recognition. For abnormality detection and emotion recognition, the students achieve accuracy comparable to or better than several recent EEG foundation models with 10--1,000$\\times$ more parameters. Motor imagery shows a remaining representation gap, highlighting the importance of pretraining diversity. Inference profiling on a server GPU, desktop CPU, and NVIDIA Jetson Orin Nano shows up to 3.0$\\times$ lower edge energy per inference (15.64 mJ vs. 46.67 mJ). The compact models further support future deployment on MCU-class wearables.",
+      "authors": [
+        "Meghna Roy Chowdhury",
+        "Chengwei Zhou",
+        "Haotian Yu",
+        "Gourav Datta",
+        "Shreyas Sen"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.LG",
+        "eess.SP"
+      ],
+      "published": "2026-09-10T21:27:10+00:00",
+      "link": "https://arxiv.org/pdf/2609.12218v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "EEG foundation model pretraining and efficient deployment",
+      "llm_evidence_cn": "脑电基础模型预训练与高效部署",
+      "llm_evidence": "脑电基础模型预训练与高效部署",
+      "canonical_evidence": "脑电基础模型预训练与高效部署",
+      "llm_tldr_en": "BRIDGE-EEG bridges self-supervised EEG pretraining with efficient deployment, using a device-agnostic time-frequency representation and a compact SE-ResNet18 teacher for cross-dataset classification.",
+      "llm_tldr_cn": "脑电自动分析需要准确、可迁移且能在受限硬件上部署，但现有脑电基础模型参数量大、算力开销高，难以用于边缘与可穿戴设备。作者提出BRIDGE-EEG多任务分类流程，用统一预处理把不同通道、蒙太奇与采样率的记录映射到与设备无关的62通道时频表示，并以SimCLR预训练紧凑的SE-ResNet18教师模型。实验表明该流程在保持预训练收益的同时显著减小模型规模，实现跨数据集分类。其贡献在于为脑电基础模型的轻量化与落地提供了可行方案，可支撑被动脑机接口中的认知负荷评估。",
+      "llm_tldr": "脑电自动分析需要准确、可迁移且能在受限硬件上部署，但现有脑电基础模型参数量大、算力开销高，难以用于边缘与可穿戴设备。作者提出BRIDGE-EEG多任务分类流程，用统一预处理把不同通道、蒙太奇与采样率的记录映射到与设备无关的62通道时频表示，并以SimCLR预训练紧凑的SE-ResNet18教师模型。实验表明该流程在保持预训练收益的同时显著减小模型规模，实现跨数据集分类。其贡献在于为脑电基础模型的轻量化与落地提供了可行方案，可支撑被动脑机接口中的认知负荷评估。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.11997v1",
+      "source": "arxiv",
+      "title": "DCRA: Diffusion-Conditioned Representation Alignment for Robust Time-Series Learning",
+      "abstract": "Learning robust representations for time-series signals under noise and distribution shifts remains challenging, especially in clinical applications such as electroencephalogram (EEG) and electrocardiogram (ECG) analysis. We propose Diffusion-Conditioned Representation Alignment (DCRA), a training framework that repurposes the forward diffusion process as a structured corruption scheduler for representation learning. Different from conventional augmentation and consistency-based methods that rely on independently sampled perturbations, DCRA introduces a structured corruption trajectory via the diffusion forward process, which enables continuous and controlled representation evolution across noise levels. We introduce a feature-level consistency objective that aligns representations across noise levels while preserving class-discriminative structure. This mechanism promotes structure-preserving consistency, which enables smooth and semantically coherent feature trajectories in latent space. The proposed framework is encoder-agnostic and can be integrated with state space models and Transformer architectures. The seizure detection experiments on the CHB-MIT EEG dataset show that DCRA consistently improves performance under multiple noise conditions and achieves higher sensitivity at low false-positive rates. Analysis reveals that DCRA produces more balanced and structured representations compared to baseline and diffusion-only models. These findings highlight the benefit of combining structured corruption with representation alignment for robust time-series learning.",
+      "authors": [
+        "Wenrui Xu",
+        "Anas Enanaa",
+        "Keshab K. Parhi"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ],
+      "published": "2026-09-09T22:52:37+00:00",
+      "link": "https://arxiv.org/pdf/2609.11997v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "robust representation learning under noise for EEG/ECG time series",
+      "llm_evidence_cn": "面向脑电等时序信号的抗噪鲁棒表征学习框架",
+      "llm_evidence": "面向脑电等时序信号的抗噪鲁棒表征学习框架",
+      "canonical_evidence": "面向脑电等时序信号的抗噪鲁棒表征学习框架",
+      "llm_tldr_en": "DCRA repurposes forward diffusion as a structured corruption scheduler to learn noise-robust time-series representations, targeting clinical EEG and ECG under noise and distribution shift.",
+      "llm_tldr_cn": "针对脑电与心电等临床时序信号在噪声和分布偏移下表征脆弱的问题，本文提出扩散条件表征对齐框架DCRA，将前向扩散过程重新用作结构化的加噪调度器，使表征在连续可控的噪声水平上逐步演化。方法引入特征级一致性约束，替代传统依赖独立采样的数据增强与一致性正则。实验表明该方法能在不同噪声强度下学习到更稳健的表征，为脑机接口等场景的鲁棒脑电处理提供了通用训练范式。",
+      "llm_tldr": "针对脑电与心电等临床时序信号在噪声和分布偏移下表征脆弱的问题，本文提出扩散条件表征对齐框架DCRA，将前向扩散过程重新用作结构化的加噪调度器，使表征在连续可控的噪声水平上逐步演化。方法引入特征级一致性约束，替代传统依赖独立采样的数据增强与一致性正则。实验表明该方法能在不同噪声强度下学习到更稳健的表征，为脑机接口等场景的鲁棒脑电处理提供了通用训练范式。",
+      "llm_tags": [
+        "query:robust-eeg"
+      ],
+      "matched_query_tag": "query:robust-eeg",
+      "matched_query_text": "robust eeg processing framework",
+      "matched_requirement_id": "req-21",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
