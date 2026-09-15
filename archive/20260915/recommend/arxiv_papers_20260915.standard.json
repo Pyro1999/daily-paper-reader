@@ -1,0 +1,271 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-15T22:05:22.593271+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 0,
+    "deep_cap": 8,
+    "deep_selected": 0,
+    "quick_candidates": 6,
+    "quick_skim_target": 13,
+    "quick_selected": 6
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2609.13507v1",
+      "source": "arxiv",
+      "title": "Pretraining for Sample-Efficient Neural Interfaces",
+      "abstract": "Brain-computer interfaces (BCIs) decode neural activity to restore lost function. Typically, training a high-performance neural decoder requires a large labeled dataset to be collected from every new subject. One way to reduce the labeled data cost is self-supervised pretraining, which learns general neural representations from unlabeled recordings that accumulate across subjects. However, for intracranial electroencephalography (iEEG) recordings, self-supervised learning has been challenging due to differences in contact placement and neuroanatomy between subjects. We propose MAPA, an otherwise vanilla masked autoencoder with two spatial encodings, an anatomical region embedding and a relative positional encoding, which together enable it to learn neural representations that transfer to unseen subjects and across various tasks. MAPA sets a new state of the art across all three regimes of the Neuroprobe benchmark without fine-tuning: within-session, cross-session, and cross-subject. In the cross-subject regime, a linear probe on MAPA's features needs only ${\\sim}164$ labeled trials to reach the accuracy that takes 3,500 without pretraining. Our results show that self-supervised pretraining can scale across heterogeneous iEEG recordings and reduce the labeled data needed for accurate decoding in new subjects.",
+      "authors": [
+        "Ben Tang",
+        "Zachary Spalding",
+        "Gregory B. Cogan"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "q-bio.NC"
+      ],
+      "published": "2026-09-11T20:12:42+00:00",
+      "link": "https://arxiv.org/pdf/2609.13507v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "self-supervised pretraining for sample-efficient neural interfaces",
+      "llm_evidence_cn": "面向样本高效神经接口的自监督预训练",
+      "llm_evidence": "面向样本高效神经接口的自监督预训练",
+      "canonical_evidence": "面向样本高效神经接口的自监督预训练",
+      "llm_tldr_en": "BCI decoders need large labeled data per subject; MAPA is a masked autoencoder with anatomical region and relative positional encodings that self-supervised pretrains on unlabeled iEEG, learning transferable neural representations for sample-efficient interfaces.",
+      "llm_tldr_cn": "脑机接口解码神经活动以恢复功能，但每个新受试者都需大量标注数据训练高性能解码器。本文提出MAPA，一种带解剖区域嵌入与相对位置编码两种空间编码的掩码自编码器，用于跨受试者无标签iEEG记录的自监督预训练，从而学习通用神经表征。实验表明该方法能在标注数据稀缺时提升解码性能，为样本高效的神经接口预训练提供了有效方案。",
+      "llm_tldr": "脑机接口解码神经活动以恢复功能，但每个新受试者都需大量标注数据训练高性能解码器。本文提出MAPA，一种带解剖区域嵌入与相对位置编码两种空间编码的掩码自编码器，用于跨受试者无标签iEEG记录的自监督预训练，从而学习通用神经表征。实验表明该方法能在标注数据稀缺时提升解码性能，为样本高效的神经接口预训练提供了有效方案。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.12501v1",
+      "source": "arxiv",
+      "title": "Mindspeller Neuroprofiling. How task performance, EEG, and association evidence support O*NET-based role guidance",
+      "abstract": "Mindspeller produces a Neuroprofile from three sources: rational self-report, association-based semantic positioning, and performance recorded during cognitive tasks together with EEG. The task-and-EEG stream is the only source used to create occupational evidence. A result can enter role matching only after the participant's task performance supports the intended construct and the corresponding EEG data pass the required quality and evidence checks. The current pilot uses four EEG electrodes, twelve scored tasks, 23 O*NET abilities, and an internal bank of 376 occupations. Self-report and association evidence help explain motivation, preference, and alignment, but do not generate roles. The output is intended to support discussion about cognitive fit. It is not a hiring decision, a measure of practical job skill, or a prediction of job performance. Role confidence is currently capped at Moderate, and external psychometric and job-outcome validity have not yet been established.",
+      "authors": [
+        "Prem Aravindan Jeyakumar",
+        "Marc M. Van Hulle",
+        "Hannes De Wachter"
+      ],
+      "primary_category": "cs.CY",
+      "categories": [
+        "cs.CY"
+      ],
+      "published": "2026-09-11T07:02:01+00:00",
+      "link": "https://arxiv.org/pdf/2609.12501v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG-based cognitive task evidence for occupational aptitude matching",
+      "llm_evidence_cn": "基于EEG认知任务的职业能力匹配证据",
+      "llm_evidence": "基于EEG认知任务的职业能力匹配证据",
+      "canonical_evidence": "基于EEG认知任务的职业能力匹配证据",
+      "llm_tldr_en": "Occupational matching lacks objective neural evidence; Mindspeller builds a Neuroprofile combining self-report, association positioning, and EEG during cognitive tasks, using task and EEG streams to generate occupational evidence for O*NET-based role guidance.",
+      "llm_tldr_cn": "职业匹配通常依赖自评，缺乏客观的神经与任务证据。Mindspeller提出Neuroprofile，整合理性自评、联想语义定位以及认知任务中同步记录的EEG，其中任务与EEG流是生成职业证据的唯一来源。系统以四个EEG电极、十二项计分任务和23项O*NET能力为角色匹配提供依据，只有在任务表现与EEG质量均达标时才输出匹配结果，为基于EEG的能力评估与选拔提供了新范式。",
+      "llm_tldr": "职业匹配通常依赖自评，缺乏客观的神经与任务证据。Mindspeller提出Neuroprofile，整合理性自评、联想语义定位以及认知任务中同步记录的EEG，其中任务与EEG流是生成职业证据的唯一来源。系统以四个EEG电极、十二项计分任务和23项O*NET能力为角色匹配提供依据，只有在任务表现与EEG质量均达标时才输出匹配结果，为基于EEG的能力评估与选拔提供了新范式。",
+      "llm_tags": [
+        "query:bci-pilot"
+      ],
+      "matched_query_tag": "query:bci-pilot",
+      "matched_query_text": "EEG based pilot aptitude testing",
+      "matched_requirement_id": "req-16",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.13717v1",
+      "source": "arxiv",
+      "title": "MANAS-2: Constrained Reconstruction for EEG Foundation Models",
+      "abstract": "Masked reconstruction is widely used for EEG foundation models, but optimizing reconstruction on low-SNR waveforms does not necessarily produce the most useful latent representation. We introduce MANAS-2, a new EEG foundation model that combines a Raw-Band Hybrid (RBH) masked autoencoder with Constrained Reconstruction (ConRec), a physics-motivated regularizer. RBH jointly reconstructs temporal waveform patches and compact spectral-band targets, while ConRec acts only on the temporal decoder output, penalizing differences in RMS energy between adjacent short windows of the reconstructed waveform. ConRec is intended to shape the encoder by biasing it toward the organization of oscillatory-envelope information. Across seven held-out EEG datasets, adding ConRec to an otherwise identical RBH model increases frozen ridge recovery of six-band spectral power from mean R^2=0.860 to 0.906 and recovery of inter-patch band-energy dynamics from R^2=0.283 to 0.354, while temporal waveform information remains highly recoverable from the frozen latents. Applied to a temporal-only masked autoencoder, ConRec also improves frozen downstream transfer and frequency-dependent latent geometry despite receiving no spectral targets: i.e., the effects of ConRec are architecture-independent. MANAS-2 also outperforms leading EEG Foundation Models on most downstream knowledge-transfer tasks. From the effects of ConRec, we see that a physically motivated constraint imposed through the decoder can make for a more spectrally organized and transferable latent space. MANAS-2 therefore provides a new EEG foundation model built around constrained reconstruction as a mechanism for shaping representation--rather than reconstruction--quality.",
+      "authors": [
+        "Arvasu Kulkarni",
+        "Aditya Ray Mishra",
+        "Mahir Jain",
+        "Parshva Runwal",
+        "Lakshya Saini",
+        "Siddharth Panwar",
+        "Sandeep Singh"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-09-12T05:04:07+00:00",
+      "link": "https://arxiv.org/pdf/2609.13717v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EEG foundation model with constrained reconstruction regularizer",
+      "llm_evidence_cn": "带约束重建正则项的EEG基础模型",
+      "llm_evidence": "带约束重建正则项的EEG基础模型",
+      "canonical_evidence": "带约束重建正则项的EEG基础模型",
+      "llm_tldr_en": "Masked reconstruction on low-SNR EEG waveforms may not yield the most useful representations. MANAS-2 combines a Raw-Band Hybrid masked autoencoder with Constrained Reconstruction, a physics-motivated regularizer shaping oscillatory-envelope structure; across seven held-out EEG datasets it improves latent representation quality.",
+      "llm_tldr_cn": "掩码重建被广泛用于EEG基础模型，但在低信噪比波形上优化重建未必能得到最有用的潜在表征。本文提出MANAS-2，将原始-频带混合掩码自编码器与约束重建正则项ConRec结合，后者作用于时间解码器输出，惩罚相邻短窗重构波形的均方根能量差异，引导编码器关注振荡包络信息。在七个留出EEG数据集上，加入ConRec改善了表征质量。该工作为EEG基础模型的预训练目标设计提供了物理启发的改进思路。",
+      "llm_tldr": "掩码重建被广泛用于EEG基础模型，但在低信噪比波形上优化重建未必能得到最有用的潜在表征。本文提出MANAS-2，将原始-频带混合掩码自编码器与约束重建正则项ConRec结合，后者作用于时间解码器输出，惩罚相邻短窗重构波形的均方根能量差异，引导编码器关注振荡包络信息。在七个留出EEG数据集上，加入ConRec改善了表征质量。该工作为EEG基础模型的预训练目标设计提供了物理启发的改进思路。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.15490v1",
+      "source": "arxiv",
+      "title": "Multiscale Gaussian-Mixture Modeling for HMM Post-Processing in Selective Auditory Attention Decoding",
+      "abstract": "Selective auditory attention decoding (sAAD) infers from electroencephalography (EEG) which speaker a listener attends to in multi-speaker scenarios. A widely used approach reconstructs the attended speech envelope from EEG, correlates it with candidate envelopes, and selects the speaker with the highest Pearson correlation. However, correlations in each decision window have high intrinsic variance, making per-window decisions unreliable, especially for short windows. Recent work introduced a hidden Markov model (HMM) that integrates correlation evidence over time and requires state-dependent emission distributions. Since labeled attention states are typically unavailable in practice, these distributions can be inferred from unlabeled observations by fitting a Gaussian mixture model (GMM). However, when the underlying Gaussians are close, unsupervised fitting becomes less reliable with limited samples. We therefore propose a multiscale GMM whose parameters are jointly estimated across multiple window lengths. The model exploits the window-length dependence of Fisher-transformed correlation estimates, whose means are approximately stable while their variances decrease with the number of samples per window. Experiments show that the multiscale GMM estimates emission parameters more accurately than single-scale fitting, particularly at short windows. Its HMM-post-processed accuracy advantage is largest for short recordings and narrows as more data become available, motivating multiscale fitting in data-constrained settings.",
+      "authors": [
+        "Tianyi Li",
+        "Simon Geirnaert",
+        "Bert De Smedt",
+        "Alexander Bertrand"
+      ],
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "published": "2026-09-14T12:41:54+00:00",
+      "link": "https://arxiv.org/pdf/2609.15490v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "EEG-based selective auditory attention decoding, a passive BCI paradigm",
+      "llm_evidence_cn": "基于脑电的选择性听觉注意解码，属被动脑机接口范式",
+      "llm_evidence": "基于脑电的选择性听觉注意解码，属被动脑机接口范式",
+      "canonical_evidence": "基于脑电的选择性听觉注意解码，属被动脑机接口范式",
+      "llm_tldr_en": "Addresses unreliable per-window decisions in EEG-based selective auditory attention decoding by proposing multiscale Gaussian-mixture modeling for HMM post-processing, improving attention state inference.",
+      "llm_tldr_cn": "选择性听觉注意解码需从脑电信号判断听者正在关注哪一位说话人，但逐窗相关性方差大，短窗条件下单窗决策并不可靠。针对隐马尔可夫模型后处理需要状态相关发射分布而实际又缺乏注意状态标注的问题，本文提出多尺度高斯混合建模方法，从数据中推断这些分布。结果表明该方法能更稳健地整合时间证据并提升注意力状态推断的可靠性。该工作增强了脑电被动脑机接口解码的鲁棒性，对脑电信号处理具有方法学借鉴意义。",
+      "llm_tldr": "选择性听觉注意解码需从脑电信号判断听者正在关注哪一位说话人，但逐窗相关性方差大，短窗条件下单窗决策并不可靠。针对隐马尔可夫模型后处理需要状态相关发射分布而实际又缺乏注意状态标注的问题，本文提出多尺度高斯混合建模方法，从数据中推断这些分布。结果表明该方法能更稳健地整合时间证据并提升注意力状态推断的可靠性。该工作增强了脑电被动脑机接口解码的鲁棒性，对脑电信号处理具有方法学借鉴意义。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "passive brain-computer interface with EEG",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.15687v1",
+      "source": "arxiv",
+      "title": "EEG-Xplain: Decoding Neural Black-Boxes of EEG Foundation Models",
+      "abstract": "EEG foundation models such as BIOT, LaBraM, and EEGMamba have achieved remarkable performance in neural signal decoding, but their black-box nature limits clinical trust and neuroscientific validation. We propose a unified attribution framework for interpreting EEG foundation models across heterogeneous architectures. The framework integrates gradient-, perturbation-, and activation-based explanation methods to analyze model behavior in spatial, temporal, and frequency dimensions. Spatially, it identifies critical EEG channels and visualizes their distributions using topographic maps. Temporally, it highlights decision-relevant signal segments through attribution heatmaps. In the frequency domain, it quantifies the contributions of canonical EEG rhythms via spectral perturbation analysis. To assess explanation reliability, we introduce a population-level evaluation combining Area Over the Perturbation Curve (AOPC) and cross-method consistency analysis. The framework further leverages Large Language Models (LLMs) to transform structured attribution outputs into natural-language reports, bridging low-level neural representations and high-level semantic reasoning. Experiments on benchmark datasets, including Mumtaz2016 and TUAB, demonstrate that the generated explanations are consistent with established neurophysiological markers, validating meaningful neural representations while exposing potential dependencies on artifacts and spurious patterns. The proposed framework provides a standardized approach for evaluating the interpretability, reliability, and physiological plausibility of EEG foundation models.",
+      "authors": [
+        "Hansong Ma",
+        "Junxiao Wang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-14T14:56:07+00:00",
+      "link": "https://arxiv.org/pdf/2609.15687v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified attribution framework for interpreting EEG foundation models",
+      "llm_evidence_cn": "用于解释EEG基础模型的统一归因框架",
+      "llm_evidence": "用于解释EEG基础模型的统一归因框架",
+      "canonical_evidence": "用于解释EEG基础模型的统一归因框架",
+      "llm_tldr_en": "EEG foundation models such as BIOT, LaBraM and EEGMamba decode neural signals well but remain black boxes, limiting trust and validation. EEG-Xplain integrates gradient-, perturbation- and activation-based explanations to analyze model behavior across spatial, temporal and frequency dimensions, identifying key channels, segments and rhythms.",
+      "llm_tldr_cn": "BIOT、LaBraM、EEGMamba等EEG基础模型在神经信号解码上表现优异，但其黑箱特性限制了临床信任与神经科学验证。本文提出EEG-Xplain，一个跨异构架构的统一归因框架，融合梯度、扰动与激活类解释方法，从空间、时间与频率三个维度剖析模型行为，识别关键EEG通道、决策相关信号片段及各节律贡献。该工作提升了EEG基础模型的可解释性，为其可靠应用提供了分析工具。",
+      "llm_tldr": "BIOT、LaBraM、EEGMamba等EEG基础模型在神经信号解码上表现优异，但其黑箱特性限制了临床信任与神经科学验证。本文提出EEG-Xplain，一个跨异构架构的统一归因框架，融合梯度、扰动与激活类解释方法，从空间、时间与频率三个维度剖析模型行为，识别关键EEG通道、决策相关信号片段及各节律贡献。该工作提升了EEG基础模型的可解释性，为其可靠应用提供了分析工具。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.15740v1",
+      "source": "arxiv",
+      "title": "A Language-Guided Multimodal Foundation Model for Zero-Shot and Multi-Task Brain Signal Analysis",
+      "abstract": "Brain signal analysis is essential for both neuroscience research and clinical diagnostics, yet current approaches face critical limitations. End-to-end models require task-specific retraining and exhibit limited generalization, while pre-trained models lack semantic depth and still depend on extensive fine-tuning. Meanwhile, general-purpose multimodal foundation models, though powerful in other domains, struggle to interpret brain signals due to representational misalignment and lack of domain knowledge. This study introduces a multimodal foundation model for zero-shot and multi-task brain signal analysis (METIS) through a unified language-signal alignment framework. METIS is pretrained on the largest and most diverse brain-signal corpus to date, comprising over 70,000 h of recordings from more than 11,000 subjects across 20 datasets. In a comprehensive zero-shot evaluation across 12 datasets, METIS outperformed the leading generalist model by over 20.9% in average accuracy. Remarkably, without any fine-tuning, METIS's performance matches or exceeds that of supervised, task-specific models. Furthermore, METIS demonstrates exceptional data efficiency and strong generalization, achieving an average AUROC advantage of over 16.0% in few-shot settings and 15.9% in cross-dataset transfer. This work establishes a new paradigm for general-purpose brain signal analysis, paving the way for next-generation neurotechnology.",
+      "authors": [
+        "Mingzhi Chen",
+        "Yiyu Gui",
+        "Guibo Luo",
+        "Yuchao Yang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-09-14T15:32:38+00:00",
+      "link": "https://arxiv.org/pdf/2609.15740v1",
+      "tags": [
+        "keyword:bci-pilot",
+        "keyword:pBCI-load",
+        "keyword:robust-eeg",
+        "query:bci-pilot",
+        "query:pBCI-load",
+        "query:robust-eeg"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "language-guided multimodal foundation model for brain signal analysis",
+      "llm_evidence_cn": "面向脑信号分析的语言引导多模态基础模型",
+      "llm_evidence": "面向脑信号分析的语言引导多模态基础模型",
+      "canonical_evidence": "面向脑信号分析的语言引导多模态基础模型",
+      "llm_tldr_en": "Current brain signal models need task-specific retraining or heavy fine-tuning, and general multimodal models misalign with brain data. METIS introduces a language-signal alignment framework pretrained on large diverse brain data to enable zero-shot and multi-task brain signal analysis without extensive fine-tuning.",
+      "llm_tldr_cn": "脑信号分析对神经科学与临床诊断至关重要，但端到端模型需按任务重训、泛化有限，预训练模型又缺乏语义深度且依赖大量微调。本文提出METIS，一个面向零样本与多任务脑信号分析的多模态基础模型，通过统一的语言-信号对齐框架，在规模最大、最多样的脑信号数据上预训练。该模型缓解了表征错位与领域知识缺失问题，为脑信号通用分析提供了新范式。",
+      "llm_tldr": "脑信号分析对神经科学与临床诊断至关重要，但端到端模型需按任务重训、泛化有限，预训练模型又缺乏语义深度且依赖大量微调。本文提出METIS，一个面向零样本与多任务脑信号分析的多模态基础模型，通过统一的语言-信号对齐框架，在规模最大、最多样的脑信号数据上预训练。该模型缓解了表征错位与领域知识缺失问题，为脑信号通用分析提供了新范式。",
+      "llm_tags": [
+        "query:pbci-load"
+      ],
+      "matched_query_tag": "query:pbci-load",
+      "matched_query_text": "foundation model for EEG signal processing",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

@@ -6,26 +6,41 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-09-14
-- 运行时间：2026-09-14 23:00:02 UTC
+- 最新运行日期：2026-09-15
+- 运行时间：2026-09-15 22:08:28 UTC
 - 运行状态：成功
-- 本次总论文数：2
-- 精读区：1
-- 速读区：1
+- 本次总论文数：6
+- 精读区：0
+- 速读区：6
 
 ### 今日简报（AI）
-今日精读1篇、速读1篇，重点聚焦脑电跨数据集分类与时间序列鲁棒学习。最值得看的是 BRIDGE-EEG（8.0/10），尝试打通自监督预训练与高效部署；速读的 DCRA（6.0/10）则用扩散条件做表示对齐。普通读者可先了解 BRIDGE-EEG 的落地思路，再按需跟进 DCRA 的方法细节。
-- 详情：[/202609/14/README](/202609/14/README)
+今日速读6篇、精读0篇，重点扫过神经接口预训练与EEG基础模型方向，列出的3篇均为7.0分。
+最值得看的是“样本高效神经接口预训练”，以及EEG基础模型的“约束重建”和“黑箱可解释性”两条线。
+普通读者可先从《EEG-Xplain》入手，再回看前两篇，建立“EEG基础模型既要好用也要可解释”的直觉。
+- 详情：[/202609/15/README](/202609/15/README)
 
 ### 精读区论文标签
-1. [BRIDGE-EEG: Bridging Self-Supervised Pretraining and Efficient Deployment for Cross-Dataset EEG Classification](/202609/14/2609.12218v1-bridge-eeg-bridging-self-supervised-pretraining-and-efficient-deployment-for-cross-dataset-eeg-classification)  
-   标签：评分：8.0/10、query:pbci-load
-   evidence：脑电基础模型预训练与高效部署
+- 本次无精读推荐。
 
 ### 速读区论文标签
-1. [DCRA: Diffusion-Conditioned Representation Alignment for Robust Time-Series Learning](/202609/14/2609.11997v1-dcra-diffusion-conditioned-representation-alignment-for-robust-time-series-learning)  
-   标签：评分：6.0/10、query:robust-eeg
-   evidence：面向脑电等时序信号的抗噪鲁棒表征学习框架
+1. [Pretraining for Sample-Efficient Neural Interfaces](/202609/15/2609.13507v1-pretraining-for-sample-efficient-neural-interfaces)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：面向样本高效神经接口的自监督预训练
+2. [MANAS-2: Constrained Reconstruction for EEG Foundation Models](/202609/15/2609.13717v1-manas-2-constrained-reconstruction-for-eeg-foundation-models)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：带约束重建正则项的EEG基础模型
+3. [EEG-Xplain: Decoding Neural Black-Boxes of EEG Foundation Models](/202609/15/2609.15687v1-eeg-xplain-decoding-neural-black-boxes-of-eeg-foundation-models)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：用于解释EEG基础模型的统一归因框架
+4. [A Language-Guided Multimodal Foundation Model for Zero-Shot and Multi-Task Brain Signal Analysis](/202609/15/2609.15740v1-a-language-guided-multimodal-foundation-model-for-zero-shot-and-multi-task-brain-signal-analysis)  
+   标签：评分：7.0/10、query:pbci-load
+   evidence：面向脑信号分析的语言引导多模态基础模型
+5. [Mindspeller Neuroprofiling. How task performance, EEG, and association evidence support O*NET-based role guidance](/202609/15/2609.12501v1-mindspeller-neuroprofiling-how-task-performance-eeg-and-association-evidence-support-onet-based-role-guidance)  
+   标签：评分：6.0/10、query:bci-pilot
+   evidence：基于EEG认知任务的职业能力匹配证据
+6. [Multiscale Gaussian-Mixture Modeling for HMM Post-Processing in Selective Auditory Attention Decoding](/202609/15/2609.15490v1-multiscale-gaussian-mixture-modeling-for-hmm-post-processing-in-selective-auditory-attention-decoding)  
+   标签：评分：6.0/10、query:pbci-load
+   evidence：基于脑电的选择性听觉注意解码，属被动脑机接口范式
 
 
 <div class="dpr-home-promo-card">
